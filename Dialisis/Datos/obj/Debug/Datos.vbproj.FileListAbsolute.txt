@@ -1,0 +1,32 @@
+C:\Hamer2020\hamer2020\DIALISIS 2020 - 21-08-2020\Datos\bin\Debug\Datos.dll
+C:\Hamer2020\hamer2020\DIALISIS 2020 - 21-08-2020\Datos\bin\Debug\Datos.pdb
+C:\Hamer2020\hamer2020\DIALISIS 2020 - 21-08-2020\Datos\bin\Debug\Datos.xml
+C:\Hamer2020\hamer2020\DIALISIS 2020 - 21-08-2020\Datos\obj\Debug\Datos.Resources.resources
+C:\Hamer2020\hamer2020\DIALISIS 2020 - 21-08-2020\Datos\obj\Debug\Datos.vbproj.GenerateResource.Cache
+C:\Hamer2020\hamer2020\DIALISIS 2020 - 21-08-2020\Datos\obj\Debug\Datos.dll
+C:\Hamer2020\hamer2020\DIALISIS 2020 - 21-08-2020\Datos\obj\Debug\Datos.xml
+C:\Hamer2020\hamer2020\DIALISIS 2020 - 21-08-2020\Datos\obj\Debug\Datos.pdb
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\hamer2020\Dialisis 28-08-2020\Datos\bin\Debug\Datos.dll
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\hamer2020\Dialisis 28-08-2020\Datos\bin\Debug\Datos.pdb
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\hamer2020\Dialisis 28-08-2020\Datos\bin\Debug\Datos.xml
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\hamer2020\Dialisis 28-08-2020\Datos\obj\Debug\Datos.Resources.resources
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\hamer2020\Dialisis 28-08-2020\Datos\obj\Debug\Datos.vbproj.GenerateResource.Cache
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\hamer2020\Dialisis 28-08-2020\Datos\obj\Debug\Datos.dll
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\hamer2020\Dialisis 28-08-2020\Datos\obj\Debug\Datos.xml
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\hamer2020\Dialisis 28-08-2020\Datos\obj\Debug\Datos.pdb
+C:\Hamer2020\hamer2020\Dialisis 28-08-2020\Datos\bin\Debug\Datos.dll
+C:\Hamer2020\hamer2020\Dialisis 28-08-2020\Datos\bin\Debug\Datos.pdb
+C:\Hamer2020\hamer2020\Dialisis 28-08-2020\Datos\bin\Debug\Datos.xml
+C:\Hamer2020\hamer2020\Dialisis 28-08-2020\Datos\obj\Debug\Datos.Resources.resources
+C:\Hamer2020\hamer2020\Dialisis 28-08-2020\Datos\obj\Debug\Datos.vbproj.GenerateResource.Cache
+C:\Hamer2020\hamer2020\Dialisis 28-08-2020\Datos\obj\Debug\Datos.dll
+C:\Hamer2020\hamer2020\Dialisis 28-08-2020\Datos\obj\Debug\Datos.xml
+C:\Hamer2020\hamer2020\Dialisis 28-08-2020\Datos\obj\Debug\Datos.pdb
+C:\Dialisis 14-09-2020_15hrs\Dialisis 28-08-2020\Datos\bin\Debug\Datos.dll
+C:\Dialisis 14-09-2020_15hrs\Dialisis 28-08-2020\Datos\bin\Debug\Datos.pdb
+C:\Dialisis 14-09-2020_15hrs\Dialisis 28-08-2020\Datos\bin\Debug\Datos.xml
+C:\Dialisis 14-09-2020_15hrs\Dialisis 28-08-2020\Datos\obj\Debug\Datos.Resources.resources
+C:\Dialisis 14-09-2020_15hrs\Dialisis 28-08-2020\Datos\obj\Debug\Datos.vbproj.GenerateResource.Cache
+C:\Dialisis 14-09-2020_15hrs\Dialisis 28-08-2020\Datos\obj\Debug\Datos.dll
+C:\Dialisis 14-09-2020_15hrs\Dialisis 28-08-2020\Datos\obj\Debug\Datos.xml
+C:\Dialisis 14-09-2020_15hrs\Dialisis 28-08-2020\Datos\obj\Debug\Datos.pdb
