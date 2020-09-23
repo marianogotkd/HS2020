@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_remito" targetNamespace="http://tempuri.org/DS_remito.xsd" xmlns:mstns="http://tempuri.org/DS_remito.xsd" xmlns="http://tempuri.org/DS_remito.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_remito" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_remito" msprop:Generator_UserDSName="DS_remito">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Remito" msprop:Generator_TableClassName="RemitoDataTable" msprop:Generator_TableVarName="tableRemito" msprop:Generator_RowChangedName="RemitoRowChanged" msprop:Generator_TablePropName="Remito" msprop:Generator_RowDeletingName="RemitoRowDeleting" msprop:Generator_RowChangingName="RemitoRowChanging" msprop:Generator_RowEvHandlerName="RemitoRowChangeEventHandler" msprop:Generator_RowDeletedName="RemitoRowDeleted" msprop:Generator_RowClassName="RemitoRow" msprop:Generator_UserTableName="Remito" msprop:Generator_RowEvArgName="RemitoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="remito_id" msprop:Generator_ColumnVarNameInTable="columnremito_id" msprop:Generator_ColumnPropNameInRow="remito_id" msprop:Generator_ColumnPropNameInTable="remito_idColumn" msprop:Generator_UserColumnName="remito_id" type="xs:int" minOccurs="0" />
+              <xs:element name="remito_fecha" msprop:Generator_ColumnVarNameInTable="columnremito_fecha" msprop:Generator_ColumnPropNameInRow="remito_fecha" msprop:Generator_ColumnPropNameInTable="remito_fechaColumn" msprop:Generator_UserColumnName="remito_fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="remito_estado" msprop:Generator_ColumnVarNameInTable="columnremito_estado" msprop:Generator_ColumnPropNameInRow="remito_estado" msprop:Generator_ColumnPropNameInTable="remito_estadoColumn" msprop:Generator_UserColumnName="remito_estado" type="xs:string" minOccurs="0" />
+              <xs:element name="ventaprod_id" msprop:Generator_ColumnVarNameInTable="columnventaprod_id" msprop:Generator_ColumnPropNameInRow="ventaprod_id" msprop:Generator_ColumnPropNameInTable="ventaprod_idColumn" msprop:Generator_UserColumnName="ventaprod_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Fantasia" msprop:Generator_ColumnVarNameInTable="columnFantasia" msprop:Generator_ColumnPropNameInRow="Fantasia" msprop:Generator_ColumnPropNameInTable="FantasiaColumn" msprop:Generator_UserColumnName="Fantasia" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_id" msprop:Generator_ColumnVarNameInTable="columnCLI_id" msprop:Generator_ColumnPropNameInRow="CLI_id" msprop:Generator_ColumnPropNameInTable="CLI_idColumn" msprop:Generator_UserColumnName="CLI_id" type="xs:int" minOccurs="0" />
+              <xs:element name="CtaCte_id" msprop:Generator_ColumnVarNameInTable="columnCtaCte_id" msprop:Generator_ColumnPropNameInRow="CtaCte_id" msprop:Generator_ColumnPropNameInTable="CtaCte_idColumn" msprop:Generator_UserColumnName="CtaCte_id" type="xs:int" minOccurs="0" />
+              <xs:element name="ventaprod_total" msprop:Generator_ColumnVarNameInTable="columnventaprod_total" msprop:Generator_ColumnPropNameInRow="ventaprod_total" msprop:Generator_ColumnPropNameInTable="ventaprod_totalColumn" msprop:Generator_UserColumnName="ventaprod_total" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

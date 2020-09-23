@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TurnoInforme" targetNamespace="http://tempuri.org/TurnoInforme.xsd" xmlns:mstns="http://tempuri.org/TurnoInforme.xsd" xmlns="http://tempuri.org/TurnoInforme.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TurnoInforme" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TurnoInforme" msprop:Generator_UserDSName="TurnoInforme">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TurnoReservadoComun" msprop:Generator_TableClassName="TurnoReservadoComunDataTable" msprop:Generator_TableVarName="tableTurnoReservadoComun" msprop:Generator_RowChangedName="TurnoReservadoComunRowChanged" msprop:Generator_TablePropName="TurnoReservadoComun" msprop:Generator_RowDeletingName="TurnoReservadoComunRowDeleting" msprop:Generator_RowChangingName="TurnoReservadoComunRowChanging" msprop:Generator_RowEvHandlerName="TurnoReservadoComunRowChangeEventHandler" msprop:Generator_RowDeletedName="TurnoReservadoComunRowDeleted" msprop:Generator_RowClassName="TurnoReservadoComunRow" msprop:Generator_UserTableName="TurnoReservadoComun" msprop:Generator_RowEvArgName="TurnoReservadoComunRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TURNO_fecha" msprop:Generator_ColumnVarNameInTable="columnTURNO_fecha" msprop:Generator_ColumnPropNameInRow="TURNO_fecha" msprop:Generator_ColumnPropNameInTable="TURNO_fechaColumn" msprop:Generator_UserColumnName="TURNO_fecha" type="xs:string" minOccurs="0" />
+              <xs:element name="CANCHA_id" msprop:Generator_ColumnVarNameInTable="columnCANCHA_id" msprop:Generator_ColumnPropNameInRow="CANCHA_id" msprop:Generator_ColumnPropNameInTable="CANCHA_idColumn" msprop:Generator_UserColumnName="CANCHA_id" type="xs:string" minOccurs="0" />
+              <xs:element name="CANCHA_nom" msprop:Generator_ColumnVarNameInTable="columnCANCHA_nom" msprop:Generator_ColumnPropNameInRow="CANCHA_nom" msprop:Generator_ColumnPropNameInTable="CANCHA_nomColumn" msprop:Generator_UserColumnName="CANCHA_nom" type="xs:string" minOccurs="0" />
+              <xs:element name="CANCHA_T_id" msprop:Generator_ColumnVarNameInTable="columnCANCHA_T_id" msprop:Generator_ColumnPropNameInRow="CANCHA_T_id" msprop:Generator_ColumnPropNameInTable="CANCHA_T_idColumn" msprop:Generator_UserColumnName="CANCHA_T_id" type="xs:string" minOccurs="0" />
+              <xs:element name="CANCHA_T_nom" msprop:Generator_ColumnVarNameInTable="columnCANCHA_T_nom" msprop:Generator_ColumnPropNameInRow="CANCHA_T_nom" msprop:Generator_ColumnPropNameInTable="CANCHA_T_nomColumn" msprop:Generator_UserColumnName="CANCHA_T_nom" type="xs:string" minOccurs="0" />
+              <xs:element name="Turno_Inicio" msprop:Generator_ColumnVarNameInTable="columnTurno_Inicio" msprop:Generator_ColumnPropNameInRow="Turno_Inicio" msprop:Generator_ColumnPropNameInTable="Turno_InicioColumn" msprop:Generator_UserColumnName="Turno_Inicio" type="xs:string" minOccurs="0" />
+              <xs:element name="Turno_Fin" msprop:Generator_ColumnVarNameInTable="columnTurno_Fin" msprop:Generator_ColumnPropNameInRow="Turno_Fin" msprop:Generator_ColumnPropNameInTable="Turno_FinColumn" msprop:Generator_UserColumnName="Turno_Fin" type="xs:string" minOccurs="0" />
+              <xs:element name="Turno_Tiempo" msprop:Generator_ColumnVarNameInTable="columnTurno_Tiempo" msprop:Generator_ColumnPropNameInRow="Turno_Tiempo" msprop:Generator_ColumnPropNameInTable="Turno_TiempoColumn" msprop:Generator_UserColumnName="Turno_Tiempo" type="xs:duration" minOccurs="0" />
+              <xs:element name="TURNO_T_nom" msprop:Generator_ColumnVarNameInTable="columnTURNO_T_nom" msprop:Generator_ColumnPropNameInRow="TURNO_T_nom" msprop:Generator_ColumnPropNameInTable="TURNO_T_nomColumn" msprop:Generator_UserColumnName="TURNO_T_nom" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_nom" msprop:Generator_ColumnVarNameInTable="columnCLI_nom" msprop:Generator_ColumnPropNameInRow="CLI_nom" msprop:Generator_ColumnPropNameInTable="CLI_nomColumn" msprop:Generator_UserColumnName="CLI_nom" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

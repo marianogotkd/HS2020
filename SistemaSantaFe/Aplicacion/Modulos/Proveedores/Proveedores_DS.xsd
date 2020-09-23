@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Proveedores_DS" targetNamespace="http://tempuri.org/Proveedores_DS.xsd" xmlns:mstns="http://tempuri.org/Proveedores_DS.xsd" xmlns="http://tempuri.org/Proveedores_DS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Proveedores_DS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Proveedores_DS" msprop:Generator_UserDSName="Proveedores_DS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Proveedor_obtener_todo" msprop:Generator_TableClassName="Proveedor_obtener_todoDataTable" msprop:Generator_TableVarName="tableProveedor_obtener_todo" msprop:Generator_RowChangedName="Proveedor_obtener_todoRowChanged" msprop:Generator_TablePropName="Proveedor_obtener_todo" msprop:Generator_RowDeletingName="Proveedor_obtener_todoRowDeleting" msprop:Generator_RowChangingName="Proveedor_obtener_todoRowChanging" msprop:Generator_RowEvHandlerName="Proveedor_obtener_todoRowChangeEventHandler" msprop:Generator_RowDeletedName="Proveedor_obtener_todoRowDeleted" msprop:Generator_RowClassName="Proveedor_obtener_todoRow" msprop:Generator_UserTableName="Proveedor_obtener_todo" msprop:Generator_RowEvArgName="Proveedor_obtener_todoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Prov_id" msprop:Generator_ColumnVarNameInTable="columnProv_id" msprop:Generator_ColumnPropNameInRow="Prov_id" msprop:Generator_ColumnPropNameInTable="Prov_idColumn" msprop:Generator_UserColumnName="Prov_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Prov_codigo" msprop:Generator_ColumnVarNameInTable="columnProv_codigo" msprop:Generator_ColumnPropNameInRow="Prov_codigo" msprop:Generator_ColumnPropNameInTable="Prov_codigoColumn" msprop:Generator_UserColumnName="Prov_codigo" type="xs:string" minOccurs="0" />
+              <xs:element name="Prov_nombre" msprop:Generator_ColumnVarNameInTable="columnProv_nombre" msprop:Generator_ColumnPropNameInRow="Prov_nombre" msprop:Generator_ColumnPropNameInTable="Prov_nombreColumn" msprop:Generator_UserColumnName="Prov_nombre" type="xs:string" minOccurs="0" />
+              <xs:element name="Prov_responsable" msprop:Generator_ColumnVarNameInTable="columnProv_responsable" msprop:Generator_ColumnPropNameInRow="Prov_responsable" msprop:Generator_ColumnPropNameInTable="Prov_responsableColumn" msprop:Generator_UserColumnName="Prov_responsable" type="xs:string" minOccurs="0" />
+              <xs:element name="Prov_direccion" msprop:Generator_ColumnVarNameInTable="columnProv_direccion" msprop:Generator_ColumnPropNameInRow="Prov_direccion" msprop:Generator_ColumnPropNameInTable="Prov_direccionColumn" msprop:Generator_UserColumnName="Prov_direccion" type="xs:string" minOccurs="0" />
+              <xs:element name="Prov_telefono" msprop:Generator_ColumnVarNameInTable="columnProv_telefono" msprop:Generator_ColumnPropNameInRow="Prov_telefono" msprop:Generator_ColumnPropNameInTable="Prov_telefonoColumn" msprop:Generator_UserColumnName="Prov_telefono" type="xs:string" minOccurs="0" />
+              <xs:element name="Prov_celular" msprop:Generator_ColumnVarNameInTable="columnProv_celular" msprop:Generator_ColumnPropNameInRow="Prov_celular" msprop:Generator_ColumnPropNameInTable="Prov_celularColumn" msprop:Generator_UserColumnName="Prov_celular" type="xs:string" minOccurs="0" />
+              <xs:element name="Prov_mail" msprop:Generator_ColumnVarNameInTable="columnProv_mail" msprop:Generator_ColumnPropNameInRow="Prov_mail" msprop:Generator_ColumnPropNameInTable="Prov_mailColumn" msprop:Generator_UserColumnName="Prov_mail" type="xs:string" minOccurs="0" />
+              <xs:element name="Prov_Observaciones" msprop:Generator_ColumnVarNameInTable="columnProv_Observaciones" msprop:Generator_ColumnPropNameInRow="Prov_Observaciones" msprop:Generator_ColumnPropNameInTable="Prov_ObservacionesColumn" msprop:Generator_UserColumnName="Prov_Observaciones" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
