@@ -187,3 +187,11 @@ C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Pruebas de 
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Pruebas de Escritorio\SistemaSantaFe\Datos\obj\Debug\Datos.dll
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Pruebas de Escritorio\SistemaSantaFe\Datos\obj\Debug\Datos.xml
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Pruebas de Escritorio\SistemaSantaFe\Datos\obj\Debug\Datos.pdb
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Datos\bin\Debug\Datos.dll
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Datos\bin\Debug\Datos.pdb
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Datos\bin\Debug\Datos.xml
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Datos\obj\Debug\Datos.Resources.resources
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Datos\obj\Debug\Datos.vbproj.GenerateResource.Cache
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Datos\obj\Debug\Datos.dll
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Datos\obj\Debug\Datos.xml
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Datos\obj\Debug\Datos.pdb

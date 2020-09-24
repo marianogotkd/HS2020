@@ -1419,6 +1419,10 @@ Public Class Producto_modificar
             i = i + 1
         End While
 
+        If pregunta = "no" Then
+            MessageBox.Show("Debe seleccionar un insumo para poder eliminar", "Sistema de Gestión", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End If
+
         '_____________________disparo el evento check_marca...para q vuelva a cargar los productos sin ningun tipo de filtro
         check_marca.Checked = False
         If check_subrubro.Checked = True Then

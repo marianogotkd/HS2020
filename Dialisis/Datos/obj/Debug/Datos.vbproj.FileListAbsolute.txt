@@ -30,3 +30,11 @@ C:\Dialisis 14-09-2020_15hrs\Dialisis 28-08-2020\Datos\obj\Debug\Datos.vbproj.Ge
 C:\Dialisis 14-09-2020_15hrs\Dialisis 28-08-2020\Datos\obj\Debug\Datos.dll
 C:\Dialisis 14-09-2020_15hrs\Dialisis 28-08-2020\Datos\obj\Debug\Datos.xml
 C:\Dialisis 14-09-2020_15hrs\Dialisis 28-08-2020\Datos\obj\Debug\Datos.pdb
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Datos\bin\Debug\Datos.dll
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Datos\bin\Debug\Datos.pdb
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Datos\bin\Debug\Datos.xml
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Datos\obj\Debug\Datos.Resources.resources
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Datos\obj\Debug\Datos.vbproj.GenerateResource.Cache
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Datos\obj\Debug\Datos.dll
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Datos\obj\Debug\Datos.xml
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Datos\obj\Debug\Datos.pdb

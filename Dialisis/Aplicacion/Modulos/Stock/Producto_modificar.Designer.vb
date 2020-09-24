@@ -24,7 +24,7 @@ Partial Class Producto_modificar
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Producto_modificar))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Bo_cancelar = New System.Windows.Forms.Button()
@@ -32,6 +32,7 @@ Partial Class Producto_modificar
         Me.Bo_guardar = New System.Windows.Forms.Button()
         Me.BO_producto_nuevo = New System.Windows.Forms.Button()
         Me.btn_Anular = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.check_proveedor = New System.Windows.Forms.CheckBox()
@@ -56,6 +57,9 @@ Partial Class Producto_modificar
         Me.cb_origen = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DG_Producto = New System.Windows.Forms.DataGridView()
+        Me.ProdxSucBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Producto_ds = New Aplicacion.Producto_ds()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.prod_codinterno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.prod_descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdxSuc_stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -66,10 +70,6 @@ Partial Class Producto_modificar
         Me.sucursal_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.prod_codbarra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ProdxSucBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Producto_ds = New Aplicacion.Producto_ds()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -153,6 +153,20 @@ Partial Class Producto_modificar
         Me.btn_Anular.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.btn_Anular, "Eliminar producto seleccionado")
         Me.btn_Anular.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
+        Me.Button1.Location = New System.Drawing.Point(662, 10)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(124, 43)
+        Me.Button1.TabIndex = 251
+        Me.Button1.Text = "Generar reporte"
+        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button1, "Generar reporte")
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'TabPage1
         '
@@ -476,15 +490,39 @@ Partial Class Producto_modificar
         Me.DG_Producto.MultiSelect = False
         Me.DG_Producto.Name = "DG_Producto"
         Me.DG_Producto.RowHeadersVisible = False
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_Producto.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_Producto.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DG_Producto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_Producto.Size = New System.Drawing.Size(1240, 249)
         Me.DG_Producto.StandardTab = True
         Me.DG_Producto.TabIndex = 0
+        '
+        'ProdxSucBindingSource
+        '
+        Me.ProdxSucBindingSource.DataMember = "ProdxSuc"
+        Me.ProdxSucBindingSource.DataSource = Me.Producto_ds
+        '
+        'Producto_ds
+        '
+        Me.Producto_ds.DataSetName = "Producto_ds"
+        Me.Producto_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabControl1.Location = New System.Drawing.Point(2, 6)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(1291, 607)
+        Me.TabControl1.TabIndex = 0
         '
         'prod_codinterno
         '
@@ -568,51 +606,12 @@ Partial Class Producto_modificar
         '
         'Column1
         '
-        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.Column1.FillWeight = 177.665!
-        Me.Column1.HeaderText = ""
+        Me.Column1.HeaderText = "Seleccionar"
         Me.Column1.Name = "Column1"
         Me.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.Column1.Visible = False
-        '
-        'ProdxSucBindingSource
-        '
-        Me.ProdxSucBindingSource.DataMember = "ProdxSuc"
-        Me.ProdxSucBindingSource.DataSource = Me.Producto_ds
-        '
-        'Producto_ds
-        '
-        Me.Producto_ds.DataSetName = "Producto_ds"
-        Me.Producto_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.Location = New System.Drawing.Point(2, 6)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1291, 607)
-        Me.TabControl1.TabIndex = 0
-        '
-        'Button1
-        '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
-        Me.Button1.Location = New System.Drawing.Point(662, 10)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(124, 43)
-        Me.Button1.TabIndex = 251
-        Me.Button1.Text = "Generar reporte"
-        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button1, "Generar reporte")
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'Producto_modificar
         '
@@ -669,6 +668,13 @@ Partial Class Producto_modificar
     Friend WithEvents cb_rubro As System.Windows.Forms.ComboBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents btn_Anular As System.Windows.Forms.Button
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents check_proveedor As System.Windows.Forms.CheckBox
+    Friend WithEvents lb_proveedor As System.Windows.Forms.Label
+    Friend WithEvents cb_proveedor As System.Windows.Forms.ComboBox
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents prod_codinterno As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents prod_descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProdxSuc_stock As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -679,11 +685,4 @@ Partial Class Producto_modificar
     Friend WithEvents sucursal_id As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents prod_codbarra As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents check_proveedor As System.Windows.Forms.CheckBox
-    Friend WithEvents lb_proveedor As System.Windows.Forms.Label
-    Friend WithEvents cb_proveedor As System.Windows.Forms.ComboBox
-    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class
