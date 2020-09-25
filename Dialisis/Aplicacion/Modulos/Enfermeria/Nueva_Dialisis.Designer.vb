@@ -24,7 +24,7 @@ Partial Class Nueva_Dialisis
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Nueva_Dialisis))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tb_numHemo = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -50,16 +50,19 @@ Partial Class Nueva_Dialisis
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.lbl_err3 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.tb_PesoE = New System.Windows.Forms.MaskedTextBox()
         Me.tb_PesoI = New System.Windows.Forms.MaskedTextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
+        Me.lbl_err4 = New System.Windows.Forms.Label()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.tb_TAE = New System.Windows.Forms.MaskedTextBox()
         Me.tb_TAI = New System.Windows.Forms.MaskedTextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.lbl_err5 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.GroupBox_insumos = New System.Windows.Forms.GroupBox()
@@ -93,9 +96,6 @@ Partial Class Nueva_Dialisis
         Me.btn_NAV = New System.Windows.Forms.Button()
         Me.tb_AV = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
-        Me.lbl_err5 = New System.Windows.Forms.Label()
-        Me.lbl_err3 = New System.Windows.Forms.Label()
-        Me.lbl_err4 = New System.Windows.Forms.Label()
         Me.lbl_err6 = New System.Windows.Forms.Label()
         Me.lbl_err2 = New System.Windows.Forms.Label()
         Me.lbl_err1 = New System.Windows.Forms.Label()
@@ -103,6 +103,10 @@ Partial Class Nueva_Dialisis
         Me.Label20 = New System.Windows.Forms.Label()
         Me.btn_cancelar = New System.Windows.Forms.Button()
         Me.btn_guardar = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.tb_CantRe = New System.Windows.Forms.TextBox()
+        Me.btn_cambio = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -112,6 +116,7 @@ Partial Class Nueva_Dialisis
         CType(Me.MovEnfBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Mov_DS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox7.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -310,7 +315,7 @@ Partial Class Nueva_Dialisis
         Me.GroupBox3.Controls.Add(Me.lbl_err3)
         Me.GroupBox3.Location = New System.Drawing.Point(527, 36)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(240, 163)
+        Me.GroupBox3.Size = New System.Drawing.Size(240, 106)
         Me.GroupBox3.TabIndex = 322
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Horario"
@@ -375,6 +380,18 @@ Partial Class Nueva_Dialisis
         Me.Label2.TabIndex = 268
         Me.Label2.Text = "Ingreso:"
         '
+        'lbl_err3
+        '
+        Me.lbl_err3.AutoSize = True
+        Me.lbl_err3.Font = New System.Drawing.Font("Modern No. 20", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_err3.ForeColor = System.Drawing.Color.Red
+        Me.lbl_err3.Location = New System.Drawing.Point(214, 5)
+        Me.lbl_err3.Name = "lbl_err3"
+        Me.lbl_err3.Size = New System.Drawing.Size(20, 21)
+        Me.lbl_err3.TabIndex = 339
+        Me.lbl_err3.Text = "*"
+        Me.lbl_err3.Visible = False
+        '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.tb_PesoE)
@@ -384,7 +401,7 @@ Partial Class Nueva_Dialisis
         Me.GroupBox4.Controls.Add(Me.lbl_err4)
         Me.GroupBox4.Location = New System.Drawing.Point(797, 36)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(176, 163)
+        Me.GroupBox4.Size = New System.Drawing.Size(176, 106)
         Me.GroupBox4.TabIndex = 323
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Peso"
@@ -425,6 +442,18 @@ Partial Class Nueva_Dialisis
         Me.Label11.TabIndex = 268
         Me.Label11.Text = "Ingreso:"
         '
+        'lbl_err4
+        '
+        Me.lbl_err4.AutoSize = True
+        Me.lbl_err4.Font = New System.Drawing.Font("Modern No. 20", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_err4.ForeColor = System.Drawing.Color.Red
+        Me.lbl_err4.Location = New System.Drawing.Point(150, 5)
+        Me.lbl_err4.Name = "lbl_err4"
+        Me.lbl_err4.Size = New System.Drawing.Size(20, 21)
+        Me.lbl_err4.TabIndex = 340
+        Me.lbl_err4.Text = "*"
+        Me.lbl_err4.Visible = False
+        '
         'GroupBox5
         '
         Me.GroupBox5.Controls.Add(Me.tb_TAE)
@@ -434,7 +463,7 @@ Partial Class Nueva_Dialisis
         Me.GroupBox5.Controls.Add(Me.lbl_err5)
         Me.GroupBox5.Location = New System.Drawing.Point(1023, 36)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(176, 163)
+        Me.GroupBox5.Size = New System.Drawing.Size(176, 93)
         Me.GroupBox5.TabIndex = 324
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Tension Arterial"
@@ -474,6 +503,18 @@ Partial Class Nueva_Dialisis
         Me.Label13.Size = New System.Drawing.Size(45, 13)
         Me.Label13.TabIndex = 268
         Me.Label13.Text = "Ingreso:"
+        '
+        'lbl_err5
+        '
+        Me.lbl_err5.AutoSize = True
+        Me.lbl_err5.Font = New System.Drawing.Font("Modern No. 20", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_err5.ForeColor = System.Drawing.Color.Red
+        Me.lbl_err5.Location = New System.Drawing.Point(155, 5)
+        Me.lbl_err5.Name = "lbl_err5"
+        Me.lbl_err5.Size = New System.Drawing.Size(20, 21)
+        Me.lbl_err5.TabIndex = 341
+        Me.lbl_err5.Text = "*"
+        Me.lbl_err5.Visible = False
         '
         'Label14
         '
@@ -557,14 +598,14 @@ Partial Class Nueva_Dialisis
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1188, 180)
@@ -690,24 +731,24 @@ Partial Class Nueva_Dialisis
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(8, 115)
+        Me.Label18.Location = New System.Drawing.Point(6, 45)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(29, 13)
+        Me.Label18.Size = New System.Drawing.Size(28, 13)
         Me.Label18.TabIndex = 332
-        Me.Label18.Text = "Filtro"
+        Me.Label18.Text = "Tipo"
         '
         'tb_Filtro
         '
-        Me.tb_Filtro.Location = New System.Drawing.Point(138, 108)
+        Me.tb_Filtro.Location = New System.Drawing.Point(41, 42)
         Me.tb_Filtro.Multiline = True
         Me.tb_Filtro.Name = "tb_Filtro"
-        Me.tb_Filtro.Size = New System.Drawing.Size(357, 35)
+        Me.tb_Filtro.Size = New System.Drawing.Size(110, 20)
         Me.tb_Filtro.TabIndex = 331
         '
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(8, 156)
+        Me.Label19.Location = New System.Drawing.Point(524, 183)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(78, 13)
         Me.Label19.TabIndex = 334
@@ -715,15 +756,16 @@ Partial Class Nueva_Dialisis
         '
         'tb_Obs
         '
-        Me.tb_Obs.Location = New System.Drawing.Point(138, 149)
+        Me.tb_Obs.Location = New System.Drawing.Point(608, 158)
         Me.tb_Obs.Multiline = True
         Me.tb_Obs.Name = "tb_Obs"
-        Me.tb_Obs.Size = New System.Drawing.Size(357, 38)
+        Me.tb_Obs.Size = New System.Drawing.Size(559, 38)
         Me.tb_Obs.TabIndex = 333
         '
         'GroupBox7
         '
         Me.GroupBox7.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox7.Controls.Add(Me.GroupBox2)
         Me.GroupBox7.Controls.Add(Me.lbl_err7)
         Me.GroupBox7.Controls.Add(Me.tb_talla)
         Me.GroupBox7.Controls.Add(Me.tb_PesoS)
@@ -731,7 +773,6 @@ Partial Class Nueva_Dialisis
         Me.GroupBox7.Controls.Add(Me.tb_AV)
         Me.GroupBox7.Controls.Add(Me.Label23)
         Me.GroupBox7.Controls.Add(Me.lbl_err6)
-        Me.GroupBox7.Controls.Add(Me.lbl_err2)
         Me.GroupBox7.Controls.Add(Me.lbl_err1)
         Me.GroupBox7.Controls.Add(Me.lbl_err)
         Me.GroupBox7.Controls.Add(Me.Label20)
@@ -739,9 +780,7 @@ Partial Class Nueva_Dialisis
         Me.GroupBox7.Controls.Add(Me.Label19)
         Me.GroupBox7.Controls.Add(Me.tb_numHemo)
         Me.GroupBox7.Controls.Add(Me.tb_Obs)
-        Me.GroupBox7.Controls.Add(Me.Label18)
         Me.GroupBox7.Controls.Add(Me.GroupBox3)
-        Me.GroupBox7.Controls.Add(Me.tb_Filtro)
         Me.GroupBox7.Controls.Add(Me.GroupBox4)
         Me.GroupBox7.Controls.Add(Me.GroupBox5)
         Me.GroupBox7.Controls.Add(Me.Label14)
@@ -808,48 +847,12 @@ Partial Class Nueva_Dialisis
         Me.Label23.TabIndex = 343
         Me.Label23.Text = "Tipo de Acceso Vascular"
         '
-        'lbl_err5
-        '
-        Me.lbl_err5.AutoSize = True
-        Me.lbl_err5.Font = New System.Drawing.Font("Modern No. 20", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_err5.ForeColor = System.Drawing.Color.Red
-        Me.lbl_err5.Location = New System.Drawing.Point(155, 5)
-        Me.lbl_err5.Name = "lbl_err5"
-        Me.lbl_err5.Size = New System.Drawing.Size(20, 21)
-        Me.lbl_err5.TabIndex = 341
-        Me.lbl_err5.Text = "*"
-        Me.lbl_err5.Visible = False
-        '
-        'lbl_err3
-        '
-        Me.lbl_err3.AutoSize = True
-        Me.lbl_err3.Font = New System.Drawing.Font("Modern No. 20", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_err3.ForeColor = System.Drawing.Color.Red
-        Me.lbl_err3.Location = New System.Drawing.Point(214, 5)
-        Me.lbl_err3.Name = "lbl_err3"
-        Me.lbl_err3.Size = New System.Drawing.Size(20, 21)
-        Me.lbl_err3.TabIndex = 339
-        Me.lbl_err3.Text = "*"
-        Me.lbl_err3.Visible = False
-        '
-        'lbl_err4
-        '
-        Me.lbl_err4.AutoSize = True
-        Me.lbl_err4.Font = New System.Drawing.Font("Modern No. 20", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_err4.ForeColor = System.Drawing.Color.Red
-        Me.lbl_err4.Location = New System.Drawing.Point(150, 5)
-        Me.lbl_err4.Name = "lbl_err4"
-        Me.lbl_err4.Size = New System.Drawing.Size(20, 21)
-        Me.lbl_err4.TabIndex = 340
-        Me.lbl_err4.Text = "*"
-        Me.lbl_err4.Visible = False
-        '
         'lbl_err6
         '
         Me.lbl_err6.AutoSize = True
         Me.lbl_err6.Font = New System.Drawing.Font("Modern No. 20", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_err6.ForeColor = System.Drawing.Color.Red
-        Me.lbl_err6.Location = New System.Drawing.Point(501, 146)
+        Me.lbl_err6.Location = New System.Drawing.Point(1173, 158)
         Me.lbl_err6.Name = "lbl_err6"
         Me.lbl_err6.Size = New System.Drawing.Size(20, 21)
         Me.lbl_err6.TabIndex = 338
@@ -861,7 +864,7 @@ Partial Class Nueva_Dialisis
         Me.lbl_err2.AutoSize = True
         Me.lbl_err2.Font = New System.Drawing.Font("Modern No. 20", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_err2.ForeColor = System.Drawing.Color.Red
-        Me.lbl_err2.Location = New System.Drawing.Point(501, 108)
+        Me.lbl_err2.Location = New System.Drawing.Point(157, 37)
         Me.lbl_err2.Name = "lbl_err2"
         Me.lbl_err2.Size = New System.Drawing.Size(20, 21)
         Me.lbl_err2.TabIndex = 337
@@ -933,6 +936,48 @@ Partial Class Nueva_Dialisis
         Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_guardar.UseVisualStyleBackColor = True
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.btn_cambio)
+        Me.GroupBox2.Controls.Add(Me.Label24)
+        Me.GroupBox2.Controls.Add(Me.tb_CantRe)
+        Me.GroupBox2.Controls.Add(Me.Label18)
+        Me.GroupBox2.Controls.Add(Me.tb_Filtro)
+        Me.GroupBox2.Controls.Add(Me.lbl_err2)
+        Me.GroupBox2.Location = New System.Drawing.Point(5, 102)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(491, 97)
+        Me.GroupBox2.TabIndex = 355
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Filtro"
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(187, 45)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(86, 13)
+        Me.Label24.TabIndex = 339
+        Me.Label24.Text = "Cant. de Reusos"
+        '
+        'tb_CantRe
+        '
+        Me.tb_CantRe.Location = New System.Drawing.Point(279, 42)
+        Me.tb_CantRe.Multiline = True
+        Me.tb_CantRe.Name = "tb_CantRe"
+        Me.tb_CantRe.Size = New System.Drawing.Size(59, 20)
+        Me.tb_CantRe.TabIndex = 338
+        '
+        'btn_cambio
+        '
+        Me.btn_cambio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_cambio.Location = New System.Drawing.Point(344, 40)
+        Me.btn_cambio.Name = "btn_cambio"
+        Me.btn_cambio.Size = New System.Drawing.Size(128, 23)
+        Me.btn_cambio.TabIndex = 356
+        Me.btn_cambio.Text = "Cambio de Filtro"
+        Me.btn_cambio.UseVisualStyleBackColor = True
+        '
         'Nueva_Dialisis
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -965,6 +1010,8 @@ Partial Class Nueva_Dialisis
         CType(Me.Mov_DS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1046,4 +1093,8 @@ Partial Class Nueva_Dialisis
     Friend WithEvents PrecioUDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents SubtotalDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Prov_id As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents btn_cambio As System.Windows.Forms.Button
+    Friend WithEvents Label24 As System.Windows.Forms.Label
+    Friend WithEvents tb_CantRe As System.Windows.Forms.TextBox
 End Class

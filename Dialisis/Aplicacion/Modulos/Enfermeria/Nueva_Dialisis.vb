@@ -12,6 +12,9 @@
     Dim ds_AV As DataSet
     Dim Consumo_Guardado
     Dim sesiones_id As Integer
+    Public Filtro_var
+    Dim FiltroDS As DataSet
+
 
 
     '///////////variables que uso si el estado ya fue registrado como AUSENTE
@@ -25,6 +28,8 @@
     Private Sub Nueva_Dialisis_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Obetener_Cliente()
         Obtener_AV()
+        Obtener_Filtro()
+
 
         If tipo_operacion = "modificar presente" Then
             'recupero todo lo de dialisis
@@ -40,6 +45,23 @@
         End If
     End Sub
 
+    Private Sub Obtener_Filtro()
+        FiltroDS = DaEnfermeria.Filtro_Obtener_X_PAC(PAC_id)
+        If FiltroDS.Tables(0).Rows.Count <> 0 Then
+            Filtro_var = "Update"
+
+            If tipo_operacion = "modificar presente" Then
+                tb_CantRe.Text = FiltroDS.Tables(0).Rows(0).Item("Filtro_cant_reuso")
+            Else
+                tb_CantRe.Text = FiltroDS.Tables(0).Rows(0).Item("Filtro_cant_reuso") + 1
+            End If
+
+
+        Else
+            tb_CantRe.Text = 0
+            Filtro_var = "Nuevo"
+        End If
+    End Sub
     Private Sub obtener_info_sesion_dialisis()
         Mov_DS.Tables("Mov_Enf").Rows.Clear()
         Dim info_sesion As DataSet = DAsesiones.Sesiones_obtener_info_dialisis(modificar_sesiones_id)
@@ -207,6 +229,23 @@
 
                 DaEnfermeria.Dialisis_modificar(fecha_registrar, modificar_sesiones_id, PesoS, talla, tb_HI.Text, tb_HE.Text, tb_tiempoHD.Text, PesoI, PesoE, TAI, TAE, tb_Filtro.Text, tb_Obs.Text, tb_AV.Text)
 
+
+
+                ''''' filtros y rehusos''''''''''''''24/9/20 MAriano'''''
+                If Filtro_var = "Nuevo" Then
+                    DaEnfermeria.Filtro_Nuevo(PAC_id, Now, tb_CantRe.Text, tb_numHemo.Text)
+                End If
+
+                If Filtro_var = "Update" Then
+                    DaEnfermeria.Filtro_modificar_Cant(FiltroDS.Tables(0).Rows(0).Item("Filtro_id"), tb_CantRe.Text)
+                End If
+
+
+                '''''''''''''''''''''''''''''''
+
+
+
+
                 MessageBox.Show("La información se registró correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 lbl_err.Visible = False
                 lbl_err1.Visible = False
@@ -304,7 +343,7 @@
                         End While
                         '''''''''''''''''''''''''''''''''''''''''''
 
-
+                       
 
 
 
@@ -323,6 +362,21 @@
                                 sesiones_id = ausente_sesiones_id  'este recupera el id del q acabo de insertar
                             End If
                         End If
+
+                        ''''' filtros y rehusos''''''''''''''24/9/20 MAriano'''''
+                        If Filtro_var = "Nuevo" Then
+                            DaEnfermeria.Filtro_Nuevo(PAC_id, Now, tb_CantRe.Text, tb_numHemo.Text)
+                        End If
+
+                        If Filtro_var = "Update" Then
+                            DaEnfermeria.Filtro_modificar_Cant(FiltroDS.Tables(0).Rows(0).Item("Filtro_id"), tb_CantRe.Text)
+                        End If
+
+
+                        '''''''''''''''''''''''''''''''
+
+
+
                         Guardar_dialisis()
                         limpiar()
                     Else
