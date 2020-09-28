@@ -33,9 +33,9 @@ Partial Class Consulta_Alta_b
         Me.DateTimePicker_hasta = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.tx_Buscar = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.BO_ver = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ProdcodinternoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProddescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -61,7 +61,7 @@ Partial Class Consulta_Alta_b
         Me.Button_buscar_proveedor = New System.Windows.Forms.Button()
         Me.combo_proveedor = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.BO_ver = New System.Windows.Forms.Button()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -162,6 +162,19 @@ Partial Class Consulta_Alta_b
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Resultado de la busqueda:"
         '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
+        Me.Button1.Location = New System.Drawing.Point(831, 368)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(124, 43)
+        Me.Button1.TabIndex = 260
+        Me.Button1.Text = "Generar reporte"
+        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'tx_Buscar
         '
         Me.tx_Buscar.BackColor = System.Drawing.Color.White
@@ -180,20 +193,6 @@ Partial Class Consulta_Alta_b
         Me.Label1.Size = New System.Drawing.Size(86, 13)
         Me.Label1.TabIndex = 254
         Me.Label1.Text = "Filtrar resultados:"
-        '
-        'BO_ver
-        '
-        Me.BO_ver.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BO_ver.Image = Global.Aplicacion.My.Resources.Resources.Pasar
-        Me.BO_ver.Location = New System.Drawing.Point(343, 368)
-        Me.BO_ver.Margin = New System.Windows.Forms.Padding(4)
-        Me.BO_ver.Name = "BO_ver"
-        Me.BO_ver.Size = New System.Drawing.Size(141, 43)
-        Me.BO_ver.TabIndex = 249
-        Me.BO_ver.Text = "Ver detalle"
-        Me.BO_ver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.BO_ver.UseVisualStyleBackColor = True
-        Me.BO_ver.Visible = False
         '
         'DataGridView1
         '
@@ -419,18 +418,19 @@ Partial Class Consulta_Alta_b
         Me.combo_proveedor.Size = New System.Drawing.Size(270, 21)
         Me.combo_proveedor.TabIndex = 30
         '
-        'Button1
+        'BO_ver
         '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
-        Me.Button1.Location = New System.Drawing.Point(831, 368)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(124, 43)
-        Me.Button1.TabIndex = 260
-        Me.Button1.Text = "Generar reporte"
-        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BO_ver.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BO_ver.Image = Global.Aplicacion.My.Resources.Resources.Pasar
+        Me.BO_ver.Location = New System.Drawing.Point(343, 368)
+        Me.BO_ver.Margin = New System.Windows.Forms.Padding(4)
+        Me.BO_ver.Name = "BO_ver"
+        Me.BO_ver.Size = New System.Drawing.Size(141, 43)
+        Me.BO_ver.TabIndex = 249
+        Me.BO_ver.Text = "Ver detalle"
+        Me.BO_ver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.BO_ver.UseVisualStyleBackColor = True
+        Me.BO_ver.Visible = False
         '
         'Consulta_Alta_b
         '
@@ -468,7 +468,6 @@ Partial Class Consulta_Alta_b
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents tx_Buscar As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents BO_ver As System.Windows.Forms.Button
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents DconsultamovaltaBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents D_consulta_mov_alta As Aplicacion.D_consulta_mov_alta
@@ -494,4 +493,5 @@ Partial Class Consulta_Alta_b
     Friend WithEvents ProvidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProvnombreDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents BO_ver As System.Windows.Forms.Button
 End Class

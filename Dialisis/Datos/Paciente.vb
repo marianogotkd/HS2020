@@ -179,6 +179,27 @@ ByVal PAC_mail As String, ByVal PAC_estado As String, ByVal Estadocivil_id As In
         Return ds_JE
     End Function
 
+    Public Function Paciente_x_obra_social_x_rango(ByVal obrasocial_id As Integer, ByVal fecha_desde As Date, ByVal fecha_hasta As Date) As DataSet
+
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Paciente_x_obra_social_x_rango", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@obrasocial_id", obrasocial_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@fecha_desde", fecha_desde))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@fecha_hasta", fecha_hasta))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Usuario")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
 
     Public Function Paciente_todos_reporte() As DataSet
 
@@ -199,6 +220,26 @@ ByVal PAC_mail As String, ByVal PAC_estado As String, ByVal Estadocivil_id As In
         Return ds_JE
     End Function
 
+
+    Public Function Paciente_todos_reporte_x_rango(ByVal fecha_desde As Date, ByVal fecha_hasta As Date) As DataSet
+
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Paciente_todos_reporte_x_rango", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@fecha_desde", fecha_desde))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@fecha_hasta", fecha_hasta))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Paciente")
+        dbconn.Close()
+        Return ds_JE
+    End Function
 
 #End Region
 

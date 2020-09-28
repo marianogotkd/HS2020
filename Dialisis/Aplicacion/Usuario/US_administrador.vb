@@ -1269,4 +1269,9 @@ Public Property EnabledCerrar() As Boolean
         Enfermeria_pacientes_seleccionar.Close()
         Enfermeria_pacientes_seleccionar.Show()
     End Sub
+
+    Private Sub RegistroDeBajassoloInsumosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistroDeBajassoloInsumosToolStripMenuItem.Click
+        Consultas_Bajas_b.Close()
+        Consultas_Bajas_b.Show()
+    End Sub
 End Class

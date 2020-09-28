@@ -4,7 +4,7 @@ Public Class Conexion
 
     'Conexion HAMERSERVER
 
-    'Public dbconn As New OleDb.OleDbConnection("Provider=SQLOLEDB.1;Password=123choco;Persist Security Info=True;User ID=choco;Initial Catalog=Dialisis;Data Source=25.13.170.93")
+    ' Public dbconn As New OleDb.OleDbConnection("Provider=SQLOLEDB.1;Password=123choco;Persist Security Info=True;User ID=choco;Initial Catalog=Dialisis;Data Source=25.13.170.93")
 
 
     'Conexion HAMERSERVER-LOCAL_LAN
@@ -24,8 +24,7 @@ Public Class Conexion
     'Public dbconn As New OleDb.OleDbConnection("Provider=SQLOLEDB.1;Password=123choco;Persist Security Info=True;User ID=choco;Initial Catalog=Dialisis;Data Source=SERVER")
 
 
-
-
+    
 
     
 End Class

@@ -1066,139 +1066,145 @@ Public Class GM_Baja_Producto
 
 
     Private Sub cb_rubro_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cb_rubro.SelectedIndexChanged
-        rubrosubrubro_obtener()
-        If form_procedencia = "Venta_Caja_gestion" Or form_procedencia = "GM_Carga_Producto" Or form_procedencia = "Servicio_nuevo" Then
-            If evento_load_completo = "si" Then
-                If check_rubro.Checked = True Then
+        If cb_rubro.Enabled = True Then
+            rubrosubrubro_obtener()
+            If form_procedencia = "Venta_Caja_gestion" Or form_procedencia = "GM_Carga_Producto" Or form_procedencia = "Servicio_nuevo" Then
+                If evento_load_completo = "si" Then
+                    If check_rubro.Checked = True Then
 
-                    If check_marca.Checked = True Then
-                        filtrar_por_rubro("")
-                    Else
-                        filtrar_por_rubro("sin marca")
-                    End If
-
-                    If cb_subrubro.Items.Count <> 0 Then
-                        check_subrubro.Enabled = True
-                    Else
-                        check_subrubro.Enabled = False
-                    End If
-                Else
-                    If check_categoria.Checked = True Then
                         If check_marca.Checked = True Then
-                            filtrar_por_categoria("")
+                            filtrar_por_rubro("")
                         Else
-                            filtrar_por_categoria("sin marca")
+                            filtrar_por_rubro("sin marca")
+                        End If
+
+                        If cb_subrubro.Items.Count <> 0 Then
+                            check_subrubro.Enabled = True
+                        Else
+                            check_subrubro.Enabled = False
                         End If
                     Else
-                        Obtener_Productos_Combos()
+                        If check_categoria.Checked = True Then
+                            If check_marca.Checked = True Then
+                                filtrar_por_categoria("")
+                            Else
+                                filtrar_por_categoria("sin marca")
+                            End If
+                        Else
+                            Obtener_Productos_Combos()
+                        End If
+                    End If
+                End If
+            End If
+            If form_procedencia = "Pedido_Productos" Then
+                If evento_load_completo = "si" Then
+                    If check_rubro.Checked = True Then
+
+                        If check_marca.Checked = True Then
+                            filtrar_por_rubro_pedidos("")
+                        Else
+                            filtrar_por_rubro_pedidos("sin marca")
+                        End If
+
+                        If cb_subrubro.Items.Count <> 0 Then
+                            check_subrubro.Enabled = True
+                        Else
+                            check_subrubro.Enabled = False
+                        End If
+                    Else
+                        If check_categoria.Checked = True Then
+                            If check_marca.Checked = True Then
+                                filtrar_por_categoria_pedidos("")
+                            Else
+                                filtrar_por_categoria_pedidos("sin marca")
+                            End If
+                        Else
+                            Obtener_Productos_Combos()
+                        End If
+                    End If
+                End If
+            End If
+            If form_procedencia = "Gestion_Mercaderia" Then
+                If evento_load_completo = "si" Then
+                    If check_rubro.Checked = True Then
+                        If check_marca.Checked = True Then
+                            filtrar_por_rubro_GM("")
+                        Else
+                            filtrar_por_rubro_GM("sin marca")
+                        End If
+                        If cb_subrubro.Items.Count <> 0 Then
+                            check_subrubro.Enabled = True
+                        Else
+                            check_subrubro.Enabled = False
+                        End If
+                    Else
+                        If check_categoria.Checked = True Then
+                            If check_marca.Checked = True Then
+                                filtrar_por_categoria_GM("")
+                            Else
+                                filtrar_por_categoria_GM("sin marca")
+                            End If
+                        Else
+                            Obtener_Productos_Combos()
+                            agregar_cant_vencida()
+                        End If
                     End If
                 End If
             End If
         End If
-        If form_procedencia = "Pedido_Productos" Then
-            If evento_load_completo = "si" Then
-                If check_rubro.Checked = True Then
-
-                    If check_marca.Checked = True Then
-                        filtrar_por_rubro_pedidos("")
-                    Else
-                        filtrar_por_rubro_pedidos("sin marca")
-                    End If
-
-                    If cb_subrubro.Items.Count <> 0 Then
-                        check_subrubro.Enabled = True
-                    Else
-                        check_subrubro.Enabled = False
-                    End If
-                Else
-                    If check_categoria.Checked = True Then
-                        If check_marca.Checked = True Then
-                            filtrar_por_categoria_pedidos("")
-                        Else
-                            filtrar_por_categoria_pedidos("sin marca")
-                        End If
-                    Else
-                        Obtener_Productos_Combos()
-                    End If
-                End If
-            End If
-        End If
-        If form_procedencia = "Gestion_Mercaderia" Then
-            If evento_load_completo = "si" Then
-                If check_rubro.Checked = True Then
-                    If check_marca.Checked = True Then
-                        filtrar_por_rubro_GM("")
-                    Else
-                        filtrar_por_rubro_GM("sin marca")
-                    End If
-                    If cb_subrubro.Items.Count <> 0 Then
-                        check_subrubro.Enabled = True
-                    Else
-                        check_subrubro.Enabled = False
-                    End If
-                Else
-                    If check_categoria.Checked = True Then
-                        If check_marca.Checked = True Then
-                            filtrar_por_categoria_GM("")
-                        Else
-                            filtrar_por_categoria_GM("sin marca")
-                        End If
-                    Else
-                        Obtener_Productos_Combos()
-                    End If
-                End If
-            End If
-        End If
+        
     End Sub
 
     Private Sub cb_subrubro_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cb_subrubro.SelectedIndexChanged
-        If form_procedencia = "Venta_Caja_gestion" Or form_procedencia = "GM_Carga_Producto" Or form_procedencia = "Servicio_nuevo" Then
-            If evento_load_completo = "si" Then
-                If check_subrubro.Checked = True Then
-                    If check_marca.Checked = True Then
-                        filtrar_por_subrubro("")
+        If cb_subrubro.Enabled = True Then
+            If form_procedencia = "Venta_Caja_gestion" Or form_procedencia = "GM_Carga_Producto" Or form_procedencia = "Servicio_nuevo" Then
+                If evento_load_completo = "si" Then
+                    If check_subrubro.Checked = True Then
+                        If check_marca.Checked = True Then
+                            filtrar_por_subrubro("")
+                        Else
+                            filtrar_por_subrubro("sin marca")
+                        End If
                     Else
-                        filtrar_por_subrubro("sin marca")
-                    End If
-                Else
-                    If check_marca.Checked = True Then
-                        filtrar_por_rubro("")
-                    Else
-                        filtrar_por_rubro("sin marca")
-                    End If
-                End If
-            End If
-        End If
-        If form_procedencia = "Pedido_Productos" Then
-            If evento_load_completo = "si" Then
-                If check_subrubro.Checked = True Then
-                    If check_marca.Checked = True Then
-                        filtrar_por_subrubro_pedidos("")
-                    Else
-                        filtrar_por_subrubro_pedidos("sin marca")
-                    End If
-                Else
-                    If check_marca.Checked = True Then
-                        filtrar_por_rubro_pedidos("")
-                    Else
-                        filtrar_por_rubro_pedidos("sin marca")
+                        If check_marca.Checked = True Then
+                            filtrar_por_rubro("")
+                        Else
+                            filtrar_por_rubro("sin marca")
+                        End If
                     End If
                 End If
             End If
-        End If
-        If form_procedencia = "Gestion_Mercaderia" Then
-            If evento_load_completo = "si" Then
-                If check_subrubro.Checked = True Then
-                    If check_marca.Checked = True Then
-                        filtrar_por_subrubro_GM("")
+            If form_procedencia = "Pedido_Productos" Then
+                If evento_load_completo = "si" Then
+                    If check_subrubro.Checked = True Then
+                        If check_marca.Checked = True Then
+                            filtrar_por_subrubro_pedidos("")
+                        Else
+                            filtrar_por_subrubro_pedidos("sin marca")
+                        End If
                     Else
-                        filtrar_por_subrubro_GM("sin marca")
+                        If check_marca.Checked = True Then
+                            filtrar_por_rubro_pedidos("")
+                        Else
+                            filtrar_por_rubro_pedidos("sin marca")
+                        End If
                     End If
-                Else
-                    If check_marca.Checked = True Then
-                        filtrar_por_rubro_GM("")
+                End If
+            End If
+            If form_procedencia = "Gestion_Mercaderia" Then
+                If evento_load_completo = "si" Then
+                    If check_subrubro.Checked = True Then
+                        If check_marca.Checked = True Then
+                            filtrar_por_subrubro_GM("")
+                        Else
+                            filtrar_por_subrubro_GM("sin marca")
+                        End If
                     Else
-                        filtrar_por_rubro_GM("sin marca")
+                        If check_marca.Checked = True Then
+                            filtrar_por_rubro_GM("")
+                        Else
+                            filtrar_por_rubro_GM("sin marca")
+                        End If
                     End If
                 End If
             End If
@@ -1412,7 +1418,7 @@ Public Class GM_Baja_Producto
                 End If
             End If
         End If
-        If form_procedencia = "Gestion_Mercaderia" Then
+        If form_procedencia = "Gestion_Mercaderia" Then 'lo uso en si llamo al formulario desde gestion_mercaderia ya sea alta baja o movimiento,y tambien desde el modulo de consumo.
             If check_categoria.Checked = True Then
                 If cb_categoria.Items.Count <> 0 Then
                     'check_marca.Checked = False
@@ -1445,7 +1451,11 @@ Public Class GM_Baja_Producto
                 Else
                     'voy a traer todos los productos
                     Obtener_Productos_Combos()
+                    agregar_cant_vencida()
                 End If
+                'choco 25-09-2020 ////voy a deshabilitar rubro y subrubo, check y combobox
+                check_rubro.Enabled = False
+                check_subrubro.Enabled = False
             End If
         End If
     End Sub
@@ -2083,13 +2093,15 @@ Public Class GM_Baja_Producto
     Dim ds_prod_gestmerc
     Private Sub filtrar_solo_por_marca_GM()
         ds_prod_gestmerc = DAVentas.Venta_obtenerProducto_Combos_marca_GM(sucursal_id, cb_marca.SelectedValue)
-        Venta_Caja_ds.Tables("Productos_Combos").Rows.Clear()
+        Venta_Caja_ds.Tables("Prod_consulta").Rows.Clear()
         If ds_prod_gestmerc.Tables(0).Rows.Count <> 0 Then
             'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
             'tabla productos_combo
             'DataGridView1.Rows.Clear()
-            Venta_Caja_ds.Tables("Productos_Combos").Merge(ds_prod_gestmerc.Tables(0))
+            Venta_Caja_ds.Tables("Prod_consulta").Merge(ds_prod_gestmerc.Tables(0))
+
         End If
+        agregar_cant_vencida()
     End Sub
     Private Sub filtrar_por_categoria_GM(ByVal filtro_descrip As String)
         Dim ds_productos As DataSet
@@ -2103,7 +2115,7 @@ Public Class GM_Baja_Producto
             'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
             'tabla productos_combo
             'DataGridView1.Rows.Clear()
-            Venta_Caja_ds.Tables("Productos_Combos").Rows.Clear()
+            Venta_Caja_ds.Tables("Prod_consulta").Rows.Clear()
             Dim id_categorias As Integer = CInt(cb_categoria.SelectedValue)
 
             Dim i As Integer = 0
@@ -2114,7 +2126,7 @@ Public Class GM_Baja_Producto
                     'busco en categoria
                     If id_categorias = idcat Then
                         'lo agrego
-                        Dim row As DataRow = Venta_Caja_ds.Tables("Productos_Combos").NewRow()
+                        Dim row As DataRow = Venta_Caja_ds.Tables("Prod_consulta").NewRow()
                         row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
                         row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
                         row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
@@ -2125,7 +2137,7 @@ Public Class GM_Baja_Producto
                         row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
                         row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
 
-                        Venta_Caja_ds.Tables("Productos_Combos").Rows.Add(row)
+                        Venta_Caja_ds.Tables("Prod_consulta").Rows.Add(row)
                     End If
                 End If
                 If nrocat = 2 Then
@@ -2134,7 +2146,7 @@ Public Class GM_Baja_Producto
                     While j < ds_productos.Tables(2).Rows.Count
                         If idcat = ds_productos.Tables(2).Rows(j).Item("Rubro_cat2_id") Then
                             If id_categorias = ds_productos.Tables(2).Rows(j).Item("Categoria_cat_id") Then
-                                Dim row As DataRow = Venta_Caja_ds.Tables("Productos_Combos").NewRow()
+                                Dim row As DataRow = Venta_Caja_ds.Tables("Prod_consulta").NewRow()
                                 row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
                                 row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
                                 row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
@@ -2145,7 +2157,7 @@ Public Class GM_Baja_Producto
                                 row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
 
-                                Venta_Caja_ds.Tables("Productos_Combos").Rows.Add(row)
+                                Venta_Caja_ds.Tables("Prod_consulta").Rows.Add(row)
                                 j = ds_productos.Tables(2).Rows.Count
                             End If
                         End If
@@ -2158,7 +2170,7 @@ Public Class GM_Baja_Producto
                     While j < ds_productos.Tables(3).Rows.Count
                         If idcat = ds_productos.Tables(3).Rows(j).Item("Subrubro_cat3_id") Then
                             If id_categorias = ds_productos.Tables(3).Rows(j).Item("Categoria_cat_id") Then
-                                Dim row As DataRow = Venta_Caja_ds.Tables("Productos_Combos").NewRow()
+                                Dim row As DataRow = Venta_Caja_ds.Tables("Prod_consulta").NewRow()
                                 row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
                                 row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
                                 row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
@@ -2169,7 +2181,7 @@ Public Class GM_Baja_Producto
                                 row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
 
-                                Venta_Caja_ds.Tables("Productos_Combos").Rows.Add(row)
+                                Venta_Caja_ds.Tables("Prod_consulta").Rows.Add(row)
                                 j = ds_productos.Tables(3).Rows.Count
                             End If
                         End If
@@ -2180,6 +2192,7 @@ Public Class GM_Baja_Producto
             End While
             'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
         End If
+        agregar_cant_vencida()
     End Sub
     Private Sub filtrar_por_rubro_GM(ByVal filtro_descrip As String)
         Dim ds_productos As DataSet
@@ -2193,7 +2206,7 @@ Public Class GM_Baja_Producto
             'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
             'tabla productos_combo
             'DataGridView1.Rows.Clear()
-            Venta_Caja_ds.Tables("Productos_Combos").Rows.Clear()
+            Venta_Caja_ds.Tables("Prod_consulta").Rows.Clear()
             Dim id_categorias As Integer = CInt(cb_categoria.SelectedValue)
             Dim id_rubro As Integer = CInt(cb_rubro.SelectedValue)
             Dim i As Integer = 0
@@ -2209,7 +2222,7 @@ Public Class GM_Baja_Producto
                     While j < ds_productos.Tables(2).Rows.Count
                         If idcat = ds_productos.Tables(2).Rows(j).Item("Rubro_cat2_id") Then
                             If id_rubro = ds_productos.Tables(2).Rows(j).Item("Rubro_cat2_id") Then
-                                Dim row As DataRow = Venta_Caja_ds.Tables("Productos_Combos").NewRow()
+                                Dim row As DataRow = Venta_Caja_ds.Tables("Prod_consulta").NewRow()
                                 row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
                                 row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
                                 row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
@@ -2220,7 +2233,7 @@ Public Class GM_Baja_Producto
                                 row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
 
-                                Venta_Caja_ds.Tables("Productos_Combos").Rows.Add(row)
+                                Venta_Caja_ds.Tables("Prod_consulta").Rows.Add(row)
                                 j = ds_productos.Tables(2).Rows.Count
                             End If
                         End If
@@ -2233,7 +2246,7 @@ Public Class GM_Baja_Producto
                     While j < ds_productos.Tables(3).Rows.Count
                         If idcat = ds_productos.Tables(3).Rows(j).Item("Subrubro_cat3_id") Then
                             If id_rubro = ds_productos.Tables(3).Rows(j).Item("Rubro_cat2_id") Then
-                                Dim row As DataRow = Venta_Caja_ds.Tables("Productos_Combos").NewRow()
+                                Dim row As DataRow = Venta_Caja_ds.Tables("Prod_consulta").NewRow()
                                 row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
                                 row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
                                 row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
@@ -2244,7 +2257,7 @@ Public Class GM_Baja_Producto
                                 row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
 
-                                Venta_Caja_ds.Tables("Productos_Combos").Rows.Add(row)
+                                Venta_Caja_ds.Tables("Prod_consulta").Rows.Add(row)
                                 j = ds_productos.Tables(3).Rows.Count
                             End If
                         End If
@@ -2255,6 +2268,7 @@ Public Class GM_Baja_Producto
             End While
             'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
         End If
+        agregar_cant_vencida()
     End Sub
     Private Sub filtrar_por_subrubro_GM(ByVal filtro_descrip As String)
         Dim ds_productos As DataSet
@@ -2267,7 +2281,7 @@ Public Class GM_Baja_Producto
             'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
             'tabla productos_combo
             'DataGridView1.Rows.Clear()
-            Venta_Caja_ds.Tables("Productos_Combos").Rows.Clear()
+            Venta_Caja_ds.Tables("Prod_consulta").Rows.Clear()
             Dim id_categorias As Integer = CInt(cb_categoria.SelectedValue)
             Dim id_rubro As Integer = CInt(cb_rubro.SelectedValue)
             Dim id_subrubro As Integer = CInt(cb_subrubro.SelectedValue)
@@ -2287,7 +2301,7 @@ Public Class GM_Baja_Producto
                     While j < ds_productos.Tables(3).Rows.Count
                         If idcat = ds_productos.Tables(3).Rows(j).Item("Subrubro_cat3_id") Then
                             If id_subrubro = ds_productos.Tables(3).Rows(j).Item("Subrubro_cat3_id") Then
-                                Dim row As DataRow = Venta_Caja_ds.Tables("Productos_Combos").NewRow()
+                                Dim row As DataRow = Venta_Caja_ds.Tables("Prod_consulta").NewRow()
                                 row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
                                 row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
                                 row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
@@ -2298,7 +2312,7 @@ Public Class GM_Baja_Producto
                                 row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
 
-                                Venta_Caja_ds.Tables("Productos_Combos").Rows.Add(row)
+                                Venta_Caja_ds.Tables("Prod_consulta").Rows.Add(row)
                                 j = ds_productos.Tables(3).Rows.Count
                             End If
                         End If
@@ -2309,6 +2323,7 @@ Public Class GM_Baja_Producto
             End While
             'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
         End If
+        agregar_cant_vencida()
     End Sub
 #End Region
 

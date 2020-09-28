@@ -747,6 +747,10 @@
                 Paciente_reporte_seleccionar.reporte()
                 Me.Close()
             End If
+            If procedencia = "Paciente_x_obra_social_rango" Then
+                Paciente_reporte_seleccionar.reporte_rango()
+                Me.Close()
+            End If
             If procedencia = "stock_reporte" Then
                 Producto_modificar.reporte()
                 Me.Close()
@@ -758,6 +762,14 @@
             End If
             If procedencia = "reporte_sesiones_y_consumos" Then
                 Enfermeria_reporte_fechas.reporte_2()
+                Me.Close()
+            End If
+            If procedencia = "Medico_Actualizar" Then
+                Medico_Actualizar.reporte()
+                Me.Close()
+            End If
+            If procedencia = "Consultas_Bajas_b" Then
+                Consultas_Bajas_b.reporte()
                 Me.Close()
             End If
         End If
