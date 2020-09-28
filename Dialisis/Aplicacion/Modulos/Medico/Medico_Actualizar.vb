@@ -24,7 +24,7 @@
 
     Private Sub BO_cliente_modificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BO_cliente_modificar.Click
         If DG_Medico.Rows.Count <> 0 Then
-            Dim productoselec As String = DG_Medico.SelectedCells(0).Value
+            Dim productoselec As String = DG_Medico.SelectedCells(1).Value
             If productoselec <> "" Then
                 Medico_Alta.Close() 'lo cierro porque uso el mismo form para dar de alta
 

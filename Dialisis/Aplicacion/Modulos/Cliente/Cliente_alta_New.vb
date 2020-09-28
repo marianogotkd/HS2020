@@ -128,7 +128,7 @@ Public Class Cliente_alta_New
             If tipo_dialisis = "DPA" Then
                 RadioButton_DPA.Checked = True
             End If
-            If tipo_dialisis = "EMO DIALISIS" Then
+            If tipo_dialisis = "HEMODIALISIS" Then
                 RadioButton_EMODIALISIS.Checked = True
             End If
             If tipo_dialisis = "HDF" Then
@@ -410,7 +410,7 @@ Public Class Cliente_alta_New
                     tipodialisis = "DPA"
                 End If
                 If RadioButton_EMODIALISIS.Checked = True Then
-                    tipodialisis = "EMO DIALISIS"
+                    tipodialisis = "HEMODIALISIS"
                 End If
                 If RadioButton_HDF.Checked = True Then
                     tipodialisis = "HDF"
@@ -485,7 +485,7 @@ Public Class Cliente_alta_New
                             tipodialisis = "DPA"
                         End If
                         If RadioButton_EMODIALISIS.Checked = True Then
-                            tipodialisis = "EMO DIALISIS"
+                            tipodialisis = "HEMODIALISIS"
                         End If
                         If RadioButton_HDF.Checked = True Then
                             tipodialisis = "HDF"

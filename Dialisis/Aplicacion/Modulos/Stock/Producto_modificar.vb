@@ -310,6 +310,8 @@ Public Class Producto_modificar
         Cargarcombo_marca() 'choco 23-11-2018
         cargar_combos_categoria()
         evento_load_completo = "si"
+
+
     End Sub
 
     Private Sub Grilla_Global()
@@ -1001,12 +1003,22 @@ Public Class Producto_modificar
                 'voy a traer todos los productos
                 Cargar_grilla()
             End If
+
+            'choco 25-09-2020 ////voy a deshabilitar rubro y subrubo, check y combobox
+            check_rubro.Enabled = False
+            check_subrubro.Enabled = False
+            'cb_rubro.Enabled = False
+            'cb_subrubro.Enabled = False
+
+
         End If
     End Sub
 
     Private Sub check_rubro_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles check_rubro.CheckedChanged
         If check_rubro.Checked = True Then
             If cb_rubro.Items.Count <> 0 Then
+
+                'rubrosubrubro_obtener()
                 If cb_subrubro.Items.Count <> 0 Then
                     check_subrubro.Enabled = True
                 Else
@@ -1342,59 +1354,72 @@ Public Class Producto_modificar
                 Else
                     check_rubro.Enabled = False
                 End If
+
+                
+
             Else
                 If check_marca.Checked = True Then
                     filtrar_solo_por_marca()
                 Else
                     Cargar_grilla()
                 End If
+
+
+
             End If
         End If
 
     End Sub
     Private Sub cb_rubro_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cb_rubro.SelectedIndexChanged
-        If evento_load_completo = "si" Then
-            If check_rubro.Checked = True Then
-                If check_marca.Checked = True Then
-                    filtrar_por_rubro("")
-                Else
-                    filtrar_por_rubro("sin marca")
-                End If
-
-                If cb_subrubro.Items.Count <> 0 Then
-                    check_subrubro.Enabled = True
-                Else
-                    check_subrubro.Enabled = False
-                End If
-            Else
-                If check_categoria.Checked = True Then
+        If check_rubro.Enabled = True Then
+            If evento_load_completo = "si" Then
+                If check_rubro.Checked = True Then
                     If check_marca.Checked = True Then
-                        filtrar_por_categoria("")
+                        filtrar_por_rubro("")
                     Else
-                        filtrar_por_categoria("sin marca")
+                        filtrar_por_rubro("sin marca")
+                    End If
+                    rubrosubrubro_obtener()
+                    If cb_subrubro.Items.Count <> 0 Then
+                        check_subrubro.Enabled = True
+                    Else
+                        check_subrubro.Enabled = False
                     End If
                 Else
-                    Cargar_grilla()
+                    If check_categoria.Checked = True Then
+                        If check_marca.Checked = True Then
+                            filtrar_por_categoria("")
+                        Else
+                            filtrar_por_categoria("sin marca")
+                        End If
+                    Else
+                        Cargar_grilla()
+                    End If
                 End If
             End If
         End If
+
+        
     End Sub
     Private Sub cb_subrubro_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cb_subrubro.SelectedIndexChanged
-        If evento_load_completo = "si" Then
-            If check_subrubro.Checked = True Then
-                If check_marca.Checked = True Then
-                    filtrar_por_subrubro("")
+        If cb_subrubro.Enabled = True Then
+            If evento_load_completo = "si" Then
+                If check_subrubro.Checked = True Then
+                    If check_marca.Checked = True Then
+                        filtrar_por_subrubro("")
+                    Else
+                        filtrar_por_subrubro("sin marca")
+                    End If
                 Else
-                    filtrar_por_subrubro("sin marca")
-                End If
-            Else
-                If check_marca.Checked = True Then
-                    filtrar_por_rubro("")
-                Else
-                    filtrar_por_rubro("sin marca")
+                    If check_marca.Checked = True Then
+                        filtrar_por_rubro("")
+                    Else
+                        filtrar_por_rubro("sin marca")
+                    End If
                 End If
             End If
         End If
+        
     End Sub
 
     Private Sub btn_Anular_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Anular.Click

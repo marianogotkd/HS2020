@@ -23,8 +23,13 @@
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        msj_esperar_b.procedencia = "Pacientes_x_obra_social"
-        msj_esperar_b.Show()
+        If rb_todo.Checked = True Then
+            msj_esperar_b.procedencia = "Pacientes_x_obra_social"
+            msj_esperar_b.Show()
+        Else
+            MessageBox.Show("Elegir rango fecha")
+        End If
+        
 
         ' en el formulario msj_esperar se llama a la rutina publica reporte() de este formulario.
         '        reporte()
