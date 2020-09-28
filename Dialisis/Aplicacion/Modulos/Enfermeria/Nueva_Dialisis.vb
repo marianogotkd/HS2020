@@ -14,6 +14,7 @@
     Dim sesiones_id As Integer
     Public Filtro_var
     Dim FiltroDS As DataSet
+    Dim daturno As New Datos.Turno
 
 
 
@@ -55,6 +56,10 @@
             Else
                 tb_CantRe.Text = FiltroDS.Tables(0).Rows(0).Item("Filtro_cant_reuso") + 1
             End If
+
+            Dim sesionDS As DataSet = DAsesiones.Dialisis_Obtener_Filtro_X_Pac(PAC_id)
+            tb_Filtro.Text = sesionDS.Tables(0).Rows(0).Item("Dialisis_Filtro")
+            tb_Filtro.Enabled = False
 
 
         Else
@@ -202,8 +207,19 @@
         lbl_err6.Visible = False
 
     End Sub
-    Private Sub Guardar_Todo()
+    Private Sub Guardar_Datos_Filtro()
 
+        ''''' filtros y rehusos''''''''''''''24/9/20 MAriano'''''
+        If Filtro_var = "Nuevo" Then
+            DaEnfermeria.Filtro_Nuevo(PAC_id, Now, tb_CantRe.Text, tb_numHemo.Text)
+        End If
+
+        If Filtro_var = "Update" Then
+            DaEnfermeria.Filtro_modificar_Cant(FiltroDS.Tables(0).Rows(0).Item("Filtro_id"), tb_CantRe.Text)
+        End If
+
+
+        '''''''''''''''''''''''''''''''
 
     End Sub
 
@@ -231,19 +247,8 @@
 
 
 
-                ''''' filtros y rehusos''''''''''''''24/9/20 MAriano'''''
-                If Filtro_var = "Nuevo" Then
-                    DaEnfermeria.Filtro_Nuevo(PAC_id, Now, tb_CantRe.Text, tb_numHemo.Text)
-                End If
 
-                If Filtro_var = "Update" Then
-                    DaEnfermeria.Filtro_modificar_Cant(FiltroDS.Tables(0).Rows(0).Item("Filtro_id"), tb_CantRe.Text)
-                End If
-
-
-                '''''''''''''''''''''''''''''''
-
-
+                Guardar_Datos_Filtro()
 
 
                 MessageBox.Show("La información se registró correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -276,8 +281,8 @@
         If tipo_operacion = "modificar presente" Then
             modificar_dialisis()
         Else
-            If tb_PesoE.Text <> "" And tb_PesoI.Text <> "" And tb_PesoS.Text <> "" And tb_TAE.Text <> "" And tb_TAI.Text <> "" And
-                        tb_talla.Text <> "" And tb_tiempoHD.Text <> "" And tb_HI.Text <> "" And tb_HE.Text <> "" And tb_Filtro.Text <> "" And tb_AV.Text <> "" Then
+            If tb_PesoE.Text <> "00,00" And tb_PesoI.Text <> "00,00" And tb_PesoS.Text <> "00,00" And tb_TAE.Text <> "00,00" And tb_TAI.Text <> "00,00" And
+                        tb_talla.Text <> "00,00" And tb_tiempoHD.Text <> "00:00" And tb_HI.Text <> "00:00" And tb_HE.Text <> "00:00" And tb_Filtro.Text <> "" And tb_AV.Text <> "" Then
 
 
                 Dim concepto As String
@@ -343,7 +348,7 @@
                         End While
                         '''''''''''''''''''''''''''''''''''''''''''
 
-                       
+
 
 
 
@@ -363,18 +368,7 @@
                             End If
                         End If
 
-                        ''''' filtros y rehusos''''''''''''''24/9/20 MAriano'''''
-                        If Filtro_var = "Nuevo" Then
-                            DaEnfermeria.Filtro_Nuevo(PAC_id, Now, tb_CantRe.Text, tb_numHemo.Text)
-                        End If
-
-                        If Filtro_var = "Update" Then
-                            DaEnfermeria.Filtro_modificar_Cant(FiltroDS.Tables(0).Rows(0).Item("Filtro_id"), tb_CantRe.Text)
-                        End If
-
-
-                        '''''''''''''''''''''''''''''''
-
+                        Guardar_Datos_Filtro()
 
 
                         Guardar_dialisis()
@@ -462,5 +456,13 @@
 
     Private Sub tb_AV_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tb_AV.KeyPress
         e.Handled = True
+    End Sub
+
+    Private Sub btn_cambio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_cambio.Click
+        tb_CantRe.Text = 0
+        Filtro_var = "Nuevo"
+        tb_Filtro.Enabled = True
+        tb_Filtro.Focus()
+        tb_Filtro.SelectAll()
     End Sub
 End Class

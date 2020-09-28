@@ -4,6 +4,7 @@
     Dim DAprod As New Datos.Producto
     Dim ds_PROD As DataSet
     Dim DAlote As New Datos.Lote
+    Public procedencia
     Private Sub Insumos_gestion_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Sucursales_Obtener_Origen()
 
@@ -13,6 +14,11 @@
         If UT_id <> 1 Then
             cb_origen.SelectedValue = sucursal_id
             cb_origen.Enabled = False
+        End If
+
+        If procedencia = "Enfermeria" Then
+            tb_concepto.Text = "Consumo en Enfermeria"
+            tb_concepto.Enabled = False
         End If
     End Sub
 

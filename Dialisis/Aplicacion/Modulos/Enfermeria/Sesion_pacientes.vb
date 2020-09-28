@@ -4,6 +4,7 @@
     Dim DAsesiones As New Datos.Sesiones
     Dim DAturno As New Datos.Turno
     Dim fecha_registrar As Date
+    Dim daenfermeria As New Datos.Enfermeria
     Private Sub Sesion_pacientes_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'lb_sesionfecha.Text = "Sesion del dia: " + CStr(Today)
 
@@ -68,13 +69,37 @@
 
 
     Private Sub btn_ausente_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_ausente.Click
+
         If datagridview1.Rows.Count <> 0 Then
+            Dim PAC_id As Integer = CInt(datagridview1.CurrentRow.Cells("PACidDataGridViewTextBoxColumn").Value)
             'aqui va pregunta para registrar como ausente.
             'hay q hacer un alta alta en la tabla sesiones
             Dim result As Integer = MessageBox.Show("¿Desea registrar como AUSENTE al paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + " para la sesion del dia " + fecha_registrar + "?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+            Dim result2 As Integer = MessageBox.Show("¿El Filtro del paciente fue utilizado?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result2 = DialogResult.Yes Then
+
+                Dim cantReuso As Integer
+                Dim FiltroDS As DataSet = daenfermeria.Filtro_Obtener_X_PAC(PAC_id)
+
+                If FiltroDS.Tables(0).Rows.Count <> 0 Then
+                    cantReuso = FiltroDS.Tables(0).Rows(0).Item("Filtro_cant_reuso") + 1
+                    daenfermeria.Filtro_modificar_Cant(FiltroDS.Tables(0).Rows(0).Item("Filtro_id"), cantReuso)
+                End If
+
+            End If
+
+            Dim result3 As Integer = MessageBox.Show("¿Desea agregar Consumir insumos?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result3 = DialogResult.Yes Then
+                Insumos_gestion.procedencia = "Enfermeria"
+                Insumos_gestion.Close()
+                Insumos_gestion.Show()
+            End If
+
+
             If result = DialogResult.Yes Then
                 If CStr(datagridview1.CurrentRow.Cells("SesionesasistenciaDataGridViewTextBoxColumn").Value) = "" Then
-                    Dim PAC_id As Integer = CInt(datagridview1.CurrentRow.Cells("PACidDataGridViewTextBoxColumn").Value)
+
                     DAsesiones.sesiones_alta(PAC_id, fecha_registrar, "Ausente") 'mando el parametro fecha_registrar porque es la que tiene el resultado de la busqueda, es decir lo que se esta mostrando en la grilla
                     recuperar_pacientes_fecha_del_dia(fecha_registrar)
                     MessageBox.Show("La información se registró correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
