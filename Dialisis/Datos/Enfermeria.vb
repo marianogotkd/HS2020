@@ -161,4 +161,78 @@ Public Class Enfermeria
         Return ds_JE
     End Function
 
+    Public Function Filtro_Obtener_X_PAC(
+                              ByVal PAC_id As Integer
+                            ) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Filtro_Obtener_X_PAC", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@PAC_id", PAC_id))
+
+
+
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Dialisis")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+    Public Function Filtro_Nuevo(
+                              ByVal PAC_id As Integer,
+                              ByVal Filtro_fecha As Date,
+                               ByVal Filtro_cant_reuso As Integer,
+                                ByVal Sesiones_id As Integer) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Filtro_Nuevo", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@PAC_id", PAC_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Filtro_fecha", Filtro_fecha))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Filtro_cant_reuso", Filtro_cant_reuso))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Sesiones_id", Sesiones_id))
+
+
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Dialisis")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+    Public Function Filtro_modificar_Cant(
+                              ByVal Filtro_id As Integer,
+                              ByVal Filtro_cant_reuso As Integer
+                            ) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Filtro_modificar_Cant", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Filtro_id", Filtro_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Filtro_cant_reuso", Filtro_cant_reuso))
+
+
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Dialisis")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
 End Class
