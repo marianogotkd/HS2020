@@ -764,6 +764,14 @@
                 Enfermeria_reporte_fechas.reporte_2()
                 Me.Close()
             End If
+            If procedencia = "Medico_Actualizar" Then
+                Medico_Actualizar.reporte()
+                Me.Close()
+            End If
+            If procedencia = "Consultas_Bajas_b" Then
+                Consultas_Bajas_b.reporte()
+                Me.Close()
+            End If
         End If
     End Sub
 End Class

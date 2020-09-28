@@ -1036,3 +1036,4 @@ C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.vbproj
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.exe
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.xml
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.pdb
+C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Consultas_Bajas_b.resources

@@ -23,32 +23,33 @@ Partial Class Medico_Actualizar
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Medico_Actualizar))
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGrid_cliente = New System.Windows.Forms.DataGridView()
         Me.BO_Eliminar = New System.Windows.Forms.Button()
         Me.BO_Guardar = New System.Windows.Forms.Button()
         Me.BO_Cancelar = New System.Windows.Forms.Button()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.btn_Anular = New System.Windows.Forms.Button()
         Me.BO_cliente_nuevo = New System.Windows.Forms.Button()
         Me.BO_cliente_modificar = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.DG_Medico = New System.Windows.Forms.DataGridView()
-        Me.MedicosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Medico_ds = New Aplicacion.Medico_ds()
-        Me.BO_Cargar = New System.Windows.Forms.Button()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.btn_Anular = New System.Windows.Forms.Button()
         Me.Item = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.MedicoidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MediconombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MedicodniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MedicoespDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MedicomatriculaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MedicosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Medico_ds = New Aplicacion.Medico_ds()
+        Me.BO_Cargar = New System.Windows.Forms.Button()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.DataGrid_cliente, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -63,35 +64,35 @@ Partial Class Medico_Actualizar
         Me.DataGrid_cliente.AllowUserToAddRows = False
         Me.DataGrid_cliente.AllowUserToDeleteRows = False
         Me.DataGrid_cliente.BackgroundColor = System.Drawing.SystemColors.ButtonShadow
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGrid_cliente.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGrid_cliente.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGrid_cliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGrid_cliente.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGrid_cliente.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGrid_cliente.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGrid_cliente.Location = New System.Drawing.Point(0, 0)
         Me.DataGrid_cliente.Name = "DataGrid_cliente"
         Me.DataGrid_cliente.ReadOnly = True
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGrid_cliente.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGrid_cliente.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGrid_cliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGrid_cliente.Size = New System.Drawing.Size(1148, 607)
         Me.DataGrid_cliente.TabIndex = 12
@@ -135,6 +136,7 @@ Partial Class Medico_Actualizar
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage1.Controls.Add(Me.Button1)
         Me.TabPage1.Controls.Add(Me.btn_Anular)
         Me.TabPage1.Controls.Add(Me.BO_cliente_nuevo)
         Me.TabPage1.Controls.Add(Me.BO_cliente_modificar)
@@ -147,6 +149,19 @@ Partial Class Medico_Actualizar
         Me.TabPage1.Size = New System.Drawing.Size(1121, 546)
         Me.TabPage1.TabIndex = 1
         Me.TabPage1.Text = "Medicos Registrados"
+        '
+        'btn_Anular
+        '
+        Me.btn_Anular.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Anular.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
+        Me.btn_Anular.Location = New System.Drawing.Point(756, 489)
+        Me.btn_Anular.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_Anular.Name = "btn_Anular"
+        Me.btn_Anular.Size = New System.Drawing.Size(93, 44)
+        Me.btn_Anular.TabIndex = 250
+        Me.btn_Anular.Text = "Eliminar"
+        Me.btn_Anular.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btn_Anular.UseVisualStyleBackColor = True
         '
         'BO_cliente_nuevo
         '
@@ -213,58 +228,14 @@ Partial Class Medico_Actualizar
         Me.DG_Medico.Name = "DG_Medico"
         Me.DG_Medico.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DG_Medico.RowHeadersVisible = False
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_Medico.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_Medico.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.DG_Medico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_Medico.Size = New System.Drawing.Size(1081, 389)
         Me.DG_Medico.StandardTab = True
         Me.DG_Medico.TabIndex = 239
-        '
-        'MedicosBindingSource
-        '
-        Me.MedicosBindingSource.DataMember = "Medicos"
-        Me.MedicosBindingSource.DataSource = Me.Medico_ds
-        '
-        'Medico_ds
-        '
-        Me.Medico_ds.DataSetName = "Medico_ds"
-        Me.Medico_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'BO_Cargar
-        '
-        Me.BO_Cargar.Image = CType(resources.GetObject("BO_Cargar.Image"), System.Drawing.Image)
-        Me.BO_Cargar.Location = New System.Drawing.Point(1048, 375)
-        Me.BO_Cargar.Margin = New System.Windows.Forms.Padding(4)
-        Me.BO_Cargar.Name = "BO_Cargar"
-        Me.BO_Cargar.Size = New System.Drawing.Size(53, 49)
-        Me.BO_Cargar.TabIndex = 0
-        Me.BO_Cargar.UseVisualStyleBackColor = True
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.Location = New System.Drawing.Point(6, 13)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1129, 575)
-        Me.TabControl1.TabIndex = 9
-        '
-        'btn_Anular
-        '
-        Me.btn_Anular.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Anular.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
-        Me.btn_Anular.Location = New System.Drawing.Point(756, 489)
-        Me.btn_Anular.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_Anular.Name = "btn_Anular"
-        Me.btn_Anular.Size = New System.Drawing.Size(93, 44)
-        Me.btn_Anular.TabIndex = 250
-        Me.btn_Anular.Text = "Eliminar"
-        Me.btn_Anular.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btn_Anular.UseVisualStyleBackColor = True
         '
         'Item
         '
@@ -307,6 +278,50 @@ Partial Class Medico_Actualizar
         Me.MedicomatriculaDataGridViewTextBoxColumn.HeaderText = "N° de Matricula"
         Me.MedicomatriculaDataGridViewTextBoxColumn.Name = "MedicomatriculaDataGridViewTextBoxColumn"
         Me.MedicomatriculaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'MedicosBindingSource
+        '
+        Me.MedicosBindingSource.DataMember = "Medicos"
+        Me.MedicosBindingSource.DataSource = Me.Medico_ds
+        '
+        'Medico_ds
+        '
+        Me.Medico_ds.DataSetName = "Medico_ds"
+        Me.Medico_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'BO_Cargar
+        '
+        Me.BO_Cargar.Image = CType(resources.GetObject("BO_Cargar.Image"), System.Drawing.Image)
+        Me.BO_Cargar.Location = New System.Drawing.Point(1048, 375)
+        Me.BO_Cargar.Margin = New System.Windows.Forms.Padding(4)
+        Me.BO_Cargar.Name = "BO_Cargar"
+        Me.BO_Cargar.Size = New System.Drawing.Size(53, 49)
+        Me.BO_Cargar.TabIndex = 0
+        Me.BO_Cargar.UseVisualStyleBackColor = True
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabControl1.Location = New System.Drawing.Point(6, 13)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(1129, 575)
+        Me.TabControl1.TabIndex = 9
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
+        Me.Button1.Location = New System.Drawing.Point(624, 490)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(124, 43)
+        Me.Button1.TabIndex = 252
+        Me.Button1.Text = "Generar reporte"
+        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Medico_Actualizar
         '
@@ -357,4 +372,5 @@ Partial Class Medico_Actualizar
     Friend WithEvents MedicodniDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MedicoespDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MedicomatriculaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

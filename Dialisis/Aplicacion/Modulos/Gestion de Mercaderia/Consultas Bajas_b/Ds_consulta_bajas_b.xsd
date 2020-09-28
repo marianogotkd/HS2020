@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Ds_consulta_bajas_b" targetNamespace="http://tempuri.org/Ds_consulta_bajas_b.xsd" xmlns:mstns="http://tempuri.org/Ds_consulta_bajas_b.xsd" xmlns="http://tempuri.org/Ds_consulta_bajas_b.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Ds_consulta_bajas_b" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Ds_consulta_bajas_b" msprop:Generator_UserDSName="Ds_consulta_bajas_b">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Bajas" msprop:Generator_TableClassName="BajasDataTable" msprop:Generator_TableVarName="tableBajas" msprop:Generator_TablePropName="Bajas" msprop:Generator_RowDeletingName="BajasRowDeleting" msprop:Generator_RowChangingName="BajasRowChanging" msprop:Generator_RowEvHandlerName="BajasRowChangeEventHandler" msprop:Generator_RowDeletedName="BajasRowDeleted" msprop:Generator_UserTableName="Bajas" msprop:Generator_RowChangedName="BajasRowChanged" msprop:Generator_RowEvArgName="BajasRowChangeEvent" msprop:Generator_RowClassName="BajasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:int" minOccurs="0" />
+              <xs:element name="Insumo" msprop:Generator_ColumnVarNameInTable="columnInsumo" msprop:Generator_ColumnPropNameInRow="Insumo" msprop:Generator_ColumnPropNameInTable="InsumoColumn" msprop:Generator_UserColumnName="Insumo" type="xs:string" minOccurs="0" />
+              <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:int" minOccurs="0" />
+              <xs:element name="Suc.Origen" msprop:Generator_ColumnVarNameInTable="_columnSuc_Origen" msprop:Generator_ColumnPropNameInRow="_Suc_Origen" msprop:Generator_ColumnPropNameInTable="_Suc_OrigenColumn" msprop:Generator_UserColumnName="Suc.Origen" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

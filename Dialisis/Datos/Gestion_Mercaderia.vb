@@ -410,6 +410,26 @@ Public Class Gestion_Mercaderia
         dbconn.Close()
         Return ds_JE
     End Function
+    Public Function Movimiento_Mercaderia_baja_obtener_detalle_b_rango_fechas_todos(ByVal desde As Date, ByVal hasta As Date) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Movimiento_Mercaderia_baja_obtener_detalle_b_rango_fechas_todos", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@desde", desde))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@hasta", hasta))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Movimientos")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
     'Movimiento_Mercaderia_Alta_obtener_detalle_b_rango_fechas_proveedor
 
     Public Function Movimiento_Mercaderia_Alta_obtener_detalle_b_rango_fechas_proveedor(ByVal desde As Date, ByVal hasta As Date, ByVal Prov_id As Integer) As DataSet

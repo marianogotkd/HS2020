@@ -696,6 +696,17 @@
     <Compile Include="Modulos\Gestion de Mercaderia\Busqueda_Productos_dialisis.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Gestion de Mercaderia\Consultas Bajas_b\Consultas_Bajas_b.Designer.vb">
+      <DependentUpon>Consultas_Bajas_b.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Gestion de Mercaderia\Consultas Bajas_b\Consultas_Bajas_b.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Gestion de Mercaderia\Consultas Bajas_b\Ds_consulta_bajas_b.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_consulta_bajas_b.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Gestion de Mercaderia\Consultas Movimientos Alta\Consulta_Alta_a.Designer.vb">
       <DependentUpon>Consulta_Alta_a.vb</DependentUpon>
     </Compile>
@@ -1056,6 +1067,23 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Modulos\Reportes_Dialisis\Consulta_baja_b_CR.vb">
+      <DependentUpon>Consulta_baja_b_CR.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Modulos\Reportes_Dialisis\Medicos_reporte_CR.vb">
+      <DependentUpon>Medicos_reporte_CR.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Modulos\Reportes_Dialisis\Ds_reporte_medico.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_reporte_medico.xsd</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Reportes_Dialisis\Sesiones_y_consumos.vb">
       <DependentUpon>Sesiones_y_consumos.rpt</DependentUpon>
@@ -1805,6 +1833,9 @@
     <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Busqueda_Productos_dialisis.resx">
       <DependentUpon>Busqueda_Productos_dialisis.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Consultas Bajas_b\Consultas_Bajas_b.resx">
+      <DependentUpon>Consultas_Bajas_b.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Consultas Movimientos Alta\Consulta_Alta_a.resx">
       <DependentUpon>Consulta_Alta_a.vb</DependentUpon>
     </EmbeddedResource>
@@ -1963,6 +1994,14 @@
     <EmbeddedResource Include="Modulos\Reportes_Dialisis\accesovascular_detalle.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>accesovascular_detalle.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes_Dialisis\Consulta_baja_b_CR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Consulta_baja_b_CR.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes_Dialisis\Medicos_reporte_CR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Medicos_reporte_CR.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes_Dialisis\Sesiones_y_consumos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2318,6 +2357,17 @@
     <None Include="Modulos\Facturacion\Venta_Caja\Venta_Caja_ds.xss">
       <DependentUpon>Venta_Caja_ds.xsd</DependentUpon>
     </None>
+    <None Include="Modulos\Gestion de Mercaderia\Consultas Bajas_b\Ds_consulta_bajas_b.xsc">
+      <DependentUpon>Ds_consulta_bajas_b.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Gestion de Mercaderia\Consultas Bajas_b\Ds_consulta_bajas_b.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_consulta_bajas_b.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulos\Gestion de Mercaderia\Consultas Bajas_b\Ds_consulta_bajas_b.xss">
+      <DependentUpon>Ds_consulta_bajas_b.xsd</DependentUpon>
+    </None>
     <None Include="Modulos\Gestion de Mercaderia\Consultas Movimientos Alta\D_consulta_mov_alta.xsc">
       <DependentUpon>D_consulta_mov_alta.xsd</DependentUpon>
     </None>
@@ -2471,6 +2521,17 @@
     </None>
     <None Include="Modulos\Reportes_Dialisis\Ds_reporte_historial.xss">
       <DependentUpon>Ds_reporte_historial.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Reportes_Dialisis\Ds_reporte_medico.xsc">
+      <DependentUpon>Ds_reporte_medico.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Reportes_Dialisis\Ds_reporte_medico.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_reporte_medico.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulos\Reportes_Dialisis\Ds_reporte_medico.xss">
+      <DependentUpon>Ds_reporte_medico.xsd</DependentUpon>
     </None>
     <None Include="Modulos\Reportes_Dialisis\Ds_reporte_movimientos.xsc">
       <DependentUpon>Ds_reporte_movimientos.xsd</DependentUpon>

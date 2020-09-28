@@ -92,4 +92,50 @@
         End If
 
     End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        If DG_Medico.Rows.Count <> 0 Then
+            'aqui llamo al form que muestra el cartelito.
+            msj_esperar_b.procedencia = "Medico_Actualizar"
+            msj_esperar_b.Show()
+        Else
+            MessageBox.Show("No hay médicos registrados en el sistema.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+    End Sub
+
+    Dim DAventa As New Datos.Venta
+    Dim Ds_reporte_medico As New Ds_reporte_medico
+    Public Sub reporte()
+
+        'carga tabla empresa
+        Dim usuario_id As String
+        usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
+        Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(usuario_id)
+        If ds_usuario.Tables(1).Rows.Count <> 0 Then
+            Ds_reporte_medico.Tables("Empresa").Rows.Clear()
+            Ds_reporte_medico.Tables("Empresa").Merge(ds_usuario.Tables(1))
+        End If
+
+        'ahora lo de los pacientes
+        Ds_reporte_medico.Tables("Medico").Rows.Clear()
+
+
+        Dim ds_med As DataSet = daMedico.Medicos_Obtener_activos
+        If ds_med.Tables(0).Rows.Count <> 0 Then
+            Ds_reporte_medico.Tables("Medico").Merge(ds_med.Tables(0))
+            'ahora creo el reporte
+            Dim CrReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
+            CrReport = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+            CrReport.Load(Application.StartupPath & "\..\..\Modulos\Reportes_Dialisis\Medicos_reporte_CR.rpt")
+            'CrReport.Load(Application.StartupPath & "\..\..\Modulos\Reportes_Dialisis\Evaluacion_medica_detalle.rpt")
+            CrReport.Database.Tables("Empresa").SetDataSource(Ds_reporte_medico.Tables("Empresa"))
+            CrReport.Database.Tables("Medico").SetDataSource(Ds_reporte_medico.Tables("Medico"))
+            'usando la variable visor puedo abrir varios reportes, sin temor a q se junte los datos del dataset
+            Dim visor As New EvaluacionMedica_show
+            visor.CrystalReportViewer1.ReportSource = CrReport
+            visor.Text = "Reporte de Médicos registrados. - Imprimir."
+            visor.Show()
+        End If
+    End Sub
+
 End Class

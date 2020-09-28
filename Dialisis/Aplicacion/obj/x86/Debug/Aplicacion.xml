@@ -6,7 +6,23 @@ Aplicacion
 </name>
 </assembly>
 <members>
-<member name="T:Aplicacion.CtaCte_ds.ComprobantesDataTable">
+<member name="T:Aplicacion.Ds_consulta_bajas_b.BajasDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Aplicacion.Ds_consulta_bajas_b.BajasRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Aplicacion.Ds_consulta_bajas_b.BajasRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Ds_consulta_bajas_b">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:Aplicacion.CtaCte_ds.ComprobantesDataTable">
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -1223,6 +1239,10 @@ Represents the strongly named DataTable class.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
+</member><member name="T:Aplicacion.Ds_reporte_movimientos.BajasDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
 </member><member name="T:Aplicacion.Ds_reporte_movimientos.movimientos_consultaRow">
 	<summary>
 Represents strongly named DataRow class.
@@ -1239,6 +1259,10 @@ Represents strongly named DataRow class.
 	<summary>
 Represents strongly named DataRow class.
 </summary>
+</member><member name="T:Aplicacion.Ds_reporte_movimientos.BajasRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
 </member><member name="T:Aplicacion.Ds_reporte_movimientos.movimientos_consultaRowChangeEvent">
 	<summary>
 Row event argument class
@@ -1252,6 +1276,10 @@ Row event argument class
 Row event argument class
 </summary>
 </member><member name="T:Aplicacion.Ds_reporte_movimientos.movimientos_detalleRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_movimientos.BajasRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
@@ -2424,6 +2452,46 @@ Row event argument class
 Row event argument class
 </summary>
 </member><member name="T:Aplicacion.Historia_Clinica">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_medico.EmpresaDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_medico.SucursalDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_medico.MedicoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_medico.EmpresaRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_medico.SucursalRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_medico.MedicoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_medico.EmpresaRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_medico.SucursalRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_medico.MedicoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_medico">
 	<summary>
 Represents a strongly typed in-memory cache of data.
 </summary>
