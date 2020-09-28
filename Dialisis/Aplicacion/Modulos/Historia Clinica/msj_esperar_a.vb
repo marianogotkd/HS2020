@@ -747,6 +747,10 @@
                 Paciente_reporte_seleccionar.reporte()
                 Me.Close()
             End If
+            If procedencia = "Paciente_x_obra_social_rango" Then
+                Paciente_reporte_seleccionar.reporte_rango()
+                Me.Close()
+            End If
             If procedencia = "stock_reporte" Then
                 Producto_modificar.reporte()
                 Me.Close()
