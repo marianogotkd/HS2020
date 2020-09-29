@@ -44,6 +44,9 @@
                 tb_numHemo.Text = 1
             End If
         End If
+
+
+
     End Sub
 
     Private Sub Obtener_Filtro()
@@ -170,7 +173,8 @@
     End Sub
 
     Private Sub limpiar()
-        Sesion_pacientes.recuperar_pacientes_fecha_del_dia(Today)
+        Sesion_pacientes.recuperar_pacientes_fecha_del_dia(Sesion_pacientes.fecha.Value)
+
         Me.Close()
     End Sub
 

@@ -1037,3 +1037,5 @@ C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.exe
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.xml
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.pdb
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Consultas_Bajas_b.resources
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Consultas_Bajas_b.resources
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Enfermeria_insumos_Ausente.resources

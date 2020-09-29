@@ -415,6 +415,12 @@
     <Compile Include="Modulos\Enfermeria\Enfermeria_Acceso_Vascular.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Enfermeria\Enfermeria_insumos_Ausente.Designer.vb">
+      <DependentUpon>Enfermeria_insumos_Ausente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Enfermeria\Enfermeria_insumos_Ausente.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Enfermeria\Enfermeria_pacientes_seleccionar.Designer.vb">
       <DependentUpon>Enfermeria_pacientes_seleccionar.vb</DependentUpon>
     </Compile>
@@ -1703,6 +1709,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Enfermeria\Enfermeria_Acceso_Vascular.resx">
       <DependentUpon>Enfermeria_Acceso_Vascular.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Enfermeria\Enfermeria_insumos_Ausente.resx">
+      <DependentUpon>Enfermeria_insumos_Ausente.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Enfermeria\Enfermeria_pacientes_seleccionar.resx">
       <DependentUpon>Enfermeria_pacientes_seleccionar.vb</DependentUpon>

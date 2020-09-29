@@ -16,10 +16,7 @@
             cb_origen.Enabled = False
         End If
 
-        If procedencia = "Enfermeria" Then
-            tb_concepto.Text = "Consumo en Enfermeria"
-            tb_concepto.Enabled = False
-        End If
+       
     End Sub
 
 
@@ -184,8 +181,12 @@
                     i = i + 1
                 End While
                 '''''''''''''''''''''''''''''''''''''''''''
+
+
                 Limpiar()
                 MessageBox.Show("Operación Registrada Con Éxito.", "Sistema de Gestión.")
+
+
             End If
         Else
             MessageBox.Show("Debe agregar al menos un producto.", "Sistema de Gestión.")

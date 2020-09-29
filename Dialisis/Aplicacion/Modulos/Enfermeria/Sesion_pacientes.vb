@@ -76,40 +76,47 @@
             'hay q hacer un alta alta en la tabla sesiones
             Dim result As Integer = MessageBox.Show("¿Desea registrar como AUSENTE al paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + " para la sesion del dia " + fecha_registrar + "?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-            Dim result2 As Integer = MessageBox.Show("¿El Filtro del paciente fue utilizado?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If result2 = DialogResult.Yes Then
-
-                Dim cantReuso As Integer
-                Dim FiltroDS As DataSet = daenfermeria.Filtro_Obtener_X_PAC(PAC_id)
-
-                If FiltroDS.Tables(0).Rows.Count <> 0 Then
-                    cantReuso = FiltroDS.Tables(0).Rows(0).Item("Filtro_cant_reuso") + 1
-                    daenfermeria.Filtro_modificar_Cant(FiltroDS.Tables(0).Rows(0).Item("Filtro_id"), cantReuso)
-                End If
-
-            End If
-
-            Dim result3 As Integer = MessageBox.Show("¿Desea agregar Consumir insumos?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If result3 = DialogResult.Yes Then
-                Insumos_gestion.procedencia = "Enfermeria"
-                Insumos_gestion.Close()
-                Insumos_gestion.Show()
-            End If
-
-
             If result = DialogResult.Yes Then
                 If CStr(datagridview1.CurrentRow.Cells("SesionesasistenciaDataGridViewTextBoxColumn").Value) = "" Then
 
-                    DAsesiones.sesiones_alta(PAC_id, fecha_registrar, "Ausente") 'mando el parametro fecha_registrar porque es la que tiene el resultado de la busqueda, es decir lo que se esta mostrando en la grilla
+                    Dim ds_sesiones As DataSet = DAsesiones.sesiones_alta(PAC_id, fecha_registrar, "Ausente") 'mando el parametro fecha_registrar porque es la que tiene el resultado de la busqueda, es decir lo que se esta mostrando en la grilla
+                    Dim sesiones_id = ds_sesiones.Tables(0).Rows(0).Item(0)
+
+                    Dim result2 As Integer = MessageBox.Show("¿El Filtro del paciente fue utilizado?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    If result2 = DialogResult.Yes Then
+
+                        Dim cantReuso As Integer
+                        Dim FiltroDS As DataSet = daenfermeria.Filtro_Obtener_X_PAC(PAC_id)
+
+                        If FiltroDS.Tables(0).Rows.Count <> 0 Then
+                            cantReuso = FiltroDS.Tables(0).Rows(0).Item("Filtro_cant_reuso") + 1
+                            daenfermeria.Filtro_modificar_Cant(FiltroDS.Tables(0).Rows(0).Item("Filtro_id"), cantReuso)
+                        End If
+
+                    End If
+
+                    Dim result3 As Integer = MessageBox.Show("¿Desea Consumir insumos?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    If result3 = DialogResult.Yes Then
+
+                        Enfermeria_insumos_Ausente.sesiones_id = sesiones_id
+                        Enfermeria_insumos_Ausente.Show()
+                    Else
+                        Msje_OK()
+                    End If
                     recuperar_pacientes_fecha_del_dia(fecha_registrar)
-                    MessageBox.Show("La información se registró correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Else
                     'ya esta registrado
                     MessageBox.Show("Ya se encuentra registrada la asistencia para el paciente:" + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + ".", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             End If
         End If
+
+
     End Sub
+    Public Sub Msje_OK()
+        MessageBox.Show("La información se registró correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         Turno_seleccionar.Close() 'el formulario de la carpeta enfermeria
@@ -126,7 +133,7 @@
 
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-       
+
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
@@ -144,7 +151,7 @@
         If datagridview1.Rows.Count <> 0 Then
             'aqui va pregunta para registrar como PRESENTE.
             'hay q hacer un alta alta en la tabla sesiones
-            
+
             If CStr(datagridview1.CurrentRow.Cells("SesionesasistenciaDataGridViewTextBoxColumn").Value) = "" Then
                 Dim result As Integer = MessageBox.Show("¿Desea registrar como PRESENTE al paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + " para la sesion del dia " + fecha_registrar + "?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                 If result = DialogResult.Yes Then
@@ -185,23 +192,27 @@
                     Else
 
                     End If
-                   
+
 
                 Else
-                    'ya esta registrado como Ausente.
-                    Dim result2 As Integer = MessageBox.Show("El paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + " ya se encuentra registrado como AUSENTE. ¿Desea cargarlo como PRESENTE para la sesion del dia " + fecha_registrar + "?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                    If result2 = DialogResult.Yes Then
-                        'aqui viene una especie de UPDATE para pasarlo a presente.
+                    MessageBox.Show("El paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + " ya se encuentra registrado como AUSENTE. NO SE PUEDE MODIFICAR SU ESTADO", "Sistema de Gestión", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
-                        Nueva_Dialisis.Close()
-                        Dim PAC_id As Integer = CInt(datagridview1.CurrentRow.Cells("PACidDataGridViewTextBoxColumn").Value)
-                        Nueva_Dialisis.PAC_id = PAC_id
-                        Nueva_Dialisis.fecha_registrar = fecha_registrar
-                        Nueva_Dialisis.tipo_operacion = "ausente" 'aviso q ya estaba cargado como ausente, y que se va a modificar dicho estado
-                        Dim sesiones_id As Integer = CInt(datagridview1.CurrentRow.Cells("SesionesidDataGridViewTextBoxColumn").Value)
-                        Nueva_Dialisis.ausente_sesiones_id = sesiones_id
-                        Nueva_Dialisis.Show()
-                    End If
+
+
+                    'ya esta registrado como Ausente.
+                    'Dim result2 As Integer = MessageBox.Show("El paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + " ya se encuentra registrado como AUSENTE. ¿Desea cargarlo como PRESENTE para la sesion del dia " + fecha_registrar + "?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    'If result2 = DialogResult.Yes Then
+                    '    'aqui viene una especie de UPDATE para pasarlo a presente.
+
+                    '    Nueva_Dialisis.Close()
+                    '    Dim PAC_id As Integer = CInt(datagridview1.CurrentRow.Cells("PACidDataGridViewTextBoxColumn").Value)
+                    '    Nueva_Dialisis.PAC_id = PAC_id
+                    '    Nueva_Dialisis.fecha_registrar = fecha_registrar
+                    '    Nueva_Dialisis.tipo_operacion = "ausente" 'aviso q ya estaba cargado como ausente, y que se va a modificar dicho estado
+                    '    Dim sesiones_id As Integer = CInt(datagridview1.CurrentRow.Cells("SesionesidDataGridViewTextBoxColumn").Value)
+                    '    Nueva_Dialisis.ausente_sesiones_id = sesiones_id
+                    '    Nueva_Dialisis.Show()
+                    'End If
                 End If
             End If
 
