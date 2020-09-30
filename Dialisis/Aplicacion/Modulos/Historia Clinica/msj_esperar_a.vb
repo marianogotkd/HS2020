@@ -772,6 +772,10 @@
                 Consultas_Bajas_b.reporte()
                 Me.Close()
             End If
+            If procedencia = "Consultas_Movimientos_b" Then
+                Consultas_Movimientos_b.reporte()
+                Me.Close()
+            End If
         End If
     End Sub
 End Class

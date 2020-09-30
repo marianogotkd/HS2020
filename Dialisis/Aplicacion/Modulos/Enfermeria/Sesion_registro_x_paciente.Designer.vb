@@ -23,24 +23,13 @@ Partial Class Sesion_registro_x_paciente
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.datagridview1 = New System.Windows.Forms.DataGridView()
         Me.item = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SesionesidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PACidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SesionesfechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DialisisidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PACdniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PacienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PAcdirDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PACnumafiDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ObrasocialnombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SesionesasistenciaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SesionactualtodospacientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Ds_enfermeria = New Aplicacion.Ds_enfermeria()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -62,6 +51,24 @@ Partial Class Sesion_registro_x_paciente
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.lb_total_insumos = New System.Windows.Forms.Label()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.DataGridView3 = New System.Windows.Forms.DataGridView()
+        Me.SesionesidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PACidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SesionesfechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DialisisidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PACdniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PacienteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PAcdirDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PACnumafiDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ObrasocialnombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SesionesasistenciaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SesionactualtodospacientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Ds_enfermeria = New Aplicacion.Ds_enfermeria()
         Me.ConsumomercaderiaidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SesionesidDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -70,15 +77,27 @@ Partial Class Sesion_registro_x_paciente
         Me.InsumoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.InsumosconsumidosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.FiltrosxpacienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Dialisis_Filtro = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FiltroidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FiltrofechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FiltrocantreusoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SesionesidDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ln_totalreusos = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         CType(Me.datagridview1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SesionactualtodospacientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Ds_enfermeria, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabControl1.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
+        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SesionactualtodospacientesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Ds_enfermeria, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.InsumosconsumidosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FiltrosxpacienteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox2
@@ -86,7 +105,7 @@ Partial Class Sesion_registro_x_paciente
         Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.datagridview1)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 146)
+        Me.GroupBox2.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(795, 224)
         Me.GroupBox2.TabIndex = 6
@@ -123,10 +142,10 @@ Partial Class Sesion_registro_x_paciente
         Me.datagridview1.ReadOnly = True
         Me.datagridview1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.datagridview1.RowHeadersVisible = False
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        Me.datagridview1.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.datagridview1.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.datagridview1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.datagridview1.Size = New System.Drawing.Size(772, 164)
         Me.datagridview1.StandardTab = True
@@ -139,110 +158,11 @@ Partial Class Sesion_registro_x_paciente
         Me.item.ReadOnly = True
         Me.item.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
-        'SesionesidDataGridViewTextBoxColumn
-        '
-        Me.SesionesidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.SesionesidDataGridViewTextBoxColumn.DataPropertyName = "Sesiones_id"
-        Me.SesionesidDataGridViewTextBoxColumn.HeaderText = "ID"
-        Me.SesionesidDataGridViewTextBoxColumn.Name = "SesionesidDataGridViewTextBoxColumn"
-        Me.SesionesidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SesionesidDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.SesionesidDataGridViewTextBoxColumn.Visible = False
-        '
-        'PACidDataGridViewTextBoxColumn
-        '
-        Me.PACidDataGridViewTextBoxColumn.DataPropertyName = "PAC_id"
-        Me.PACidDataGridViewTextBoxColumn.HeaderText = "PAC_id"
-        Me.PACidDataGridViewTextBoxColumn.Name = "PACidDataGridViewTextBoxColumn"
-        Me.PACidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PACidDataGridViewTextBoxColumn.Visible = False
-        '
-        'SesionesfechaDataGridViewTextBoxColumn
-        '
-        Me.SesionesfechaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.SesionesfechaDataGridViewTextBoxColumn.DataPropertyName = "Sesiones_fecha"
-        Me.SesionesfechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
-        Me.SesionesfechaDataGridViewTextBoxColumn.Name = "SesionesfechaDataGridViewTextBoxColumn"
-        Me.SesionesfechaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SesionesfechaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'DialisisidDataGridViewTextBoxColumn
-        '
-        Me.DialisisidDataGridViewTextBoxColumn.DataPropertyName = "Dialisis_id"
-        Me.DialisisidDataGridViewTextBoxColumn.HeaderText = "Dialisis_id"
-        Me.DialisisidDataGridViewTextBoxColumn.Name = "DialisisidDataGridViewTextBoxColumn"
-        Me.DialisisidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DialisisidDataGridViewTextBoxColumn.Visible = False
-        '
-        'PACdniDataGridViewTextBoxColumn
-        '
-        Me.PACdniDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PACdniDataGridViewTextBoxColumn.DataPropertyName = "PAC_dni"
-        Me.PACdniDataGridViewTextBoxColumn.HeaderText = "DNI"
-        Me.PACdniDataGridViewTextBoxColumn.Name = "PACdniDataGridViewTextBoxColumn"
-        Me.PACdniDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PACdniDataGridViewTextBoxColumn.Visible = False
-        '
-        'PacienteDataGridViewTextBoxColumn
-        '
-        Me.PacienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PacienteDataGridViewTextBoxColumn.DataPropertyName = "Paciente"
-        Me.PacienteDataGridViewTextBoxColumn.HeaderText = "Paciente"
-        Me.PacienteDataGridViewTextBoxColumn.Name = "PacienteDataGridViewTextBoxColumn"
-        Me.PacienteDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PacienteDataGridViewTextBoxColumn.Visible = False
-        '
-        'PAcdirDataGridViewTextBoxColumn
-        '
-        Me.PAcdirDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PAcdirDataGridViewTextBoxColumn.DataPropertyName = "PAc_dir"
-        Me.PAcdirDataGridViewTextBoxColumn.HeaderText = "Dirección"
-        Me.PAcdirDataGridViewTextBoxColumn.Name = "PAcdirDataGridViewTextBoxColumn"
-        Me.PAcdirDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PAcdirDataGridViewTextBoxColumn.Visible = False
-        '
-        'PACnumafiDataGridViewTextBoxColumn
-        '
-        Me.PACnumafiDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.PACnumafiDataGridViewTextBoxColumn.DataPropertyName = "PACnumafi"
-        Me.PACnumafiDataGridViewTextBoxColumn.HeaderText = "N Afiliado"
-        Me.PACnumafiDataGridViewTextBoxColumn.Name = "PACnumafiDataGridViewTextBoxColumn"
-        Me.PACnumafiDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PACnumafiDataGridViewTextBoxColumn.Visible = False
-        '
-        'ObrasocialnombreDataGridViewTextBoxColumn
-        '
-        Me.ObrasocialnombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ObrasocialnombreDataGridViewTextBoxColumn.DataPropertyName = "Obrasocial_nombre"
-        Me.ObrasocialnombreDataGridViewTextBoxColumn.HeaderText = "Obra Social"
-        Me.ObrasocialnombreDataGridViewTextBoxColumn.Name = "ObrasocialnombreDataGridViewTextBoxColumn"
-        Me.ObrasocialnombreDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ObrasocialnombreDataGridViewTextBoxColumn.Visible = False
-        '
-        'SesionesasistenciaDataGridViewTextBoxColumn
-        '
-        Me.SesionesasistenciaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.SesionesasistenciaDataGridViewTextBoxColumn.DataPropertyName = "Sesiones_asistencia"
-        Me.SesionesasistenciaDataGridViewTextBoxColumn.HeaderText = "Asistencia"
-        Me.SesionesasistenciaDataGridViewTextBoxColumn.Name = "SesionesasistenciaDataGridViewTextBoxColumn"
-        Me.SesionesasistenciaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SesionesasistenciaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'SesionactualtodospacientesBindingSource
-        '
-        Me.SesionactualtodospacientesBindingSource.DataMember = "Sesion_actual_todos_pacientes"
-        Me.SesionactualtodospacientesBindingSource.DataSource = Me.Ds_enfermeria
-        '
-        'Ds_enfermeria
-        '
-        Me.Ds_enfermeria.DataSetName = "Ds_enfermeria"
-        Me.Ds_enfermeria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.Informe
-        Me.Button1.Location = New System.Drawing.Point(479, 600)
+        Me.Button1.Location = New System.Drawing.Point(342, 429)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(169, 44)
@@ -255,7 +175,7 @@ Partial Class Sesion_registro_x_paciente
         '
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Image = Global.Aplicacion.My.Resources.Resources.icono_editar_30x30
-        Me.Button3.Location = New System.Drawing.Point(656, 600)
+        Me.Button3.Location = New System.Drawing.Point(519, 429)
         Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(151, 44)
@@ -437,7 +357,7 @@ Partial Class Sesion_registro_x_paciente
         Me.GroupBox3.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox3.Controls.Add(Me.lb_total_insumos)
         Me.GroupBox3.Controls.Add(Me.DataGridView2)
-        Me.GroupBox3.Location = New System.Drawing.Point(12, 376)
+        Me.GroupBox3.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(795, 222)
         Me.GroupBox3.TabIndex = 267
@@ -474,14 +394,198 @@ Partial Class Sesion_registro_x_paciente
         Me.DataGridView2.ReadOnly = True
         Me.DataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DataGridView2.RowHeadersVisible = False
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView2.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView2.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView2.Size = New System.Drawing.Size(772, 164)
         Me.DataGridView2.StandardTab = True
         Me.DataGridView2.TabIndex = 259
+        '
+        'Button2
+        '
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.Informe
+        Me.Button2.Location = New System.Drawing.Point(166, 429)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(169, 44)
+        Me.Button2.TabIndex = 268
+        Me.Button2.Text = "Dialisis y consumos"
+        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Controls.Add(Me.TabPage3)
+        Me.TabControl1.Location = New System.Drawing.Point(11, 146)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(818, 274)
+        Me.TabControl1.TabIndex = 269
+        '
+        'TabPage1
+        '
+        Me.TabPage1.Controls.Add(Me.GroupBox2)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(810, 248)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "Registro de sesiones del paciente"
+        Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'TabPage2
+        '
+        Me.TabPage2.Controls.Add(Me.GroupBox3)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(810, 248)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Resumen de insumos consumidos"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'TabPage3
+        '
+        Me.TabPage3.Controls.Add(Me.Ln_totalreusos)
+        Me.TabPage3.Controls.Add(Me.DataGridView3)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(810, 248)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "Resumen de filtros utilizados"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'DataGridView3
+        '
+        Me.DataGridView3.AllowUserToAddRows = False
+        Me.DataGridView3.AllowUserToDeleteRows = False
+        Me.DataGridView3.AllowUserToResizeRows = False
+        Me.DataGridView3.AutoGenerateColumns = False
+        Me.DataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridView3.BackgroundColor = System.Drawing.Color.White
+        Me.DataGridView3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView3.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Dialisis_Filtro, Me.FiltroidDataGridViewTextBoxColumn, Me.FiltrofechaDataGridViewTextBoxColumn, Me.FiltrocantreusoDataGridViewTextBoxColumn, Me.SesionesidDataGridViewTextBoxColumn2})
+        Me.DataGridView3.DataSource = Me.FiltrosxpacienteBindingSource
+        Me.DataGridView3.Location = New System.Drawing.Point(19, 42)
+        Me.DataGridView3.Margin = New System.Windows.Forms.Padding(4)
+        Me.DataGridView3.MultiSelect = False
+        Me.DataGridView3.Name = "DataGridView3"
+        Me.DataGridView3.ReadOnly = True
+        Me.DataGridView3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DataGridView3.RowHeadersVisible = False
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView3.RowsDefaultCellStyle = DataGridViewCellStyle3
+        Me.DataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridView3.Size = New System.Drawing.Size(772, 164)
+        Me.DataGridView3.StandardTab = True
+        Me.DataGridView3.TabIndex = 260
+        '
+        'SesionesidDataGridViewTextBoxColumn
+        '
+        Me.SesionesidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.SesionesidDataGridViewTextBoxColumn.DataPropertyName = "Sesiones_id"
+        Me.SesionesidDataGridViewTextBoxColumn.HeaderText = "ID"
+        Me.SesionesidDataGridViewTextBoxColumn.Name = "SesionesidDataGridViewTextBoxColumn"
+        Me.SesionesidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SesionesidDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.SesionesidDataGridViewTextBoxColumn.Visible = False
+        '
+        'PACidDataGridViewTextBoxColumn
+        '
+        Me.PACidDataGridViewTextBoxColumn.DataPropertyName = "PAC_id"
+        Me.PACidDataGridViewTextBoxColumn.HeaderText = "PAC_id"
+        Me.PACidDataGridViewTextBoxColumn.Name = "PACidDataGridViewTextBoxColumn"
+        Me.PACidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PACidDataGridViewTextBoxColumn.Visible = False
+        '
+        'SesionesfechaDataGridViewTextBoxColumn
+        '
+        Me.SesionesfechaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.SesionesfechaDataGridViewTextBoxColumn.DataPropertyName = "Sesiones_fecha"
+        Me.SesionesfechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
+        Me.SesionesfechaDataGridViewTextBoxColumn.Name = "SesionesfechaDataGridViewTextBoxColumn"
+        Me.SesionesfechaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SesionesfechaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'DialisisidDataGridViewTextBoxColumn
+        '
+        Me.DialisisidDataGridViewTextBoxColumn.DataPropertyName = "Dialisis_id"
+        Me.DialisisidDataGridViewTextBoxColumn.HeaderText = "Dialisis_id"
+        Me.DialisisidDataGridViewTextBoxColumn.Name = "DialisisidDataGridViewTextBoxColumn"
+        Me.DialisisidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DialisisidDataGridViewTextBoxColumn.Visible = False
+        '
+        'PACdniDataGridViewTextBoxColumn
+        '
+        Me.PACdniDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PACdniDataGridViewTextBoxColumn.DataPropertyName = "PAC_dni"
+        Me.PACdniDataGridViewTextBoxColumn.HeaderText = "DNI"
+        Me.PACdniDataGridViewTextBoxColumn.Name = "PACdniDataGridViewTextBoxColumn"
+        Me.PACdniDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PACdniDataGridViewTextBoxColumn.Visible = False
+        '
+        'PacienteDataGridViewTextBoxColumn
+        '
+        Me.PacienteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PacienteDataGridViewTextBoxColumn.DataPropertyName = "Paciente"
+        Me.PacienteDataGridViewTextBoxColumn.HeaderText = "Paciente"
+        Me.PacienteDataGridViewTextBoxColumn.Name = "PacienteDataGridViewTextBoxColumn"
+        Me.PacienteDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PacienteDataGridViewTextBoxColumn.Visible = False
+        '
+        'PAcdirDataGridViewTextBoxColumn
+        '
+        Me.PAcdirDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PAcdirDataGridViewTextBoxColumn.DataPropertyName = "PAc_dir"
+        Me.PAcdirDataGridViewTextBoxColumn.HeaderText = "Dirección"
+        Me.PAcdirDataGridViewTextBoxColumn.Name = "PAcdirDataGridViewTextBoxColumn"
+        Me.PAcdirDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PAcdirDataGridViewTextBoxColumn.Visible = False
+        '
+        'PACnumafiDataGridViewTextBoxColumn
+        '
+        Me.PACnumafiDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.PACnumafiDataGridViewTextBoxColumn.DataPropertyName = "PACnumafi"
+        Me.PACnumafiDataGridViewTextBoxColumn.HeaderText = "N Afiliado"
+        Me.PACnumafiDataGridViewTextBoxColumn.Name = "PACnumafiDataGridViewTextBoxColumn"
+        Me.PACnumafiDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PACnumafiDataGridViewTextBoxColumn.Visible = False
+        '
+        'ObrasocialnombreDataGridViewTextBoxColumn
+        '
+        Me.ObrasocialnombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ObrasocialnombreDataGridViewTextBoxColumn.DataPropertyName = "Obrasocial_nombre"
+        Me.ObrasocialnombreDataGridViewTextBoxColumn.HeaderText = "Obra Social"
+        Me.ObrasocialnombreDataGridViewTextBoxColumn.Name = "ObrasocialnombreDataGridViewTextBoxColumn"
+        Me.ObrasocialnombreDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ObrasocialnombreDataGridViewTextBoxColumn.Visible = False
+        '
+        'SesionesasistenciaDataGridViewTextBoxColumn
+        '
+        Me.SesionesasistenciaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.SesionesasistenciaDataGridViewTextBoxColumn.DataPropertyName = "Sesiones_asistencia"
+        Me.SesionesasistenciaDataGridViewTextBoxColumn.HeaderText = "Asistencia"
+        Me.SesionesasistenciaDataGridViewTextBoxColumn.Name = "SesionesasistenciaDataGridViewTextBoxColumn"
+        Me.SesionesasistenciaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SesionesasistenciaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'SesionactualtodospacientesBindingSource
+        '
+        Me.SesionactualtodospacientesBindingSource.DataMember = "Sesion_actual_todos_pacientes"
+        Me.SesionactualtodospacientesBindingSource.DataSource = Me.Ds_enfermeria
+        '
+        'Ds_enfermeria
+        '
+        Me.Ds_enfermeria.DataSetName = "Ds_enfermeria"
+        Me.Ds_enfermeria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'ConsumomercaderiaidDataGridViewTextBoxColumn
         '
@@ -514,6 +618,7 @@ Partial Class Sesion_registro_x_paciente
         Me.FechasesionDataGridViewTextBoxColumn.HeaderText = "Fecha"
         Me.FechasesionDataGridViewTextBoxColumn.Name = "FechasesionDataGridViewTextBoxColumn"
         Me.FechasesionDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FechasesionDataGridViewTextBoxColumn.Visible = False
         '
         'ProdcodinternoDataGridViewTextBoxColumn
         '
@@ -544,18 +649,63 @@ Partial Class Sesion_registro_x_paciente
         Me.InsumosconsumidosBindingSource.DataMember = "insumos_consumidos"
         Me.InsumosconsumidosBindingSource.DataSource = Me.Ds_enfermeria
         '
-        'Button2
+        'FiltrosxpacienteBindingSource
         '
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.Informe
-        Me.Button2.Location = New System.Drawing.Point(303, 600)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(169, 44)
-        Me.Button2.TabIndex = 268
-        Me.Button2.Text = "Dialisis y consumos"
-        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.FiltrosxpacienteBindingSource.DataMember = "filtros_x_paciente"
+        Me.FiltrosxpacienteBindingSource.DataSource = Me.Ds_enfermeria
+        '
+        'Dialisis_Filtro
+        '
+        Me.Dialisis_Filtro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Dialisis_Filtro.DataPropertyName = "Dialisis_Filtro"
+        Me.Dialisis_Filtro.HeaderText = "Filtro"
+        Me.Dialisis_Filtro.Name = "Dialisis_Filtro"
+        Me.Dialisis_Filtro.ReadOnly = True
+        '
+        'FiltroidDataGridViewTextBoxColumn
+        '
+        Me.FiltroidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.FiltroidDataGridViewTextBoxColumn.DataPropertyName = "Filtro_id"
+        Me.FiltroidDataGridViewTextBoxColumn.HeaderText = "Filtro_id"
+        Me.FiltroidDataGridViewTextBoxColumn.Name = "FiltroidDataGridViewTextBoxColumn"
+        Me.FiltroidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FiltroidDataGridViewTextBoxColumn.Visible = False
+        '
+        'FiltrofechaDataGridViewTextBoxColumn
+        '
+        Me.FiltrofechaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.FiltrofechaDataGridViewTextBoxColumn.DataPropertyName = "Filtro_fecha"
+        Me.FiltrofechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
+        Me.FiltrofechaDataGridViewTextBoxColumn.Name = "FiltrofechaDataGridViewTextBoxColumn"
+        Me.FiltrofechaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'FiltrocantreusoDataGridViewTextBoxColumn
+        '
+        Me.FiltrocantreusoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.FiltrocantreusoDataGridViewTextBoxColumn.DataPropertyName = "Filtro_cant_reuso"
+        Me.FiltrocantreusoDataGridViewTextBoxColumn.HeaderText = "Reusos"
+        Me.FiltrocantreusoDataGridViewTextBoxColumn.Name = "FiltrocantreusoDataGridViewTextBoxColumn"
+        Me.FiltrocantreusoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SesionesidDataGridViewTextBoxColumn2
+        '
+        Me.SesionesidDataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.SesionesidDataGridViewTextBoxColumn2.DataPropertyName = "Sesiones_id"
+        Me.SesionesidDataGridViewTextBoxColumn2.HeaderText = "Sesiones_id"
+        Me.SesionesidDataGridViewTextBoxColumn2.Name = "SesionesidDataGridViewTextBoxColumn2"
+        Me.SesionesidDataGridViewTextBoxColumn2.ReadOnly = True
+        Me.SesionesidDataGridViewTextBoxColumn2.Visible = False
+        '
+        'Ln_totalreusos
+        '
+        Me.Ln_totalreusos.AutoSize = True
+        Me.Ln_totalreusos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Ln_totalreusos.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.Ln_totalreusos.Location = New System.Drawing.Point(15, 9)
+        Me.Ln_totalreusos.Name = "Ln_totalreusos"
+        Me.Ln_totalreusos.Size = New System.Drawing.Size(138, 20)
+        Me.Ln_totalreusos.TabIndex = 262
+        Me.Ln_totalreusos.Text = "Total de reusos:"
         '
         'Sesion_registro_x_paciente
         '
@@ -563,13 +713,12 @@ Partial Class Sesion_registro_x_paciente
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Aplicacion.My.Resources.Resources.silver_3
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(816, 649)
+        Me.ClientSize = New System.Drawing.Size(832, 486)
+        Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.GroupBox2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -579,14 +728,21 @@ Partial Class Sesion_registro_x_paciente
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.datagridview1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SesionactualtodospacientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Ds_enfermeria, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabControl1.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
+        Me.TabPage2.ResumeLayout(False)
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout()
+        CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SesionactualtodospacientesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Ds_enfermeria, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.InsumosconsumidosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FiltrosxpacienteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -626,6 +782,13 @@ Partial Class Sesion_registro_x_paciente
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
+    Friend WithEvents InsumosconsumidosBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents lb_total_insumos As System.Windows.Forms.Label
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
+    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Friend WithEvents ConsumomercaderiaidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents FechaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents SesionesidDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -633,7 +796,12 @@ Partial Class Sesion_registro_x_paciente
     Friend WithEvents ProdcodinternoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents InsumoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CantidadDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents InsumosconsumidosBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents lb_total_insumos As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents DataGridView3 As System.Windows.Forms.DataGridView
+    Friend WithEvents FiltrosxpacienteBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Dialisis_Filtro As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents FiltroidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents FiltrofechaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents FiltrocantreusoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SesionesidDataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Ln_totalreusos As System.Windows.Forms.Label
 End Class

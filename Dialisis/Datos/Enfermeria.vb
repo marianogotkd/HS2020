@@ -235,4 +235,47 @@ Public Class Enfermeria
         Return ds_JE
     End Function
 
+
+    Public Function Filtro_obtener_x_PAC_todos(ByVal PAC_id As Integer) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Filtro_obtener_x_PAC_todos", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@PAC_id", PAC_id))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Filtro")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
+    Public Function Filtro_obtener_todos_rangofecha(ByVal desde As Date, ByVal hasta As Date) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Filtro_obtener_todos_rangofecha", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@desde", desde))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@hasta", hasta))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Filtro")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
+
+
+
 End Class

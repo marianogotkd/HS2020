@@ -68,6 +68,30 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="filtros_x_paciente" msprop:Generator_TableClassName="filtros_x_pacienteDataTable" msprop:Generator_TableVarName="tablefiltros_x_paciente" msprop:Generator_RowChangedName="filtros_x_pacienteRowChanged" msprop:Generator_TablePropName="filtros_x_paciente" msprop:Generator_RowDeletingName="filtros_x_pacienteRowDeleting" msprop:Generator_RowChangingName="filtros_x_pacienteRowChanging" msprop:Generator_RowEvHandlerName="filtros_x_pacienteRowChangeEventHandler" msprop:Generator_RowDeletedName="filtros_x_pacienteRowDeleted" msprop:Generator_RowClassName="filtros_x_pacienteRow" msprop:Generator_UserTableName="filtros_x_paciente" msprop:Generator_RowEvArgName="filtros_x_pacienteRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Filtro_id" msprop:Generator_ColumnVarNameInTable="columnFiltro_id" msprop:Generator_ColumnPropNameInRow="Filtro_id" msprop:Generator_ColumnPropNameInTable="Filtro_idColumn" msprop:Generator_UserColumnName="Filtro_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Filtro_fecha" msprop:Generator_ColumnVarNameInTable="columnFiltro_fecha" msprop:Generator_ColumnPropNameInRow="Filtro_fecha" msprop:Generator_ColumnPropNameInTable="Filtro_fechaColumn" msprop:Generator_UserColumnName="Filtro_fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Filtro_cant_reuso" msprop:Generator_ColumnVarNameInTable="columnFiltro_cant_reuso" msprop:Generator_ColumnPropNameInRow="Filtro_cant_reuso" msprop:Generator_ColumnPropNameInTable="Filtro_cant_reusoColumn" msprop:Generator_UserColumnName="Filtro_cant_reuso" type="xs:int" minOccurs="0" />
+              <xs:element name="Sesiones_id" msprop:Generator_ColumnVarNameInTable="columnSesiones_id" msprop:Generator_ColumnPropNameInRow="Sesiones_id" msprop:Generator_ColumnPropNameInTable="Sesiones_idColumn" msprop:Generator_UserColumnName="Sesiones_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Dialisis_Filtro" msprop:Generator_ColumnVarNameInTable="columnDialisis_Filtro" msprop:Generator_ColumnPropNameInRow="Dialisis_Filtro" msprop:Generator_ColumnPropNameInTable="Dialisis_FiltroColumn" msprop:Generator_UserColumnName="Dialisis_Filtro" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="insumos_consumidos_ausentes" msprop:Generator_TableClassName="insumos_consumidos_ausentesDataTable" msprop:Generator_TableVarName="tableinsumos_consumidos_ausentes" msprop:Generator_TablePropName="insumos_consumidos_ausentes" msprop:Generator_RowDeletingName="insumos_consumidos_ausentesRowDeleting" msprop:Generator_RowChangingName="insumos_consumidos_ausentesRowChanging" msprop:Generator_RowEvHandlerName="insumos_consumidos_ausentesRowChangeEventHandler" msprop:Generator_RowDeletedName="insumos_consumidos_ausentesRowDeleted" msprop:Generator_UserTableName="insumos_consumidos_ausentes" msprop:Generator_RowChangedName="insumos_consumidos_ausentesRowChanged" msprop:Generator_RowEvArgName="insumos_consumidos_ausentesRowChangeEvent" msprop:Generator_RowClassName="insumos_consumidos_ausentesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Consumo_mercaderia_id" msprop:Generator_ColumnVarNameInTable="columnConsumo_mercaderia_id" msprop:Generator_ColumnPropNameInRow="Consumo_mercaderia_id" msprop:Generator_ColumnPropNameInTable="Consumo_mercaderia_idColumn" msprop:Generator_UserColumnName="Consumo_mercaderia_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Sesiones_id" msprop:Generator_ColumnVarNameInTable="columnSesiones_id" msprop:Generator_ColumnPropNameInRow="Sesiones_id" msprop:Generator_ColumnPropNameInTable="Sesiones_idColumn" msprop:Generator_UserColumnName="Sesiones_id" type="xs:int" minOccurs="0" />
+              <xs:element name="fecha_sesion" msprop:Generator_ColumnVarNameInTable="columnfecha_sesion" msprop:Generator_ColumnPropNameInRow="fecha_sesion" msprop:Generator_ColumnPropNameInTable="fecha_sesionColumn" msprop:Generator_UserColumnName="fecha_sesion" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="cantidad" msprop:Generator_ColumnVarNameInTable="columncantidad" msprop:Generator_ColumnPropNameInRow="cantidad" msprop:Generator_ColumnPropNameInTable="cantidadColumn" msprop:Generator_UserColumnName="cantidad" type="xs:decimal" minOccurs="0" />
+              <xs:element name="prod_codinterno" msprop:Generator_ColumnVarNameInTable="columnprod_codinterno" msprop:Generator_ColumnPropNameInRow="prod_codinterno" msprop:Generator_ColumnPropNameInTable="prod_codinternoColumn" msprop:Generator_UserColumnName="prod_codinterno" type="xs:int" minOccurs="0" />
+              <xs:element name="Insumo" msprop:Generator_ColumnVarNameInTable="columnInsumo" msprop:Generator_ColumnPropNameInRow="Insumo" msprop:Generator_ColumnPropNameInTable="InsumoColumn" msprop:Generator_UserColumnName="Insumo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

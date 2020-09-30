@@ -125,6 +125,27 @@ Public Class Sesiones
         Return ds_JE
     End Function
 
+
+    Public Function Sesiones_recuperar_todos_consumos_rangofecha(ByVal desde As Date, ByVal hasta As Date) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Sesiones_recuperar_todos_consumos_rangofecha", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@desde", desde))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@hasta", hasta))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Sesiones_insumos")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
     Public Function Dialisis_Obtener_Filtro_X_Pac(ByVal Pac_id As Integer) As DataSet
         Try
             dbconn.Open()

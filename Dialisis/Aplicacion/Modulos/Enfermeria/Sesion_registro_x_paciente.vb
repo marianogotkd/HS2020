@@ -7,19 +7,71 @@
         Obetener_Cliente()
         recuperar_todas_sesiones_del_paciente(PAC_id)
         sesiones_recuperar_consumos()
+        recuperar_filtros_x_paciente()
 
+    End Sub
+    Dim daEnfermeria As New Datos.Enfermeria
+    Private Sub recuperar_filtros_x_paciente()
+        Ds_enfermeria.Tables("filtros_x_paciente").Rows.Clear()
+        Dim ds_filtro As DataSet = daEnfermeria.Filtro_obtener_x_PAC_todos(PAC_id)
+        If ds_filtro.Tables(0).Rows.Count <> 0 Then
+            Dim i As Integer
+
+            Ds_enfermeria.Tables("filtros_x_paciente").Merge(ds_filtro.Tables(0))
+        Else
+
+        End If
+        Dim total As Integer = 0
+        Dim k As Integer = 0
+        While k < ds_filtro.Tables(0).Rows.Count
+            total = total + CInt(ds_filtro.Tables(0).Rows(k).Item("Filtro_cant_reuso"))
+            k = k + 1
+        End While
+        Ln_totalreusos.Text = "Total de reusos: " + CStr(total)
     End Sub
 
     Private Sub sesiones_recuperar_consumos()
         Dim total As Integer = 0
         Dim ds_consumos As DataSet = DAsesiones.Sesiones_recuperar_todos_consumos(PAC_id)
         If ds_consumos.Tables(0).Rows.Count <> 0 Then
-            Ds_enfermeria.Tables("insumos_consumidos").Merge(ds_consumos.Tables(0))
-            'ahora cuento los insumos consumidos
+            Dim sumacantidad As Decimal = 0
             Dim i As Integer = 0
+            Dim j As Integer
             While i < ds_consumos.Tables(0).Rows.Count
-                total = total + CInt(ds_consumos.Tables(0).Rows(i).Item("cantidad"))
-                i = i + 1
+                Dim fila As DataRow = Ds_enfermeria.Tables("insumos_consumidos").NewRow
+                fila("Consumo_mercaderia_id") = 0
+                'fila("Fecha") = ds_mov.Tables(0).Rows(i).Item("prod_descripcion")
+                'fila("Sesiones_id") = ""
+                'fila("cantidad") = ""
+                fila("prod_codinterno") = ds_consumos.Tables(0).Rows(i).Item("prod_codinterno")
+                fila("Insumo") = ds_consumos.Tables(0).Rows(i).Item("Insumo")
+                j = i
+                Dim sumado = "si"
+                While j < ds_consumos.Tables(0).Rows.Count
+                    Dim codigo As Integer = ds_consumos.Tables(0).Rows(i).Item("prod_codinterno")
+                    If ds_consumos.Tables(0).Rows(j).Item("prod_codinterno") = codigo Then
+                        sumacantidad = sumacantidad + ds_consumos.Tables(0).Rows(j).Item("cantidad")
+                        j = j + 1
+                    Else
+                        i = j
+                        sumado = "no"
+                        Exit While
+                    End If
+                End While
+                fila("cantidad") = sumacantidad
+                Ds_enfermeria.Tables("insumos_consumidos").Rows.Add(fila)
+                sumacantidad = 0
+                If sumado = "si" Then
+                    i = j + 1
+                End If
+            End While
+
+            'Ds_enfermeria.Tables("insumos_consumidos").Merge(ds_consumos.Tables(0))
+            ''ahora cuento los insumos consumidos
+            Dim k As Integer = 0
+            While k < ds_consumos.Tables(0).Rows.Count
+                total = total + CInt(ds_consumos.Tables(0).Rows(k).Item("cantidad"))
+                k = k + 1
             End While
         End If
         lb_total_insumos.Text = "Total de insumos consumidos: " + CStr(total)
