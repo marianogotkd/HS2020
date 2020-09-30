@@ -6,23 +6,7 @@ Aplicacion
 </name>
 </assembly>
 <members>
-<member name="T:Aplicacion.Ds_consulta_movimientos.MovimientosDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:Aplicacion.Ds_consulta_movimientos.MovimientosRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:Aplicacion.Ds_consulta_movimientos.MovimientosRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:Aplicacion.Ds_consulta_movimientos">
-	<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
-</member><member name="T:Aplicacion.CtaCte_ds.ComprobantesDataTable">
+<member name="T:Aplicacion.CtaCte_ds.ComprobantesDataTable">
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
@@ -1452,6 +1436,22 @@ Represents strongly named DataRow class.
 Row event argument class
 </summary>
 </member><member name="T:Aplicacion.Empresa_DS">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:Aplicacion.Ds_consulta_movimientos.MovimientosDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Aplicacion.Ds_consulta_movimientos.MovimientosRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Aplicacion.Ds_consulta_movimientos.MovimientosRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Ds_consulta_movimientos">
 	<summary>
 Represents a strongly typed in-memory cache of data.
 </summary>

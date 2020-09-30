@@ -58,6 +58,7 @@ Partial Class Sesiones_consulta_global
         Me.CantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.InsumosconsumidosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Ln_totalreusos = New System.Windows.Forms.Label()
         Me.DataGridView3 = New System.Windows.Forms.DataGridView()
         Me.DialisisFiltroDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -74,7 +75,6 @@ Partial Class Sesiones_consulta_global
         Me.DateTimePicker_hasta = New System.Windows.Forms.DateTimePicker()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -128,33 +128,33 @@ Partial Class Sesiones_consulta_global
         'lb_sesionesausentes
         '
         Me.lb_sesionesausentes.AutoSize = True
-        Me.lb_sesionesausentes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lb_sesionesausentes.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.lb_sesionesausentes.Location = New System.Drawing.Point(84, 101)
+        Me.lb_sesionesausentes.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold)
+        Me.lb_sesionesausentes.ForeColor = System.Drawing.Color.Brown
+        Me.lb_sesionesausentes.Location = New System.Drawing.Point(21, 94)
         Me.lb_sesionesausentes.Name = "lb_sesionesausentes"
-        Me.lb_sesionesausentes.Size = New System.Drawing.Size(167, 20)
+        Me.lb_sesionesausentes.Size = New System.Drawing.Size(270, 31)
         Me.lb_sesionesausentes.TabIndex = 263
         Me.lb_sesionesausentes.Text = "Sesiones ausentes:"
         '
         'lb_sesionespresentes
         '
         Me.lb_sesionespresentes.AutoSize = True
-        Me.lb_sesionespresentes.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lb_sesionespresentes.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.lb_sesionespresentes.Location = New System.Drawing.Point(84, 53)
+        Me.lb_sesionespresentes.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold)
+        Me.lb_sesionespresentes.ForeColor = System.Drawing.Color.DarkOliveGreen
+        Me.lb_sesionespresentes.Location = New System.Drawing.Point(21, 29)
         Me.lb_sesionespresentes.Name = "lb_sesionespresentes"
-        Me.lb_sesionespresentes.Size = New System.Drawing.Size(173, 20)
+        Me.lb_sesionespresentes.Size = New System.Drawing.Size(280, 31)
         Me.lb_sesionespresentes.TabIndex = 262
         Me.lb_sesionespresentes.Text = "Sesiones presentes:"
         '
         'lb_sesionestotal
         '
         Me.lb_sesionestotal.AutoSize = True
-        Me.lb_sesionestotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_sesionestotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold)
         Me.lb_sesionestotal.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.lb_sesionestotal.Location = New System.Drawing.Point(84, 145)
+        Me.lb_sesionestotal.Location = New System.Drawing.Point(21, 160)
         Me.lb_sesionestotal.Name = "lb_sesionestotal"
-        Me.lb_sesionestotal.Size = New System.Drawing.Size(155, 20)
+        Me.lb_sesionestotal.Size = New System.Drawing.Size(253, 31)
         Me.lb_sesionestotal.TabIndex = 260
         Me.lb_sesionestotal.Text = "Total de sesiones:"
         '
@@ -292,7 +292,7 @@ Partial Class Sesiones_consulta_global
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.Label8.ForeColor = System.Drawing.Color.Brown
         Me.Label8.Location = New System.Drawing.Point(7, 131)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(416, 20)
@@ -303,7 +303,7 @@ Partial Class Sesiones_consulta_global
         '
         Me.lb_total_insumos.AutoSize = True
         Me.lb_total_insumos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lb_total_insumos.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.lb_total_insumos.ForeColor = System.Drawing.Color.DarkOliveGreen
         Me.lb_total_insumos.Location = New System.Drawing.Point(7, 19)
         Me.lb_total_insumos.Name = "lb_total_insumos"
         Me.lb_total_insumos.Size = New System.Drawing.Size(422, 20)
@@ -410,6 +410,17 @@ Partial Class Sesiones_consulta_global
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Resumen de filtros utilizados"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.Label1.Location = New System.Drawing.Point(355, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(129, 20)
+        Me.Label1.TabIndex = 263
+        Me.Label1.Text = "Total de filtros:"
         '
         'Ln_totalreusos
         '
@@ -578,17 +589,6 @@ Partial Class Sesiones_consulta_global
         Me.Label4.Size = New System.Drawing.Size(211, 17)
         Me.Label4.TabIndex = 275
         Me.Label4.Text = "Resultados de la búsqueda:"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.HotTrack
-        Me.Label1.Location = New System.Drawing.Point(355, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(129, 20)
-        Me.Label1.TabIndex = 263
-        Me.Label1.Text = "Total de filtros:"
         '
         'Sesiones_consulta_global
         '
