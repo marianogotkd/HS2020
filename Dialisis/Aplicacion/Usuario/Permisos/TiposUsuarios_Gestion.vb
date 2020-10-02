@@ -56,6 +56,12 @@ Public Class TiposUsuarios_Gestion
                 CheckBox_ENF_InfDia.Checked = True
             End If
 
+            If DS_Modulos.Tables(0).Rows(i).Item("USUModulos_descripcion") = "ENF_Consulta" Then
+                'GroupBox_Med.Visible = True
+                CheckBox_ENF_ConsSes.Checked = True
+            End If
+
+
             ''_____________ENFERMERIA____________
 
 
@@ -222,6 +228,8 @@ Public Class TiposUsuarios_Gestion
         CheckBox_ENF_NSD.Checked = False
       
         CheckBox_ENF_InfDia.Checked = False
+
+        CheckBox_ENF_ConsSes.Checked = False
       
         ''_____________ENFERMERIA____________
 

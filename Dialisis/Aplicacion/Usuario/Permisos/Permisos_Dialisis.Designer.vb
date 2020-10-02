@@ -25,53 +25,54 @@ Partial Class Permisios_Dialisis
         Me.GroupBox_cli = New System.Windows.Forms.GroupBox()
         Me.CheckBox_MED_cons = New System.Windows.Forms.CheckBox()
         Me.CheckBox_MED_nuevo = New System.Windows.Forms.CheckBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.CheckBox_PAC_actualizar = New System.Windows.Forms.CheckBox()
         Me.CheckBox_ENF_NSD = New System.Windows.Forms.CheckBox()
         Me.GroupBox_Configuraciones = New System.Windows.Forms.GroupBox()
         Me.CheckBox_ENF_InfDia = New System.Windows.Forms.CheckBox()
+        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.CheckBox_PAC_nuevo = New System.Windows.Forms.CheckBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.CheckBox_PAC_HC = New System.Windows.Forms.CheckBox()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox_Stock = New System.Windows.Forms.GroupBox()
+        Me.CheckBox_STOCK_Consultar = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_STOCK_Consumir = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_STOCK_Cat = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_STOCK_marca = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_STOCK_Prov = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_STOCK_insumo = New System.Windows.Forms.CheckBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.tx_desc = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.CheckBox_OBRA_InfPAC = New System.Windows.Forms.CheckBox()
         Me.CheckBox_OBRA_actualizar = New System.Windows.Forms.CheckBox()
         Me.CheckBox_OBRA_nuevo = New System.Windows.Forms.CheckBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox_DEP_Consulta = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_DEP_Baja = New System.Windows.Forms.CheckBox()
         Me.CheckBox_DEP_Mov = New System.Windows.Forms.CheckBox()
         Me.CheckBox_DEP_ingreso = New System.Windows.Forms.CheckBox()
-        Me.CheckBox_DEP_Baja = New System.Windows.Forms.CheckBox()
-        Me.CheckBox_DEP_Consulta = New System.Windows.Forms.CheckBox()
         Me.PictureBox4 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
         Me.btn_cancelar = New System.Windows.Forms.Button()
         Me.btn_guardar = New System.Windows.Forms.Button()
         Me.btn_Agregar_Prod = New System.Windows.Forms.Button()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.CheckBox_STOCK_insumo = New System.Windows.Forms.CheckBox()
-        Me.CheckBox_STOCK_Prov = New System.Windows.Forms.CheckBox()
-        Me.CheckBox_STOCK_marca = New System.Windows.Forms.CheckBox()
-        Me.CheckBox_STOCK_Cat = New System.Windows.Forms.CheckBox()
-        Me.CheckBox_STOCK_Consumir = New System.Windows.Forms.CheckBox()
-        Me.CheckBox_STOCK_Consultar = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_ENF_ConsSes = New System.Windows.Forms.CheckBox()
         Me.GroupBox_cli.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_Configuraciones.SuspendLayout()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_Stock.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox_cli
@@ -109,6 +110,16 @@ Partial Class Permisios_Dialisis
         Me.CheckBox_MED_nuevo.Text = "Nuevo"
         Me.CheckBox_MED_nuevo.UseVisualStyleBackColor = True
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.Aplicacion.My.Resources.Resources.medical_29_icon_icons_com_73943
+        Me.PictureBox1.Location = New System.Drawing.Point(6, 19)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(90, 84)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
         'CheckBox_PAC_actualizar
         '
         Me.CheckBox_PAC_actualizar.AutoSize = True
@@ -133,6 +144,7 @@ Partial Class Permisios_Dialisis
         '
         'GroupBox_Configuraciones
         '
+        Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_ConsSes)
         Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_InfDia)
         Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_NSD)
         Me.GroupBox_Configuraciones.Controls.Add(Me.PictureBox6)
@@ -154,6 +166,16 @@ Partial Class Permisios_Dialisis
         Me.CheckBox_ENF_InfDia.TabIndex = 5
         Me.CheckBox_ENF_InfDia.Text = "Informe de Dialisis"
         Me.CheckBox_ENF_InfDia.UseVisualStyleBackColor = True
+        '
+        'PictureBox6
+        '
+        Me.PictureBox6.Image = Global.Aplicacion.My.Resources.Resources.hospital_2_icon_icons_com_66067_64x64
+        Me.PictureBox6.Location = New System.Drawing.Point(6, 19)
+        Me.PictureBox6.Name = "PictureBox6"
+        Me.PictureBox6.Size = New System.Drawing.Size(90, 84)
+        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox6.TabIndex = 0
+        Me.PictureBox6.TabStop = False
         '
         'CheckBox_PAC_nuevo
         '
@@ -191,6 +213,16 @@ Partial Class Permisios_Dialisis
         Me.CheckBox_PAC_HC.Text = "Historia Clinica"
         Me.CheckBox_PAC_HC.UseVisualStyleBackColor = True
         '
+        'PictureBox5
+        '
+        Me.PictureBox5.Image = Global.Aplicacion.My.Resources.Resources.paciente64x64
+        Me.PictureBox5.Location = New System.Drawing.Point(6, 19)
+        Me.PictureBox5.Name = "PictureBox5"
+        Me.PictureBox5.Size = New System.Drawing.Size(90, 84)
+        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox5.TabIndex = 0
+        Me.PictureBox5.TabStop = False
+        '
         'Label3
         '
         Me.Label3.AutoSize = True
@@ -218,6 +250,82 @@ Partial Class Permisios_Dialisis
         Me.GroupBox_Stock.TabIndex = 16
         Me.GroupBox_Stock.TabStop = False
         Me.GroupBox_Stock.Text = "Gestion de Insumos"
+        '
+        'CheckBox_STOCK_Consultar
+        '
+        Me.CheckBox_STOCK_Consultar.AutoSize = True
+        Me.CheckBox_STOCK_Consultar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_STOCK_Consultar.Location = New System.Drawing.Point(191, 42)
+        Me.CheckBox_STOCK_Consultar.Name = "CheckBox_STOCK_Consultar"
+        Me.CheckBox_STOCK_Consultar.Size = New System.Drawing.Size(122, 17)
+        Me.CheckBox_STOCK_Consultar.TabIndex = 32
+        Me.CheckBox_STOCK_Consultar.Text = "Consultar Consumos"
+        Me.CheckBox_STOCK_Consultar.UseVisualStyleBackColor = True
+        '
+        'CheckBox_STOCK_Consumir
+        '
+        Me.CheckBox_STOCK_Consumir.AutoSize = True
+        Me.CheckBox_STOCK_Consumir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_STOCK_Consumir.Location = New System.Drawing.Point(191, 19)
+        Me.CheckBox_STOCK_Consumir.Name = "CheckBox_STOCK_Consumir"
+        Me.CheckBox_STOCK_Consumir.Size = New System.Drawing.Size(111, 17)
+        Me.CheckBox_STOCK_Consumir.TabIndex = 31
+        Me.CheckBox_STOCK_Consumir.Text = "Consumir Insumos"
+        Me.CheckBox_STOCK_Consumir.UseVisualStyleBackColor = True
+        '
+        'CheckBox_STOCK_Cat
+        '
+        Me.CheckBox_STOCK_Cat.AutoSize = True
+        Me.CheckBox_STOCK_Cat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_STOCK_Cat.Location = New System.Drawing.Point(102, 88)
+        Me.CheckBox_STOCK_Cat.Name = "CheckBox_STOCK_Cat"
+        Me.CheckBox_STOCK_Cat.Size = New System.Drawing.Size(71, 17)
+        Me.CheckBox_STOCK_Cat.TabIndex = 10
+        Me.CheckBox_STOCK_Cat.Text = "Categoria"
+        Me.CheckBox_STOCK_Cat.UseVisualStyleBackColor = True
+        '
+        'CheckBox_STOCK_marca
+        '
+        Me.CheckBox_STOCK_marca.AutoSize = True
+        Me.CheckBox_STOCK_marca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_STOCK_marca.Location = New System.Drawing.Point(102, 65)
+        Me.CheckBox_STOCK_marca.Name = "CheckBox_STOCK_marca"
+        Me.CheckBox_STOCK_marca.Size = New System.Drawing.Size(56, 17)
+        Me.CheckBox_STOCK_marca.TabIndex = 9
+        Me.CheckBox_STOCK_marca.Text = "Marca"
+        Me.CheckBox_STOCK_marca.UseVisualStyleBackColor = True
+        '
+        'CheckBox_STOCK_Prov
+        '
+        Me.CheckBox_STOCK_Prov.AutoSize = True
+        Me.CheckBox_STOCK_Prov.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_STOCK_Prov.Location = New System.Drawing.Point(102, 42)
+        Me.CheckBox_STOCK_Prov.Name = "CheckBox_STOCK_Prov"
+        Me.CheckBox_STOCK_Prov.Size = New System.Drawing.Size(75, 17)
+        Me.CheckBox_STOCK_Prov.TabIndex = 8
+        Me.CheckBox_STOCK_Prov.Text = "Proveedor"
+        Me.CheckBox_STOCK_Prov.UseVisualStyleBackColor = True
+        '
+        'CheckBox_STOCK_insumo
+        '
+        Me.CheckBox_STOCK_insumo.AutoSize = True
+        Me.CheckBox_STOCK_insumo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_STOCK_insumo.Location = New System.Drawing.Point(102, 19)
+        Me.CheckBox_STOCK_insumo.Name = "CheckBox_STOCK_insumo"
+        Me.CheckBox_STOCK_insumo.Size = New System.Drawing.Size(60, 17)
+        Me.CheckBox_STOCK_insumo.TabIndex = 7
+        Me.CheckBox_STOCK_insumo.Text = "Insumo"
+        Me.CheckBox_STOCK_insumo.UseVisualStyleBackColor = True
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.Aplicacion.My.Resources.Resources.Stock
+        Me.PictureBox2.Location = New System.Drawing.Point(6, 19)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(90, 84)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 0
+        Me.PictureBox2.TabStop = False
         '
         'tx_desc
         '
@@ -286,6 +394,16 @@ Partial Class Permisios_Dialisis
         Me.CheckBox_OBRA_nuevo.Text = "Nuevo"
         Me.CheckBox_OBRA_nuevo.UseVisualStyleBackColor = True
         '
+        'PictureBox3
+        '
+        Me.PictureBox3.Image = Global.Aplicacion.My.Resources.Resources.signofhealth_medical_10742
+        Me.PictureBox3.Location = New System.Drawing.Point(6, 19)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(90, 84)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox3.TabIndex = 0
+        Me.PictureBox3.TabStop = False
+        '
         'GroupBox6
         '
         Me.GroupBox6.Controls.Add(Me.CheckBox_DEP_Consulta)
@@ -300,6 +418,28 @@ Partial Class Permisios_Dialisis
         Me.GroupBox6.TabIndex = 30
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Deposito"
+        '
+        'CheckBox_DEP_Consulta
+        '
+        Me.CheckBox_DEP_Consulta.AutoSize = True
+        Me.CheckBox_DEP_Consulta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_DEP_Consulta.Location = New System.Drawing.Point(102, 86)
+        Me.CheckBox_DEP_Consulta.Name = "CheckBox_DEP_Consulta"
+        Me.CheckBox_DEP_Consulta.Size = New System.Drawing.Size(72, 17)
+        Me.CheckBox_DEP_Consulta.TabIndex = 5
+        Me.CheckBox_DEP_Consulta.Text = "Consultas"
+        Me.CheckBox_DEP_Consulta.UseVisualStyleBackColor = True
+        '
+        'CheckBox_DEP_Baja
+        '
+        Me.CheckBox_DEP_Baja.AutoSize = True
+        Me.CheckBox_DEP_Baja.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_DEP_Baja.Location = New System.Drawing.Point(102, 65)
+        Me.CheckBox_DEP_Baja.Name = "CheckBox_DEP_Baja"
+        Me.CheckBox_DEP_Baja.Size = New System.Drawing.Size(93, 17)
+        Me.CheckBox_DEP_Baja.TabIndex = 4
+        Me.CheckBox_DEP_Baja.Text = "Baja de Stock"
+        Me.CheckBox_DEP_Baja.UseVisualStyleBackColor = True
         '
         'CheckBox_DEP_Mov
         '
@@ -323,28 +463,6 @@ Partial Class Permisios_Dialisis
         Me.CheckBox_DEP_ingreso.Text = "Ingreso de Stock"
         Me.CheckBox_DEP_ingreso.UseVisualStyleBackColor = True
         '
-        'CheckBox_DEP_Baja
-        '
-        Me.CheckBox_DEP_Baja.AutoSize = True
-        Me.CheckBox_DEP_Baja.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox_DEP_Baja.Location = New System.Drawing.Point(102, 65)
-        Me.CheckBox_DEP_Baja.Name = "CheckBox_DEP_Baja"
-        Me.CheckBox_DEP_Baja.Size = New System.Drawing.Size(93, 17)
-        Me.CheckBox_DEP_Baja.TabIndex = 4
-        Me.CheckBox_DEP_Baja.Text = "Baja de Stock"
-        Me.CheckBox_DEP_Baja.UseVisualStyleBackColor = True
-        '
-        'CheckBox_DEP_Consulta
-        '
-        Me.CheckBox_DEP_Consulta.AutoSize = True
-        Me.CheckBox_DEP_Consulta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox_DEP_Consulta.Location = New System.Drawing.Point(102, 86)
-        Me.CheckBox_DEP_Consulta.Name = "CheckBox_DEP_Consulta"
-        Me.CheckBox_DEP_Consulta.Size = New System.Drawing.Size(72, 17)
-        Me.CheckBox_DEP_Consulta.TabIndex = 5
-        Me.CheckBox_DEP_Consulta.Text = "Consultas"
-        Me.CheckBox_DEP_Consulta.UseVisualStyleBackColor = True
-        '
         'PictureBox4
         '
         Me.PictureBox4.Image = Global.Aplicacion.My.Resources.Resources.Deposito
@@ -354,46 +472,6 @@ Partial Class Permisios_Dialisis
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox4.TabIndex = 0
         Me.PictureBox4.TabStop = False
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.Image = Global.Aplicacion.My.Resources.Resources.signofhealth_medical_10742
-        Me.PictureBox3.Location = New System.Drawing.Point(6, 19)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(90, 84)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox3.TabIndex = 0
-        Me.PictureBox3.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.Aplicacion.My.Resources.Resources.medical_29_icon_icons_com_73943
-        Me.PictureBox1.Location = New System.Drawing.Point(6, 19)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(90, 84)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
-        '
-        'PictureBox6
-        '
-        Me.PictureBox6.Image = Global.Aplicacion.My.Resources.Resources.hospital_2_icon_icons_com_66067_64x64
-        Me.PictureBox6.Location = New System.Drawing.Point(6, 19)
-        Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(90, 84)
-        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox6.TabIndex = 0
-        Me.PictureBox6.TabStop = False
-        '
-        'PictureBox5
-        '
-        Me.PictureBox5.Image = Global.Aplicacion.My.Resources.Resources.paciente64x64
-        Me.PictureBox5.Location = New System.Drawing.Point(6, 19)
-        Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(90, 84)
-        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox5.TabIndex = 0
-        Me.PictureBox5.TabStop = False
         '
         'btn_cancelar
         '
@@ -439,81 +517,16 @@ Partial Class Permisios_Dialisis
         Me.btn_Agregar_Prod.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_Agregar_Prod.UseVisualStyleBackColor = True
         '
-        'PictureBox2
+        'CheckBox_ENF_ConsSes
         '
-        Me.PictureBox2.Image = Global.Aplicacion.My.Resources.Resources.Stock
-        Me.PictureBox2.Location = New System.Drawing.Point(6, 19)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(90, 84)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 0
-        Me.PictureBox2.TabStop = False
-        '
-        'CheckBox_STOCK_insumo
-        '
-        Me.CheckBox_STOCK_insumo.AutoSize = True
-        Me.CheckBox_STOCK_insumo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox_STOCK_insumo.Location = New System.Drawing.Point(102, 19)
-        Me.CheckBox_STOCK_insumo.Name = "CheckBox_STOCK_insumo"
-        Me.CheckBox_STOCK_insumo.Size = New System.Drawing.Size(60, 17)
-        Me.CheckBox_STOCK_insumo.TabIndex = 7
-        Me.CheckBox_STOCK_insumo.Text = "Insumo"
-        Me.CheckBox_STOCK_insumo.UseVisualStyleBackColor = True
-        '
-        'CheckBox_STOCK_Prov
-        '
-        Me.CheckBox_STOCK_Prov.AutoSize = True
-        Me.CheckBox_STOCK_Prov.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox_STOCK_Prov.Location = New System.Drawing.Point(102, 42)
-        Me.CheckBox_STOCK_Prov.Name = "CheckBox_STOCK_Prov"
-        Me.CheckBox_STOCK_Prov.Size = New System.Drawing.Size(75, 17)
-        Me.CheckBox_STOCK_Prov.TabIndex = 8
-        Me.CheckBox_STOCK_Prov.Text = "Proveedor"
-        Me.CheckBox_STOCK_Prov.UseVisualStyleBackColor = True
-        '
-        'CheckBox_STOCK_marca
-        '
-        Me.CheckBox_STOCK_marca.AutoSize = True
-        Me.CheckBox_STOCK_marca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox_STOCK_marca.Location = New System.Drawing.Point(102, 65)
-        Me.CheckBox_STOCK_marca.Name = "CheckBox_STOCK_marca"
-        Me.CheckBox_STOCK_marca.Size = New System.Drawing.Size(56, 17)
-        Me.CheckBox_STOCK_marca.TabIndex = 9
-        Me.CheckBox_STOCK_marca.Text = "Marca"
-        Me.CheckBox_STOCK_marca.UseVisualStyleBackColor = True
-        '
-        'CheckBox_STOCK_Cat
-        '
-        Me.CheckBox_STOCK_Cat.AutoSize = True
-        Me.CheckBox_STOCK_Cat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox_STOCK_Cat.Location = New System.Drawing.Point(102, 88)
-        Me.CheckBox_STOCK_Cat.Name = "CheckBox_STOCK_Cat"
-        Me.CheckBox_STOCK_Cat.Size = New System.Drawing.Size(71, 17)
-        Me.CheckBox_STOCK_Cat.TabIndex = 10
-        Me.CheckBox_STOCK_Cat.Text = "Categoria"
-        Me.CheckBox_STOCK_Cat.UseVisualStyleBackColor = True
-        '
-        'CheckBox_STOCK_Consumir
-        '
-        Me.CheckBox_STOCK_Consumir.AutoSize = True
-        Me.CheckBox_STOCK_Consumir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox_STOCK_Consumir.Location = New System.Drawing.Point(191, 19)
-        Me.CheckBox_STOCK_Consumir.Name = "CheckBox_STOCK_Consumir"
-        Me.CheckBox_STOCK_Consumir.Size = New System.Drawing.Size(111, 17)
-        Me.CheckBox_STOCK_Consumir.TabIndex = 31
-        Me.CheckBox_STOCK_Consumir.Text = "Consumir Insumos"
-        Me.CheckBox_STOCK_Consumir.UseVisualStyleBackColor = True
-        '
-        'CheckBox_STOCK_Consultar
-        '
-        Me.CheckBox_STOCK_Consultar.AutoSize = True
-        Me.CheckBox_STOCK_Consultar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox_STOCK_Consultar.Location = New System.Drawing.Point(191, 42)
-        Me.CheckBox_STOCK_Consultar.Name = "CheckBox_STOCK_Consultar"
-        Me.CheckBox_STOCK_Consultar.Size = New System.Drawing.Size(122, 17)
-        Me.CheckBox_STOCK_Consultar.TabIndex = 32
-        Me.CheckBox_STOCK_Consultar.Text = "Consultar Consumos"
-        Me.CheckBox_STOCK_Consultar.UseVisualStyleBackColor = True
+        Me.CheckBox_ENF_ConsSes.AutoSize = True
+        Me.CheckBox_ENF_ConsSes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_ENF_ConsSes.Location = New System.Drawing.Point(102, 65)
+        Me.CheckBox_ENF_ConsSes.Name = "CheckBox_ENF_ConsSes"
+        Me.CheckBox_ENF_ConsSes.Size = New System.Drawing.Size(128, 17)
+        Me.CheckBox_ENF_ConsSes.TabIndex = 6
+        Me.CheckBox_ENF_ConsSes.Text = "Consulta de Sesiones"
+        Me.CheckBox_ENF_ConsSes.UseVisualStyleBackColor = True
         '
         'Permisios_Dialisis
         '
@@ -540,22 +553,22 @@ Partial Class Permisios_Dialisis
         Me.Text = "Permisios"
         Me.GroupBox_cli.ResumeLayout(False)
         Me.GroupBox_cli.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox_Configuraciones.ResumeLayout(False)
         Me.GroupBox_Configuraciones.PerformLayout()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox_Stock.ResumeLayout(False)
         Me.GroupBox_Stock.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -598,4 +611,5 @@ Partial Class Permisios_Dialisis
     Friend WithEvents CheckBox_STOCK_Prov As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox_STOCK_Consultar As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox_STOCK_Consumir As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox_ENF_ConsSes As System.Windows.Forms.CheckBox
 End Class
