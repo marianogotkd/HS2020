@@ -77,11 +77,17 @@
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Dim result As Integer = MessageBox.Show("¿Desea generar un reporte con la información de la consulta actual?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If result = DialogResult.Yes Then
-            msj_esperar_b.procedencia = "Consultas_Bajas_b"
-            msj_esperar_b.Show()
+        If DataGridView1.Rows.Count <> 0 Then
+
+            Dim result As Integer = MessageBox.Show("¿Desea generar un reporte con la información de la consulta actual?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+                msj_esperar_b.procedencia = "Consultas_Bajas_b"
+                msj_esperar_b.Show()
+            End If
+        Else
+            MessageBox.Show("No hay información para generar el reporte. Realice una nueva consulta.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
+
     End Sub
 
     Dim DAventa As New Datos.Venta

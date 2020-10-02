@@ -185,9 +185,9 @@ Partial Class Historia_Clinica_Detalle
         Me.MedicoidDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ConsultapsicológicaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.cb_med_AS_activos = New System.Windows.Forms.ComboBox()
         Me.btn_modif_AS = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.cb_med_AS_activos = New System.Windows.Forms.ComboBox()
         Me.Fecha_AS = New System.Windows.Forms.DateTimePicker()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.tx_nmat_AS = New System.Windows.Forms.TextBox()
@@ -216,9 +216,9 @@ Partial Class Historia_Clinica_Detalle
         Me.MedicoidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ConsultaASocialBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.cb_med_CN_activos = New System.Windows.Forms.ComboBox()
         Me.btn_modif_CN = New System.Windows.Forms.Button()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.cb_med_CN_activos = New System.Windows.Forms.ComboBox()
         Me.Fecha_CN = New System.Windows.Forms.DateTimePicker()
         Me.Label37 = New System.Windows.Forms.Label()
         Me.tx_nmat_CN = New System.Windows.Forms.TextBox()
@@ -250,7 +250,6 @@ Partial Class Historia_Clinica_Detalle
         Me.MedicoidDataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ConsultanutricionalBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TabPage6 = New System.Windows.Forms.TabPage()
-        Me.cb_TRAS_med_activos = New System.Windows.Forms.ComboBox()
         Me.Btn_TRAS_mod = New System.Windows.Forms.Button()
         Me.btn_TRAS_nuevo = New System.Windows.Forms.Button()
         Me.btn_TRAS_cancelar = New System.Windows.Forms.Button()
@@ -262,6 +261,7 @@ Partial Class Historia_Clinica_Detalle
         Me.DateTime_LE = New System.Windows.Forms.DateTimePicker()
         Me.Label55 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.cb_TRAS_med_activos = New System.Windows.Forms.ComboBox()
         Me.DateTime_TRAS = New System.Windows.Forms.DateTimePicker()
         Me.Label51 = New System.Windows.Forms.Label()
         Me.tb_TRAS_nmat = New System.Windows.Forms.TextBox()
@@ -957,11 +957,11 @@ Partial Class Historia_Clinica_Detalle
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.icono_editar_30x30
-        Me.Button2.Location = New System.Drawing.Point(666, 446)
+        Me.Button2.Location = New System.Drawing.Point(592, 445)
         Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(122, 43)
-        Me.Button2.TabIndex = 311
+        Me.Button2.TabIndex = 8
         Me.Button2.Text = "Modificar"
         Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.Button2.UseVisualStyleBackColor = True
@@ -985,7 +985,7 @@ Partial Class Historia_Clinica_Detalle
         Me.btn_ev_cancelar.Enabled = False
         Me.btn_ev_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_ev_cancelar.Image = Global.Aplicacion.My.Resources.Resources.menos
-        Me.btn_ev_cancelar.Location = New System.Drawing.Point(926, 446)
+        Me.btn_ev_cancelar.Location = New System.Drawing.Point(852, 445)
         Me.btn_ev_cancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_ev_cancelar.Name = "btn_ev_cancelar"
         Me.btn_ev_cancelar.Size = New System.Drawing.Size(122, 43)
@@ -999,7 +999,7 @@ Partial Class Historia_Clinica_Detalle
         Me.btn_ev_guardar.Enabled = False
         Me.btn_ev_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_ev_guardar.Image = Global.Aplicacion.My.Resources.Resources.Pasar
-        Me.btn_ev_guardar.Location = New System.Drawing.Point(796, 446)
+        Me.btn_ev_guardar.Location = New System.Drawing.Point(722, 445)
         Me.btn_ev_guardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_ev_guardar.Name = "btn_ev_guardar"
         Me.btn_ev_guardar.Size = New System.Drawing.Size(122, 43)
@@ -1011,51 +1011,51 @@ Partial Class Historia_Clinica_Detalle
         'tx_ev_EP
         '
         Me.tx_ev_EP.BackColor = System.Drawing.Color.Beige
-        Me.tx_ev_EP.Location = New System.Drawing.Point(630, 334)
+        Me.tx_ev_EP.Location = New System.Drawing.Point(556, 167)
         Me.tx_ev_EP.Multiline = True
         Me.tx_ev_EP.Name = "tx_ev_EP"
         Me.tx_ev_EP.ReadOnly = True
         Me.tx_ev_EP.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.tx_ev_EP.Size = New System.Drawing.Size(418, 105)
-        Me.tx_ev_EP.TabIndex = 5
+        Me.tx_ev_EP.TabIndex = 4
         '
         'tx_ev_AF
         '
         Me.tx_ev_AF.BackColor = System.Drawing.Color.Beige
-        Me.tx_ev_AF.Location = New System.Drawing.Point(630, 200)
+        Me.tx_ev_AF.Location = New System.Drawing.Point(89, 310)
         Me.tx_ev_AF.Multiline = True
         Me.tx_ev_AF.Name = "tx_ev_AF"
         Me.tx_ev_AF.ReadOnly = True
         Me.tx_ev_AF.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.tx_ev_AF.Size = New System.Drawing.Size(418, 105)
-        Me.tx_ev_AF.TabIndex = 4
+        Me.tx_ev_AF.TabIndex = 2
         '
         'tx_ev_AEA
         '
         Me.tx_ev_AEA.BackColor = System.Drawing.Color.Beige
-        Me.tx_ev_AEA.Location = New System.Drawing.Point(630, 68)
+        Me.tx_ev_AEA.Location = New System.Drawing.Point(89, 35)
         Me.tx_ev_AEA.Multiline = True
         Me.tx_ev_AEA.Name = "tx_ev_AEA"
         Me.tx_ev_AEA.ReadOnly = True
         Me.tx_ev_AEA.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.tx_ev_AEA.Size = New System.Drawing.Size(418, 105)
-        Me.tx_ev_AEA.TabIndex = 3
+        Me.tx_ev_AEA.TabIndex = 0
         '
         'tx_ev_EF
         '
         Me.tx_ev_EF.BackColor = System.Drawing.Color.Beige
-        Me.tx_ev_EF.Location = New System.Drawing.Point(89, 334)
+        Me.tx_ev_EF.Location = New System.Drawing.Point(556, 35)
         Me.tx_ev_EF.Multiline = True
         Me.tx_ev_EF.Name = "tx_ev_EF"
         Me.tx_ev_EF.ReadOnly = True
         Me.tx_ev_EF.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.tx_ev_EF.Size = New System.Drawing.Size(418, 105)
-        Me.tx_ev_EF.TabIndex = 2
+        Me.tx_ev_EF.TabIndex = 3
         '
         'tx_ev_APP
         '
         Me.tx_ev_APP.BackColor = System.Drawing.Color.Beige
-        Me.tx_ev_APP.Location = New System.Drawing.Point(89, 200)
+        Me.tx_ev_APP.Location = New System.Drawing.Point(89, 167)
         Me.tx_ev_APP.Multiline = True
         Me.tx_ev_APP.Name = "tx_ev_APP"
         Me.tx_ev_APP.ReadOnly = True
@@ -1066,29 +1066,29 @@ Partial Class Historia_Clinica_Detalle
         'tx_ev_DN
         '
         Me.tx_ev_DN.BackColor = System.Drawing.Color.Beige
-        Me.tx_ev_DN.Location = New System.Drawing.Point(89, 68)
+        Me.tx_ev_DN.Location = New System.Drawing.Point(556, 310)
         Me.tx_ev_DN.Multiline = True
         Me.tx_ev_DN.Name = "tx_ev_DN"
         Me.tx_ev_DN.ReadOnly = True
         Me.tx_ev_DN.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.tx_ev_DN.Size = New System.Drawing.Size(418, 105)
-        Me.tx_ev_DN.TabIndex = 0
+        Me.tx_ev_DN.TabIndex = 5
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(86, 49)
+        Me.Label11.Location = New System.Drawing.Point(553, 282)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(176, 16)
         Me.Label11.TabIndex = 282
-        Me.Label11.Text = "Diagnostico Nefrológico"
+        Me.Label11.Text = "Diagnóstico Nefrológico"
         '
         'Label12
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(627, 181)
+        Me.Label12.Location = New System.Drawing.Point(86, 282)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(180, 16)
         Me.Label12.TabIndex = 281
@@ -1098,7 +1098,7 @@ Partial Class Historia_Clinica_Detalle
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(627, 49)
+        Me.Label13.Location = New System.Drawing.Point(86, 16)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(270, 16)
         Me.Label13.TabIndex = 280
@@ -1108,7 +1108,7 @@ Partial Class Historia_Clinica_Detalle
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(86, 313)
+        Me.Label16.Location = New System.Drawing.Point(553, 14)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(109, 16)
         Me.Label16.TabIndex = 276
@@ -1118,7 +1118,7 @@ Partial Class Historia_Clinica_Detalle
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(86, 181)
+        Me.Label15.Location = New System.Drawing.Point(86, 148)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(246, 16)
         Me.Label15.TabIndex = 274
@@ -1128,7 +1128,7 @@ Partial Class Historia_Clinica_Detalle
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(627, 313)
+        Me.Label14.Location = New System.Drawing.Point(553, 148)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(125, 16)
         Me.Label14.TabIndex = 272
@@ -2049,18 +2049,6 @@ Partial Class Historia_Clinica_Detalle
         Me.TabPage4.Text = "Asistencia Social"
         Me.TabPage4.UseVisualStyleBackColor = True
         '
-        'cb_med_AS_activos
-        '
-        Me.cb_med_AS_activos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cb_med_AS_activos.Enabled = False
-        Me.cb_med_AS_activos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cb_med_AS_activos.FormattingEnabled = True
-        Me.cb_med_AS_activos.Location = New System.Drawing.Point(473, 9)
-        Me.cb_med_AS_activos.Name = "cb_med_AS_activos"
-        Me.cb_med_AS_activos.Size = New System.Drawing.Size(249, 28)
-        Me.cb_med_AS_activos.TabIndex = 317
-        Me.cb_med_AS_activos.Visible = False
-        '
         'btn_modif_AS
         '
         Me.btn_modif_AS.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2089,6 +2077,18 @@ Partial Class Historia_Clinica_Detalle
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(1094, 49)
         Me.Panel3.TabIndex = 316
+        '
+        'cb_med_AS_activos
+        '
+        Me.cb_med_AS_activos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cb_med_AS_activos.Enabled = False
+        Me.cb_med_AS_activos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cb_med_AS_activos.FormattingEnabled = True
+        Me.cb_med_AS_activos.Location = New System.Drawing.Point(473, 9)
+        Me.cb_med_AS_activos.Name = "cb_med_AS_activos"
+        Me.cb_med_AS_activos.Size = New System.Drawing.Size(249, 28)
+        Me.cb_med_AS_activos.TabIndex = 317
+        Me.cb_med_AS_activos.Visible = False
         '
         'Fecha_AS
         '
@@ -2400,18 +2400,6 @@ Partial Class Historia_Clinica_Detalle
         Me.TabPage5.Text = "Consulta Nutricional"
         Me.TabPage5.UseVisualStyleBackColor = True
         '
-        'cb_med_CN_activos
-        '
-        Me.cb_med_CN_activos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cb_med_CN_activos.Enabled = False
-        Me.cb_med_CN_activos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cb_med_CN_activos.FormattingEnabled = True
-        Me.cb_med_CN_activos.Location = New System.Drawing.Point(473, 9)
-        Me.cb_med_CN_activos.Name = "cb_med_CN_activos"
-        Me.cb_med_CN_activos.Size = New System.Drawing.Size(249, 28)
-        Me.cb_med_CN_activos.TabIndex = 317
-        Me.cb_med_CN_activos.Visible = False
-        '
         'btn_modif_CN
         '
         Me.btn_modif_CN.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2440,6 +2428,18 @@ Partial Class Historia_Clinica_Detalle
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(1094, 49)
         Me.Panel4.TabIndex = 316
+        '
+        'cb_med_CN_activos
+        '
+        Me.cb_med_CN_activos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cb_med_CN_activos.Enabled = False
+        Me.cb_med_CN_activos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cb_med_CN_activos.FormattingEnabled = True
+        Me.cb_med_CN_activos.Location = New System.Drawing.Point(473, 9)
+        Me.cb_med_CN_activos.Name = "cb_med_CN_activos"
+        Me.cb_med_CN_activos.Size = New System.Drawing.Size(249, 28)
+        Me.cb_med_CN_activos.TabIndex = 317
+        Me.cb_med_CN_activos.Visible = False
         '
         'Fecha_CN
         '
@@ -2782,18 +2782,6 @@ Partial Class Historia_Clinica_Detalle
         Me.TabPage6.Text = "Trasplante"
         Me.TabPage6.UseVisualStyleBackColor = True
         '
-        'cb_TRAS_med_activos
-        '
-        Me.cb_TRAS_med_activos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cb_TRAS_med_activos.Enabled = False
-        Me.cb_TRAS_med_activos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cb_TRAS_med_activos.FormattingEnabled = True
-        Me.cb_TRAS_med_activos.Location = New System.Drawing.Point(473, 9)
-        Me.cb_TRAS_med_activos.Name = "cb_TRAS_med_activos"
-        Me.cb_TRAS_med_activos.Size = New System.Drawing.Size(249, 28)
-        Me.cb_TRAS_med_activos.TabIndex = 331
-        Me.cb_TRAS_med_activos.Visible = False
-        '
         'Btn_TRAS_mod
         '
         Me.Btn_TRAS_mod.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2924,6 +2912,18 @@ Partial Class Historia_Clinica_Detalle
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(1094, 49)
         Me.Panel5.TabIndex = 317
+        '
+        'cb_TRAS_med_activos
+        '
+        Me.cb_TRAS_med_activos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cb_TRAS_med_activos.Enabled = False
+        Me.cb_TRAS_med_activos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cb_TRAS_med_activos.FormattingEnabled = True
+        Me.cb_TRAS_med_activos.Location = New System.Drawing.Point(473, 9)
+        Me.cb_TRAS_med_activos.Name = "cb_TRAS_med_activos"
+        Me.cb_TRAS_med_activos.Size = New System.Drawing.Size(249, 28)
+        Me.cb_TRAS_med_activos.TabIndex = 331
+        Me.cb_TRAS_med_activos.Visible = False
         '
         'DateTime_TRAS
         '

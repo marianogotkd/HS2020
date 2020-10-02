@@ -451,6 +451,12 @@
     <Compile Include="Modulos\Enfermeria\Nueva_sesion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Enfermeria\Sesiones_consulta_global.Designer.vb">
+      <DependentUpon>Sesiones_consulta_global.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Enfermeria\Sesiones_consulta_global.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Enfermeria\Sesion_pacientes.Designer.vb">
       <DependentUpon>Sesion_pacientes.vb</DependentUpon>
     </Compile>
@@ -735,6 +741,17 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>D_consulta_mov_alta.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Gestion de Mercaderia\Consultas Movimientos_b\Consultas_Movimientos_b.Designer.vb">
+      <DependentUpon>Consultas_Movimientos_b.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Gestion de Mercaderia\Consultas Movimientos_b\Consultas_Movimientos_b.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Gestion de Mercaderia\Consultas Movimientos_b\Ds_consulta_movimientos.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_consulta_movimientos.xsd</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Gestion de Mercaderia\Consumos_consulta.Designer.vb">
       <DependentUpon>Consumos_consulta.vb</DependentUpon>
@@ -1076,6 +1093,12 @@
     </Compile>
     <Compile Include="Modulos\Reportes_Dialisis\Consulta_baja_b_CR.vb">
       <DependentUpon>Consulta_baja_b_CR.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Modulos\Reportes_Dialisis\Consulta_mov_b_CR.vb">
+      <DependentUpon>Consulta_mov_b_CR.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -1728,6 +1751,9 @@
     <EmbeddedResource Include="Modulos\Enfermeria\Nueva_sesion.resx">
       <DependentUpon>Nueva_sesion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Enfermeria\Sesiones_consulta_global.resx">
+      <DependentUpon>Sesiones_consulta_global.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Enfermeria\Sesion_pacientes.resx">
       <DependentUpon>Sesion_pacientes.vb</DependentUpon>
     </EmbeddedResource>
@@ -1853,6 +1879,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Consultas Movimientos Alta\Consulta_Alta_b.resx">
       <DependentUpon>Consulta_Alta_b.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Consultas Movimientos_b\Consultas_Movimientos_b.resx">
+      <DependentUpon>Consultas_Movimientos_b.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Consumos_consulta.resx">
       <DependentUpon>Consumos_consulta.vb</DependentUpon>
@@ -2007,6 +2036,10 @@
     <EmbeddedResource Include="Modulos\Reportes_Dialisis\Consulta_baja_b_CR.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Consulta_baja_b_CR.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes_Dialisis\Consulta_mov_b_CR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Consulta_mov_b_CR.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes_Dialisis\Medicos_reporte_CR.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -2387,6 +2420,17 @@
     </None>
     <None Include="Modulos\Gestion de Mercaderia\Consultas Movimientos Alta\D_consulta_mov_alta.xss">
       <DependentUpon>D_consulta_mov_alta.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Gestion de Mercaderia\Consultas Movimientos_b\Ds_consulta_movimientos.xsc">
+      <DependentUpon>Ds_consulta_movimientos.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Gestion de Mercaderia\Consultas Movimientos_b\Ds_consulta_movimientos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_consulta_movimientos.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulos\Gestion de Mercaderia\Consultas Movimientos_b\Ds_consulta_movimientos.xss">
+      <DependentUpon>Ds_consulta_movimientos.xsd</DependentUpon>
     </None>
     <None Include="Modulos\Gestion de Mercaderia\Mov_DS.xsc">
       <DependentUpon>Mov_DS.xsd</DependentUpon>

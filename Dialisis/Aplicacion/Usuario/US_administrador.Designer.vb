@@ -160,6 +160,7 @@ Partial Class US_administrador
         Me.IngresDeMercaderiaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MovimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BajaDeInsumosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsultasGlobalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -174,7 +175,7 @@ Partial Class US_administrador
         Me.ToolStrip1.Location = New System.Drawing.Point(7, 71)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ToolStrip1.Size = New System.Drawing.Size(95, 927)
+        Me.ToolStrip1.Size = New System.Drawing.Size(95, 910)
         Me.ToolStrip1.TabIndex = 54
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -233,7 +234,7 @@ Partial Class US_administrador
         'Tool_Enfermeria
         '
         Me.Tool_Enfermeria.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Tool_Enfermeria.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItem_ENF_NSD, Me.MenuItem_ENF_Informe})
+        Me.Tool_Enfermeria.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItem_ENF_NSD, Me.MenuItem_ENF_Informe, Me.ConsultasGlobalesToolStripMenuItem})
         Me.Tool_Enfermeria.Image = CType(resources.GetObject("Tool_Enfermeria.Image"), System.Drawing.Image)
         Me.Tool_Enfermeria.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.Tool_Enfermeria.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -1245,6 +1246,12 @@ Partial Class US_administrador
         Me.BajaDeInsumosToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.BajaDeInsumosToolStripMenuItem.Text = "Baja de Insumos"
         '
+        'ConsultasGlobalesToolStripMenuItem
+        '
+        Me.ConsultasGlobalesToolStripMenuItem.Name = "ConsultasGlobalesToolStripMenuItem"
+        Me.ConsultasGlobalesToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.ConsultasGlobalesToolStripMenuItem.Text = "Consultas globales"
+        '
         'US_administrador
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -1413,4 +1420,5 @@ Partial Class US_administrador
     Friend WithEvents Separator_Abajo As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents RegistroDeMovimientossoloInsumosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RegistroDeBajassoloInsumosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ConsultasGlobalesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

@@ -1274,4 +1274,14 @@ Public Property EnabledCerrar() As Boolean
         Consultas_Bajas_b.Close()
         Consultas_Bajas_b.Show()
     End Sub
+
+    Private Sub RegistroDeMovimientossoloInsumosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistroDeMovimientossoloInsumosToolStripMenuItem.Click
+        Consultas_Movimientos_b.Close()
+        Consultas_Movimientos_b.Show()
+    End Sub
+
+    Private Sub ConsultasGlobalesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConsultasGlobalesToolStripMenuItem.Click
+        Sesiones_consulta_global.Close()
+        Sesiones_consulta_global.Show()
+    End Sub
 End Class

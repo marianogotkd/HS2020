@@ -215,16 +215,13 @@
 
         ''''' filtros y rehusos''''''''''''''24/9/20 MAriano'''''
         If Filtro_var = "Nuevo" Then
-            DaEnfermeria.Filtro_Nuevo(PAC_id, Now, tb_CantRe.Text, tb_numHemo.Text)
+            DaEnfermeria.Filtro_Nuevo(PAC_id, fecha_registrar, tb_CantRe.Text, sesiones_id)
         End If
 
         If Filtro_var = "Update" Then
             DaEnfermeria.Filtro_modificar_Cant(FiltroDS.Tables(0).Rows(0).Item("Filtro_id"), tb_CantRe.Text)
         End If
-
-
         '''''''''''''''''''''''''''''''
-
     End Sub
 
     Private Sub modificar_dialisis()
@@ -307,6 +304,8 @@
                         End If
                         Guardar_dialisis()
 
+                        Guardar_Datos_Filtro()
+
                         Dim lote_id As Integer
                         Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria(concepto, Today, Inicio.USU_id, 3, sesiones_id)
                         ''''''''''''''''''''''''''''''''''''''''''''''''
@@ -373,8 +372,6 @@
                         End If
 
                         Guardar_Datos_Filtro()
-
-
                         Guardar_dialisis()
                         limpiar()
                     Else
