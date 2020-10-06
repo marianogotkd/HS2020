@@ -173,8 +173,7 @@
     End Sub
 
     Private Sub limpiar()
-        Sesion_pacientes.recuperar_pacientes_fecha_del_dia(Sesion_pacientes.fecha.Value)
-
+        Sesion_pacientes.recuperar_pacientes_fecha_del_dia(fecha_registrar)
         Me.Close()
     End Sub
 
@@ -296,7 +295,7 @@
                         If tipo_operacion = "alta" Then
                             Guardar_Sesion()
                         Else
-                            If tipo_operacion = "ausente" Then
+                            If tipo_operacion = "ausente" Then 'en teoria ya no se usa mas, los ausentes no pueden pasar a presentes: 05-10-2020 choco
                                 'aqui voy a hacer un update del registro en la tabla sesiones, cambio estado ausente por presente
                                 DAsesiones.Sesiones_modificar(ausente_sesiones_id, fecha_registrar, "Presente")
                                 sesiones_id = ausente_sesiones_id  'este recupera el id del q acabo de insertar
@@ -307,7 +306,7 @@
                         Guardar_Datos_Filtro()
 
                         Dim lote_id As Integer
-                        Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria(concepto, Today, Inicio.USU_id, 3, sesiones_id)
+                        Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria(concepto, fecha_registrar, Inicio.USU_id, 3, sesiones_id)
                         ''''''''''''''''''''''''''''''''''''''''''''''''
 
                         Dim MovMer_id As Integer = ds_movid.Tables(0).Rows(0).Item(0)
@@ -350,12 +349,6 @@
                             i = i + 1
                         End While
                         '''''''''''''''''''''''''''''''''''''''''''
-
-
-
-
-
-
                         limpiar()
                     End If
                 Else
@@ -364,7 +357,7 @@
                         If tipo_operacion = "alta" Then
                             Guardar_Sesion()
                         Else
-                            If tipo_operacion = "ausente" Then
+                            If tipo_operacion = "ausente" Then 'en teoria no se usa mas esto, los ausentes no se cambian a presente: choco 05-10-2020
                                 'aqui voy a hacer un update del registro en la tabla sesiones, cambio estado ausente por presente
                                 DAsesiones.Sesiones_modificar(ausente_sesiones_id, fecha_registrar, "Presente")
                                 sesiones_id = ausente_sesiones_id  'este recupera el id del q acabo de insertar
@@ -390,11 +383,6 @@
                 MessageBox.Show("Complete los Campos Obligatorios. ", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             End If
         End If
-
-
-
-
-
 
         
     End Sub

@@ -75,30 +75,31 @@
             'aqui va pregunta para registrar como ausente.
             'hay q hacer un alta alta en la tabla sesiones
             Dim result As Integer = MessageBox.Show("¿Desea registrar como AUSENTE al paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + " para la sesion del dia " + fecha_registrar + "?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
             If result = DialogResult.Yes Then
                 If CStr(datagridview1.CurrentRow.Cells("SesionesasistenciaDataGridViewTextBoxColumn").Value) = "" Then
 
                     Dim ds_sesiones As DataSet = DAsesiones.sesiones_alta(PAC_id, fecha_registrar, "Ausente") 'mando el parametro fecha_registrar porque es la que tiene el resultado de la busqueda, es decir lo que se esta mostrando en la grilla
                     Dim sesiones_id = ds_sesiones.Tables(0).Rows(0).Item(0)
 
-                    Dim result2 As Integer = MessageBox.Show("¿El Filtro del paciente fue utilizado?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                    If result2 = DialogResult.Yes Then
+                    'Dim result2 As Integer = MessageBox.Show("¿El Filtro del paciente fue utilizado?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    'If result2 = DialogResult.Yes Then
 
-                        Dim cantReuso As Integer
-                        Dim FiltroDS As DataSet = daenfermeria.Filtro_Obtener_X_PAC(PAC_id)
+                    '    Dim cantReuso As Integer
+                    '    Dim FiltroDS As DataSet = daenfermeria.Filtro_Obtener_X_PAC(PAC_id)
 
-                        If FiltroDS.Tables(0).Rows.Count <> 0 Then
-                            cantReuso = FiltroDS.Tables(0).Rows(0).Item("Filtro_cant_reuso") + 1
-                            daenfermeria.Filtro_modificar_Cant(FiltroDS.Tables(0).Rows(0).Item("Filtro_id"), cantReuso)
-                        End If
+                    '    If FiltroDS.Tables(0).Rows.Count <> 0 Then
+                    '        cantReuso = FiltroDS.Tables(0).Rows(0).Item("Filtro_cant_reuso") + 1
+                    '        daenfermeria.Filtro_modificar_Cant(FiltroDS.Tables(0).Rows(0).Item("Filtro_id"), cantReuso)
+                    '    End If
 
-                    End If
-
-                    Dim result3 As Integer = MessageBox.Show("¿Desea Consumir insumos?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    'End If
+                    Dim result3 As Integer = MessageBox.Show("¿Desea registrar otros consumos?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     If result3 = DialogResult.Yes Then
-
+                        Enfermeria_insumos_Ausente.Close()
+                        Enfermeria_insumos_Ausente.PAC_id = PAC_id
                         Enfermeria_insumos_Ausente.sesiones_id = sesiones_id
+                        Enfermeria_insumos_Ausente.fecha_registrar = fecha_registrar
+                        Enfermeria_insumos_Ausente.Text = "Paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + ". - Consumir Fitro e Insumos."
                         Enfermeria_insumos_Ausente.Show()
                     Else
                         Msje_OK()
@@ -113,6 +114,7 @@
 
 
     End Sub
+
     Public Sub Msje_OK()
         MessageBox.Show("La información se registró correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
