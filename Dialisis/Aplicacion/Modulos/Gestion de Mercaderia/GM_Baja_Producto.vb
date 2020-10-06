@@ -3568,7 +3568,7 @@ Public Class GM_Baja_Producto
                             Dim i As Integer = 0
                             While i < Enfermeria_insumos_Ausente.DataGridView1.Rows.Count
                                 'quiero que me agregue siempre lotes distintos.
-                                If (Enfermeria_insumos_Ausente.DataGridView1.Rows(i).Cells("CodprodDataGridViewTextBoxColumn").Value = cod_prod) And (Enfermeria_insumos_Ausente.DataGridView1.Rows(i).Cells("Lote").Value = lote_nro) Then
+                                If (Enfermeria_insumos_Ausente.DataGridView1.Rows(i).Cells("CodprodDataGridViewTextBoxColumn").Value = cod_prod) And (Enfermeria_insumos_Ausente.DataGridView1.Rows(i).Cells("LoteDataGridViewTextBoxColumn").Value = lote_nro) Then
                                     encontrado = "si"
                                     nombre_lote = lote_nro
                                     Exit While

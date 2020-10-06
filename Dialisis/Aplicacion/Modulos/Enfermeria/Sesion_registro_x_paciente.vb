@@ -15,7 +15,7 @@
         Ds_enfermeria.Tables("filtros_x_paciente").Rows.Clear()
         Dim ds_filtro As DataSet = daEnfermeria.Filtro_obtener_x_PAC_todos(PAC_id)
         If ds_filtro.Tables(0).Rows.Count <> 0 Then
-            Dim i As Integer
+
 
             Ds_enfermeria.Tables("filtros_x_paciente").Merge(ds_filtro.Tables(0))
         Else
@@ -75,6 +75,7 @@
             End While
         End If
         lb_total_insumos.Text = "Total de insumos consumidos: " + CStr(total)
+        DataGridView2.Columns("ConsumomercaderiaidDataGridViewTextBoxColumn").Visible = False
     End Sub
 
 
@@ -175,23 +176,25 @@
 
                 Me.Close()
             Else
-                'ya esta registrado como Ausente.
-                Dim result2 As Integer = MessageBox.Show("El paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + " ya se encuentra registrado como AUSENTE. ¿Desea cargarlo como PRESENTE para la sesion del dia " + CStr(CDate(datagridview1.CurrentRow.Cells("SesionesfechaDataGridViewTextBoxColumn").Value).Date) + "?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                If result2 = DialogResult.Yes Then
-                    'aqui viene una especie de UPDATE para pasarlo a presente.
+                MessageBox.Show("El paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + " ya se encuentra registrado como AUSENTE para la sesion del dia " + CStr(CDate(datagridview1.CurrentRow.Cells("SesionesfechaDataGridViewTextBoxColumn").Value).Date) + ".", "Sistema de Gestión", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                    Nueva_Dialisis.Close()
-                    Dim PAC_id As Integer = CInt(datagridview1.CurrentRow.Cells("PACidDataGridViewTextBoxColumn").Value)
-                    Nueva_Dialisis.PAC_id = PAC_id
-                    Nueva_Dialisis.fecha_registrar = CDate(datagridview1.CurrentRow.Cells("SesionesfechaDataGridViewTextBoxColumn").Value).Date
-                    Nueva_Dialisis.tipo_operacion = "ausente" 'aviso q ya estaba cargado como ausente, y que se va a modificar dicho estado
-                    Dim sesiones_id As Integer = CInt(datagridview1.CurrentRow.Cells("SesionesidDataGridViewTextBoxColumn").Value)
-                    Nueva_Dialisis.ausente_sesiones_id = sesiones_id
-                    Nueva_Dialisis.Show()
+                ''ya esta registrado como Ausente.
+                'Dim result2 As Integer = MessageBox.Show("El paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + " ya se encuentra registrado como AUSENTE. ¿Desea cargarlo como PRESENTE para la sesion del dia " + CStr(CDate(datagridview1.CurrentRow.Cells("SesionesfechaDataGridViewTextBoxColumn").Value).Date) + "?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                'If result2 = DialogResult.Yes Then
+                '    'aqui viene una especie de UPDATE para pasarlo a presente.
 
-                    Me.Close()
+                '    Nueva_Dialisis.Close()
+                '    Dim PAC_id As Integer = CInt(datagridview1.CurrentRow.Cells("PACidDataGridViewTextBoxColumn").Value)
+                '    Nueva_Dialisis.PAC_id = PAC_id
+                '    Nueva_Dialisis.fecha_registrar = CDate(datagridview1.CurrentRow.Cells("SesionesfechaDataGridViewTextBoxColumn").Value).Date
+                '    Nueva_Dialisis.tipo_operacion = "ausente" 'aviso q ya estaba cargado como ausente, y que se va a modificar dicho estado
+                '    Dim sesiones_id As Integer = CInt(datagridview1.CurrentRow.Cells("SesionesidDataGridViewTextBoxColumn").Value)
+                '    Nueva_Dialisis.ausente_sesiones_id = sesiones_id
+                '    Nueva_Dialisis.Show()
 
-                End If
+                '    Me.Close()
+
+                'End If
             End If
 
 

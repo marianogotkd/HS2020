@@ -160,7 +160,7 @@
         Ds_enfermeria.Tables("filtros_x_paciente").Rows.Clear()
         Dim ds_filtro As DataSet = daEnfermeria.Filtro_obtener_todos_rangofecha(DateTimePicker_desde.Value.Date, DateTimePicker_hasta.Value.Date)
         If ds_filtro.Tables(0).Rows.Count <> 0 Then
-            Dim i As Integer
+
 
             Ds_enfermeria.Tables("filtros_x_paciente").Merge(ds_filtro.Tables(0))
         Else
