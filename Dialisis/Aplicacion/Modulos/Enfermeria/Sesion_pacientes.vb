@@ -100,7 +100,7 @@
                         Enfermeria_insumos_Ausente.PAC_id = PAC_id
                         Enfermeria_insumos_Ausente.sesiones_id = sesiones_id
                         Enfermeria_insumos_Ausente.fecha_registrar = fecha_registrar
-                        Enfermeria_insumos_Ausente.Text = "Paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + ". - Consumir Fitro e Insumos."
+                        Enfermeria_insumos_Ausente.Text = "Paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + ". - Consumir Filtro e Insumos."
                         Enfermeria_insumos_Ausente.Show()
                     Else
                         Msje_OK()
