@@ -394,6 +394,13 @@ Public Property EnabledCerrar() As Boolean
                 Separator_Enfermeria.Visible = True
             End If
 
+            If DS_Modulos.Tables(0).Rows(i).Item("USUModulos_descripcion") = "ENF_Consulta" Then
+                Tool_Enfermeria.Visible = True
+                MenuItem_ENF_Consulta.Visible = True
+                Label_Enfermeria.Visible = True
+                Separator_Enfermeria.Visible = True
+            End If
+
             '________ENFERMERIA________
 
 
@@ -1280,7 +1287,7 @@ Public Property EnabledCerrar() As Boolean
         Consultas_Movimientos_b.Show()
     End Sub
 
-    Private Sub ConsultasGlobalesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConsultasGlobalesToolStripMenuItem.Click
+    Private Sub ConsultasGlobalesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem_ENF_Consulta.Click
         Sesiones_consulta_global.Close()
         Sesiones_consulta_global.Show()
     End Sub

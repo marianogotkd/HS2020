@@ -35,6 +35,7 @@ Partial Class US_administrador
         Me.Tool_Enfermeria = New System.Windows.Forms.ToolStripDropDownButton()
         Me.MenuItem_ENF_NSD = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuItem_ENF_Informe = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuItem_ENF_Consulta = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label_Enfermeria = New System.Windows.Forms.ToolStripLabel()
         Me.Separator_Enfermeria = New System.Windows.Forms.ToolStripSeparator()
         Me.Tool_Medico = New System.Windows.Forms.ToolStripDropDownButton()
@@ -160,7 +161,6 @@ Partial Class US_administrador
         Me.IngresDeMercaderiaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MovimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BajaDeInsumosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ConsultasGlobalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -234,7 +234,7 @@ Partial Class US_administrador
         'Tool_Enfermeria
         '
         Me.Tool_Enfermeria.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Tool_Enfermeria.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItem_ENF_NSD, Me.MenuItem_ENF_Informe, Me.ConsultasGlobalesToolStripMenuItem})
+        Me.Tool_Enfermeria.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItem_ENF_NSD, Me.MenuItem_ENF_Informe, Me.MenuItem_ENF_Consulta})
         Me.Tool_Enfermeria.Image = CType(resources.GetObject("Tool_Enfermeria.Image"), System.Drawing.Image)
         Me.Tool_Enfermeria.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.Tool_Enfermeria.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -256,6 +256,13 @@ Partial Class US_administrador
         Me.MenuItem_ENF_Informe.Size = New System.Drawing.Size(200, 22)
         Me.MenuItem_ENF_Informe.Text = "Informe de Dialisis"
         Me.MenuItem_ENF_Informe.Visible = False
+        '
+        'MenuItem_ENF_Consulta
+        '
+        Me.MenuItem_ENF_Consulta.Name = "MenuItem_ENF_Consulta"
+        Me.MenuItem_ENF_Consulta.Size = New System.Drawing.Size(200, 22)
+        Me.MenuItem_ENF_Consulta.Text = "Consulta de Sesiones"
+        Me.MenuItem_ENF_Consulta.Visible = False
         '
         'Label_Enfermeria
         '
@@ -873,65 +880,65 @@ Partial Class US_administrador
         'TurnoGestionToolStripMenuItem
         '
         Me.TurnoGestionToolStripMenuItem.Name = "TurnoGestionToolStripMenuItem"
-        Me.TurnoGestionToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.TurnoGestionToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.TurnoGestionToolStripMenuItem.Text = "Turno Gestion"
         '
         'TurnoComunToolStripMenuItem
         '
         Me.TurnoComunToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnoComunNuevoToolStripMenuItem, Me.TurnoComunEliminarToolStripMenuItem})
         Me.TurnoComunToolStripMenuItem.Name = "TurnoComunToolStripMenuItem"
-        Me.TurnoComunToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.TurnoComunToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.TurnoComunToolStripMenuItem.Text = "Turno Comun"
         '
         'TurnoComunNuevoToolStripMenuItem
         '
         Me.TurnoComunNuevoToolStripMenuItem.Name = "TurnoComunNuevoToolStripMenuItem"
-        Me.TurnoComunNuevoToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
+        Me.TurnoComunNuevoToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
         Me.TurnoComunNuevoToolStripMenuItem.Text = "Turno Comun Nuevo"
         '
         'TurnoComunEliminarToolStripMenuItem
         '
         Me.TurnoComunEliminarToolStripMenuItem.Name = "TurnoComunEliminarToolStripMenuItem"
-        Me.TurnoComunEliminarToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
+        Me.TurnoComunEliminarToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
         Me.TurnoComunEliminarToolStripMenuItem.Text = "Turno Comun Eliminar"
         '
         'TurnoFijoToolStripMenuItem
         '
         Me.TurnoFijoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnoFijoNuevoToolStripMenuItem, Me.TurnoFijoActualizarToolStripMenuItem})
         Me.TurnoFijoToolStripMenuItem.Name = "TurnoFijoToolStripMenuItem"
-        Me.TurnoFijoToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.TurnoFijoToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.TurnoFijoToolStripMenuItem.Text = "Turno Fijo"
         '
         'TurnoFijoNuevoToolStripMenuItem
         '
         Me.TurnoFijoNuevoToolStripMenuItem.Name = "TurnoFijoNuevoToolStripMenuItem"
-        Me.TurnoFijoNuevoToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.TurnoFijoNuevoToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.TurnoFijoNuevoToolStripMenuItem.Text = "Turno Fijo Nuevo"
         '
         'TurnoFijoActualizarToolStripMenuItem
         '
         Me.TurnoFijoActualizarToolStripMenuItem.Name = "TurnoFijoActualizarToolStripMenuItem"
-        Me.TurnoFijoActualizarToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.TurnoFijoActualizarToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
         Me.TurnoFijoActualizarToolStripMenuItem.Text = "Turno Fijo Actualizar"
         '
         'ConsultaToolStripMenuItem
         '
         Me.ConsultaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnoConsultaToolStripMenuItem})
         Me.ConsultaToolStripMenuItem.Name = "ConsultaToolStripMenuItem"
-        Me.ConsultaToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.ConsultaToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.ConsultaToolStripMenuItem.Text = "Consulta"
         '
         'TurnoConsultaToolStripMenuItem
         '
         Me.TurnoConsultaToolStripMenuItem.Name = "TurnoConsultaToolStripMenuItem"
-        Me.TurnoConsultaToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.TurnoConsultaToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.TurnoConsultaToolStripMenuItem.Text = "Turno Consulta"
         '
         'ConfigurarToolStripMenuItem
         '
         Me.ConfigurarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnoConfigurarToolStripMenuItem, Me.MailConfigurarToolStripMenuItem, Me.EmailDestinoConfigurarToolStripMenuItem, Me.SonidoAlarmaToolStripMenuItem})
         Me.ConfigurarToolStripMenuItem.Name = "ConfigurarToolStripMenuItem"
-        Me.ConfigurarToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.ConfigurarToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
         Me.ConfigurarToolStripMenuItem.Text = "Configurar"
         '
         'TurnoConfigurarToolStripMenuItem
@@ -1246,12 +1253,6 @@ Partial Class US_administrador
         Me.BajaDeInsumosToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.BajaDeInsumosToolStripMenuItem.Text = "Baja de Insumos"
         '
-        'ConsultasGlobalesToolStripMenuItem
-        '
-        Me.ConsultasGlobalesToolStripMenuItem.Name = "ConsultasGlobalesToolStripMenuItem"
-        Me.ConsultasGlobalesToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.ConsultasGlobalesToolStripMenuItem.Text = "Consultas globales"
-        '
         'US_administrador
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -1420,5 +1421,5 @@ Partial Class US_administrador
     Friend WithEvents Separator_Abajo As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents RegistroDeMovimientossoloInsumosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RegistroDeBajassoloInsumosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ConsultasGlobalesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuItem_ENF_Consulta As System.Windows.Forms.ToolStripMenuItem
 End Class

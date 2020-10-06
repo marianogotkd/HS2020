@@ -68,9 +68,11 @@
         Servicio_DS.Tables("Servicio_Prod_DS").Clear()
         DataGridView1.DataSource = Nothing
         Servicio_DS.Tables("Servicio_Prod_DS").Merge(Ds_servicio.Tables(1))
+
+
         DataGridView1.DataSource = Ds_servicio.Tables(1)
         i = 0
-        'While i < Ds_servicio.Tables(1).Rows.Count
+        '' 'While i < Ds_servicio.Tables(1).Rows.Count
         '    DataGridView1.Rows.Add()
         '    DataGridView1.Rows(i).Cells("Cod_prod").Value = Ds_servicio.Tables(1).Rows(i).Item("prod_codinterno").ToString
         '    DataGridView1.Rows(i).Cells("Descripcion").Value = Ds_servicio.Tables(1).Rows(i).Item("prod_descripcion").ToString

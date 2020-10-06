@@ -63,6 +63,7 @@ Partial Class TiposUsuarios_Gestion
         Me.CheckBox_STOCK_Prov = New System.Windows.Forms.CheckBox()
         Me.CheckBox_STOCK_insumo = New System.Windows.Forms.CheckBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.CheckBox_ENF_ConsSes = New System.Windows.Forms.CheckBox()
         CType(Me.DG_TipoUs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TiposUsuarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_usuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -352,6 +353,7 @@ Partial Class TiposUsuarios_Gestion
         '
         'GroupBox_Configuraciones
         '
+        Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_ConsSes)
         Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_InfDia)
         Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_NSD)
         Me.GroupBox_Configuraciones.Controls.Add(Me.PictureBox6)
@@ -567,6 +569,19 @@ Partial Class TiposUsuarios_Gestion
         Me.PictureBox2.TabIndex = 0
         Me.PictureBox2.TabStop = False
         '
+        'CheckBox_ENF_ConsSes
+        '
+        Me.CheckBox_ENF_ConsSes.AutoCheck = False
+        Me.CheckBox_ENF_ConsSes.AutoSize = True
+        Me.CheckBox_ENF_ConsSes.BackColor = System.Drawing.Color.Transparent
+        Me.CheckBox_ENF_ConsSes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_ENF_ConsSes.Location = New System.Drawing.Point(102, 65)
+        Me.CheckBox_ENF_ConsSes.Name = "CheckBox_ENF_ConsSes"
+        Me.CheckBox_ENF_ConsSes.Size = New System.Drawing.Size(128, 17)
+        Me.CheckBox_ENF_ConsSes.TabIndex = 6
+        Me.CheckBox_ENF_ConsSes.Text = "Consulta de Sesiones"
+        Me.CheckBox_ENF_ConsSes.UseVisualStyleBackColor = False
+        '
         'TiposUsuarios_Gestion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -650,4 +665,5 @@ Partial Class TiposUsuarios_Gestion
     Friend WithEvents CheckBox_STOCK_Prov As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox_STOCK_insumo As System.Windows.Forms.CheckBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents CheckBox_ENF_ConsSes As System.Windows.Forms.CheckBox
 End Class

@@ -1,0 +1,1 @@
+Agregar en UsuariosModulos ENF_Consulta en el usuario admin(1)

@@ -24,6 +24,7 @@
 
         CheckBox_ENF_NSD.Checked = False
         CheckBox_ENF_InfDia.Checked = False
+        CheckBox_ENF_ConsSes.Checked = False
 
         '_________________
 
@@ -120,6 +121,10 @@
                     dausuario.UsuarioModulos_alta(UT_id, "ENF_ID")
                 End If
 
+                If CheckBox_ENF_ConsSes.Checked = True Then
+                    guardado = 1
+                    dausuario.UsuarioModulos_alta(UT_id, "ENF_Consulta")
+                End If
                 '________ENFERMERIA________
 
 
@@ -156,7 +161,7 @@
 
                 '______________FIN _OBRA SOCIAL_____________
 
-             
+
 
                 '________DEPOSITO________''''''
 
@@ -195,7 +200,7 @@
                     guardado = 1
                     dausuario.UsuarioModulos_alta(UT_id, "STOCK_Prove")
                 End If
-                
+
                 If CheckBox_STOCK_marca.Checked = True Then
                     dausuario.UsuarioModulos_alta(UT_id, "STOCK_Marca")
                     guardado = 1

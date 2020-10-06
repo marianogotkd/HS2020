@@ -73,6 +73,7 @@
         If datagridview1.Rows.Count <> 0 Then
             Dim PAC_id As Integer = CInt(datagridview1.CurrentRow.Cells("PACidDataGridViewTextBoxColumn").Value)
             'aqui va pregunta para registrar como ausente.
+            '
             'hay q hacer un alta alta en la tabla sesiones
             Dim result As Integer = MessageBox.Show("¿Desea registrar como AUSENTE al paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + " para la sesion del dia " + fecha_registrar + "?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If result = DialogResult.Yes Then
