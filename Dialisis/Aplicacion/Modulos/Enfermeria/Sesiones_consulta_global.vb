@@ -39,15 +39,19 @@
             lb_sesionestotal.Text = "Total de sesiones: " + CStr(cant_ausente + cant_presente)
             Label4.Text = "Resultado de la búsqueda desde: " + DateTimePicker_desde.Value.Date + " hasta: " + DateTimePicker_hasta.Value.Date
 
+            'recupero consumos
+            sesiones_recuperar_consumos()
+            'recuperar filtros
+            recuperar_filtros_todos_rangofecha()
+
         Else
             Label4.Text = "Resultado de la búsqueda:"
             'Ds_consulta_bajas_b1.Tables("bajas").Rows.Clear()
             MessageBox.Show("La busqueda no arrojó resultados.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
 
-        'recupero consumos
-        sesiones_recuperar_consumos()
-        recuperar_filtros_todos_rangofecha()
+
+
 
 
     End Sub
@@ -149,8 +153,13 @@
         End If
         Dim total_ausentes As Integer = total
         Label8.Text = "Total de insumos consumidos - sesiones ausentes: " + CStr(total)
-
         Label9.Text = "Total general: " + CStr(total_presentes + total_ausentes)
+
+
+        'oculto la primera columna para ambas tablas
+        DataGridView1.Columns("ConsumomercaderiaidDataGridViewTextBoxColumn1").Visible = False 'sesiones ausentes
+        DataGridView2.Columns("ConsumomercaderiaidDataGridViewTextBoxColumn").Visible = False 'sesiones presentes
+
 
     End Sub
     Dim daEnfermeria As New Datos.Enfermeria
@@ -174,6 +183,7 @@
             If primero = "si" Then
                 cantfiltro = 1
                 filtro_id = ds_filtro.Tables(0).Rows(k).Item("Filtro_id")
+                primero = "no"
             Else
                 If ds_filtro.Tables(0).Rows(k).Item("Filtro_id") <> filtro_id Then
                     cantfiltro = cantfiltro + 1
@@ -187,4 +197,7 @@
     End Sub
 
 
+    Private Sub Sesiones_consulta_global_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+    End Sub
 End Class
