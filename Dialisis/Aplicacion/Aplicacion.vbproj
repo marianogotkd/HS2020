@@ -1635,6 +1635,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Caja\Caja_Consulta_detalle.resx">
       <DependentUpon>Caja_Consulta_detalle.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Caja\Cierre_Caja.resx">
       <DependentUpon>Cierre_Caja.vb</DependentUpon>
@@ -1647,9 +1648,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Caja\Registro_cierre_caja.resx">
       <DependentUpon>Registro_cierre_caja.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Caja\Registro_inicio_cierre.resx">
       <DependentUpon>Registro_inicio_cierre.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Caja\Registro_monto_inicial.resx">
       <DependentUpon>Registro_monto_inicial.vb</DependentUpon>

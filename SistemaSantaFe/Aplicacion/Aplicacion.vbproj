@@ -837,6 +837,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Stock_DS.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Tareas\frmManageAppointment.Designer.vb">
+      <DependentUpon>frmManageAppointment.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Tareas\frmManageAppointment.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Tareas\Tareas_Consulta.Designer.vb">
+      <DependentUpon>Tareas_Consulta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Tareas\Tareas_Consulta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Terminal\Seleccion_Terminal.Designer.vb">
       <DependentUpon>Seleccion_Terminal.vb</DependentUpon>
     </Compile>
@@ -1406,6 +1418,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Stock\Proveedores_X_Producto.resx">
       <DependentUpon>Proveedores_X_Producto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Tareas\frmManageAppointment.resx">
+      <DependentUpon>frmManageAppointment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Tareas\Tareas_Consulta.resx">
+      <DependentUpon>Tareas_Consulta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Terminal\Seleccion_Terminal.resx">
       <DependentUpon>Seleccion_Terminal.vb</DependentUpon>
