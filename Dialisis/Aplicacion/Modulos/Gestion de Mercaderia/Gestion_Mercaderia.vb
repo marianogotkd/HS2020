@@ -140,7 +140,7 @@
             Dim result As Integer = MessageBox.Show("¿Esta seguro que desea realizar: " + cb_Movimiento.Text + "?.", "Sistema de Gestión", MessageBoxButtons.YesNo)
             If result = DialogResult.Yes Then
                 Dim lote_id As Integer
-                Dim ds_movid As DataSet = DAMovintoMer.Movimiento_Mercaderia_alta3(concepto, Now, Inicio.USU_id, cb_origen.SelectedValue, cb_destino.SelectedValue, "", Today, "", Today, tipo_mov, 0)
+                Dim ds_movid As DataSet = DAMovintoMer.Movimiento_Mercaderia_alta3(concepto, Today, Inicio.USU_id, cb_origen.SelectedValue, cb_destino.SelectedValue, "", Today, "", Today, tipo_mov, 0)
                 ''''''''''''''''''''''''''''''''''''''''''''''''
 
                 Dim MovMer_id As Integer = ds_movid.Tables(0).Rows(0).Item(0)

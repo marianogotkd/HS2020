@@ -85,7 +85,8 @@
                         fila("Obrasocial_nombre") = ds.Tables(0).Rows(i).Item("Obrasocial_nombre")
                         fila("PAC_fechaingreso") = ds.Tables(0).Rows(i).Item("PAC_fechaingreso")
                         fila("PAC_estado") = ds.Tables(0).Rows(i).Item("PAC_estado")
-                        fila("edad") = calcularEdad(CDate(ds.Tables(0).Rows(i).Item("PAC_fnac")))
+                        Dim edad As Date = ds.Tables(0).Rows(i).Item("PAC_fnac")
+                        fila("edad") = calcularEdad(edad.Date)
                         Ds_reporte_paciente.Tables("Paciente").Rows.Add(fila)
                         i = i + 1
                     End While
@@ -217,7 +218,8 @@
                         fila("Obrasocial_nombre") = ds.Tables(0).Rows(i).Item("Obrasocial_nombre")
                         fila("PAC_fechaingreso") = ds.Tables(0).Rows(i).Item("PAC_fechaingreso")
                         fila("PAC_estado") = ds.Tables(0).Rows(i).Item("PAC_estado")
-                        fila("edad") = calcularEdad(CDate(ds.Tables(0).Rows(i).Item("PAC_fnac")))
+                        Dim edad As Date = ds.Tables(0).Rows(i).Item("PAC_fnac")
+                        fila("edad") = calcularEdad(edad.Date)
                         Ds_reporte_paciente.Tables("Paciente").Rows.Add(fila)
                         i = i + 1
                     End While

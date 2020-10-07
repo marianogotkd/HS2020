@@ -748,6 +748,8 @@ Public Class Historia_Clinica_Detalle
         cb_med_cc_activos.Visible = True
         cb_med_cc_activos.Enabled = True
 
+        'choco 07-10-2020
+        Fecha_cc.Value = Today
 
     End Sub
 
@@ -790,6 +792,8 @@ Public Class Historia_Clinica_Detalle
         cb_med_cp_activos.Visible = True
         cb_med_cp_activos.Enabled = True
 
+
+        fecha_cp.Value = Today
     End Sub
 
     Private Sub Button6_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_NC_CN.Click
@@ -824,6 +828,8 @@ Public Class Historia_Clinica_Detalle
         cb_med_CN_activos.Visible = True
         cb_med_CN_activos.Enabled = True
 
+        Fecha_CN.Value = Today
+
     End Sub
 
     Private Sub btn_NC_AS_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_NC_AS.Click
@@ -856,6 +862,7 @@ Public Class Historia_Clinica_Detalle
         cb_med_AS_activos.Visible = True
         cb_med_AS_activos.Enabled = True
 
+        Fecha_AS.Value = Today
 
     End Sub
 
@@ -957,6 +964,7 @@ Public Class Historia_Clinica_Detalle
                         tb_TRAS_ev.Text = ds_historiaC.Tables("HistoriaC6").Rows(fila).Item("Tras_evo")
                         tb_TRAS_est.Text = ds_historiaC.Tables("HistoriaC6").Rows(fila).Item("Tras_Estudios")
                         tb_TRAS_CT.Text = ds_historiaC.Tables("HistoriaC6").Rows(fila).Item("Tras_Centro")
+                        DateTime_TRAS.Value = ds_historiaC.Tables("HistoriaC6").Rows(fila).Item("Tras_fecha")
 
                     End If
 
@@ -980,6 +988,8 @@ Public Class Historia_Clinica_Detalle
                         tb_ACCV_ubi.Text = ds_historiaC.Tables("HistoriaC5").Rows(fila).Item("AV_ubicacion")
                         tb_ACCV_obs.Text = ds_historiaC.Tables("HistoriaC5").Rows(fila).Item("AV_obs")
                         radio = ds_historiaC.Tables("HistoriaC5").Rows(fila).Item("AV_tipo")
+
+                        DateTime_ACCV.Value = ds_historiaC.Tables("HistoriaC5").Rows(fila).Item("AV_fecha") 'esta es la fecha de alta del registro
 
                         Dim c As Object
                         For Each c In GroupBox2.Controls
@@ -1673,6 +1683,8 @@ Public Class Historia_Clinica_Detalle
         cb_TRAS_med.Enabled = False
         cb_TRAS_med_activos.Visible = True
         cb_TRAS_med_activos.Enabled = True
+
+        DateTime_TRAS.Value = Today
     End Sub
 
     Private Sub btn_TRAS_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_TRAS_guardar.Click
@@ -1970,6 +1982,8 @@ Public Class Historia_Clinica_Detalle
         cb_ACCV_med_activos.Visible = True
         cb_ACCV_med_activos.Enabled = True
 
+
+        DateTime_ACCV.Value = Today
     End Sub
     Private Sub btn_ACCV_mod_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_ACCV_mod.Click
         If DG_ACCV.Rows.Count <> 0 Then
