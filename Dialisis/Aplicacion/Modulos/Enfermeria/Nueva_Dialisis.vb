@@ -214,7 +214,7 @@
 
         ''''' filtros y rehusos''''''''''''''24/9/20 MAriano'''''
         If Filtro_var = "Nuevo" Then
-            DaEnfermeria.Filtro_Nuevo(PAC_id, fecha_registrar, tb_CantRe.Text, sesiones_id)
+            DaEnfermeria.Filtro_Nuevo(PAC_id, fecha_registrar, tb_CantRe.Text, sesiones_id, tb_Filtro.Text)
         End If
 
         If Filtro_var = "Update" Then

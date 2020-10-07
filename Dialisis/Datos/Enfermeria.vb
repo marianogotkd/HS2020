@@ -188,7 +188,7 @@ Public Class Enfermeria
                               ByVal PAC_id As Integer,
                               ByVal Filtro_fecha As Date,
                                ByVal Filtro_cant_reuso As Integer,
-                                ByVal Sesiones_id As Integer) As DataSet
+                                ByVal Sesiones_id As Integer, ByVal Filtro_nombre As String) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -201,6 +201,7 @@ Public Class Enfermeria
         comando.Parameters.Add(New OleDb.OleDbParameter("@Filtro_fecha", Filtro_fecha))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Filtro_cant_reuso", Filtro_cant_reuso))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Sesiones_id", Sesiones_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Filtro_nombre", Filtro_nombre))
 
 
 

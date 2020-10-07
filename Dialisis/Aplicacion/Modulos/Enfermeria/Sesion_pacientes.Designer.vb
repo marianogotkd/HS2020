@@ -195,9 +195,9 @@ Partial Class Sesion_pacientes
         Me.lb_totalinscriptos.ForeColor = System.Drawing.Color.Blue
         Me.lb_totalinscriptos.Location = New System.Drawing.Point(493, 28)
         Me.lb_totalinscriptos.Name = "lb_totalinscriptos"
-        Me.lb_totalinscriptos.Size = New System.Drawing.Size(161, 20)
+        Me.lb_totalinscriptos.Size = New System.Drawing.Size(162, 20)
         Me.lb_totalinscriptos.TabIndex = 259
-        Me.lb_totalinscriptos.Text = "Total de inscriptos:"
+        Me.lb_totalinscriptos.Text = "Total de pacientes:"
         '
         'datagridview1
         '

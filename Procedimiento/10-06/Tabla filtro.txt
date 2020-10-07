@@ -1,0 +1,2 @@
+agregar este campo
+[Filtro_nombre] [varchar](max) NULL,
