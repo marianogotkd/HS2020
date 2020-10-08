@@ -24,7 +24,7 @@ Partial Class Nueva_Dialisis
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Nueva_Dialisis))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tb_numHemo = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -326,7 +326,7 @@ Partial Class Nueva_Dialisis
         Me.tb_tiempoHD.Mask = "00:00"
         Me.tb_tiempoHD.Name = "tb_tiempoHD"
         Me.tb_tiempoHD.Size = New System.Drawing.Size(79, 20)
-        Me.tb_tiempoHD.TabIndex = 347
+        Me.tb_tiempoHD.TabIndex = 2
         Me.tb_tiempoHD.Text = "0000"
         Me.tb_tiempoHD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.tb_tiempoHD.ValidatingType = GetType(Date)
@@ -337,7 +337,7 @@ Partial Class Nueva_Dialisis
         Me.tb_HE.Mask = "00:00"
         Me.tb_HE.Name = "tb_HE"
         Me.tb_HE.Size = New System.Drawing.Size(79, 20)
-        Me.tb_HE.TabIndex = 346
+        Me.tb_HE.TabIndex = 1
         Me.tb_HE.Text = "0000"
         Me.tb_HE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.tb_HE.ValidatingType = GetType(Date)
@@ -348,7 +348,7 @@ Partial Class Nueva_Dialisis
         Me.tb_HI.Mask = "00:00"
         Me.tb_HI.Name = "tb_HI"
         Me.tb_HI.Size = New System.Drawing.Size(79, 20)
-        Me.tb_HI.TabIndex = 345
+        Me.tb_HI.TabIndex = 0
         Me.tb_HI.Text = "0000"
         Me.tb_HI.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.tb_HI.ValidatingType = GetType(Date)
@@ -411,7 +411,7 @@ Partial Class Nueva_Dialisis
         Me.tb_PesoE.Location = New System.Drawing.Point(70, 55)
         Me.tb_PesoE.Name = "tb_PesoE"
         Me.tb_PesoE.Size = New System.Drawing.Size(79, 20)
-        Me.tb_PesoE.TabIndex = 349
+        Me.tb_PesoE.TabIndex = 1
         Me.tb_PesoE.Text = "00,00"
         Me.tb_PesoE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -420,7 +420,7 @@ Partial Class Nueva_Dialisis
         Me.tb_PesoI.Location = New System.Drawing.Point(70, 22)
         Me.tb_PesoI.Name = "tb_PesoI"
         Me.tb_PesoI.Size = New System.Drawing.Size(79, 20)
-        Me.tb_PesoI.TabIndex = 348
+        Me.tb_PesoI.TabIndex = 0
         Me.tb_PesoI.Text = "00,00"
         Me.tb_PesoI.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -473,7 +473,7 @@ Partial Class Nueva_Dialisis
         Me.tb_TAE.Location = New System.Drawing.Point(70, 52)
         Me.tb_TAE.Name = "tb_TAE"
         Me.tb_TAE.Size = New System.Drawing.Size(79, 20)
-        Me.tb_TAE.TabIndex = 351
+        Me.tb_TAE.TabIndex = 1
         Me.tb_TAE.Text = "00,00"
         Me.tb_TAE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -482,7 +482,7 @@ Partial Class Nueva_Dialisis
         Me.tb_TAI.Location = New System.Drawing.Point(70, 26)
         Me.tb_TAI.Name = "tb_TAI"
         Me.tb_TAI.Size = New System.Drawing.Size(79, 20)
-        Me.tb_TAI.TabIndex = 350
+        Me.tb_TAI.TabIndex = 0
         Me.tb_TAI.Text = "00,00"
         Me.tb_TAI.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -598,14 +598,14 @@ Partial Class Nueva_Dialisis
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1188, 180)
@@ -863,7 +863,7 @@ Partial Class Nueva_Dialisis
         Me.tb_talla.Location = New System.Drawing.Point(417, 34)
         Me.tb_talla.Name = "tb_talla"
         Me.tb_talla.Size = New System.Drawing.Size(79, 20)
-        Me.tb_talla.TabIndex = 353
+        Me.tb_talla.TabIndex = 1
         Me.tb_talla.Text = "00,00"
         Me.tb_talla.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -872,7 +872,7 @@ Partial Class Nueva_Dialisis
         Me.tb_PesoS.Location = New System.Drawing.Point(254, 34)
         Me.tb_PesoS.Name = "tb_PesoS"
         Me.tb_PesoS.Size = New System.Drawing.Size(79, 20)
-        Me.tb_PesoS.TabIndex = 352
+        Me.tb_PesoS.TabIndex = 0
         Me.tb_PesoS.Text = "00,00"
         Me.tb_PesoS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -891,7 +891,7 @@ Partial Class Nueva_Dialisis
         Me.tb_AV.Location = New System.Drawing.Point(138, 72)
         Me.tb_AV.Name = "tb_AV"
         Me.tb_AV.Size = New System.Drawing.Size(140, 20)
-        Me.tb_AV.TabIndex = 342
+        Me.tb_AV.TabIndex = 2
         '
         'Label23
         '
