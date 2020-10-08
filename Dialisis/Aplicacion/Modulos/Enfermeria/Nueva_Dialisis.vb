@@ -419,24 +419,48 @@
 
     
     Dim validadiones As New Validaciones
+
+    Private Sub tb_PesoS_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_PesoS.GotFocus
+        tb_PesoS.SelectAll()
+    End Sub
     Private Sub tb_PesoS_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tb_PesoS.KeyPress
         validadiones.Restricciones_maskedtextbox(e, "Decimal", tb_PesoS)
+    End Sub
+
+    Private Sub tb_talla_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_talla.GotFocus
+        tb_talla.SelectAll()
     End Sub
 
     Private Sub tb_talla_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tb_talla.KeyPress
         validadiones.Restricciones_maskedtextbox(e, "Decimal", tb_talla)
     End Sub
 
+    Private Sub tb_PesoI_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_PesoI.GotFocus
+        tb_PesoI.SelectAll()
+    End Sub
+
     Private Sub tb_PesoI_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tb_PesoI.KeyPress
         validadiones.Restricciones_maskedtextbox(e, "Decimal", tb_PesoI)
+    End Sub
+
+    Private Sub tb_PesoE_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_PesoE.GotFocus
+        tb_PesoE.SelectAll()
     End Sub
 
     Private Sub tb_PesoE_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tb_PesoE.KeyPress
         validadiones.Restricciones_maskedtextbox(e, "Decimal", tb_PesoE)
     End Sub
 
+    Private Sub tb_TAI_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_TAI.GotFocus
+        tb_TAI.SelectAll()
+    End Sub
+
     Private Sub tb_TAI_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tb_TAI.KeyPress
         validadiones.Restricciones_maskedtextbox(e, "Decimal", tb_TAI)
+    End Sub
+
+    Private Sub tb_TAE_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_TAE.GotFocus
+        tb_TAE.SelectAll()
     End Sub
 
     Private Sub tb_TAE_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tb_TAE.KeyPress
@@ -453,5 +477,17 @@
         tb_Filtro.Enabled = True
         tb_Filtro.Focus()
         tb_Filtro.SelectAll()
+    End Sub
+
+    Private Sub tb_HI_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_HI.GotFocus
+        tb_HI.SelectAll()
+    End Sub
+
+    Private Sub tb_HE_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_HE.GotFocus
+        tb_HE.SelectAll()
+    End Sub
+
+    Private Sub tb_tiempoHD_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_tiempoHD.GotFocus
+        tb_tiempoHD.SelectAll()
     End Sub
 End Class
