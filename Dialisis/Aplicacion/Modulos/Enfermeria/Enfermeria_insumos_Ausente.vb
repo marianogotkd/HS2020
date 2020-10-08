@@ -76,7 +76,7 @@
         Dim continuar_consumo As String = "no"
         'aqui pregunto si quiero registrar el uso del filtro
         If filtro_guardado = "no" Then
-            Dim result2 As Integer = MessageBox.Show("¿Desea registrar el Filtro utilizado?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            Dim result2 As Integer = MessageBox.Show("¿Desea contar un rehuso del filtro?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If result2 = DialogResult.Yes Then
                 If tb_Filtro.Text <> "" Then
                     ''''' filtros y rehusos''''''''''''''24/9/20 MAriano'''''
