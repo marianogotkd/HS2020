@@ -2216,3 +2216,4 @@ C:\Repositorio HS2020\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.
 C:\Repositorio HS2020\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.US_Pedidos.resources
 C:\Repositorio HS2020\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.vbproj.GenerateResource.Cache
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.Tareas_Consulta.resources
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.frmManageAppointment.resources

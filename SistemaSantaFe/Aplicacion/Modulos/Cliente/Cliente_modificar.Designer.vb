@@ -92,7 +92,7 @@ Partial Class Cliente_modificar
         '
         Me.BO_cliente_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BO_cliente_nuevo.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
-        Me.BO_cliente_nuevo.Location = New System.Drawing.Point(845, 489)
+        Me.BO_cliente_nuevo.Location = New System.Drawing.Point(814, 489)
         Me.BO_cliente_nuevo.Margin = New System.Windows.Forms.Padding(4)
         Me.BO_cliente_nuevo.Name = "BO_cliente_nuevo"
         Me.BO_cliente_nuevo.Size = New System.Drawing.Size(124, 43)

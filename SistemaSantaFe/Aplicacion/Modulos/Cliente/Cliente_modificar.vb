@@ -5,10 +5,16 @@ Public Class Cliente_modificar
 
     Dim busqueda As String = ""
     Dim busqueda_parametro As String = ""
+    Public procedencia = ""
+
 
     Private Sub Cliente_modificar_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Obtener_Clientes()
-
+        If procedencia = "Servicios" Then
+            BO_cliente_modificar.Text = "Seleccionar"
+        Else
+            BO_cliente_modificar.Text = "Editar"
+        End If
         'Me.Show()
         'TX_ape.Focus()
 
@@ -53,26 +59,35 @@ Public Class Cliente_modificar
         Cliente1BindingSource.Filter = Filtro
     End Sub
     Private Sub BO_cliente_modificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BO_cliente_modificar.Click
-        If DG_clientes.Rows.Count <> 0 Then
-            Dim productoselec As String = DG_clientes.SelectedCells(0).Value
-            If productoselec <> "" Then
-                Cliente_alta_New.Close() 'lo cierro porque uso el mismo form para dar de alta
+        If procedencia = "Servicios" Then
+            Servicio_nuevo.TextBox_Nombre.Text = DG_clientes.SelectedCells(1).Value
+            Servicio_nuevo.TextBox_dni.Text = DG_clientes.SelectedCells(4).Value
+            Servicio_nuevo.TextBox_dir.Text = DG_clientes.SelectedCells(8).Value
+            Servicio_nuevo.TextBox_tel.Text = DG_clientes.SelectedCells(6).Value
+            Servicio_nuevo.Cliente_ID = DG_clientes.SelectedCells(0).Value
+            Me.Close()
+        Else
+            If DG_clientes.Rows.Count <> 0 Then
+                Dim productoselec As String = DG_clientes.SelectedCells(0).Value
+                If productoselec <> "" Then
+                    Cliente_alta_New.Close() 'lo cierro porque uso el mismo form para dar de alta
 
-                Cliente_alta_New.Text = "Modificar cliente"
-                'Proveedor_alta.Text = "Modificar proveedor"
-                Cliente_alta_New.cliente_id = CInt(productoselec)
-                'Proveedor_alta.proveedor_id = CInt(productoselec)
-                Cliente_alta_New.form_procedencia = "modificar"
-                Cliente_alta_New.tx_Fan.Text = DG_clientes.SelectedCells(1).Value
-                'Proveedor_alta.tx_nombre.Text = DataGrid_proveedor.SelectedCells(2).Value
-                Me.Close()
-                Cliente_alta_New.apertura = "formulario modificar" 'para q valide el boton cancelar del form alta
-                Cliente_alta_New.Show()
+                    Cliente_alta_New.Text = "Modificar cliente"
+                    'Proveedor_alta.Text = "Modificar proveedor"
+                    Cliente_alta_New.cliente_id = CInt(productoselec)
+                    'Proveedor_alta.proveedor_id = CInt(productoselec)
+                    Cliente_alta_New.form_procedencia = "modificar"
+                    Cliente_alta_New.tx_Fan.Text = DG_clientes.SelectedCells(1).Value
+                    'Proveedor_alta.tx_nombre.Text = DataGrid_proveedor.SelectedCells(2).Value
+                    Me.Close()
+                    Cliente_alta_New.apertura = "formulario modificar" 'para q valide el boton cancelar del form alta
+                    Cliente_alta_New.Show()
+                Else
+                    MsgBox("Seleccione un cliente", MsgBoxStyle.Information)
+                End If
             Else
                 MsgBox("Seleccione un cliente", MsgBoxStyle.Information)
             End If
-        Else
-            MsgBox("Seleccione un cliente", MsgBoxStyle.Information)
         End If
     End Sub
     

@@ -840,15 +840,11 @@
     <Compile Include="Modulos\Tareas\frmManageAppointment.Designer.vb">
       <DependentUpon>frmManageAppointment.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Tareas\frmManageAppointment.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Modulos\Tareas\frmManageAppointment.vb" />
     <Compile Include="Modulos\Tareas\Tareas_Consulta.Designer.vb">
       <DependentUpon>Tareas_Consulta.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Tareas\Tareas_Consulta.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Modulos\Tareas\Tareas_Consulta.vb" />
     <Compile Include="Modulos\Terminal\Seleccion_Terminal.Designer.vb">
       <DependentUpon>Seleccion_Terminal.vb</DependentUpon>
     </Compile>
@@ -1898,6 +1894,7 @@
     <None Include="Resources\alert-26x26.bmp" />
     <None Include="Resources\Borrar1.png" />
     <None Include="Resources\Borrar2.png" />
+    <None Include="Resources\Buscar.png" />
     <Content Include="Resources\Caja.png" />
     <None Include="Resources\caja1.png" />
     <Content Include="Resources\CajaAbierta.png" />
@@ -1944,6 +1941,7 @@
     <None Include="Resources\configure.png" />
     <Content Include="Resources\factura.png" />
     <Content Include="Resources\factura_30x30.png" />
+    <None Include="Resources\logohs - fondo2 copia.jpg" />
     <Content Include="Resources\Logo_empresa.png" />
     <None Include="Resources\mas30x30.png" />
     <None Include="Resources\pedidos.png" />

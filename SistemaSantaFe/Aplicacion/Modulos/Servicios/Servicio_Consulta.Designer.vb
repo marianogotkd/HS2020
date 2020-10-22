@@ -25,23 +25,6 @@ Partial Class Servicio_Consulta
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DG_Servicio = New System.Windows.Forms.DataGridView()
-        Me.Servicio_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_imei = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_Marca = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_Modelo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_Color = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_bat = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_Obs = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_ManoObra = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_dni = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_dir = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_tel = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_Anticipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioObtenerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Servicio_DS = New Aplicacion.Servicio_DS()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ComboBox_suc = New System.Windows.Forms.ComboBox()
         Me.Button_Detalle = New System.Windows.Forms.Button()
@@ -49,6 +32,32 @@ Partial Class Servicio_Consulta
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ComboBox_buscar = New System.Windows.Forms.ComboBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.ServicioidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIFanDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIdniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiciofechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioimeiDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioMarcaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioModeloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioColorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiciobatDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioObsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioManoObraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioAnticipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioNombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiciodniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiciodirDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiciotelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Servicio_Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioDiagnosticoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioEquipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioFechaRevDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioFechaRepDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioObtenerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Servicio_DS = New Aplicacion.Servicio_DS()
         CType(Me.DG_Servicio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ServicioObtenerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Servicio_DS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,7 +72,7 @@ Partial Class Servicio_Consulta
         Me.DG_Servicio.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DG_Servicio.BackgroundColor = System.Drawing.Color.White
         Me.DG_Servicio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DG_Servicio.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Servicio_id, Me.Servicio_fecha, Me.Servicio_Nombre, Me.Servicio_imei, Me.Servicio_Marca, Me.Servicio_Modelo, Me.Servicio_Color, Me.Servicio_bat, Me.Servicio_Obs, Me.Servicio_ManoObra, Me.Servicio_dni, Me.Servicio_dir, Me.Servicio_tel, Me.Servicio_Estado, Me.Servicio_Anticipo})
+        Me.DG_Servicio.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ServicioidDataGridViewTextBoxColumn, Me.CLIFanDataGridViewTextBoxColumn, Me.CLIdniDataGridViewTextBoxColumn, Me.ServiciofechaDataGridViewTextBoxColumn, Me.ServicioimeiDataGridViewTextBoxColumn, Me.ServicioMarcaDataGridViewTextBoxColumn, Me.ServicioModeloDataGridViewTextBoxColumn, Me.ServicioColorDataGridViewTextBoxColumn, Me.ServiciobatDataGridViewTextBoxColumn, Me.ServicioObsDataGridViewTextBoxColumn, Me.ServicioManoObraDataGridViewTextBoxColumn, Me.ServicioAnticipoDataGridViewTextBoxColumn, Me.ServicioNombreDataGridViewTextBoxColumn, Me.ServiciodniDataGridViewTextBoxColumn, Me.ServiciodirDataGridViewTextBoxColumn, Me.ServiciotelDataGridViewTextBoxColumn, Me.Servicio_Estado, Me.USUidDataGridViewTextBoxColumn, Me.ServicioDiagnosticoDataGridViewTextBoxColumn, Me.CLIidDataGridViewTextBoxColumn, Me.ServicioSucursalDataGridViewTextBoxColumn, Me.ServicioEquipoDataGridViewTextBoxColumn, Me.ServicioFechaRevDataGridViewTextBoxColumn, Me.ServicioFechaRepDataGridViewTextBoxColumn})
         Me.DG_Servicio.DataSource = Me.ServicioObtenerBindingSource
         Me.DG_Servicio.Location = New System.Drawing.Point(16, 81)
         Me.DG_Servicio.Margin = New System.Windows.Forms.Padding(4)
@@ -80,131 +89,6 @@ Partial Class Servicio_Consulta
         Me.DG_Servicio.Size = New System.Drawing.Size(856, 468)
         Me.DG_Servicio.StandardTab = True
         Me.DG_Servicio.TabIndex = 9
-        '
-        'Servicio_id
-        '
-        Me.Servicio_id.DataPropertyName = "Servicio_id"
-        Me.Servicio_id.HeaderText = "N° de Pedido"
-        Me.Servicio_id.Name = "Servicio_id"
-        Me.Servicio_id.ReadOnly = True
-        '
-        'Servicio_fecha
-        '
-        Me.Servicio_fecha.DataPropertyName = "Servicio_fecha"
-        Me.Servicio_fecha.HeaderText = "Fecha"
-        Me.Servicio_fecha.Name = "Servicio_fecha"
-        Me.Servicio_fecha.ReadOnly = True
-        '
-        'Servicio_Nombre
-        '
-        Me.Servicio_Nombre.DataPropertyName = "Servicio_Nombre"
-        Me.Servicio_Nombre.HeaderText = "Cliente"
-        Me.Servicio_Nombre.Name = "Servicio_Nombre"
-        Me.Servicio_Nombre.ReadOnly = True
-        '
-        'Servicio_imei
-        '
-        Me.Servicio_imei.DataPropertyName = "Servicio_imei"
-        Me.Servicio_imei.HeaderText = "Servicio_imei"
-        Me.Servicio_imei.Name = "Servicio_imei"
-        Me.Servicio_imei.ReadOnly = True
-        Me.Servicio_imei.Visible = False
-        '
-        'Servicio_Marca
-        '
-        Me.Servicio_Marca.DataPropertyName = "Servicio_Marca"
-        Me.Servicio_Marca.HeaderText = "Servicio_Marca"
-        Me.Servicio_Marca.Name = "Servicio_Marca"
-        Me.Servicio_Marca.ReadOnly = True
-        Me.Servicio_Marca.Visible = False
-        '
-        'Servicio_Modelo
-        '
-        Me.Servicio_Modelo.DataPropertyName = "Servicio_Modelo"
-        Me.Servicio_Modelo.HeaderText = "Servicio_Modelo"
-        Me.Servicio_Modelo.Name = "Servicio_Modelo"
-        Me.Servicio_Modelo.ReadOnly = True
-        Me.Servicio_Modelo.Visible = False
-        '
-        'Servicio_Color
-        '
-        Me.Servicio_Color.DataPropertyName = "Servicio_Color"
-        Me.Servicio_Color.HeaderText = "Servicio_Color"
-        Me.Servicio_Color.Name = "Servicio_Color"
-        Me.Servicio_Color.ReadOnly = True
-        Me.Servicio_Color.Visible = False
-        '
-        'Servicio_bat
-        '
-        Me.Servicio_bat.DataPropertyName = "Servicio_bat"
-        Me.Servicio_bat.HeaderText = "Servicio_bat"
-        Me.Servicio_bat.Name = "Servicio_bat"
-        Me.Servicio_bat.ReadOnly = True
-        Me.Servicio_bat.Visible = False
-        '
-        'Servicio_Obs
-        '
-        Me.Servicio_Obs.DataPropertyName = "Servicio_Obs"
-        Me.Servicio_Obs.HeaderText = "Servicio_Obs"
-        Me.Servicio_Obs.Name = "Servicio_Obs"
-        Me.Servicio_Obs.ReadOnly = True
-        Me.Servicio_Obs.Visible = False
-        '
-        'Servicio_ManoObra
-        '
-        Me.Servicio_ManoObra.DataPropertyName = "Servicio_ManoObra"
-        Me.Servicio_ManoObra.HeaderText = "Servicio_ManoObra"
-        Me.Servicio_ManoObra.Name = "Servicio_ManoObra"
-        Me.Servicio_ManoObra.ReadOnly = True
-        Me.Servicio_ManoObra.Visible = False
-        '
-        'Servicio_dni
-        '
-        Me.Servicio_dni.DataPropertyName = "Servicio_dni"
-        Me.Servicio_dni.HeaderText = "Servicio_dni"
-        Me.Servicio_dni.Name = "Servicio_dni"
-        Me.Servicio_dni.ReadOnly = True
-        Me.Servicio_dni.Visible = False
-        '
-        'Servicio_dir
-        '
-        Me.Servicio_dir.DataPropertyName = "Servicio_dir"
-        Me.Servicio_dir.HeaderText = "Servicio_dir"
-        Me.Servicio_dir.Name = "Servicio_dir"
-        Me.Servicio_dir.ReadOnly = True
-        Me.Servicio_dir.Visible = False
-        '
-        'Servicio_tel
-        '
-        Me.Servicio_tel.DataPropertyName = "Servicio_tel"
-        Me.Servicio_tel.HeaderText = "Servicio_tel"
-        Me.Servicio_tel.Name = "Servicio_tel"
-        Me.Servicio_tel.ReadOnly = True
-        Me.Servicio_tel.Visible = False
-        '
-        'Servicio_Estado
-        '
-        Me.Servicio_Estado.DataPropertyName = "Servicio_Estado"
-        Me.Servicio_Estado.HeaderText = "Estado"
-        Me.Servicio_Estado.Name = "Servicio_Estado"
-        Me.Servicio_Estado.ReadOnly = True
-        '
-        'Servicio_Anticipo
-        '
-        Me.Servicio_Anticipo.DataPropertyName = "Servicio_Anticipo"
-        Me.Servicio_Anticipo.HeaderText = "Anticipo"
-        Me.Servicio_Anticipo.Name = "Servicio_Anticipo"
-        Me.Servicio_Anticipo.ReadOnly = True
-        '
-        'ServicioObtenerBindingSource
-        '
-        Me.ServicioObtenerBindingSource.DataMember = "Servicio_Obtener"
-        Me.ServicioObtenerBindingSource.DataSource = Me.Servicio_DS
-        '
-        'Servicio_DS
-        '
-        Me.Servicio_DS.DataSetName = "Servicio_DS"
-        Me.Servicio_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label1
         '
@@ -267,7 +151,7 @@ Partial Class Servicio_Consulta
         Me.ComboBox_buscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ComboBox_buscar.FormattingEnabled = True
-        Me.ComboBox_buscar.Items.AddRange(New Object() {"Nº de Pedido", "Cliente"})
+        Me.ComboBox_buscar.Items.AddRange(New Object() {"Nº de Servicio", "Cliente"})
         Me.ComboBox_buscar.Location = New System.Drawing.Point(490, 20)
         Me.ComboBox_buscar.Name = "ComboBox_buscar"
         Me.ComboBox_buscar.Size = New System.Drawing.Size(121, 24)
@@ -282,6 +166,202 @@ Partial Class Servicio_Consulta
         Me.TextBox1.Size = New System.Drawing.Size(225, 22)
         Me.TextBox1.TabIndex = 16
         Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'ServicioidDataGridViewTextBoxColumn
+        '
+        Me.ServicioidDataGridViewTextBoxColumn.DataPropertyName = "Servicio_id"
+        Me.ServicioidDataGridViewTextBoxColumn.HeaderText = "N° de Servicio"
+        Me.ServicioidDataGridViewTextBoxColumn.Name = "ServicioidDataGridViewTextBoxColumn"
+        Me.ServicioidDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CLIFanDataGridViewTextBoxColumn
+        '
+        Me.CLIFanDataGridViewTextBoxColumn.DataPropertyName = "CLI_Fan"
+        Me.CLIFanDataGridViewTextBoxColumn.HeaderText = "Nombre"
+        Me.CLIFanDataGridViewTextBoxColumn.Name = "CLIFanDataGridViewTextBoxColumn"
+        Me.CLIFanDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CLIdniDataGridViewTextBoxColumn
+        '
+        Me.CLIdniDataGridViewTextBoxColumn.DataPropertyName = "CLI_dni"
+        Me.CLIdniDataGridViewTextBoxColumn.HeaderText = "DNI"
+        Me.CLIdniDataGridViewTextBoxColumn.Name = "CLIdniDataGridViewTextBoxColumn"
+        Me.CLIdniDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ServiciofechaDataGridViewTextBoxColumn
+        '
+        Me.ServiciofechaDataGridViewTextBoxColumn.DataPropertyName = "Servicio_fecha"
+        Me.ServiciofechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
+        Me.ServiciofechaDataGridViewTextBoxColumn.Name = "ServiciofechaDataGridViewTextBoxColumn"
+        Me.ServiciofechaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ServicioimeiDataGridViewTextBoxColumn
+        '
+        Me.ServicioimeiDataGridViewTextBoxColumn.DataPropertyName = "Servicio_imei"
+        Me.ServicioimeiDataGridViewTextBoxColumn.HeaderText = "Servicio_imei"
+        Me.ServicioimeiDataGridViewTextBoxColumn.Name = "ServicioimeiDataGridViewTextBoxColumn"
+        Me.ServicioimeiDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioimeiDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioMarcaDataGridViewTextBoxColumn
+        '
+        Me.ServicioMarcaDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Marca"
+        Me.ServicioMarcaDataGridViewTextBoxColumn.HeaderText = "Servicio_Marca"
+        Me.ServicioMarcaDataGridViewTextBoxColumn.Name = "ServicioMarcaDataGridViewTextBoxColumn"
+        Me.ServicioMarcaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioMarcaDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioModeloDataGridViewTextBoxColumn
+        '
+        Me.ServicioModeloDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Modelo"
+        Me.ServicioModeloDataGridViewTextBoxColumn.HeaderText = "Servicio_Modelo"
+        Me.ServicioModeloDataGridViewTextBoxColumn.Name = "ServicioModeloDataGridViewTextBoxColumn"
+        Me.ServicioModeloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioModeloDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioColorDataGridViewTextBoxColumn
+        '
+        Me.ServicioColorDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Color"
+        Me.ServicioColorDataGridViewTextBoxColumn.HeaderText = "Servicio_Color"
+        Me.ServicioColorDataGridViewTextBoxColumn.Name = "ServicioColorDataGridViewTextBoxColumn"
+        Me.ServicioColorDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioColorDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServiciobatDataGridViewTextBoxColumn
+        '
+        Me.ServiciobatDataGridViewTextBoxColumn.DataPropertyName = "Servicio_bat"
+        Me.ServiciobatDataGridViewTextBoxColumn.HeaderText = "Servicio_bat"
+        Me.ServiciobatDataGridViewTextBoxColumn.Name = "ServiciobatDataGridViewTextBoxColumn"
+        Me.ServiciobatDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiciobatDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioObsDataGridViewTextBoxColumn
+        '
+        Me.ServicioObsDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Obs"
+        Me.ServicioObsDataGridViewTextBoxColumn.HeaderText = "Servicio_Obs"
+        Me.ServicioObsDataGridViewTextBoxColumn.Name = "ServicioObsDataGridViewTextBoxColumn"
+        Me.ServicioObsDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioObsDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioManoObraDataGridViewTextBoxColumn
+        '
+        Me.ServicioManoObraDataGridViewTextBoxColumn.DataPropertyName = "Servicio_ManoObra"
+        Me.ServicioManoObraDataGridViewTextBoxColumn.HeaderText = "Servicio_ManoObra"
+        Me.ServicioManoObraDataGridViewTextBoxColumn.Name = "ServicioManoObraDataGridViewTextBoxColumn"
+        Me.ServicioManoObraDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioManoObraDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioAnticipoDataGridViewTextBoxColumn
+        '
+        Me.ServicioAnticipoDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Anticipo"
+        Me.ServicioAnticipoDataGridViewTextBoxColumn.HeaderText = "Anticipo"
+        Me.ServicioAnticipoDataGridViewTextBoxColumn.Name = "ServicioAnticipoDataGridViewTextBoxColumn"
+        Me.ServicioAnticipoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ServicioNombreDataGridViewTextBoxColumn
+        '
+        Me.ServicioNombreDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Nombre"
+        Me.ServicioNombreDataGridViewTextBoxColumn.HeaderText = "Servicio_Nombre"
+        Me.ServicioNombreDataGridViewTextBoxColumn.Name = "ServicioNombreDataGridViewTextBoxColumn"
+        Me.ServicioNombreDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioNombreDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServiciodniDataGridViewTextBoxColumn
+        '
+        Me.ServiciodniDataGridViewTextBoxColumn.DataPropertyName = "Servicio_dni"
+        Me.ServiciodniDataGridViewTextBoxColumn.HeaderText = "DNI"
+        Me.ServiciodniDataGridViewTextBoxColumn.Name = "ServiciodniDataGridViewTextBoxColumn"
+        Me.ServiciodniDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiciodniDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServiciodirDataGridViewTextBoxColumn
+        '
+        Me.ServiciodirDataGridViewTextBoxColumn.DataPropertyName = "Servicio_dir"
+        Me.ServiciodirDataGridViewTextBoxColumn.HeaderText = "Servicio_dir"
+        Me.ServiciodirDataGridViewTextBoxColumn.Name = "ServiciodirDataGridViewTextBoxColumn"
+        Me.ServiciodirDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiciodirDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServiciotelDataGridViewTextBoxColumn
+        '
+        Me.ServiciotelDataGridViewTextBoxColumn.DataPropertyName = "Servicio_tel"
+        Me.ServiciotelDataGridViewTextBoxColumn.HeaderText = "Servicio_tel"
+        Me.ServiciotelDataGridViewTextBoxColumn.Name = "ServiciotelDataGridViewTextBoxColumn"
+        Me.ServiciotelDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiciotelDataGridViewTextBoxColumn.Visible = False
+        '
+        'Servicio_Estado
+        '
+        Me.Servicio_Estado.DataPropertyName = "Servicio_Estado"
+        Me.Servicio_Estado.HeaderText = "Estado"
+        Me.Servicio_Estado.Name = "Servicio_Estado"
+        Me.Servicio_Estado.ReadOnly = True
+        '
+        'USUidDataGridViewTextBoxColumn
+        '
+        Me.USUidDataGridViewTextBoxColumn.DataPropertyName = "USU_id"
+        Me.USUidDataGridViewTextBoxColumn.HeaderText = "USU_id"
+        Me.USUidDataGridViewTextBoxColumn.Name = "USUidDataGridViewTextBoxColumn"
+        Me.USUidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.USUidDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioDiagnosticoDataGridViewTextBoxColumn
+        '
+        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Diagnostico"
+        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.HeaderText = "Servicio_Diagnostico"
+        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.Name = "ServicioDiagnosticoDataGridViewTextBoxColumn"
+        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLIidDataGridViewTextBoxColumn
+        '
+        Me.CLIidDataGridViewTextBoxColumn.DataPropertyName = "CLI_id"
+        Me.CLIidDataGridViewTextBoxColumn.HeaderText = "CLI_id"
+        Me.CLIidDataGridViewTextBoxColumn.Name = "CLIidDataGridViewTextBoxColumn"
+        Me.CLIidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIidDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioSucursalDataGridViewTextBoxColumn
+        '
+        Me.ServicioSucursalDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Sucursal"
+        Me.ServicioSucursalDataGridViewTextBoxColumn.HeaderText = "Servicio_Sucursal"
+        Me.ServicioSucursalDataGridViewTextBoxColumn.Name = "ServicioSucursalDataGridViewTextBoxColumn"
+        Me.ServicioSucursalDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioSucursalDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioEquipoDataGridViewTextBoxColumn
+        '
+        Me.ServicioEquipoDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Equipo"
+        Me.ServicioEquipoDataGridViewTextBoxColumn.HeaderText = "Servicio_Equipo"
+        Me.ServicioEquipoDataGridViewTextBoxColumn.Name = "ServicioEquipoDataGridViewTextBoxColumn"
+        Me.ServicioEquipoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioEquipoDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioFechaRevDataGridViewTextBoxColumn
+        '
+        Me.ServicioFechaRevDataGridViewTextBoxColumn.DataPropertyName = "Servicio_FechaRev"
+        Me.ServicioFechaRevDataGridViewTextBoxColumn.HeaderText = "Servicio_FechaRev"
+        Me.ServicioFechaRevDataGridViewTextBoxColumn.Name = "ServicioFechaRevDataGridViewTextBoxColumn"
+        Me.ServicioFechaRevDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioFechaRevDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioFechaRepDataGridViewTextBoxColumn
+        '
+        Me.ServicioFechaRepDataGridViewTextBoxColumn.DataPropertyName = "Servicio_FechaRep"
+        Me.ServicioFechaRepDataGridViewTextBoxColumn.HeaderText = "Servicio_FechaRep"
+        Me.ServicioFechaRepDataGridViewTextBoxColumn.Name = "ServicioFechaRepDataGridViewTextBoxColumn"
+        Me.ServicioFechaRepDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioFechaRepDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioObtenerBindingSource
+        '
+        Me.ServicioObtenerBindingSource.DataMember = "Servicio_Obtener"
+        Me.ServicioObtenerBindingSource.DataSource = Me.Servicio_DS
+        '
+        'Servicio_DS
+        '
+        Me.Servicio_DS.DataSetName = "Servicio_DS"
+        Me.Servicio_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Servicio_Consulta
         '
@@ -311,28 +391,37 @@ Partial Class Servicio_Consulta
 
     End Sub
     Friend WithEvents Button_Detalle As System.Windows.Forms.Button
-    Friend WithEvents ServicioObtenerBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents Servicio_DS As Aplicacion.Servicio_DS
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents ComboBox_suc As System.Windows.Forms.ComboBox
     Friend WithEvents btn_Anular As System.Windows.Forms.Button
     Friend WithEvents DG_Servicio As System.Windows.Forms.DataGridView
-    Friend WithEvents Servicio_id As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_fecha As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_Nombre As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_imei As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_Marca As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_Modelo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_Color As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_bat As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_Obs As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_ManoObra As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_dni As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_dir As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_tel As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_Estado As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Servicio_Anticipo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents ComboBox_buscar As System.Windows.Forms.ComboBox
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents ServicioidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CLIFanDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CLIdniDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServiciofechaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioimeiDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioMarcaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioModeloDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioColorDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServiciobatDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioObsDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioManoObraDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioAnticipoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioNombreDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServiciodniDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServiciodirDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServiciotelDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Servicio_Estado As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents USUidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioDiagnosticoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CLIidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioSucursalDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioEquipoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioFechaRevDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioFechaRepDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ServicioObtenerBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Servicio_DS As Aplicacion.Servicio_DS
 End Class

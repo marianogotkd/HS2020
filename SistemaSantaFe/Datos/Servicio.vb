@@ -3,6 +3,127 @@ Imports System.Data.DataRow
 
 Public Class Servicio
     Inherits Datos.Conexion
+    Public Function Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA(ByVal Servicio_id As Integer)
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_id", Servicio_id))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Servicio")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
+    Public Function Servicio_Obterner_X_Sucursal_MDA(ByVal sucursal_id As Integer)
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Servicio_Obterner_X_Sucursal_MDA", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Servicio")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
+    'Servicio_Modificar_MDA
+    Public Function Servicio_Modificar_MDA(
+                              ByVal CLI_id As Integer,
+                              ByVal Servicio_fecha As Date,
+                              ByVal sucursal_id As Integer,
+                              ByVal USU_id As Integer,
+                              ByVal Servicio_Diagnostico As String,
+                              ByVal Servicio_Sucursal As String,
+                              ByVal Servicio_Equipo As String,
+                              ByVal Servicio_FechaRev As Date,
+                              ByVal Servicio_FechaRep As Date,
+                              ByVal Servicio_Anticipo As Decimal,
+                              ByVal Servicio_id As Integer)
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Servicio_Modificar_MDA", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_id", CLI_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_fecha", Servicio_fecha))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@USU_id", USU_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Diagnostico", Servicio_Diagnostico))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Sucursal", Servicio_Sucursal))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Equipo", Servicio_Equipo))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_FechaRev", Servicio_FechaRev))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_FechaRep", Servicio_FechaRep))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Anticipo", Servicio_Anticipo))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_id", Servicio_id))
+
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Servicio")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
+    'Servicio alta_MDA
+    Public Function Servicio_alta_MDA(ByVal CLI_id As Integer,
+                              ByVal Servicio_fecha As Date,
+                              ByVal sucursal_id As Integer,
+                              ByVal USU_id As Integer,
+                              ByVal Servicio_Diagnostico As String,
+                              ByVal Servicio_Sucursal As String,
+                              ByVal Servicio_Equipo As String,
+                              ByVal Servicio_FechaRev As Date,
+                              ByVal Servicio_FechaRep As Date,
+                              ByVal Servicio_Anticipo As Decimal,
+                              ByVal Servicio_Estado As String)
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Servicio_alta_MDA", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_id", CLI_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_fecha", Servicio_fecha))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@USU_id", USU_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Diagnostico", Servicio_Diagnostico))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Sucursal", Servicio_Sucursal))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Equipo", Servicio_Equipo))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_FechaRev", Servicio_FechaRev))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_FechaRep", Servicio_FechaRep))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Anticipo", Servicio_Anticipo))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Estado", Servicio_Estado))
+
+
+
+
+
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Servicio")
+        dbconn.Close()
+        Return ds_JE
+    End Function
 
     'Servicio alta
     Public Function Servicio_alta(ByVal Servicio_fecha As Date,
