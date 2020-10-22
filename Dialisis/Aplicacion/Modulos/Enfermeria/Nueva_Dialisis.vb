@@ -282,7 +282,7 @@
             modificar_dialisis()
         Else
             If tb_PesoE.Text <> "00,00" And tb_PesoI.Text <> "00,00" And tb_PesoS.Text <> "00,00" And tb_TAE.Text <> "00,00" And tb_TAI.Text <> "00,00" And
-                        tb_talla.Text <> "00,00" And tb_tiempoHD.Text <> "00:00" And tb_HI.Text <> "00:00" And tb_HE.Text <> "00:00" And tb_Filtro.Text <> "" And tb_AV.Text <> "" Then
+                        tb_talla.Text <> "00,00" And tb_tiempoHD.Text <> "00:00" And tb_HI.Text <> "00:00" And tb_HE.Text <> "00:00" And tb_Filtro.Text <> "" And tb_AV.Text <> "No Tiene Acceso Vascular" Then
 
 
                 Dim concepto As String
