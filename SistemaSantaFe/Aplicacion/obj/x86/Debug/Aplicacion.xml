@@ -463,6 +463,10 @@ Represents a strongly typed in-memory cache of data.
 	<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
+</member><member name="P:Aplicacion.My.Resources.Resources.logohs___FINAL_copia">
+	<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
 </member><member name="P:Aplicacion.My.Resources.Resources.logohs___fondo2_copia">
 	<summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.

@@ -28,7 +28,7 @@ Partial Class PN_Inicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.Aplicacion.My.Resources.Resources.logohs___fondo2_copia
+        Me.BackgroundImage = Global.Aplicacion.My.Resources.Resources.logohs___FINAL_copia
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(879, 562)
         Me.DoubleBuffered = True

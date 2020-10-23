@@ -1942,6 +1942,7 @@
     <Content Include="Resources\factura.png" />
     <Content Include="Resources\factura_30x30.png" />
     <None Include="Resources\logohs - fondo2 copia.jpg" />
+    <None Include="Resources\logohs - FINAL copia.jpg" />
     <Content Include="Resources\Logo_empresa.png" />
     <None Include="Resources\mas30x30.png" />
     <None Include="Resources\pedidos.png" />
