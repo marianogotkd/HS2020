@@ -57,11 +57,15 @@ Public Property EnabledCerrar() As Boolean
     End Sub
 
     Private Sub NuevoEmpleadoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NuevoEmpleadoToolStripMenuItem.Click
-        llamar_Form(Empleado_alta)
+        Empleado_alta.Close()
+        Empleado_alta.Show()
+        'llamar_Form(Empleado_alta)
     End Sub
 
     Private Sub ModificarEmpleadoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ModificarEmpleadoToolStripMenuItem.Click
-        llamar_Form(Empleado_modificar)
+        'llamar_Form(Empleado_modificar)
+        Empleado_modificar.Close()
+        Empleado_modificar.Show()
     End Sub
 
     Private Sub ListaNuevaToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ListaNuevaToolStripMenuItem.Click
@@ -856,5 +860,13 @@ Public Property EnabledCerrar() As Boolean
     Private Sub TerminalModificarToolStripMenuItem2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles TerminalModificarToolStripMenuItem2.Click
         Terminal_modificar.Close()
         Terminal_modificar.Show()
+    End Sub
+
+    Private Sub CuadrillaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CuadrillaToolStripMenuItem.Click
+        'Cuadrilla_alta.Close()
+        'Cuadrilla_alta.Show()
+
+        Cuadrilla_consultar.Close()
+        Cuadrilla_consultar.Show()
     End Sub
 End Class

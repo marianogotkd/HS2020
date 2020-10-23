@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Ds_cuadrilla" targetNamespace="http://tempuri.org/Ds_cuadrilla.xsd" xmlns:mstns="http://tempuri.org/Ds_cuadrilla.xsd" xmlns="http://tempuri.org/Ds_cuadrilla.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Ds_cuadrilla" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Ds_cuadrilla" msprop:Generator_UserDSName="Ds_cuadrilla">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Empleados" msprop:Generator_TableClassName="EmpleadosDataTable" msprop:Generator_TableVarName="tableEmpleados" msprop:Generator_TablePropName="Empleados" msprop:Generator_RowDeletingName="EmpleadosRowDeleting" msprop:Generator_RowChangingName="EmpleadosRowChanging" msprop:Generator_RowEvHandlerName="EmpleadosRowChangeEventHandler" msprop:Generator_RowDeletedName="EmpleadosRowDeleted" msprop:Generator_UserTableName="Empleados" msprop:Generator_RowChangedName="EmpleadosRowChanged" msprop:Generator_RowEvArgName="EmpleadosRowChangeEvent" msprop:Generator_RowClassName="EmpleadosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="empleado_id" msprop:Generator_ColumnVarNameInTable="columnempleado_id" msprop:Generator_ColumnPropNameInRow="empleado_id" msprop:Generator_ColumnPropNameInTable="empleado_idColumn" msprop:Generator_UserColumnName="empleado_id" type="xs:int" minOccurs="0" />
+              <xs:element name="empleado_dni" msprop:Generator_ColumnVarNameInTable="columnempleado_dni" msprop:Generator_ColumnPropNameInRow="empleado_dni" msprop:Generator_ColumnPropNameInTable="empleado_dniColumn" msprop:Generator_UserColumnName="empleado_dni" type="xs:int" minOccurs="0" />
+              <xs:element name="apellido_y_nombre" msprop:Generator_ColumnVarNameInTable="columnapellido_y_nombre" msprop:Generator_ColumnPropNameInRow="apellido_y_nombre" msprop:Generator_ColumnPropNameInTable="apellido_y_nombreColumn" msprop:Generator_UserColumnName="apellido_y_nombre" type="xs:string" minOccurs="0" />
+              <xs:element name="salario_x_hora" msprop:Generator_ColumnVarNameInTable="columnsalario_x_hora" msprop:Generator_ColumnPropNameInRow="salario_x_hora" msprop:Generator_ColumnPropNameInTable="salario_x_horaColumn" msprop:Generator_UserColumnName="salario_x_hora" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Cuadrillas" msprop:Generator_TableClassName="CuadrillasDataTable" msprop:Generator_TableVarName="tableCuadrillas" msprop:Generator_TablePropName="Cuadrillas" msprop:Generator_RowDeletingName="CuadrillasRowDeleting" msprop:Generator_RowChangingName="CuadrillasRowChanging" msprop:Generator_RowEvHandlerName="CuadrillasRowChangeEventHandler" msprop:Generator_RowDeletedName="CuadrillasRowDeleted" msprop:Generator_UserTableName="Cuadrillas" msprop:Generator_RowChangedName="CuadrillasRowChanged" msprop:Generator_RowEvArgName="CuadrillasRowChangeEvent" msprop:Generator_RowClassName="CuadrillasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Cuadrilla_id" msprop:Generator_ColumnVarNameInTable="columnCuadrilla_id" msprop:Generator_ColumnPropNameInRow="Cuadrilla_id" msprop:Generator_ColumnPropNameInTable="Cuadrilla_idColumn" msprop:Generator_UserColumnName="Cuadrilla_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Cuadrilla_descripcion" msprop:Generator_ColumnVarNameInTable="columnCuadrilla_descripcion" msprop:Generator_ColumnPropNameInRow="Cuadrilla_descripcion" msprop:Generator_ColumnPropNameInTable="Cuadrilla_descripcionColumn" msprop:Generator_UserColumnName="Cuadrilla_descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="Salario" msprop:Generator_ColumnVarNameInTable="columnSalario" msprop:Generator_ColumnPropNameInRow="Salario" msprop:Generator_ColumnPropNameInTable="SalarioColumn" msprop:Generator_UserColumnName="Salario" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Miembros" msprop:Generator_ColumnVarNameInTable="columnMiembros" msprop:Generator_ColumnPropNameInRow="Miembros" msprop:Generator_ColumnPropNameInTable="MiembrosColumn" msprop:Generator_UserColumnName="Miembros" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
