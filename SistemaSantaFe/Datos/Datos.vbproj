@@ -69,6 +69,7 @@
     <Compile Include="Categoria.vb" />
     <Compile Include="Cliente.vb" />
     <Compile Include="Conexion.vb" />
+    <Compile Include="Cuadrilla.vb" />
     <Compile Include="CuentaCorriente.vb" />
     <Compile Include="Egresos.vb" />
     <Compile Include="Email.vb" />

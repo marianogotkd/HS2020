@@ -26,48 +26,40 @@ Partial Class Empleado_alta
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Empleado_alta))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.lb_dir = New System.Windows.Forms.Label()
+        Me.lb_tel = New System.Windows.Forms.Label()
+        Me.lb_mail = New System.Windows.Forms.Label()
+        Me.tx_mail_emp = New System.Windows.Forms.TextBox()
+        Me.tx_tel_emp = New System.Windows.Forms.TextBox()
+        Me.tx_dir_emp = New System.Windows.Forms.TextBox()
+        Me.tx_cel_emp = New System.Windows.Forms.TextBox()
+        Me.lb_cel = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Bo_exportar = New System.Windows.Forms.Button()
         Me.Bo_cargar = New System.Windows.Forms.Button()
         Me.Bo_deshacer = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.ERROR_tx_Remu = New System.Windows.Forms.PictureBox()
-        Me.Combo_tpoMonto = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Tx_Remu = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.tx_Funcion = New System.Windows.Forms.TextBox()
-        Me.tx_cel_emp = New System.Windows.Forms.TextBox()
-        Me.tx_dir_emp = New System.Windows.Forms.TextBox()
-        Me.DT_fechanac_emp = New System.Windows.Forms.DateTimePicker()
-        Me.lb_cel = New System.Windows.Forms.Label()
-        Me.lb_dir = New System.Windows.Forms.Label()
-        Me.lb_fechanac = New System.Windows.Forms.Label()
         Me.ERROR_tx_dni_emp = New System.Windows.Forms.PictureBox()
         Me.ERROR_tx_nom_emp = New System.Windows.Forms.PictureBox()
         Me.ERROR_tx_ape_emp = New System.Windows.Forms.PictureBox()
-        Me.tx_tel_emp = New System.Windows.Forms.TextBox()
-        Me.tx_mail_emp = New System.Windows.Forms.TextBox()
         Me.lb_ape = New System.Windows.Forms.Label()
         Me.tx_dni_emp = New System.Windows.Forms.TextBox()
         Me.lb_nom = New System.Windows.Forms.Label()
         Me.tx_nom_emp = New System.Windows.Forms.TextBox()
         Me.lb_dni = New System.Windows.Forms.Label()
         Me.tx_ape_emp = New System.Windows.Forms.TextBox()
-        Me.lb_mail = New System.Windows.Forms.Label()
-        Me.lb_tel = New System.Windows.Forms.Label()
-        Me.Bo_guardar = New System.Windows.Forms.Button()
-        Me.Bo_cancelar = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.btn_Cancelar = New System.Windows.Forms.Button()
+        Me.btn_Aceptar = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.ERROR_tx_Remu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ERROR_tx_dni_emp, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ERROR_tx_nom_emp, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ERROR_tx_ape_emp, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,20 +71,116 @@ Partial Class Empleado_alta
         Me.TabControl1.Location = New System.Drawing.Point(12, 9)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(865, 326)
+        Me.TabControl1.Size = New System.Drawing.Size(427, 291)
         Me.TabControl1.TabIndex = 0
+        Me.TabControl1.TabStop = False
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.GroupBox3)
         Me.TabPage1.Controls.Add(Me.GroupBox2)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(857, 300)
+        Me.TabPage1.Size = New System.Drawing.Size(419, 265)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Datos del Empleado"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.lb_dir)
+        Me.GroupBox3.Controls.Add(Me.lb_tel)
+        Me.GroupBox3.Controls.Add(Me.lb_mail)
+        Me.GroupBox3.Controls.Add(Me.tx_mail_emp)
+        Me.GroupBox3.Controls.Add(Me.tx_tel_emp)
+        Me.GroupBox3.Controls.Add(Me.tx_dir_emp)
+        Me.GroupBox3.Controls.Add(Me.tx_cel_emp)
+        Me.GroupBox3.Controls.Add(Me.lb_cel)
+        Me.GroupBox3.Location = New System.Drawing.Point(14, 130)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(390, 129)
+        Me.GroupBox3.TabIndex = 2
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Contacto"
+        '
+        'lb_dir
+        '
+        Me.lb_dir.AutoSize = True
+        Me.lb_dir.Location = New System.Drawing.Point(57, 22)
+        Me.lb_dir.Name = "lb_dir"
+        Me.lb_dir.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lb_dir.Size = New System.Drawing.Size(49, 13)
+        Me.lb_dir.TabIndex = 260
+        Me.lb_dir.Text = "Domicilio"
+        '
+        'lb_tel
+        '
+        Me.lb_tel.AutoSize = True
+        Me.lb_tel.Location = New System.Drawing.Point(57, 74)
+        Me.lb_tel.Name = "lb_tel"
+        Me.lb_tel.Size = New System.Drawing.Size(49, 13)
+        Me.lb_tel.TabIndex = 254
+        Me.lb_tel.Text = "Telefono"
+        '
+        'lb_mail
+        '
+        Me.lb_mail.AutoSize = True
+        Me.lb_mail.Location = New System.Drawing.Point(71, 48)
+        Me.lb_mail.Name = "lb_mail"
+        Me.lb_mail.Size = New System.Drawing.Size(35, 13)
+        Me.lb_mail.TabIndex = 252
+        Me.lb_mail.Text = "E-mail"
+        '
+        'tx_mail_emp
+        '
+        Me.tx_mail_emp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tx_mail_emp.Location = New System.Drawing.Point(112, 45)
+        Me.tx_mail_emp.MaxLength = 50
+        Me.tx_mail_emp.Name = "tx_mail_emp"
+        Me.tx_mail_emp.Size = New System.Drawing.Size(216, 20)
+        Me.tx_mail_emp.TabIndex = 1
+        Me.tx_mail_emp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'tx_tel_emp
+        '
+        Me.tx_tel_emp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tx_tel_emp.Location = New System.Drawing.Point(112, 71)
+        Me.tx_tel_emp.MaxLength = 50
+        Me.tx_tel_emp.Name = "tx_tel_emp"
+        Me.tx_tel_emp.Size = New System.Drawing.Size(216, 20)
+        Me.tx_tel_emp.TabIndex = 2
+        Me.tx_tel_emp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'tx_dir_emp
+        '
+        Me.tx_dir_emp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tx_dir_emp.Location = New System.Drawing.Point(112, 19)
+        Me.tx_dir_emp.MaxLength = 50
+        Me.tx_dir_emp.Name = "tx_dir_emp"
+        Me.tx_dir_emp.Size = New System.Drawing.Size(216, 20)
+        Me.tx_dir_emp.TabIndex = 0
+        Me.tx_dir_emp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'tx_cel_emp
+        '
+        Me.tx_cel_emp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tx_cel_emp.Location = New System.Drawing.Point(112, 97)
+        Me.tx_cel_emp.MaxLength = 50
+        Me.tx_cel_emp.Name = "tx_cel_emp"
+        Me.tx_cel_emp.Size = New System.Drawing.Size(216, 20)
+        Me.tx_cel_emp.TabIndex = 3
+        Me.tx_cel_emp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'lb_cel
+        '
+        Me.lb_cel.AutoSize = True
+        Me.lb_cel.Location = New System.Drawing.Point(67, 100)
+        Me.lb_cel.Name = "lb_cel"
+        Me.lb_cel.Size = New System.Drawing.Size(39, 13)
+        Me.lb_cel.TabIndex = 261
+        Me.lb_cel.Text = "Celular"
         '
         'GroupBox2
         '
@@ -107,6 +195,7 @@ Partial Class Empleado_alta
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Foto del Empleado"
+        Me.GroupBox2.Visible = False
         '
         'Bo_exportar
         '
@@ -151,154 +240,27 @@ Partial Class Empleado_alta
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.ERROR_tx_Remu)
-        Me.GroupBox1.Controls.Add(Me.Combo_tpoMonto)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.Tx_Remu)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.tx_Funcion)
-        Me.GroupBox1.Controls.Add(Me.tx_cel_emp)
-        Me.GroupBox1.Controls.Add(Me.tx_dir_emp)
-        Me.GroupBox1.Controls.Add(Me.DT_fechanac_emp)
-        Me.GroupBox1.Controls.Add(Me.lb_cel)
-        Me.GroupBox1.Controls.Add(Me.lb_dir)
-        Me.GroupBox1.Controls.Add(Me.lb_fechanac)
         Me.GroupBox1.Controls.Add(Me.ERROR_tx_dni_emp)
         Me.GroupBox1.Controls.Add(Me.ERROR_tx_nom_emp)
         Me.GroupBox1.Controls.Add(Me.ERROR_tx_ape_emp)
-        Me.GroupBox1.Controls.Add(Me.tx_tel_emp)
-        Me.GroupBox1.Controls.Add(Me.tx_mail_emp)
         Me.GroupBox1.Controls.Add(Me.lb_ape)
         Me.GroupBox1.Controls.Add(Me.tx_dni_emp)
         Me.GroupBox1.Controls.Add(Me.lb_nom)
         Me.GroupBox1.Controls.Add(Me.tx_nom_emp)
         Me.GroupBox1.Controls.Add(Me.lb_dni)
         Me.GroupBox1.Controls.Add(Me.tx_ape_emp)
-        Me.GroupBox1.Controls.Add(Me.lb_mail)
-        Me.GroupBox1.Controls.Add(Me.lb_tel)
         Me.GroupBox1.ForeColor = System.Drawing.Color.DarkSlateGray
         Me.GroupBox1.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(632, 279)
+        Me.GroupBox1.Size = New System.Drawing.Size(398, 114)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Personales"
         '
-        'ERROR_tx_Remu
-        '
-        Me.ERROR_tx_Remu.Image = CType(resources.GetObject("ERROR_tx_Remu.Image"), System.Drawing.Image)
-        Me.ERROR_tx_Remu.Location = New System.Drawing.Point(564, 153)
-        Me.ERROR_tx_Remu.Name = "ERROR_tx_Remu"
-        Me.ERROR_tx_Remu.Size = New System.Drawing.Size(16, 16)
-        Me.ERROR_tx_Remu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.ERROR_tx_Remu.TabIndex = 272
-        Me.ERROR_tx_Remu.TabStop = False
-        Me.ERROR_tx_Remu.Visible = False
-        '
-        'Combo_tpoMonto
-        '
-        Me.Combo_tpoMonto.FormattingEnabled = True
-        Me.Combo_tpoMonto.Items.AddRange(New Object() {"Fijo", "Variable"})
-        Me.Combo_tpoMonto.Location = New System.Drawing.Point(440, 107)
-        Me.Combo_tpoMonto.Name = "Combo_tpoMonto"
-        Me.Combo_tpoMonto.Size = New System.Drawing.Size(121, 21)
-        Me.Combo_tpoMonto.TabIndex = 5
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(358, 110)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(76, 13)
-        Me.Label3.TabIndex = 270
-        Me.Label3.Text = "Tipo de Monto"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(358, 153)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(76, 13)
-        Me.Label2.TabIndex = 268
-        Me.Label2.Text = "Remuneracion"
-        '
-        'Tx_Remu
-        '
-        Me.Tx_Remu.Location = New System.Drawing.Point(440, 150)
-        Me.Tx_Remu.Name = "Tx_Remu"
-        Me.Tx_Remu.Size = New System.Drawing.Size(118, 20)
-        Me.Tx_Remu.TabIndex = 7
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(358, 67)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(45, 13)
-        Me.Label1.TabIndex = 266
-        Me.Label1.Text = "Funcion"
-        '
-        'tx_Funcion
-        '
-        Me.tx_Funcion.Location = New System.Drawing.Point(408, 64)
-        Me.tx_Funcion.Name = "tx_Funcion"
-        Me.tx_Funcion.Size = New System.Drawing.Size(190, 20)
-        Me.tx_Funcion.TabIndex = 3
-        '
-        'tx_cel_emp
-        '
-        Me.tx_cel_emp.Location = New System.Drawing.Point(403, 223)
-        Me.tx_cel_emp.Name = "tx_cel_emp"
-        Me.tx_cel_emp.Size = New System.Drawing.Size(195, 20)
-        Me.tx_cel_emp.TabIndex = 10
-        '
-        'tx_dir_emp
-        '
-        Me.tx_dir_emp.Location = New System.Drawing.Point(98, 150)
-        Me.tx_dir_emp.Name = "tx_dir_emp"
-        Me.tx_dir_emp.Size = New System.Drawing.Size(216, 20)
-        Me.tx_dir_emp.TabIndex = 6
-        '
-        'DT_fechanac_emp
-        '
-        Me.DT_fechanac_emp.Location = New System.Drawing.Point(98, 107)
-        Me.DT_fechanac_emp.Name = "DT_fechanac_emp"
-        Me.DT_fechanac_emp.Size = New System.Drawing.Size(216, 20)
-        Me.DT_fechanac_emp.TabIndex = 4
-        '
-        'lb_cel
-        '
-        Me.lb_cel.AutoSize = True
-        Me.lb_cel.Location = New System.Drawing.Point(358, 226)
-        Me.lb_cel.Name = "lb_cel"
-        Me.lb_cel.Size = New System.Drawing.Size(39, 13)
-        Me.lb_cel.TabIndex = 261
-        Me.lb_cel.Text = "Celular"
-        '
-        'lb_dir
-        '
-        Me.lb_dir.AutoSize = True
-        Me.lb_dir.Location = New System.Drawing.Point(13, 153)
-        Me.lb_dir.Name = "lb_dir"
-        Me.lb_dir.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.lb_dir.Size = New System.Drawing.Size(49, 13)
-        Me.lb_dir.TabIndex = 260
-        Me.lb_dir.Text = "Domicilio"
-        '
-        'lb_fechanac
-        '
-        Me.lb_fechanac.AutoSize = True
-        Me.lb_fechanac.Location = New System.Drawing.Point(13, 110)
-        Me.lb_fechanac.Name = "lb_fechanac"
-        Me.lb_fechanac.Size = New System.Drawing.Size(78, 13)
-        Me.lb_fechanac.TabIndex = 259
-        Me.lb_fechanac.Text = "Fecha de Nac."
-        '
         'ERROR_tx_dni_emp
         '
         Me.ERROR_tx_dni_emp.Image = CType(resources.GetObject("ERROR_tx_dni_emp.Image"), System.Drawing.Image)
-        Me.ERROR_tx_dni_emp.Location = New System.Drawing.Point(321, 68)
+        Me.ERROR_tx_dni_emp.Location = New System.Drawing.Point(343, 34)
         Me.ERROR_tx_dni_emp.Name = "ERROR_tx_dni_emp"
         Me.ERROR_tx_dni_emp.Size = New System.Drawing.Size(16, 16)
         Me.ERROR_tx_dni_emp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -309,7 +271,7 @@ Partial Class Empleado_alta
         'ERROR_tx_nom_emp
         '
         Me.ERROR_tx_nom_emp.Image = CType(resources.GetObject("ERROR_tx_nom_emp.Image"), System.Drawing.Image)
-        Me.ERROR_tx_nom_emp.Location = New System.Drawing.Point(604, 27)
+        Me.ERROR_tx_nom_emp.Location = New System.Drawing.Point(343, 58)
         Me.ERROR_tx_nom_emp.Name = "ERROR_tx_nom_emp"
         Me.ERROR_tx_nom_emp.Size = New System.Drawing.Size(16, 16)
         Me.ERROR_tx_nom_emp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -320,7 +282,7 @@ Partial Class Empleado_alta
         'ERROR_tx_ape_emp
         '
         Me.ERROR_tx_ape_emp.Image = CType(resources.GetObject("ERROR_tx_ape_emp.Image"), System.Drawing.Image)
-        Me.ERROR_tx_ape_emp.Location = New System.Drawing.Point(321, 27)
+        Me.ERROR_tx_ape_emp.Location = New System.Drawing.Point(343, 84)
         Me.ERROR_tx_ape_emp.Name = "ERROR_tx_ape_emp"
         Me.ERROR_tx_ape_emp.Size = New System.Drawing.Size(16, 16)
         Me.ERROR_tx_ape_emp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -328,24 +290,10 @@ Partial Class Empleado_alta
         Me.ERROR_tx_ape_emp.TabStop = False
         Me.ERROR_tx_ape_emp.Visible = False
         '
-        'tx_tel_emp
-        '
-        Me.tx_tel_emp.Location = New System.Drawing.Point(98, 223)
-        Me.tx_tel_emp.Name = "tx_tel_emp"
-        Me.tx_tel_emp.Size = New System.Drawing.Size(216, 20)
-        Me.tx_tel_emp.TabIndex = 9
-        '
-        'tx_mail_emp
-        '
-        Me.tx_mail_emp.Location = New System.Drawing.Point(98, 185)
-        Me.tx_mail_emp.Name = "tx_mail_emp"
-        Me.tx_mail_emp.Size = New System.Drawing.Size(216, 20)
-        Me.tx_mail_emp.TabIndex = 8
-        '
         'lb_ape
         '
         Me.lb_ape.AutoSize = True
-        Me.lb_ape.Location = New System.Drawing.Point(13, 27)
+        Me.lb_ape.Location = New System.Drawing.Point(70, 87)
         Me.lb_ape.Name = "lb_ape"
         Me.lb_ape.Size = New System.Drawing.Size(44, 13)
         Me.lb_ape.TabIndex = 246
@@ -353,15 +301,18 @@ Partial Class Empleado_alta
         '
         'tx_dni_emp
         '
-        Me.tx_dni_emp.Location = New System.Drawing.Point(98, 66)
+        Me.tx_dni_emp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tx_dni_emp.Location = New System.Drawing.Point(120, 32)
+        Me.tx_dni_emp.MaxLength = 10
         Me.tx_dni_emp.Name = "tx_dni_emp"
         Me.tx_dni_emp.Size = New System.Drawing.Size(217, 20)
-        Me.tx_dni_emp.TabIndex = 2
+        Me.tx_dni_emp.TabIndex = 0
+        Me.tx_dni_emp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lb_nom
         '
         Me.lb_nom.AutoSize = True
-        Me.lb_nom.Location = New System.Drawing.Point(358, 30)
+        Me.lb_nom.Location = New System.Drawing.Point(70, 61)
         Me.lb_nom.Name = "lb_nom"
         Me.lb_nom.Size = New System.Drawing.Size(44, 13)
         Me.lb_nom.TabIndex = 247
@@ -369,15 +320,18 @@ Partial Class Empleado_alta
         '
         'tx_nom_emp
         '
-        Me.tx_nom_emp.Location = New System.Drawing.Point(408, 27)
+        Me.tx_nom_emp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tx_nom_emp.Location = New System.Drawing.Point(120, 58)
+        Me.tx_nom_emp.MaxLength = 50
         Me.tx_nom_emp.Name = "tx_nom_emp"
-        Me.tx_nom_emp.Size = New System.Drawing.Size(190, 20)
+        Me.tx_nom_emp.Size = New System.Drawing.Size(216, 20)
         Me.tx_nom_emp.TabIndex = 1
+        Me.tx_nom_emp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lb_dni
         '
         Me.lb_dni.AutoSize = True
-        Me.lb_dni.Location = New System.Drawing.Point(13, 67)
+        Me.lb_dni.Location = New System.Drawing.Point(52, 34)
         Me.lb_dni.Name = "lb_dni"
         Me.lb_dni.Size = New System.Drawing.Size(62, 13)
         Me.lb_dni.TabIndex = 250
@@ -385,52 +339,43 @@ Partial Class Empleado_alta
         '
         'tx_ape_emp
         '
-        Me.tx_ape_emp.Location = New System.Drawing.Point(98, 27)
+        Me.tx_ape_emp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tx_ape_emp.Location = New System.Drawing.Point(120, 84)
+        Me.tx_ape_emp.MaxLength = 50
         Me.tx_ape_emp.Name = "tx_ape_emp"
         Me.tx_ape_emp.Size = New System.Drawing.Size(216, 20)
-        Me.tx_ape_emp.TabIndex = 0
-        '
-        'lb_mail
-        '
-        Me.lb_mail.AutoSize = True
-        Me.lb_mail.Location = New System.Drawing.Point(13, 188)
-        Me.lb_mail.Name = "lb_mail"
-        Me.lb_mail.Size = New System.Drawing.Size(35, 13)
-        Me.lb_mail.TabIndex = 252
-        Me.lb_mail.Text = "E-mail"
-        '
-        'lb_tel
-        '
-        Me.lb_tel.AutoSize = True
-        Me.lb_tel.Location = New System.Drawing.Point(13, 226)
-        Me.lb_tel.Name = "lb_tel"
-        Me.lb_tel.Size = New System.Drawing.Size(49, 13)
-        Me.lb_tel.TabIndex = 254
-        Me.lb_tel.Text = "Telefono"
-        '
-        'Bo_guardar
-        '
-        Me.Bo_guardar.Image = CType(resources.GetObject("Bo_guardar.Image"), System.Drawing.Image)
-        Me.Bo_guardar.Location = New System.Drawing.Point(837, 341)
-        Me.Bo_guardar.Name = "Bo_guardar"
-        Me.Bo_guardar.Size = New System.Drawing.Size(40, 40)
-        Me.Bo_guardar.TabIndex = 1
-        Me.ToolTip1.SetToolTip(Me.Bo_guardar, "Guardar")
-        Me.Bo_guardar.UseVisualStyleBackColor = True
-        '
-        'Bo_cancelar
-        '
-        Me.Bo_cancelar.Image = CType(resources.GetObject("Bo_cancelar.Image"), System.Drawing.Image)
-        Me.Bo_cancelar.Location = New System.Drawing.Point(791, 341)
-        Me.Bo_cancelar.Name = "Bo_cancelar"
-        Me.Bo_cancelar.Size = New System.Drawing.Size(40, 40)
-        Me.Bo_cancelar.TabIndex = 0
-        Me.ToolTip1.SetToolTip(Me.Bo_cancelar, "Cancelar")
-        Me.Bo_cancelar.UseVisualStyleBackColor = True
+        Me.tx_ape_emp.TabIndex = 2
+        Me.tx_ape_emp.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'btn_Cancelar
+        '
+        Me.btn_Cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
+        Me.btn_Cancelar.Location = New System.Drawing.Point(105, 318)
+        Me.btn_Cancelar.Name = "btn_Cancelar"
+        Me.btn_Cancelar.Size = New System.Drawing.Size(124, 43)
+        Me.btn_Cancelar.TabIndex = 1
+        Me.btn_Cancelar.Text = "Cancelar"
+        Me.btn_Cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_Cancelar, "Cancelar")
+        Me.btn_Cancelar.UseVisualStyleBackColor = True
+        '
+        'btn_Aceptar
+        '
+        Me.btn_Aceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Aceptar.Image = Global.Aplicacion.My.Resources.Resources.Guardar
+        Me.btn_Aceptar.Location = New System.Drawing.Point(235, 318)
+        Me.btn_Aceptar.Name = "btn_Aceptar"
+        Me.btn_Aceptar.Size = New System.Drawing.Size(124, 43)
+        Me.btn_Aceptar.TabIndex = 0
+        Me.btn_Aceptar.Text = "Guardar"
+        Me.btn_Aceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_Aceptar, "Guardar")
+        Me.btn_Aceptar.UseVisualStyleBackColor = True
         '
         'Empleado_alta
         '
@@ -438,19 +383,22 @@ Partial Class Empleado_alta
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(879, 562)
-        Me.Controls.Add(Me.Bo_cancelar)
-        Me.Controls.Add(Me.Bo_guardar)
+        Me.ClientSize = New System.Drawing.Size(447, 367)
+        Me.Controls.Add(Me.btn_Cancelar)
+        Me.Controls.Add(Me.btn_Aceptar)
         Me.Controls.Add(Me.TabControl1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Empleado_alta"
-        Me.Text = "Empleado_alta"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Agregar Empleado"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.ERROR_tx_Remu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ERROR_tx_dni_emp, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ERROR_tx_nom_emp, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ERROR_tx_ape_emp, System.ComponentModel.ISupportInitialize).EndInit()
@@ -476,23 +424,15 @@ Partial Class Empleado_alta
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents tx_dir_emp As System.Windows.Forms.TextBox
-    Friend WithEvents DT_fechanac_emp As System.Windows.Forms.DateTimePicker
     Friend WithEvents lb_cel As System.Windows.Forms.Label
     Friend WithEvents lb_dir As System.Windows.Forms.Label
-    Friend WithEvents lb_fechanac As System.Windows.Forms.Label
     Friend WithEvents tx_cel_emp As System.Windows.Forms.TextBox
-    Friend WithEvents Bo_guardar As System.Windows.Forms.Button
-    Friend WithEvents Bo_cancelar As System.Windows.Forms.Button
     Friend WithEvents Bo_exportar As System.Windows.Forms.Button
     Friend WithEvents Bo_cargar As System.Windows.Forms.Button
     Friend WithEvents Bo_deshacer As System.Windows.Forms.Button
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents Combo_tpoMonto As System.Windows.Forms.ComboBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Tx_Remu As System.Windows.Forms.TextBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents tx_Funcion As System.Windows.Forms.TextBox
-    Friend WithEvents ERROR_tx_Remu As System.Windows.Forms.PictureBox
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+    Friend WithEvents btn_Cancelar As System.Windows.Forms.Button
+    Friend WithEvents btn_Aceptar As System.Windows.Forms.Button
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
 End Class

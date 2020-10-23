@@ -297,6 +297,32 @@
     <Compile Include="Modulos\Configuraciones\Sucursales.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Cuadrilla\Cuadrilla_agregar_empleado.Designer.vb">
+      <DependentUpon>Cuadrilla_agregar_empleado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Cuadrilla\Cuadrilla_agregar_empleado.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Cuadrilla\Cuadrilla_alta.Designer.vb">
+      <DependentUpon>Cuadrilla_alta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Cuadrilla\Cuadrilla_alta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Cuadrilla\Cuadrilla_consultar.Designer.vb">
+      <DependentUpon>Cuadrilla_consultar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Cuadrilla\Cuadrilla_consultar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Cuadrilla\Ds_cuadrilla.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ds_cuadrilla.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Cuadrilla\Ds_cuadrilla.vb">
+      <DependentUpon>Ds_cuadrilla.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Egresos\Egresos_Alta.Designer.vb">
       <DependentUpon>Egresos_Alta.vb</DependentUpon>
     </Compile>
@@ -343,6 +369,11 @@
     </Compile>
     <Compile Include="Modulos\Egresos\Servicios_Alta.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Empleado\ds_empleados.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ds_empleados.xsd</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Empleado\Empleado_alta.Designer.vb">
       <DependentUpon>Empleado_alta.vb</DependentUpon>
@@ -1193,6 +1224,15 @@
     <EmbeddedResource Include="Modulos\Configuraciones\Sucursales.resx">
       <DependentUpon>Sucursales.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Cuadrilla\Cuadrilla_agregar_empleado.resx">
+      <DependentUpon>Cuadrilla_agregar_empleado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Cuadrilla\Cuadrilla_alta.resx">
+      <DependentUpon>Cuadrilla_alta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Cuadrilla\Cuadrilla_consultar.resx">
+      <DependentUpon>Cuadrilla_consultar.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Egresos\Egresos_Alta.resx">
       <DependentUpon>Egresos_Alta.vb</DependentUpon>
     </EmbeddedResource>
@@ -1605,6 +1645,17 @@
     <None Include="Modulos\Configuraciones\DS_configuraciones.xss">
       <DependentUpon>DS_configuraciones.xsd</DependentUpon>
     </None>
+    <None Include="Modulos\Cuadrilla\Ds_cuadrilla.xsc">
+      <DependentUpon>Ds_cuadrilla.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Cuadrilla\Ds_cuadrilla.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ds_cuadrilla.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulos\Cuadrilla\Ds_cuadrilla.xss">
+      <DependentUpon>Ds_cuadrilla.xsd</DependentUpon>
+    </None>
     <None Include="Modulos\Egresos\Egresos_DS.xsc">
       <DependentUpon>Egresos_DS.xsd</DependentUpon>
     </None>
@@ -1615,6 +1666,17 @@
     </None>
     <None Include="Modulos\Egresos\Egresos_DS.xss">
       <DependentUpon>Egresos_DS.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Empleado\ds_empleados.xsc">
+      <DependentUpon>ds_empleados.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Empleado\ds_empleados.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ds_empleados.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulos\Empleado\ds_empleados.xss">
+      <DependentUpon>ds_empleados.xsd</DependentUpon>
     </None>
     <None Include="Modulos\Empresa\Empresa_DS.xsc">
       <DependentUpon>Empresa_DS.xsd</DependentUpon>

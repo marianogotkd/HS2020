@@ -2,99 +2,94 @@
 Imports System.Data.OleDb
 
 Public Class Empleado_alta
-
+    Public empleado_id As Integer
+    Public form_procedencia As String = "alta"
     Dim DAempleado As New Datos.Empleado
-
+    Dim Validaciones As New Validaciones
     Private Sub Empleado_alta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'guardo en portapapeles la imagen por defecto para los empleados
-        Clipboard.SetDataObject(Me.PictureBox1.Image)
+        'Clipboard.SetDataObject(Me.PictureBox1.Image)
 
-        Combo_tpoMonto.SelectedIndex = 0
+        'Combo_tpoMonto.SelectedIndex = 0
 
 
     End Sub
 
 
-    Private Sub Bo_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bo_guardar.Click
-        'validamos x lo menos q tenga apellido nombre y dni
-        If Tx_Remu.Text <> "" Then
-            ERROR_tx_Remu.Visible = False
-            If tx_ape_emp.Text <> "" Then
-                ERROR_tx_ape_emp.Visible = False
-                If tx_nom_emp.Text <> "" Then
-                    ERROR_tx_nom_emp.Visible = False
-                    If tx_dni_emp.Text <> "" Then
-                        ERROR_tx_dni_emp.Visible = False
+    Private Sub Bo_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        ''validamos x lo menos q tenga apellido nombre y dni
+        'If Tx_Remu.Text <> "" Then
+        '    ERROR_tx_Remu.Visible = False
+        '    If tx_ape_emp.Text <> "" Then
+        '        ERROR_tx_ape_emp.Visible = False
+        '        If tx_nom_emp.Text <> "" Then
+        '            ERROR_tx_nom_emp.Visible = False
+        '            If tx_dni_emp.Text <> "" Then
+        '                ERROR_tx_dni_emp.Visible = False
 
-                        Dim result As DialogResult
-                        result = MessageBox.Show("¿Desea dar de alta al Empleado?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
-                        If result = DialogResult.OK Then
-                            Dim valido_empleado As New DataSet
-                            valido_empleado = DAempleado.Empleado_buscardni(Me.tx_dni_emp.Text)
-                            If valido_empleado.Tables(0).Rows.Count = 0 Then
+        '                Dim result As DialogResult
+        '                result = MessageBox.Show("¿Desea dar de alta al Empleado?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+        '                If result = DialogResult.OK Then
+        '                    Dim valido_empleado As New DataSet
+        '                    valido_empleado = DAempleado.Empleado_buscardni(Me.tx_dni_emp.Text)
+        '                    If valido_empleado.Tables(0).Rows.Count = 0 Then
 
-                                'FOTO  //////////////////////////////////////////////////////////////////////////////////////////////////
-                                Dim empleado_foto As Byte()
-                                empleado_foto = Nothing
-                                If PictureBox1.ImageLocation <> Nothing Then  'si tengo seleccionado una foto, la mando como parametro
-                                    Dim ms = New MemoryStream
-                                    Dim fs = New FileStream(PictureBox1.ImageLocation, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)
-                                    ms.SetLength(fs.Length)
-                                    fs.Read(ms.GetBuffer(), 0, fs.Length)
-                                    empleado_foto = ms.GetBuffer
-                                    ms.Flush()
-                                    fs.Close()
-                                Else
-                                    'si no tiene foto, le pongo x defecto la q esta en picture.image
-                                    Dim ms = New MemoryStream
-                                    PictureBox1.Image.Save(ms, PictureBox1.Image.RawFormat)
-                                    empleado_foto = ms.GetBuffer
-                                    ms.Flush()
-                                End If
-                                'Empleado ALTA  //////////////////////////////////////////////////////////////////////////////////////////
+        '                        'FOTO  //////////////////////////////////////////////////////////////////////////////////////////////////
+        '                        Dim empleado_foto As Byte()
+        '                        empleado_foto = Nothing
+        '                        If PictureBox1.ImageLocation <> Nothing Then  'si tengo seleccionado una foto, la mando como parametro
+        '                            Dim ms = New MemoryStream
+        '                            Dim fs = New FileStream(PictureBox1.ImageLocation, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)
+        '                            ms.SetLength(fs.Length)
+        '                            fs.Read(ms.GetBuffer(), 0, fs.Length)
+        '                            empleado_foto = ms.GetBuffer
+        '                            ms.Flush()
+        '                            fs.Close()
+        '                        Else
+        '                            'si no tiene foto, le pongo x defecto la q esta en picture.image
+        '                            Dim ms = New MemoryStream
+        '                            PictureBox1.Image.Save(ms, PictureBox1.Image.RawFormat)
+        '                            empleado_foto = ms.GetBuffer
+        '                            ms.Flush()
+        '                        End If
+        '                        'Empleado ALTA  //////////////////////////////////////////////////////////////////////////////////////////
 
-                                DAempleado.Empleado_Alta(tx_dni_emp.Text, tx_nom_emp.Text, tx_ape_emp.Text, DT_fechanac_emp.Value, tx_dir_emp.Text, tx_tel_emp.Text, tx_cel_emp.Text, tx_mail_emp.Text, empleado_foto, tx_Funcion.Text, Combo_tpoMonto.Text, Tx_Remu.Text)
-                                MessageBox.Show("Se Cargo Correctamente el Nuevo Empleado.", "Sistema de Gestion.")
-                                limpiar_deshabilitar()
-                            Else
-                                MessageBox.Show("El Empleado ya existe", "Sistema de Gestion.")
-                                ERROR_tx_dni_emp.Visible = True
-                                tx_dni_emp.Focus()
-                                Me.TabControl1.SelectedTab = TabPage1
-                            End If
-                        End If
-                    Else
-                        MessageBox.Show("Complete la información", "Sistema de Gestion.")
-                        ERROR_tx_dni_emp.Visible = True
-                        tx_dni_emp.Focus()
-                        Me.TabControl1.SelectedTab = TabPage1
-                    End If
-                Else
-                    MessageBox.Show("Complete la información", "Sistema de Gestion.")
-                    ERROR_tx_nom_emp.Visible = True
-                    tx_nom_emp.Focus()
-                    Me.TabControl1.SelectedTab = TabPage1
-                End If
-            Else
-                MessageBox.Show("Complete la información", "Sistema de Gestion.")
-                ERROR_tx_ape_emp.Visible = True
-                tx_ape_emp.Focus()
-                Me.TabControl1.SelectedTab = TabPage1
-            End If
-        Else
-            ERROR_tx_Remu.Visible = True
-            Tx_Remu.Focus()
-            MessageBox.Show("Complete la información", "Sistema de Gestion.", MessageBoxButtons.OK)
-        End If
+        '                        DAempleado.Empleado_Alta(tx_dni_emp.Text, tx_nom_emp.Text, tx_ape_emp.Text, DT_fechanac_emp.Value, tx_dir_emp.Text, tx_tel_emp.Text, tx_cel_emp.Text, tx_mail_emp.Text, empleado_foto, tx_Funcion.Text, Combo_tpoMonto.Text, Tx_Remu.Text)
+        '                        MessageBox.Show("Se Cargo Correctamente el Nuevo Empleado.", "Sistema de Gestion.")
+        '                        limpiar_deshabilitar()
+        '                    Else
+        '                        MessageBox.Show("El Empleado ya existe", "Sistema de Gestion.")
+        '                        ERROR_tx_dni_emp.Visible = True
+        '                        tx_dni_emp.Focus()
+        '                        Me.TabControl1.SelectedTab = TabPage1
+        '                    End If
+        '                End If
+        '            Else
+        '                MessageBox.Show("Complete la información", "Sistema de Gestion.")
+        '                ERROR_tx_dni_emp.Visible = True
+        '                tx_dni_emp.Focus()
+        '                Me.TabControl1.SelectedTab = TabPage1
+        '            End If
+        '        Else
+        '            MessageBox.Show("Complete la información", "Sistema de Gestion.")
+        '            ERROR_tx_nom_emp.Visible = True
+        '            tx_nom_emp.Focus()
+        '            Me.TabControl1.SelectedTab = TabPage1
+        '        End If
+        '    Else
+        '        MessageBox.Show("Complete la información", "Sistema de Gestion.")
+        '        ERROR_tx_ape_emp.Visible = True
+        '        tx_ape_emp.Focus()
+        '        Me.TabControl1.SelectedTab = TabPage1
+        '    End If
+        'Else
+        '    ERROR_tx_Remu.Visible = True
+        '    Tx_Remu.Focus()
+        '    MessageBox.Show("Complete la información", "Sistema de Gestion.", MessageBoxButtons.OK)
+        'End If
 
     End Sub
 
-    Private Sub Bo_cancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bo_cancelar.Click
-        limpiar_deshabilitar()
-        Me.TabControl1.SelectedTab = TabPage1
-        Bo_guardar.Enabled = True
-        Bo_cancelar.Enabled = True
-    End Sub
 
     Public Sub limpiar_deshabilitar()
         'datos personales///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -111,17 +106,15 @@ Public Class Empleado_alta
         tx_mail_emp.Text = ""
         tx_cel_emp.Text = ""
         tx_dir_emp.Text = ""
-        DT_fechanac_emp.Text = ""
-        tx_Funcion.Text = ""
-        Tx_Remu.Text = ""
-        'recupero del portapapeles la imagen por defecto
-        Dim data As IDataObject
-        data = Clipboard.GetDataObject
-        Dim bmap As Bitmap
-        If data.GetDataPresent(GetType(System.Drawing.Bitmap)) Then
-            bmap = CType(data.GetData(GetType(System.Drawing.Bitmap)), Bitmap)
-            Me.PictureBox1.Image = bmap
-        End If
+
+        ''recupero del portapapeles la imagen por defecto
+        'Dim data As IDataObject
+        'data = Clipboard.GetDataObject
+        'Dim bmap As Bitmap
+        'If data.GetDataPresent(GetType(System.Drawing.Bitmap)) Then
+        '    bmap = CType(data.GetData(GetType(System.Drawing.Bitmap)), Bitmap)
+        '    Me.PictureBox1.Image = bmap
+        'End If
 
 
     End Sub
@@ -172,77 +165,82 @@ Public Class Empleado_alta
     End Sub
 
     Private Sub tx_dni_emp_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tx_dni_emp.KeyPress
-        'aqui pongo el codigo para remplazar el punto por una coma
-        If e.KeyChar.ToString() = "." Then
-            e.KeyChar = ","
-        End If
-        'a continuacion el codigo para impedir el ingreso de dos comas o letras
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-
-            If Me.tx_dni_emp.Text <> "" Then
-                If Me.tx_dni_emp.Text > 99999999 Then
-                    e.Handled = True
-                End If
-            End If
-
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                If e.KeyChar = "," Then   'aqui se bloquea el ingreso de comas y puntos
-                    e.Handled = True
-                End If
-
-
-            End If
-            If Char.IsLetter(e.KeyChar) Then 'aqui se bloque el ingresodo de letras
-                e.Handled = True
-            End If
-        End If
+        Validaciones.Restricciones_textbox(e, "Entero", tx_dni_emp)
     End Sub
 
-   
-    Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Combo_tpoMonto.SelectedIndexChanged
-        If Combo_tpoMonto.Text = "Variable" Then
-            Tx_Remu.Text = 1
-            Tx_Remu.Enabled = False
-        Else
-            Tx_Remu.Text = ""
-            Tx_Remu.Enabled = True
-        End If
-    End Sub
-
-    Private Sub Tx_Remu_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles Tx_Remu.KeyPress
-        'aqui pongo el codigo para remplazar el punto por una coma
-        If e.KeyChar.ToString() = "." Then
-            e.KeyChar = ","
-        End If
-        'a continuacion el codigo para impedir el ingreso de dos comas o letras
-        If Char.IsDigit(e.KeyChar) Then
-            e.Handled = False
-
-            If Me.Tx_Remu.Text <> "" Then
-                If Me.Tx_Remu.Text > 99999999 Then
-                    e.Handled = True
-                End If
-            End If
-
-        Else
-            If Char.IsControl(e.KeyChar) Then
-                e.Handled = False
-            Else
-                'If e.KeyChar = "," Then   'aqui se bloquea el ingreso de comas y puntos
-                '    e.Handled = True
-                'End If
-
-
-            End If
-            If Char.IsLetter(e.KeyChar) Then 'aqui se bloque el ingresodo de letras
-                e.Handled = True
-            End If
-        End If
-    End Sub
 
  
+    Private Sub btn_Aceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Aceptar.Click
+        If form_procedencia = "alta" Then
+            Dim result As DialogResult
+            result = MessageBox.Show("¿Desea dar de alta al Empleado?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+            If result = DialogResult.OK Then
+                Dim valido As String = "si"
+                validar_vacio(valido)
+                If valido = "si" Then
+                    DAempleado.Empleado_Alta(tx_dni_emp.Text, tx_nom_emp.Text, tx_ape_emp.Text, tx_dir_emp.Text, tx_tel_emp.Text, tx_cel_emp.Text, tx_mail_emp.Text)
+                    MessageBox.Show("Lo datos se guardaron correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Empleado_modificar.recuperar_empleados()
+                    limpiar_deshabilitar()
+                End If
+            End If
+        Else
+            'aqui modifico
+            Dim result As DialogResult
+            result = MessageBox.Show("¿Desea modificar el Empleado?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+            If result = DialogResult.OK Then
+                DAempleado.Empleado_Modificar(empleado_id, tx_dni_emp.Text, tx_nom_emp.Text, tx_ape_emp.Text, tx_dir_emp.Text, tx_tel_emp.Text, tx_cel_emp.Text, tx_mail_emp.Text)
+                MessageBox.Show("Lo datos se guardaron correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Empleado_modificar.recuperar_empleados()
+                Me.Close()
+            End If
+        End If
+    End Sub
+
+
+    Private Function validar_vacio(ByRef valido As String)
+        'Dim valido = "si"
+        If tx_nom_emp.Text <> "" Then
+            If tx_ape_emp.Text <> "" Then
+                If tx_dni_emp.Text <> "" Then
+                    'valido que no exista
+                    Dim valido_empleado As New DataSet
+                    valido_empleado = DAempleado.Empleado_buscardni(Me.tx_dni_emp.Text)
+                    If valido_empleado.Tables(0).Rows.Count = 0 Then
+                        valido = "si"
+                    Else
+                        valido = "no"
+                        ERROR_tx_dni_emp.Visible = True
+                        MessageBox.Show("Error, el empleado ya existe, modifique Documento.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                Else
+                    valido = "no"
+                    ERROR_tx_dni_emp.Visible = True
+                    MessageBox.Show("Error, Complete la información solicitada.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Else
+                valido = "no"
+                ERROR_tx_ape_emp.Visible = True
+                MessageBox.Show("Error, Complete la información solicitada.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Else
+            valido = "no"
+            ERROR_tx_nom_emp.Visible = True
+            MessageBox.Show("Error, Complete la información solicitada.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
+        Return (valido)
+    End Function
+
+    Private Sub btn_Cancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Cancelar.Click
+        If form_procedencia = "modificar" Then
+            Me.Close()
+        Else
+            limpiar_deshabilitar()
+            Me.TabControl1.SelectedTab = TabPage1
+            'B.Enabled = True
+            'Bo_cancelar.Enabled = True
+        End If
+        
+    End Sub
 End Class
