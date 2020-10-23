@@ -29,11 +29,22 @@ Partial Class Servicio_nuevo
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btn_guardar = New System.Windows.Forms.Button()
+        Me.btn_cancelar = New System.Windows.Forms.Button()
+        Me.Button_finalizar = New System.Windows.Forms.Button()
         Me.Label_Estado = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label_Cod = New System.Windows.Forms.Label()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TextBox_Anticipo = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.TextBox_TOTAL = New System.Windows.Forms.TextBox()
+        Me.Label24 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.lbl_errNOM = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox_tel = New System.Windows.Forms.TextBox()
         Me.TextBox_dir = New System.Windows.Forms.TextBox()
@@ -41,18 +52,20 @@ Partial Class Servicio_nuevo
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TextBox_dni = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.lb_error_nombre = New System.Windows.Forms.Label()
         Me.TextBox_Nombre = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.DateTimePicker_Rev = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePicker_REP = New System.Windows.Forms.DateTimePicker()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox_Modelo = New System.Windows.Forms.TextBox()
+        Me.txt_sucursal = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox_Marca = New System.Windows.Forms.TextBox()
+        Me.txt_equipo = New System.Windows.Forms.TextBox()
+        Me.lb_error_nombre = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox_color = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.TextBox_id = New System.Windows.Forms.TextBox()
-        Me.TextBox_obs = New System.Windows.Forms.TextBox()
+        Me.lb_error_marca = New System.Windows.Forms.Label()
+        Me.lb_error_modelo = New System.Windows.Forms.Label()
+        Me.txt_diag = New System.Windows.Forms.TextBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -71,60 +84,87 @@ Partial Class Servicio_nuevo
         Me.TextBox_codprod = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TextBox_Repuesto = New System.Windows.Forms.TextBox()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox_Anticipo = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.TextBox_TOTAL = New System.Windows.Forms.TextBox()
-        Me.Label24 = New System.Windows.Forms.Label()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.lb_error_observacion = New System.Windows.Forms.Label()
-        Me.Button_finalizar = New System.Windows.Forms.Button()
-        Me.btn_cancelar = New System.Windows.Forms.Button()
-        Me.btn_guardar = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.lb_error_marca = New System.Windows.Forms.Label()
-        Me.lb_error_modelo = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.TextBox_ManoO = New System.Windows.Forms.TextBox()
-        Me.lb_error_manoobra = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ServicioProdDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Servicio_DS, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox5.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btn_guardar)
+        Me.GroupBox1.Controls.Add(Me.btn_cancelar)
+        Me.GroupBox1.Controls.Add(Me.Button_finalizar)
         Me.GroupBox1.Controls.Add(Me.Label_Estado)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
         Me.GroupBox1.Controls.Add(Me.Label_Cod)
+        Me.GroupBox1.Controls.Add(Me.GroupBox5)
         Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.GroupBox2)
+        Me.GroupBox1.Controls.Add(Me.GroupBox3)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1133, 59)
+        Me.GroupBox1.Size = New System.Drawing.Size(1133, 610)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Servicios de Ventas"
+        '
+        'btn_guardar
+        '
+        Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
+        Me.btn_guardar.Location = New System.Drawing.Point(880, 548)
+        Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_guardar.Name = "btn_guardar"
+        Me.btn_guardar.Size = New System.Drawing.Size(116, 43)
+        Me.btn_guardar.TabIndex = 7
+        Me.btn_guardar.Text = "Guardar Cambios"
+        Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_guardar, "Guardar Cambios")
+        Me.btn_guardar.UseVisualStyleBackColor = True
+        '
+        'btn_cancelar
+        '
+        Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
+        Me.btn_cancelar.Location = New System.Drawing.Point(1004, 547)
+        Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_cancelar.Name = "btn_cancelar"
+        Me.btn_cancelar.Size = New System.Drawing.Size(96, 43)
+        Me.btn_cancelar.TabIndex = 8
+        Me.btn_cancelar.Text = "Cancelar"
+        Me.btn_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_cancelar, "Cancelar")
+        Me.btn_cancelar.UseVisualStyleBackColor = True
+        '
+        'Button_finalizar
+        '
+        Me.Button_finalizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_finalizar.Image = Global.Aplicacion.My.Resources.Resources.Guardar2
+        Me.Button_finalizar.Location = New System.Drawing.Point(777, 547)
+        Me.Button_finalizar.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button_finalizar.Name = "Button_finalizar"
+        Me.Button_finalizar.Size = New System.Drawing.Size(95, 43)
+        Me.Button_finalizar.TabIndex = 6
+        Me.Button_finalizar.Text = "Finalizar"
+        Me.Button_finalizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button_finalizar, "Finalizar Servicio realizado")
+        Me.Button_finalizar.UseVisualStyleBackColor = True
         '
         'Label_Estado
         '
         Me.Label_Estado.AutoSize = True
         Me.Label_Estado.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label_Estado.ForeColor = System.Drawing.Color.Red
-        Me.Label_Estado.Location = New System.Drawing.Point(500, 21)
+        Me.Label_Estado.Location = New System.Drawing.Point(525, 13)
         Me.Label_Estado.Name = "Label_Estado"
         Me.Label_Estado.Size = New System.Drawing.Size(72, 24)
         Me.Label_Estado.TabIndex = 6
@@ -135,7 +175,7 @@ Partial Class Servicio_nuevo
         '
         Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(967, 26)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(980, 15)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(140, 20)
         Me.DateTimePicker1.TabIndex = 5
@@ -144,24 +184,102 @@ Partial Class Servicio_nuevo
         '
         Me.Label_Cod.AutoSize = True
         Me.Label_Cod.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label_Cod.Location = New System.Drawing.Point(51, 32)
+        Me.Label_Cod.Location = New System.Drawing.Point(211, 21)
         Me.Label_Cod.Name = "Label_Cod"
         Me.Label_Cod.Size = New System.Drawing.Size(39, 13)
         Me.Label_Cod.TabIndex = 4
         Me.Label_Cod.Text = "Label2"
+        Me.Label_Cod.Visible = False
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.Label2)
+        Me.GroupBox5.Controls.Add(Me.TextBox_Anticipo)
+        Me.GroupBox5.Controls.Add(Me.Label14)
+        Me.GroupBox5.Controls.Add(Me.TextBox_TOTAL)
+        Me.GroupBox5.Controls.Add(Me.Label24)
+        Me.GroupBox5.Location = New System.Drawing.Point(773, 317)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(347, 223)
+        Me.GroupBox5.TabIndex = 5
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Totales"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Red
+        Me.Label2.Location = New System.Drawing.Point(145, 96)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(27, 20)
+        Me.Label2.TabIndex = 276
+        Me.Label2.Text = "(-)"
+        '
+        'TextBox_Anticipo
+        '
+        Me.TextBox_Anticipo.BackColor = System.Drawing.SystemColors.Window
+        Me.TextBox_Anticipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox_Anticipo.Location = New System.Drawing.Point(176, 96)
+        Me.TextBox_Anticipo.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBox_Anticipo.Name = "TextBox_Anticipo"
+        Me.TextBox_Anticipo.Size = New System.Drawing.Size(149, 23)
+        Me.TextBox_Anticipo.TabIndex = 1
+        Me.TextBox_Anticipo.Text = "0"
+        Me.TextBox_Anticipo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(11, 130)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(85, 25)
+        Me.Label14.TabIndex = 3
+        Me.Label14.Text = "TOTAL:"
+        '
+        'TextBox_TOTAL
+        '
+        Me.TextBox_TOTAL.BackColor = System.Drawing.SystemColors.Info
+        Me.TextBox_TOTAL.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox_TOTAL.Location = New System.Drawing.Point(158, 130)
+        Me.TextBox_TOTAL.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBox_TOTAL.Name = "TextBox_TOTAL"
+        Me.TextBox_TOTAL.ReadOnly = True
+        Me.TextBox_TOTAL.Size = New System.Drawing.Size(185, 30)
+        Me.TextBox_TOTAL.TabIndex = 275
+        Me.TextBox_TOTAL.TabStop = False
+        Me.TextBox_TOTAL.Text = "0"
+        Me.TextBox_TOTAL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label24.Location = New System.Drawing.Point(13, 99)
+        Me.Label24.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(84, 17)
+        Me.Label24.TabIndex = 273
+        Me.Label24.Text = "ANTICIPO:"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 32)
+        Me.Label1.Location = New System.Drawing.Point(166, 21)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(47, 13)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Numero:"
+        Me.Label1.Visible = False
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.lbl_errNOM)
+        Me.GroupBox2.Controls.Add(Me.Button1)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.TextBox_tel)
         Me.GroupBox2.Controls.Add(Me.TextBox_dir)
@@ -169,81 +287,194 @@ Partial Class Servicio_nuevo
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.TextBox_dni)
         Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Controls.Add(Me.lb_error_nombre)
         Me.GroupBox2.Controls.Add(Me.TextBox_Nombre)
-        Me.GroupBox2.Location = New System.Drawing.Point(10, 68)
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.Location = New System.Drawing.Point(7, 40)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1138, 49)
+        Me.GroupBox2.Size = New System.Drawing.Size(1113, 86)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos del Cliente "
         '
+        'lbl_errNOM
+        '
+        Me.lbl_errNOM.AutoSize = True
+        Me.lbl_errNOM.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_errNOM.ForeColor = System.Drawing.Color.Red
+        Me.lbl_errNOM.Location = New System.Drawing.Point(1067, 14)
+        Me.lbl_errNOM.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lbl_errNOM.Name = "lbl_errNOM"
+        Me.lbl_errNOM.Size = New System.Drawing.Size(26, 31)
+        Me.lbl_errNOM.TabIndex = 22
+        Me.lbl_errNOM.Text = "*"
+        Me.lbl_errNOM.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.Buscar
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.Location = New System.Drawing.Point(11, 19)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(123, 53)
+        Me.Button1.TabIndex = 9
+        Me.Button1.Text = "Buscar Cliente"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(827, 22)
+        Me.Label6.Location = New System.Drawing.Point(140, 56)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(52, 13)
+        Me.Label6.Size = New System.Drawing.Size(65, 16)
         Me.Label6.TabIndex = 8
         Me.Label6.Text = "Telefono:"
         '
         'TextBox_tel
         '
-        Me.TextBox_tel.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_tel.Location = New System.Drawing.Point(885, 18)
+        Me.TextBox_tel.BackColor = System.Drawing.Color.LightGoldenrodYellow
+        Me.TextBox_tel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox_tel.Location = New System.Drawing.Point(841, 14)
         Me.TextBox_tel.Name = "TextBox_tel"
-        Me.TextBox_tel.Size = New System.Drawing.Size(219, 19)
+        Me.TextBox_tel.ReadOnly = True
+        Me.TextBox_tel.Size = New System.Drawing.Size(202, 22)
         Me.TextBox_tel.TabIndex = 3
         '
         'TextBox_dir
         '
-        Me.TextBox_dir.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_dir.Location = New System.Drawing.Point(580, 16)
+        Me.TextBox_dir.BackColor = System.Drawing.Color.LightGoldenrodYellow
+        Me.TextBox_dir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox_dir.Location = New System.Drawing.Point(270, 53)
         Me.TextBox_dir.Name = "TextBox_dir"
-        Me.TextBox_dir.Size = New System.Drawing.Size(241, 19)
+        Me.TextBox_dir.ReadOnly = True
+        Me.TextBox_dir.Size = New System.Drawing.Size(241, 22)
         Me.TextBox_dir.TabIndex = 2
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(519, 22)
+        Me.Label4.Location = New System.Drawing.Point(767, 17)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(55, 13)
+        Me.Label4.Size = New System.Drawing.Size(68, 16)
         Me.Label4.TabIndex = 4
         Me.Label4.Text = "Direccion:"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(345, 22)
+        Me.Label5.Location = New System.Drawing.Point(519, 20)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(29, 13)
+        Me.Label5.Size = New System.Drawing.Size(75, 16)
         Me.Label5.TabIndex = 6
-        Me.Label5.Text = "DNI:"
+        Me.Label5.Text = "DNI / CUIT:"
         '
         'TextBox_dni
         '
-        Me.TextBox_dni.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_dni.Location = New System.Drawing.Point(380, 19)
+        Me.TextBox_dni.BackColor = System.Drawing.Color.LightGoldenrodYellow
+        Me.TextBox_dni.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox_dni.Location = New System.Drawing.Point(600, 14)
         Me.TextBox_dni.Name = "TextBox_dni"
-        Me.TextBox_dni.Size = New System.Drawing.Size(128, 19)
+        Me.TextBox_dni.ReadOnly = True
+        Me.TextBox_dni.Size = New System.Drawing.Size(161, 22)
         Me.TextBox_dni.TabIndex = 1
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 22)
+        Me.Label3.Location = New System.Drawing.Point(140, 22)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(47, 13)
+        Me.Label3.Size = New System.Drawing.Size(124, 16)
         Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Nombre:"
+        Me.Label3.Text = "Nombre / R. Social:"
+        '
+        'TextBox_Nombre
+        '
+        Me.TextBox_Nombre.BackColor = System.Drawing.Color.LightGoldenrodYellow
+        Me.TextBox_Nombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox_Nombre.Location = New System.Drawing.Point(270, 14)
+        Me.TextBox_Nombre.Name = "TextBox_Nombre"
+        Me.TextBox_Nombre.ReadOnly = True
+        Me.TextBox_Nombre.Size = New System.Drawing.Size(238, 22)
+        Me.TextBox_Nombre.TabIndex = 0
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.DateTimePicker_Rev)
+        Me.GroupBox3.Controls.Add(Me.DateTimePicker_REP)
+        Me.GroupBox3.Controls.Add(Me.Label7)
+        Me.GroupBox3.Controls.Add(Me.txt_sucursal)
+        Me.GroupBox3.Controls.Add(Me.Label8)
+        Me.GroupBox3.Controls.Add(Me.txt_equipo)
+        Me.GroupBox3.Controls.Add(Me.lb_error_nombre)
+        Me.GroupBox3.Controls.Add(Me.Label9)
+        Me.GroupBox3.Controls.Add(Me.Label10)
+        Me.GroupBox3.Controls.Add(Me.lb_error_marca)
+        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Location = New System.Drawing.Point(7, 132)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(1114, 68)
+        Me.GroupBox3.TabIndex = 2
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Datos del Equipo"
+        '
+        'DateTimePicker_Rev
+        '
+        Me.DateTimePicker_Rev.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateTimePicker_Rev.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker_Rev.Location = New System.Drawing.Point(943, 24)
+        Me.DateTimePicker_Rev.Name = "DateTimePicker_Rev"
+        Me.DateTimePicker_Rev.Size = New System.Drawing.Size(121, 22)
+        Me.DateTimePicker_Rev.TabIndex = 21
+        '
+        'DateTimePicker_REP
+        '
+        Me.DateTimePicker_REP.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateTimePicker_REP.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker_REP.Location = New System.Drawing.Point(672, 24)
+        Me.DateTimePicker_REP.Name = "DateTimePicker_REP"
+        Me.DateTimePicker_REP.Size = New System.Drawing.Size(121, 22)
+        Me.DateTimePicker_REP.TabIndex = 20
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(527, 25)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(139, 16)
+        Me.Label7.TabIndex = 8
+        Me.Label7.Text = "Fecha de Reparacion"
+        '
+        'txt_sucursal
+        '
+        Me.txt_sucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_sucursal.Location = New System.Drawing.Point(325, 26)
+        Me.txt_sucursal.Name = "txt_sucursal"
+        Me.txt_sucursal.Size = New System.Drawing.Size(162, 22)
+        Me.txt_sucursal.TabIndex = 1
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(6, 25)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(51, 16)
+        Me.Label8.TabIndex = 6
+        Me.Label8.Text = "Equipo"
+        '
+        'txt_equipo
+        '
+        Me.txt_equipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_equipo.Location = New System.Drawing.Point(63, 25)
+        Me.txt_equipo.Name = "txt_equipo"
+        Me.txt_equipo.Size = New System.Drawing.Size(162, 22)
+        Me.txt_equipo.TabIndex = 0
         '
         'lb_error_nombre
         '
         Me.lb_error_nombre.AutoSize = True
         Me.lb_error_nombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_error_nombre.ForeColor = System.Drawing.Color.Red
-        Me.lb_error_nombre.Location = New System.Drawing.Point(312, 18)
+        Me.lb_error_nombre.Location = New System.Drawing.Point(226, 16)
         Me.lb_error_nombre.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lb_error_nombre.Name = "lb_error_nombre"
         Me.lb_error_nombre.Size = New System.Drawing.Size(26, 31)
@@ -251,117 +482,59 @@ Partial Class Servicio_nuevo
         Me.lb_error_nombre.Text = "*"
         Me.lb_error_nombre.Visible = False
         '
-        'TextBox_Nombre
-        '
-        Me.TextBox_Nombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_Nombre.Location = New System.Drawing.Point(74, 19)
-        Me.TextBox_Nombre.Name = "TextBox_Nombre"
-        Me.TextBox_Nombre.Size = New System.Drawing.Size(238, 19)
-        Me.TextBox_Nombre.TabIndex = 0
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.Label15)
-        Me.GroupBox3.Controls.Add(Me.lb_error_observacion)
-        Me.GroupBox3.Controls.Add(Me.TextBox2)
-        Me.GroupBox3.Controls.Add(Me.Label12)
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
-        Me.GroupBox3.Controls.Add(Me.ComboBox1)
-        Me.GroupBox3.Controls.Add(Me.Label11)
-        Me.GroupBox3.Controls.Add(Me.Label7)
-        Me.GroupBox3.Controls.Add(Me.TextBox_Modelo)
-        Me.GroupBox3.Controls.Add(Me.Label8)
-        Me.GroupBox3.Controls.Add(Me.TextBox_Marca)
-        Me.GroupBox3.Controls.Add(Me.Label9)
-        Me.GroupBox3.Controls.Add(Me.TextBox_color)
-        Me.GroupBox3.Controls.Add(Me.Label10)
-        Me.GroupBox3.Controls.Add(Me.TextBox_id)
-        Me.GroupBox3.Controls.Add(Me.lb_error_modelo)
-        Me.GroupBox3.Controls.Add(Me.lb_error_marca)
-        Me.GroupBox3.Location = New System.Drawing.Point(10, 123)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(1135, 87)
-        Me.GroupBox3.TabIndex = 2
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Datos del Equipo"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(281, 58)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(110, 13)
-        Me.Label7.TabIndex = 8
-        Me.Label7.Text = "Fecha de Reparacion"
-        '
-        'TextBox_Modelo
-        '
-        Me.TextBox_Modelo.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_Modelo.Location = New System.Drawing.Point(57, 55)
-        Me.TextBox_Modelo.Name = "TextBox_Modelo"
-        Me.TextBox_Modelo.Size = New System.Drawing.Size(162, 19)
-        Me.TextBox_Modelo.TabIndex = 1
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(5, 28)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(40, 13)
-        Me.Label8.TabIndex = 6
-        Me.Label8.Text = "Equipo"
-        '
-        'TextBox_Marca
-        '
-        Me.TextBox_Marca.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_Marca.Location = New System.Drawing.Point(57, 22)
-        Me.TextBox_Marca.Name = "TextBox_Marca"
-        Me.TextBox_Marca.Size = New System.Drawing.Size(162, 19)
-        Me.TextBox_Marca.TabIndex = 0
-        '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(3, 58)
+        Me.Label9.Location = New System.Drawing.Point(259, 25)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(48, 13)
+        Me.Label9.Size = New System.Drawing.Size(60, 16)
         Me.Label9.TabIndex = 4
         Me.Label9.Text = "Sucursal"
-        '
-        'TextBox_color
-        '
-        Me.TextBox_color.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_color.Location = New System.Drawing.Point(397, 52)
-        Me.TextBox_color.Name = "TextBox_color"
-        Me.TextBox_color.Size = New System.Drawing.Size(164, 19)
-        Me.TextBox_color.TabIndex = 2
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(295, 25)
+        Me.Label10.Location = New System.Drawing.Point(816, 25)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(96, 13)
+        Me.Label10.Size = New System.Drawing.Size(121, 16)
         Me.Label10.TabIndex = 2
         Me.Label10.Text = "Fecha de Revisión"
         '
-        'TextBox_id
+        'lb_error_marca
         '
-        Me.TextBox_id.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_id.Location = New System.Drawing.Point(397, 19)
-        Me.TextBox_id.Name = "TextBox_id"
-        Me.TextBox_id.Size = New System.Drawing.Size(164, 19)
-        Me.TextBox_id.TabIndex = 3
+        Me.lb_error_marca.AutoSize = True
+        Me.lb_error_marca.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_error_marca.ForeColor = System.Drawing.Color.Red
+        Me.lb_error_marca.Location = New System.Drawing.Point(494, 16)
+        Me.lb_error_marca.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lb_error_marca.Name = "lb_error_marca"
+        Me.lb_error_marca.Size = New System.Drawing.Size(26, 31)
+        Me.lb_error_marca.TabIndex = 19
+        Me.lb_error_marca.Text = "*"
+        Me.lb_error_marca.Visible = False
         '
-        'TextBox_obs
+        'lb_error_modelo
         '
-        Me.TextBox_obs.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TextBox_obs.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_obs.Location = New System.Drawing.Point(3, 16)
-        Me.TextBox_obs.Multiline = True
-        Me.TextBox_obs.Name = "TextBox_obs"
-        Me.TextBox_obs.Size = New System.Drawing.Size(1129, 67)
-        Me.TextBox_obs.TabIndex = 0
+        Me.lb_error_modelo.AutoSize = True
+        Me.lb_error_modelo.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_error_modelo.ForeColor = System.Drawing.Color.Red
+        Me.lb_error_modelo.Location = New System.Drawing.Point(87, -3)
+        Me.lb_error_modelo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lb_error_modelo.Name = "lb_error_modelo"
+        Me.lb_error_modelo.Size = New System.Drawing.Size(26, 31)
+        Me.lb_error_modelo.TabIndex = 18
+        Me.lb_error_modelo.Text = "*"
+        Me.lb_error_modelo.Visible = False
+        '
+        'txt_diag
+        '
+        Me.txt_diag.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txt_diag.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_diag.Location = New System.Drawing.Point(3, 18)
+        Me.txt_diag.Multiline = True
+        Me.txt_diag.Name = "txt_diag"
+        Me.txt_diag.Size = New System.Drawing.Size(1107, 84)
+        Me.txt_diag.TabIndex = 0
         '
         'GroupBox4
         '
@@ -372,9 +545,9 @@ Partial Class Servicio_nuevo
         Me.GroupBox4.Controls.Add(Me.TextBox_codprod)
         Me.GroupBox4.Controls.Add(Me.Label20)
         Me.GroupBox4.Controls.Add(Me.TextBox_Repuesto)
-        Me.GroupBox4.Location = New System.Drawing.Point(1, 320)
+        Me.GroupBox4.Location = New System.Drawing.Point(19, 320)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(751, 274)
+        Me.GroupBox4.Size = New System.Drawing.Size(760, 274)
         Me.GroupBox4.TabIndex = 4
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "REPUESTOS / Ingrese codigo interno para buscar (F1 busqueda avanzada)"
@@ -557,285 +730,33 @@ Partial Class Servicio_nuevo
         Me.TextBox_Repuesto.Text = "0"
         Me.TextBox_Repuesto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.lb_error_manoobra)
-        Me.GroupBox5.Controls.Add(Me.Label2)
-        Me.GroupBox5.Controls.Add(Me.TextBox_Anticipo)
-        Me.GroupBox5.Controls.Add(Me.Label14)
-        Me.GroupBox5.Controls.Add(Me.TextBox_TOTAL)
-        Me.GroupBox5.Controls.Add(Me.Label24)
-        Me.GroupBox5.Controls.Add(Me.TextBox_ManoO)
-        Me.GroupBox5.Controls.Add(Me.Label23)
-        Me.GroupBox5.Location = New System.Drawing.Point(789, 320)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(359, 223)
-        Me.GroupBox5.TabIndex = 5
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Totales"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.Red
-        Me.Label2.Location = New System.Drawing.Point(145, 96)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(27, 20)
-        Me.Label2.TabIndex = 276
-        Me.Label2.Text = "(-)"
-        '
-        'TextBox_Anticipo
-        '
-        Me.TextBox_Anticipo.BackColor = System.Drawing.SystemColors.Window
-        Me.TextBox_Anticipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_Anticipo.Location = New System.Drawing.Point(176, 96)
-        Me.TextBox_Anticipo.Margin = New System.Windows.Forms.Padding(2)
-        Me.TextBox_Anticipo.Name = "TextBox_Anticipo"
-        Me.TextBox_Anticipo.Size = New System.Drawing.Size(149, 23)
-        Me.TextBox_Anticipo.TabIndex = 1
-        Me.TextBox_Anticipo.Text = "0"
-        Me.TextBox_Anticipo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(11, 130)
-        Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(85, 25)
-        Me.Label14.TabIndex = 3
-        Me.Label14.Text = "TOTAL:"
-        '
-        'TextBox_TOTAL
-        '
-        Me.TextBox_TOTAL.BackColor = System.Drawing.SystemColors.Info
-        Me.TextBox_TOTAL.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_TOTAL.Location = New System.Drawing.Point(158, 130)
-        Me.TextBox_TOTAL.Margin = New System.Windows.Forms.Padding(2)
-        Me.TextBox_TOTAL.Name = "TextBox_TOTAL"
-        Me.TextBox_TOTAL.ReadOnly = True
-        Me.TextBox_TOTAL.Size = New System.Drawing.Size(185, 30)
-        Me.TextBox_TOTAL.TabIndex = 275
-        Me.TextBox_TOTAL.TabStop = False
-        Me.TextBox_TOTAL.Text = "0"
-        Me.TextBox_TOTAL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(13, 99)
-        Me.Label24.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(84, 17)
-        Me.Label24.TabIndex = 273
-        Me.Label24.Text = "ANTICIPO:"
-        '
         'GroupBox6
         '
-        Me.GroupBox6.Controls.Add(Me.TextBox_obs)
-        Me.GroupBox6.Location = New System.Drawing.Point(10, 216)
+        Me.GroupBox6.Controls.Add(Me.txt_diag)
+        Me.GroupBox6.Controls.Add(Me.lb_error_modelo)
+        Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox6.Location = New System.Drawing.Point(19, 209)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(1135, 86)
+        Me.GroupBox6.Size = New System.Drawing.Size(1113, 105)
         Me.GroupBox6.TabIndex = 3
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Diagnostico:"
-        '
-        'lb_error_observacion
-        '
-        Me.lb_error_observacion.AutoSize = True
-        Me.lb_error_observacion.BackColor = System.Drawing.Color.Transparent
-        Me.lb_error_observacion.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lb_error_observacion.ForeColor = System.Drawing.Color.Red
-        Me.lb_error_observacion.Location = New System.Drawing.Point(949, 4)
-        Me.lb_error_observacion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lb_error_observacion.Name = "lb_error_observacion"
-        Me.lb_error_observacion.Size = New System.Drawing.Size(26, 31)
-        Me.lb_error_observacion.TabIndex = 19
-        Me.lb_error_observacion.Text = "*"
-        Me.lb_error_observacion.Visible = False
-        '
-        'Button_finalizar
-        '
-        Me.Button_finalizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_finalizar.Image = Global.Aplicacion.My.Resources.Resources.Guardar2
-        Me.Button_finalizar.Location = New System.Drawing.Point(759, 551)
-        Me.Button_finalizar.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button_finalizar.Name = "Button_finalizar"
-        Me.Button_finalizar.Size = New System.Drawing.Size(113, 43)
-        Me.Button_finalizar.TabIndex = 6
-        Me.Button_finalizar.Text = "Finalizar"
-        Me.Button_finalizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button_finalizar, "Finalizar Servicio realizado")
-        Me.Button_finalizar.UseVisualStyleBackColor = True
-        '
-        'btn_cancelar
-        '
-        Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
-        Me.btn_cancelar.Location = New System.Drawing.Point(1036, 550)
-        Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_cancelar.Name = "btn_cancelar"
-        Me.btn_cancelar.Size = New System.Drawing.Size(112, 43)
-        Me.btn_cancelar.TabIndex = 8
-        Me.btn_cancelar.Text = "Cancelar"
-        Me.btn_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_cancelar, "Cancelar")
-        Me.btn_cancelar.UseVisualStyleBackColor = True
-        '
-        'btn_guardar
-        '
-        Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
-        Me.btn_guardar.Location = New System.Drawing.Point(880, 551)
-        Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_guardar.Name = "btn_guardar"
-        Me.btn_guardar.Size = New System.Drawing.Size(148, 43)
-        Me.btn_guardar.TabIndex = 7
-        Me.btn_guardar.Text = "Guardar Cambios"
-        Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_guardar, "Guardar Cambios")
-        Me.btn_guardar.UseVisualStyleBackColor = True
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(605, 19)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(96, 13)
-        Me.Label12.TabIndex = 21
-        Me.Label12.Text = "Horario de Entrada"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(710, 16)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(164, 19)
-        Me.TextBox1.TabIndex = 20
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(610, 52)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(88, 13)
-        Me.Label15.TabIndex = 23
-        Me.Label15.Text = "Horario de Salida"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(710, 46)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(164, 19)
-        Me.TextBox2.TabIndex = 22
-        '
-        'lb_error_marca
-        '
-        Me.lb_error_marca.AutoSize = True
-        Me.lb_error_marca.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lb_error_marca.ForeColor = System.Drawing.Color.Red
-        Me.lb_error_marca.Location = New System.Drawing.Point(1044, 10)
-        Me.lb_error_marca.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lb_error_marca.Name = "lb_error_marca"
-        Me.lb_error_marca.Size = New System.Drawing.Size(26, 31)
-        Me.lb_error_marca.TabIndex = 19
-        Me.lb_error_marca.Text = "*"
-        Me.lb_error_marca.Visible = False
-        '
-        'lb_error_modelo
-        '
-        Me.lb_error_modelo.AutoSize = True
-        Me.lb_error_modelo.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lb_error_modelo.ForeColor = System.Drawing.Color.Red
-        Me.lb_error_modelo.Location = New System.Drawing.Point(1078, 11)
-        Me.lb_error_modelo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lb_error_modelo.Name = "lb_error_modelo"
-        Me.lb_error_modelo.Size = New System.Drawing.Size(26, 31)
-        Me.lb_error_modelo.TabIndex = 18
-        Me.lb_error_modelo.Text = "*"
-        Me.lb_error_modelo.Visible = False
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(952, 65)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(43, 13)
-        Me.Label11.TabIndex = 9
-        Me.Label11.Text = "Bateria:"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"SI", "NO"})
-        Me.ComboBox1.Location = New System.Drawing.Point(1001, 59)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 4
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.Location = New System.Drawing.Point(13, 66)
-        Me.Label23.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(132, 17)
-        Me.Label23.TabIndex = 271
-        Me.Label23.Text = "MANO DE OBRA:"
-        '
-        'TextBox_ManoO
-        '
-        Me.TextBox_ManoO.BackColor = System.Drawing.SystemColors.Window
-        Me.TextBox_ManoO.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_ManoO.Location = New System.Drawing.Point(176, 63)
-        Me.TextBox_ManoO.Margin = New System.Windows.Forms.Padding(2)
-        Me.TextBox_ManoO.Name = "TextBox_ManoO"
-        Me.TextBox_ManoO.Size = New System.Drawing.Size(149, 23)
-        Me.TextBox_ManoO.TabIndex = 0
-        Me.TextBox_ManoO.Text = "0"
-        Me.TextBox_ManoO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'lb_error_manoobra
-        '
-        Me.lb_error_manoobra.AutoSize = True
-        Me.lb_error_manoobra.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lb_error_manoobra.ForeColor = System.Drawing.Color.Red
-        Me.lb_error_manoobra.Location = New System.Drawing.Point(331, 66)
-        Me.lb_error_manoobra.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lb_error_manoobra.Name = "lb_error_manoobra"
-        Me.lb_error_manoobra.Size = New System.Drawing.Size(26, 31)
-        Me.lb_error_manoobra.TabIndex = 19
-        Me.lb_error_manoobra.Text = "*"
-        Me.lb_error_manoobra.Visible = False
         '
         'Servicio_nuevo
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(1160, 625)
-        Me.Controls.Add(Me.Button_finalizar)
-        Me.Controls.Add(Me.btn_cancelar)
-        Me.Controls.Add(Me.btn_guardar)
-        Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox6)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.GroupBox1)
         Me.KeyPreview = True
         Me.Name = "Servicio_nuevo"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Nuevo Servicio"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
@@ -845,8 +766,6 @@ Partial Class Servicio_nuevo
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ServicioProdDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Servicio_DS, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
@@ -866,15 +785,13 @@ Partial Class Servicio_nuevo
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents TextBox_Nombre As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox_obs As System.Windows.Forms.TextBox
+    Friend WithEvents txt_diag As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents TextBox_Modelo As System.Windows.Forms.TextBox
+    Friend WithEvents txt_sucursal As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents TextBox_Marca As System.Windows.Forms.TextBox
+    Friend WithEvents txt_equipo As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents TextBox_color As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents TextBox_id As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Label13 As System.Windows.Forms.Label
@@ -907,16 +824,10 @@ Partial Class Servicio_nuevo
     Friend WithEvents Costo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents subtotal As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents lb_error_observacion As System.Windows.Forms.Label
-    Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents lb_error_modelo As System.Windows.Forms.Label
     Friend WithEvents lb_error_marca As System.Windows.Forms.Label
-    Friend WithEvents lb_error_manoobra As System.Windows.Forms.Label
-    Friend WithEvents TextBox_ManoO As System.Windows.Forms.TextBox
-    Friend WithEvents Label23 As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents DateTimePicker_Rev As System.Windows.Forms.DateTimePicker
+    Friend WithEvents DateTimePicker_REP As System.Windows.Forms.DateTimePicker
+    Friend WithEvents lbl_errNOM As System.Windows.Forms.Label
 End Class

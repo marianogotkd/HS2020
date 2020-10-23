@@ -9,6 +9,9 @@
     Dim sucursal_id As Integer
     Dim DAsucursal As New Datos.Sucursal
     Dim Mensaje As String
+    Public Cliente_ID As Integer
+
+
 
 
 
@@ -25,10 +28,10 @@
         usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
         Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(usuario_id)
         sucursal_id = ds_usuario.Tables(0).Rows(0).Item("sucursal_id")
-        ComboBox1.SelectedIndex = 1
+        'ComboBox1.SelectedIndex = 1
 
-        TextBox_Nombre.Focus()
-        TextBox_Nombre.SelectAll()
+        txt_equipo.Focus()
+        txt_equipo.SelectAll()
         If Servicio_Consulta.serv_id = 0 Then
             Button_finalizar.Enabled = False
             Label_Estado.Visible = False
@@ -37,27 +40,34 @@
             Cargar_Datos()
         End If
 
+        GroupBox1.Text = "Orden de Servicio N°" + " " + Label_Cod.Text
     End Sub
     Public anticipo_recuperado As Decimal = 0
     Private Sub Cargar_Datos()
-        Dim Ds_servicio As DataSet = DAservicio.Servicio_Obterner_Con_Detalle_X_Servicio_id(Servicio_Consulta.serv_id)
+        Dim Ds_servicio As DataSet = DAservicio.Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA(Servicio_Consulta.serv_id)
         Dim i As Integer = 0
         Dim index As Integer = 1
         While i < Ds_servicio.Tables(0).Rows.Count
             Label_Cod.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_id").ToString
-            TextBox_id.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_imei").ToString
-            TextBox_Marca.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Marca").ToString
-            TextBox_Modelo.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Modelo").ToString
-            TextBox_color.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Color").ToString
-            ComboBox1.SelectedValue = Ds_servicio.Tables(0).Rows(i).Item("Servicio_bat").ToString
-            TextBox_obs.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Obs").ToString
-            TextBox_ManoO.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_ManoObra").ToString
+            TextBox_Nombre.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_Fan").ToString
+            TextBox_dni.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_dni").ToString
+            TextBox_dir.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_dir").ToString
+            TextBox_tel.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_tel").ToString
+            txt_equipo.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Equipo").ToString
+            txt_sucursal.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Sucursal").ToString
+            txt_diag.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Diagnostico").ToString
+            DateTimePicker_REP.Value = Ds_servicio.Tables(0).Rows(i).Item("Servicio_FechaRep")
+            DateTimePicker_Rev.Value = Ds_servicio.Tables(0).Rows(i).Item("Servicio_FechaRev")
+            'txt_Frev.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_imei").ToString
+            
+            ' txt_Frep.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Color").ToString
+            ' ComboBox1.SelectedValue = Ds_servicio.Tables(0).Rows(i).Item("Servicio_bat").ToString
+
+            ' TextBox_ManoO.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_ManoObra").ToString
             TextBox_Anticipo.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Anticipo").ToString
             anticipo_recuperado = CDec(Ds_servicio.Tables(0).Rows(i).Item("Servicio_Anticipo").ToString)
-            TextBox_Nombre.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Nombre").ToString
-            TextBox_dni.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_dni").ToString
-            TextBox_dir.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_dir").ToString
-            TextBox_tel.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_tel").ToString
+            'TextBox_Nombre.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Nombre").ToString
+           
             Label_Estado.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Estado").ToString
             Label_Estado.Visible = True
             i = i + 1
@@ -97,36 +107,36 @@
             'GroupBox6.Enabled = False
 
             TextBox_Anticipo.ReadOnly = True
-            TextBox_color.ReadOnly = True
+            ' txt_Frep.ReadOnly = True
             TextBox_dir.ReadOnly = True
             TextBox_dni.ReadOnly = True
-            TextBox_id.ReadOnly = True
-            TextBox_ManoO.ReadOnly = True
-            TextBox_Marca.ReadOnly = True
-            TextBox_Modelo.ReadOnly = True
+            '  txt_Frev.ReadOnly = True
+            ' TextBox_ManoO.ReadOnly = True
+            txt_equipo.ReadOnly = True
+            txt_sucursal.ReadOnly = True
             TextBox_Nombre.ReadOnly = True
-            TextBox_obs.ReadOnly = True
+            txt_diag.ReadOnly = True
             TextBox_Repuesto.ReadOnly = True
             TextBox_tel.ReadOnly = True
             TextBox_codprod.ReadOnly = True
-            ComboBox1.Enabled = False
+            '  ComboBox1.Enabled = False
             DataGridView1.ReadOnly = True
             DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
             TextBox_Anticipo.BackColor = Color.FromArgb(255, 255, 192)
-            TextBox_color.BackColor = Color.FromArgb(255, 255, 192)
+            '  txt_Frep.BackColor = Color.FromArgb(255, 255, 192)
             TextBox_dir.BackColor = Color.FromArgb(255, 255, 192)
             TextBox_dni.BackColor = Color.FromArgb(255, 255, 192)
-            TextBox_id.BackColor = Color.FromArgb(255, 255, 192)
-            TextBox_ManoO.BackColor = Color.FromArgb(255, 255, 192)
-            TextBox_Marca.BackColor = Color.FromArgb(255, 255, 192)
-            TextBox_Modelo.BackColor = Color.FromArgb(255, 255, 192)
+            ' txt_Frev.BackColor = Color.FromArgb(255, 255, 192)
+            '  TextBox_ManoO.BackColor = Color.FromArgb(255, 255, 192)
+            txt_equipo.BackColor = Color.FromArgb(255, 255, 192)
+            txt_sucursal.BackColor = Color.FromArgb(255, 255, 192)
             TextBox_Nombre.BackColor = Color.FromArgb(255, 255, 192)
-            TextBox_obs.BackColor = Color.FromArgb(255, 255, 192)
+            txt_diag.BackColor = Color.FromArgb(255, 255, 192)
             TextBox_Repuesto.BackColor = Color.FromArgb(255, 255, 192)
             TextBox_tel.BackColor = Color.FromArgb(255, 255, 192)
             TextBox_codprod.BackColor = Color.FromArgb(255, 255, 192)
-            ComboBox1.Enabled = False
+            'ComboBox1.Enabled = False
 
 
             btn_guardar.Enabled = False
@@ -165,9 +175,9 @@
 
         TextBox_Repuesto.Text = (Math.Round(CDec(repuesto), 2).ToString("N2"))
 
-        If TextBox_Repuesto.Text <> "" And TextBox_Anticipo.Text <> "" And TextBox_ManoO.Text <> "" Then
+        If TextBox_Repuesto.Text <> "" And TextBox_Anticipo.Text <> "" Then
 
-            total = repuesto + CDec(TextBox_ManoO.Text) - CDec(TextBox_Anticipo.Text)
+            total = repuesto - CDec(TextBox_Anticipo.Text)
 
         End If
 
@@ -247,32 +257,32 @@
 
     End Sub
 
-    Private Sub TextBox_ManoO_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_ManoO.GotFocus
-        TextBox_ManoO.SelectAll()
-        TextBox_ManoO.BackColor = Color.FromArgb(255, 255, 192)
+    Private Sub TextBox_ManoO_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        '   TextBox_ManoO.SelectAll()
+        '  TextBox_ManoO.BackColor = Color.FromArgb(255, 255, 192)
     End Sub
 
-    Private Sub TextBox_ManoO_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox_ManoO.KeyPress
-        validaciones.Restricciones_textbox(e, "Decimal", TextBox_ManoO)
-        If e.KeyChar = ChrW(Keys.Enter) Then 'cuando presiono la tecla ENTER calcula
-            If TextBox_ManoO.Text = "" Then
-                TextBox_ManoO.Text = (Math.Round(CDec(0), 2).ToString("N2"))
-            Else
-                TextBox_ManoO.Text = (Math.Round(CDec(TextBox_ManoO.Text), 2).ToString("N2"))
-            End If
-            Calcular_Totales()
-        End If
+    Private Sub TextBox_ManoO_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+        'validaciones.Restricciones_textbox(e, "Decimal", TextBox_ManoO)
+        'If e.KeyChar = ChrW(Keys.Enter) Then 'cuando presiono la tecla ENTER calcula
+        '    If TextBox_ManoO.Text = "" Then
+        '        TextBox_ManoO.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+        '    Else
+        '        TextBox_ManoO.Text = (Math.Round(CDec(TextBox_ManoO.Text), 2).ToString("N2"))
+        '    End If
+        '    Calcular_Totales()
+        'End If
     End Sub
 
-    Private Sub TextBox_ManoO_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_ManoO.LostFocus
+    Private Sub TextBox_ManoO_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs)
         'hago esto x que pueden dejar vacio el textbox y revienta el calculo
-        If TextBox_ManoO.Text = "" Then
-            TextBox_ManoO.Text = (Math.Round(CDec(0), 2).ToString("N2"))
-        Else
-            TextBox_ManoO.Text = (Math.Round(CDec(TextBox_ManoO.Text), 2).ToString("N2"))
-        End If
-        Calcular_Totales()
-        TextBox_ManoO.BackColor = Color.White
+        'If TextBox_ManoO.Text = "" Then
+        '    TextBox_ManoO.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+        'Else
+        '    TextBox_ManoO.Text = (Math.Round(CDec(TextBox_ManoO.Text), 2).ToString("N2"))
+        'End If
+        'Calcular_Totales()
+        'TextBox_ManoO.BackColor = Color.White
     End Sub
 
     Private Sub TextBox_Anticipo_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox_Anticipo.KeyPress
@@ -299,14 +309,14 @@
     'Dim procedencia As String = ""
     Public Sub Guardar_BD(ByVal form_de_donde_vengo As String)
 
-        If TextBox_Nombre.Text <> "" And TextBox_Marca.Text <> "" And TextBox_Modelo.Text <> "" And TextBox_obs.Text <> "" And TextBox_ManoO.Text <> 0 Then
+        If txt_equipo.Text <> "" And txt_sucursal.Text <> "" And txt_diag.Text <> "" And TextBox_Nombre.Text <> "" Then
             If Servicio_Consulta.serv_id = 0 Then
                 ''Alta'''
-                Dim ds_SevicioGuardar As DataSet = DAservicio.Servicio_alta(Today, TextBox_id.Text, TextBox_Marca.Text,
-                                                                          TextBox_Modelo.Text, TextBox_color.Text, ComboBox1.SelectedItem,
-                                                                            TextBox_obs.Text, TextBox_ManoO.Text, TextBox_Anticipo.Text,
-                                                                            TextBox_Nombre.Text, TextBox_dni.Text, TextBox_dir.Text,
-                                                                            TextBox_tel.Text, "PENDIENTE", usuario_id, sucursal_id)
+                Dim ds_SevicioGuardar As DataSet = DAservicio.Servicio_alta_MDA(Cliente_ID, DateTimePicker1.Value,
+                                                                                sucursal_id, usuario_id, txt_diag.Text, txt_sucursal.Text,
+                                                                                txt_equipo.Text, DateTimePicker_REP.Value, DateTimePicker_Rev.Value,
+                                                                                TextBox_Anticipo.Text, "PENDIENTE")
+
 
                 ''Detalle''''
                 If Servicio_DS.Tables("Servicio_Prod_DS").Rows.Count <> 0 Then
@@ -351,11 +361,12 @@
 
             Else
                 ''Actualizacion Servicio'''''
-                Dim ds_SevicioActualizar As DataSet = DAservicio.Servicio_Modificar(TextBox_id.Text, TextBox_Marca.Text,
-                                                                               TextBox_Modelo.Text, TextBox_color.Text, ComboBox1.SelectedItem,
-                                                                               TextBox_obs.Text, TextBox_ManoO.Text, TextBox_Anticipo.Text,
-                                                                               TextBox_Nombre.Text, TextBox_dni.Text, TextBox_dir.Text,
-                                                                               TextBox_tel.Text, Label_Cod.Text)
+                Dim ds_SevicioActualizar As DataSet = DAservicio.Servicio_Modificar_MDA(Cliente_ID, DateTimePicker1.Value,
+                                                                                sucursal_id, usuario_id, txt_diag.Text, txt_sucursal.Text,
+                                                                               txt_equipo.Text, DateTimePicker_Rev.Value, DateTimePicker_REP.Value,
+                                                                               TextBox_Anticipo.Text,
+                                                                               Label_Cod.Text)
+
 
 
                 ''Actualizo Detalle''''
@@ -394,7 +405,7 @@
                         End If
                     End If
                 End If
-                
+
 
 
 
@@ -413,11 +424,11 @@
 
         Else
             MessageBox.Show("Debe Completar los campos Obligatorios", "Sistema de Gestion.")
-            lb_error_manoobra.Visible = True
+            lbl_errNOM.Visible = True
             lb_error_marca.Visible = True
             lb_error_modelo.Visible = True
             lb_error_nombre.Visible = True
-            lb_error_observacion.Visible = True
+            ' lb_error_observacion.Visible = True
         End If
     End Sub
     Private Sub btn_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_guardar.Click
@@ -504,7 +515,7 @@
     End Sub
 
     Private Sub Button_finalizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_finalizar.Click
-        If TextBox_Nombre.Text <> "" And TextBox_Marca.Text <> "" And TextBox_Modelo.Text <> "" And TextBox_obs.Text <> "" And TextBox_ManoO.Text <> 0 Then
+        If txt_equipo.Text <> "" And txt_sucursal.Text <> "" And txt_diag.Text <> "" Then
             Dim result As Integer = MessageBox.Show("¿Está seguro que desea finalizar el Servicio? No podrá realizar más cambios en el mismo.", "Sistema de Gestión", MessageBoxButtons.YesNo)
             If result = DialogResult.Yes Then
                 Dim sin_anticipo As Decimal = CDec((Math.Round(CDec(TextBox_TOTAL.Text), 2).ToString("N2"))) + CDec((Math.Round(CDec(TextBox_Anticipo.Text), 2).ToString("N2")))
@@ -537,7 +548,7 @@
             End If
         Else
             MessageBox.Show("Debe Completar los campos Obligatorios", "Sistema de Gestion.")
-            lb_error_manoobra.Visible = True
+
             lb_error_marca.Visible = True
             lb_error_modelo.Visible = True
             lb_error_nombre.Visible = True
@@ -604,7 +615,7 @@
         End If
     End Sub
 
-    
+
 
     Private Sub TextBox_dni_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox_dni.KeyPress
         validaciones.Restricciones_textbox(e, "Entero", TextBox_dni)
@@ -658,94 +669,59 @@
         End If
     End Sub
 
-    Private Sub TextBox_Nombre_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_Nombre.GotFocus
-        TextBox_Nombre.SelectAll()
-        TextBox_Nombre.BackColor = Color.FromArgb(255, 255, 192)
+
+    Private Sub TextBox_Marca_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txt_equipo.GotFocus
+        txt_equipo.SelectAll()
+        txt_equipo.BackColor = Color.FromArgb(255, 255, 192)
     End Sub
 
-    Private Sub TextBox_Nombre_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_Nombre.LostFocus
-        TextBox_Nombre.BackColor = Color.White
+    Private Sub TextBox_Marca_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txt_equipo.LostFocus
+        txt_equipo.BackColor = Color.White
     End Sub
 
-    Private Sub TextBox_dni_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_dni.GotFocus
-        TextBox_dni.SelectAll()
-        TextBox_dni.BackColor = Color.FromArgb(255, 255, 192)
+    Private Sub TextBox_Modelo_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txt_sucursal.GotFocus
+        txt_sucursal.SelectAll()
+        txt_sucursal.BackColor = Color.FromArgb(255, 255, 192)
     End Sub
 
-    Private Sub TextBox_dni_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_dni.LostFocus
-        TextBox_dni.BackColor = Color.White
+    Private Sub TextBox_Modelo_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txt_sucursal.LostFocus
+        txt_sucursal.BackColor = Color.White
     End Sub
 
-    Private Sub TextBox_dir_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_dir.GotFocus
-        TextBox_dir.SelectAll()
-        TextBox_dir.BackColor = Color.FromArgb(255, 255, 192)
+    Private Sub TextBox_color_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        '  txt_Frep.SelectAll()
+        '   txt_Frep.BackColor = Color.FromArgb(255, 255, 192)
     End Sub
 
-    Private Sub TextBox_dir_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_dir.LostFocus
-        TextBox_dir.BackColor = Color.White
+    Private Sub TextBox_color_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        '    txt_Frep.BackColor = Color.White
     End Sub
 
-    Private Sub TextBox_tel_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_tel.GotFocus
-        TextBox_tel.SelectAll()
-        TextBox_tel.BackColor = Color.FromArgb(255, 255, 192)
+    Private Sub TextBox_id_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        '   txt_Frev.SelectAll()
+        '   txt_Frev.BackColor = Color.FromArgb(255, 255, 192)
     End Sub
 
-    Private Sub TextBox_tel_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_tel.LostFocus
-        TextBox_tel.BackColor = Color.White
+    Private Sub TextBox_id_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        '  txt_Frev.BackColor = Color.White
     End Sub
 
-    Private Sub TextBox_Marca_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_Marca.GotFocus
-        TextBox_Marca.SelectAll()
-        TextBox_Marca.BackColor = Color.FromArgb(255, 255, 192)
+    Private Sub ComboBox1_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        'ComboBox1.SelectAll()
+        'ComboBox1.BackColor = Color.FromArgb(255, 255, 192)
     End Sub
 
-    Private Sub TextBox_Marca_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_Marca.LostFocus
-        TextBox_Marca.BackColor = Color.White
+    Private Sub ComboBox1_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        'ComboBox1.BackColor = Color.White
     End Sub
 
-    Private Sub TextBox_Modelo_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_Modelo.GotFocus
-        TextBox_Modelo.SelectAll()
-        TextBox_Modelo.BackColor = Color.FromArgb(255, 255, 192)
-    End Sub
-
-    Private Sub TextBox_Modelo_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_Modelo.LostFocus
-        TextBox_Modelo.BackColor = Color.White
-    End Sub
-
-    Private Sub TextBox_color_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_color.GotFocus
-        TextBox_color.SelectAll()
-        TextBox_color.BackColor = Color.FromArgb(255, 255, 192)
-    End Sub
-
-    Private Sub TextBox_color_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_color.LostFocus
-        TextBox_color.BackColor = Color.White
-    End Sub
-
-    Private Sub TextBox_id_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_id.GotFocus
-        TextBox_id.SelectAll()
-        TextBox_id.BackColor = Color.FromArgb(255, 255, 192)
-    End Sub
-
-    Private Sub TextBox_id_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_id.LostFocus
-        TextBox_id.BackColor = Color.White
-    End Sub
-
-    Private Sub ComboBox1_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBox1.GotFocus
-        ComboBox1.SelectAll()
-        ComboBox1.BackColor = Color.FromArgb(255, 255, 192)
-    End Sub
-
-    Private Sub ComboBox1_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBox1.LostFocus
-        ComboBox1.BackColor = Color.White
-    End Sub
-
-    Private Sub TextBox_obs_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_obs.GotFocus
+    Private Sub TextBox_obs_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txt_diag.GotFocus
         'TextBox_obs.SelectAll()
-        TextBox_obs.BackColor = Color.FromArgb(255, 255, 192)
+        txt_diag.BackColor = Color.FromArgb(255, 255, 192)
     End Sub
 
-    Private Sub TextBox_obs_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_obs.LostFocus
-        TextBox_obs.BackColor = Color.White
+    Private Sub TextBox_obs_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txt_diag.LostFocus
+        txt_diag.BackColor = Color.White
     End Sub
 
     Private Sub TextBox_codprod_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_codprod.LostFocus
@@ -761,4 +737,12 @@
         TextBox_Anticipo.SelectAll()
         TextBox_Anticipo.BackColor = Color.FromArgb(255, 255, 192)
     End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Cliente_modificar.procedencia = "Servicios"
+        Cliente_modificar.Show()
+
+    End Sub
+
+    
 End Class
