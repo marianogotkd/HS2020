@@ -1,4 +1,5 @@
-﻿Public Class Tareas_Consulta
+﻿Imports System.Windows.Forms
+Public Class Tareas_Consulta
     Dim Daservicio As New Datos.Servicio
     Private listFlDay As New List(Of FlowLayoutPanel)
     Private currentDate As DateTime = DateTime.Today
@@ -43,29 +44,29 @@
 
 
     Private Sub AddAppointmentToFlDay(ByVal startDayAtFlNumber As Integer)
-        'Dim startDate As DateTime = New Date(currentDate.Year, currentDate.Month, 1)
-        'Dim endDate As DateTime = startDate.AddMonths(1).AddDays(-1)
+        Dim startDate As DateTime = New Date(currentDate.Year, currentDate.Month, 1)
+        Dim endDate As DateTime = startDate.AddMonths(1).AddDays(-1)
 
-        ''Dim sql As String = $"select * from appointment where AppDate between #{startDate.ToShortDateString()}# and #{endDate.ToShortDateString()}#"
+        'Dim sql As String = $"select * from appointment where AppDate between #{startDate.ToShortDateString()}# and #{endDate.ToShortDateString()}#"
 
-        'Dim dt_choco As DataSet = Daservicio.Servicio_calendario_consulta(startDate.ToShortDateString, endDate.ToShortDateString)
+        Dim dt_choco As DataSet = Daservicio.Servicio_calendario_consulta(startDate.ToShortDateString, endDate.ToShortDateString)
 
-        ''Dim dt As DataTable = QueryAsDataTable(Sql)
-        'Dim dt As DataTable = dt_choco.Tables(0)
+        'Dim dt As DataTable = QueryAsDataTable(Sql)
+        Dim dt As DataTable = dt_choco.Tables(0)
 
-        'For Each row As DataRow In dt.Rows
-        '    'Dim appDay As DateTime = DateTime.Parse(row("AppDate"))
-        '    Dim appDay As DateTime = DateTime.Parse(row("Servicio_fecha"))
-        '    Dim link As New LinkLabel
-        '    'link.Tag = row("ID")
-        '    link.Tag = row("Servicio_id")
-        '    'link.Name = $"link{row("ID")}"
-        '    link.Name = row("Servicio_Diagnostico")
-        '    'link.Text = row("ContactName")
-        '    link.Text = "choco"
-        '    AddHandler link.Click, AddressOf ShowAppointmentDetail
-        '    listFlDay((appDay.Day - 1) + (startDayAtFlNumber - 1)).Controls.Add(link)
-        'Next
+        For Each row As DataRow In dt.Rows
+            'Dim appDay As DateTime = DateTime.Parse(row("AppDate"))
+            Dim appDay As DateTime = DateTime.Parse(row("Servicio_fecha"))
+            Dim link As New LinkLabel
+            'link.Tag = row("ID")
+            link.Tag = row("Servicio_id")
+            'link.Name = $"link{row("ID")}"
+            link.Name = row("Servicio_Diagnostico")
+            'link.Text = row("ContactName")
+            link.Text = row("Servicio_Diagnostico")
+            AddHandler link.Click, AddressOf ShowAppointmentDetail
+            listFlDay((appDay.Day - 1) + (startDayAtFlNumber - 1)).Controls.Add(link)
+        Next
     End Sub
 
     Private Function GetFirstDayOfWeekOfCurrentDate() As Integer
@@ -81,6 +82,7 @@
     Private Sub DisplayCurrentDate()
         lblMonthAndYear.Text = currentDate.ToString("MMMM, yyyy")
         Dim firstDayAtFlNumber As Integer = GetFirstDayOfWeekOfCurrentDate()
+        'Dim firstDayAtFlNumber As Integer = 1
         Dim totalDay As Integer = GetTotalDaysOfCurrentDate()
         AddLabelDayToFlDay(firstDayAtFlNumber, totalDay)
         AddAppointmentToFlDay(firstDayAtFlNumber)
@@ -106,10 +108,16 @@
         listFlDay.Clear()
         For i As Integer = 1 To totalDays
             Dim fl As New FlowLayoutPanel
-            'fl.Name = "flDay(i)"
             'fl.Name = $"flDay{i}"
+            'fl.Name = "choco"
+            If i = 1 Then
+                fl.BackColor = Color.Red
+            Else
+                fl.BackColor = Color.White
+            End If
             fl.Size = New Size(128, 99)
-            fl.BackColor = Color.White
+            'fl.Size = New Size(50, 50)
+
             fl.BorderStyle = BorderStyle.FixedSingle
             fl.Cursor = Cursors.Hand
             fl.AutoScroll = True
@@ -129,7 +137,7 @@
         For i As Integer = 1 To totalDaysInMonth
             Dim lbl As New Label
             'lbl.Name = $"lblDay{i}"
-            ' lbl.Name = i
+            'lbl.Name = "choco"
             lbl.AutoSize = False
             lbl.TextAlign = ContentAlignment.MiddleRight
             lbl.Size = New Size(110, 22)

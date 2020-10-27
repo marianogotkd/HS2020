@@ -49,7 +49,7 @@ Partial Class Tareas_Consulta
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 35)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(940, 72)
+        Me.Panel1.Size = New System.Drawing.Size(950, 72)
         Me.Panel1.TabIndex = 3
         '
         'lblMonthAndYear
@@ -68,7 +68,7 @@ Partial Class Tareas_Consulta
         Me.Panel2.Controls.Add(Me.btnNextMonth)
         Me.Panel2.Controls.Add(Me.btnPrevMonth)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel2.Location = New System.Drawing.Point(759, 0)
+        Me.Panel2.Location = New System.Drawing.Point(769, 0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(181, 72)
         Me.Panel2.TabIndex = 0
@@ -79,7 +79,7 @@ Partial Class Tareas_Consulta
         Me.btnToday.Name = "btnToday"
         Me.btnToday.Size = New System.Drawing.Size(52, 34)
         Me.btnToday.TabIndex = 2
-        Me.btnToday.Text = "Today"
+        Me.btnToday.Text = "Hoy"
         Me.btnToday.UseVisualStyleBackColor = True
         '
         'btnNextMonth
@@ -112,7 +112,7 @@ Partial Class Tareas_Consulta
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(940, 35)
+        Me.Panel3.Size = New System.Drawing.Size(950, 35)
         Me.Panel3.TabIndex = 4
         '
         'Label5
@@ -123,7 +123,7 @@ Partial Class Tareas_Consulta
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(128, 30)
         Me.Label5.TabIndex = 6
-        Me.Label5.Text = "Saturday"
+        Me.Label5.Text = "Sabado"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label6
@@ -134,7 +134,7 @@ Partial Class Tareas_Consulta
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(128, 30)
         Me.Label6.TabIndex = 5
-        Me.Label6.Text = "Friday"
+        Me.Label6.Text = "Viernes"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label7
@@ -145,7 +145,7 @@ Partial Class Tareas_Consulta
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(128, 30)
         Me.Label7.TabIndex = 4
-        Me.Label7.Text = "Thursday"
+        Me.Label7.Text = "Jueves"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label4
@@ -156,7 +156,7 @@ Partial Class Tareas_Consulta
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(125, 30)
         Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Wednesday"
+        Me.Label4.Text = "Miercoles"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label3
@@ -167,7 +167,7 @@ Partial Class Tareas_Consulta
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(128, 30)
         Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Tuesday"
+        Me.Label3.Text = "Martes"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label2
@@ -178,7 +178,7 @@ Partial Class Tareas_Consulta
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(127, 30)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Monday"
+        Me.Label2.Text = "Lunes"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label1
@@ -189,13 +189,13 @@ Partial Class Tareas_Consulta
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(135, 30)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Sunday"
+        Me.Label1.Text = "Domingo"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'flDays
         '
         Me.flDays.BackColor = System.Drawing.Color.White
-        Me.flDays.Location = New System.Drawing.Point(0, 0)
+        Me.flDays.Location = New System.Drawing.Point(3, 113)
         Me.flDays.Name = "flDays"
         Me.flDays.Size = New System.Drawing.Size(940, 634)
         Me.flDays.TabIndex = 5
@@ -204,11 +204,14 @@ Partial Class Tareas_Consulta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(940, 741)
+        Me.ClientSize = New System.Drawing.Size(950, 751)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.flDays)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
         Me.Name = "Tareas_Consulta"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Tareas_Consulta"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
