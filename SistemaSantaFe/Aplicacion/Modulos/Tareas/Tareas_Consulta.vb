@@ -1,5 +1,4 @@
-﻿Imports System.Windows.Forms
-Public Class Tareas_Consulta
+﻿Public Class Tareas_Consulta
     Dim Daservicio As New Datos.Servicio
     Private listFlDay As New List(Of FlowLayoutPanel)
     Private currentDate As DateTime = DateTime.Today
@@ -87,6 +86,7 @@ Public Class Tareas_Consulta
         AddLabelDayToFlDay(firstDayAtFlNumber, totalDay)
         AddAppointmentToFlDay(firstDayAtFlNumber)
     End Sub
+
 
     Private Sub PrevMonth()
         currentDate = currentDate.AddMonths(-1)
