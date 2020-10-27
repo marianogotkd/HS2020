@@ -1,0 +1,9 @@
+create procedure Servicio_calendario_consulta
+@desde date,
+@hasta date
+
+as
+
+select * from Servicio where Servicio.Servicio_fecha between @desde  and @hasta 
+
+go

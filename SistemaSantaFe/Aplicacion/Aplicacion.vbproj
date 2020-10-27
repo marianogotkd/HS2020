@@ -871,11 +871,15 @@
     <Compile Include="Modulos\Tareas\frmManageAppointment.Designer.vb">
       <DependentUpon>frmManageAppointment.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Tareas\frmManageAppointment.vb" />
+    <Compile Include="Modulos\Tareas\frmManageAppointment.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Tareas\Tareas_Consulta.Designer.vb">
       <DependentUpon>Tareas_Consulta.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Tareas\Tareas_Consulta.vb" />
+    <Compile Include="Modulos\Tareas\Tareas_Consulta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Terminal\Seleccion_Terminal.Designer.vb">
       <DependentUpon>Seleccion_Terminal.vb</DependentUpon>
     </Compile>

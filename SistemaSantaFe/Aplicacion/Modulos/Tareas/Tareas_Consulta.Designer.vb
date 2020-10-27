@@ -195,10 +195,9 @@ Partial Class Tareas_Consulta
         'flDays
         '
         Me.flDays.BackColor = System.Drawing.Color.White
-        Me.flDays.Dock = System.Windows.Forms.DockStyle.Fill
         Me.flDays.Location = New System.Drawing.Point(0, 0)
         Me.flDays.Name = "flDays"
-        Me.flDays.Size = New System.Drawing.Size(940, 741)
+        Me.flDays.Size = New System.Drawing.Size(940, 634)
         Me.flDays.TabIndex = 5
         '
         'Tareas_Consulta

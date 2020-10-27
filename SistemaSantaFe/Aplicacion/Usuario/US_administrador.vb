@@ -869,4 +869,8 @@ Public Property EnabledCerrar() As Boolean
         Cuadrilla_consultar.Close()
         Cuadrilla_consultar.Show()
     End Sub
+
+    Private Sub CalendarioToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CalendarioToolStripMenuItem.Click
+        Tareas_Consulta.Show()
+    End Sub
 End Class
