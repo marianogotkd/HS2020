@@ -10,7 +10,7 @@
     Dim DAsucursal As New Datos.Sucursal
     Dim Mensaje As String
     Public Cliente_ID As Integer
-
+    Public serv_id As Integer 'este campo me lo mandan desde "servicio_consulta" o bien desde "orden_revision_nueva"
 
 
 
@@ -24,7 +24,7 @@
     End Sub
 
     Private Sub Servicio_nuevo_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Me.Show()
+        'Me.Show()
         usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
         Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(usuario_id)
         sucursal_id = ds_usuario.Tables(0).Rows(0).Item("sucursal_id")
@@ -32,23 +32,25 @@
 
         txt_equipo.Focus()
         txt_equipo.SelectAll()
-        If Servicio_Consulta.serv_id = 0 Then
+        If serv_id = 0 Then 'es una alta
             Button_finalizar.Enabled = False
             Label_Estado.Visible = False
             Generar_cod_interno()
         Else
             Cargar_Datos()
+            Button1.Enabled = False 'no quiero que se cambie el cliente
         End If
 
-        GroupBox1.Text = "Orden de Servicio N°" + " " + Label_Cod.Text
+        GroupBox1.Text = "Orden de Servicio N°" + " " + Label_Cod.Text 'aqui tengo que colocar otro numero, que lo voy a generar automaticamente
     End Sub
     Public anticipo_recuperado As Decimal = 0
     Private Sub Cargar_Datos()
-        Dim Ds_servicio As DataSet = DAservicio.Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA(Servicio_Consulta.serv_id)
+        Dim Ds_servicio As DataSet = DAservicio.Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA(serv_id)
         Dim i As Integer = 0
         Dim index As Integer = 1
         While i < Ds_servicio.Tables(0).Rows.Count
             Label_Cod.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_id").ToString
+            Cliente_ID = Ds_servicio.Tables(0).Rows(i).Item("CLI_id").ToString
             TextBox_Nombre.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_Fan").ToString
             TextBox_dni.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_dni").ToString
             TextBox_dir.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_dir").ToString
@@ -58,6 +60,7 @@
             txt_diag.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Diagnostico").ToString
             DateTimePicker_REP.Value = Ds_servicio.Tables(0).Rows(i).Item("Servicio_FechaRep")
             DateTimePicker_Rev.Value = Ds_servicio.Tables(0).Rows(i).Item("Servicio_FechaRev")
+            DateTimePicker1.Value = Ds_servicio.Tables(0).Rows(i).Item("Servicio_FechaRev")
             'txt_Frev.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_imei").ToString
             
             ' txt_Frep.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Color").ToString
@@ -310,7 +313,7 @@
     Public Sub Guardar_BD(ByVal form_de_donde_vengo As String)
 
         If txt_equipo.Text <> "" And txt_sucursal.Text <> "" And txt_diag.Text <> "" And TextBox_Nombre.Text <> "" Then
-            If Servicio_Consulta.serv_id = 0 Then
+            If serv_id = 0 Then 'es alta
                 ''Alta'''
                 Dim ds_SevicioGuardar As DataSet = DAservicio.Servicio_alta_MDA(Cliente_ID, DateTimePicker1.Value,
                                                                                 sucursal_id, usuario_id, txt_diag.Text, txt_sucursal.Text,
@@ -365,7 +368,7 @@
                                                                                 sucursal_id, usuario_id, txt_diag.Text, txt_sucursal.Text,
                                                                                txt_equipo.Text, DateTimePicker_Rev.Value, DateTimePicker_REP.Value,
                                                                                TextBox_Anticipo.Text,
-                                                                               Label_Cod.Text)
+                                                                            serv_id)
 
 
 
@@ -373,7 +376,7 @@
                 If DataGridView1.Rows.Count <> 0 Then
                     Dim i As Integer = 0
                     While i < DataGridView1.Rows.Count
-                        DAservicio.Servicio_Producto_Alta_DetalleServicio(Label_Cod.Text,
+                        DAservicio.Servicio_Producto_Alta_DetalleServicio(serv_id,
                                                                          DataGridView1.Rows(i).Cells("ProdxSuc_ID").Value,
                                                                            DataGridView1.Rows(i).Cells("Costo").Value,
                                                                           DataGridView1.Rows(i).Cells("Cantidad").Value,

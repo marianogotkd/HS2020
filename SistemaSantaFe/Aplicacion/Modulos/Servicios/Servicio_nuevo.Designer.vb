@@ -269,11 +269,11 @@ Partial Class Servicio_nuevo
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(166, 21)
+        Me.Label1.Location = New System.Drawing.Point(121, 21)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(47, 13)
+        Me.Label1.Size = New System.Drawing.Size(91, 13)
         Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Numero:"
+        Me.Label1.Text = "Revisión Número:"
         Me.Label1.Visible = False
         '
         'GroupBox2

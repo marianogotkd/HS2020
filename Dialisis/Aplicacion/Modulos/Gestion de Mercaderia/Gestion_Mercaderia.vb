@@ -125,7 +125,7 @@
         cb_destino.Enabled = True
     End Sub
 
-    Private Sub btn_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_guardar.Click
+    Public Sub GUARDAR_CLICK()
         Dim concepto As String
         Dim tipo_mov As Integer
         If cb_Movimiento.SelectedItem = "Baja de Mercaderia" Then
@@ -302,6 +302,11 @@
         Else
             MessageBox.Show("Debe agregar al menos un producto.", "Sistema de Gestión.")
         End If
+    End Sub
+
+    Private Sub btn_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_guardar.Click
+        msj_esperar_sesiones.procedencia = "Gestion_Mercaderia_GUARDAR"
+        msj_esperar_sesiones.Show()
     End Sub
 
     Public Sub Limpiar()

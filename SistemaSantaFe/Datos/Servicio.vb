@@ -112,11 +112,25 @@ Public Class Servicio
         comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_FechaRep", Servicio_FechaRep))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Anticipo", Servicio_Anticipo))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Estado", Servicio_Estado))
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Servicio")
+        dbconn.Close()
+        Return ds_JE
+    End Function
 
+    'modificar orden de revicion
+    Public Function Servicio_modificar_revision_MDA(ByVal servicio_id As Integer,
+                              ByVal Servicio_Diagnostico As String)
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
 
-
-
-
+        Dim comando As New OleDbCommand("Servicio_modificar_revision_MDA", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_id", servicio_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Diagnostico", Servicio_Diagnostico))
 
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)
@@ -124,6 +138,7 @@ Public Class Servicio
         dbconn.Close()
         Return ds_JE
     End Function
+
 
     'Servicio alta
     Public Function Servicio_alta(ByVal Servicio_fecha As Date,

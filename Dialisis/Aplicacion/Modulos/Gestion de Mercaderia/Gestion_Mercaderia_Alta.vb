@@ -548,8 +548,124 @@
         msj_esperar_sesiones.procedencia = "Gestion_Mercaderia_Alta_btn_guardad_click"
         msj_esperar_sesiones.Show()
 
+        'vamos a probar el rollback si falla la conexion
+        ' rollback()
+
     End Sub
 
+
+    Private Sub rollback()
+
+        Dim concepto As String
+        concepto = tb_concepto.Text
+        Dim tipo_mov As Integer = 1
+        ''''Alta en tabla Movimiento_Mercaderia''''''''''
+        If Mov_DS.Tables("Mov").Rows.Count <> 0 Then
+            Dim result As Integer = MessageBox.Show("¿Esta seguro que desea registrar los productos listados?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+                Dim lote_id As Integer = 0
+
+                'controlamos factura y remito
+                Dim ds_movid As DataSet = DAMovintoMer.Movimiento_Mercaderia_alta3(concepto, DateTimePicker1.Value.Date, Inicio.USU_id, cb_origen.SelectedValue, cb_destino.SelectedValue, nro_factura.Text, fecha_factura.Value.Date, nro_remito.Text, fecha_remito.Value.Date, tipo_mov, cb_proveedor.SelectedValue)
+                ''''''''''''''''''''''''''''''''''''''''''''''''
+                Dim MovMer_id As Integer = ds_movid.Tables(0).Rows(0).Item(0)
+                Dim i As Integer = 0
+
+
+                Dim valido As String = DAMovintoMer.rollback(Mov_DS.Tables("Mov"), MovMer_id)
+                
+                'DAMovintoMer.Movimiento_Mercaderia_Detalle_alta(Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"), MovMer_id, Mov_DS.Tables("Mov").Rows(i).Item("Cod_prod"), lote_id, Mov_DS.Tables("Mov").Rows(i).Item("PrecioU"), Mov_DS.Tables("Mov").Rows(i).Item("Subtotal"))
+
+
+
+
+
+
+                'While i < Mov_DS.Tables("Mov").Rows.Count
+                '    '''''Actualizacion de Stock''''''''''''''''''''''''
+                '    Dim Ds_Suc As DataSet
+                '    'Dim Origen As Integer
+                '    'Dim Destino As Integer
+                '    Dim Mov As Decimal
+                '    'Dim j As Integer = 0
+                '    'While i < Mov_DS.Tables("Mov").Rows.Count
+                '    ds_PROD = DAprod.Producto_buscarcod(Mov_DS.Tables("Mov").Rows(i).Item("Cod_prod"))
+                '    Dim prod_id = ds_PROD.Tables(0).Rows(0).Item("prod_id")
+                '    Ds_Suc = DAsucursal.Sucursal_obtener_producto(prod_id, cb_origen.SelectedValue, cb_destino.SelectedValue)
+
+                '    'Calculo Stock''''''''
+                '    Mov = CDec(Ds_Suc.Tables(1).Rows(0).Item("Stock_Destino")) + CDec(Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"))
+                '    ''''''
+                '    ''''''''''
+                '    'Actualizo stock'''''
+                '    DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, cb_origen.SelectedValue, Mov)
+                '    '''''''''''
+
+                '    'creo un registro en producto_x_sucursal_lote
+                '    'CHOCO 14-07-2020 aqui veo si existe el lote, actualizo la cantidad, pero si no existe registro como nuevo
+                '    Dim ds_lote_buscar As DataSet = DAlote.Lote_buscar_validar(cb_origen.SelectedValue, Mov_DS.Tables("Mov").Rows(i).Item("Cod_prod"), Mov_DS.Tables("Mov").Rows(i).Item("Lote"), cb_proveedor.SelectedValue)
+                '    If ds_lote_buscar.Tables(0).Rows.Count <> 0 Then
+                '        'si existe actualizo
+                '        Dim fechafabricacion As Date
+                '        Dim fechavencimiento As Date
+                '        If Mov_DS.Tables("Mov").Rows(i).Item("Vence") = "si" Then
+                '            fechafabricacion = Mov_DS.Tables("Mov").Rows(i).Item("FechaFabricacion")
+                '            fechavencimiento = Mov_DS.Tables("Mov").Rows(i).Item("FechaVencimiento")
+                '        Else
+                '            fechafabricacion = Today
+                '            fechavencimiento = Today
+                '        End If
+                '        Dim ds_lote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_suma(Mov_DS.Tables("Mov").Rows(i).Item("Lote"), prod_id, cb_origen.SelectedValue,
+                '                                                                      Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"), cb_proveedor.SelectedValue)
+                '        lote_id = ds_lote.Tables(0).Rows(0).Item("lote_id")
+
+                '    Else
+                '        'si no existe doy de alta
+                '        Dim fechafabricacion As Date
+                '        Dim fechavencimiento As Date
+                '        If Mov_DS.Tables("Mov").Rows(i).Item("Vence") = "si" Then
+                '            fechafabricacion = Mov_DS.Tables("Mov").Rows(i).Item("FechaFabricacion")
+                '            fechavencimiento = Mov_DS.Tables("Mov").Rows(i).Item("FechaVencimiento")
+                '        Else
+                '            fechafabricacion = Today
+                '            fechavencimiento = Today
+                '        End If
+                '        Dim ds_lote As DataSet = DAlote.Producto_x_sucursal_lote_alta(Mov_DS.Tables("Mov").Rows(i).Item("Lote"),
+                '                                                                      Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"),
+                '                                                                      fechafabricacion,
+                '                                                                      fechavencimiento,
+                '                                                                      prod_id,
+                '                                                                      cb_origen.SelectedValue,
+                '                                                                      Mov_DS.Tables("Mov").Rows(i).Item("Vence"), cb_proveedor.SelectedValue)
+                '        lote_id = ds_lote.Tables(0).Rows(0).Item("lote_id")
+                '    End If
+
+
+
+
+
+                '    '''''' Alta Tabla Detalle'''''' de movimiento claro está
+                '    'alta en tabla mercaderia_detalle_alta
+                '    DAMovintoMer.Movimiento_Mercaderia_Detalle_alta(Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"), MovMer_id, Mov_DS.Tables("Mov").Rows(i).Item("Cod_prod"), lote_id, Mov_DS.Tables("Mov").Rows(i).Item("PrecioU"), Mov_DS.Tables("Mov").Rows(i).Item("Subtotal"))
+                '    i = i + 1
+                'End While
+                '''''''''''''''''''''''''''''''''''''''''''
+
+                If valido = "si" Then
+                    limpiar_seccion_agregar()
+                    limpiar()
+                    calcular_total()
+                    MessageBox.Show("Operación Registrada Con Éxito.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    MessageBox.Show("Error, la transacción fallo, intente nuevamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            End If
+        Else
+            MessageBox.Show("Debe agregar al menos un producto.", "Sistema de Gestión.")
+        End If
+
+
+    End Sub
 
     Private Sub limpiar()
         Mov_DS.Tables("Mov").Rows.Clear()

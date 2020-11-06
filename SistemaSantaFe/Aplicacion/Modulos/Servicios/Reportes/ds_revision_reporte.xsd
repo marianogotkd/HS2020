@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ds_revision_reporte" targetNamespace="http://tempuri.org/ds_revision_reporte.xsd" xmlns:mstns="http://tempuri.org/ds_revision_reporte.xsd" xmlns="http://tempuri.org/ds_revision_reporte.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ds_revision_reporte" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ds_revision_reporte" msprop:Generator_UserDSName="ds_revision_reporte">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Revision" msprop:Generator_TableClassName="RevisionDataTable" msprop:Generator_TableVarName="tableRevision" msprop:Generator_TablePropName="Revision" msprop:Generator_RowDeletingName="RevisionRowDeleting" msprop:Generator_RowChangingName="RevisionRowChanging" msprop:Generator_RowEvHandlerName="RevisionRowChangeEventHandler" msprop:Generator_RowDeletedName="RevisionRowDeleted" msprop:Generator_UserTableName="Revision" msprop:Generator_RowChangedName="RevisionRowChanged" msprop:Generator_RowEvArgName="RevisionRowChangeEvent" msprop:Generator_RowClassName="RevisionRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_revision" msprop:Generator_ColumnVarNameInTable="columnid_revision" msprop:Generator_ColumnPropNameInRow="id_revision" msprop:Generator_ColumnPropNameInTable="id_revisionColumn" msprop:Generator_UserColumnName="id_revision" type="xs:int" minOccurs="0" />
+              <xs:element name="cliente" msprop:Generator_ColumnVarNameInTable="columncliente" msprop:Generator_ColumnPropNameInRow="cliente" msprop:Generator_ColumnPropNameInTable="clienteColumn" msprop:Generator_UserColumnName="cliente" type="xs:string" minOccurs="0" />
+              <xs:element name="direccion" msprop:Generator_ColumnVarNameInTable="columndireccion" msprop:Generator_ColumnPropNameInRow="direccion" msprop:Generator_ColumnPropNameInTable="direccionColumn" msprop:Generator_UserColumnName="direccion" type="xs:string" minOccurs="0" />
+              <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="diagnostico_previo" msprop:Generator_ColumnVarNameInTable="columndiagnostico_previo" msprop:Generator_ColumnPropNameInRow="diagnostico_previo" msprop:Generator_ColumnPropNameInTable="diagnostico_previoColumn" msprop:Generator_UserColumnName="diagnostico_previo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
