@@ -873,4 +873,8 @@ Public Property EnabledCerrar() As Boolean
     Private Sub CalendarioToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CalendarioToolStripMenuItem.Click
         Tareas_Consulta.Show()
     End Sub
+
+    Private Sub CostosIndirectosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CostosIndirectosToolStripMenuItem.Click
+        CostoInd_alta.Show()
+    End Sub
 End Class

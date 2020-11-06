@@ -29,9 +29,6 @@ Partial Class Servicio_nuevo
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btn_guardar = New System.Windows.Forms.Button()
-        Me.btn_cancelar = New System.Windows.Forms.Button()
-        Me.Button_finalizar = New System.Windows.Forms.Button()
         Me.Label_Estado = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label_Cod = New System.Windows.Forms.Label()
@@ -44,7 +41,6 @@ Partial Class Servicio_nuevo
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.lbl_errNOM = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox_tel = New System.Windows.Forms.TextBox()
         Me.TextBox_dir = New System.Windows.Forms.TextBox()
@@ -67,8 +63,6 @@ Partial Class Servicio_nuevo
         Me.lb_error_modelo = New System.Windows.Forms.Label()
         Me.txt_diag = New System.Windows.Forms.TextBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Cod_prod = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdxSuc_ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -86,6 +80,12 @@ Partial Class Servicio_nuevo
         Me.TextBox_Repuesto = New System.Windows.Forms.TextBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btn_guardar = New System.Windows.Forms.Button()
+        Me.btn_cancelar = New System.Windows.Forms.Button()
+        Me.Button_finalizar = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -116,48 +116,6 @@ Partial Class Servicio_nuevo
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Servicios de Ventas"
-        '
-        'btn_guardar
-        '
-        Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
-        Me.btn_guardar.Location = New System.Drawing.Point(880, 548)
-        Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_guardar.Name = "btn_guardar"
-        Me.btn_guardar.Size = New System.Drawing.Size(116, 43)
-        Me.btn_guardar.TabIndex = 7
-        Me.btn_guardar.Text = "Guardar Cambios"
-        Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_guardar, "Guardar Cambios")
-        Me.btn_guardar.UseVisualStyleBackColor = True
-        '
-        'btn_cancelar
-        '
-        Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
-        Me.btn_cancelar.Location = New System.Drawing.Point(1004, 547)
-        Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_cancelar.Name = "btn_cancelar"
-        Me.btn_cancelar.Size = New System.Drawing.Size(96, 43)
-        Me.btn_cancelar.TabIndex = 8
-        Me.btn_cancelar.Text = "Cancelar"
-        Me.btn_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_cancelar, "Cancelar")
-        Me.btn_cancelar.UseVisualStyleBackColor = True
-        '
-        'Button_finalizar
-        '
-        Me.Button_finalizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_finalizar.Image = Global.Aplicacion.My.Resources.Resources.Guardar2
-        Me.Button_finalizar.Location = New System.Drawing.Point(777, 547)
-        Me.Button_finalizar.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button_finalizar.Name = "Button_finalizar"
-        Me.Button_finalizar.Size = New System.Drawing.Size(95, 43)
-        Me.Button_finalizar.TabIndex = 6
-        Me.Button_finalizar.Text = "Finalizar"
-        Me.Button_finalizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button_finalizar, "Finalizar Servicio realizado")
-        Me.Button_finalizar.UseVisualStyleBackColor = True
         '
         'Label_Estado
         '
@@ -308,18 +266,6 @@ Partial Class Servicio_nuevo
         Me.lbl_errNOM.TabIndex = 22
         Me.lbl_errNOM.Text = "*"
         Me.lbl_errNOM.Visible = False
-        '
-        'Button1
-        '
-        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.Buscar
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.Location = New System.Drawing.Point(11, 19)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(123, 53)
-        Me.Button1.TabIndex = 9
-        Me.Button1.Text = "Buscar Cliente"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'Label6
         '
@@ -552,34 +498,6 @@ Partial Class Servicio_nuevo
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "REPUESTOS / Ingrese codigo interno para buscar (F1 busqueda avanzada)"
         '
-        'btn_eliminar_seleccion
-        '
-        Me.btn_eliminar_seleccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_seleccion.Image = Global.Aplicacion.My.Resources.Resources.menos
-        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(120, 227)
-        Me.btn_eliminar_seleccion.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_eliminar_seleccion.Name = "btn_eliminar_seleccion"
-        Me.btn_eliminar_seleccion.Size = New System.Drawing.Size(104, 41)
-        Me.btn_eliminar_seleccion.TabIndex = 271
-        Me.btn_eliminar_seleccion.Text = "Eliminar"
-        Me.btn_eliminar_seleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_eliminar_seleccion, "Eliminar productos seleccionados")
-        Me.btn_eliminar_seleccion.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Image = Global.Aplicacion.My.Resources.Resources.Borrar
-        Me.Button3.Location = New System.Drawing.Point(9, 228)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(104, 41)
-        Me.Button3.TabIndex = 5
-        Me.Button3.TabStop = False
-        Me.Button3.Text = "Limpiar"
-        Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button3, "Limpiar listado de Repuestos")
-        Me.Button3.UseVisualStyleBackColor = True
-        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
@@ -741,6 +659,88 @@ Partial Class Servicio_nuevo
         Me.GroupBox6.TabIndex = 3
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Diagnostico:"
+        '
+        'btn_eliminar_seleccion
+        '
+        Me.btn_eliminar_seleccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_seleccion.Image = Global.Aplicacion.My.Resources.Resources.menos
+        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(120, 227)
+        Me.btn_eliminar_seleccion.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_eliminar_seleccion.Name = "btn_eliminar_seleccion"
+        Me.btn_eliminar_seleccion.Size = New System.Drawing.Size(104, 41)
+        Me.btn_eliminar_seleccion.TabIndex = 271
+        Me.btn_eliminar_seleccion.Text = "Eliminar"
+        Me.btn_eliminar_seleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_eliminar_seleccion, "Eliminar productos seleccionados")
+        Me.btn_eliminar_seleccion.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Image = Global.Aplicacion.My.Resources.Resources.Borrar
+        Me.Button3.Location = New System.Drawing.Point(9, 228)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(104, 41)
+        Me.Button3.TabIndex = 5
+        Me.Button3.TabStop = False
+        Me.Button3.Text = "Limpiar"
+        Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button3, "Limpiar listado de Repuestos")
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'btn_guardar
+        '
+        Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
+        Me.btn_guardar.Location = New System.Drawing.Point(880, 548)
+        Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_guardar.Name = "btn_guardar"
+        Me.btn_guardar.Size = New System.Drawing.Size(116, 43)
+        Me.btn_guardar.TabIndex = 7
+        Me.btn_guardar.Text = "Guardar Cambios"
+        Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_guardar, "Guardar Cambios")
+        Me.btn_guardar.UseVisualStyleBackColor = True
+        '
+        'btn_cancelar
+        '
+        Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
+        Me.btn_cancelar.Location = New System.Drawing.Point(1004, 547)
+        Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_cancelar.Name = "btn_cancelar"
+        Me.btn_cancelar.Size = New System.Drawing.Size(96, 43)
+        Me.btn_cancelar.TabIndex = 8
+        Me.btn_cancelar.Text = "Cancelar"
+        Me.btn_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_cancelar, "Cancelar")
+        Me.btn_cancelar.UseVisualStyleBackColor = True
+        '
+        'Button_finalizar
+        '
+        Me.Button_finalizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_finalizar.Image = Global.Aplicacion.My.Resources.Resources.Guardar2
+        Me.Button_finalizar.Location = New System.Drawing.Point(777, 547)
+        Me.Button_finalizar.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button_finalizar.Name = "Button_finalizar"
+        Me.Button_finalizar.Size = New System.Drawing.Size(95, 43)
+        Me.Button_finalizar.TabIndex = 6
+        Me.Button_finalizar.Text = "Finalizar"
+        Me.Button_finalizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button_finalizar, "Finalizar Servicio realizado")
+        Me.Button_finalizar.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.Buscar
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.Location = New System.Drawing.Point(11, 19)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(123, 53)
+        Me.Button1.TabIndex = 9
+        Me.Button1.Text = "Buscar Cliente"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Servicio_nuevo
         '
