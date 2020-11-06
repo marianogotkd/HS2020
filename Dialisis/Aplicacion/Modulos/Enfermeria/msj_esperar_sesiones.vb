@@ -34,6 +34,11 @@
                 Gestion_Mercaderia_Alta.GUARDAR_CLICK()
                 Me.Close()
             End If
+            If procedencia = "Gestion_Mercaderia_GUARDAR" Then
+                Gestion_Mercaderia.GUARDAR_CLICK()
+                Me.Close()
+            End If
+
             If procedencia = "GM_Baja_Producto_load" Then
                 GM_Baja_Producto.LOAD_CARGA()
                 Me.Close()

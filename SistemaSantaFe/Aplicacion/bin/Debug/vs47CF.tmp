@@ -310,22 +310,6 @@ Row event argument class
 	<summary>
 Represents a strongly typed in-memory cache of data.
 </summary>
-</member><member name="T:Aplicacion.ds_revision_reporte.RevisionDataTable">
-	<summary>
-Represents the strongly named DataTable class.
-</summary>
-</member><member name="T:Aplicacion.ds_revision_reporte.RevisionRow">
-	<summary>
-Represents strongly named DataRow class.
-</summary>
-</member><member name="T:Aplicacion.ds_revision_reporte.RevisionRowChangeEvent">
-	<summary>
-Row event argument class
-</summary>
-</member><member name="T:Aplicacion.ds_revision_reporte">
-	<summary>
-Represents a strongly typed in-memory cache of data.
-</summary>
 </member><member name="T:Aplicacion.DS_configuraciones.SucursalDataTable">
 	<summary>
 Represents the strongly named DataTable class.

@@ -52,7 +52,7 @@
         serv_id = DG_Servicio.SelectedCells(0).Value
         Servicio_nuevo.Close()
         Servicio_nuevo.Cliente_ID = DG_Servicio.SelectedCells(19).Value
-
+        Servicio_nuevo.serv_id = serv_id
         Servicio_nuevo.Show()
     End Sub
 

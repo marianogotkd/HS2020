@@ -1,5 +1,4 @@
-﻿Imports System.Windows.Forms
-Public Class Tareas_Consulta
+﻿Public Class Tareas_Consulta
     Dim Daservicio As New Datos.Servicio
     Private listFlDay As New List(Of FlowLayoutPanel)
     Private currentDate As DateTime = DateTime.Today
@@ -12,20 +11,39 @@ Public Class Tareas_Consulta
     Private Sub AddNewAppointment(ByVal sender As Object, ByVal e As EventArgs)
         Dim day As Integer = CType(sender, FlowLayoutPanel).Tag
         If day <> 0 Then
-            With frmManageAppointment
-                .AppID = 0
-                .txtName.Text = ""
-                .txtAddress.Text = ""
-                .txtComment.Text = ""
-                .dtpDate.Value = New Date(currentDate.Year, currentDate.Month, day)
-                .ShowDialog()
-            End With
+            Dim result As DialogResult
+            result = MessageBox.Show("¿Desea generar una nueva orden de Revisión?.", "Sistema de Gestión.", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+            If result = DialogResult.OK Then
+                'Orden_Revision_nueva.Close()
+                'Orden_Revision_nueva.DateTimePicker1.Value = New Date(currentDate.Year, currentDate.Month, day)
+                'Orden_Revision_nueva.Show()
+
+                With Orden_Revision_nueva
+                    .appID = 0
+                    .DateTimePicker1.Value = New Date(currentDate.Year, currentDate.Month, day)
+                    .ShowDialog()
+                End With
+
+
+                'With frmManageAppointment
+                '    .AppID = 0
+                '    .txtName.Text = ""
+                '    .txtAddress.Text = ""
+                '    .txtComment.Text = ""
+                '    .dtpDate.Value = New Date(currentDate.Year, currentDate.Month, day)
+                '    .ShowDialog()
+                'End With
+                'DisplayCurrentDate()
+            End If
+
             DisplayCurrentDate()
+
+
         End If
     End Sub
 
     Private Sub ShowAppointmentDetail(ByVal sender As Object, ByVal e As EventArgs)
-        'Dim appID As Integer = CType(sender, LinkLabel).Tag
+        Dim appID As Integer = CType(sender, LinkLabel).Tag
         'Dim sql As String = $"select * from appointment where ID = {appID}"
         'Dim dt As DataTable = QueryAsDataTable(Sql)
         'If dt.Rows.Count > 0 Then
@@ -40,6 +58,23 @@ Public Class Tareas_Consulta
         '    End With
         '    DisplayCurrentDate()
         'End If
+
+
+        'Orden_Revision_nueva.Close()
+        'Orden_Revision_nueva.appID = appID
+        'Orden_Revision_nueva.Show()
+
+        With Orden_Revision_nueva
+            .appID = appID
+            '        .txtName.Text = row("ContactName")
+            '        .txtAddress.Text = row("Address")
+            '        .txtComment.Text = row("Comment")
+            '        .dtpDate.Value = row("AppDate")
+            .ShowDialog()
+        End With
+        DisplayCurrentDate()
+
+        'Orden_Revision_nueva.Focus()
     End Sub
 
 
@@ -63,7 +98,7 @@ Public Class Tareas_Consulta
             'link.Name = $"link{row("ID")}"
             link.Name = row("Servicio_Diagnostico")
             'link.Text = row("ContactName")
-            link.Text = row("Servicio_Diagnostico")
+            link.Text = "Revisión Nº: " + CStr(row("Servicio_id"))
             AddHandler link.Click, AddressOf ShowAppointmentDetail
             listFlDay((appDay.Day - 1) + (startDayAtFlNumber - 1)).Controls.Add(link)
         Next
@@ -87,6 +122,7 @@ Public Class Tareas_Consulta
         AddLabelDayToFlDay(firstDayAtFlNumber, totalDay)
         AddAppointmentToFlDay(firstDayAtFlNumber)
     End Sub
+
 
     Private Sub PrevMonth()
         currentDate = currentDate.AddMonths(-1)

@@ -174,6 +174,64 @@ Public Class Gestion_Mercaderia
         Return ds_JE
     End Function
 
+    Public Function rollback(ByVal tabla As DataTable, ByVal MovMer_id As Integer) As String
+        Dim valido As String = "si"
+        Dim transaction As OleDbTransaction = Nothing
+        Dim comando As New OleDbCommand("Movimiento_Mercaderia_Detalle_alta", dbconn)
+        Try
+            dbconn.Open()
+            transaction = dbconn.BeginTransaction(IsolationLevel.ReadCommitted)
+            comando.Transaction = transaction
+
+            Dim i As Integer = 0
+
+            While i < tabla.Rows.Count
+
+                comando.CommandType = CommandType.StoredProcedure
+                Dim MovMerDet_Cantidad As Decimal = CDec(CStr(tabla.Rows(i).Item("Cantidad")) + "choco")
+                Dim prod_codinterno As Integer = CDec(tabla.Rows(i).Item("Cod_prod"))
+                Dim lote_id As Integer = 0
+                Dim MovMerDet_precioU As Decimal = 0
+                Dim MovMerDet_subtotal As Decimal = 0
+
+                comando.Parameters.Add(New OleDb.OleDbParameter("@MovMerDet_Cantidad", MovMerDet_Cantidad))
+                comando.Parameters.Add(New OleDb.OleDbParameter("@MovMer_id", MovMer_id))
+                comando.Parameters.Add(New OleDb.OleDbParameter("@prod_codinterno", prod_codinterno))
+                comando.Parameters.Add(New OleDb.OleDbParameter("@lote_id", lote_id))
+                'choco 26-08-2020 se agregan precio U y subtotal
+                comando.Parameters.Add(New OleDb.OleDbParameter("@MovMerDet_precioU", MovMerDet_precioU))
+                comando.Parameters.Add(New OleDb.OleDbParameter("@MovMerDet_subtotal", MovMerDet_subtotal))
+                'comando.ExecuteNonQuery()
+                Dim ds_JE As New DataSet()
+                Dim da_JE As New OleDbDataAdapter(comando)
+
+                da_JE.Fill(ds_JE, "Producto")
+
+                comando.Parameters.Clear()
+
+                i = i + 1
+            End While
+
+            transaction.Commit()
+            'Console.WriteLine("se guardo el registro")
+
+
+        Catch ex As Exception
+            valido = "no"
+            Try
+                transaction.Rollback() 'esto se ejecuta y deshace los cambios en la bd.
+                ' valido = "no"
+
+            Catch ex1 As Exception
+                'valido = "no" 'como no puede ejecutar el rollback al estar apagado el servidor viene x aqui
+            End Try
+        End Try
+
+        dbconn.Close()
+        'Return ds_JE
+        Return valido
+    End Function
+
     Public Function Movimiento_Mercaderia_Detalle_alta(ByVal MovMerDet_Cantidad As Decimal, ByVal MovMer_id As Integer, ByVal prod_codinterno As Integer, ByVal lote_id As Integer,
                                                        ByVal MovMerDet_precioU As Decimal, ByVal MovMerDet_subtotal As Decimal) As DataSet
         Try
@@ -198,6 +256,46 @@ Public Class Gestion_Mercaderia
         da_JE.Fill(ds_JE, "Producto")
         dbconn.Close()
         Return ds_JE
+
+
+        'Dim transaction As OleDbTransaction = Nothing
+        'Dim comando As New OleDbCommand("Movimiento_Mercaderia_Detalle_alta", dbconn)
+        'Try
+        '    dbconn.Open()
+        '    transaction = dbconn.BeginTransaction(IsolationLevel.ReadCommitted)
+        '    comando.Transaction = transaction
+        '    comando.CommandType = CommandType.StoredProcedure
+
+        '    comando.Parameters.Add(New OleDb.OleDbParameter("@MovMerDet_Cantidad", MovMerDet_Cantidad))
+        '    comando.Parameters.Add(New OleDb.OleDbParameter("@MovMer_id", MovMer_id))
+        '    comando.Parameters.Add(New OleDb.OleDbParameter("@prod_codinterno", prod_codinterno))
+        '    comando.Parameters.Add(New OleDb.OleDbParameter("@lote_id", lote_id))
+        '    'choco 26-08-2020 se agregan precio U y subtotal
+        '    comando.Parameters.Add(New OleDb.OleDbParameter("@MovMerDet_precioU", MovMerDet_precioU))
+        '    comando.Parameters.Add(New OleDb.OleDbParameter("@MovMerDet_subtotal", MovMerDet_subtotal))
+        '    'comando.ExecuteNonQuery()
+        '    transaction.Commit()
+        '    Console.WriteLine("se guardo el registro")
+
+
+        'Catch ex As Exception
+        '    Console.WriteLine(ex.Message)
+        '    Try
+        '        transaction.Rollback()
+
+        '    Catch ex1 As Exception
+
+        '    End Try
+        'End Try
+
+        'Dim ds_JE As New DataSet()
+        'Dim da_JE As New OleDbDataAdapter(comando)
+        'da_JE.Fill(ds_JE, "Producto")
+        'dbconn.Close()
+        'Return ds_JE
+
+
+
     End Function
 
     Public Function Movimiento_Mercaderia_obtenerProducto_Combos() As DataSet
