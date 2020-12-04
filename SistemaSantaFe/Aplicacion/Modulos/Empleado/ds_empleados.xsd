@@ -12,7 +12,7 @@
   <xs:element name="ds_empleados" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ds_empleados" msprop:Generator_UserDSName="ds_empleados">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="empleados" msprop:Generator_TableClassName="empleadosDataTable" msprop:Generator_TableVarName="tableempleados" msprop:Generator_TablePropName="empleados" msprop:Generator_RowDeletingName="empleadosRowDeleting" msprop:Generator_RowChangingName="empleadosRowChanging" msprop:Generator_RowEvHandlerName="empleadosRowChangeEventHandler" msprop:Generator_RowDeletedName="empleadosRowDeleted" msprop:Generator_UserTableName="empleados" msprop:Generator_RowChangedName="empleadosRowChanged" msprop:Generator_RowEvArgName="empleadosRowChangeEvent" msprop:Generator_RowClassName="empleadosRow">
+        <xs:element name="empleados" msprop:Generator_TableClassName="empleadosDataTable" msprop:Generator_TableVarName="tableempleados" msprop:Generator_RowChangedName="empleadosRowChanged" msprop:Generator_TablePropName="empleados" msprop:Generator_RowDeletingName="empleadosRowDeleting" msprop:Generator_RowChangingName="empleadosRowChanging" msprop:Generator_RowEvHandlerName="empleadosRowChangeEventHandler" msprop:Generator_RowDeletedName="empleadosRowDeleted" msprop:Generator_RowClassName="empleadosRow" msprop:Generator_UserTableName="empleados" msprop:Generator_RowEvArgName="empleadosRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="empleado_id" msprop:Generator_ColumnVarNameInTable="columnempleado_id" msprop:Generator_ColumnPropNameInRow="empleado_id" msprop:Generator_ColumnPropNameInTable="empleado_idColumn" msprop:Generator_UserColumnName="empleado_id" type="xs:int" minOccurs="0" />
@@ -22,6 +22,17 @@
               <xs:element name="empleado_mail" msprop:Generator_ColumnVarNameInTable="columnempleado_mail" msprop:Generator_ColumnPropNameInRow="empleado_mail" msprop:Generator_ColumnPropNameInTable="empleado_mailColumn" msprop:Generator_UserColumnName="empleado_mail" type="xs:string" minOccurs="0" />
               <xs:element name="empleado_tel" msprop:Generator_ColumnVarNameInTable="columnempleado_tel" msprop:Generator_ColumnPropNameInRow="empleado_tel" msprop:Generator_ColumnPropNameInTable="empleado_telColumn" msprop:Generator_UserColumnName="empleado_tel" type="xs:string" minOccurs="0" />
               <xs:element name="empleado_cel" msprop:Generator_ColumnVarNameInTable="columnempleado_cel" msprop:Generator_ColumnPropNameInRow="empleado_cel" msprop:Generator_ColumnPropNameInTable="empleado_celColumn" msprop:Generator_UserColumnName="empleado_cel" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Empleado_remu" msprop:Generator_TableClassName="Empleado_remuDataTable" msprop:Generator_TableVarName="tableEmpleado_remu" msprop:Generator_TablePropName="Empleado_remu" msprop:Generator_RowDeletingName="Empleado_remuRowDeleting" msprop:Generator_RowChangingName="Empleado_remuRowChanging" msprop:Generator_RowEvHandlerName="Empleado_remuRowChangeEventHandler" msprop:Generator_RowDeletedName="Empleado_remuRowDeleted" msprop:Generator_UserTableName="Empleado_remu" msprop:Generator_RowChangedName="Empleado_remuRowChanged" msprop:Generator_RowEvArgName="Empleado_remuRowChangeEvent" msprop:Generator_RowClassName="Empleado_remuRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="empleado_ape" msprop:Generator_ColumnVarNameInTable="columnempleado_ape" msprop:Generator_ColumnPropNameInRow="empleado_ape" msprop:Generator_ColumnPropNameInTable="empleado_apeColumn" msprop:Generator_UserColumnName="empleado_ape" type="xs:string" minOccurs="0" />
+              <xs:element name="empleado_dni" msprop:Generator_ColumnVarNameInTable="columnempleado_dni" msprop:Generator_ColumnPropNameInRow="empleado_dni" msprop:Generator_ColumnPropNameInTable="empleado_dniColumn" msprop:Generator_UserColumnName="empleado_dni" type="xs:int" minOccurs="0" />
+              <xs:element name="empleado_id" msprop:Generator_ColumnVarNameInTable="columnempleado_id" msprop:Generator_ColumnPropNameInRow="empleado_id" msprop:Generator_ColumnPropNameInTable="empleado_idColumn" msprop:Generator_UserColumnName="empleado_id" type="xs:int" minOccurs="0" />
+              <xs:element name="empleado_Remune" msprop:Generator_ColumnVarNameInTable="columnempleado_Remune" msprop:Generator_ColumnPropNameInRow="empleado_Remune" msprop:Generator_ColumnPropNameInTable="empleado_RemuneColumn" msprop:Generator_UserColumnName="empleado_Remune" type="xs:decimal" minOccurs="0" />
+              <xs:element name="empleado_nom" msprop:Generator_ColumnVarNameInTable="columnempleado_nom" msprop:Generator_ColumnPropNameInRow="empleado_nom" msprop:Generator_ColumnPropNameInTable="empleado_nomColumn" msprop:Generator_UserColumnName="empleado_nom" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

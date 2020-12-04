@@ -1,4 +1,4 @@
-ALTER procedure [dbo].[Consulta_Obtener_Todos_Estudios_x_PAC_rangofechas]
+﻿ALTER procedure [dbo].[Consulta_Obtener_Todos_Estudios_x_PAC_rangofechas]
 ---nota lo que en realidad paso es el ID del paciente, el carnero de mariano no quiso crear un campo PAC_id en todas las tablas.
 --y guarda pac_id en el campo cli_id
 @CLI_id int,
@@ -102,7 +102,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create procedure [dbo].[Movimiento_Mercaderia_baja_obtener_detalle_b_rango_fechas_todos]
+alter procedure [dbo].[Movimiento_Mercaderia_baja_obtener_detalle_b_rango_fechas_todos]
 
 @desde date,
 @hasta date
@@ -211,7 +211,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-ALTER procedure [dbo].[Paciente_x_obra_social_x_rango]
+create procedure [dbo].[Paciente_x_obra_social_x_rango]
 @obrasocial_id int,
 @fecha_desde datetime,
 @fecha_hasta datetime
@@ -348,7 +348,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create procedure [dbo].[Sesiones_recuperar_todos_consumos_rangofecha]
+alter procedure [dbo].[Sesiones_recuperar_todos_consumos_rangofecha]
 @desde date,
 @hasta date
 ---me va a traer 2 tablas, una con los presentes y  otra con los consumos de paciente ausente.
@@ -398,7 +398,7 @@ go
 
 
 
-create procedure TurnoDialisis_consultar_sesiones_rangofecha
+alter procedure TurnoDialisis_consultar_sesiones_rangofecha
 ---la uso para el modulo de consultas globales
 @desde date,
 @hasta date
