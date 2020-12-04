@@ -297,6 +297,12 @@
     <Compile Include="Modulos\Configuraciones\Sucursales.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Costos Indirectos\CostoInd_alta.Designer.vb">
+      <DependentUpon>CostoInd_alta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Costos Indirectos\CostoInd_alta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Cuadrilla\Cuadrilla_agregar_empleado.Designer.vb">
       <DependentUpon>Cuadrilla_agregar_empleado.vb</DependentUpon>
     </Compile>
@@ -1256,6 +1262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Configuraciones\Sucursales.resx">
       <DependentUpon>Sucursales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Costos Indirectos\CostoInd_alta.resx">
+      <DependentUpon>CostoInd_alta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Cuadrilla\Cuadrilla_agregar_empleado.resx">
       <DependentUpon>Cuadrilla_agregar_empleado.vb</DependentUpon>
