@@ -129,6 +129,7 @@ Partial Class US_administrador
         Me.Btn_corte_caja = New System.Windows.Forms.Button()
         Me.Label_Suc = New System.Windows.Forms.Label()
         Me.Lbl_Terminal = New System.Windows.Forms.Label()
+        Me.CostosIndirectosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -143,7 +144,7 @@ Partial Class US_administrador
         Me.ToolStrip1.Location = New System.Drawing.Point(7, 68)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ToolStrip1.Size = New System.Drawing.Size(81, 648)
+        Me.ToolStrip1.Size = New System.Drawing.Size(81, 665)
         Me.ToolStrip1.TabIndex = 54
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -575,7 +576,7 @@ Partial Class US_administrador
         '
         Me.ToolStripDropDownButton8.AutoSize = False
         Me.ToolStripDropDownButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Caja_ToolStripMenuItem1, Me.EgresosToolStripMenuItem, Me.ConsultarCajasToolStripMenuItem})
+        Me.ToolStripDropDownButton8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Caja_ToolStripMenuItem1, Me.EgresosToolStripMenuItem, Me.ConsultarCajasToolStripMenuItem, Me.CostosIndirectosToolStripMenuItem})
         Me.ToolStripDropDownButton8.Image = Global.Aplicacion.My.Resources.Resources.caja
         Me.ToolStripDropDownButton8.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ToolStripDropDownButton8.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -963,6 +964,12 @@ Partial Class US_administrador
         Me.Lbl_Terminal.Text = "Lbl_Terminal"
         Me.Lbl_Terminal.Visible = False
         '
+        'CostosIndirectosToolStripMenuItem
+        '
+        Me.CostosIndirectosToolStripMenuItem.Name = "CostosIndirectosToolStripMenuItem"
+        Me.CostosIndirectosToolStripMenuItem.Size = New System.Drawing.Size(212, 22)
+        Me.CostosIndirectosToolStripMenuItem.Text = "Costos Indirectos"
+        '
         'US_administrador
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -1100,4 +1107,5 @@ Partial Class US_administrador
     Friend WithEvents TerminalModificarToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CuadrillaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CalendarioToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CostosIndirectosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
