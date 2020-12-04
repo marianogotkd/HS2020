@@ -874,6 +874,7 @@ Public Property EnabledCerrar() As Boolean
         Tareas_Consulta.Show()
     End Sub
 
+  
     Private Sub CostosIndirectosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CostosIndirectosToolStripMenuItem.Click
         CostoInd_alta.Show()
     End Sub
