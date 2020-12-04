@@ -72,6 +72,13 @@
         Dim ds_usu As DataSet = DAusuario.Usuario_Sesion(TB_USU_usu.Text, TB_USU_cont.Text)
         With ds_usu.Tables(0).Rows
             If .Count > 0 Then
+
+                If (ds_usu.Tables(0).Rows(0).Item("USU_estado")).ToString = "error" Then
+                    Me.Close()
+                    Exit Sub
+                End If
+
+
                 UT_id = (CType(ds_usu.Tables(0).Rows(0).Item("UT_id"), String))
                 TB_USU_cont.Text = Nothing
                 TB_USU_usu.Text = Nothing

@@ -5,7 +5,7 @@ as
 update Filtro set Filtro_cant_reuso = @Filtro_cant_reuso where Filtro_id = @Filtro_id  
 
 ---------------------------------------------------------------------------------------
-alter procedure [dbo].[Filtro_Nuevo]
+Create procedure [dbo].[Filtro_Nuevo]
 @PAC_id int,
 @Filtro_fecha date,
 @Filtro_cant_reuso int,

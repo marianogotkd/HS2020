@@ -1411,11 +1411,11 @@ Public Class Historia_Clinica_Detalle
         If ds_hist.Tables(0).Rows.Count <> 0 Then
             'como existe lo modifico
             Dim ConAnt_id As Integer = ds_hist.Tables(0).Rows(0).Item("ConAnt_id")
-            DAHistoria.Consulta_antecedentes_modificar(ConAnt_id, Today, tx_ev_AEA.Text, tx_ev_EP.Text, tx_ev_AF.Text, tx_ev_EF.Text, tx_ev_DN.Text, tx_ev_EP.Text, PAC_id, cb_med_cc.SelectedValue)
+            DAHistoria.Consulta_antecedentes_modificar(ConAnt_id, Today, tx_ev_AEA.Text, tx_ev_APP.Text, tx_ev_AF.Text, tx_ev_EF.Text, tx_ev_DN.Text, tx_ev_EP.Text, PAC_id, cb_med_cc.SelectedValue)
             MessageBox.Show("Consulta modificada correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Else
-            DAHistoria.Consulta_antecedentes_alta(Today, tx_ev_AEA.Text, tx_ev_EP.Text, tx_ev_AF.Text, tx_ev_EF.Text, tx_ev_DN.Text, tx_ev_EP.Text, PAC_id, cb_med_cc.SelectedValue)
+            DAHistoria.Consulta_antecedentes_alta(Today, tx_ev_AEA.Text, tx_ev_APP.Text, tx_ev_AF.Text, tx_ev_EF.Text, tx_ev_DN.Text, tx_ev_EP.Text, PAC_id, cb_med_cc.SelectedValue)
             MessageBox.Show("Consulta Generada correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         btn_ev_cancelar.Enabled = False

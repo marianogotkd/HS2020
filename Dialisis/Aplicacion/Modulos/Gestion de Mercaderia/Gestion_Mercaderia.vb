@@ -137,7 +137,9 @@
         concepto = tb_concepto.Text
         ''''Alta en tabla Movimiento_Mercaderia''''''''''
         If Mov_DS.Tables("Mov").Rows.Count <> 0 Then
-            Dim result As Integer = MessageBox.Show("¿Esta seguro que desea realizar: " + cb_Movimiento.Text + "?.", "Sistema de Gestión", MessageBoxButtons.YesNo)
+            Dim cantidad_items = DataGridView1.Rows.Count
+            Dim result As Integer = MessageBox.Show("¿Esta seguro que desea realizar: " + cb_Movimiento.Text + "?." + Chr(13) + "La Cantidad de productos en el listado es: " + cantidad_items.ToString, "Sistema de Gestión", MessageBoxButtons.YesNo)
+
             If result = DialogResult.Yes Then
                 Dim lote_id As Integer
                 Dim ds_movid As DataSet = DAMovintoMer.Movimiento_Mercaderia_alta3(concepto, Today, Inicio.USU_id, cb_origen.SelectedValue, cb_destino.SelectedValue, "", Today, "", Today, tipo_mov, 0)

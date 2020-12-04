@@ -10,6 +10,14 @@ Public Class Usuario
         Try
             dbconn.Open()
         Catch ex As Exception
+            MsgBox("No se Encuentra el Servidro. Consultar al Administrador de red", vbExclamation, "ERROR DE CONEXION")
+            Dim ds_err As New DataSet
+            Dim dt As New DataTable
+
+            ds_err.Tables.Add(dt)
+            dt.Columns.Add("USU_estado")
+            dt.Rows.Add("error")
+            Return ds_err
         End Try
 
         Dim comando As New OleDbCommand("Usuario_sesion", dbconn)
@@ -21,6 +29,9 @@ Public Class Usuario
         Dim ds_usu As New DataSet()
         Dim da_usu As New OleDbDataAdapter(comando)
         da_usu.Fill(ds_usu, "Usuario")
+
+
+
         dbconn.Close()
         Return ds_usu
     End Function
