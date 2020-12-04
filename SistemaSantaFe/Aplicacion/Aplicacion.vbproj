@@ -549,6 +549,12 @@
     <Compile Include="Modulos\Facturacion\Mesas\Sector_modificar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Facturacion\Reportes\CR_comprobante_servicio.vb">
+      <DependentUpon>CR_comprobante_servicio.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Modulos\Facturacion\Reportes\CR_comprobante.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -815,6 +821,12 @@
     </Compile>
     <Compile Include="Modulos\Servicios\Orden_Revision_nueva.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Servicios\Reportes\CR_orden_trabajo.vb">
+      <DependentUpon>CR_orden_trabajo.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Modulos\Servicios\Reportes\CR_orden_revision.vb">
       <DependentUpon>CR_orden_revision.rpt</DependentUpon>
@@ -1350,6 +1362,10 @@
     <EmbeddedResource Include="Modulos\Facturacion\Mesas\Sector_modificar.resx">
       <DependentUpon>Sector_modificar.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Facturacion\Reportes\CR_comprobante_servicio.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CR_comprobante_servicio.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Facturacion\Reportes\CR_comprobante.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CR_comprobante.vb</LastGenOutput>
@@ -1460,6 +1476,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Servicios\Orden_Revision_nueva.resx">
       <DependentUpon>Orden_Revision_nueva.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Servicios\Reportes\CR_orden_trabajo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CR_orden_trabajo.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Servicios\Reportes\CR_orden_revision.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

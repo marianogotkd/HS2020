@@ -90,11 +90,12 @@
                                                                         sucursal_id, usuario_id, txt_diag.Text, "",
                                                                         "", DateTimePicker1.Value, DateTimePicker1.Value,
                                                                         CDec(0), "PENDIENTE")
-
-
                     MessageBox.Show("Los datos se guardaron correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     'AQUI TENGO QUE ABRIR EL REPORTE CON LA ORDEN DE REVISION.
-                    reporte(ds_SevicioGuardar.Tables(0).Rows(0).Item(0))
+                    Dim result2 As Integer = MessageBox.Show("¿Desea ver la orden de revisión para imprimir?", "Sistema de Gestión", MessageBoxButtons.YesNo)
+                    If result = DialogResult.Yes Then
+                        reporte(ds_SevicioGuardar.Tables(0).Rows(0).Item(0))
+                    End If
                     limpiar()
                     Me.Close()
 

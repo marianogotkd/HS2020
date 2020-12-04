@@ -1,0 +1,17 @@
+USE [SantaFe]
+GO
+/****** Object:  StoredProcedure [dbo].[Orden_trabajo_alta]    Script Date: 11/24/2020 16:52:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[Orden_trabajo_alta]
+
+@Servicio_Id int,
+@cuadrilla_id int
+as
+
+insert Orden_trabajo (Servicio_id, Cuadrilla_id ) values (@Servicio_Id, @cuadrilla_id  )
+
+select @@IDENTITY as 'orden_trabajo_id'
+

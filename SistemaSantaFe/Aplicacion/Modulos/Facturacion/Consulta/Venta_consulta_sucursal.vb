@@ -231,7 +231,7 @@
         If DG_ventas.Rows.Count <> 0 Then
 
             If DG_ventas.CurrentRow.Cells("VentaprodobservacionDataGridViewTextBoxColumn").Value = "Servicio" Then
-                Dim ventaprod_id As Integer = CInt(DG_ventas.CurrentRow.Cells("VentaprodidColumn").Value)
+                Dim ventaprod_id As Integer = CInt(DG_ventas.CurrentRow.Cells("ventaprod_id").Value)
                 Venta_detalle_servicio.ventaprod_id = ventaprod_id
                 Venta_detalle_servicio.Show()
             Else

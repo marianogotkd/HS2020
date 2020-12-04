@@ -23,12 +23,19 @@ Partial Class Servicio_nuevo
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.DG_empleados = New System.Windows.Forms.DataGridView()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.Combo_cuadrilla = New System.Windows.Forms.ComboBox()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.btn_guardar = New System.Windows.Forms.Button()
         Me.btn_cancelar = New System.Windows.Forms.Button()
         Me.Button_finalizar = New System.Windows.Forms.Button()
@@ -43,6 +50,7 @@ Partial Class Servicio_nuevo
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Button_imprimir = New System.Windows.Forms.Button()
         Me.lbl_errNOM = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -67,38 +75,52 @@ Partial Class Servicio_nuevo
         Me.lb_error_modelo = New System.Windows.Forms.Label()
         Me.txt_diag = New System.Windows.Forms.TextBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Label_error_grilla = New System.Windows.Forms.Label()
         Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Cod_prod = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdxSuc_ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Costo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ServicioProdDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Servicio_DS = New Aplicacion.Servicio_DS()
+        Me.prod_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TextBox_codprod = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TextBox_Repuesto = New System.Windows.Forms.TextBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Cod_prod = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Costo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioProdDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Servicio_DS = New Aplicacion.Servicio_DS()
+        Me.EmpleadoidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CuadrillaidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ApellidoynombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmpleadosxcuadrillaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox8.SuspendLayout()
+        CType(Me.DG_empleados, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox7.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox6.SuspendLayout()
         CType(Me.ServicioProdDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Servicio_DS, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox6.SuspendLayout()
+        CType(Me.EmpleadosxcuadrillaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Button2)
+        Me.GroupBox1.Controls.Add(Me.GroupBox8)
+        Me.GroupBox1.Controls.Add(Me.GroupBox7)
         Me.GroupBox1.Controls.Add(Me.btn_guardar)
         Me.GroupBox1.Controls.Add(Me.btn_cancelar)
         Me.GroupBox1.Controls.Add(Me.Button_finalizar)
@@ -117,44 +139,131 @@ Partial Class Servicio_nuevo
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Servicios de Ventas"
         '
+        'Button2
+        '
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
+        Me.Button2.Location = New System.Drawing.Point(880, 548)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(116, 43)
+        Me.Button2.TabIndex = 11
+        Me.Button2.Text = "Reparado"
+        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button2, "Generar orden de trabajo")
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'GroupBox8
+        '
+        Me.GroupBox8.Controls.Add(Me.DG_empleados)
+        Me.GroupBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox8.Location = New System.Drawing.Point(773, 206)
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.Size = New System.Drawing.Size(347, 216)
+        Me.GroupBox8.TabIndex = 10
+        Me.GroupBox8.TabStop = False
+        Me.GroupBox8.Text = "Empleados de la cuadrilla seleccionada:"
+        '
+        'DG_empleados
+        '
+        Me.DG_empleados.AllowUserToAddRows = False
+        Me.DG_empleados.AllowUserToDeleteRows = False
+        Me.DG_empleados.AllowUserToResizeRows = False
+        Me.DG_empleados.AutoGenerateColumns = False
+        Me.DG_empleados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DG_empleados.BackgroundColor = System.Drawing.Color.White
+        Me.DG_empleados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DG_empleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DG_empleados.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.EmpleadoidDataGridViewTextBoxColumn, Me.CuadrillaidDataGridViewTextBoxColumn, Me.ApellidoynombreDataGridViewTextBoxColumn, Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn})
+        Me.DG_empleados.DataSource = Me.EmpleadosxcuadrillaBindingSource
+        Me.DG_empleados.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DG_empleados.Location = New System.Drawing.Point(3, 18)
+        Me.DG_empleados.Margin = New System.Windows.Forms.Padding(4)
+        Me.DG_empleados.MultiSelect = False
+        Me.DG_empleados.Name = "DG_empleados"
+        Me.DG_empleados.ReadOnly = True
+        Me.DG_empleados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.DG_empleados.RowHeadersVisible = False
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_empleados.RowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.DG_empleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.DG_empleados.Size = New System.Drawing.Size(341, 195)
+        Me.DG_empleados.StandardTab = True
+        Me.DG_empleados.TabIndex = 241
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.Combo_cuadrilla)
+        Me.GroupBox7.Controls.Add(Me.Label11)
+        Me.GroupBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox7.Location = New System.Drawing.Point(500, 206)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(268, 105)
+        Me.GroupBox7.TabIndex = 9
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Seleccionar cuadrilla:"
+        '
+        'Combo_cuadrilla
+        '
+        Me.Combo_cuadrilla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Combo_cuadrilla.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Combo_cuadrilla.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
+        Me.Combo_cuadrilla.FormattingEnabled = True
+        Me.Combo_cuadrilla.Location = New System.Drawing.Point(7, 58)
+        Me.Combo_cuadrilla.Name = "Combo_cuadrilla"
+        Me.Combo_cuadrilla.Size = New System.Drawing.Size(255, 24)
+        Me.Combo_cuadrilla.TabIndex = 244
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(6, 30)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(144, 16)
+        Me.Label11.TabIndex = 243
+        Me.Label11.Text = "Cuadrillas disponibles:"
+        '
         'btn_guardar
         '
         Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
-        Me.btn_guardar.Location = New System.Drawing.Point(880, 548)
+        Me.btn_guardar.Location = New System.Drawing.Point(1004, 548)
         Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_guardar.Name = "btn_guardar"
         Me.btn_guardar.Size = New System.Drawing.Size(116, 43)
         Me.btn_guardar.TabIndex = 7
-        Me.btn_guardar.Text = "Guardar Cambios"
+        Me.btn_guardar.Text = "Generar Orden"
         Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_guardar, "Guardar Cambios")
+        Me.ToolTip1.SetToolTip(Me.btn_guardar, "Generar orden de trabajo")
         Me.btn_guardar.UseVisualStyleBackColor = True
         '
         'btn_cancelar
         '
         Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
-        Me.btn_cancelar.Location = New System.Drawing.Point(1004, 547)
+        Me.btn_cancelar.Location = New System.Drawing.Point(841, 13)
         Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_cancelar.Name = "btn_cancelar"
-        Me.btn_cancelar.Size = New System.Drawing.Size(96, 43)
+        Me.btn_cancelar.Size = New System.Drawing.Size(75, 43)
         Me.btn_cancelar.TabIndex = 8
         Me.btn_cancelar.Text = "Cancelar"
         Me.btn_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.btn_cancelar, "Cancelar")
         Me.btn_cancelar.UseVisualStyleBackColor = True
+        Me.btn_cancelar.Visible = False
         '
         'Button_finalizar
         '
         Me.Button_finalizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button_finalizar.Image = Global.Aplicacion.My.Resources.Resources.Guardar2
-        Me.Button_finalizar.Location = New System.Drawing.Point(777, 547)
+        Me.Button_finalizar.Location = New System.Drawing.Point(777, 548)
         Me.Button_finalizar.Margin = New System.Windows.Forms.Padding(4)
         Me.Button_finalizar.Name = "Button_finalizar"
         Me.Button_finalizar.Size = New System.Drawing.Size(95, 43)
         Me.Button_finalizar.TabIndex = 6
-        Me.Button_finalizar.Text = "Finalizar"
+        Me.Button_finalizar.Text = "Finalizar y cobrar"
         Me.Button_finalizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button_finalizar, "Finalizar Servicio realizado")
         Me.Button_finalizar.UseVisualStyleBackColor = True
@@ -162,11 +271,11 @@ Partial Class Servicio_nuevo
         'Label_Estado
         '
         Me.Label_Estado.AutoSize = True
-        Me.Label_Estado.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label_Estado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!)
         Me.Label_Estado.ForeColor = System.Drawing.Color.Red
-        Me.Label_Estado.Location = New System.Drawing.Point(525, 13)
+        Me.Label_Estado.Location = New System.Drawing.Point(14, 21)
         Me.Label_Estado.Name = "Label_Estado"
-        Me.Label_Estado.Size = New System.Drawing.Size(72, 24)
+        Me.Label_Estado.Size = New System.Drawing.Size(51, 17)
         Me.Label_Estado.TabIndex = 6
         Me.Label_Estado.Text = "estado"
         Me.Label_Estado.Visible = False
@@ -179,6 +288,7 @@ Partial Class Servicio_nuevo
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(140, 20)
         Me.DateTimePicker1.TabIndex = 5
+        Me.DateTimePicker1.Visible = False
         '
         'Label_Cod
         '
@@ -198,9 +308,9 @@ Partial Class Servicio_nuevo
         Me.GroupBox5.Controls.Add(Me.Label14)
         Me.GroupBox5.Controls.Add(Me.TextBox_TOTAL)
         Me.GroupBox5.Controls.Add(Me.Label24)
-        Me.GroupBox5.Location = New System.Drawing.Point(773, 317)
+        Me.GroupBox5.Location = New System.Drawing.Point(773, 428)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(347, 223)
+        Me.GroupBox5.Size = New System.Drawing.Size(347, 112)
         Me.GroupBox5.TabIndex = 5
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Totales"
@@ -210,30 +320,32 @@ Partial Class Servicio_nuevo
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Red
-        Me.Label2.Location = New System.Drawing.Point(145, 96)
+        Me.Label2.Location = New System.Drawing.Point(145, 32)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(27, 20)
         Me.Label2.TabIndex = 276
         Me.Label2.Text = "(-)"
+        Me.Label2.Visible = False
         '
         'TextBox_Anticipo
         '
         Me.TextBox_Anticipo.BackColor = System.Drawing.SystemColors.Window
         Me.TextBox_Anticipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_Anticipo.Location = New System.Drawing.Point(176, 96)
+        Me.TextBox_Anticipo.Location = New System.Drawing.Point(176, 32)
         Me.TextBox_Anticipo.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox_Anticipo.Name = "TextBox_Anticipo"
         Me.TextBox_Anticipo.Size = New System.Drawing.Size(149, 23)
         Me.TextBox_Anticipo.TabIndex = 1
         Me.TextBox_Anticipo.Text = "0"
         Me.TextBox_Anticipo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TextBox_Anticipo.Visible = False
         '
         'Label14
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(11, 130)
+        Me.Label14.Location = New System.Drawing.Point(11, 43)
         Me.Label14.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(85, 25)
@@ -244,7 +356,7 @@ Partial Class Servicio_nuevo
         '
         Me.TextBox_TOTAL.BackColor = System.Drawing.SystemColors.Info
         Me.TextBox_TOTAL.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_TOTAL.Location = New System.Drawing.Point(158, 130)
+        Me.TextBox_TOTAL.Location = New System.Drawing.Point(158, 43)
         Me.TextBox_TOTAL.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox_TOTAL.Name = "TextBox_TOTAL"
         Me.TextBox_TOTAL.ReadOnly = True
@@ -258,12 +370,13 @@ Partial Class Servicio_nuevo
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(13, 99)
+        Me.Label24.Location = New System.Drawing.Point(13, 35)
         Me.Label24.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(84, 17)
         Me.Label24.TabIndex = 273
         Me.Label24.Text = "ANTICIPO:"
+        Me.Label24.Visible = False
         '
         'Label1
         '
@@ -278,6 +391,7 @@ Partial Class Servicio_nuevo
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Button_imprimir)
         Me.GroupBox2.Controls.Add(Me.lbl_errNOM)
         Me.GroupBox2.Controls.Add(Me.Button1)
         Me.GroupBox2.Controls.Add(Me.Label6)
@@ -296,6 +410,21 @@ Partial Class Servicio_nuevo
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos del Cliente "
         '
+        'Button_imprimir
+        '
+        Me.Button_imprimir.BackColor = System.Drawing.SystemColors.Info
+        Me.Button_imprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_imprimir.Image = Global.Aplicacion.My.Resources.Resources.Informe
+        Me.Button_imprimir.Location = New System.Drawing.Point(942, 26)
+        Me.Button_imprimir.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button_imprimir.Name = "Button_imprimir"
+        Me.Button_imprimir.Size = New System.Drawing.Size(116, 43)
+        Me.Button_imprimir.TabIndex = 315
+        Me.Button_imprimir.Text = "Imprimir orden"
+        Me.Button_imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button_imprimir.UseVisualStyleBackColor = False
+        Me.Button_imprimir.Visible = False
+        '
         'lbl_errNOM
         '
         Me.lbl_errNOM.AutoSize = True
@@ -313,38 +442,39 @@ Partial Class Servicio_nuevo
         '
         Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.Buscar
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.Location = New System.Drawing.Point(11, 19)
+        Me.Button1.Location = New System.Drawing.Point(915, 21)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(123, 53)
         Me.Button1.TabIndex = 9
         Me.Button1.Text = "Buscar Cliente"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(140, 56)
+        Me.Label6.Location = New System.Drawing.Point(19, 58)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(65, 16)
+        Me.Label6.Size = New System.Drawing.Size(68, 16)
         Me.Label6.TabIndex = 8
-        Me.Label6.Text = "Telefono:"
+        Me.Label6.Text = "Dirección:"
         '
         'TextBox_tel
         '
         Me.TextBox_tel.BackColor = System.Drawing.Color.LightGoldenrodYellow
         Me.TextBox_tel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_tel.Location = New System.Drawing.Point(841, 14)
+        Me.TextBox_tel.Location = New System.Drawing.Point(490, 56)
         Me.TextBox_tel.Name = "TextBox_tel"
         Me.TextBox_tel.ReadOnly = True
-        Me.TextBox_tel.Size = New System.Drawing.Size(202, 22)
+        Me.TextBox_tel.Size = New System.Drawing.Size(375, 22)
         Me.TextBox_tel.TabIndex = 3
         '
         'TextBox_dir
         '
         Me.TextBox_dir.BackColor = System.Drawing.Color.LightGoldenrodYellow
         Me.TextBox_dir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_dir.Location = New System.Drawing.Point(270, 53)
+        Me.TextBox_dir.Location = New System.Drawing.Point(93, 56)
         Me.TextBox_dir.Name = "TextBox_dir"
         Me.TextBox_dir.ReadOnly = True
         Me.TextBox_dir.Size = New System.Drawing.Size(241, 22)
@@ -353,16 +483,16 @@ Partial Class Servicio_nuevo
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(767, 17)
+        Me.Label4.Location = New System.Drawing.Point(419, 59)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(68, 16)
+        Me.Label4.Size = New System.Drawing.Size(65, 16)
         Me.Label4.TabIndex = 4
-        Me.Label4.Text = "Direccion:"
+        Me.Label4.Text = "Teléfono:"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(519, 20)
+        Me.Label5.Location = New System.Drawing.Point(12, 26)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(75, 16)
         Me.Label5.TabIndex = 6
@@ -372,16 +502,16 @@ Partial Class Servicio_nuevo
         '
         Me.TextBox_dni.BackColor = System.Drawing.Color.LightGoldenrodYellow
         Me.TextBox_dni.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_dni.Location = New System.Drawing.Point(600, 14)
+        Me.TextBox_dni.Location = New System.Drawing.Point(93, 23)
         Me.TextBox_dni.Name = "TextBox_dni"
         Me.TextBox_dni.ReadOnly = True
-        Me.TextBox_dni.Size = New System.Drawing.Size(161, 22)
+        Me.TextBox_dni.Size = New System.Drawing.Size(241, 22)
         Me.TextBox_dni.TabIndex = 1
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(140, 22)
+        Me.Label3.Location = New System.Drawing.Point(360, 26)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(124, 16)
         Me.Label3.TabIndex = 2
@@ -391,10 +521,10 @@ Partial Class Servicio_nuevo
         '
         Me.TextBox_Nombre.BackColor = System.Drawing.Color.LightGoldenrodYellow
         Me.TextBox_Nombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_Nombre.Location = New System.Drawing.Point(270, 14)
+        Me.TextBox_Nombre.Location = New System.Drawing.Point(490, 23)
         Me.TextBox_Nombre.Name = "TextBox_Nombre"
         Me.TextBox_Nombre.ReadOnly = True
-        Me.TextBox_Nombre.Size = New System.Drawing.Size(238, 22)
+        Me.TextBox_Nombre.Size = New System.Drawing.Size(375, 22)
         Me.TextBox_Nombre.TabIndex = 0
         '
         'GroupBox3
@@ -533,11 +663,12 @@ Partial Class Servicio_nuevo
         Me.txt_diag.Location = New System.Drawing.Point(3, 18)
         Me.txt_diag.Multiline = True
         Me.txt_diag.Name = "txt_diag"
-        Me.txt_diag.Size = New System.Drawing.Size(1107, 84)
+        Me.txt_diag.Size = New System.Drawing.Size(481, 84)
         Me.txt_diag.TabIndex = 0
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.Label_error_grilla)
         Me.GroupBox4.Controls.Add(Me.btn_eliminar_seleccion)
         Me.GroupBox4.Controls.Add(Me.Button3)
         Me.GroupBox4.Controls.Add(Me.DataGridView1)
@@ -551,6 +682,19 @@ Partial Class Servicio_nuevo
         Me.GroupBox4.TabIndex = 4
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "REPUESTOS / Ingrese codigo interno para buscar (F1 busqueda avanzada)"
+        '
+        'Label_error_grilla
+        '
+        Me.Label_error_grilla.AutoSize = True
+        Me.Label_error_grilla.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label_error_grilla.ForeColor = System.Drawing.Color.Red
+        Me.Label_error_grilla.Location = New System.Drawing.Point(173, 28)
+        Me.Label_error_grilla.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label_error_grilla.Name = "Label_error_grilla"
+        Me.Label_error_grilla.Size = New System.Drawing.Size(26, 31)
+        Me.Label_error_grilla.TabIndex = 272
+        Me.Label_error_grilla.Text = "*"
+        Me.Label_error_grilla.Visible = False
         '
         'btn_eliminar_seleccion
         '
@@ -588,30 +732,18 @@ Partial Class Servicio_nuevo
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cod_prod, Me.ProdxSuc_ID, Me.Descripcion, Me.Stock, Me.Cantidad, Me.Costo, Me.subtotal, Me.Column1})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Cod_prod, Me.ProdxSuc_ID, Me.Descripcion, Me.Stock, Me.Cantidad, Me.Costo, Me.subtotal, Me.Column1, Me.prod_id})
         Me.DataGridView1.DataSource = Me.ServicioProdDSBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(9, 66)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView1.Size = New System.Drawing.Size(736, 157)
         Me.DataGridView1.TabIndex = 1
-        '
-        'Cod_prod
-        '
-        Me.Cod_prod.DataPropertyName = "Cod_prod"
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Info
-        Me.Cod_prod.DefaultCellStyle = DataGridViewCellStyle1
-        Me.Cod_prod.FillWeight = 76.39836!
-        Me.Cod_prod.HeaderText = "Codigo"
-        Me.Cod_prod.Name = "Cod_prod"
-        Me.Cod_prod.ReadOnly = True
-        Me.Cod_prod.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Cod_prod.Width = 80
         '
         'ProdxSuc_ID
         '
@@ -620,54 +752,27 @@ Partial Class Servicio_nuevo
         Me.ProdxSuc_ID.Name = "ProdxSuc_ID"
         Me.ProdxSuc_ID.Visible = False
         '
-        'Descripcion
-        '
-        Me.Descripcion.DataPropertyName = "Descripcion"
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info
-        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Descripcion.FillWeight = 194.224!
-        Me.Descripcion.HeaderText = "Descripcion"
-        Me.Descripcion.Name = "Descripcion"
-        Me.Descripcion.ReadOnly = True
-        Me.Descripcion.Width = 203
-        '
         'Stock
         '
         Me.Stock.DataPropertyName = "Stock"
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Info
-        Me.Stock.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info
+        Me.Stock.DefaultCellStyle = DataGridViewCellStyle4
         Me.Stock.FillWeight = 83.94859!
         Me.Stock.HeaderText = "Stock"
         Me.Stock.Name = "Stock"
         Me.Stock.ReadOnly = True
         Me.Stock.Width = 70
         '
-        'Cantidad
-        '
-        Me.Cantidad.DataPropertyName = "Cantidad"
-        Me.Cantidad.FillWeight = 78.17754!
-        Me.Cantidad.HeaderText = "Cant."
-        Me.Cantidad.Name = "Cantidad"
-        Me.Cantidad.Width = 50
-        '
-        'Costo
-        '
-        Me.Costo.DataPropertyName = "Costo"
-        Me.Costo.FillWeight = 104.2252!
-        Me.Costo.HeaderText = "Costo"
-        Me.Costo.Name = "Costo"
-        Me.Costo.Width = 109
-        '
         'subtotal
         '
+        Me.subtotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.subtotal.DataPropertyName = "subtotal"
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info
-        Me.subtotal.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Info
+        Me.subtotal.DefaultCellStyle = DataGridViewCellStyle5
         Me.subtotal.FillWeight = 139.8219!
         Me.subtotal.HeaderText = "SubTotal"
         Me.subtotal.Name = "subtotal"
         Me.subtotal.ReadOnly = True
-        Me.subtotal.Width = 130
         '
         'Column1
         '
@@ -677,15 +782,12 @@ Partial Class Servicio_nuevo
         Me.Column1.Name = "Column1"
         Me.Column1.Width = 50
         '
-        'ServicioProdDSBindingSource
+        'prod_id
         '
-        Me.ServicioProdDSBindingSource.DataMember = "Servicio_Prod_DS"
-        Me.ServicioProdDSBindingSource.DataSource = Me.Servicio_DS
-        '
-        'Servicio_DS
-        '
-        Me.Servicio_DS.DataSetName = "Servicio_DS"
-        Me.Servicio_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.prod_id.DataPropertyName = "prod_id"
+        Me.prod_id.HeaderText = "prod_id"
+        Me.prod_id.Name = "prod_id"
+        Me.prod_id.Visible = False
         '
         'Label13
         '
@@ -737,10 +839,96 @@ Partial Class Servicio_nuevo
         Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox6.Location = New System.Drawing.Point(19, 209)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(1113, 105)
+        Me.GroupBox6.Size = New System.Drawing.Size(487, 105)
         Me.GroupBox6.TabIndex = 3
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Diagnostico:"
+        '
+        'Cod_prod
+        '
+        Me.Cod_prod.DataPropertyName = "Cod_prod"
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info
+        Me.Cod_prod.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Cod_prod.FillWeight = 76.39836!
+        Me.Cod_prod.HeaderText = "Codigo"
+        Me.Cod_prod.Name = "Cod_prod"
+        Me.Cod_prod.ReadOnly = True
+        Me.Cod_prod.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Cod_prod.Width = 80
+        '
+        'Descripcion
+        '
+        Me.Descripcion.DataPropertyName = "Descripcion"
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Info
+        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Descripcion.FillWeight = 194.224!
+        Me.Descripcion.HeaderText = "Descripcion"
+        Me.Descripcion.Name = "Descripcion"
+        Me.Descripcion.ReadOnly = True
+        Me.Descripcion.Width = 203
+        '
+        'Cantidad
+        '
+        Me.Cantidad.DataPropertyName = "Cantidad"
+        Me.Cantidad.FillWeight = 78.17754!
+        Me.Cantidad.HeaderText = "Cant."
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.Width = 50
+        '
+        'Costo
+        '
+        Me.Costo.DataPropertyName = "Costo"
+        Me.Costo.FillWeight = 104.2252!
+        Me.Costo.HeaderText = "Costo"
+        Me.Costo.Name = "Costo"
+        Me.Costo.Width = 109
+        '
+        'ServicioProdDSBindingSource
+        '
+        Me.ServicioProdDSBindingSource.DataMember = "Servicio_Prod_DS"
+        Me.ServicioProdDSBindingSource.DataSource = Me.Servicio_DS
+        '
+        'Servicio_DS
+        '
+        Me.Servicio_DS.DataSetName = "Servicio_DS"
+        Me.Servicio_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'EmpleadoidDataGridViewTextBoxColumn
+        '
+        Me.EmpleadoidDataGridViewTextBoxColumn.DataPropertyName = "empleado_id"
+        Me.EmpleadoidDataGridViewTextBoxColumn.HeaderText = "empleado_id"
+        Me.EmpleadoidDataGridViewTextBoxColumn.Name = "EmpleadoidDataGridViewTextBoxColumn"
+        Me.EmpleadoidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.EmpleadoidDataGridViewTextBoxColumn.Visible = False
+        '
+        'CuadrillaidDataGridViewTextBoxColumn
+        '
+        Me.CuadrillaidDataGridViewTextBoxColumn.DataPropertyName = "Cuadrilla_id"
+        Me.CuadrillaidDataGridViewTextBoxColumn.HeaderText = "Cuadrilla_id"
+        Me.CuadrillaidDataGridViewTextBoxColumn.Name = "CuadrillaidDataGridViewTextBoxColumn"
+        Me.CuadrillaidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CuadrillaidDataGridViewTextBoxColumn.Visible = False
+        '
+        'ApellidoynombreDataGridViewTextBoxColumn
+        '
+        Me.ApellidoynombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ApellidoynombreDataGridViewTextBoxColumn.DataPropertyName = "apellidoynombre"
+        Me.ApellidoynombreDataGridViewTextBoxColumn.HeaderText = "Empleados"
+        Me.ApellidoynombreDataGridViewTextBoxColumn.Name = "ApellidoynombreDataGridViewTextBoxColumn"
+        Me.ApellidoynombreDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'EmpleadoxCuadrillaidDataGridViewTextBoxColumn
+        '
+        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.DataPropertyName = "Empleado_x_Cuadrilla_id"
+        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.HeaderText = "Empleado_x_Cuadrilla_id"
+        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.Name = "EmpleadoxCuadrillaidDataGridViewTextBoxColumn"
+        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.Visible = False
+        '
+        'EmpleadosxcuadrillaBindingSource
+        '
+        Me.EmpleadosxcuadrillaBindingSource.DataMember = "Empleados_x_cuadrilla"
+        Me.EmpleadosxcuadrillaBindingSource.DataSource = Me.Servicio_DS
         '
         'Servicio_nuevo
         '
@@ -755,6 +943,10 @@ Partial Class Servicio_nuevo
         Me.Text = "Nuevo Servicio"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox8.ResumeLayout(False)
+        CType(Me.DG_empleados, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox7.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -764,10 +956,11 @@ Partial Class Servicio_nuevo
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ServicioProdDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Servicio_DS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
+        CType(Me.ServicioProdDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Servicio_DS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmpleadosxcuadrillaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -816,6 +1009,23 @@ Partial Class Servicio_nuevo
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents btn_eliminar_seleccion As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents lb_error_modelo As System.Windows.Forms.Label
+    Friend WithEvents lb_error_marca As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents DateTimePicker_Rev As System.Windows.Forms.DateTimePicker
+    Friend WithEvents DateTimePicker_REP As System.Windows.Forms.DateTimePicker
+    Friend WithEvents lbl_errNOM As System.Windows.Forms.Label
+    Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
+    Friend WithEvents GroupBox8 As System.Windows.Forms.GroupBox
+    Friend WithEvents Combo_cuadrilla As System.Windows.Forms.ComboBox
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents DG_empleados As System.Windows.Forms.DataGridView
+    Friend WithEvents EmpleadoidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CuadrillaidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ApellidoynombreDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents EmpleadoxCuadrillaidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents EmpleadosxcuadrillaBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Cod_prod As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProdxSuc_ID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -824,10 +1034,7 @@ Partial Class Servicio_nuevo
     Friend WithEvents Costo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents subtotal As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents lb_error_modelo As System.Windows.Forms.Label
-    Friend WithEvents lb_error_marca As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents DateTimePicker_Rev As System.Windows.Forms.DateTimePicker
-    Friend WithEvents DateTimePicker_REP As System.Windows.Forms.DateTimePicker
-    Friend WithEvents lbl_errNOM As System.Windows.Forms.Label
+    Friend WithEvents prod_id As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Button_imprimir As System.Windows.Forms.Button
+    Friend WithEvents Label_error_grilla As System.Windows.Forms.Label
 End Class

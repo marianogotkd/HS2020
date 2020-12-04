@@ -1,0 +1,23 @@
+USE [SantaFe]
+GO
+
+/****** Object:  Table [dbo].[Orden_trabajo]    Script Date: 11/11/2020 15:14:27 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Orden_trabajo](
+	[Orden_trabajo_id] [int] IDENTITY(1,1) NOT NULL,
+	[Servicio_id] [int] NULL,
+	[Cuadrilla_id] [int] NULL,
+ CONSTRAINT [PK_Orden_trabajo] PRIMARY KEY CLUSTERED 
+(
+	[Orden_trabajo_id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

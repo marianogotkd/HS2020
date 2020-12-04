@@ -82,6 +82,7 @@ Partial Class US_administrador
         Me.ToolStripDropDownButtonServicios = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ToolStripMenuItem_servicio_nuevo = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CalendarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripDropDownButton8 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.Caja_ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -128,7 +129,6 @@ Partial Class US_administrador
         Me.Btn_corte_caja = New System.Windows.Forms.Button()
         Me.Label_Suc = New System.Windows.Forms.Label()
         Me.Lbl_Terminal = New System.Windows.Forms.Label()
-        Me.CalendarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -560,6 +560,12 @@ Partial Class US_administrador
         Me.ToolStripMenuItem3.Text = "Consultar Servicios"
         Me.ToolStripMenuItem3.Visible = False
         '
+        'CalendarioToolStripMenuItem
+        '
+        Me.CalendarioToolStripMenuItem.Name = "CalendarioToolStripMenuItem"
+        Me.CalendarioToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.CalendarioToolStripMenuItem.Text = "Calendario"
+        '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
@@ -956,12 +962,6 @@ Partial Class US_administrador
         Me.Lbl_Terminal.TabIndex = 60
         Me.Lbl_Terminal.Text = "Lbl_Terminal"
         Me.Lbl_Terminal.Visible = False
-        '
-        'CalendarioToolStripMenuItem
-        '
-        Me.CalendarioToolStripMenuItem.Name = "CalendarioToolStripMenuItem"
-        Me.CalendarioToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
-        Me.CalendarioToolStripMenuItem.Text = "Calendario"
         '
         'US_administrador
         '

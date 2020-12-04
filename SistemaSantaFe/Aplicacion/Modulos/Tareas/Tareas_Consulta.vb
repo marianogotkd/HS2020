@@ -44,6 +44,7 @@
 
     Private Sub ShowAppointmentDetail(ByVal sender As Object, ByVal e As EventArgs)
         Dim appID As Integer = CType(sender, LinkLabel).Tag
+        Dim estado As String = CType(sender, LinkLabel).Name
         'Dim sql As String = $"select * from appointment where ID = {appID}"
         'Dim dt As DataTable = QueryAsDataTable(Sql)
         'If dt.Rows.Count > 0 Then
@@ -63,16 +64,29 @@
         'Orden_Revision_nueva.Close()
         'Orden_Revision_nueva.appID = appID
         'Orden_Revision_nueva.Show()
-
-        With Orden_Revision_nueva
-            .appID = appID
-            '        .txtName.Text = row("ContactName")
-            '        .txtAddress.Text = row("Address")
-            '        .txtComment.Text = row("Comment")
-            '        .dtpDate.Value = row("AppDate")
-            .ShowDialog()
-        End With
-        DisplayCurrentDate()
+        If estado = "PENDIENTE" Then
+            With Orden_Revision_nueva
+                .appID = appID
+                '        .txtName.Text = row("ContactName")
+                '        .txtAddress.Text = row("Address")
+                '        .txtComment.Text = row("Comment")
+                '        .dtpDate.Value = row("AppDate")
+                .ShowDialog()
+            End With
+            DisplayCurrentDate()
+        Else
+            'como es una orden, independientemente del estado vamos a abrir el form
+            With Servicio_nuevo
+                .serv_id = appID
+                '        .txtName.Text = row("ContactName")
+                '        .txtAddress.Text = row("Address")
+                '        .txtComment.Text = row("Comment")
+                '        .dtpDate.Value = row("AppDate")
+                .ShowDialog()
+            End With
+            DisplayCurrentDate()
+        End If
+        
 
         'Orden_Revision_nueva.Focus()
     End Sub
@@ -96,9 +110,26 @@
             'link.Tag = row("ID")
             link.Tag = row("Servicio_id")
             'link.Name = $"link{row("ID")}"
-            link.Name = row("Servicio_Diagnostico")
+            'link.Name = row("Servicio_Diagnostico")
+            link.Name = row("Servicio_Estado")
             'link.Text = row("ContactName")
-            link.Text = "Revisión Nº: " + CStr(row("Servicio_id"))
+            If CStr(row("Servicio_Estado")) = "PENDIENTE" Then
+                link.Text = "Rev: " + CStr(row("Servicio_id"))
+                link.LinkColor = Color.Orange
+            Else
+                Select Case (CStr(row("Servicio_Estado")))
+                    Case "ASIGNADO"
+                        link.Text = "OdT: " + CStr(row("Orden_trabajo_id"))
+                        link.LinkColor = Color.Blue
+                    Case "REPARADO"
+                        link.Text = "OdT: " + CStr(row("Orden_trabajo_id"))
+                        link.LinkColor = Color.Black
+                    Case "FINALIZADO"
+                        link.Text = "OdT: " + CStr(row("Orden_trabajo_id"))
+                        link.LinkColor = Color.Green
+                End Select
+            End If
+
             AddHandler link.Click, AddressOf ShowAppointmentDetail
             listFlDay((appDay.Day - 1) + (startDayAtFlNumber - 1)).Controls.Add(link)
         Next
@@ -167,7 +198,8 @@
         For Each fl As FlowLayoutPanel In listFlDay
             fl.Controls.Clear()
             fl.Tag = 0
-            fl.BackColor = Color.White
+            fl.BackColor = Color.WhiteSmoke
+
         Next
 
         For i As Integer = 1 To totalDaysInMonth
@@ -183,7 +215,8 @@
             listFlDay((i - 1) + (startDayAtFlNumber - 1)).Controls.Add(lbl)
 
             If New Date(currentDate.Year, currentDate.Month, i) = Date.Today Then
-                listFlDay((i - 1) + (startDayAtFlNumber - 1)).BackColor = Color.Aqua
+                listFlDay((i - 1) + (startDayAtFlNumber - 1)).BackColor = Color.NavajoWhite
+
             End If
 
         Next

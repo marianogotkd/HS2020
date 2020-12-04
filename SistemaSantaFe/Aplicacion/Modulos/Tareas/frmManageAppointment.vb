@@ -4,6 +4,8 @@
 
     Private Sub frmManageAppointment_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         btnDelete.Visible = AppID <> 0
+
+
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click

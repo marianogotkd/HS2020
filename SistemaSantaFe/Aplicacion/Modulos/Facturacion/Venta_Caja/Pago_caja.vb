@@ -131,18 +131,46 @@ Public Class Pago_caja
                         Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(usuario_id)
                         Dim sucursal_id As Integer = ds_usuario.Tables(0).Rows(0).Item("sucursal_id")
                         Dim tipo_vta As String = ""
-                        Dim cliente_id As Integer
-                        Dim venta_tipo_descripcion As String = ""
-                        tipo_vta = "Consumidor Final"
-                        cliente_id = 0
-                        venta_tipo_descripcion = "Servicio"
+                        Dim cliente_id As Integer 'lo voy a recuperar de servicio_nuevo
+                        Dim venta_tipo_descripcion As String = "Servicio - pago efectivo"
+                        tipo_vta = "Cliente"
+                        cliente_id = Servicio_nuevo.Cliente_ID
+                        'venta_tipo_descripcion = "Servicio"
                         Dim vendedor_id As Integer = 0 'OJO HAY Q VER QUE VENDEDOR ASIGNO, O SI SE PUEDE CREAR EN LA TABLA VENDEDOR UN REGISTRO QUE DIGA ...DEFECTO, SI NO SE POSEE VENDEDOR
-                        Dim ds_Venta As DataSet = DAventa.VentaProducto_alta(Monto_sin_anticipo, Now, usuario_id, tipo_vta, cliente_id, 0, 0, 0, 0, 0, venta_tipo_descripcion, Ser_id, vendedor_id, "Cobrado")
-                        Dim descripcion As String = "Servicio Nº" + CStr(Ser_id)
-                        'OK
-                        DAcaja.Caja_Actualizar2(Inicio.USU_id, descripcion, CDec(tx_total.Text), CDec(0), 1, CDec(0), CDec(tx_total.Text), Now, Inicio.terminal_id, US_administrador.TurnoUsuario_id) '1 es efectivo
+                        vendedor_id = 1 'por AHORA LO DEJO EN DEFECTO, OJO esto no es lo optimo.
+                        Dim ds_Venta As DataSet = DAventa.VentaProducto_alta(Monto_sin_anticipo, Now, usuario_id, tipo_vta, cliente_id, Monto_sin_anticipo, 0, 0, 0, 0, venta_tipo_descripcion, Ser_id, vendedor_id, "Cobrado")
+
+
+                        'Dim descripcion As String = "Orden de trabajo Nº" + CStr(Ser_id) 'aqui tengo q recuperar el id de la orden, no es el id del servicio
+
+                        Dim ventaprod_id As Integer = CInt(ds_Venta.Tables(0).Rows(0).Item("ventaprod_id"))
+                        '/////////////////choco: 04-12-2019 - genero la factura en su correspondiente tabla///////////////////
+                        Dim ds_factura As DataSet = DAventa.Factura_alta(ventaprod_id, Now)
+                        Dim factura_id As Integer = ds_factura.Tables(0).Rows(0).Item("factura_id")
+
+
+                        'GUARDAR EN TABLA "Venta_Producto_detalle"
+                        For Each row As DataGridViewRow In Servicio_nuevo.DataGridView1.Rows
+
+                            DAventa.VentaProductoDetalle_alta(ventaprod_id, row.Cells("prod_id").Value, row.Cells("Cantidad").Value, CDec(row.Cells("Costo").Value), CDec(row.Cells("subtotal").Value), row.Cells("Descripcion").Value, row.Cells("Cod_prod").Value, 0, 0)
+
+                        Next
+
                         'DAcaja.Caja_Actualizar(CDec(tx_total.Text), Inicio.USU_id)
-                        Servicio_nuevo.finalizar("form_pago_caja")
+                        Dim descripcion As String = "Factura Nº" + CStr(factura_id)
+                        'OK
+
+
+                        'DAcaja.Caja_Actualizar2(Inicio.USU_id, descripcion, CDec(tx_total.Text), CDec(0), 1, CDec(0), CDec(tx_total.Text), Now, Inicio.terminal_id, US_administrador.TurnoUsuario_id) '1 es venta
+
+                        '////choco 17-12-2019  aqui lo que hacemos es que registre en caja siempre con el responsable, a pesar de que podemos ingresar con otro usuario, del tipo admin////////////////
+                        DAcaja.Caja_Actualizar3(Inicio.CAJA_id, Inicio.terminal_id, US_administrador.TurnoUsuario_id, descripcion, CDec(tx_total.Text), CDec(0), 1, CDec(0), CDec(tx_total.Text), Now)
+                        '//////////choco fin//////////////////
+
+
+                        'DAcaja.Caja_Actualizar2(Inicio.USU_id, descripcion, CDec(tx_total.Text), CDec(0), 1, CDec(0), CDec(tx_total.Text), Now, Inicio.terminal_id, US_administrador.TurnoUsuario_id) '1 es efectivo
+                        'DAcaja.Caja_Actualizar(CDec(tx_total.Text), Inicio.USU_id)
+                        Servicio_nuevo.finalizar("form_pago_caja", ds_usuario, factura_id) 'aqui en esta rutina tambien genero el reporte.
                         Me.Close()
                     Else
                         MessageBox.Show("Error! El monto ingresado es menor al total, por favor modifique", "Sistema de Gestion", MessageBoxButtons.OK)

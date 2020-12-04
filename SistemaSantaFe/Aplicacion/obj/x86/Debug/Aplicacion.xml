@@ -314,11 +314,23 @@ Represents a strongly typed in-memory cache of data.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
+</member><member name="T:Aplicacion.ds_revision_reporte.repuestosDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
 </member><member name="T:Aplicacion.ds_revision_reporte.RevisionRow">
 	<summary>
 Represents strongly named DataRow class.
 </summary>
+</member><member name="T:Aplicacion.ds_revision_reporte.repuestosRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
 </member><member name="T:Aplicacion.ds_revision_reporte.RevisionRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.ds_revision_reporte.repuestosRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
@@ -1875,6 +1887,14 @@ Represents the strongly named DataTable class.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
+</member><member name="T:Aplicacion.Servicio_DS.Empleados_x_cuadrillaDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Aplicacion.Servicio_DS.ordentrabajoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
 </member><member name="T:Aplicacion.Servicio_DS.Servicio_Prod_DSRow">
 	<summary>
 Represents strongly named DataRow class.
@@ -1883,11 +1903,27 @@ Represents strongly named DataRow class.
 	<summary>
 Represents strongly named DataRow class.
 </summary>
+</member><member name="T:Aplicacion.Servicio_DS.Empleados_x_cuadrillaRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Aplicacion.Servicio_DS.ordentrabajoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
 </member><member name="T:Aplicacion.Servicio_DS.Servicio_Prod_DSRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
 </member><member name="T:Aplicacion.Servicio_DS.Servicio_ObtenerRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Servicio_DS.Empleados_x_cuadrillaRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Servicio_DS.ordentrabajoRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>

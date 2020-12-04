@@ -1678,6 +1678,7 @@
         If txt_total.Text <> "" Then
             If DataG_listaTotal.Rows.Count > 0 And CDec(txt_total.Text) <> CDec(0) Then
                 If procedencia = "Venta_Caja_Gestion" Then
+                    Forma_de_pago_seleccion.procedencia = "Venta_simple"
                     Forma_de_pago_seleccion.Show()
                 Else
                     If procedencia = "Remito nuevo" Then

@@ -44,6 +44,7 @@ Partial Class Tareas_Consulta
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Panel1.Controls.Add(Me.lblMonthAndYear)
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
@@ -204,6 +205,8 @@ Partial Class Tareas_Consulta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Global.Aplicacion.My.Resources.Resources.silver_3
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(950, 751)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel3)

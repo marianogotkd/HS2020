@@ -124,6 +124,7 @@ Partial Class Orden_Revision_nueva
         '
         'DateTimePicker1
         '
+        Me.DateTimePicker1.Enabled = False
         Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DateTimePicker1.Location = New System.Drawing.Point(402, 20)

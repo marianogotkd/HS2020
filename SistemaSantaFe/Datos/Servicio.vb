@@ -42,6 +42,7 @@ Public Class Servicio
 
 
     'Servicio_Modificar_MDA
+
     Public Function Servicio_Modificar_MDA(
                               ByVal CLI_id As Integer,
                               ByVal Servicio_fecha As Date,
@@ -53,7 +54,8 @@ Public Class Servicio
                               ByVal Servicio_FechaRev As Date,
                               ByVal Servicio_FechaRep As Date,
                               ByVal Servicio_Anticipo As Decimal,
-                              ByVal Servicio_id As Integer)
+                              ByVal Servicio_id As Integer,
+                              ByVal estado As String)
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -72,6 +74,7 @@ Public Class Servicio
         comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_FechaRep", Servicio_FechaRep))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Anticipo", Servicio_Anticipo))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_id", Servicio_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@estado", estado))
 
 
         Dim ds_JE As New DataSet()
@@ -205,6 +208,26 @@ Public Class Servicio
         dbconn.Close()
         Return ds_JE
     End Function
+
+    'choco 11-11-2020 proc para eliminar el detalle de un servicio, es decir los repuestos q agrego.
+    Public Function Servicio_eliminar_Detalle(ByVal Servicio_Id As Integer)
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Servicio_eliminar_Detalle", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Id", Servicio_Id))
+        
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Servicio")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
 
     Public Function Servicio_validar() As DataSet
         Try
@@ -381,6 +404,31 @@ Public Class Servicio
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)
         da_JE.Fill(ds_JE, "Servicio")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
+#End Region
+
+
+#Region "orden de trabajo"
+    'alta de orden, se asocia un servicio "revision" con una orden de trabajo.
+    Public Function Orden_trabajo_alta(ByVal Servicio_Id As Integer, ByVal cuadrilla_id As Integer)
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Orden_trabajo_alta", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Id", Servicio_Id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@cuadrilla_id", cuadrilla_id))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Orden_trabajo")
         dbconn.Close()
         Return ds_JE
     End Function
