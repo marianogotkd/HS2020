@@ -24,7 +24,7 @@ Partial Class Producto_modificar
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Producto_modificar))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Bo_cancelar = New System.Windows.Forms.Button()
@@ -33,6 +33,7 @@ Partial Class Producto_modificar
         Me.BO_producto_nuevo = New System.Windows.Forms.Button()
         Me.btn_Anular = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.check_proveedor = New System.Windows.Forms.CheckBox()
@@ -70,7 +71,6 @@ Partial Class Producto_modificar
         Me.ProdxSucBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Producto_ds = New Aplicacion.Producto_ds()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -168,6 +168,21 @@ Partial Class Producto_modificar
         Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button1, "Generar reporte")
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.icono_editar_30x30
+        Me.Button2.Location = New System.Drawing.Point(1102, 10)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(124, 43)
+        Me.Button2.TabIndex = 252
+        Me.Button2.Text = "Ajuste"
+        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button2, "Ajuste de stock")
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'TabPage1
         '
@@ -492,11 +507,11 @@ Partial Class Producto_modificar
         Me.DG_Producto.MultiSelect = False
         Me.DG_Producto.Name = "DG_Producto"
         Me.DG_Producto.RowHeadersVisible = False
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_Producto.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_Producto.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DG_Producto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_Producto.Size = New System.Drawing.Size(1240, 249)
         Me.DG_Producto.StandardTab = True
@@ -614,21 +629,6 @@ Partial Class Producto_modificar
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(1291, 607)
         Me.TabControl1.TabIndex = 0
-        '
-        'Button2
-        '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
-        Me.Button2.Location = New System.Drawing.Point(1102, 10)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(124, 43)
-        Me.Button2.TabIndex = 252
-        Me.Button2.Text = "Ajuste"
-        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button2, "Ajuste de stock")
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'Producto_modificar
         '
