@@ -1,0 +1,3 @@
+en al tabla Movimiento_Mercaderia_TIPO
+
+agregar un tipo nuevo: Ajuste de stock. movmertipo_id=4

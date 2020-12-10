@@ -858,6 +858,7 @@ Partial Class Gestion_Mercaderia_Alta
         Me.txt_nrolote.Name = "txt_nrolote"
         Me.txt_nrolote.Size = New System.Drawing.Size(112, 26)
         Me.txt_nrolote.TabIndex = 0
+        Me.txt_nrolote.Text = "º"
         Me.txt_nrolote.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label12
@@ -1040,6 +1041,7 @@ Partial Class Gestion_Mercaderia_Alta
         Me.tb_concepto.Name = "tb_concepto"
         Me.tb_concepto.Size = New System.Drawing.Size(265, 23)
         Me.tb_concepto.TabIndex = 1
+        Me.tb_concepto.Text = "º"
         '
         'Gestion_Mercaderia_Alta
         '

@@ -113,6 +113,28 @@ Public Class Lote
         Return ds_JE
     End Function
 
+    Public Function Producto_x_sucursal_lote_actualizar_igualar(ByVal lote_nro As String, ByVal prod_id As Integer,
+                                                             ByVal sucursal_id As Integer, ByVal lote_cantidad As Decimal,
+                                                             ByVal Prov_id As Integer) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Producto_x_sucursal_lote_actualizar_igualar", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add(New OleDb.OleDbParameter("@lote_nro", lote_nro))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prod_id", prod_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@lote_cantidad", lote_cantidad))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Prov_id", Prov_id))
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Lote")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
 
     Public Function Producto_x_sucursal_lote_recuperartodos(ByVal prod_codinterno As Integer, ByVal sucursal_id As Integer) As DataSet
         Try

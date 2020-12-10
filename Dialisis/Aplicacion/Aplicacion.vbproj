@@ -1261,6 +1261,24 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulos\Stock\OpenFileDialog1.vb" />
+    <Compile Include="Modulos\Stock\Producto_Ajuste\Ajuste_alta.Designer.vb">
+      <DependentUpon>Ajuste_alta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Stock\Producto_Ajuste\Ajuste_alta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Stock\Producto_Ajuste\Ajuste_suma_resta_igual.Designer.vb">
+      <DependentUpon>Ajuste_suma_resta_igual.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Stock\Producto_Ajuste\Ajuste_suma_resta_igual.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Stock\Producto_Ajuste\Producto_ajuste.Designer.vb">
+      <DependentUpon>Producto_ajuste.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Stock\Producto_Ajuste\Producto_ajuste.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Stock\Producto_alta.Designer.vb">
       <DependentUpon>Producto_alta.vb</DependentUpon>
     </Compile>
@@ -2110,6 +2128,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Servicios\Servicio_nuevo.resx">
       <DependentUpon>Servicio_nuevo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Stock\Producto_Ajuste\Ajuste_alta.resx">
+      <DependentUpon>Ajuste_alta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Stock\Producto_Ajuste\Ajuste_suma_resta_igual.resx">
+      <DependentUpon>Ajuste_suma_resta_igual.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Stock\Producto_Ajuste\Producto_ajuste.resx">
+      <DependentUpon>Producto_ajuste.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Stock\Producto_alta.resx">
       <DependentUpon>Producto_alta.vb</DependentUpon>

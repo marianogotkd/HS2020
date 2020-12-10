@@ -1562,5 +1562,26 @@ Public Class Producto_modificar
         msj_esperar_sesiones.procedencia = "Producto_modificar_load"
         msj_esperar_sesiones.Show()
     End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        If DG_Producto.Rows.Count <> 0 Then
+            Producto_ajuste.Close()
+
+            'aqui mando los parametros para recuperar la info del producto
+            Dim sucursal_id As Integer = cb_origen.SelectedValue
+            Producto_ajuste.Text = "AJUSTE DE STOCK. Sucursal: " + cb_origen.SelectedText
+            Producto_ajuste.sucursal_id = sucursal_id
+
+            Producto_ajuste.txt_codigo.Text = DG_Producto.CurrentRow.Cells("prod_codinterno").Value
+            Producto_ajuste.txt_descripcion.Text = DG_Producto.CurrentRow.Cells("prod_descripcion").Value
+            Producto_ajuste.txt_totalunidades.Text = DG_Producto.CurrentRow.Cells("ProdxSuc_stock").Value
+
+            Producto_ajuste.Show()
+            Me.Close()
+
+        Else
+            MessageBox.Show("Error, debe seleccionar un producto.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
+    End Sub
 End Class
 
