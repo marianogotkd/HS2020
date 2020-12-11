@@ -865,6 +865,9 @@ C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Enfermeria_insumos_Ausente.resources
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Sesiones_consulta_global.resources
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Consultas_Movimientos_b.resources
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Ajuste_alta.resources
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Ajuste_suma_resta_igual.resources
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Producto_ajuste.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\bin\Debug\Aplicacion.exe.config
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\bin\Debug\Aplicacion.exe
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\bin\Debug\Aplicacion.pdb
@@ -1047,6 +1050,3 @@ C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.vbproj
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.exe
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.xml
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.pdb
-C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Ajuste_alta.resources
-C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Ajuste_suma_resta_igual.resources
-C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Producto_ajuste.resources
