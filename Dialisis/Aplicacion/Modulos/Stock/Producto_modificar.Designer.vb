@@ -638,7 +638,7 @@ Partial Class Producto_modificar
         Me.ClientSize = New System.Drawing.Size(1274, 626)
         Me.Controls.Add(Me.TabControl1)
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.MinimumSize = New System.Drawing.Size(1290, 665)
+        Me.MinimumSize = New System.Drawing.Size(1024, 665)
         Me.Name = "Producto_modificar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Stock y Actualización de Productos"

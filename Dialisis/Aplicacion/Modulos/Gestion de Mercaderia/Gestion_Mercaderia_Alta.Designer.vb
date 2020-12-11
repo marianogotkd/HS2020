@@ -32,14 +32,11 @@ Partial Class Gestion_Mercaderia_Alta
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Gestion_Mercaderia_Alta))
         Me.cb_Movimiento = New System.Windows.Forms.ComboBox()
-        Me.btn_limpiar = New System.Windows.Forms.Button()
         Me.MovBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Mov_DS = New Aplicacion.Mov_DS()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txt_total = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.NDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CodprodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -55,8 +52,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.Vence = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.btn_cancelar = New System.Windows.Forms.Button()
-        Me.btn_guardar = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.Label20 = New System.Windows.Forms.Label()
@@ -74,10 +69,8 @@ Partial Class Gestion_Mercaderia_Alta
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.tb_origen = New System.Windows.Forms.TextBox()
-        Me.Button_buscar = New System.Windows.Forms.Button()
         Me.tb_cant_Or = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.Bo_codbarra = New System.Windows.Forms.Button()
         Me.tb_desc = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.tb_codint = New System.Windows.Forms.TextBox()
@@ -98,15 +91,22 @@ Partial Class Gestion_Mercaderia_Alta
         Me.Label14 = New System.Windows.Forms.Label()
         Me.tb_Cant_Movi = New System.Windows.Forms.TextBox()
         Me.lbl_cant = New System.Windows.Forms.Label()
-        Me.btn_agregarr = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.btn_Agregar_Prod = New System.Windows.Forms.Button()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.cb_origen = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.tb_concepto = New System.Windows.Forms.TextBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.btn_limpiar = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
+        Me.btn_cancelar = New System.Windows.Forms.Button()
+        Me.btn_guardar = New System.Windows.Forms.Button()
+        Me.Button_buscar = New System.Windows.Forms.Button()
+        Me.Bo_codbarra = New System.Windows.Forms.Button()
+        Me.btn_agregarr = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btn_Agregar_Prod = New System.Windows.Forms.Button()
         CType(Me.MovBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Mov_DS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -133,22 +133,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.cb_Movimiento.Size = New System.Drawing.Size(197, 25)
         Me.cb_Movimiento.TabIndex = 0
         Me.cb_Movimiento.Visible = False
-        '
-        'btn_limpiar
-        '
-        Me.btn_limpiar.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.btn_limpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_limpiar.Image = Global.Aplicacion.My.Resources.Resources.Borrar
-        Me.btn_limpiar.Location = New System.Drawing.Point(140, 193)
-        Me.btn_limpiar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_limpiar.MinimumSize = New System.Drawing.Size(124, 43)
-        Me.btn_limpiar.Name = "btn_limpiar"
-        Me.btn_limpiar.Size = New System.Drawing.Size(124, 43)
-        Me.btn_limpiar.TabIndex = 18
-        Me.btn_limpiar.Text = "Limpiar"
-        Me.btn_limpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_limpiar, "Limpiar listado de productos")
-        Me.btn_limpiar.UseVisualStyleBackColor = True
         '
         'MovBindingSource
         '
@@ -202,37 +186,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.Label19.TabIndex = 19
         Me.Label19.Text = "TOTAL $: "
         Me.Label19.Visible = False
-        '
-        'Button1
-        '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.Informe
-        Me.Button1.Location = New System.Drawing.Point(536, 193)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button1.MinimumSize = New System.Drawing.Size(124, 43)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(124, 43)
-        Me.Button1.TabIndex = 18
-        Me.Button1.Text = "Ver registro histórico"
-        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button1, "Ver registro historico de movimientos")
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'btn_eliminar_seleccion
-        '
-        Me.btn_eliminar_seleccion.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.btn_eliminar_seleccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_seleccion.Image = Global.Aplicacion.My.Resources.Resources.menos
-        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(8, 193)
-        Me.btn_eliminar_seleccion.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_eliminar_seleccion.MinimumSize = New System.Drawing.Size(124, 43)
-        Me.btn_eliminar_seleccion.Name = "btn_eliminar_seleccion"
-        Me.btn_eliminar_seleccion.Size = New System.Drawing.Size(124, 43)
-        Me.btn_eliminar_seleccion.TabIndex = 17
-        Me.btn_eliminar_seleccion.Text = "Eliminar"
-        Me.btn_eliminar_seleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_eliminar_seleccion, "Eliminar productos seleccionados")
-        Me.btn_eliminar_seleccion.UseVisualStyleBackColor = True
         '
         'DataGridView1
         '
@@ -390,40 +343,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.Label6.Size = New System.Drawing.Size(124, 13)
         Me.Label6.TabIndex = 15
         Me.Label6.Text = "Listado de producto:"
-        '
-        'btn_cancelar
-        '
-        Me.btn_cancelar.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar
-        Me.btn_cancelar.Location = New System.Drawing.Point(272, 193)
-        Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_cancelar.MaximumSize = New System.Drawing.Size(124, 43)
-        Me.btn_cancelar.MinimumSize = New System.Drawing.Size(124, 43)
-        Me.btn_cancelar.Name = "btn_cancelar"
-        Me.btn_cancelar.Size = New System.Drawing.Size(124, 43)
-        Me.btn_cancelar.TabIndex = 2
-        Me.btn_cancelar.Text = "Cancelar"
-        Me.btn_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_cancelar, "Cancelar Movimiento")
-        Me.btn_cancelar.UseVisualStyleBackColor = True
-        '
-        'btn_guardar
-        '
-        Me.btn_guardar.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.Guardar
-        Me.btn_guardar.Location = New System.Drawing.Point(404, 193)
-        Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_guardar.MaximumSize = New System.Drawing.Size(124, 43)
-        Me.btn_guardar.MinimumSize = New System.Drawing.Size(124, 43)
-        Me.btn_guardar.Name = "btn_guardar"
-        Me.btn_guardar.Size = New System.Drawing.Size(124, 43)
-        Me.btn_guardar.TabIndex = 1
-        Me.btn_guardar.Text = "Guardar"
-        Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_guardar, "Guardar Movimiento")
-        Me.btn_guardar.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -649,20 +568,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.tb_origen.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.tb_origen.Visible = False
         '
-        'Button_buscar
-        '
-        Me.Button_buscar.Image = CType(resources.GetObject("Button_buscar.Image"), System.Drawing.Image)
-        Me.Button_buscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button_buscar.Location = New System.Drawing.Point(223, 15)
-        Me.Button_buscar.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button_buscar.Name = "Button_buscar"
-        Me.Button_buscar.Size = New System.Drawing.Size(131, 30)
-        Me.Button_buscar.TabIndex = 258
-        Me.Button_buscar.Text = "Buscar Producto"
-        Me.Button_buscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button_buscar, "Busqueda avanzada")
-        Me.Button_buscar.UseVisualStyleBackColor = True
-        '
         'tb_cant_Or
         '
         Me.tb_cant_Or.BackColor = System.Drawing.Color.White
@@ -687,19 +592,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.Label7.Size = New System.Drawing.Size(79, 13)
         Me.Label7.TabIndex = 0
         Me.Label7.Text = "Código Interno:"
-        '
-        'Bo_codbarra
-        '
-        Me.Bo_codbarra.Image = Global.Aplicacion.My.Resources.Resources.search_balance
-        Me.Bo_codbarra.Location = New System.Drawing.Point(822, 9)
-        Me.Bo_codbarra.Margin = New System.Windows.Forms.Padding(4)
-        Me.Bo_codbarra.Name = "Bo_codbarra"
-        Me.Bo_codbarra.Size = New System.Drawing.Size(181, 66)
-        Me.Bo_codbarra.TabIndex = 17
-        Me.Bo_codbarra.Text = "Ver Stock Actual"
-        Me.Bo_codbarra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Bo_codbarra, "Ver stock en sucursal")
-        Me.Bo_codbarra.UseVisualStyleBackColor = True
         '
         'tb_desc
         '
@@ -858,7 +750,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.txt_nrolote.Name = "txt_nrolote"
         Me.txt_nrolote.Size = New System.Drawing.Size(112, 26)
         Me.txt_nrolote.TabIndex = 0
-        Me.txt_nrolote.Text = "º"
         Me.txt_nrolote.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label12
@@ -940,52 +831,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.lbl_cant.TabIndex = 13
         Me.lbl_cant.Text = "Cantidad a ingresar:"
         '
-        'btn_agregarr
-        '
-        Me.btn_agregarr.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_agregarr.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
-        Me.btn_agregarr.Location = New System.Drawing.Point(822, 40)
-        Me.btn_agregarr.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_agregarr.Name = "btn_agregarr"
-        Me.btn_agregarr.Size = New System.Drawing.Size(181, 69)
-        Me.btn_agregarr.TabIndex = 249
-        Me.btn_agregarr.Text = "Agregar"
-        Me.btn_agregarr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_agregarr, "Agregar a la lista")
-        Me.btn_agregarr.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.Informe
-        Me.Button2.Location = New System.Drawing.Point(933, 81)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button2.MinimumSize = New System.Drawing.Size(124, 43)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(124, 43)
-        Me.Button2.TabIndex = 19
-        Me.Button2.Text = "ir a gestion insumos"
-        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button2, "Ver registro historico de movimientos")
-        Me.Button2.UseVisualStyleBackColor = True
-        Me.Button2.Visible = False
-        '
-        'btn_Agregar_Prod
-        '
-        Me.btn_Agregar_Prod.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_Agregar_Prod.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
-        Me.btn_Agregar_Prod.Location = New System.Drawing.Point(933, 38)
-        Me.btn_Agregar_Prod.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_Agregar_Prod.MinimumSize = New System.Drawing.Size(124, 43)
-        Me.btn_Agregar_Prod.Name = "btn_Agregar_Prod"
-        Me.btn_Agregar_Prod.Size = New System.Drawing.Size(124, 43)
-        Me.btn_Agregar_Prod.TabIndex = 4
-        Me.btn_Agregar_Prod.Text = "Agregar Productos"
-        Me.btn_Agregar_Prod.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_Agregar_Prod, "Agregar productos al listado")
-        Me.btn_Agregar_Prod.UseVisualStyleBackColor = True
-        Me.btn_Agregar_Prod.Visible = False
-        '
         'DateTimePicker1
         '
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
@@ -1041,7 +886,160 @@ Partial Class Gestion_Mercaderia_Alta
         Me.tb_concepto.Name = "tb_concepto"
         Me.tb_concepto.Size = New System.Drawing.Size(265, 23)
         Me.tb_concepto.TabIndex = 1
-        Me.tb_concepto.Text = "º"
+        '
+        'btn_limpiar
+        '
+        Me.btn_limpiar.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btn_limpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_limpiar.Image = Global.Aplicacion.My.Resources.Resources.Borrar
+        Me.btn_limpiar.Location = New System.Drawing.Point(140, 193)
+        Me.btn_limpiar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_limpiar.MinimumSize = New System.Drawing.Size(124, 43)
+        Me.btn_limpiar.Name = "btn_limpiar"
+        Me.btn_limpiar.Size = New System.Drawing.Size(124, 43)
+        Me.btn_limpiar.TabIndex = 18
+        Me.btn_limpiar.Text = "Limpiar"
+        Me.btn_limpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_limpiar, "Limpiar listado de productos")
+        Me.btn_limpiar.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.Informe
+        Me.Button1.Location = New System.Drawing.Point(536, 193)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button1.MinimumSize = New System.Drawing.Size(124, 43)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(124, 43)
+        Me.Button1.TabIndex = 18
+        Me.Button1.Text = "Ver registro histórico"
+        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button1, "Ver registro historico de movimientos")
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'btn_eliminar_seleccion
+        '
+        Me.btn_eliminar_seleccion.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btn_eliminar_seleccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_seleccion.Image = Global.Aplicacion.My.Resources.Resources.menos
+        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(8, 193)
+        Me.btn_eliminar_seleccion.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_eliminar_seleccion.MinimumSize = New System.Drawing.Size(124, 43)
+        Me.btn_eliminar_seleccion.Name = "btn_eliminar_seleccion"
+        Me.btn_eliminar_seleccion.Size = New System.Drawing.Size(124, 43)
+        Me.btn_eliminar_seleccion.TabIndex = 17
+        Me.btn_eliminar_seleccion.Text = "Eliminar"
+        Me.btn_eliminar_seleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_eliminar_seleccion, "Eliminar productos seleccionados")
+        Me.btn_eliminar_seleccion.UseVisualStyleBackColor = True
+        '
+        'btn_cancelar
+        '
+        Me.btn_cancelar.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar
+        Me.btn_cancelar.Location = New System.Drawing.Point(272, 193)
+        Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_cancelar.MaximumSize = New System.Drawing.Size(124, 43)
+        Me.btn_cancelar.MinimumSize = New System.Drawing.Size(124, 43)
+        Me.btn_cancelar.Name = "btn_cancelar"
+        Me.btn_cancelar.Size = New System.Drawing.Size(124, 43)
+        Me.btn_cancelar.TabIndex = 2
+        Me.btn_cancelar.Text = "Cancelar"
+        Me.btn_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_cancelar, "Cancelar Movimiento")
+        Me.btn_cancelar.UseVisualStyleBackColor = True
+        '
+        'btn_guardar
+        '
+        Me.btn_guardar.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.Guardar
+        Me.btn_guardar.Location = New System.Drawing.Point(404, 193)
+        Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_guardar.MaximumSize = New System.Drawing.Size(124, 43)
+        Me.btn_guardar.MinimumSize = New System.Drawing.Size(124, 43)
+        Me.btn_guardar.Name = "btn_guardar"
+        Me.btn_guardar.Size = New System.Drawing.Size(124, 43)
+        Me.btn_guardar.TabIndex = 1
+        Me.btn_guardar.Text = "Guardar"
+        Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_guardar, "Guardar Movimiento")
+        Me.btn_guardar.UseVisualStyleBackColor = True
+        '
+        'Button_buscar
+        '
+        Me.Button_buscar.Image = CType(resources.GetObject("Button_buscar.Image"), System.Drawing.Image)
+        Me.Button_buscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button_buscar.Location = New System.Drawing.Point(223, 15)
+        Me.Button_buscar.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button_buscar.Name = "Button_buscar"
+        Me.Button_buscar.Size = New System.Drawing.Size(131, 30)
+        Me.Button_buscar.TabIndex = 258
+        Me.Button_buscar.Text = "Buscar Producto"
+        Me.Button_buscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button_buscar, "Busqueda avanzada")
+        Me.Button_buscar.UseVisualStyleBackColor = True
+        '
+        'Bo_codbarra
+        '
+        Me.Bo_codbarra.Image = Global.Aplicacion.My.Resources.Resources.search_balance
+        Me.Bo_codbarra.Location = New System.Drawing.Point(822, 9)
+        Me.Bo_codbarra.Margin = New System.Windows.Forms.Padding(4)
+        Me.Bo_codbarra.Name = "Bo_codbarra"
+        Me.Bo_codbarra.Size = New System.Drawing.Size(181, 66)
+        Me.Bo_codbarra.TabIndex = 17
+        Me.Bo_codbarra.Text = "Ver Stock Actual"
+        Me.Bo_codbarra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Bo_codbarra, "Ver stock en sucursal")
+        Me.Bo_codbarra.UseVisualStyleBackColor = True
+        '
+        'btn_agregarr
+        '
+        Me.btn_agregarr.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_agregarr.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
+        Me.btn_agregarr.Location = New System.Drawing.Point(822, 40)
+        Me.btn_agregarr.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_agregarr.Name = "btn_agregarr"
+        Me.btn_agregarr.Size = New System.Drawing.Size(181, 69)
+        Me.btn_agregarr.TabIndex = 249
+        Me.btn_agregarr.Text = "Agregar"
+        Me.btn_agregarr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_agregarr, "Agregar a la lista")
+        Me.btn_agregarr.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.Informe
+        Me.Button2.Location = New System.Drawing.Point(933, 81)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button2.MinimumSize = New System.Drawing.Size(124, 43)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(124, 43)
+        Me.Button2.TabIndex = 19
+        Me.Button2.Text = "ir a gestion insumos"
+        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button2, "Ver registro historico de movimientos")
+        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.Visible = False
+        '
+        'btn_Agregar_Prod
+        '
+        Me.btn_Agregar_Prod.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Agregar_Prod.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
+        Me.btn_Agregar_Prod.Location = New System.Drawing.Point(933, 38)
+        Me.btn_Agregar_Prod.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_Agregar_Prod.MinimumSize = New System.Drawing.Size(124, 43)
+        Me.btn_Agregar_Prod.Name = "btn_Agregar_Prod"
+        Me.btn_Agregar_Prod.Size = New System.Drawing.Size(124, 43)
+        Me.btn_Agregar_Prod.TabIndex = 4
+        Me.btn_Agregar_Prod.Text = "Agregar Productos"
+        Me.btn_Agregar_Prod.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_Agregar_Prod, "Agregar productos al listado")
+        Me.btn_Agregar_Prod.UseVisualStyleBackColor = True
+        Me.btn_Agregar_Prod.Visible = False
         '
         'Gestion_Mercaderia_Alta
         '

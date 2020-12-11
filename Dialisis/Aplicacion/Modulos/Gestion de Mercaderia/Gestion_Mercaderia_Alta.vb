@@ -707,4 +707,6 @@
         Busqueda_Productos.Text = "Sucursal: " + cb_origen.Text + " - Proveedor: " + cb_proveedor.Text + " - Busqueda de productos"
         Busqueda_Productos.Show()
     End Sub
+
+   
 End Class

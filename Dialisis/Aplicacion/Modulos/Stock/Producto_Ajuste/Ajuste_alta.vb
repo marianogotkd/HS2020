@@ -105,7 +105,7 @@
                         Producto_ajuste.recuperar_lotes()
                         'ademas vuelvo a calcular el total de stock para mostrar en el textbox "TOTAL DE UNIDADES:"
                         Producto_ajuste.calcular_total()
-                        MessageBox.Show("Eliminación correcta, los datos fueron actualizados.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        MessageBox.Show("los datos fueron actualizados Correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         Me.Close()
                     End If
 
