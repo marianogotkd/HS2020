@@ -24,7 +24,7 @@ Partial Class Consulta_Alta_b
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Consulta_Alta_b))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Button_buscar = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -36,6 +36,7 @@ Partial Class Consulta_Alta_b
         Me.Button1 = New System.Windows.Forms.Button()
         Me.tx_Buscar = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.BO_ver = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ProdcodinternoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProddescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -61,7 +62,7 @@ Partial Class Consulta_Alta_b
         Me.Button_buscar_proveedor = New System.Windows.Forms.Button()
         Me.combo_proveedor = New System.Windows.Forms.ComboBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.BO_ver = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -150,6 +151,7 @@ Partial Class Consulta_Alta_b
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.Button2)
         Me.GroupBox4.Controls.Add(Me.Button1)
         Me.GroupBox4.Controls.Add(Me.tx_Buscar)
         Me.GroupBox4.Controls.Add(Me.Label1)
@@ -194,6 +196,20 @@ Partial Class Consulta_Alta_b
         Me.Label1.TabIndex = 254
         Me.Label1.Text = "Filtrar resultados:"
         '
+        'BO_ver
+        '
+        Me.BO_ver.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BO_ver.Image = Global.Aplicacion.My.Resources.Resources.Pasar
+        Me.BO_ver.Location = New System.Drawing.Point(343, 368)
+        Me.BO_ver.Margin = New System.Windows.Forms.Padding(4)
+        Me.BO_ver.Name = "BO_ver"
+        Me.BO_ver.Size = New System.Drawing.Size(141, 43)
+        Me.BO_ver.TabIndex = 249
+        Me.BO_ver.Text = "Ver detalle"
+        Me.BO_ver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.BO_ver.UseVisualStyleBackColor = True
+        Me.BO_ver.Visible = False
+        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
@@ -209,14 +225,14 @@ Partial Class Consulta_Alta_b
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(948, 310)
@@ -418,19 +434,18 @@ Partial Class Consulta_Alta_b
         Me.combo_proveedor.Size = New System.Drawing.Size(270, 21)
         Me.combo_proveedor.TabIndex = 30
         '
-        'BO_ver
+        'Button2
         '
-        Me.BO_ver.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BO_ver.Image = Global.Aplicacion.My.Resources.Resources.Pasar
-        Me.BO_ver.Location = New System.Drawing.Point(343, 368)
-        Me.BO_ver.Margin = New System.Windows.Forms.Padding(4)
-        Me.BO_ver.Name = "BO_ver"
-        Me.BO_ver.Size = New System.Drawing.Size(141, 43)
-        Me.BO_ver.TabIndex = 249
-        Me.BO_ver.Text = "Ver detalle"
-        Me.BO_ver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.BO_ver.UseVisualStyleBackColor = True
-        Me.BO_ver.Visible = False
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
+        Me.Button2.Location = New System.Drawing.Point(696, 368)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(124, 43)
+        Me.Button2.TabIndex = 261
+        Me.Button2.Text = "Reporte detallado"
+        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'Consulta_Alta_b
         '
@@ -494,4 +509,5 @@ Partial Class Consulta_Alta_b
     Friend WithEvents ProvnombreDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents BO_ver As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 End Class

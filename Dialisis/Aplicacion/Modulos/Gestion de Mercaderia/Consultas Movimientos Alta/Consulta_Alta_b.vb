@@ -277,16 +277,21 @@
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Dim result As Integer = MessageBox.Show("¿Desea generar un reporte con la información de la consulta actual?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If result = DialogResult.Yes Then
-            msj_esperar_b.procedencia = "Consulta_Alta_b"
-            msj_esperar_b.Show()
+        If DataGridView1.Rows.Count <> 0 Then
+            Dim result As Integer = MessageBox.Show("¿Desea generar un reporte con la información de la consulta actual?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+                msj_esperar_b.procedencia = "Consulta_Alta_b"
+                msj_esperar_b.Show()
+                'se abre el reporte()
+            End If
         End If
+        
     End Sub
 
     Dim DAventa As New Datos.Venta
     Dim Ds_reporte_movimientos As New Ds_reporte_movimientos
-    Public Sub reporte() 'este lo llamo desde msj_esperar_a
+
+    Public Sub reporte() 'este lo llamo desde msj_esperar_a, muestra un reporte con cantidades totales, no el detalle
 
         '///////////////TABLA SUCURSAL Y EMPRESA///////////////////////////// 
         Dim ds_suc_y_empresa As DataSet = DAventa.Obtener_usuario_y_sucursal(Inicio.USU_id)
@@ -373,4 +378,171 @@
     End Sub
 
 
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        If DataGridView1.Rows.Count <> 0 Then
+            Dim result As Integer = MessageBox.Show("¿Desea generar un reporte detallado con la información de la consulta actual?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+
+                msj_esperar_b.procedencia = "Consulta_Alta_bb"
+                msj_esperar_b.Show()
+
+                'se abre el reporte_2()
+
+            End If
+        End If
+
+        
+
+    End Sub
+
+    Public Sub reporte_2() 'este reporte muestra el detalle de cada producto, cuando se ingreso, nro de factura, remito, fechas etc
+
+        '///////////////TABLA SUCURSAL Y EMPRESA///////////////////////////// 
+        Dim ds_suc_y_empresa As DataSet = DAventa.Obtener_usuario_y_sucursal(Inicio.USU_id)
+
+        Ds_reporte_movimientos.Tables("Sucursal").Rows.Clear()
+        Ds_reporte_movimientos.Tables("Empresa").Rows.Clear()
+
+
+        If ds_suc_y_empresa.Tables(1).Rows.Count <> 0 Then
+
+            Ds_reporte_movimientos.Tables("Empresa").Merge(ds_suc_y_empresa.Tables(1))
+        End If
+
+        If ds_suc_y_empresa.Tables(0).Rows.Count <> 0 Then
+            Dim row_sucursal As DataRow = Ds_reporte_movimientos.Tables("Sucursal").NewRow()
+            row_sucursal("sucursal") = ds_suc_y_empresa.Tables(0).Rows(0).Item("sucursal_nombre")
+            row_sucursal("direccion") = ds_suc_y_empresa.Tables(0).Rows(0).Item("sucursal_direccion")
+            row_sucursal("telefono") = ds_suc_y_empresa.Tables(0).Rows(0).Item("sucursal_telefono")
+            row_sucursal("mail") = ds_suc_y_empresa.Tables(0).Rows(0).Item("sucursal_mail")
+            row_sucursal("cuit") = ""
+            Ds_reporte_movimientos.Tables("Sucursal").Rows.Add(row_sucursal)
+        End If
+
+        'cargamos movimientos y detalles de movimientos
+        Ds_reporte_movimientos.Tables("movimientos_consulta").Rows.Clear()
+        Ds_reporte_movimientos.Tables("movimientos_detalle").Rows.Clear()
+        Ds_reporte_movimientos.Tables("mov_alta_detallada").Rows.Clear() 'choco: 11-12-2020 esta es la que muestra facturas y remitos de un producto
+
+        'Dim i As Integer = 0
+        'While i < DataGridView1.Rows.Count
+        Dim fila As DataRow = Ds_reporte_movimientos.Tables("movimientos_consulta").NewRow
+        fila("MovMer_id") = 1
+        fila("MovMer_Concepto") = ""
+        'fila("MovMer_FechaHora") = TextBox_fecha.Text
+        'fila("sucursal_id_Origen") = 0
+        'fila("Origen") = ""
+        'fila("sucursal_id_Destino") = 0
+        'fila("Destino") = ""
+        'fila("Usuario") = TextBox_usuario.Text
+        'fila("USU_id") = 0
+        'fila("factura_nro") = factura_nro.Text
+        'fila("factura_fecha") = factura_fecha.Text
+        'fila("remito_nro") = remito_nro.Text
+        'fila("remito_fecha") = remito_fecha.Text
+        fila("Proveedor") = combo_proveedor.Text
+        fila("rango_desde") = DateTimePicker_desde.Value
+        fila("rango_hasta") = DateTimePicker_hasta.Value
+        Ds_reporte_movimientos.Tables("movimientos_consulta").Rows.Add(fila)
+
+        'ahora el detalle
+        'Dim id As Integer = DataGridView2.Rows(i).Cells("MovMer_id").Value
+        'Dim ds_detalle As DataSet = DAgestion_mercaderia.Movimiento_Mercaderia_obtener_detalle(id)
+        'If ds_detalle.Tables(0).Rows.Count <> 0 Then
+
+
+        'primero recupero toda la consulta de la bd, segun proveedor y rango de fechas, para luego consultar con lo que estoy mostrando en el gridview, y poner en el datatable q voy a mandar a crystal report
+            Dim ds_mov As DataSet
+
+            If combo_proveedor.Items.Count <> 0 Then
+                If combo_proveedor.SelectedValue = 0 Then 'si es = traigo todos
+                    ds_mov = DAmovimientos.Movimiento_Mercaderia_Alta_obtener_detalle_b_rango_fechas_todos(DateTimePicker_desde.Value, DateTimePicker_hasta.Value)
+                    If ds_mov.Tables(0).Rows.Count <> 0 Then
+                    'voy a recorrer el gridview e ir agregando 
+                    Dim i As Integer = 0
+                    While i < DataGridView1.Rows.Count
+                        Dim prod_codinterno As Integer = CInt(DataGridView1.Rows(i).Cells("ProdcodinternoDataGridViewTextBoxColumn").Value)
+                        Dim k As Integer = 0
+                        While k < ds_mov.Tables(0).Rows.Count
+                            If prod_codinterno = CInt(ds_mov.Tables(0).Rows(k).Item("prod_codinterno")) Then
+                                'si lo encuentra agrego al datable q voy a mandar a crystal
+                                Dim fila1 As DataRow = Ds_reporte_movimientos.Tables("mov_alta_detallada").NewRow
+                                fila1("prod_codinterno") = ds_mov.Tables(0).Rows(k).Item("prod_codinterno")
+                                fila1("prod_descripcion") = ds_mov.Tables(0).Rows(k).Item("prod_descripcion")
+                                fila1("cantidad") = ds_mov.Tables(0).Rows(k).Item("MovMerDet_Cantidad")
+                                fila1("precioU") = ds_mov.Tables(0).Rows(k).Item("MovMerDet_precioU")
+                                fila1("preciosubtotal") = ds_mov.Tables(0).Rows(k).Item("MovMerDet_subtotal")
+                                fila1("factura_nro") = ds_mov.Tables(0).Rows(k).Item("MovMer_facturaNRO")
+                                fila1("remito_nro") = ds_mov.Tables(0).Rows(k).Item("MovMer_remitoNRO")
+                                fila1("factura_fecha") = ds_mov.Tables(0).Rows(k).Item("MovMer_facturafecha")
+                                fila1("remito_fecha") = ds_mov.Tables(0).Rows(k).Item("MovMer_remitofecha")
+                                fila1("fecha_hora") = ds_mov.Tables(0).Rows(k).Item("MovMer_FechaHora")
+                                fila1("proveedor") = ds_mov.Tables(0).Rows(k).Item("Prov_nombre")
+                                Ds_reporte_movimientos.Tables("mov_alta_detallada").Rows.Add(fila1)
+                            End If
+                            k = k + 1
+                        End While
+                        i = i + 1
+                    End While
+
+
+                Else
+                    'no deberia fallar ya que si o si algo esta mostrando el tiene el gridview
+                    End If
+                Else
+                    ds_mov = DAmovimientos.Movimiento_Mercaderia_Alta_obtener_detalle_b_rango_fechas_proveedor(DateTimePicker_desde.Value, DateTimePicker_hasta.Value, combo_proveedor.SelectedValue)
+                    If ds_mov.Tables(0).Rows.Count <> 0 Then
+                    'voy a recorrer el gridview e ir agregando 
+                    Dim i As Integer = 0
+                    While i < DataGridView1.Rows.Count
+                        Dim prod_codinterno As Integer = CInt(DataGridView1.Rows(i).Cells("ProdcodinternoDataGridViewTextBoxColumn").Value)
+                        Dim k As Integer = 0
+                        While k < ds_mov.Tables(0).Rows.Count
+                            If prod_codinterno = CInt(ds_mov.Tables(0).Rows(k).Item("prod_codinterno")) Then
+                                'si lo encuentra agrego al datable q voy a mandar a crystal
+                                Dim fila1 As DataRow = Ds_reporte_movimientos.Tables("mov_alta_detallada").NewRow
+                                fila1("prod_codinterno") = ds_mov.Tables(0).Rows(k).Item("prod_codinterno")
+                                fila1("prod_descripcion") = ds_mov.Tables(0).Rows(k).Item("prod_descripcion")
+                                fila1("cantidad") = ds_mov.Tables(0).Rows(k).Item("MovMerDet_Cantidad")
+                                fila1("precioU") = ds_mov.Tables(0).Rows(k).Item("MovMerDet_precioU")
+                                fila1("preciosubtotal") = ds_mov.Tables(0).Rows(k).Item("MovMerDet_subtotal")
+                                fila1("factura_nro") = ds_mov.Tables(0).Rows(k).Item("MovMer_facturaNRO")
+                                fila1("remito_nro") = ds_mov.Tables(0).Rows(k).Item("MovMer_remitoNRO")
+                                fila1("factura_fecha") = ds_mov.Tables(0).Rows(k).Item("MovMer_facturafecha")
+                                fila1("remito_fecha") = ds_mov.Tables(0).Rows(k).Item("MovMer_remitofecha")
+                                fila1("fecha_hora") = ds_mov.Tables(0).Rows(k).Item("MovMer_FechaHora")
+                                fila1("proveedor") = ds_mov.Tables(0).Rows(k).Item("Prov_nombre")
+                                Ds_reporte_movimientos.Tables("mov_alta_detallada").Rows.Add(fila1)
+                            End If
+                            k = k + 1
+                        End While
+                        i = i + 1
+                    End While
+                Else
+                    'no deberia fallar ya que si o si algo esta mostrando el tiene el gridview
+                    End If
+                End If
+            End If
+        
+            
+        'End If
+
+        ' i = i + 1
+        ' End While
+
+        Dim CrReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
+        CrReport = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+        CrReport.Load(Application.StartupPath & "\..\..\Modulos\Reportes_Dialisis\Consulta_alta_bb_detalle_CR.rpt")
+        'CrReport.Load(Application.StartupPath & "\..\..\Modulos\Reportes_Dialisis\Evaluacion_medica_detalle.rpt")
+        CrReport.Database.Tables("Empresa").SetDataSource(Ds_reporte_movimientos.Tables("Empresa"))
+        CrReport.Database.Tables("Sucursal").SetDataSource(Ds_reporte_movimientos.Tables("Sucursal"))
+        CrReport.Database.Tables("movimientos_consulta").SetDataSource(Ds_reporte_movimientos.Tables("movimientos_consulta"))
+        CrReport.Database.Tables("movimientos_detalle").SetDataSource(Ds_reporte_movimientos.Tables("movimientos_detalle"))
+        CrReport.Database.Tables("mov_alta_detallada").SetDataSource(Ds_reporte_movimientos.Tables("mov_alta_detallada"))
+        Dim visor As New movimientos_show
+        visor.CrystalReportViewer1.ReportSource = CrReport
+        visor.Text = "Consulta de ingresos detallados. - Imprimir."
+        visor.Show()
+
+    End Sub
 End Class
