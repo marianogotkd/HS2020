@@ -1103,6 +1103,24 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Modulos\Reportes_Dialisis\Consulta_alta_bb_detalle_CR.vb">
+      <DependentUpon>Consulta_alta_bb_detalle_CR.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Modulos\Reportes_Dialisis\Consulta_mov_bb_CR.vb">
+      <DependentUpon>Consulta_mov_bb_CR.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Modulos\Reportes_Dialisis\Consulta_baja_bb_CR.vb">
+      <DependentUpon>Consulta_baja_bb_CR.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Modulos\Reportes_Dialisis\Medicos_reporte_CR.vb">
       <DependentUpon>Medicos_reporte_CR.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -2061,6 +2079,18 @@
     <EmbeddedResource Include="Modulos\Reportes_Dialisis\Consulta_mov_b_CR.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Consulta_mov_b_CR.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes_Dialisis\Consulta_alta_bb_detalle_CR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Consulta_alta_bb_detalle_CR.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes_Dialisis\Consulta_mov_bb_CR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Consulta_mov_bb_CR.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Reportes_Dialisis\Consulta_baja_bb_CR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Consulta_baja_bb_CR.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Reportes_Dialisis\Medicos_reporte_CR.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

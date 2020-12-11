@@ -1569,7 +1569,7 @@ Public Class Producto_modificar
 
             'aqui mando los parametros para recuperar la info del producto
             Dim sucursal_id As Integer = cb_origen.SelectedValue
-            Producto_ajuste.Text = "AJUSTE DE STOCK. Sucursal: " + cb_origen.SelectedText
+            Producto_ajuste.Text = "AJUSTE DE STOCK. Sucursal: " + cb_origen.Text
             Producto_ajuste.sucursal_id = sucursal_id
 
             Producto_ajuste.txt_codigo.Text = DG_Producto.CurrentRow.Cells("prod_codinterno").Value

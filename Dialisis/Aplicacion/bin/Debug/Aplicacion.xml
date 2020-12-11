@@ -1231,6 +1231,14 @@ Represents the strongly named DataTable class.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
+</member><member name="T:Aplicacion.Ds_reporte_movimientos.mov_alta_detalladaDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_movimientos.Movimientos_bbDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
 </member><member name="T:Aplicacion.Ds_reporte_movimientos.movimientos_consultaRow">
 	<summary>
 Represents strongly named DataRow class.
@@ -1255,6 +1263,14 @@ Represents strongly named DataRow class.
 	<summary>
 Represents strongly named DataRow class.
 </summary>
+</member><member name="T:Aplicacion.Ds_reporte_movimientos.mov_alta_detalladaRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_movimientos.Movimientos_bbRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
 </member><member name="T:Aplicacion.Ds_reporte_movimientos.movimientos_consultaRowChangeEvent">
 	<summary>
 Row event argument class
@@ -1276,6 +1292,14 @@ Row event argument class
 Row event argument class
 </summary>
 </member><member name="T:Aplicacion.Ds_reporte_movimientos.MovimientosRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_movimientos.mov_alta_detalladaRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_movimientos.Movimientos_bbRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>

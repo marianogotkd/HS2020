@@ -743,6 +743,10 @@
                 Consulta_Alta_b.reporte()
                 Me.Close()
             End If
+            If procedencia = "Consulta_Alta_bb" Then
+                Consulta_Alta_b.reporte_2()
+                Me.Close()
+            End If
             If procedencia = "Pacientes_x_obra_social" Then
                 Paciente_reporte_seleccionar.reporte()
                 Me.Close()
@@ -772,8 +776,16 @@
                 Consultas_Bajas_b.reporte()
                 Me.Close()
             End If
+            If procedencia = "Consultas_Bajas_bb" Then
+                Consultas_Bajas_b.reporte_2()
+                Me.Close()
+            End If
             If procedencia = "Consultas_Movimientos_b" Then
                 Consultas_Movimientos_b.reporte()
+                Me.Close()
+            End If
+            If procedencia = "Consultas_Movimientos_bb" Then
+                Consultas_Movimientos_b.reporte_2()
                 Me.Close()
             End If
         End If
