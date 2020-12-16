@@ -69,6 +69,9 @@
         Dim ds_sesiones As DataSet = DAsesiones.Sesiones_recuperar_reporte_rangofechas(DateTimePicker_desde.Value.Date, DateTimePicker_hasta.Value.Date, PAC_id)
 
         Ds_reporte_enfermeria.Tables("sesiones").Rows.Clear()
+
+        'version original que pasa los datos a la tabla "sesiones"
+        '/////////////////////////////////////////////////////////////////////////
         If ds_sesiones.Tables(0).Rows.Count <> 0 Then
             Dim i As Integer = 0
             While i < ds_sesiones.Tables(0).Rows.Count
@@ -99,33 +102,89 @@
                 While k < ds_sesiones.Tables(4).Rows.Count
                     If ds_sesiones.Tables(4).Rows(k).Item("Sesiones_id") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_id") Then
                         encontrado = "si"
-                        Dim filac As DataRow = Ds_reporte_enfermeria.Tables("insumos_consumidos").NewRow
+                        'Dim filac As DataRow = Ds_reporte_enfermeria.Tables("insumos_consumidos").NewRow
+                        'filac("Consumo_mercaderia_id") = ds_sesiones.Tables(4).Rows(k).Item("Consumo_mercaderia_id")
+                        'filac("Fecha") = ds_sesiones.Tables(4).Rows(k).Item("Fecha")
+                        'Dim sesiones_id As Integer = ds_sesiones.Tables(4).Rows(k).Item("Sesiones_id")
+                        'filac("Sesiones_id") = ds_sesiones.Tables(4).Rows(k).Item("Sesiones_id")
+                        'filac("fecha_sesion") = ds_sesiones.Tables(4).Rows(k).Item("fecha_sesion")
+                        'filac("cantidad") = ds_sesiones.Tables(4).Rows(k).Item("cantidad")
+                        'filac("prod_codinterno") = ds_sesiones.Tables(4).Rows(k).Item("prod_codinterno")
+                        'filac("Insumo") = ds_sesiones.Tables(4).Rows(k).Item("Insumo")
+                        'Ds_reporte_enfermeria.Tables("insumos_consumidos").Rows.Add(filac)
+                        Dim filac As DataRow = Ds_reporte_enfermeria.Tables("sesiones_e_insumos_group").NewRow
+                        filac("Sesiones_id") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_id")
+                        filac("PAC_id") = ds_sesiones.Tables(0).Rows(i).Item("PAC_id")
+                        filac("Sesiones_fecha") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_fecha")
+                        filac("Sesiones_asistencia") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_asistencia")
+                        filac("Dialisis_id") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_id")
+                        filac("Dialisis_PesoS") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_PesoS")
+                        filac("Dialisis_Talla") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_Talla")
+                        filac("Dialisis_HI") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_HI")
+                        filac("Dialisis_HE") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_HE")
+                        filac("Dialisis_TiempoHD") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_TiempoHD")
+                        filac("Dialisis_PesoI") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_PesoI")
+                        filac("Dialisis_PesoE") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_PesoE")
+                        filac("Dialisis_TAI") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_TAI")
+                        filac("Dialisis_TAE") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_TAE")
+                        filac("Dialisis_Filtro") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_Filtro")
+                        filac("Dialisis_Obs") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_Obs")
+                        filac("accesovascular_tipo") = ds_sesiones.Tables(0).Rows(i).Item("AccesoVascular")
                         filac("Consumo_mercaderia_id") = ds_sesiones.Tables(4).Rows(k).Item("Consumo_mercaderia_id")
-                        filac("Fecha") = ds_sesiones.Tables(4).Rows(k).Item("Fecha")
-                        filac("Sesiones_id") = ds_sesiones.Tables(4).Rows(k).Item("Sesiones_id")
-                        filac("fecha_sesion") = ds_sesiones.Tables(4).Rows(k).Item("fecha_sesion")
                         filac("cantidad") = ds_sesiones.Tables(4).Rows(k).Item("cantidad")
                         filac("prod_codinterno") = ds_sesiones.Tables(4).Rows(k).Item("prod_codinterno")
                         filac("Insumo") = ds_sesiones.Tables(4).Rows(k).Item("Insumo")
-                        Ds_reporte_enfermeria.Tables("insumos_consumidos").Rows.Add(filac)
+                        Ds_reporte_enfermeria.Tables("sesiones_e_insumos_group").Rows.Add(filac)
                     End If
                     k = k + 1
                 End While
                 If encontrado = "no" Then
-                    Dim filac As DataRow = Ds_reporte_enfermeria.Tables("insumos_consumidos").NewRow
-                    filac("Consumo_mercaderia_id") = 0
-                    filac("Fecha") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_fecha")
+                    'Dim filac As DataRow = Ds_reporte_enfermeria.Tables("insumos_consumidos").NewRow
+                    'filac("Consumo_mercaderia_id") = 0
+                    'filac("Fecha") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_fecha")
+                    'Dim sesiones_id As Integer = ds_sesiones.Tables(4).Rows(k).Item("Sesiones_id")
+                    'filac("Sesiones_id") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_id")
+                    'filac("fecha_sesion") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_fecha")
+                    'filac("cantidad") = CDec(0)
+                    'filac("prod_codinterno") = 0
+                    'filac("Insumo") = ""
+                    'Ds_reporte_enfermeria.Tables("insumos_consumidos").Rows.Add(filac)
+
+                    Dim filac As DataRow = Ds_reporte_enfermeria.Tables("sesiones_e_insumos_group").NewRow
                     filac("Sesiones_id") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_id")
-                    filac("fecha_sesion") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_fecha")
+                    filac("PAC_id") = ds_sesiones.Tables(0).Rows(i).Item("PAC_id")
+                    filac("Sesiones_fecha") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_fecha")
+                    filac("Sesiones_asistencia") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_asistencia")
+                    filac("Dialisis_id") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_id")
+                    filac("Dialisis_PesoS") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_PesoS")
+                    filac("Dialisis_Talla") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_Talla")
+                    filac("Dialisis_HI") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_HI")
+                    filac("Dialisis_HE") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_HE")
+                    filac("Dialisis_TiempoHD") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_TiempoHD")
+                    filac("Dialisis_PesoI") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_PesoI")
+                    filac("Dialisis_PesoE") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_PesoE")
+                    filac("Dialisis_TAI") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_TAI")
+                    filac("Dialisis_TAE") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_TAE")
+                    filac("Dialisis_Filtro") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_Filtro")
+                    filac("Dialisis_Obs") = ds_sesiones.Tables(0).Rows(i).Item("Dialisis_Obs")
+                    filac("accesovascular_tipo") = ds_sesiones.Tables(0).Rows(i).Item("AccesoVascular")
+                    filac("Consumo_mercaderia_id") = 0
+                    'filac("Fecha") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_fecha")
+                    'Dim sesiones_id As Integer = ds_sesiones.Tables(4).Rows(k).Item("Sesiones_id")
+                    'filac("Sesiones_id") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_id")
+                    'filac("fecha_sesion") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_fecha")
                     filac("cantidad") = CDec(0)
                     filac("prod_codinterno") = 0
                     filac("Insumo") = ""
-                    Ds_reporte_enfermeria.Tables("insumos_consumidos").Rows.Add(filac)
+                    Ds_reporte_enfermeria.Tables("sesiones_e_insumos_group").Rows.Add(filac)
                 End If
 
 
                 i = i + 1
             End While
+
+            '/////////////////////////////////////////////////////////////////////////
+
 
             'aqui agrego otra info como el tipo de acceso vascular, el turno y duracion HD
             Dim fila2 As DataRow = Ds_reporte_enfermeria.Tables("otra_info").NewRow
@@ -161,15 +220,15 @@
             'ahora creo el reporte
             Dim CrReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
             CrReport = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
-            CrReport.Load(Application.StartupPath & "\..\..\Modulos\Reportes_Dialisis\Sesiones_y_consumos.rpt")
+            CrReport.Load(Application.StartupPath & "\..\..\Modulos\Reportes_Dialisis\Sesiones_y_consumos_2.rpt")
             'CrReport.Load(Application.StartupPath & "\..\..\Modulos\Reportes_Dialisis\Evaluacion_medica_detalle.rpt")
             CrReport.Database.Tables("Empresa").SetDataSource(Ds_reporte_enfermeria.Tables("Empresa"))
             CrReport.Database.Tables("Cliente").SetDataSource(Ds_reporte_enfermeria.Tables("Cliente"))
             'la tabla "evaluacion medica" esta en el subinforme
             CrReport.Database.Tables("sesiones").SetDataSource(Ds_reporte_enfermeria.Tables("sesiones"))
             CrReport.Database.Tables("otra_info").SetDataSource(Ds_reporte_enfermeria.Tables("otra_info"))
-            CrReport.Database.Tables("insumos_consumidos").SetDataSource(Ds_reporte_enfermeria.Tables("insumos_consumidos"))
-
+            'CrReport.Database.Tables("insumos_consumidos").SetDataSource(Ds_reporte_enfermeria.Tables("insumos_consumidos"))
+            CrReport.Database.Tables("sesiones_e_insumos_group").SetDataSource(Ds_reporte_enfermeria.Tables("sesiones_e_insumos_group"))
             'usando la variable visor puedo abrir varios reportes, sin temor a q se junte los datos del dataset
             Dim visor As New EvaluacionMedica_show
             visor.CrystalReportViewer1.ReportSource = CrReport

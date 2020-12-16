@@ -2599,6 +2599,10 @@ Represents the strongly named DataTable class.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
+</member><member name="T:Aplicacion.Ds_reporte_enfermeria.sesiones_e_insumos_groupDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
 </member><member name="T:Aplicacion.Ds_reporte_enfermeria.ClienteRow">
 	<summary>
 Represents strongly named DataRow class.
@@ -2623,6 +2627,10 @@ Represents strongly named DataRow class.
 	<summary>
 Represents strongly named DataRow class.
 </summary>
+</member><member name="T:Aplicacion.Ds_reporte_enfermeria.sesiones_e_insumos_groupRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
 </member><member name="T:Aplicacion.Ds_reporte_enfermeria.ClienteRowChangeEvent">
 	<summary>
 Row event argument class
@@ -2644,6 +2652,10 @@ Row event argument class
 Row event argument class
 </summary>
 </member><member name="T:Aplicacion.Ds_reporte_enfermeria.insumos_consumidosRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Ds_reporte_enfermeria.sesiones_e_insumos_groupRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>
