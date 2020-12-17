@@ -223,4 +223,15 @@
 
 
     End Sub
+
+    Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox1.KeyPress
+        Dim Filtro
+        Filtro = String.Format("{0} LIKE '%{1}%'", "Paciente", TextBox1.Text) 'esto para campos strings, FUNCIONA PERFECTO
+        SesionactualtodospacientesBindingSource.Filter = Filtro
+        'Cliente1BindingSource.Filter = Filtro
+    End Sub
+
+    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+
+    End Sub
 End Class

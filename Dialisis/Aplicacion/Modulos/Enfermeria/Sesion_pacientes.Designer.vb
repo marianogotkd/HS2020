@@ -31,6 +31,8 @@ Partial Class Sesion_pacientes
         Me.Label3 = New System.Windows.Forms.Label()
         Me.tb_horario = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -106,6 +108,8 @@ Partial Class Sesion_pacientes
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label4)
+        Me.GroupBox1.Controls.Add(Me.TextBox1)
         Me.GroupBox1.Controls.Add(Me.Button3)
         Me.GroupBox1.Controls.Add(Me.Button2)
         Me.GroupBox1.Controls.Add(Me.Button1)
@@ -113,18 +117,37 @@ Partial Class Sesion_pacientes
         Me.GroupBox1.Controls.Add(Me.btn_ausente)
         Me.GroupBox1.Controls.Add(Me.lb_totalinscriptos)
         Me.GroupBox1.Controls.Add(Me.datagridview1)
-        Me.GroupBox1.Location = New System.Drawing.Point(33, 87)
+        Me.GroupBox1.Location = New System.Drawing.Point(33, 99)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(728, 335)
+        Me.GroupBox1.Size = New System.Drawing.Size(728, 377)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Inscriptos"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Blue
+        Me.Label4.Location = New System.Drawing.Point(10, 67)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(125, 16)
+        Me.Label4.TabIndex = 266
+        Me.Label4.Text = "Buscar Paciente:"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(10, 86)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(709, 22)
+        Me.TextBox1.TabIndex = 265
         '
         'Button3
         '
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
-        Me.Button3.Location = New System.Drawing.Point(483, 265)
+        Me.Button3.Location = New System.Drawing.Point(486, 320)
         Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(136, 44)
@@ -138,7 +161,7 @@ Partial Class Sesion_pacientes
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
-        Me.Button2.Location = New System.Drawing.Point(287, 265)
+        Me.Button2.Location = New System.Drawing.Point(290, 320)
         Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(188, 44)
@@ -152,7 +175,7 @@ Partial Class Sesion_pacientes
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
-        Me.Button1.Location = New System.Drawing.Point(10, 265)
+        Me.Button1.Location = New System.Drawing.Point(13, 320)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(108, 44)
@@ -178,7 +201,7 @@ Partial Class Sesion_pacientes
         '
         Me.btn_ausente.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_ausente.Image = Global.Aplicacion.My.Resources.Resources.menos
-        Me.btn_ausente.Location = New System.Drawing.Point(627, 265)
+        Me.btn_ausente.Location = New System.Drawing.Point(630, 320)
         Me.btn_ausente.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_ausente.Name = "btn_ausente"
         Me.btn_ausente.Size = New System.Drawing.Size(93, 44)
@@ -211,7 +234,7 @@ Partial Class Sesion_pacientes
         Me.datagridview1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.datagridview1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SesionesidDataGridViewTextBoxColumn, Me.PACidDataGridViewTextBoxColumn, Me.SesionesfechaDataGridViewTextBoxColumn, Me.DialisisidDataGridViewTextBoxColumn, Me.PACdniDataGridViewTextBoxColumn, Me.PacienteDataGridViewTextBoxColumn, Me.PAcdirDataGridViewTextBoxColumn, Me.PACnumafiDataGridViewTextBoxColumn, Me.ObrasocialnombreDataGridViewTextBoxColumn, Me.SesionesasistenciaDataGridViewTextBoxColumn})
         Me.datagridview1.DataSource = Me.SesionactualtodospacientesBindingSource
-        Me.datagridview1.Location = New System.Drawing.Point(7, 69)
+        Me.datagridview1.Location = New System.Drawing.Point(10, 124)
         Me.datagridview1.Margin = New System.Windows.Forms.Padding(4)
         Me.datagridview1.MultiSelect = False
         Me.datagridview1.Name = "datagridview1"
@@ -343,7 +366,7 @@ Partial Class Sesion_pacientes
         '
         Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.Image = Global.Aplicacion.My.Resources.Resources.iniciar
-        Me.Button4.Location = New System.Drawing.Point(33, 429)
+        Me.Button4.Location = New System.Drawing.Point(33, 498)
         Me.Button4.Margin = New System.Windows.Forms.Padding(4)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(98, 43)
@@ -371,7 +394,7 @@ Partial Class Sesion_pacientes
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Aplicacion.My.Resources.Resources.silver_3
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(785, 480)
+        Me.ClientSize = New System.Drawing.Size(785, 554)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.GroupBox1)
@@ -426,4 +449,6 @@ Partial Class Sesion_pacientes
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
 End Class

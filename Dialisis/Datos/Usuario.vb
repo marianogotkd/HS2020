@@ -10,7 +10,7 @@ Public Class Usuario
         Try
             dbconn.Open()
         Catch ex As Exception
-            MsgBox("No se Encuentra el Servidro. Consultar al Administrador de red", vbExclamation, "ERROR DE CONEXION")
+            MsgBox("No se Encuentra el Servidor. Consultar al Administrador de red", vbExclamation, "ERROR DE CONEXION")
             Dim ds_err As New DataSet
             Dim dt As New DataTable
 
