@@ -70,7 +70,7 @@ Partial Class Cliente_modificar
         Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1129, 575)
+        Me.TabControl1.Size = New System.Drawing.Size(1129, 458)
         Me.TabControl1.TabIndex = 0
         '
         'TabPage1
@@ -84,7 +84,7 @@ Partial Class Cliente_modificar
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPage1.Size = New System.Drawing.Size(1121, 546)
+        Me.TabPage1.Size = New System.Drawing.Size(1121, 429)
         Me.TabPage1.TabIndex = 1
         Me.TabPage1.Text = "Clientes registrados"
         '
@@ -92,7 +92,7 @@ Partial Class Cliente_modificar
         '
         Me.BO_cliente_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BO_cliente_nuevo.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
-        Me.BO_cliente_nuevo.Location = New System.Drawing.Point(814, 489)
+        Me.BO_cliente_nuevo.Location = New System.Drawing.Point(814, 339)
         Me.BO_cliente_nuevo.Margin = New System.Windows.Forms.Padding(4)
         Me.BO_cliente_nuevo.Name = "BO_cliente_nuevo"
         Me.BO_cliente_nuevo.Size = New System.Drawing.Size(124, 43)
@@ -106,7 +106,7 @@ Partial Class Cliente_modificar
         '
         Me.BO_cliente_modificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BO_cliente_modificar.Image = Global.Aplicacion.My.Resources.Resources.Pasar
-        Me.BO_cliente_modificar.Location = New System.Drawing.Point(977, 489)
+        Me.BO_cliente_modificar.Location = New System.Drawing.Point(977, 339)
         Me.BO_cliente_modificar.Margin = New System.Windows.Forms.Padding(4)
         Me.BO_cliente_modificar.Name = "BO_cliente_modificar"
         Me.BO_cliente_modificar.Size = New System.Drawing.Size(124, 43)
@@ -125,7 +125,7 @@ Partial Class Cliente_modificar
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(1105, 471)
+        Me.GroupBox1.Size = New System.Drawing.Size(1105, 321)
         Me.GroupBox1.TabIndex = 246
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Buscar cliente por nombre (Fantasía o Razón Social): "
@@ -161,7 +161,7 @@ Partial Class Cliente_modificar
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
         Me.DG_clientes.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DG_clientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DG_clientes.Size = New System.Drawing.Size(1081, 389)
+        Me.DG_clientes.Size = New System.Drawing.Size(1081, 246)
         Me.DG_clientes.StandardTab = True
         Me.DG_clientes.TabIndex = 239
         '
@@ -342,7 +342,7 @@ Partial Class Cliente_modificar
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1158, 617)
+        Me.ClientSize = New System.Drawing.Size(1158, 479)
         Me.Controls.Add(Me.BO_Eliminar)
         Me.Controls.Add(Me.BO_Guardar)
         Me.Controls.Add(Me.BO_Cancelar)

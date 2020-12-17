@@ -6,6 +6,7 @@
     Dim DAventa As New Datos.Venta
     Dim sucursal_id As Integer
     Dim DAservicio As New Datos.Servicio
+    Public procedencia As String
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Cliente_modificar.procedencia = "Orden_Revision_nueva"
         Cliente_modificar.Show()
@@ -33,6 +34,10 @@
             '    Cargar_Datos()
             'End If
             'GroupBox1.Text = "Orden de Servicio N°" + " " + Label_Cod.Text
+            If procedencia = "desde el menu" Then 'como accedo desde el menu, quiero poder elegir la fecha
+                DateTimePicker1.Value = Today
+                DateTimePicker1.Enabled = True
+            End If
 
         Else
 
@@ -78,6 +83,8 @@
         End If
     End Sub
 
+
+
     Private Sub btn_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_guardar.Click
         If appID = 0 Then 'es un alta
             If txt_diag.Text <> "" And TextBox_Nombre.Text <> "" Then
@@ -96,8 +103,13 @@
                     If result = DialogResult.Yes Then
                         reporte(ds_SevicioGuardar.Tables(0).Rows(0).Item(0))
                     End If
-                    limpiar()
-                    Me.Close()
+                    'limpiar()
+                    'Me.Close()
+
+                    'habilito estos botones q me sirven
+                    Button1.Enabled = False
+                    Button_imprimir.Enabled = True
+                    Button_trabajo.Enabled = True
 
                 End If
             Else
@@ -118,8 +130,14 @@
                     MessageBox.Show("Los datos se guardaron correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     'AQUI TENGO QUE ABRIR EL REPORTE CON LA ORDEN DE REVISION.
                     reporte(CInt(txt_serv_id.Text))
-                    limpiar()
-                    Me.Close()
+
+
+                    'habilito estos botones que me sirven
+                    Button1.Enabled = False
+                    Button_imprimir.Enabled = True
+                    Button_trabajo.Enabled = True
+                    'limpiar()
+                    'Me.Close()
                 End If
             Else
                 MessageBox.Show("Error, complete los campos obligatorios.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -128,7 +146,7 @@
             End If
         End If
 
-        
+
     End Sub
 
     Private Sub limpiar()
@@ -167,7 +185,7 @@
 
     End Sub
 
-    Private Sub btn_cancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_cancelar.Click
+    Private Sub btn_cancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         limpiar()
     End Sub
 
@@ -183,4 +201,6 @@
         Me.Close()
 
     End Sub
+
+   
 End Class

@@ -40,6 +40,25 @@ Public Class Servicio
         Return ds_JE
     End Function
 
+    Public Function Servicio_Obterner_X_Sucursal_MDA_rango_fecha(ByVal desde As Date, ByVal hasta As Date, ByVal sucursal_id As Integer)
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Servicio_Obterner_X_Sucursal_MDA_rango_fecha", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add(New OleDb.OleDbParameter("@desde", desde))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@hasta", hasta))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Servicio")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
 
     'Servicio_Modificar_MDA
 
@@ -389,7 +408,7 @@ Public Class Servicio
 
 #Region "calendario servicios"
 
-    Public Function Servicio_calendario_consulta(ByVal desde As Date, ByVal hasta As Date)
+    Public Function Servicio_calendario_consulta(ByVal desde As Date, ByVal hasta As Date, ByVal sucursal_id As Integer)
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -400,6 +419,7 @@ Public Class Servicio
 
         comando.Parameters.Add(New OleDb.OleDbParameter("@desde", desde))
         comando.Parameters.Add(New OleDb.OleDbParameter("@hasta", hasta))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
 
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)

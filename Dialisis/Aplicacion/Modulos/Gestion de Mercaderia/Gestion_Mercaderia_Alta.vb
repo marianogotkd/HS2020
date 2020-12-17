@@ -77,7 +77,7 @@
 
                 'If Gestion_Mercaderia.cb_Movimiento.Text = "Alta de Mercaderia" Then
                 Grupo_lote.Enabled = True
-                If ds_PROD.Tables(2).Rows.Count = 0 Then 'recupera el producto solo si tiene Lote = "SI"
+                If ds_PROD.Tables(2).Rows.Count <> 0 Then 'recupera el producto solo si tiene Lote = "SI"
                     'si es distinto de 0, significa que tiene lotes que se van a colocar incrementales, es decir NO
                     Dim ds_lotes As DataSet = DAlote.Lote_buscar_producto(tb_codint.Text, cb_origen.SelectedValue)
                     If ds_lotes.Tables(0).Rows.Count = 0 Then
@@ -110,7 +110,7 @@
                     txt_nrolote.Enabled = False
                     'Label8.Text = "Ingreso Nº:"
                 Else
-                    txt_nrolote.Enabled = True
+                    'txt_nrolote.Enabled = True
                     ' Label8.Text = "Lote Nº:"
                 End If
                 'If

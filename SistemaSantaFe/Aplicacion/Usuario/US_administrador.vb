@@ -750,6 +750,9 @@ Public Property EnabledCerrar() As Boolean
 
     Private Sub ToolStripMenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem_servicio_nuevo.Click
         'Servicio_nuevo.Show()
+        Orden_Revision_nueva.Close()
+        Orden_Revision_nueva.procedencia = "desde el menu"
+        Orden_Revision_nueva.Show()
     End Sub
 
     Private Sub ToolStripMenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem3.Click

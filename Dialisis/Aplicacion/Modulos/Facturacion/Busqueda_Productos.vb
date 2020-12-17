@@ -774,8 +774,8 @@ Public Class Busqueda_Productos
             'Buscar_Cantidades(ds_PROD.Tables(0).Rows(0).Item("prod_id"), Gestion_Mercaderia.cb_origen.SelectedValue, Gestion_Mercaderia.cb_destino.SelectedValue)
 
 
-            If ds_PROD.Tables(2).Rows.Count = 0 Then 'recupera el producto solo si tiene Lote = "SI"
-                'si es distinto de 0, significa que tiene lotes que se van a colocar incrementales, es decir NO
+            If ds_PROD.Tables(2).Rows.Count <> 0 Then 'recupera el producto solo si tiene Lote = "SI"
+                'si es distinto de 0, significa que tiene lotes que se van a colocar incrementales
                 Dim ds_lotes As DataSet = DAlote.Lote_buscar_producto(codint, Gestion_Mercaderia_Alta.cb_origen.SelectedValue)
                 If ds_lotes.Tables(0).Rows.Count = 0 Then
                     'como no tengo lotes, creo el primer lote en 1
@@ -810,7 +810,7 @@ Public Class Busqueda_Productos
                 Gestion_Mercaderia_Alta.txt_nrolote.Enabled = False
                 'Gestion_Mercaderia_Alta.Label8.Text = "Lote Nº:"
             Else
-                Gestion_Mercaderia_Alta.txt_nrolote.Enabled = True
+                'Gestion_Mercaderia_Alta.txt_nrolote.Enabled = True
                 'Gestion_Mercaderia_Alta.Label8.Text = "Lote Nº:"
             End If
         End If

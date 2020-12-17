@@ -41,8 +41,12 @@
             Servicio_DS.Tables("ordentrabajo").Merge(ds_servicio.Tables(1))
             'DS_Obtener.Tables("Servicio_Obtener").Merge(ds_servicio.Tables(0))
             'DG_Servicio.DataSource = DS_Obtener.Tables("Servicio_Obtener")
-
         End If
+        If ds_servicio.Tables(1).Rows.Count <> 0 Then
+            Servicio_DS.Tables("ordentrabajo").Rows.Clear()
+            Servicio_DS.Tables("ordentrabajo").Merge(ds_servicio.Tables(1))
+        End If
+
         pedidos_formato_estado()
     End Sub
     Private Sub Sucursales_Obtener()

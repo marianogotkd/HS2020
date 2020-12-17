@@ -22,6 +22,7 @@ Partial Class Orden_Revision_nueva
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.txt_diag = New System.Windows.Forms.TextBox()
@@ -42,9 +43,10 @@ Partial Class Orden_Revision_nueva
         Me.TextBox_Nombre = New System.Windows.Forms.TextBox()
         Me.lb_error_cliente = New System.Windows.Forms.Label()
         Me.btn_guardar = New System.Windows.Forms.Button()
-        Me.btn_cancelar = New System.Windows.Forms.Button()
         Me.Button_imprimir = New System.Windows.Forms.Button()
         Me.Button_trabajo = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -267,53 +269,57 @@ Partial Class Orden_Revision_nueva
         '
         Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
-        Me.btn_guardar.Location = New System.Drawing.Point(329, 376)
+        Me.btn_guardar.Location = New System.Drawing.Point(398, 375)
         Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_guardar.Name = "btn_guardar"
         Me.btn_guardar.Size = New System.Drawing.Size(116, 43)
         Me.btn_guardar.TabIndex = 7
         Me.btn_guardar.Text = "Guardar"
         Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_guardar, "Guardar cambios")
         Me.btn_guardar.UseVisualStyleBackColor = True
-        '
-        'btn_cancelar
-        '
-        Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
-        Me.btn_cancelar.Location = New System.Drawing.Point(453, 375)
-        Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_cancelar.Name = "btn_cancelar"
-        Me.btn_cancelar.Size = New System.Drawing.Size(96, 43)
-        Me.btn_cancelar.TabIndex = 8
-        Me.btn_cancelar.Text = "Cancelar"
-        Me.btn_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btn_cancelar.UseVisualStyleBackColor = True
         '
         'Button_imprimir
         '
         Me.Button_imprimir.BackColor = System.Drawing.SystemColors.Info
         Me.Button_imprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button_imprimir.Image = Global.Aplicacion.My.Resources.Resources.Informe
-        Me.Button_imprimir.Location = New System.Drawing.Point(205, 375)
+        Me.Button_imprimir.Location = New System.Drawing.Point(274, 374)
         Me.Button_imprimir.Margin = New System.Windows.Forms.Padding(4)
         Me.Button_imprimir.Name = "Button_imprimir"
         Me.Button_imprimir.Size = New System.Drawing.Size(116, 43)
         Me.Button_imprimir.TabIndex = 314
         Me.Button_imprimir.Text = "Imprimir orden"
         Me.Button_imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button_imprimir, "Imprimir orden de revisión")
         Me.Button_imprimir.UseVisualStyleBackColor = False
         '
         'Button_trabajo
         '
         Me.Button_trabajo.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button_trabajo.Image = Global.Aplicacion.My.Resources.Resources.Pasar
-        Me.Button_trabajo.Location = New System.Drawing.Point(82, 375)
+        Me.Button_trabajo.Location = New System.Drawing.Point(151, 374)
         Me.Button_trabajo.Name = "Button_trabajo"
         Me.Button_trabajo.Size = New System.Drawing.Size(116, 43)
         Me.Button_trabajo.TabIndex = 315
         Me.Button_trabajo.Text = "Ir a orden de trabajo"
         Me.Button_trabajo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button_trabajo, "Ir a orden de trabajo")
         Me.Button_trabajo.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.Image = Global.Aplicacion.My.Resources.Resources.iniciar
+        Me.Button4.Location = New System.Drawing.Point(46, 374)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(98, 43)
+        Me.Button4.TabIndex = 316
+        Me.Button4.Text = "Volver"
+        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button4, "Volver a calendario")
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'Orden_Revision_nueva
         '
@@ -322,10 +328,10 @@ Partial Class Orden_Revision_nueva
         Me.BackgroundImage = Global.Aplicacion.My.Resources.Resources.silver_3
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(571, 423)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button_trabajo)
         Me.Controls.Add(Me.Button_imprimir)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.btn_cancelar)
         Me.Controls.Add(Me.btn_guardar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
@@ -358,11 +364,12 @@ Partial Class Orden_Revision_nueva
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents TextBox_Nombre As System.Windows.Forms.TextBox
     Friend WithEvents btn_guardar As System.Windows.Forms.Button
-    Friend WithEvents btn_cancelar As System.Windows.Forms.Button
     Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
     Friend WithEvents txt_diag As System.Windows.Forms.TextBox
     Friend WithEvents lb_error_diagnostico As System.Windows.Forms.Label
     Friend WithEvents lb_error_cliente As System.Windows.Forms.Label
     Friend WithEvents Button_imprimir As System.Windows.Forms.Button
     Friend WithEvents Button_trabajo As System.Windows.Forms.Button
+    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 End Class

@@ -143,10 +143,71 @@
 
     Private Sub Ajuste_alta_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         recuperar_proveedores_del_producto()
+        'recupero lotes e incremento en 1
+        recuperar_lotes_e_incrementar()
     End Sub
+    Private Sub recuperar_lotes_e_incrementar()
+        ds_PROD = DAprod.Producto_buscarcod_en_proveedor(codinterno, cb_proveedor.SelectedValue)
+        If ds_PROD.Tables(0).Rows.Count <> 0 Then
+            'tb_desc.Text = ds_PROD.Tables(0).Rows(0).Item("prod_descripcion")
+            'Buscar_Cantidades(ds_PROD.Tables(0).Rows(0).Item("prod_id"), cb_origen.SelectedValue, cb_destino.SelectedValue)
+
+            '//////////////////esto hago si el movimiento es alta de marcaderia///////////////////////////////////////////////
+
+            'If Gestion_Mercaderia.cb_Movimiento.Text = "Alta de Mercaderia" Then
+            'Grupo_lote.Enabled = True
+            If ds_PROD.Tables(2).Rows.Count <> 0 Then 'recupera el producto solo si tiene Lote = "SI"
+                'si es distinto de 0, significa que tiene lotes que se van a colocar incrementales, es decir NO
+                Dim ds_lotes As DataSet = DAlote.Lote_buscar_producto(codinterno, sucursal_id)
+                If ds_lotes.Tables(0).Rows.Count = 0 Then
+                    'como no tengo lotes, creo el primer lote en 1
+                    Dim nrolote_de_bd As Integer = 0
+                    'ahora me fijo, si tengo algo en la grilla de productos agregados, incremento el nrolote.
+                    'Dim i As Integer = 0
+                    'While i < DataGridView1.Rows.Count
+                    '    If DataGridView1.Rows(i).Cells("CodprodDataGridViewTextBoxColumn").Value = tb_codint.Text Then
+                    '        nrolote_de_bd = CInt(DataGridView1.Rows(i).Cells("Lote").Value)
+                    '    End If
+                    '    i = i + 1
+                    'End While
+                    nrolote_de_bd = nrolote_de_bd + 1
+                    txt_nrolote.Text = nrolote_de_bd
+                Else
+                    'como tengo varios lotes, busco el ultimo e incremento en 1.
+                    Dim nrolote_de_bd As Integer = CInt(ds_lotes.Tables(0).Rows(ds_lotes.Tables(0).Rows.Count - 1).Item("lote_nro"))
+                    ''ahora me fijo, si tengo algo en la grilla de productos agregados, incremento el nrolote.
+                    'Dim i As Integer = 0
+                    'While i < DataGridView1.Rows.Count
+                    '    If DataGridView1.Rows(i).Cells("CodprodDataGridViewTextBoxColumn").Value = tb_codint.Text Then
+                    '        nrolote_de_bd = CInt(DataGridView1.Rows(i).Cells("Lote").Value)
+                    '    End If
+                    '    i = i + 1
+                    'End While
+                    nrolote_de_bd = nrolote_de_bd + 1
+                    txt_nrolote.Text = nrolote_de_bd
+                End If
+                'txt_nrolote.ReadOnly=true
+                'Label8.Text = "Ingreso Nº:"
+            Else
+                'txt_nrolote.Enabled = True
+                ' Label8.Text = "Lote Nº:"
+            End If
+            'If
+            '/////////////////////////////////////////////////////////////////////////////////////////////////////
+        Else
+            'MessageBox.Show("El producto no existe para el proveedor seleccionado.", "Sistema de Gestión.")
+            'limpiar_seccion_agregar()
+        End If
+    End Sub
+
+
     Dim Validaciones As New Validaciones
     Private Sub tb_Cant_Movi_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tb_Cant_Movi.KeyPress
         Dim tipo As String = "Entero"
         Validaciones.Restricciones_textbox(e, tipo, tb_Cant_Movi)
+    End Sub
+
+    Private Sub txt_nrolote_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_nrolote.KeyPress
+        Validaciones.Restricciones_textbox(e, "Entero", txt_nrolote)
     End Sub
 End Class
