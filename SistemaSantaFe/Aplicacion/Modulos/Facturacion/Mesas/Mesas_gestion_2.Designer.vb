@@ -123,30 +123,30 @@ Partial Class Mesas_gestion_2
         Me.ContextMenuStrip_mesas.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Asignar, Me.CargarMesa, Me.Liberar, Me.CambiarMesaToolStripMenuItem})
         Me.ContextMenuStrip_mesas.Name = "ContextMenuStrip_mesas"
         Me.ContextMenuStrip_mesas.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ContextMenuStrip_mesas.Size = New System.Drawing.Size(190, 92)
+        Me.ContextMenuStrip_mesas.Size = New System.Drawing.Size(188, 92)
         '
         'Asignar
         '
         Me.Asignar.Name = "Asignar"
-        Me.Asignar.Size = New System.Drawing.Size(189, 22)
+        Me.Asignar.Size = New System.Drawing.Size(187, 22)
         Me.Asignar.Text = "Asignar mesa"
         '
         'CargarMesa
         '
         Me.CargarMesa.Name = "CargarMesa"
-        Me.CargarMesa.Size = New System.Drawing.Size(189, 22)
+        Me.CargarMesa.Size = New System.Drawing.Size(187, 22)
         Me.CargarMesa.Text = "Cargar - Cobrar mesa"
         '
         'Liberar
         '
         Me.Liberar.Name = "Liberar"
-        Me.Liberar.Size = New System.Drawing.Size(189, 22)
+        Me.Liberar.Size = New System.Drawing.Size(187, 22)
         Me.Liberar.Text = "Liberar mesa"
         '
         'CambiarMesaToolStripMenuItem
         '
         Me.CambiarMesaToolStripMenuItem.Name = "CambiarMesaToolStripMenuItem"
-        Me.CambiarMesaToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.CambiarMesaToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
         Me.CambiarMesaToolStripMenuItem.Text = "Cambiar mesa"
         Me.CambiarMesaToolStripMenuItem.Visible = False
         '

@@ -186,6 +186,7 @@ Partial Class Ajuste_alta
         Me.txt_nrolote.Margin = New System.Windows.Forms.Padding(4)
         Me.txt_nrolote.MinimumSize = New System.Drawing.Size(90, 30)
         Me.txt_nrolote.Name = "txt_nrolote"
+        Me.txt_nrolote.ReadOnly = True
         Me.txt_nrolote.Size = New System.Drawing.Size(112, 26)
         Me.txt_nrolote.TabIndex = 0
         Me.txt_nrolote.TextAlign = System.Windows.Forms.HorizontalAlignment.Center

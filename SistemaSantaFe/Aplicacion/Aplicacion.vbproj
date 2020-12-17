@@ -822,6 +822,12 @@
     <Compile Include="Modulos\Remito\Remito.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Servicios\Servicio_Consulta_b.Designer.vb">
+      <DependentUpon>Servicio_Consulta_b.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Servicios\Servicio_Consulta_b.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Servicios\Orden_Revision_nueva.Designer.vb">
       <DependentUpon>Orden_Revision_nueva.vb</DependentUpon>
     </Compile>
@@ -1482,6 +1488,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Remito\Remito.resx">
       <DependentUpon>Remito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Servicios\Servicio_Consulta_b.resx">
+      <DependentUpon>Servicio_Consulta_b.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Servicios\Orden_Revision_nueva.resx">
       <DependentUpon>Orden_Revision_nueva.vb</DependentUpon>

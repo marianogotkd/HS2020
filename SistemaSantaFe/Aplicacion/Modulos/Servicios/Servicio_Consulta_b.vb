@@ -1,30 +1,32 @@
-﻿Public Class Servicio_Consulta
+﻿Public Class Servicio_Consulta_b
     Dim DAservicio As New Datos.Servicio
     Dim DS_Obtener As New Servicio_DS
     Dim DAsucursal As New Datos.Sucursal
     Dim Obtenido = "no"
     Public serv_id = 0
     Public usuario_id
-    Public sucursal_id
+    Public sucursal_id 'viene del form del calendario
     Dim DAventa As New Datos.Venta
+    Public fecha As Date 'me lo envia el form del calendario
 
     Private Sub Servicio_Consulta_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Sucursales_Obtener()
+        'Sucursales_Obtener()
 
         usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
         Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(usuario_id)
         sucursal_id = ds_usuario.Tables(0).Rows(0).Item("sucursal_id")
-
-        ComboBox_suc.SelectedValue = sucursal_id
-        obtener_Servicio(ComboBox_suc.SelectedValue)
+        Me.Text = "Consulta Servicios - Sucursal: " + ds_usuario.Tables(0).Rows(0).Item("sucursal_nombre")
+        'ComboBox_suc.SelectedValue = sucursal_id
+        obtener_Servicio(sucursal_id)
 
         ComboBox_buscar.SelectedIndex = 0
         ComboBox1.SelectedIndex = 0
 
+        txt_fecha.Text = "FECHA: " + fecha
+
         If Inicio.UT_id <> 1 Then
             ComboBox_suc.Enabled = False
         End If
-
 
 
     End Sub
@@ -32,13 +34,11 @@
         DS_Obtener.Tables("Servicio_Obtener").Rows.Clear()
         Servicio_DS.Tables("ordentrabajo").Rows.Clear()
         Servicio_DS.Tables("Servicio_Obtener").Rows.Clear()
-        Dim ds_servicio As DataSet = DAservicio.Servicio_Obterner_X_Sucursal_MDA(suc)
+        Dim ds_servicio As DataSet = DAservicio.Servicio_Obterner_X_Sucursal_MDA_rango_fecha(fecha, fecha, suc)
         If ds_servicio.Tables(0).Rows.Count <> 0 Then
             Dim cant_servicios As Integer = ds_servicio.Tables(0).Rows.Count
             Servicio_DS.Tables("Servicio_Obtener").Rows.Clear()
             Servicio_DS.Tables("Servicio_Obtener").Merge(ds_servicio.Tables(0))
-            Servicio_DS.Tables("ordentrabajo").Rows.Clear()
-            Servicio_DS.Tables("ordentrabajo").Merge(ds_servicio.Tables(1))
             'DS_Obtener.Tables("Servicio_Obtener").Merge(ds_servicio.Tables(0))
             'DG_Servicio.DataSource = DS_Obtener.Tables("Servicio_Obtener")
         End If
@@ -60,11 +60,19 @@
 
     End Sub
     Private Sub Button_Detalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Detalle.Click
-        serv_id = DG_Servicio.SelectedCells(0).Value
-        Servicio_nuevo.Close()
-        Servicio_nuevo.Cliente_ID = DG_Servicio.SelectedCells(1).Value
-        Servicio_nuevo.serv_id = serv_id
-        Servicio_nuevo.Show()
+        If DG_Servicio.Rows.Count <> 0 Then
+            serv_id = DG_Servicio.SelectedCells(0).Value
+            'Servicio_nuevo.Close()
+            'Servicio_nuevo.Cliente_ID = DG_Servicio.SelectedCells(1).Value
+            'Servicio_nuevo.serv_id = serv_id
+            'Servicio_nuevo.Show()
+            Orden_Revision_nueva.Close()
+            Orden_Revision_nueva.appID = serv_id
+            Orden_Revision_nueva.Show()
+            Me.Close()
+        End If
+
+
     End Sub
 
     Private Sub ComboBox_suc_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_suc.SelectedIndexChanged
@@ -133,14 +141,16 @@
         End If
     End Sub
 
-  
-    
+
+
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         serv_id = DG_OrdenTrabajo.CurrentRow.Cells("ServicioidDataGridViewTextBoxColumn1").Value
         Servicio_nuevo.Close()
         Servicio_nuevo.Cliente_ID = DG_OrdenTrabajo.CurrentRow.Cells("CLIidDataGridViewTextBoxColumn1").Value
         Servicio_nuevo.serv_id = serv_id
         Servicio_nuevo.Show()
+
+        Me.Close()
     End Sub
 
     Private Sub TextBox2_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox2.KeyPress
@@ -169,5 +179,11 @@
             MessageBox.Show("No se puede cambiar el estado del Servicio seleccionado", "Sistema de Gestión", MessageBoxButtons.OK)
         End If
         obtener_Servicio(ComboBox_suc.SelectedValue)
+    End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        Tareas_Consulta.Close()
+        Tareas_Consulta.Show()
+        Me.Close()
     End Sub
 End Class
