@@ -126,6 +126,10 @@ Represents the strongly named DataTable class.
 	<summary>
 Represents the strongly named DataTable class.
 </summary>
+</member><member name="T:Aplicacion.Cliente_ds.SucursalesDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
 </member><member name="T:Aplicacion.Cliente_ds.ClienteRow">
 	<summary>
 Represents strongly named DataRow class.
@@ -150,6 +154,10 @@ Represents strongly named DataRow class.
 	<summary>
 Represents strongly named DataRow class.
 </summary>
+</member><member name="T:Aplicacion.Cliente_ds.SucursalesRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
 </member><member name="T:Aplicacion.Cliente_ds.ClienteRowChangeEvent">
 	<summary>
 Row event argument class
@@ -171,6 +179,10 @@ Row event argument class
 Row event argument class
 </summary>
 </member><member name="T:Aplicacion.Cliente_ds.Detalle_CtaCteRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Cliente_ds.SucursalesRowChangeEvent">
 	<summary>
 Row event argument class
 </summary>

@@ -191,12 +191,12 @@ Public Class Cliente_Cta_Cte_Buscar
             tx_Fan.Text = ds_clie_recu.Tables(1).Rows(0).Item("CLI_Fan")
             tb_Dni_Cuit.Text = ds_clie_recu.Tables(1).Rows(0).Item("CLI_dni")
             Combo_Iva.SelectedValue = ds_clie_recu.Tables(1).Rows(0).Item("CLI_tipoiva")
-            tx_tel.Text = ds_clie_recu.Tables(1).Rows(0).Item("CLI_tel")
-            tx_dir.Text = ds_clie_recu.Tables(1).Rows(0).Item("CLI_dir")
-            tx_Cp.Text = ds_clie_recu.Tables(1).Rows(0).Item("CLI_CP")
-            combo_Prov.SelectedValue = ds_clie_recu.Tables(1).Rows(0).Item("CLI_Id_Prov")
-            Combo_Loc.SelectedValue = ds_clie_recu.Tables(1).Rows(0).Item("localidad_id")
-            tx_mail.Text = ds_clie_recu.Tables(1).Rows(0).Item("CLI_mail")
+            'tx_tel.Text = ds_clie_recu.Tables(1).Rows(0).Item("CLI_tel")
+            'tx_dir.Text = ds_clie_recu.Tables(1).Rows(0).Item("CLI_dir")
+            'tx_Cp.Text = ds_clie_recu.Tables(1).Rows(0).Item("CLI_CP")
+            'combo_Prov.SelectedValue = ds_clie_recu.Tables(1).Rows(0).Item("CLI_Id_Prov")
+            'Combo_Loc.SelectedValue = ds_clie_recu.Tables(1).Rows(0).Item("localidad_id")
+            'tx_mail.Text = ds_clie_recu.Tables(1).Rows(0).Item("CLI_mail")
 
             'si tiene cuenta corriente cargamos los datos, solo se podra modificar el limite de deuda. choco: 02-12-2019.
             If ds_clie_recu.Tables(2).Rows.Count <> 0 Then
@@ -248,7 +248,8 @@ Public Class Cliente_Cta_Cte_Buscar
         result = MessageBox.Show("¿Desea modificar los datos del cliente?", "Sistema de Gestión", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
         If result = DialogResult.OK Then
             Dim cliente_id As Integer = CInt(DG_clientes.CurrentRow.Cells("CLIidDataGridViewTextBoxColumn").Value)
-            DAcliente.Cliente_Modificar(cliente_id, tx_Fan.Text, tb_Dni_Cuit.Text, Combo_Iva.SelectedValue, tx_tel.Text, tx_dir.Text, tx_Cp.Text, combo_Prov.SelectedValue, Combo_Loc.SelectedValue, tx_mail.Text)
+            DAcliente.Cliente_Modificar(cliente_id, tx_Fan.Text, tb_Dni_Cuit.Text, Combo_Iva.SelectedValue)
+            'DAcliente.Cliente_Modificar(cliente_id, tx_Fan.Text, tb_Dni_Cuit.Text, Combo_Iva.SelectedValue, tx_tel.Text, tx_dir.Text, tx_Cp.Text, combo_Prov.SelectedValue, Combo_Loc.SelectedValue, tx_mail.Text)
 
             'ahora veo si doy de alta una cta cte o bien modifico una existente ligada a un cliente.
             'If CheckBox_habilitar_ctacte.Checked = True Then
