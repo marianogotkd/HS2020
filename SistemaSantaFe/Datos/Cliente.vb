@@ -7,13 +7,14 @@ Public Class Cliente
     'Cliente_Alta_new
     Public Function Cliente_Alta_new(ByVal CLI_Fan As String,
                                 ByVal CLI_dni_cuit As String,
-                                ByVal CLI_tipoiva As String,
-                                ByVal CLI_tel As String,
-                                ByVal CLI_dir As String,
-                                ByVal CLI_CP As String,
-                                ByVal CLI_Id_Prov As String,
-                                ByVal CLI_Id_Loc As String,
-                                ByVal CLI_mail As String) As DataSet
+                                ByVal CLI_tipoiva As String) As DataSet
+        'ByVal CLI_tel As String,
+        'ByVal CLI_dir As String,
+        'ByVal CLI_CP As String,
+        'ByVal CLI_Id_Prov As String,
+        'ByVal CLI_Id_Loc As String,
+        'ByVal CLI_mail As String
+
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -25,12 +26,12 @@ Public Class Cliente
         comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_Fan", CLI_Fan))
         comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_dni_cuit", CLI_dni_cuit))
         comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_tipoiva", CLI_tipoiva))
-        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_tel", CLI_tel))
-        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_dir", CLI_dir))
-        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_CP", CLI_CP))
-        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_Id_Prov", CLI_Id_Prov))
-        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_Id_Loc", CLI_Id_Loc))
-        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_mail", CLI_mail))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_tel", CLI_tel))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_dir", CLI_dir))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_CP", CLI_CP))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_Id_Prov", CLI_Id_Prov))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_Id_Loc", CLI_Id_Loc))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_mail", CLI_mail))
 
 
         Dim ds_JE As New DataSet()
@@ -39,6 +40,86 @@ Public Class Cliente
         dbconn.Close()
         Return ds_JE
     End Function
+
+    'CHOCO 17-12-2020
+    Public Function Cliente_Sucursales_alta(ByVal CLI_id As Integer,
+                                ByVal SucxClie_nombre As String,
+                                ByVal SucxClie_tel As String,
+                                ByVal SucxClie_mail As String,
+                                ByVal SucxClie_dir As String,
+                                ByVal SucxClie_CP As Integer,
+                                ByVal SucxClie_Prov As Integer,
+                                ByVal SucxClie_Loc As Integer,
+                                ByVal SucxClie_estado As String) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Cliente_Sucursales_alta", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_id", CLI_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_nombre", SucxClie_nombre))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_tel", SucxClie_tel))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_mail", SucxClie_mail))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_dir", SucxClie_dir))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_CP", SucxClie_CP))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_Prov", SucxClie_Prov))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_Loc", SucxClie_Loc))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_estado", SucxClie_estado))
+
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Cliente")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
+    Public Sub Cliente_Sucursales_modificar(ByVal SucxClie_id As Integer,
+                                ByVal SucxClie_nombre As String,
+                                ByVal SucxClie_tel As String,
+                                ByVal SucxClie_mail As String,
+                                ByVal SucxClie_dir As String,
+                                ByVal SucxClie_CP As Integer,
+                                ByVal SucxClie_Prov As Integer,
+                                ByVal SucxClie_Loc As Integer,
+                                ByVal SucxClie_estado As String)
+        '                        ByVal CLI_tel As String,
+        '                        ByVal CLI_dir As String,
+        '                        ByVal CLI_CP As String,
+        '                        ByVal CLI_Id_Prov As String,
+        '                        ByVal CLI_Id_Loc As String,
+        '                        ByVal CLI_mail As String
+        ')
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Cliente_Sucursales_modificar", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_id", SucxClie_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_nombre", SucxClie_nombre))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_tel", SucxClie_tel))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_mail", SucxClie_mail))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_dir", SucxClie_dir))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_CP", SucxClie_CP))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_Prov", SucxClie_Prov))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_Loc", SucxClie_Loc))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_estado", SucxClie_estado))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Cliente")
+        dbconn.Close()
+    End Sub
+
+
+
 
 
 
@@ -71,14 +152,14 @@ Public Class Cliente
     'Cliente_Modificar
     Public Sub Cliente_Modificar(ByVal CLI_id As Integer, ByVal CLI_Fan As String,
                                 ByVal CLI_dni_cuit As String,
-                                ByVal CLI_tipoiva As String,
-                                ByVal CLI_tel As String,
-                                ByVal CLI_dir As String,
-                                ByVal CLI_CP As String,
-                                ByVal CLI_Id_Prov As String,
-                                ByVal CLI_Id_Loc As String,
-                                ByVal CLI_mail As String
-        )
+                                ByVal CLI_tipoiva As String)
+        '                        ByVal CLI_tel As String,
+        '                        ByVal CLI_dir As String,
+        '                        ByVal CLI_CP As String,
+        '                        ByVal CLI_Id_Prov As String,
+        '                        ByVal CLI_Id_Loc As String,
+        '                        ByVal CLI_mail As String
+        ')
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -91,12 +172,12 @@ Public Class Cliente
         comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_Fan", CLI_Fan))
         comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_dni_cuit", CLI_dni_cuit))
         comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_tipoiva", CLI_tipoiva))
-        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_tel", CLI_tel))
-        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_dir", CLI_dir))
-        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_CP", CLI_CP))
-        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_Id_Prov", CLI_Id_Prov))
-        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_Id_Loc", CLI_Id_Loc))
-        comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_mail", CLI_mail))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_tel", CLI_tel))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_dir", CLI_dir))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_CP", CLI_CP))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_Id_Prov", CLI_Id_Prov))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_Id_Loc", CLI_Id_Loc))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_mail", CLI_mail))
 
 
         Dim ds_JE As New DataSet()

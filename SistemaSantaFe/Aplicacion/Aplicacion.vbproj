@@ -246,6 +246,12 @@
     <Compile Include="Modulos\Cliente\Cliente_alta_New.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Cliente\Cliente_Sucursales.Designer.vb">
+      <DependentUpon>Cliente_Sucursales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Cliente\Cliente_Sucursales.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Cliente\CtaCte_ajustesaldo.Designer.vb">
       <DependentUpon>CtaCte_ajustesaldo.vb</DependentUpon>
     </Compile>
@@ -1249,6 +1255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Cliente\Cliente_alta_New.resx">
       <DependentUpon>Cliente_alta_New.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Cliente\Cliente_Sucursales.resx">
+      <DependentUpon>Cliente_Sucursales.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Cliente\CtaCte_ajustesaldo.resx">
       <DependentUpon>CtaCte_ajustesaldo.vb</DependentUpon>
