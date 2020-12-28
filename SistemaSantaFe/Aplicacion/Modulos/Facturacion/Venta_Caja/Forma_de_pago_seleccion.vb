@@ -96,7 +96,7 @@
                                       0,
                                       0,
                                       0,
-                                      0, venta_tipo_descripcion, Servicio_nuevo.Label_Cod.Text, vendedor_id, "Pendiente")
+                                      0, venta_tipo_descripcion, Servicio_nuevo.Label_Cod.Text, vendedor_id, "Pendiente", Servicio_nuevo.SucxClie_id)
                         Dim ventaprod_id As Integer = CInt(ds_Venta.Tables(0).Rows(0).Item("ventaprod_id"))
 
                         Dim ds_factura As DataSet = DAventa.Factura_alta(ventaprod_id, Now)
@@ -167,7 +167,7 @@
                                              CDec(Venta_Caja_gestion.txt_descuento.Text),
                                              CDec(Venta_Caja_gestion.txt_desc_porc.Text),
                                              CDec(Venta_Caja_gestion.ComboBox_iva.SelectedItem),
-                                              CDec(Venta_Caja_gestion.txt_impuesto_aplicado.Text), venta_tipo_descripcion, 0, vendedor_id, "Pendiente")
+                                              CDec(Venta_Caja_gestion.txt_impuesto_aplicado.Text), venta_tipo_descripcion, 0, vendedor_id, "Pendiente", Venta_Caja_gestion.SucxClie_id)
                                 Dim ventaprod_id As Integer = CInt(ds_Venta.Tables(0).Rows(0).Item("ventaprod_id"))
 
                                 Dim ds_factura As DataSet = DAventa.Factura_alta(ventaprod_id, Now)

@@ -33,10 +33,6 @@ Partial Class Orden_Revision_nueva
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox_tel = New System.Windows.Forms.TextBox()
-        Me.TextBox_dir = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TextBox_dni = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -47,6 +43,8 @@ Partial Class Orden_Revision_nueva
         Me.Button_trabajo = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.combo_sucursal = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -54,6 +52,7 @@ Partial Class Orden_Revision_nueva
         '
         'GroupBox1
         '
+        Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox1.Controls.Add(Me.GroupBox6)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.txt_serv_id)
@@ -63,7 +62,7 @@ Partial Class Orden_Revision_nueva
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 3)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(553, 365)
+        Me.GroupBox1.Size = New System.Drawing.Size(553, 328)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Complete la información"
@@ -73,7 +72,7 @@ Partial Class Orden_Revision_nueva
         Me.GroupBox6.Controls.Add(Me.txt_diag)
         Me.GroupBox6.Controls.Add(Me.lb_error_diagnostico)
         Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox6.Location = New System.Drawing.Point(7, 253)
+        Me.GroupBox6.Location = New System.Drawing.Point(7, 215)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(530, 105)
         Me.GroupBox6.TabIndex = 11
@@ -146,11 +145,9 @@ Partial Class Orden_Revision_nueva
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label7)
+        Me.GroupBox2.Controls.Add(Me.combo_sucursal)
         Me.GroupBox2.Controls.Add(Me.Button1)
-        Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.TextBox_tel)
-        Me.GroupBox2.Controls.Add(Me.TextBox_dir)
-        Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.TextBox_dni)
         Me.GroupBox2.Controls.Add(Me.Label3)
@@ -159,7 +156,7 @@ Partial Class Orden_Revision_nueva
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(7, 89)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(530, 158)
+        Me.GroupBox2.Size = New System.Drawing.Size(530, 124)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos del Cliente "
@@ -175,44 +172,6 @@ Partial Class Orden_Revision_nueva
         Me.Button1.Text = "Buscar Cliente"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(70, 94)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(65, 16)
-        Me.Label6.TabIndex = 8
-        Me.Label6.Text = "Telefono:"
-        '
-        'TextBox_tel
-        '
-        Me.TextBox_tel.BackColor = System.Drawing.Color.LightGoldenrodYellow
-        Me.TextBox_tel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_tel.Location = New System.Drawing.Point(141, 87)
-        Me.TextBox_tel.Name = "TextBox_tel"
-        Me.TextBox_tel.ReadOnly = True
-        Me.TextBox_tel.Size = New System.Drawing.Size(238, 22)
-        Me.TextBox_tel.TabIndex = 3
-        '
-        'TextBox_dir
-        '
-        Me.TextBox_dir.BackColor = System.Drawing.Color.LightGoldenrodYellow
-        Me.TextBox_dir.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_dir.Location = New System.Drawing.Point(141, 115)
-        Me.TextBox_dir.Name = "TextBox_dir"
-        Me.TextBox_dir.ReadOnly = True
-        Me.TextBox_dir.Size = New System.Drawing.Size(238, 22)
-        Me.TextBox_dir.TabIndex = 2
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(67, 118)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(68, 16)
-        Me.Label4.TabIndex = 4
-        Me.Label4.Text = "Dirección:"
         '
         'Label5
         '
@@ -269,7 +228,7 @@ Partial Class Orden_Revision_nueva
         '
         Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
-        Me.btn_guardar.Location = New System.Drawing.Point(398, 375)
+        Me.btn_guardar.Location = New System.Drawing.Point(401, 338)
         Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_guardar.Name = "btn_guardar"
         Me.btn_guardar.Size = New System.Drawing.Size(116, 43)
@@ -284,7 +243,7 @@ Partial Class Orden_Revision_nueva
         Me.Button_imprimir.BackColor = System.Drawing.SystemColors.Info
         Me.Button_imprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button_imprimir.Image = Global.Aplicacion.My.Resources.Resources.Informe
-        Me.Button_imprimir.Location = New System.Drawing.Point(274, 374)
+        Me.Button_imprimir.Location = New System.Drawing.Point(277, 337)
         Me.Button_imprimir.Margin = New System.Windows.Forms.Padding(4)
         Me.Button_imprimir.Name = "Button_imprimir"
         Me.Button_imprimir.Size = New System.Drawing.Size(116, 43)
@@ -298,7 +257,7 @@ Partial Class Orden_Revision_nueva
         '
         Me.Button_trabajo.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button_trabajo.Image = Global.Aplicacion.My.Resources.Resources.Pasar
-        Me.Button_trabajo.Location = New System.Drawing.Point(151, 374)
+        Me.Button_trabajo.Location = New System.Drawing.Point(154, 337)
         Me.Button_trabajo.Name = "Button_trabajo"
         Me.Button_trabajo.Size = New System.Drawing.Size(116, 43)
         Me.Button_trabajo.TabIndex = 315
@@ -311,7 +270,7 @@ Partial Class Orden_Revision_nueva
         '
         Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.Image = Global.Aplicacion.My.Resources.Resources.iniciar
-        Me.Button4.Location = New System.Drawing.Point(46, 374)
+        Me.Button4.Location = New System.Drawing.Point(49, 337)
         Me.Button4.Margin = New System.Windows.Forms.Padding(4)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(98, 43)
@@ -321,13 +280,34 @@ Partial Class Orden_Revision_nueva
         Me.ToolTip1.SetToolTip(Me.Button4, "Volver a calendario")
         Me.Button4.UseVisualStyleBackColor = True
         '
+        'combo_sucursal
+        '
+        Me.combo_sucursal.BackColor = System.Drawing.Color.LightGoldenrodYellow
+        Me.combo_sucursal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.combo_sucursal.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.combo_sucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.combo_sucursal.FormattingEnabled = True
+        Me.combo_sucursal.Location = New System.Drawing.Point(141, 90)
+        Me.combo_sucursal.Name = "combo_sucursal"
+        Me.combo_sucursal.Size = New System.Drawing.Size(238, 24)
+        Me.combo_sucursal.TabIndex = 20
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(67, 93)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(63, 16)
+        Me.Label7.TabIndex = 21
+        Me.Label7.Text = "Sucursal:"
+        '
         'Orden_Revision_nueva
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Aplicacion.My.Resources.Resources.silver_3
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(571, 423)
+        Me.ClientSize = New System.Drawing.Size(571, 387)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button_trabajo)
         Me.Controls.Add(Me.Button_imprimir)
@@ -355,10 +335,6 @@ Partial Class Orden_Revision_nueva
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents TextBox_tel As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox_dir As System.Windows.Forms.TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents TextBox_dni As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
@@ -372,4 +348,6 @@ Partial Class Orden_Revision_nueva
     Friend WithEvents Button_trabajo As System.Windows.Forms.Button
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents combo_sucursal As System.Windows.Forms.ComboBox
 End Class

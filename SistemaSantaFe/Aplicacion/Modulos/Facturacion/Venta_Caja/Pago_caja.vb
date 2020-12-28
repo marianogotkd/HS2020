@@ -138,7 +138,7 @@ Public Class Pago_caja
                         'venta_tipo_descripcion = "Servicio"
                         Dim vendedor_id As Integer = 0 'OJO HAY Q VER QUE VENDEDOR ASIGNO, O SI SE PUEDE CREAR EN LA TABLA VENDEDOR UN REGISTRO QUE DIGA ...DEFECTO, SI NO SE POSEE VENDEDOR
                         vendedor_id = 1 'por AHORA LO DEJO EN DEFECTO, OJO esto no es lo optimo.
-                        Dim ds_Venta As DataSet = DAventa.VentaProducto_alta(Monto_sin_anticipo, Now, usuario_id, tipo_vta, cliente_id, Monto_sin_anticipo, 0, 0, 0, 0, venta_tipo_descripcion, Ser_id, vendedor_id, "Cobrado")
+                        Dim ds_Venta As DataSet = DAventa.VentaProducto_alta(Monto_sin_anticipo, Now, usuario_id, tipo_vta, cliente_id, Monto_sin_anticipo, 0, 0, 0, 0, venta_tipo_descripcion, Ser_id, vendedor_id, "Cobrado", Servicio_nuevo.SucxClie_id)
 
 
                         'Dim descripcion As String = "Orden de trabajo Nº" + CStr(Ser_id) 'aqui tengo q recuperar el id de la orden, no es el id del servicio
@@ -206,12 +206,15 @@ Public Class Pago_caja
                             Dim sucursal_id As Integer = ds_usuario.Tables(0).Rows(0).Item("sucursal_id")
                             Dim tipo_vta As String = ""
                             Dim cliente_id As Integer
+                            Dim SucxClie_id As Integer
                             If Venta_Caja_gestion.RB_Consumidor.Checked = True Then
                                 tipo_vta = "Consumidor Final"
                                 cliente_id = 0
+                                SucxClie_id = 0
                             Else
                                 tipo_vta = "Cliente"
                                 cliente_id = Venta_Caja_gestion.DG_clientes.CurrentRow.Cells(0).Value
+                                SucxClie_id = Venta_Caja_gestion.SucxClie_id
                             End If
                             Dim venta_tipo_descripcion As String = ""
                             If Venta_Caja_gestion.tipo_vta = "Minorista" Then
@@ -229,7 +232,7 @@ Public Class Pago_caja
                                                              CDec(Venta_Caja_gestion.txt_descuento.Text),
                                                              CDec(Venta_Caja_gestion.txt_desc_porc.Text),
                                                              CDec(Venta_Caja_gestion.ComboBox_iva.SelectedItem),
-                                                              CDec(Venta_Caja_gestion.txt_impuesto_aplicado.Text), venta_tipo_descripcion, 0, vendedor_id, "Cobrado")
+                                                              CDec(Venta_Caja_gestion.txt_impuesto_aplicado.Text), venta_tipo_descripcion, 0, vendedor_id, "Cobrado", SucxClie_id)
                             Dim ventaprod_id As Integer = CInt(ds_Venta.Tables(0).Rows(0).Item("ventaprod_id"))
                             '/////////////////choco: 04-12-2019 - genero la factura en su correspondiente tabla///////////////////
                             Dim ds_factura As DataSet = DAventa.Factura_alta(ventaprod_id, Now)

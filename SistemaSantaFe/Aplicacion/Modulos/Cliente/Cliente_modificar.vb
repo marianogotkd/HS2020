@@ -70,9 +70,14 @@ Public Class Cliente_modificar
             If procedencia = "Orden_Revision_nueva" And DG_clientes.Rows.Count <> 0 Then
                 Orden_Revision_nueva.TextBox_Nombre.Text = DG_clientes.SelectedCells(1).Value
                 Orden_Revision_nueva.TextBox_dni.Text = DG_clientes.SelectedCells(4).Value
-                Orden_Revision_nueva.TextBox_dir.Text = DG_clientes.SelectedCells(8).Value
-                Orden_Revision_nueva.TextBox_tel.Text = DG_clientes.SelectedCells(6).Value
+                'Orden_Revision_nueva.TextBox_dir.Text = DG_clientes.SelectedCells(8).Value
+                'Orden_Revision_nueva.TextBox_tel.Text = DG_clientes.SelectedCells(6).Value
                 Orden_Revision_nueva.Cliente_ID = DG_clientes.SelectedCells(0).Value
+                'cargo en el combo box las sucursales disponibles para ese cliente.
+                Dim ds_clie As DataSet = DAcliente.Cliente_obtener_info(DG_clientes.SelectedCells(0).Value)
+                Orden_Revision_nueva.combo_sucursal.DataSource = ds_clie.Tables(3)
+                Orden_Revision_nueva.combo_sucursal.DisplayMember = "SucxClie_nombre"
+                Orden_Revision_nueva.combo_sucursal.ValueMember = "SucxClie_id"
                 Me.Close()
             Else
                 If DG_clientes.Rows.Count <> 0 Then

@@ -60,8 +60,11 @@
             txt_serv_id.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_id").ToString
             TextBox_Nombre.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_Fan").ToString
             TextBox_dni.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_dni").ToString
-            TextBox_dir.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_dir").ToString
-            TextBox_tel.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_tel").ToString
+            'TextBox_dir.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_dir").ToString
+            'TextBox_tel.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_tel").ToString
+            combo_sucursal.DataSource = Ds_servicio.Tables(0)
+            combo_sucursal.ValueMember = "SucxClie_id"
+            combo_sucursal.DisplayMember = "SucxClie_nombre"
             txt_diag.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Diagnostico").ToString
             DateTimePicker1.Value = Ds_servicio.Tables(0).Rows(i).Item("Servicio_fecha")
             'Label_Estado.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Estado").ToString
@@ -96,11 +99,11 @@
                     Dim ds_SevicioGuardar As DataSet = DAservicio.Servicio_alta_MDA(Cliente_ID, DateTimePicker1.Value,
                                                                         sucursal_id, usuario_id, txt_diag.Text, "",
                                                                         "", DateTimePicker1.Value, DateTimePicker1.Value,
-                                                                        CDec(0), "PENDIENTE")
+                                                                        CDec(0), "PENDIENTE", combo_sucursal.SelectedValue)
                     MessageBox.Show("Los datos se guardaron correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     'AQUI TENGO QUE ABRIR EL REPORTE CON LA ORDEN DE REVISION.
                     Dim result2 As Integer = MessageBox.Show("¿Desea ver la orden de revisión para imprimir?", "Sistema de Gestión", MessageBoxButtons.YesNo)
-                    If result = DialogResult.Yes Then
+                    If result2 = DialogResult.Yes Then
                         reporte(ds_SevicioGuardar.Tables(0).Rows(0).Item(0))
                     End If
                     'limpiar()
@@ -154,8 +157,8 @@
         txt_serv_id.Clear()
         TextBox_dni.Clear()
         TextBox_Nombre.Clear()
-        TextBox_tel.Clear()
-        TextBox_dir.Clear()
+        'TextBox_tel.Clear()
+        'TextBox_dir.Clear()
         txt_diag.Clear()
 
 
@@ -166,8 +169,14 @@
 
         Dim fila As DataRow = ds_revision_reporte.Tables("Revision").NewRow
         fila("id_revision") = servicio_id
-        fila("cliente") = TextBox_Nombre.Text
-        fila("direccion") = TextBox_dir.Text
+        fila("cliente") = TextBox_Nombre.Text + ", Suc: " + combo_sucursal.Text
+
+        Dim ds_serv As DataSet = DAservicio.Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA(servicio_id)
+        fila("direccion") = ds_serv.Tables(0).Rows(0).Item("SucxClie_dir").ToString
+        'fila("direccion") = TextBox_dir.Text
+        'la direccion la recupero de la tabla cliente sucursales.
+
+
         fila("fecha") = DateTimePicker1.Value.Date
         fila("diagnostico_previo") = txt_diag.Text
         ds_revision_reporte.Tables("Revision").Rows.Add(fila)

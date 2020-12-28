@@ -65,6 +65,8 @@
         Servicio_nuevo.Cliente_ID = DG_Servicio.SelectedCells(1).Value
         Servicio_nuevo.serv_id = serv_id
         Servicio_nuevo.Show()
+        Me.Close()
+
     End Sub
 
     Private Sub ComboBox_suc_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_suc.SelectedIndexChanged
@@ -141,6 +143,8 @@
         Servicio_nuevo.Cliente_ID = DG_OrdenTrabajo.CurrentRow.Cells("CLIidDataGridViewTextBoxColumn1").Value
         Servicio_nuevo.serv_id = serv_id
         Servicio_nuevo.Show()
+        Me.Close()
+
     End Sub
 
     Private Sub TextBox2_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox2.KeyPress

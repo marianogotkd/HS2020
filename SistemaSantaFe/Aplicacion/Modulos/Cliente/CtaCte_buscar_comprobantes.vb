@@ -92,17 +92,21 @@
         'result = MessageBox.Show("¿Desea ver el remito generado?.", "Sistema de Gestión.", MessageBoxButtons.OKCancel)
         'If result = DialogResult.OK Then
         'primero lleno el dataset y sus respectivas table
+
+        'aqui traigo todo la info del remito y los productos
+        Dim ds_factura As DataSet = DAventa.Factura_recuperar_productos(numerofactura)
+
         '///////////////TABLA CLIENTE//////////////////////////////////'
         facturacion_ds_report.Tables("Cliente").Rows.Clear()
-        Dim ds_cliente As DataSet = DAcliente.Cliente_obtener_info(cliente_id)
+        'Dim ds_cliente As DataSet = DAcliente.Cliente_obtener_info(cliente_id)
         Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
-        row_cliente("fantasia") = ds_cliente.Tables(1).Rows(0).Item("CLI_Fan")
-        row_cliente("dni") = ds_cliente.Tables(1).Rows(0).Item("CLI_dni")
-        row_cliente("telefono") = ds_cliente.Tables(1).Rows(0).Item("CLI_tel")
-        row_cliente("mail") = ds_cliente.Tables(1).Rows(0).Item("CLI_mail")
-        row_cliente("direccion") = ds_cliente.Tables(1).Rows(0).Item("CLI_dir")
-        row_cliente("localidad") = ds_cliente.Tables(1).Rows(0).Item("provincia") + ", " + ds_cliente.Tables(1).Rows(0).Item("Localidad")
-        row_cliente("iva_condicion") = ds_cliente.Tables(0).Rows(0).Item("IVA_descripcion").ToString
+        row_cliente("fantasia") = ds_factura.Tables(1).Rows(0).Item("CLI_Fan") + ", Suc: " + ds_factura.Tables(1).Rows(0).Item("SucxClie_nombre")
+        row_cliente("dni") = ds_factura.Tables(1).Rows(0).Item("CLI_dni")
+        row_cliente("telefono") = ds_factura.Tables(1).Rows(0).Item("SucxClie_tel")
+        row_cliente("mail") = ds_factura.Tables(1).Rows(0).Item("SucxClie_mail")
+        row_cliente("direccion") = ds_factura.Tables(1).Rows(0).Item("SucxClie_dir")
+        row_cliente("localidad") = ds_factura.Tables(1).Rows(0).Item("provincia") + ", " + ds_factura.Tables(1).Rows(0).Item("Localidad")
+        row_cliente("iva_condicion") = ds_factura.Tables(1).Rows(0).Item("IVA_Descripcion").ToString
         facturacion_ds_report.Tables("Cliente").Rows.Add(row_cliente)
         '///////////////TABLA SUCURSAL//////////////////////////////////'
         Dim USU_ID As Integer = CInt(US_administrador.USU_id)
@@ -122,8 +126,7 @@
             facturacion_ds_report.Tables("Empresa").Merge(ds_usuario.Tables(1))
         End If
 
-        'aqui traigo todo la info del remito y los productos
-        Dim ds_factura As DataSet = DAventa.Factura_recuperar_productos(numerofactura)
+        
 
         '///////////////TABLA VENTA//////////////////////////////////'
         facturacion_ds_report.Tables("venta").Rows.Clear()
