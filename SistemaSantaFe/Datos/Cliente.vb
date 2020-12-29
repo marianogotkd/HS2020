@@ -119,6 +119,33 @@ Public Class Cliente
     End Sub
 
 
+    Public Sub Cliente_Sucursales_eliminar(ByVal SucxClie_id As Integer,
+                                ByVal SucxClie_estado As String)
+        '                        ByVal CLI_tel As String,
+        '                        ByVal CLI_dir As String,
+        '                        ByVal CLI_CP As String,
+        '                        ByVal CLI_Id_Prov As String,
+        '                        ByVal CLI_Id_Loc As String,
+        '                        ByVal CLI_mail As String
+        ')
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Cliente_Sucursales_eliminar", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_id", SucxClie_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_estado", SucxClie_estado))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Cliente")
+        dbconn.Close()
+    End Sub
+
+
 
 
 

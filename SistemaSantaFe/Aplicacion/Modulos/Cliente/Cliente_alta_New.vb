@@ -595,6 +595,7 @@ Public Class Cliente_alta_New
                             'no esta guardado en bd, asi que solo quito
                         Else
                             'si esta en bd, entonces actualizo en bd, el estado del campo SucxClie_estado = "eliminado"
+                            DAcliente.Cliente_Sucursales_eliminar(CInt(DG_Servicio.Rows(i).Cells("SucxClieidDataGridViewTextBoxColumn").Value), "ELIMINADO")
                         End If
                         DG_Servicio.Rows.RemoveAt(i)
                         i = 0 'lo reinicio, x q al quitar un ite, se reordenan los indices

@@ -27,15 +27,15 @@
         '///////////////TABLA CLIENTE//////////////////////////////////'
         facturacion_ds_report.Tables("Cliente").Rows.Clear()
         If ds_venta.Tables(0).Rows.Count <> 0 Then 'la tabla es la que tiene asociado venta a un cliente, si el cliente es consumidor final, entonces esta tabla esta vacia
-            Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni(CStr(ds_venta.Tables(0).Rows(0).Item("DNI")))
+            'Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni(CStr(ds_venta.Tables(0).Rows(0).Item("DNI")))
             Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
-            row_cliente("fantasia") = ds_venta.Tables(0).Rows(0).Item("fantasia")
+            row_cliente("fantasia") = ds_venta.Tables(0).Rows(0).Item("fantasia") + ", Suc: " + ds_venta.Tables(0).Rows(0).Item("SucxClie_nombre")
             row_cliente("dni") = ds_venta.Tables(0).Rows(0).Item("DNI")
-            row_cliente("telefono") = ds_venta.Tables(0).Rows(0).Item("telefono")
-            row_cliente("mail") = ds_venta.Tables(0).Rows(0).Item("mail")
-            row_cliente("direccion") = ds_cliente.Tables(1).Rows(0).Item("CLI_dir")
-            row_cliente("localidad") = ds_cliente.Tables(1).Rows(0).Item("provincia") + ", " + ds_cliente.Tables(1).Rows(0).Item("Localidad")
-            row_cliente("iva_condicion") = ds_cliente.Tables(1).Rows(0).Item("IVA_descripcion").ToString
+            row_cliente("telefono") = ds_venta.Tables(0).Rows(0).Item("SucxClie_tel")
+            row_cliente("mail") = ds_venta.Tables(0).Rows(0).Item("SucxClie_mail")
+            row_cliente("direccion") = ds_venta.Tables(0).Rows(0).Item("SucxClie_dir")
+            row_cliente("localidad") = ds_venta.Tables(0).Rows(0).Item("provincia") + ", " + ds_venta.Tables(0).Rows(0).Item("Localidad")
+            row_cliente("iva_condicion") = ds_venta.Tables(0).Rows(0).Item("IVA_Descripcion").ToString
             facturacion_ds_report.Tables("Cliente").Rows.Add(row_cliente)
         Else
             Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
@@ -175,10 +175,10 @@
         Dim ds_venta As DataSet = DAventa.Venta_consultar_detalle_venta(ventaprod_id, sucursal_id)
         '///////////////TABLA CLIENTE//////////////////////////////////'
         If ds_venta.Tables(0).Rows.Count <> 0 Then 'la tabla es la que tiene asociado venta a un cliente, si el cliente es consumidor final, entonces esta tabla esta vacia
-            TextBox_fantasia.Text = ds_venta.Tables(0).Rows(0).Item("fantasia")
+            TextBox_fantasia.Text = ds_venta.Tables(0).Rows(0).Item("fantasia") + ", Suc: " + ds_venta.Tables(0).Rows(0).Item("SucxClie_nombre")
             TextBox_dni.Text = ds_venta.Tables(0).Rows(0).Item("DNI")
-            TextBox_telefono.Text = ds_venta.Tables(0).Rows(0).Item("telefono")
-            TextBox_mail.Text = ds_venta.Tables(0).Rows(0).Item("mail")
+            TextBox_telefono.Text = ds_venta.Tables(0).Rows(0).Item("SucxClie_tel") 'telefono
+            TextBox_mail.Text = ds_venta.Tables(0).Rows(0).Item("SucxClie_mail")
         End If
         '///////////////TABLA SUCURSAL//////////////////////////////////'
         'Dim row_sucursal As DataRow = Facturacion_ds_report.Tables("Sucursal").NewRow()

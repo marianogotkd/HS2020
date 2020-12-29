@@ -10,6 +10,7 @@
     Dim DAsucursal As New Datos.Sucursal
     Dim Mensaje As String
     Public Cliente_ID As Integer
+    Public SucxClie_id As Integer 'este es el ID de la sucursal del cliente, que es necesaria para la facturación
     Public serv_id As Integer 'este campo me lo mandan desde "servicio_consulta" o bien desde "orden_revision_nueva"
     Dim Dacuadrillas As New Datos.Cuadrilla
     Dim ds_cuadrilla As DataSet
@@ -98,10 +99,11 @@
         While i < Ds_servicio.Tables(0).Rows.Count
             Label_Cod.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_id").ToString
             Cliente_ID = Ds_servicio.Tables(0).Rows(i).Item("CLI_id").ToString
+            SucxClie_id = Ds_servicio.Tables(0).Rows(i).Item("SucxClie_id").ToString
             TextBox_Nombre.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_Fan").ToString
             TextBox_dni.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_dni").ToString
-            TextBox_dir.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_dir").ToString
-            TextBox_tel.Text = Ds_servicio.Tables(0).Rows(i).Item("CLI_tel").ToString
+            TextBox_dir.Text = Ds_servicio.Tables(0).Rows(i).Item("SucxClie_dir").ToString 'esta direccion que se muestra es la de la sucursal. choco 22-12-2020
+            TextBox_tel.Text = Ds_servicio.Tables(0).Rows(i).Item("SucxClie_tel").ToString 'este telefono que se muestra es de la sucursal. choco 22-12-2020
             txt_equipo.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Equipo").ToString
             txt_sucursal.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Sucursal").ToString
             txt_diag.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Diagnostico").ToString
@@ -404,7 +406,7 @@
                 Dim ds_SevicioGuardar As DataSet = DAservicio.Servicio_alta_MDA(Cliente_ID, DateTimePicker1.Value,
                                                                                 sucursal_id, usuario_id, txt_diag.Text, txt_sucursal.Text,
                                                                                 txt_equipo.Text, DateTimePicker_REP.Value, DateTimePicker_Rev.Value,
-                                                                                TextBox_Anticipo.Text, "PENDIENTE")
+                                                                                TextBox_Anticipo.Text, "PENDIENTE", SucxClie_id)
 
 
                 ''Detalle''''
@@ -514,8 +516,8 @@
                         reporte(orden_trabajo_id)
                     End If
 
-                    Tareas_Consulta.Close()
-                    Tareas_Consulta.Show()
+                    'Tareas_Consulta.Close() NO ABRO EL CALENDARIO
+                    'Tareas_Consulta.Show()
                     Me.Close()
                 End If
                 estado_de_orden = "ASIGNADO"
@@ -574,8 +576,13 @@
 
         Dim fila As DataRow = ds_revision_reporte.Tables("Revision").NewRow
         fila("id_revision") = orden_trabajo_id
-        fila("cliente") = TextBox_Nombre.Text
-        fila("direccion") = TextBox_dir.Text
+
+        Dim ds_clie As DataSet = DAservicio.Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA(serv_id)
+
+
+
+        fila("cliente") = TextBox_Nombre.Text + ", " + ds_clie.Tables(0).Rows(0).Item("SucxClie_nombre").ToString  'voy a agregarle datos de sucursal
+        fila("direccion") = ds_clie.Tables(0).Rows(0).Item("SucxClie_dir").ToString  'esta direccion es la de la sucursal del cliente. choco 22-12-2020
         fila("fecha") = DateTimePicker_REP.Value.Date
         fila("diagnostico_previo") = txt_diag.Text
         fila("Equipo") = txt_equipo.Text
@@ -758,15 +765,16 @@
         '///////////////TABLA CLIENTE//////////////////////////////////'
         Facturacion_ds_report.Tables("Cliente").Rows.Clear()
 
-        Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni(TextBox_dni.Text)
+        'Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni(TextBox_dni.Text) 'esto ya no me sirve por que ahora los datos q van en la factura vienen de la taba cliente_sucursales.
+        Dim ds_cliente As DataSet = DAservicio.Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA(serv_id) 'esto ya no me sirve por que ahora los datos q van en la factura vienen de la taba cliente_sucursales.
         Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
-        row_cliente("fantasia") = ds_cliente.Tables(1).Rows(0).Item("CLI_Fan")
-        row_cliente("dni") = ds_cliente.Tables(1).Rows(0).Item("CLI_dni")
-        row_cliente("telefono") = ds_cliente.Tables(1).Rows(0).Item("CLI_tel")
-        row_cliente("mail") = ds_cliente.Tables(1).Rows(0).Item("CLI_mail")
-        row_cliente("direccion") = ds_cliente.Tables(1).Rows(0).Item("CLI_dir")
-        row_cliente("localidad") = ds_cliente.Tables(1).Rows(0).Item("provincia") + ", " + ds_cliente.Tables(1).Rows(0).Item("Localidad")
-        row_cliente("iva_condicion") = ds_cliente.Tables(1).Rows(0).Item("IVA_descripcion").ToString
+        row_cliente("fantasia") = ds_cliente.Tables(0).Rows(0).Item("CLI_Fan") + ", Suc: " + ds_cliente.Tables(0).Rows(0).Item("SucxClie_nombre")
+        row_cliente("dni") = ds_cliente.Tables(0).Rows(0).Item("CLI_dni")
+        row_cliente("telefono") = ds_cliente.Tables(0).Rows(0).Item("SucxClie_tel")
+        row_cliente("mail") = ds_cliente.Tables(0).Rows(0).Item("SucxClie_mail")
+        row_cliente("direccion") = ds_cliente.Tables(0).Rows(0).Item("SucxClie_dir")
+        row_cliente("localidad") = ds_cliente.Tables(0).Rows(0).Item("provincia") + ", " + ds_cliente.Tables(0).Rows(0).Item("Localidad")
+        row_cliente("iva_condicion") = ds_cliente.Tables(0).Rows(0).Item("IVA_Descripcion").ToString
         facturacion_ds_report.Tables("Cliente").Rows.Add(row_cliente)
 
         '///////////////TABLA SUCURSAL//////////////////////////////////'
@@ -1062,8 +1070,12 @@
                     MessageBox.Show("Orden de trabajo actualizada correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     estado_de_orden = "REPARADO"
 
-                    Tareas_Consulta.Close()
-                    Tareas_Consulta.Show()
+
+                    Dim result2 As Integer = MessageBox.Show("¿Desea ir al calendario de servicios?", "Sistema de Gestión", MessageBoxButtons.YesNo)
+                    If result2 = DialogResult.Yes Then
+                        Tareas_Consulta.Close()
+                        Tareas_Consulta.Show()
+                    End If
                     Me.Close()
 
                 Else

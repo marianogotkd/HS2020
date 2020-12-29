@@ -260,6 +260,7 @@ Partial Class Cliente_modificar
         Me.BO_Cargar.TabIndex = 0
         Me.ToolTip1.SetToolTip(Me.BO_Cargar, "Ir a Modificar")
         Me.BO_Cargar.UseVisualStyleBackColor = True
+        Me.BO_Cargar.Visible = False
         '
         'BO_Cancelar
         '

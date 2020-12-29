@@ -16,6 +16,7 @@
     Public facturar As String
     Dim DAvendedor As New Datos.Vendedor
     Public procedencia As String 'me sirve para saber si hago factura o bien remito
+    Public SucxClie_id As Integer = 0 'choco 22-12-2020 cuando eligo cliente, aqui pongo el id de la sucursal del cliente, me sirve para armar la factura.
 #Region "METODOS Y EVENTOS DE LA GRILLA DE PRODUCTOS"
     'esta rutina busca en la grilla el producto y si existe solo suma la cantidad + 1 y realiza el calculo de totales.
     Public Sub buscar_en_grilla_y_sumar_mas_uno(ByVal cod_ingresado As Integer, ByRef existe_en_grilla As String)
@@ -1840,7 +1841,7 @@
                              CDec(txt_descuento.Text),
                              CDec(txt_desc_porc.Text),
                              CDec(ComboBox_iva.SelectedItem),
-                              CDec(txt_impuesto_aplicado.Text), venta_tipo_descripcion, 0, vendedor_id, "Pendiente")
+                              CDec(txt_impuesto_aplicado.Text), venta_tipo_descripcion, 0, vendedor_id, "Pendiente", SucxClie_id)
                 Dim ventaprod_id As Integer = CInt(ds_Venta.Tables(0).Rows(0).Item("ventaprod_id"))
 
                 Dim ds_factura As DataSet = DAventa.Remito_alta(ventaprod_id, Now, "pendiente entrega")
