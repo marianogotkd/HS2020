@@ -292,6 +292,12 @@
       <DependentUpon>CR_listadocliente.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Modulos\Cliente\Sucursales_Seleccionar.Designer.vb">
+      <DependentUpon>Sucursales_Seleccionar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Cliente\Sucursales_Seleccionar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Configuraciones\DS_configuraciones.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1274,6 +1280,9 @@
     <EmbeddedResource Include="Modulos\Cliente\Reporte\CR_listadocliente.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CR_listadocliente.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Cliente\Sucursales_Seleccionar.resx">
+      <DependentUpon>Sucursales_Seleccionar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Configuraciones\Sucursales.resx">
       <DependentUpon>Sucursales.vb</DependentUpon>
