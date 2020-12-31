@@ -13,7 +13,7 @@ Public Class Conexion
 
     'Conexion CHOCO-RYZEN
 
-    'Public dbconn As New OleDb.OleDbConnection("Provider=SQLOLEDB.1;Password=123choco;Persist Security Info=True;User ID=choco;Initial Catalog=Dialisis;Data Source=25.112.197.145\SQLEXPRESS_CHOK")
+    Public dbconn As New OleDb.OleDbConnection("Provider=SQLOLEDB.1;Password=123choco;Persist Security Info=True;User ID=choco;Initial Catalog=Dialisis;Data Source=25.112.197.145\SQLEXPRESS_CHOK")
 
 
     'Conexion local NoteMariano
@@ -22,7 +22,7 @@ Public Class Conexion
 
     'Conexion Dialisis
 
-    Public dbconn As New OleDb.OleDbConnection("Provider=SQLOLEDB.1;Password=123choco;Persist Security Info=True;User ID=choco;Initial Catalog=Dialisis;Data Source=SERVER")
+    'Public dbconn As New OleDb.OleDbConnection("Provider=SQLOLEDB.1;Password=123choco;Persist Security Info=True;User ID=choco;Initial Catalog=Dialisis;Data Source=SERVER")
 
 
     
