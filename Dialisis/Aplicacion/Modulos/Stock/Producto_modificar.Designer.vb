@@ -24,7 +24,7 @@ Partial Class Producto_modificar
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Producto_modificar))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Bo_cancelar = New System.Windows.Forms.Button()
@@ -71,6 +71,7 @@ Partial Class Producto_modificar
         Me.ProdxSucBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Producto_ds = New Aplicacion.Producto_ds()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -89,7 +90,7 @@ Partial Class Producto_modificar
         'Bo_cancelar
         '
         Me.Bo_cancelar.Image = CType(resources.GetObject("Bo_cancelar.Image"), System.Drawing.Image)
-        Me.Bo_cancelar.Location = New System.Drawing.Point(346, 6)
+        Me.Bo_cancelar.Location = New System.Drawing.Point(95, 13)
         Me.Bo_cancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.Bo_cancelar.Name = "Bo_cancelar"
         Me.Bo_cancelar.Size = New System.Drawing.Size(53, 49)
@@ -116,7 +117,7 @@ Partial Class Producto_modificar
         'Bo_guardar
         '
         Me.Bo_guardar.Image = CType(resources.GetObject("Bo_guardar.Image"), System.Drawing.Image)
-        Me.Bo_guardar.Location = New System.Drawing.Point(261, 13)
+        Me.Bo_guardar.Location = New System.Drawing.Point(34, 13)
         Me.Bo_guardar.Margin = New System.Windows.Forms.Padding(4)
         Me.Bo_guardar.Name = "Bo_guardar"
         Me.Bo_guardar.Size = New System.Drawing.Size(53, 49)
@@ -434,6 +435,7 @@ Partial Class Producto_modificar
         '
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.Button3)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.btn_Anular)
@@ -507,11 +509,11 @@ Partial Class Producto_modificar
         Me.DG_Producto.MultiSelect = False
         Me.DG_Producto.Name = "DG_Producto"
         Me.DG_Producto.RowHeadersVisible = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_Producto.RowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_Producto.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DG_Producto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_Producto.Size = New System.Drawing.Size(1240, 249)
         Me.DG_Producto.StandardTab = True
@@ -630,6 +632,20 @@ Partial Class Producto_modificar
         Me.TabControl1.Size = New System.Drawing.Size(1291, 607)
         Me.TabControl1.TabIndex = 0
         '
+        'Button3
+        '
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
+        Me.Button3.Location = New System.Drawing.Point(440, 10)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(124, 43)
+        Me.Button3.TabIndex = 253
+        Me.Button3.Text = "Borrar sucursal"
+        Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button3, "Generar reporte")
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'Producto_modificar
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -703,4 +719,5 @@ Partial Class Producto_modificar
     Friend WithEvents prod_codbarra As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class

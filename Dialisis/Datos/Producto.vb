@@ -542,6 +542,45 @@ Public Class Producto
         dbconn.Close()
     End Sub
 
+#Region "Mantenimiento"
+    Public Function Producto_x_sucursal_borrar_cant_stock(ByVal sucursal_id As Integer) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Producto_x_sucursal_borrar_cant_stock", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Producto")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+    Public Function Producto_x_sucursal_borrar_cant_lote(ByVal sucursal_id As Integer, ByVal prod_id As Integer) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Producto_x_sucursal_borrar_cant_lote", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prod_id", prod_id))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Producto")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+#End Region
 
 
 End Class
