@@ -23,18 +23,18 @@ Partial Class Venta_Caja_gestion
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle100 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle102 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle101 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Venta_Caja_gestion))
-        Dim DataGridViewCellStyle109 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle110 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle103 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle104 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle105 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle106 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle107 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle108 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Venta_ds = New Aplicacion.Venta_ds()
         Me.ProductoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -222,11 +222,11 @@ Partial Class Venta_Caja_gestion
         Me.TabPage1.Controls.Add(Me.BO_Aceptar)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Controls.Add(Me.GroupBox3)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 34)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 25)
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(5)
-        Me.TabPage1.Size = New System.Drawing.Size(1253, 634)
+        Me.TabPage1.Size = New System.Drawing.Size(1253, 643)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Venta en Caja: Cliente"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -253,7 +253,7 @@ Partial Class Venta_Caja_gestion
         Me.label_hora.Location = New System.Drawing.Point(744, 59)
         Me.label_hora.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label_hora.Name = "label_hora"
-        Me.label_hora.Size = New System.Drawing.Size(78, 36)
+        Me.label_hora.Size = New System.Drawing.Size(53, 25)
         Me.label_hora.TabIndex = 253
         Me.label_hora.Text = "label"
         Me.label_hora.Visible = False
@@ -265,7 +265,7 @@ Partial Class Venta_Caja_gestion
         Me.Label3.Location = New System.Drawing.Point(650, 59)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(87, 36)
+        Me.Label3.Size = New System.Drawing.Size(60, 25)
         Me.Label3.TabIndex = 252
         Me.Label3.Text = "Hora:"
         Me.Label3.Visible = False
@@ -277,7 +277,7 @@ Partial Class Venta_Caja_gestion
         Me.label_fecha.Location = New System.Drawing.Point(744, 23)
         Me.label_fecha.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label_fecha.Name = "label_fecha"
-        Me.label_fecha.Size = New System.Drawing.Size(78, 36)
+        Me.label_fecha.Size = New System.Drawing.Size(53, 25)
         Me.label_fecha.TabIndex = 251
         Me.label_fecha.Text = "label"
         Me.label_fecha.Visible = False
@@ -289,7 +289,7 @@ Partial Class Venta_Caja_gestion
         Me.Label1.Location = New System.Drawing.Point(650, 23)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(105, 36)
+        Me.Label1.Size = New System.Drawing.Size(73, 25)
         Me.Label1.TabIndex = 250
         Me.Label1.Text = "Fecha:"
         Me.Label1.Visible = False
@@ -317,7 +317,7 @@ Partial Class Venta_Caja_gestion
         Me.RB_Si.Location = New System.Drawing.Point(68, 23)
         Me.RB_Si.Margin = New System.Windows.Forms.Padding(4)
         Me.RB_Si.Name = "RB_Si"
-        Me.RB_Si.Size = New System.Drawing.Size(55, 29)
+        Me.RB_Si.Size = New System.Drawing.Size(38, 20)
         Me.RB_Si.TabIndex = 224
         Me.RB_Si.Text = "Si"
         Me.RB_Si.UseVisualStyleBackColor = True
@@ -330,7 +330,7 @@ Partial Class Venta_Caja_gestion
         Me.RB_No.Location = New System.Drawing.Point(8, 23)
         Me.RB_No.Margin = New System.Windows.Forms.Padding(4)
         Me.RB_No.Name = "RB_No"
-        Me.RB_No.Size = New System.Drawing.Size(62, 29)
+        Me.RB_No.Size = New System.Drawing.Size(44, 20)
         Me.RB_No.TabIndex = 223
         Me.RB_No.TabStop = True
         Me.RB_No.Text = "No"
@@ -343,7 +343,7 @@ Partial Class Venta_Caja_gestion
         Me.CB_lista.Location = New System.Drawing.Point(8, 54)
         Me.CB_lista.Margin = New System.Windows.Forms.Padding(4)
         Me.CB_lista.Name = "CB_lista"
-        Me.CB_lista.Size = New System.Drawing.Size(277, 33)
+        Me.CB_lista.Size = New System.Drawing.Size(277, 24)
         Me.CB_lista.TabIndex = 0
         '
         'BO_Modificar
@@ -406,7 +406,7 @@ Partial Class Venta_Caja_gestion
         Me.Busqueda.Location = New System.Drawing.Point(12, 26)
         Me.Busqueda.Margin = New System.Windows.Forms.Padding(4)
         Me.Busqueda.Name = "Busqueda"
-        Me.Busqueda.Size = New System.Drawing.Size(1201, 35)
+        Me.Busqueda.Size = New System.Drawing.Size(1201, 26)
         Me.Busqueda.TabIndex = 240
         '
         'DG_clientes
@@ -428,10 +428,10 @@ Partial Class Venta_Caja_gestion
         Me.DG_clientes.ReadOnly = True
         Me.DG_clientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DG_clientes.RowHeadersVisible = False
-        DataGridViewCellStyle100.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle100.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle100.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_clientes.RowsDefaultCellStyle = DataGridViewCellStyle100
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_clientes.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DG_clientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_clientes.Size = New System.Drawing.Size(1201, 398)
         Me.DG_clientes.TabIndex = 239
@@ -551,7 +551,7 @@ Partial Class Venta_Caja_gestion
         Me.RB_Cliente.Location = New System.Drawing.Point(4, 32)
         Me.RB_Cliente.Margin = New System.Windows.Forms.Padding(4)
         Me.RB_Cliente.Name = "RB_Cliente"
-        Me.RB_Cliente.Size = New System.Drawing.Size(98, 29)
+        Me.RB_Cliente.Size = New System.Drawing.Size(67, 20)
         Me.RB_Cliente.TabIndex = 223
         Me.RB_Cliente.Text = "Cliente"
         Me.RB_Cliente.UseVisualStyleBackColor = True
@@ -564,7 +564,7 @@ Partial Class Venta_Caja_gestion
         Me.RB_Consumidor.Location = New System.Drawing.Point(4, 4)
         Me.RB_Consumidor.Margin = New System.Windows.Forms.Padding(4)
         Me.RB_Consumidor.Name = "RB_Consumidor"
-        Me.RB_Consumidor.Size = New System.Drawing.Size(190, 29)
+        Me.RB_Consumidor.Size = New System.Drawing.Size(130, 20)
         Me.RB_Consumidor.TabIndex = 222
         Me.RB_Consumidor.TabStop = True
         Me.RB_Consumidor.Text = "Consumidor Final"
@@ -576,11 +576,11 @@ Partial Class Venta_Caja_gestion
         Me.TabPage2.Controls.Add(Me.GroupBox7)
         Me.TabPage2.Controls.Add(Me.GroupBox4)
         Me.TabPage2.Controls.Add(Me.GroupBox12)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 34)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
         Me.TabPage2.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPage2.Size = New System.Drawing.Size(1253, 634)
+        Me.TabPage2.Size = New System.Drawing.Size(1253, 643)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Venta en Caja: Productos"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -623,7 +623,7 @@ Partial Class Venta_Caja_gestion
         Me.txt_impuesto_aplicado.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txt_impuesto_aplicado.Name = "txt_impuesto_aplicado"
         Me.txt_impuesto_aplicado.ReadOnly = True
-        Me.txt_impuesto_aplicado.Size = New System.Drawing.Size(112, 25)
+        Me.txt_impuesto_aplicado.Size = New System.Drawing.Size(112, 19)
         Me.txt_impuesto_aplicado.TabIndex = 274
         Me.txt_impuesto_aplicado.Text = "0"
         Me.txt_impuesto_aplicado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -634,7 +634,7 @@ Partial Class Venta_Caja_gestion
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label24.Location = New System.Drawing.Point(17, 57)
         Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(181, 20)
+        Me.Label24.Size = New System.Drawing.Size(122, 13)
         Me.Label24.TabIndex = 273
         Me.Label24.Text = "IMPUESTO APLICADO:"
         '
@@ -644,7 +644,7 @@ Partial Class Venta_Caja_gestion
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.Location = New System.Drawing.Point(16, 10)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(220, 20)
+        Me.Label20.Size = New System.Drawing.Size(149, 13)
         Me.Label20.TabIndex = 269
         Me.Label20.Text = "SUBTOTAL DE ARTICULOS:"
         '
@@ -656,7 +656,7 @@ Partial Class Venta_Caja_gestion
         Me.txt_subtotal.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txt_subtotal.Name = "txt_subtotal"
         Me.txt_subtotal.ReadOnly = True
-        Me.txt_subtotal.Size = New System.Drawing.Size(112, 25)
+        Me.txt_subtotal.Size = New System.Drawing.Size(112, 19)
         Me.txt_subtotal.TabIndex = 270
         Me.txt_subtotal.Text = "0"
         Me.txt_subtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -669,7 +669,7 @@ Partial Class Venta_Caja_gestion
         Me.txt_descuento.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txt_descuento.Name = "txt_descuento"
         Me.txt_descuento.ReadOnly = True
-        Me.txt_descuento.Size = New System.Drawing.Size(112, 25)
+        Me.txt_descuento.Size = New System.Drawing.Size(112, 19)
         Me.txt_descuento.TabIndex = 272
         Me.txt_descuento.Text = "0"
         Me.txt_descuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -680,7 +680,7 @@ Partial Class Venta_Caja_gestion
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label23.Location = New System.Drawing.Point(17, 32)
         Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(113, 20)
+        Me.Label23.Size = New System.Drawing.Size(77, 13)
         Me.Label23.TabIndex = 271
         Me.Label23.Text = "DESCUENTO:"
         '
@@ -706,7 +706,7 @@ Partial Class Venta_Caja_gestion
         Me.ComboBox_iva.Location = New System.Drawing.Point(72, 34)
         Me.ComboBox_iva.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.ComboBox_iva.Name = "ComboBox_iva"
-        Me.ComboBox_iva.Size = New System.Drawing.Size(64, 33)
+        Me.ComboBox_iva.Size = New System.Drawing.Size(64, 24)
         Me.ComboBox_iva.TabIndex = 12
         '
         'Label19
@@ -715,7 +715,7 @@ Partial Class Venta_Caja_gestion
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.Location = New System.Drawing.Point(7, 37)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(68, 20)
+        Me.Label19.Size = New System.Drawing.Size(44, 13)
         Me.Label19.TabIndex = 11
         Me.Label19.Text = "IVA (%):"
         '
@@ -740,7 +740,7 @@ Partial Class Venta_Caja_gestion
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.Location = New System.Drawing.Point(5, 28)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(119, 36)
+        Me.Label9.Size = New System.Drawing.Size(85, 25)
         Me.Label9.TabIndex = 9
         Me.Label9.Text = "TOTAL:"
         '
@@ -752,7 +752,7 @@ Partial Class Venta_Caja_gestion
         Me.txt_total.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txt_total.Name = "txt_total"
         Me.txt_total.ReadOnly = True
-        Me.txt_total.Size = New System.Drawing.Size(159, 41)
+        Me.txt_total.Size = New System.Drawing.Size(159, 30)
         Me.txt_total.TabIndex = 8
         Me.txt_total.Text = "0"
         Me.txt_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -765,14 +765,14 @@ Partial Class Venta_Caja_gestion
         Me.DataG_listaTotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataG_listaTotal.ColumnHeadersVisible = False
         Me.DataG_listaTotal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3})
-        DataGridViewCellStyle102.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle102.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle102.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle102.ForeColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle102.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle102.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle102.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataG_listaTotal.DefaultCellStyle = DataGridViewCellStyle102
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataG_listaTotal.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataG_listaTotal.Location = New System.Drawing.Point(8, 100)
         Me.DataG_listaTotal.Margin = New System.Windows.Forms.Padding(4)
         Me.DataG_listaTotal.Name = "DataG_listaTotal"
@@ -792,10 +792,10 @@ Partial Class Venta_Caja_gestion
         '
         'DataGridViewTextBoxColumn3
         '
-        DataGridViewCellStyle101.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle101.Format = "N2"
-        DataGridViewCellStyle101.NullValue = "0"
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle101
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.Format = "N2"
+        DataGridViewCellStyle2.NullValue = "0"
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewTextBoxColumn3.HeaderText = "Valor total"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
@@ -825,7 +825,7 @@ Partial Class Venta_Caja_gestion
         Me.txt_desc_pesos.Location = New System.Drawing.Point(117, 46)
         Me.txt_desc_pesos.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txt_desc_pesos.Name = "txt_desc_pesos"
-        Me.txt_desc_pesos.Size = New System.Drawing.Size(65, 25)
+        Me.txt_desc_pesos.Size = New System.Drawing.Size(65, 19)
         Me.txt_desc_pesos.TabIndex = 14
         Me.txt_desc_pesos.Text = "0"
         Me.txt_desc_pesos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -836,7 +836,7 @@ Partial Class Venta_Caja_gestion
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.Location = New System.Drawing.Point(5, 22)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(119, 20)
+        Me.Label10.Size = New System.Drawing.Size(79, 13)
         Me.Label10.TabIndex = 10
         Me.Label10.Text = "Descuento (%):"
         '
@@ -847,7 +847,7 @@ Partial Class Venta_Caja_gestion
         Me.txt_desc_porc.Location = New System.Drawing.Point(117, 20)
         Me.txt_desc_porc.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.txt_desc_porc.Name = "txt_desc_porc"
-        Me.txt_desc_porc.Size = New System.Drawing.Size(65, 25)
+        Me.txt_desc_porc.Size = New System.Drawing.Size(65, 19)
         Me.txt_desc_porc.TabIndex = 13
         Me.txt_desc_porc.Text = "0"
         Me.txt_desc_porc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -858,7 +858,7 @@ Partial Class Venta_Caja_gestion
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.Location = New System.Drawing.Point(5, 48)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(114, 20)
+        Me.Label11.Size = New System.Drawing.Size(77, 13)
         Me.Label11.TabIndex = 11
         Me.Label11.Text = "Descuento ($):"
         '
@@ -889,7 +889,7 @@ Partial Class Venta_Caja_gestion
         Me.Label_remito.Location = New System.Drawing.Point(275, 12)
         Me.Label_remito.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label_remito.Name = "Label_remito"
-        Me.Label_remito.Size = New System.Drawing.Size(138, 29)
+        Me.Label_remito.Size = New System.Drawing.Size(95, 20)
         Me.Label_remito.TabIndex = 276
         Me.Label_remito.Text = "Remito Nº:"
         Me.Label_remito.Visible = False
@@ -913,7 +913,7 @@ Partial Class Venta_Caja_gestion
         Me.Label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label25.Location = New System.Drawing.Point(16, 10)
         Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(104, 25)
+        Me.Label25.Size = New System.Drawing.Size(74, 17)
         Me.Label25.TabIndex = 4
         Me.Label25.Text = "Vendedor:"
         '
@@ -924,7 +924,7 @@ Partial Class Venta_Caja_gestion
         Me.ComboBox_vendedor.FormattingEnabled = True
         Me.ComboBox_vendedor.Location = New System.Drawing.Point(239, 7)
         Me.ComboBox_vendedor.Name = "ComboBox_vendedor"
-        Me.ComboBox_vendedor.Size = New System.Drawing.Size(203, 33)
+        Me.ComboBox_vendedor.Size = New System.Drawing.Size(203, 24)
         Me.ComboBox_vendedor.TabIndex = 2
         '
         'Btn_Vendedor_buscar
@@ -944,7 +944,7 @@ Partial Class Venta_Caja_gestion
         Me.txt_vendedor_codigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_vendedor_codigo.Location = New System.Drawing.Point(122, 7)
         Me.txt_vendedor_codigo.Name = "txt_vendedor_codigo"
-        Me.txt_vendedor_codigo.Size = New System.Drawing.Size(65, 30)
+        Me.txt_vendedor_codigo.Size = New System.Drawing.Size(65, 23)
         Me.txt_vendedor_codigo.TabIndex = 1
         '
         'GroupBox13
@@ -991,7 +991,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_tipo_vta.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_tipo_vta.Location = New System.Drawing.Point(87, 68)
         Me.lb_tipo_vta.Name = "lb_tipo_vta"
-        Me.lb_tipo_vta.Size = New System.Drawing.Size(153, 25)
+        Me.lb_tipo_vta.Size = New System.Drawing.Size(111, 17)
         Me.lb_tipo_vta.TabIndex = 272
         Me.lb_tipo_vta.Text = "consumidor final"
         Me.lb_tipo_vta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1002,7 +1002,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_vendedor_vta.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_vendedor_vta.Location = New System.Drawing.Point(83, 178)
         Me.lb_vendedor_vta.Name = "lb_vendedor_vta"
-        Me.lb_vendedor_vta.Size = New System.Drawing.Size(66, 20)
+        Me.lb_vendedor_vta.Size = New System.Drawing.Size(45, 13)
         Me.lb_vendedor_vta.TabIndex = 271
         Me.lb_vendedor_vta.Text = "Label21"
         Me.lb_vendedor_vta.Visible = False
@@ -1013,7 +1013,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_fecha_vta.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_fecha_vta.Location = New System.Drawing.Point(103, 48)
         Me.lb_fecha_vta.Name = "lb_fecha_vta"
-        Me.lb_fecha_vta.Size = New System.Drawing.Size(112, 25)
+        Me.lb_fecha_vta.Size = New System.Drawing.Size(80, 17)
         Me.lb_fecha_vta.TabIndex = 270
         Me.lb_fecha_vta.Text = "00/00/0000"
         Me.lb_fecha_vta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1024,7 +1024,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_factura_vta.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_factura_vta.Location = New System.Drawing.Point(140, 25)
         Me.lb_factura_vta.Name = "lb_factura_vta"
-        Me.lb_factura_vta.Size = New System.Drawing.Size(56, 25)
+        Me.lb_factura_vta.Size = New System.Drawing.Size(40, 17)
         Me.lb_factura_vta.TabIndex = 269
         Me.lb_factura_vta.Text = "0000"
         Me.lb_factura_vta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1036,7 +1036,7 @@ Partial Class Venta_Caja_gestion
         Me.Label15.Location = New System.Drawing.Point(23, 68)
         Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(57, 25)
+        Me.Label15.Size = New System.Drawing.Size(40, 17)
         Me.Label15.TabIndex = 268
         Me.Label15.Text = "Tipo:"
         '
@@ -1047,7 +1047,7 @@ Partial Class Venta_Caja_gestion
         Me.Label14.Location = New System.Drawing.Point(12, 177)
         Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(83, 20)
+        Me.Label14.Size = New System.Drawing.Size(56, 13)
         Me.Label14.TabIndex = 267
         Me.Label14.Text = "Vendedor:"
         Me.Label14.Visible = False
@@ -1059,7 +1059,7 @@ Partial Class Venta_Caja_gestion
         Me.Label13.Location = New System.Drawing.Point(23, 48)
         Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(73, 25)
+        Me.Label13.Size = New System.Drawing.Size(51, 17)
         Me.Label13.TabIndex = 266
         Me.Label13.Text = "Fecha:"
         '
@@ -1070,7 +1070,7 @@ Partial Class Venta_Caja_gestion
         Me.Label12.Location = New System.Drawing.Point(23, 26)
         Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(110, 25)
+        Me.Label12.Size = New System.Drawing.Size(79, 17)
         Me.Label12.TabIndex = 265
         Me.Label12.Text = "Nº Factura:"
         '
@@ -1107,7 +1107,7 @@ Partial Class Venta_Caja_gestion
         Me.label_limite.Location = New System.Drawing.Point(279, 68)
         Me.label_limite.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.label_limite.Name = "label_limite"
-        Me.label_limite.Size = New System.Drawing.Size(85, 25)
+        Me.label_limite.Size = New System.Drawing.Size(61, 17)
         Me.label_limite.TabIndex = 275
         Me.label_limite.Text = "Limite $:"
         '
@@ -1118,7 +1118,7 @@ Partial Class Venta_Caja_gestion
         Me.Label_saldo.Location = New System.Drawing.Point(279, 48)
         Me.Label_saldo.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label_saldo.Name = "Label_saldo"
-        Me.Label_saldo.Size = New System.Drawing.Size(85, 25)
+        Me.Label_saldo.Size = New System.Drawing.Size(60, 17)
         Me.Label_saldo.TabIndex = 274
         Me.Label_saldo.Text = "Saldo $:"
         '
@@ -1129,7 +1129,7 @@ Partial Class Venta_Caja_gestion
         Me.Label_ctacte.Location = New System.Drawing.Point(27, 68)
         Me.Label_ctacte.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label_ctacte.Name = "Label_ctacte"
-        Me.Label_ctacte.Size = New System.Drawing.Size(167, 25)
+        Me.Label_ctacte.Size = New System.Drawing.Size(119, 17)
         Me.Label_ctacte.TabIndex = 273
         Me.Label_ctacte.Text = "Cuenta Corriente:"
         '
@@ -1139,7 +1139,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_tipoIVA_clie.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_tipoIVA_clie.Location = New System.Drawing.Point(180, 151)
         Me.lb_tipoIVA_clie.Name = "lb_tipoIVA_clie"
-        Me.lb_tipoIVA_clie.Size = New System.Drawing.Size(41, 20)
+        Me.lb_tipoIVA_clie.Size = New System.Drawing.Size(28, 13)
         Me.lb_tipoIVA_clie.TabIndex = 272
         Me.lb_tipoIVA_clie.Text = "- - - -"
         Me.lb_tipoIVA_clie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1151,7 +1151,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_mail_clie.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_mail_clie.Location = New System.Drawing.Point(131, 131)
         Me.lb_mail_clie.Name = "lb_mail_clie"
-        Me.lb_mail_clie.Size = New System.Drawing.Size(41, 20)
+        Me.lb_mail_clie.Size = New System.Drawing.Size(28, 13)
         Me.lb_mail_clie.TabIndex = 271
         Me.lb_mail_clie.Text = "- - - -"
         Me.lb_mail_clie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1163,7 +1163,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_telef_clie.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_telef_clie.Location = New System.Drawing.Point(163, 174)
         Me.lb_telef_clie.Name = "lb_telef_clie"
-        Me.lb_telef_clie.Size = New System.Drawing.Size(41, 20)
+        Me.lb_telef_clie.Size = New System.Drawing.Size(28, 13)
         Me.lb_telef_clie.TabIndex = 270
         Me.lb_telef_clie.Text = "- - - -"
         Me.lb_telef_clie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1175,7 +1175,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_dni_clie.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_dni_clie.Location = New System.Drawing.Point(174, 48)
         Me.lb_dni_clie.Name = "lb_dni_clie"
-        Me.lb_dni_clie.Size = New System.Drawing.Size(55, 25)
+        Me.lb_dni_clie.Size = New System.Drawing.Size(40, 17)
         Me.lb_dni_clie.TabIndex = 269
         Me.lb_dni_clie.Text = "- - - -"
         Me.lb_dni_clie.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1186,7 +1186,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_fantasia.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_fantasia.Location = New System.Drawing.Point(126, 25)
         Me.lb_fantasia.Name = "lb_fantasia"
-        Me.lb_fantasia.Size = New System.Drawing.Size(55, 25)
+        Me.lb_fantasia.Size = New System.Drawing.Size(40, 17)
         Me.lb_fantasia.TabIndex = 268
         Me.lb_fantasia.Text = "- - - -"
         Me.lb_fantasia.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1198,7 +1198,7 @@ Partial Class Venta_Caja_gestion
         Me.Label18.Location = New System.Drawing.Point(88, 151)
         Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(96, 20)
+        Me.Label18.Size = New System.Drawing.Size(66, 13)
         Me.Label18.TabIndex = 267
         Me.Label18.Text = "Tipo de IVA:"
         Me.Label18.Visible = False
@@ -1210,7 +1210,7 @@ Partial Class Venta_Caja_gestion
         Me.Label2.Location = New System.Drawing.Point(26, 26)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(93, 25)
+        Me.Label2.Size = New System.Drawing.Size(66, 17)
         Me.Label2.TabIndex = 263
         Me.Label2.Text = "Fantasía:"
         '
@@ -1221,7 +1221,7 @@ Partial Class Venta_Caja_gestion
         Me.Label17.Location = New System.Drawing.Point(87, 131)
         Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(41, 20)
+        Me.Label17.Size = New System.Drawing.Size(29, 13)
         Me.Label17.TabIndex = 266
         Me.Label17.Text = "Mail:"
         Me.Label17.Visible = False
@@ -1233,7 +1233,7 @@ Partial Class Venta_Caja_gestion
         Me.Label16.Location = New System.Drawing.Point(88, 173)
         Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(75, 20)
+        Me.Label16.Size = New System.Drawing.Size(52, 13)
         Me.Label16.TabIndex = 265
         Me.Label16.Text = "Teléfono:"
         Me.Label16.Visible = False
@@ -1245,7 +1245,7 @@ Partial Class Venta_Caja_gestion
         Me.Label4.Location = New System.Drawing.Point(27, 48)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(140, 25)
+        Me.Label4.Size = New System.Drawing.Size(97, 17)
         Me.Label4.TabIndex = 264
         Me.Label4.Text = "DNI / Nº CUIT:"
         '
@@ -1276,7 +1276,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_mail_sucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_mail_sucursal.Location = New System.Drawing.Point(73, 88)
         Me.lb_mail_sucursal.Name = "lb_mail_sucursal"
-        Me.lb_mail_sucursal.Size = New System.Drawing.Size(41, 20)
+        Me.lb_mail_sucursal.Size = New System.Drawing.Size(28, 13)
         Me.lb_mail_sucursal.TabIndex = 274
         Me.lb_mail_sucursal.Text = "- - - -"
         Me.lb_mail_sucursal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1288,7 +1288,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_telefono_sucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_telefono_sucursal.Location = New System.Drawing.Point(131, 68)
         Me.lb_telefono_sucursal.Name = "lb_telefono_sucursal"
-        Me.lb_telefono_sucursal.Size = New System.Drawing.Size(55, 25)
+        Me.lb_telefono_sucursal.Size = New System.Drawing.Size(40, 17)
         Me.lb_telefono_sucursal.TabIndex = 273
         Me.lb_telefono_sucursal.Text = "- - - -"
         Me.lb_telefono_sucursal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1299,7 +1299,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_direccion_sucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_direccion_sucursal.Location = New System.Drawing.Point(135, 48)
         Me.lb_direccion_sucursal.Name = "lb_direccion_sucursal"
-        Me.lb_direccion_sucursal.Size = New System.Drawing.Size(55, 25)
+        Me.lb_direccion_sucursal.Size = New System.Drawing.Size(40, 17)
         Me.lb_direccion_sucursal.TabIndex = 272
         Me.lb_direccion_sucursal.Text = "- - - -"
         Me.lb_direccion_sucursal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1310,7 +1310,7 @@ Partial Class Venta_Caja_gestion
         Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label22.Location = New System.Drawing.Point(30, 88)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(41, 20)
+        Me.Label22.Size = New System.Drawing.Size(29, 13)
         Me.Label22.TabIndex = 271
         Me.Label22.Text = "Mail:"
         Me.Label22.Visible = False
@@ -1321,7 +1321,7 @@ Partial Class Venta_Caja_gestion
         Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label21.Location = New System.Drawing.Point(30, 68)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(95, 25)
+        Me.Label21.Size = New System.Drawing.Size(68, 17)
         Me.Label21.TabIndex = 270
         Me.Label21.Text = "Teléfono:"
         '
@@ -1331,7 +1331,7 @@ Partial Class Venta_Caja_gestion
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.Location = New System.Drawing.Point(30, 48)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(99, 25)
+        Me.Label7.Size = New System.Drawing.Size(71, 17)
         Me.Label7.TabIndex = 269
         Me.Label7.Text = "Dirección:"
         '
@@ -1341,7 +1341,7 @@ Partial Class Venta_Caja_gestion
         Me.lb_nombre_sucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_nombre_sucursal.Location = New System.Drawing.Point(132, 25)
         Me.lb_nombre_sucursal.Name = "lb_nombre_sucursal"
-        Me.lb_nombre_sucursal.Size = New System.Drawing.Size(55, 25)
+        Me.lb_nombre_sucursal.Size = New System.Drawing.Size(40, 17)
         Me.lb_nombre_sucursal.TabIndex = 268
         Me.lb_nombre_sucursal.Text = "- - - -"
         Me.lb_nombre_sucursal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -1353,7 +1353,7 @@ Partial Class Venta_Caja_gestion
         Me.lb.Location = New System.Drawing.Point(30, 26)
         Me.lb.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lb.Name = "lb"
-        Me.lb.Size = New System.Drawing.Size(95, 25)
+        Me.lb.Size = New System.Drawing.Size(67, 17)
         Me.lb.TabIndex = 267
         Me.lb.Text = "Sucursal:"
         '
@@ -1363,7 +1363,7 @@ Partial Class Venta_Caja_gestion
         Me.Label8.Location = New System.Drawing.Point(1039, 20)
         Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(199, 25)
+        Me.Label8.Size = New System.Drawing.Size(127, 16)
         Me.Label8.TabIndex = 271
         Me.Label8.Text = "00/00/0000 00:00 hrs"
         Me.Label8.Visible = False
@@ -1376,7 +1376,7 @@ Partial Class Venta_Caja_gestion
         Me.Label_tipo_vta.Location = New System.Drawing.Point(8, 12)
         Me.Label_tipo_vta.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label_tipo_vta.Name = "Label_tipo_vta"
-        Me.Label_tipo_vta.Size = New System.Drawing.Size(193, 29)
+        Me.Label_tipo_vta.Size = New System.Drawing.Size(135, 20)
         Me.Label_tipo_vta.TabIndex = 266
         Me.Label_tipo_vta.Text = "Venta Minorista"
         '
@@ -1386,7 +1386,7 @@ Partial Class Venta_Caja_gestion
         Me.Label5.Location = New System.Drawing.Point(932, 20)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(132, 25)
+        Me.Label5.Size = New System.Drawing.Size(89, 16)
         Me.Label5.TabIndex = 265
         Me.Label5.Text = "Fecha y hora:"
         Me.Label5.Visible = False
@@ -1411,7 +1411,7 @@ Partial Class Venta_Caja_gestion
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(7, 28)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(453, 25)
+        Me.Label6.Size = New System.Drawing.Size(309, 16)
         Me.Label6.TabIndex = 3
         Me.Label6.Text = "F1(busqueda avanzada), F5 (busqueda cod barra)"
         '
@@ -1482,24 +1482,24 @@ Partial Class Venta_Caja_gestion
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.columna_item, Me.columna_prod_id, Me.columna_codinterno, Me.columna_descripcion, Me.columna_detalle, Me.columna_cantidad, Me.descuento, Me.columna_precio_unitario, Me.columna_precio_subtotal, Me.columna_codbarra, Me.Column1})
         Me.DataGridView1.DataSource = Me.ProductoagregadoBindingSource
-        DataGridViewCellStyle109.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle109.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle109.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle109.ForeColor = System.Drawing.Color.DarkSlateGray
-        DataGridViewCellStyle109.SelectionBackColor = System.Drawing.Color.Transparent
-        DataGridViewCellStyle109.SelectionForeColor = System.Drawing.SystemColors.WindowFrame
-        DataGridViewCellStyle109.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle109
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.DarkSlateGray
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Transparent
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.WindowFrame
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridView1.DefaultCellStyle = DataGridViewCellStyle10
         Me.DataGridView1.Location = New System.Drawing.Point(4, 21)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
-        DataGridViewCellStyle110.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle110.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle110.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle110.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle110
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle11
         Me.DataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1193, 230)
@@ -1507,8 +1507,8 @@ Partial Class Venta_Caja_gestion
         '
         'columna_item
         '
-        DataGridViewCellStyle103.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.columna_item.DefaultCellStyle = DataGridViewCellStyle103
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.columna_item.DefaultCellStyle = DataGridViewCellStyle4
         Me.columna_item.FillWeight = 106.599!
         Me.columna_item.HeaderText = "Item"
         Me.columna_item.Name = "columna_item"
@@ -1537,8 +1537,8 @@ Partial Class Venta_Caja_gestion
         '
         Me.columna_descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.columna_descripcion.DataPropertyName = "descripcion"
-        DataGridViewCellStyle104.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.columna_descripcion.DefaultCellStyle = DataGridViewCellStyle104
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.columna_descripcion.DefaultCellStyle = DataGridViewCellStyle5
         Me.columna_descripcion.FillWeight = 98.90017!
         Me.columna_descripcion.HeaderText = "Descripción"
         Me.columna_descripcion.Name = "columna_descripcion"
@@ -1557,9 +1557,9 @@ Partial Class Venta_Caja_gestion
         'columna_cantidad
         '
         Me.columna_cantidad.DataPropertyName = "cantidad"
-        DataGridViewCellStyle105.Format = "N2"
-        DataGridViewCellStyle105.NullValue = Nothing
-        Me.columna_cantidad.DefaultCellStyle = DataGridViewCellStyle105
+        DataGridViewCellStyle6.Format = "N2"
+        DataGridViewCellStyle6.NullValue = Nothing
+        Me.columna_cantidad.DefaultCellStyle = DataGridViewCellStyle6
         Me.columna_cantidad.FillWeight = 98.90017!
         Me.columna_cantidad.HeaderText = "Cantidad"
         Me.columna_cantidad.Name = "columna_cantidad"
@@ -1569,8 +1569,8 @@ Partial Class Venta_Caja_gestion
         'descuento
         '
         Me.descuento.DataPropertyName = "descuento"
-        DataGridViewCellStyle106.Format = "N2"
-        Me.descuento.DefaultCellStyle = DataGridViewCellStyle106
+        DataGridViewCellStyle7.Format = "N2"
+        Me.descuento.DefaultCellStyle = DataGridViewCellStyle7
         Me.descuento.HeaderText = "Descuento(%)"
         Me.descuento.Name = "descuento"
         Me.descuento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
@@ -1578,9 +1578,9 @@ Partial Class Venta_Caja_gestion
         'columna_precio_unitario
         '
         Me.columna_precio_unitario.DataPropertyName = "precio_unitario"
-        DataGridViewCellStyle107.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle107.Format = "N2"
-        Me.columna_precio_unitario.DefaultCellStyle = DataGridViewCellStyle107
+        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle8.Format = "N2"
+        Me.columna_precio_unitario.DefaultCellStyle = DataGridViewCellStyle8
         Me.columna_precio_unitario.FillWeight = 98.90017!
         Me.columna_precio_unitario.HeaderText = "Precio U."
         Me.columna_precio_unitario.Name = "columna_precio_unitario"
@@ -1591,9 +1591,9 @@ Partial Class Venta_Caja_gestion
         'columna_precio_subtotal
         '
         Me.columna_precio_subtotal.DataPropertyName = "precio_subtotal"
-        DataGridViewCellStyle108.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        DataGridViewCellStyle108.Format = "N2"
-        Me.columna_precio_subtotal.DefaultCellStyle = DataGridViewCellStyle108
+        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        DataGridViewCellStyle9.Format = "N2"
+        Me.columna_precio_subtotal.DefaultCellStyle = DataGridViewCellStyle9
         Me.columna_precio_subtotal.FillWeight = 98.90017!
         Me.columna_precio_subtotal.HeaderText = "Subtotal"
         Me.columna_precio_subtotal.Name = "columna_precio_subtotal"

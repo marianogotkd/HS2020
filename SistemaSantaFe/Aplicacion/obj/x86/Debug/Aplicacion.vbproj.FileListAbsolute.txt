@@ -2233,3 +2233,4 @@ C:\Repositorio HS2020\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.
 C:\Repositorio HS2020\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.Cliente_Sucursales.resources
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.Cliente_Sucursales.resources
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.Servicio_Consulta_b.resources
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.Sucursales_Seleccionar.resources
