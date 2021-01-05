@@ -22,6 +22,7 @@
         Sucursales_Obtener_Origen()
         Sucursales_Obtener_Destino()
         DateTimePicker1.Value = Today
+        ComboBox_iva.SelectedIndex = 0
     End Sub
 
     Private Sub Sucursales_Obtener_Origen()
@@ -684,7 +685,7 @@
     End Sub
 
 
-
+    Public subtotal_s_iva As Decimal
     Private Sub calcular_total()
         Dim TOTAL As Decimal = 0
         Dim i As Integer = 0
@@ -694,6 +695,7 @@
             i = i + 1
         End While
         txt_total.Text = (Math.Round(CDec(TOTAL), 2).ToString("N2"))
+        subtotal_s_iva = (Math.Round(CDec(TOTAL), 2).ToString("N2"))
     End Sub
 
 
@@ -708,5 +710,42 @@
         Busqueda_Productos.Show()
     End Sub
 
-   
+    Private Sub aplicar_iva()
+
+        If ComboBox_iva.SelectedItem = "0" Then
+            txt_total.Text = subtotal_s_iva
+        End If
+        If ComboBox_iva.SelectedItem = "10,5" And txt_total.Text <> 0 Then
+
+            '////////////////////////////IMPUESTO////////////////////////////////////////
+            'calculo el 10.5% al subtotla de la venta.
+            Dim calculo As Decimal = (CDec(10.5) * CDec(subtotal_s_iva)) / 100
+            '////////////////////////////////////////////////////////////////////////////
+
+            '/////////////////////TOTAL A PAGAR//////////////////////////////////
+            txt_total.Text = CDec(subtotal_s_iva) + calculo
+            txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////////////
+
+        End If
+
+        If ComboBox_iva.SelectedItem = "21" And txt_total.Text <> 0 Then
+
+            '////////////////////////////IMPUESTO////////////////////////////////////////
+            'calculo el 10.5% al subtotla de la venta.
+            Dim calculo As Decimal = (CDec(21) * CDec(subtotal_s_iva)) / 100
+            '////////////////////////////////////////////////////////////////////////////
+
+            '/////////////////////TOTAL A PAGAR//////////////////////////////////
+            txt_total.Text = CDec(subtotal_s_iva) + calculo
+            txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////////////
+
+        End If
+
+    End Sub
+    
+    Private Sub ComboBox_iva_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBox_iva.SelectedValueChanged
+        aplicar_iva()
+    End Sub
 End Class
