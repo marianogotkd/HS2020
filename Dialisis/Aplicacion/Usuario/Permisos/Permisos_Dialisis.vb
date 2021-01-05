@@ -25,6 +25,8 @@
         CheckBox_ENF_NSD.Checked = False
         CheckBox_ENF_InfDia.Checked = False
         CheckBox_ENF_ConsSes.Checked = False
+        CheckBox_ENF_RevMov.Checked = False
+        CheckBox_ENF_stock.Checked = False
 
         '_________________
 
@@ -124,6 +126,16 @@
                 If CheckBox_ENF_ConsSes.Checked = True Then
                     guardado = 1
                     dausuario.UsuarioModulos_alta(UT_id, "ENF_Consulta")
+                End If
+
+                If CheckBox_ENF_RevMov.Checked = True Then
+                    guardado = 1
+                    dausuario.UsuarioModulos_alta(UT_id, "ENF_RevMov")
+                End If
+
+                If CheckBox_ENF_stock.Checked = True Then
+                    guardado = 1
+                    dausuario.UsuarioModulos_alta(UT_id, "ENF_stock")
                 End If
                 '________ENFERMERIA________
 

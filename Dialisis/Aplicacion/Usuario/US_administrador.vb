@@ -401,6 +401,21 @@ Public Property EnabledCerrar() As Boolean
                 Separator_Enfermeria.Visible = True
             End If
 
+            If DS_Modulos.Tables(0).Rows(i).Item("USUModulos_descripcion") = "ENF_RevMov" Then
+                Tool_Enfermeria.Visible = True
+                MenuItem_ENF_RegMov.Visible = True
+                Label_Enfermeria.Visible = True
+                Separator_Enfermeria.Visible = True
+            End If
+
+
+
+            If DS_Modulos.Tables(0).Rows(i).Item("USUModulos_descripcion") = "ENF_stock" Then
+                Tool_Enfermeria.Visible = True
+                MenuItem_ENF_stock.Visible = True
+                Label_Enfermeria.Visible = True
+                Separator_Enfermeria.Visible = True
+            End If
             '________ENFERMERIA________
 
 
@@ -1290,5 +1305,15 @@ Public Property EnabledCerrar() As Boolean
     Private Sub ConsultasGlobalesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem_ENF_Consulta.Click
         Sesiones_consulta_global.Close()
         Sesiones_consulta_global.Show()
+    End Sub
+
+    Private Sub RegistroDeMovimientosToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem_ENF_RegMov.Click
+        Movimientos_consulta.Close()
+        Movimientos_consulta.Text = "Consulta de movimientos - registros historicos"
+        Movimientos_consulta.Show()
+    End Sub
+
+    Private Sub ConsultaDeStockToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem_ENF_stock.Click
+
     End Sub
 End Class

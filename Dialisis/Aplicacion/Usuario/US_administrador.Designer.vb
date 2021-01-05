@@ -161,6 +161,8 @@ Partial Class US_administrador
         Me.IngresDeMercaderiaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MovimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BajaDeInsumosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuItem_ENF_RegMov = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuItem_ENF_stock = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -175,7 +177,7 @@ Partial Class US_administrador
         Me.ToolStrip1.Location = New System.Drawing.Point(7, 71)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ToolStrip1.Size = New System.Drawing.Size(95, 910)
+        Me.ToolStrip1.Size = New System.Drawing.Size(95, 927)
         Me.ToolStrip1.TabIndex = 54
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -234,7 +236,7 @@ Partial Class US_administrador
         'Tool_Enfermeria
         '
         Me.Tool_Enfermeria.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Tool_Enfermeria.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItem_ENF_NSD, Me.MenuItem_ENF_Informe, Me.MenuItem_ENF_Consulta})
+        Me.Tool_Enfermeria.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuItem_ENF_NSD, Me.MenuItem_ENF_Informe, Me.MenuItem_ENF_Consulta, Me.MenuItem_ENF_RegMov, Me.MenuItem_ENF_stock})
         Me.Tool_Enfermeria.Image = CType(resources.GetObject("Tool_Enfermeria.Image"), System.Drawing.Image)
         Me.Tool_Enfermeria.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.Tool_Enfermeria.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -246,21 +248,21 @@ Partial Class US_administrador
         'MenuItem_ENF_NSD
         '
         Me.MenuItem_ENF_NSD.Name = "MenuItem_ENF_NSD"
-        Me.MenuItem_ENF_NSD.Size = New System.Drawing.Size(200, 22)
+        Me.MenuItem_ENF_NSD.Size = New System.Drawing.Size(206, 22)
         Me.MenuItem_ENF_NSD.Text = "Nueva Sesion de Dialisis"
         Me.MenuItem_ENF_NSD.Visible = False
         '
         'MenuItem_ENF_Informe
         '
         Me.MenuItem_ENF_Informe.Name = "MenuItem_ENF_Informe"
-        Me.MenuItem_ENF_Informe.Size = New System.Drawing.Size(200, 22)
+        Me.MenuItem_ENF_Informe.Size = New System.Drawing.Size(206, 22)
         Me.MenuItem_ENF_Informe.Text = "Informe de Dialisis"
         Me.MenuItem_ENF_Informe.Visible = False
         '
         'MenuItem_ENF_Consulta
         '
         Me.MenuItem_ENF_Consulta.Name = "MenuItem_ENF_Consulta"
-        Me.MenuItem_ENF_Consulta.Size = New System.Drawing.Size(200, 22)
+        Me.MenuItem_ENF_Consulta.Size = New System.Drawing.Size(206, 22)
         Me.MenuItem_ENF_Consulta.Text = "Consulta de Sesiones"
         Me.MenuItem_ENF_Consulta.Visible = False
         '
@@ -1253,6 +1255,20 @@ Partial Class US_administrador
         Me.BajaDeInsumosToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.BajaDeInsumosToolStripMenuItem.Text = "Baja de Insumos"
         '
+        'MenuItem_ENF_RegMov
+        '
+        Me.MenuItem_ENF_RegMov.Name = "MenuItem_ENF_RegMov"
+        Me.MenuItem_ENF_RegMov.Size = New System.Drawing.Size(206, 22)
+        Me.MenuItem_ENF_RegMov.Text = "Registro de Movimientos"
+        Me.MenuItem_ENF_RegMov.Visible = False
+        '
+        'MenuItem_ENF_stock
+        '
+        Me.MenuItem_ENF_stock.Name = "MenuItem_ENF_stock"
+        Me.MenuItem_ENF_stock.Size = New System.Drawing.Size(206, 22)
+        Me.MenuItem_ENF_stock.Text = "Consulta de Stock"
+        Me.MenuItem_ENF_stock.Visible = False
+        '
         'US_administrador
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -1422,4 +1438,6 @@ Partial Class US_administrador
     Friend WithEvents RegistroDeMovimientossoloInsumosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RegistroDeBajassoloInsumosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MenuItem_ENF_Consulta As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuItem_ENF_RegMov As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuItem_ENF_stock As System.Windows.Forms.ToolStripMenuItem
 End Class
