@@ -177,7 +177,8 @@
                         Dim lote_nro As String = Mov_DS.Tables("Mov").Rows(i).Item("Lote") 'necesario para la busqueda
                         '1) primero modifico el lote del producto que esta en sucursal de origen.
                         '1a) necesito recuperar lote_cantidad, ya que esta disminuira.
-                        Dim ds_lote_info As DataSet = DAlote.Lote_recuperar_info_lote(prod_id, lote_nro, cb_origen.SelectedValue)
+                        Dim prov_id As Integer = Mov_DS.Tables("Mov").Rows(i).Item("Prov_id") 'esto es necesario, ya q el lote depende del proveedor
+                        Dim ds_lote_info As DataSet = DAlote.Lote_recuperar_info_lote(prod_id, lote_nro, cb_origen.SelectedValue, prov_id)
                         Dim cant_lote_existente As Decimal = CDec(ds_lote_info.Tables(0).Rows(0).Item("lote_cantidad"))
                         Dim cant_a_mover As Decimal = CDec(Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"))
                         'ahora hago la diferencia
@@ -187,7 +188,7 @@
 
                         '2) ahora actualizo en sucursal destino, 
                         '2a) tengo dos situaciones: que exista el lote en cuyo caso actualizo, o bien que no exista y lo doy de alta.
-                        Dim ds_lote_info2 As DataSet = DAlote.Lote_recuperar_info_lote(prod_id, lote_nro, cb_destino.SelectedValue)
+                        Dim ds_lote_info2 As DataSet = DAlote.Lote_recuperar_info_lote(prod_id, lote_nro, cb_destino.SelectedValue, prov_id)
                         If ds_lote_info2.Tables(0).Rows.Count = 0 Then
                             'si no existe lo doy de alta.
                             Dim fechafabricacion As Date
@@ -416,13 +417,7 @@
                 Else
                     i = i + 1
                 End If
-
             End While
-
-
-
-
-
 
             If valido_seleccion = "no" Then
                 MessageBox.Show("Seleccione un producto para eliminar.", "Sistema de Gestión.")

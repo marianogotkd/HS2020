@@ -154,7 +154,7 @@ Public Class Lote
         Return ds_JE
     End Function
 
-    Public Function Lote_recuperar_info_lote(ByVal prod_id As Integer, ByVal lote_nro As String, ByVal sucursal_id As Integer) As DataSet
+    Public Function Lote_recuperar_info_lote(ByVal prod_id As Integer, ByVal lote_nro As String, ByVal sucursal_id As Integer, ByVal prov_id As Integer) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -165,6 +165,7 @@ Public Class Lote
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_id", prod_id))
         comando.Parameters.Add(New OleDb.OleDbParameter("@lote_nro", lote_nro))
         comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prov_id", prov_id))
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)
         da_JE.Fill(ds_JE, "Lote")
