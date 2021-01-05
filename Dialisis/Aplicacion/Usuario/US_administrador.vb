@@ -1314,6 +1314,8 @@ Public Property EnabledCerrar() As Boolean
     End Sub
 
     Private Sub ConsultaDeStockToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem_ENF_stock.Click
+        Producto_modificar.enfermeria_op = 1
+        Producto_modificar.Show()
 
     End Sub
 End Class
