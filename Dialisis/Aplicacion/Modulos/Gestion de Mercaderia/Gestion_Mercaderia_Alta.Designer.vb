@@ -23,18 +23,20 @@ Partial Class Gestion_Mercaderia_Alta
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Gestion_Mercaderia_Alta))
         Me.cb_Movimiento = New System.Windows.Forms.ComboBox()
         Me.MovBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Mov_DS = New Aplicacion.Mov_DS()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.ComboBox_iva = New System.Windows.Forms.ComboBox()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.txt_total = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.btn_limpiar = New System.Windows.Forms.Button()
@@ -107,8 +109,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.Label4 = New System.Windows.Forms.Label()
         Me.tb_concepto = New System.Windows.Forms.TextBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.ComboBox_iva = New System.Windows.Forms.ComboBox()
         CType(Me.MovBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Mov_DS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -167,6 +167,31 @@ Partial Class Gestion_Mercaderia_Alta
         Me.Panel1.Size = New System.Drawing.Size(1074, 247)
         Me.Panel1.TabIndex = 19
         '
+        'ComboBox_iva
+        '
+        Me.ComboBox_iva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox_iva.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox_iva.FormattingEnabled = True
+        Me.ComboBox_iva.Items.AddRange(New Object() {"0", "10,5", "21"})
+        Me.ComboBox_iva.Location = New System.Drawing.Point(889, 168)
+        Me.ComboBox_iva.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ComboBox_iva.Name = "ComboBox_iva"
+        Me.ComboBox_iva.Size = New System.Drawing.Size(178, 28)
+        Me.ComboBox_iva.TabIndex = 22
+        Me.ComboBox_iva.Visible = False
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(775, 171)
+        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(45, 25)
+        Me.Label21.TabIndex = 21
+        Me.Label21.Text = "IVA"
+        Me.Label21.Visible = False
+        '
         'txt_total
         '
         Me.txt_total.BackColor = System.Drawing.Color.White
@@ -178,6 +203,7 @@ Partial Class Gestion_Mercaderia_Alta
         Me.txt_total.Size = New System.Drawing.Size(178, 30)
         Me.txt_total.TabIndex = 20
         Me.txt_total.Text = "0"
+        Me.txt_total.Visible = False
         '
         'Label19
         '
@@ -189,6 +215,7 @@ Partial Class Gestion_Mercaderia_Alta
         Me.Label19.Size = New System.Drawing.Size(106, 25)
         Me.Label19.TabIndex = 19
         Me.Label19.Text = "TOTAL $: "
+        Me.Label19.Visible = False
         '
         'btn_limpiar
         '
@@ -255,14 +282,14 @@ Partial Class Gestion_Mercaderia_Alta
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1058, 137)
@@ -272,8 +299,8 @@ Partial Class Gestion_Mercaderia_Alta
         'NDataGridViewTextBoxColumn
         '
         Me.NDataGridViewTextBoxColumn.DataPropertyName = "N°"
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.NDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
         Me.NDataGridViewTextBoxColumn.FillWeight = 52.36908!
         Me.NDataGridViewTextBoxColumn.HeaderText = "Item"
         Me.NDataGridViewTextBoxColumn.Name = "NDataGridViewTextBoxColumn"
@@ -282,8 +309,8 @@ Partial Class Gestion_Mercaderia_Alta
         'CodprodDataGridViewTextBoxColumn
         '
         Me.CodprodDataGridViewTextBoxColumn.DataPropertyName = "Cod_prod"
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CodprodDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CodprodDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
         Me.CodprodDataGridViewTextBoxColumn.FillWeight = 66.34649!
         Me.CodprodDataGridViewTextBoxColumn.HeaderText = "Código"
         Me.CodprodDataGridViewTextBoxColumn.Name = "CodprodDataGridViewTextBoxColumn"
@@ -292,8 +319,8 @@ Partial Class Gestion_Mercaderia_Alta
         'DescripcionDataGridViewTextBoxColumn
         '
         Me.DescripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion"
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DescripcionDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DescripcionDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
         Me.DescripcionDataGridViewTextBoxColumn.FillWeight = 301.6104!
         Me.DescripcionDataGridViewTextBoxColumn.HeaderText = "Producto"
         Me.DescripcionDataGridViewTextBoxColumn.Name = "DescripcionDataGridViewTextBoxColumn"
@@ -302,8 +329,8 @@ Partial Class Gestion_Mercaderia_Alta
         'CantidadDataGridViewTextBoxColumn
         '
         Me.CantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad"
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CantidadDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CantidadDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
         Me.CantidadDataGridViewTextBoxColumn.FillWeight = 69.26241!
         Me.CantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
         Me.CantidadDataGridViewTextBoxColumn.Name = "CantidadDataGridViewTextBoxColumn"
@@ -311,8 +338,8 @@ Partial Class Gestion_Mercaderia_Alta
         'DesdeDataGridViewTextBoxColumn
         '
         Me.DesdeDataGridViewTextBoxColumn.DataPropertyName = "Desde"
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DesdeDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DesdeDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
         Me.DesdeDataGridViewTextBoxColumn.FillWeight = 90.58579!
         Me.DesdeDataGridViewTextBoxColumn.HeaderText = "Origen"
         Me.DesdeDataGridViewTextBoxColumn.Name = "DesdeDataGridViewTextBoxColumn"
@@ -322,8 +349,8 @@ Partial Class Gestion_Mercaderia_Alta
         'HaciaDataGridViewTextBoxColumn
         '
         Me.HaciaDataGridViewTextBoxColumn.DataPropertyName = "Hacia"
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.HaciaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.HaciaDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle6
         Me.HaciaDataGridViewTextBoxColumn.FillWeight = 93.5929!
         Me.HaciaDataGridViewTextBoxColumn.HeaderText = "Destino"
         Me.HaciaDataGridViewTextBoxColumn.Name = "HaciaDataGridViewTextBoxColumn"
@@ -1043,29 +1070,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.tb_concepto.Name = "tb_concepto"
         Me.tb_concepto.Size = New System.Drawing.Size(265, 23)
         Me.tb_concepto.TabIndex = 1
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(775, 171)
-        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(45, 25)
-        Me.Label21.TabIndex = 21
-        Me.Label21.Text = "IVA"
-        '
-        'ComboBox_iva
-        '
-        Me.ComboBox_iva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox_iva.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox_iva.FormattingEnabled = True
-        Me.ComboBox_iva.Items.AddRange(New Object() {"0", "10,5", "21"})
-        Me.ComboBox_iva.Location = New System.Drawing.Point(889, 168)
-        Me.ComboBox_iva.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.ComboBox_iva.Name = "ComboBox_iva"
-        Me.ComboBox_iva.Size = New System.Drawing.Size(178, 28)
-        Me.ComboBox_iva.TabIndex = 22
         '
         'Gestion_Mercaderia_Alta
         '

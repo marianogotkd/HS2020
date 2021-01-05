@@ -14,6 +14,7 @@ Public Class Producto_modificar
     Dim ds_rubro As DataSet
     Dim ds_subrubro As DataSet
     Dim evento_load_completo As String = "no"
+    Public enfermeria_op As String
     Private Sub Sucursales_Obtener()
         Dim ds As DataSet = DAsucursal.Sucursal_obtener()
         'agrego un proveedor que se llame "todos", cuando este se selecciona trae todos los ingresos sin importar el proveedor
@@ -1585,31 +1586,32 @@ Public Class Producto_modificar
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        If MsgBox("Esta seguro que quiere poner en 0 todo el stock de la sucursal: " + cb_origen.Text + "?", MsgBoxStyle.YesNo, "Confirmacion") = MsgBoxResult.Yes Then
-            'aqui borro
-            'tengo q recorrer el gridview
+        Stock_Mantenimiento.Show()
+        'If MsgBox("Esta seguro que quiere poner en 0 todo el stock de la sucursal: " + cb_origen.Text + "?", MsgBoxStyle.YesNo, "Confirmacion") = MsgBoxResult.Yes Then
+        '    'aqui borro
+        '    'tengo q recorrer el gridview
 
-            'primero borro todo en la tabla Producto_x_sucursal
+        '    'primero borro todo en la tabla Producto_x_sucursal
 
-            DAproducto.Producto_x_sucursal_borrar_cant_stock(cb_origen.SelectedValue)
+        '    DAproducto.Producto_x_sucursal_borrar_cant_stock(cb_origen.SelectedValue)
 
-            If DG_Producto.Rows.Count <> 0 Then
-                Dim i As Integer = 0
-                While i < DG_Producto.Rows.Count
-                    Dim id_producto As Integer = DG_Producto.Rows(i).Cells("prod_id").Value
-                    Dim sucursal As Integer = cb_origen.SelectedValue
-                    'aqui mando a la bd a borrar los lotes
-                    DAproducto.Producto_x_sucursal_borrar_cant_lote(cb_origen.SelectedValue, id_producto)
-                    i = i + 1
-                End While
-                Cargar_grilla()
-                MessageBox.Show("Los datos se actualizaron correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                MessageBox.Show("No hay productos en la sucursal.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End If
+        '    If DG_Producto.Rows.Count <> 0 Then
+        '        Dim i As Integer = 0
+        '        While i < DG_Producto.Rows.Count
+        '            Dim id_producto As Integer = DG_Producto.Rows(i).Cells("prod_id").Value
+        '            Dim sucursal As Integer = cb_origen.SelectedValue
+        '            'aqui mando a la bd a borrar los lotes
+        '            DAproducto.Producto_x_sucursal_borrar_cant_lote(cb_origen.SelectedValue, id_producto)
+        '            i = i + 1
+        '        End While
+        '        Cargar_grilla()
+        '        MessageBox.Show("Los datos se actualizaron correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        '    Else
+        '        MessageBox.Show("No hay productos en la sucursal.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '    End If
 
 
-        End If
+        'End If
     End Sub
 End Class
 
