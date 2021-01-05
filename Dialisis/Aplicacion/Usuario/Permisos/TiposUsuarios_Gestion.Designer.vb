@@ -47,6 +47,7 @@ Partial Class TiposUsuarios_Gestion
         Me.CheckBox_MED_nuevo = New System.Windows.Forms.CheckBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox_Configuraciones = New System.Windows.Forms.GroupBox()
+        Me.CheckBox_ENF_ConsSes = New System.Windows.Forms.CheckBox()
         Me.CheckBox_ENF_InfDia = New System.Windows.Forms.CheckBox()
         Me.CheckBox_ENF_NSD = New System.Windows.Forms.CheckBox()
         Me.PictureBox6 = New System.Windows.Forms.PictureBox()
@@ -63,7 +64,8 @@ Partial Class TiposUsuarios_Gestion
         Me.CheckBox_STOCK_Prov = New System.Windows.Forms.CheckBox()
         Me.CheckBox_STOCK_insumo = New System.Windows.Forms.CheckBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.CheckBox_ENF_ConsSes = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_ENF_RevMov = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_ENF_stock = New System.Windows.Forms.CheckBox()
         CType(Me.DG_TipoUs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TiposUsuarioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_usuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -170,7 +172,7 @@ Partial Class TiposUsuarios_Gestion
         Me.GroupBox6.Controls.Add(Me.CheckBox_DEP_ingreso)
         Me.GroupBox6.Controls.Add(Me.PictureBox4)
         Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox6.Location = New System.Drawing.Point(704, 145)
+        Me.GroupBox6.Location = New System.Drawing.Point(704, 154)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(397, 125)
         Me.GroupBox6.TabIndex = 36
@@ -246,7 +248,7 @@ Partial Class TiposUsuarios_Gestion
         Me.GroupBox2.Controls.Add(Me.CheckBox_OBRA_nuevo)
         Me.GroupBox2.Controls.Add(Me.PictureBox3)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(465, 145)
+        Me.GroupBox2.Location = New System.Drawing.Point(465, 154)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(233, 125)
         Me.GroupBox2.TabIndex = 35
@@ -310,7 +312,7 @@ Partial Class TiposUsuarios_Gestion
         Me.GroupBox_cli.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox_cli.Location = New System.Drawing.Point(926, 14)
         Me.GroupBox_cli.Name = "GroupBox_cli"
-        Me.GroupBox_cli.Size = New System.Drawing.Size(175, 125)
+        Me.GroupBox_cli.Size = New System.Drawing.Size(175, 134)
         Me.GroupBox_cli.TabIndex = 31
         Me.GroupBox_cli.TabStop = False
         Me.GroupBox_cli.Text = "Medicos"
@@ -353,6 +355,8 @@ Partial Class TiposUsuarios_Gestion
         '
         'GroupBox_Configuraciones
         '
+        Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_RevMov)
+        Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_stock)
         Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_ConsSes)
         Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_InfDia)
         Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_NSD)
@@ -360,10 +364,23 @@ Partial Class TiposUsuarios_Gestion
         Me.GroupBox_Configuraciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox_Configuraciones.Location = New System.Drawing.Point(672, 14)
         Me.GroupBox_Configuraciones.Name = "GroupBox_Configuraciones"
-        Me.GroupBox_Configuraciones.Size = New System.Drawing.Size(248, 125)
+        Me.GroupBox_Configuraciones.Size = New System.Drawing.Size(248, 134)
         Me.GroupBox_Configuraciones.TabIndex = 34
         Me.GroupBox_Configuraciones.TabStop = False
         Me.GroupBox_Configuraciones.Text = "Enfermeria"
+        '
+        'CheckBox_ENF_ConsSes
+        '
+        Me.CheckBox_ENF_ConsSes.AutoCheck = False
+        Me.CheckBox_ENF_ConsSes.AutoSize = True
+        Me.CheckBox_ENF_ConsSes.BackColor = System.Drawing.Color.Transparent
+        Me.CheckBox_ENF_ConsSes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_ENF_ConsSes.Location = New System.Drawing.Point(102, 65)
+        Me.CheckBox_ENF_ConsSes.Name = "CheckBox_ENF_ConsSes"
+        Me.CheckBox_ENF_ConsSes.Size = New System.Drawing.Size(128, 17)
+        Me.CheckBox_ENF_ConsSes.TabIndex = 6
+        Me.CheckBox_ENF_ConsSes.Text = "Consulta de Sesiones"
+        Me.CheckBox_ENF_ConsSes.UseVisualStyleBackColor = False
         '
         'CheckBox_ENF_InfDia
         '
@@ -410,7 +427,7 @@ Partial Class TiposUsuarios_Gestion
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(465, 14)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(201, 125)
+        Me.GroupBox1.Size = New System.Drawing.Size(201, 134)
         Me.GroupBox1.TabIndex = 33
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Pacientes"
@@ -474,7 +491,7 @@ Partial Class TiposUsuarios_Gestion
         Me.GroupBox_Stock.Controls.Add(Me.CheckBox_STOCK_insumo)
         Me.GroupBox_Stock.Controls.Add(Me.PictureBox2)
         Me.GroupBox_Stock.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox_Stock.Location = New System.Drawing.Point(465, 276)
+        Me.GroupBox_Stock.Location = New System.Drawing.Point(465, 286)
         Me.GroupBox_Stock.Name = "GroupBox_Stock"
         Me.GroupBox_Stock.Size = New System.Drawing.Size(636, 121)
         Me.GroupBox_Stock.TabIndex = 32
@@ -569,18 +586,27 @@ Partial Class TiposUsuarios_Gestion
         Me.PictureBox2.TabIndex = 0
         Me.PictureBox2.TabStop = False
         '
-        'CheckBox_ENF_ConsSes
+        'CheckBox_ENF_RevMov
         '
-        Me.CheckBox_ENF_ConsSes.AutoCheck = False
-        Me.CheckBox_ENF_ConsSes.AutoSize = True
-        Me.CheckBox_ENF_ConsSes.BackColor = System.Drawing.Color.Transparent
-        Me.CheckBox_ENF_ConsSes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox_ENF_ConsSes.Location = New System.Drawing.Point(102, 65)
-        Me.CheckBox_ENF_ConsSes.Name = "CheckBox_ENF_ConsSes"
-        Me.CheckBox_ENF_ConsSes.Size = New System.Drawing.Size(128, 17)
-        Me.CheckBox_ENF_ConsSes.TabIndex = 6
-        Me.CheckBox_ENF_ConsSes.Text = "Consulta de Sesiones"
-        Me.CheckBox_ENF_ConsSes.UseVisualStyleBackColor = False
+        Me.CheckBox_ENF_RevMov.AutoSize = True
+        Me.CheckBox_ENF_RevMov.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_ENF_RevMov.Location = New System.Drawing.Point(102, 108)
+        Me.CheckBox_ENF_RevMov.Name = "CheckBox_ENF_RevMov"
+        Me.CheckBox_ENF_RevMov.Size = New System.Drawing.Size(144, 17)
+        Me.CheckBox_ENF_RevMov.TabIndex = 10
+        Me.CheckBox_ENF_RevMov.Text = "Revision de Movimientos"
+        Me.CheckBox_ENF_RevMov.UseVisualStyleBackColor = True
+        '
+        'CheckBox_ENF_stock
+        '
+        Me.CheckBox_ENF_stock.AutoSize = True
+        Me.CheckBox_ENF_stock.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_ENF_stock.Location = New System.Drawing.Point(102, 86)
+        Me.CheckBox_ENF_stock.Name = "CheckBox_ENF_stock"
+        Me.CheckBox_ENF_stock.Size = New System.Drawing.Size(113, 17)
+        Me.CheckBox_ENF_stock.TabIndex = 9
+        Me.CheckBox_ENF_stock.Text = "Consulta de Stock"
+        Me.CheckBox_ENF_stock.UseVisualStyleBackColor = True
         '
         'TiposUsuarios_Gestion
         '
@@ -666,4 +692,6 @@ Partial Class TiposUsuarios_Gestion
     Friend WithEvents CheckBox_STOCK_insumo As System.Windows.Forms.CheckBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents CheckBox_ENF_ConsSes As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox_ENF_RevMov As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox_ENF_stock As System.Windows.Forms.CheckBox
 End Class

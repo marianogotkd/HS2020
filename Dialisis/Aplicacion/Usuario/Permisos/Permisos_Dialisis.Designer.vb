@@ -29,6 +29,7 @@ Partial Class Permisios_Dialisis
         Me.CheckBox_PAC_actualizar = New System.Windows.Forms.CheckBox()
         Me.CheckBox_ENF_NSD = New System.Windows.Forms.CheckBox()
         Me.GroupBox_Configuraciones = New System.Windows.Forms.GroupBox()
+        Me.CheckBox_ENF_ConsSes = New System.Windows.Forms.CheckBox()
         Me.CheckBox_ENF_InfDia = New System.Windows.Forms.CheckBox()
         Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.CheckBox_PAC_nuevo = New System.Windows.Forms.CheckBox()
@@ -60,7 +61,8 @@ Partial Class Permisios_Dialisis
         Me.btn_cancelar = New System.Windows.Forms.Button()
         Me.btn_guardar = New System.Windows.Forms.Button()
         Me.btn_Agregar_Prod = New System.Windows.Forms.Button()
-        Me.CheckBox_ENF_ConsSes = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_ENF_stock = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_ENF_RevMov = New System.Windows.Forms.CheckBox()
         Me.GroupBox_cli.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox_Configuraciones.SuspendLayout()
@@ -83,7 +85,7 @@ Partial Class Permisios_Dialisis
         Me.GroupBox_cli.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox_cli.Location = New System.Drawing.Point(484, 88)
         Me.GroupBox_cli.Name = "GroupBox_cli"
-        Me.GroupBox_cli.Size = New System.Drawing.Size(182, 125)
+        Me.GroupBox_cli.Size = New System.Drawing.Size(182, 137)
         Me.GroupBox_cli.TabIndex = 15
         Me.GroupBox_cli.TabStop = False
         Me.GroupBox_cli.Text = "Medicos"
@@ -144,6 +146,8 @@ Partial Class Permisios_Dialisis
         '
         'GroupBox_Configuraciones
         '
+        Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_RevMov)
+        Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_stock)
         Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_ConsSes)
         Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_InfDia)
         Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_ENF_NSD)
@@ -151,10 +155,21 @@ Partial Class Permisios_Dialisis
         Me.GroupBox_Configuraciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox_Configuraciones.Location = New System.Drawing.Point(230, 88)
         Me.GroupBox_Configuraciones.Name = "GroupBox_Configuraciones"
-        Me.GroupBox_Configuraciones.Size = New System.Drawing.Size(248, 125)
+        Me.GroupBox_Configuraciones.Size = New System.Drawing.Size(248, 137)
         Me.GroupBox_Configuraciones.TabIndex = 20
         Me.GroupBox_Configuraciones.TabStop = False
         Me.GroupBox_Configuraciones.Text = "Enfermeria"
+        '
+        'CheckBox_ENF_ConsSes
+        '
+        Me.CheckBox_ENF_ConsSes.AutoSize = True
+        Me.CheckBox_ENF_ConsSes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_ENF_ConsSes.Location = New System.Drawing.Point(102, 65)
+        Me.CheckBox_ENF_ConsSes.Name = "CheckBox_ENF_ConsSes"
+        Me.CheckBox_ENF_ConsSes.Size = New System.Drawing.Size(128, 17)
+        Me.CheckBox_ENF_ConsSes.TabIndex = 6
+        Me.CheckBox_ENF_ConsSes.Text = "Consulta de Sesiones"
+        Me.CheckBox_ENF_ConsSes.UseVisualStyleBackColor = True
         '
         'CheckBox_ENF_InfDia
         '
@@ -197,7 +212,7 @@ Partial Class Permisios_Dialisis
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(23, 88)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(201, 125)
+        Me.GroupBox1.Size = New System.Drawing.Size(201, 137)
         Me.GroupBox1.TabIndex = 19
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Pacientes"
@@ -244,7 +259,7 @@ Partial Class Permisios_Dialisis
         Me.GroupBox_Stock.Controls.Add(Me.CheckBox_STOCK_insumo)
         Me.GroupBox_Stock.Controls.Add(Me.PictureBox2)
         Me.GroupBox_Stock.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox_Stock.Location = New System.Drawing.Point(23, 219)
+        Me.GroupBox_Stock.Location = New System.Drawing.Point(23, 231)
         Me.GroupBox_Stock.Name = "GroupBox_Stock"
         Me.GroupBox_Stock.Size = New System.Drawing.Size(452, 121)
         Me.GroupBox_Stock.TabIndex = 16
@@ -356,7 +371,7 @@ Partial Class Permisios_Dialisis
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(672, 88)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(233, 125)
+        Me.GroupBox2.Size = New System.Drawing.Size(233, 137)
         Me.GroupBox2.TabIndex = 29
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Obra Social"
@@ -412,7 +427,7 @@ Partial Class Permisios_Dialisis
         Me.GroupBox6.Controls.Add(Me.CheckBox_DEP_ingreso)
         Me.GroupBox6.Controls.Add(Me.PictureBox4)
         Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox6.Location = New System.Drawing.Point(484, 219)
+        Me.GroupBox6.Location = New System.Drawing.Point(484, 231)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(421, 125)
         Me.GroupBox6.TabIndex = 30
@@ -517,16 +532,27 @@ Partial Class Permisios_Dialisis
         Me.btn_Agregar_Prod.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_Agregar_Prod.UseVisualStyleBackColor = True
         '
-        'CheckBox_ENF_ConsSes
+        'CheckBox_ENF_stock
         '
-        Me.CheckBox_ENF_ConsSes.AutoSize = True
-        Me.CheckBox_ENF_ConsSes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox_ENF_ConsSes.Location = New System.Drawing.Point(102, 65)
-        Me.CheckBox_ENF_ConsSes.Name = "CheckBox_ENF_ConsSes"
-        Me.CheckBox_ENF_ConsSes.Size = New System.Drawing.Size(128, 17)
-        Me.CheckBox_ENF_ConsSes.TabIndex = 6
-        Me.CheckBox_ENF_ConsSes.Text = "Consulta de Sesiones"
-        Me.CheckBox_ENF_ConsSes.UseVisualStyleBackColor = True
+        Me.CheckBox_ENF_stock.AutoSize = True
+        Me.CheckBox_ENF_stock.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_ENF_stock.Location = New System.Drawing.Point(102, 86)
+        Me.CheckBox_ENF_stock.Name = "CheckBox_ENF_stock"
+        Me.CheckBox_ENF_stock.Size = New System.Drawing.Size(113, 17)
+        Me.CheckBox_ENF_stock.TabIndex = 7
+        Me.CheckBox_ENF_stock.Text = "Consulta de Stock"
+        Me.CheckBox_ENF_stock.UseVisualStyleBackColor = True
+        '
+        'CheckBox_ENF_RevMov
+        '
+        Me.CheckBox_ENF_RevMov.AutoSize = True
+        Me.CheckBox_ENF_RevMov.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_ENF_RevMov.Location = New System.Drawing.Point(102, 108)
+        Me.CheckBox_ENF_RevMov.Name = "CheckBox_ENF_RevMov"
+        Me.CheckBox_ENF_RevMov.Size = New System.Drawing.Size(144, 17)
+        Me.CheckBox_ENF_RevMov.TabIndex = 8
+        Me.CheckBox_ENF_RevMov.Text = "Revision de Movimientos"
+        Me.CheckBox_ENF_RevMov.UseVisualStyleBackColor = True
         '
         'Permisios_Dialisis
         '
@@ -612,4 +638,6 @@ Partial Class Permisios_Dialisis
     Friend WithEvents CheckBox_STOCK_Consultar As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox_STOCK_Consumir As System.Windows.Forms.CheckBox
     Friend WithEvents CheckBox_ENF_ConsSes As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox_ENF_RevMov As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox_ENF_stock As System.Windows.Forms.CheckBox
 End Class
