@@ -21,5 +21,5 @@ from Movimiento_Mercaderia inner join Movimiento_Mercaderia_Detalle on Movimient
   inner join Sucursal on Sucursal.sucursal_id = Movimiento_Mercaderia.sucursal_id_Origen where Movimiento_Mercaderia.MovMerTipo_id = 3 
   and (Movimiento_Mercaderia.MovMer_FechaHora between @desde and @hasta)
   --and (Movimiento_Mercaderia.MovMer_FechaHora between @desde and DATEADD (day, 3, @hasta))
-  order by Movimiento_Mercaderia_Detalle.prod_codinterno asc  
+  order by Movimiento_Mercaderia_Detalle.prod_codinterno desc  
 

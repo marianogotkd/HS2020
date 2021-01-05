@@ -696,6 +696,11 @@
         End While
         txt_total.Text = (Math.Round(CDec(TOTAL), 2).ToString("N2"))
         subtotal_s_iva = (Math.Round(CDec(TOTAL), 2).ToString("N2"))
+
+        'aplico el iva seleccionado en el combo
+        aplicar_iva()
+
+
     End Sub
 
 
@@ -740,9 +745,7 @@
             txt_total.Text = CDec(subtotal_s_iva) + calculo
             txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
             '////////////////////////////////////////////////////////////////
-
         End If
-
     End Sub
     
     Private Sub ComboBox_iva_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBox_iva.SelectedValueChanged
