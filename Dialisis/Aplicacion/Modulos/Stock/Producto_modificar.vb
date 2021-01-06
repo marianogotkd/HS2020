@@ -297,6 +297,13 @@ Public Class Producto_modificar
     End Sub
 
     Public Sub LOAD_CARGA()
+        If enfermeria_op = 1 Then
+            Button1.Visible = False
+            btn_Anular.Visible = False
+            Button2.Visible = False
+            BO_producto_nuevo.Visible = False
+            BO_producto_modificar.Visible = False
+        End If
         paso = 0
         'Clipboard.SetDataObject(Me.PictureBox1.Image)
         deshabilitar()
@@ -311,7 +318,7 @@ Public Class Producto_modificar
         Cargarcombo_marca() 'choco 23-11-2018
         cargar_combos_categoria()
         evento_load_completo = "si"
-
+       
 
     End Sub
 
