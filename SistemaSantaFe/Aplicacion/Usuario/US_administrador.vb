@@ -881,4 +881,10 @@ Public Property EnabledCerrar() As Boolean
     Private Sub CostosIndirectosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CostosIndirectosToolStripMenuItem.Click
         CostoInd_alta.Show()
     End Sub
+
+    Private Sub NuevaOrdenDeTrabajoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NuevaOrdenDeTrabajoToolStripMenuItem.Click
+        Orden_trabajo_selec_cliente.Close()
+        Orden_trabajo_selec_cliente.procedencia = "desde el menu"
+        Orden_trabajo_selec_cliente.Show()
+    End Sub
 End Class

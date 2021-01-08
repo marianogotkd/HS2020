@@ -315,4 +315,37 @@
             End If
         End If
     End Sub
+
+    Private Sub NuevaOrdenTrabajoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NuevaOrdenTrabajoToolStripMenuItem.Click
+        'Dim day As Integer = CType(sender, FlowLayoutPanel).Tag
+        If choco_day <> 0 Then
+            Dim result As DialogResult
+            result = MessageBox.Show("¿Desea generar una nueva orden de Trabajo?.", "Sistema de Gestión.", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+            If result = DialogResult.OK Then
+                'Orden_Revision_nueva.Close()
+                'Orden_Revision_nueva.DateTimePicker1.Value = New Date(currentDate.Year, currentDate.Month, day)
+                'Orden_Revision_nueva.Show()
+
+                With Orden_trabajo_selec_cliente
+                    .appID = 0
+                    .DateTimePicker1.Value = New Date(currentDate.Year, currentDate.Month, choco_day)
+                    .ShowDialog()
+                End With
+
+
+                'With frmManageAppointment
+                '    .AppID = 0
+                '    .txtName.Text = ""
+                '    .txtAddress.Text = ""
+                '    .txtComment.Text = ""
+                '    .dtpDate.Value = New Date(currentDate.Year, currentDate.Month, day)
+                '    .ShowDialog()
+                'End With
+                'DisplayCurrentDate()
+            End If
+
+            DisplayCurrentDate()
+
+        End If
+    End Sub
 End Class

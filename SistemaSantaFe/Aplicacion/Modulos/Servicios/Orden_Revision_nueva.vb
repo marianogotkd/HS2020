@@ -12,6 +12,11 @@
         Cliente_modificar.Show()
     End Sub
 
+    Private Sub Orden_Revision_nueva_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Button1.Enabled = True
+        btn_guardar.Enabled = True
+    End Sub
+
 
     Private Sub Orden_Revision_nueva_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If appID = 0 Then 'es un alta
@@ -44,7 +49,7 @@
             'recupero info del servicio
             Cargar_Datos()
             'bloqueo el boton de seleccionar cliente.
-            Button1.Enabled = False
+            Button1.Enabled = False 'este es el de buscar cliente
             Button_imprimir.Enabled = True
             Button_trabajo.Enabled = True
         End If
@@ -114,6 +119,7 @@
                     Button_imprimir.Enabled = True
                     Button_trabajo.Enabled = True
 
+                    btn_guardar.Enabled = False
                 End If
             Else
                 MessageBox.Show("Error, complete los campos obligatorios.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
