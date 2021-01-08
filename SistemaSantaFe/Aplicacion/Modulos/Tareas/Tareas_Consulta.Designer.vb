@@ -41,6 +41,7 @@ Partial Class Tareas_Consulta
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.NuevoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NuevaOrdenTrabajoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -209,9 +210,9 @@ Partial Class Tareas_Consulta
         'ContextMenuStrip1
         '
         Me.ContextMenuStrip1.BackColor = System.Drawing.Color.LightYellow
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NuevoToolStripMenuItem, Me.VerToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NuevoToolStripMenuItem, Me.NuevaOrdenTrabajoToolStripMenuItem, Me.VerToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(204, 70)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(204, 92)
         Me.ContextMenuStrip1.Text = "MENU"
         '
         'NuevoToolStripMenuItem
@@ -220,7 +221,7 @@ Partial Class Tareas_Consulta
         Me.NuevoToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.NuevoToolStripMenuItem.Name = "NuevoToolStripMenuItem"
         Me.NuevoToolStripMenuItem.Size = New System.Drawing.Size(203, 22)
-        Me.NuevoToolStripMenuItem.Text = "Nueva Orden"
+        Me.NuevoToolStripMenuItem.Text = "Nueva Orden Revisión"
         '
         'VerToolStripMenuItem
         '
@@ -229,6 +230,14 @@ Partial Class Tareas_Consulta
         Me.VerToolStripMenuItem.Name = "VerToolStripMenuItem"
         Me.VerToolStripMenuItem.Size = New System.Drawing.Size(203, 22)
         Me.VerToolStripMenuItem.Text = "Ver Ordenes generadas"
+        '
+        'NuevaOrdenTrabajoToolStripMenuItem
+        '
+        Me.NuevaOrdenTrabajoToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NuevaOrdenTrabajoToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.NuevaOrdenTrabajoToolStripMenuItem.Name = "NuevaOrdenTrabajoToolStripMenuItem"
+        Me.NuevaOrdenTrabajoToolStripMenuItem.Size = New System.Drawing.Size(203, 22)
+        Me.NuevaOrdenTrabajoToolStripMenuItem.Text = "Nueva Orden Trabajo"
         '
         'Tareas_Consulta
         '
@@ -271,4 +280,5 @@ Partial Class Tareas_Consulta
     Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents NuevoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents VerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents NuevaOrdenTrabajoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

@@ -10,7 +10,7 @@ Public Class Cliente_modificar
 
     Private Sub Cliente_modificar_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         Obtener_Clientes()
-        If procedencia = "Servicios" Or procedencia = "Orden_Revision_nueva" Then
+        If procedencia = "Servicios" Or procedencia = "Orden_Revision_nueva" Or procedencia = "Orden_trabajo_selec_cliente" Then
             BO_cliente_modificar.Text = "Seleccionar"
         Else
             BO_cliente_modificar.Text = "Editar"
@@ -67,18 +67,35 @@ Public Class Cliente_modificar
             Servicio_nuevo.Cliente_ID = DG_clientes.SelectedCells(0).Value
             Me.Close()
         Else
-            If procedencia = "Orden_Revision_nueva" And DG_clientes.Rows.Count <> 0 Then
-                Orden_Revision_nueva.TextBox_Nombre.Text = DG_clientes.SelectedCells(1).Value
-                Orden_Revision_nueva.TextBox_dni.Text = DG_clientes.SelectedCells(4).Value
-                'Orden_Revision_nueva.TextBox_dir.Text = DG_clientes.SelectedCells(8).Value
-                'Orden_Revision_nueva.TextBox_tel.Text = DG_clientes.SelectedCells(6).Value
-                Orden_Revision_nueva.Cliente_ID = DG_clientes.SelectedCells(0).Value
-                'cargo en el combo box las sucursales disponibles para ese cliente.
-                Dim ds_clie As DataSet = DAcliente.Cliente_obtener_info(DG_clientes.SelectedCells(0).Value)
-                Orden_Revision_nueva.combo_sucursal.DataSource = ds_clie.Tables(3)
-                Orden_Revision_nueva.combo_sucursal.DisplayMember = "SucxClie_nombre"
-                Orden_Revision_nueva.combo_sucursal.ValueMember = "SucxClie_id"
-                Me.Close()
+            If (procedencia = "Orden_Revision_nueva" Or procedencia = "Orden_trabajo_selec_cliente") And DG_clientes.Rows.Count <> 0 Then
+
+                If procedencia = "Orden_Revision_nueva" Then
+
+                    Orden_Revision_nueva.TextBox_Nombre.Text = DG_clientes.SelectedCells(1).Value
+                    Orden_Revision_nueva.TextBox_dni.Text = DG_clientes.SelectedCells(4).Value
+                    'Orden_Revision_nueva.TextBox_dir.Text = DG_clientes.SelectedCells(8).Value
+                    'Orden_Revision_nueva.TextBox_tel.Text = DG_clientes.SelectedCells(6).Value
+                    Orden_Revision_nueva.Cliente_ID = DG_clientes.SelectedCells(0).Value
+                    'cargo en el combo box las sucursales disponibles para ese cliente.
+                    Dim ds_clie As DataSet = DAcliente.Cliente_obtener_info(DG_clientes.SelectedCells(0).Value)
+                    Orden_Revision_nueva.combo_sucursal.DataSource = ds_clie.Tables(3)
+                    Orden_Revision_nueva.combo_sucursal.DisplayMember = "SucxClie_nombre"
+                    Orden_Revision_nueva.combo_sucursal.ValueMember = "SucxClie_id"
+                    Me.Close()
+                End If
+                If procedencia = "Orden_trabajo_selec_cliente" Then
+                    Orden_trabajo_selec_cliente.TextBox_Nombre.Text = DG_clientes.SelectedCells(1).Value
+                    Orden_trabajo_selec_cliente.TextBox_dni.Text = DG_clientes.SelectedCells(4).Value
+                    'Orden_Revision_nueva.TextBox_dir.Text = DG_clientes.SelectedCells(8).Value
+                    'Orden_Revision_nueva.TextBox_tel.Text = DG_clientes.SelectedCells(6).Value
+                    Orden_trabajo_selec_cliente.Cliente_ID = DG_clientes.SelectedCells(0).Value
+                    'cargo en el combo box las sucursales disponibles para ese cliente.
+                    Dim ds_clie As DataSet = DAcliente.Cliente_obtener_info(DG_clientes.SelectedCells(0).Value)
+                    Orden_trabajo_selec_cliente.combo_sucursal.DataSource = ds_clie.Tables(3)
+                    Orden_trabajo_selec_cliente.combo_sucursal.DisplayMember = "SucxClie_nombre"
+                    Orden_trabajo_selec_cliente.combo_sucursal.ValueMember = "SucxClie_id"
+                    Me.Close()
+                End If
             Else
                 If DG_clientes.Rows.Count <> 0 Then
                     Dim productoselec As String = DG_clientes.SelectedCells(0).Value
@@ -105,7 +122,7 @@ Public Class Cliente_modificar
 
 
 
-        End If
+            End If
     End Sub
     
 

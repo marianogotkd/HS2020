@@ -834,6 +834,12 @@
     <Compile Include="Modulos\Remito\Remito.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Servicios\Orden_trabajo_selec_cliente.Designer.vb">
+      <DependentUpon>Orden_trabajo_selec_cliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Servicios\Orden_trabajo_selec_cliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Servicios\Servicio_Consulta_b.Designer.vb">
       <DependentUpon>Servicio_Consulta_b.vb</DependentUpon>
     </Compile>
@@ -1506,6 +1512,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Remito\Remito.resx">
       <DependentUpon>Remito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Servicios\Orden_trabajo_selec_cliente.resx">
+      <DependentUpon>Orden_trabajo_selec_cliente.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Servicios\Servicio_Consulta_b.resx">
       <DependentUpon>Servicio_Consulta_b.vb</DependentUpon>

@@ -17,6 +17,7 @@
     Dim DAvendedor As New Datos.Vendedor
     Public procedencia As String 'me sirve para saber si hago factura o bien remito
     Public SucxClie_id As Integer = 0 'choco 22-12-2020 cuando eligo cliente, aqui pongo el id de la sucursal del cliente, me sirve para armar la factura.
+    'Public SucxClieid As Integer = 0 'choco 07-01-2021 este parametro viene del form sucursales_seleccionar, lo necesito para saber la sucursal del cliente, necesario para hacer el comprobante de pago.
 #Region "METODOS Y EVENTOS DE LA GRILLA DE PRODUCTOS"
     'esta rutina busca en la grilla el producto y si existe solo suma la cantidad + 1 y realiza el calculo de totales.
     Public Sub buscar_en_grilla_y_sumar_mas_uno(ByVal cod_ingresado As Integer, ByRef existe_en_grilla As String)
@@ -1353,36 +1354,46 @@
             var.Show()
         End If
     End Sub
+
+    Public Sub venta_clienta_pasar_pestaña()
+        GroupBox12.Enabled = True 'habilito la pestaña 2
+        GroupBox1.Enabled = False
+        GroupBox2.Enabled = False
+        GroupBox3.Enabled = False
+        TabPage1.Parent = Nothing 'oculto pestaña 1
+        TabPage2.Parent = TabControl1 'pongo visible pestaña 2
+        TabControl1.SelectedTab = TabPage2
+
+        'LIMPIAR LA GRILLA DE PROD AGREGADOS
+        'DataG_lista.DataSource = Nothing
+        DataGridView1.DataSource = Nothing
+        Call habilitar_columnas_edicion()
+        Call Obtener_Productos_Combos()
+        'tx_cantidad.Text = 1
+
+        '/////////////////////////////////////////////////////////////////////////
+        'esto va en el evento load del nuevo diseño del modulo
+        DataGridView1.Rows.Add()
+        DataGridView1.Focus()
+        DataGridView1.Rows(0).Cells("columna_codinterno").Selected = True
+        obtener_usuario_y_sucursal() 'esto info se carga en los grupbox de la segunda pestaña
+        'FILA = 0
+        'CELDA = 2
+        ' DataGridView1.EditMode = DataGridViewEditMode.EditOnEnter
+        ComboBox_iva.SelectedIndex = 0
+        Label_tipo_vta.Text = "Venta " + tipo_vta
+    End Sub
+
     Private Sub BO_Aceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BO_Aceptar.Click
         If RB_Cliente.Checked = True Then
             If DG_clientes.Rows.Count <> 0 Then
                 If DG_clientes.CurrentRow.Selected = True Then
-                    GroupBox12.Enabled = True 'habilito la pestaña 2
-                    GroupBox1.Enabled = False
-                    GroupBox2.Enabled = False
-                    GroupBox3.Enabled = False
-                    TabPage1.Parent = Nothing 'oculto pestaña 1
-                    TabPage2.Parent = TabControl1 'pongo visible pestaña 2
-                    TabControl1.SelectedTab = TabPage2
+                    Sucursales_Seleccionar.Close()
 
-                    'LIMPIAR LA GRILLA DE PROD AGREGADOS
-                    'DataG_lista.DataSource = Nothing
-                    DataGridView1.DataSource = Nothing
-                    Call habilitar_columnas_edicion()
-                    Call Obtener_Productos_Combos()
-                    'tx_cantidad.Text = 1
 
-                    '/////////////////////////////////////////////////////////////////////////
-                    'esto va en el evento load del nuevo diseño del modulo
-                    DataGridView1.Rows.Add()
-                    DataGridView1.Focus()
-                    DataGridView1.Rows(0).Cells("columna_codinterno").Selected = True
-                    obtener_usuario_y_sucursal() 'esto info se carga en los grupbox de la segunda pestaña
-                    'FILA = 0
-                    'CELDA = 2
-                    ' DataGridView1.EditMode = DataGridViewEditMode.EditOnEnter
-                    ComboBox_iva.SelectedIndex = 0
-                    Label_tipo_vta.Text = "Venta " + tipo_vta
+                    Sucursales_Seleccionar.cliente_id = CInt(DG_clientes.CurrentRow.Cells("CLIidDataGridViewTextBoxColumn").Value)
+
+                    Sucursales_Seleccionar.Show()
 
                 Else
                     MessageBox.Show("Error, seleccione un cliente", "Sistema de Gestión", MessageBoxButtons.OK, MessageBoxIcon.Warning)

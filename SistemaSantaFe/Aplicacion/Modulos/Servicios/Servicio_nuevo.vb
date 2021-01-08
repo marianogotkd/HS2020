@@ -18,6 +18,8 @@
     Dim combo_cuadrilla_listo As String = "no"
     Dim estado_de_orden As String
     Dim orden_trabajo_id As Integer
+    Public procedencia As String 'este parametro viene del form Ordeb_trabajo_selec_cliente
+    Dim guardado As String = "no"
     Private Sub recuperar_cuadrillas()
 
         ds_cuadrilla = Dacuadrillas.Cuadrilla_obtener_todo()
@@ -58,6 +60,31 @@
         End If
     End Sub
 
+    Private Sub Servicio_nuevo_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        If procedencia = "Orden_trabajo_selec_cliente" Then
+
+            'tengo que eliminar si no se guardo
+            If guardado = "si" Then
+                'no hago nada
+            Else
+                'AQUI TENGO QUE PONER UN MENSAJE QUE DIGA, QUIERE SALIR SIN GUARDAR LA ORDEN DE TRABAJO?
+                Dim result As Integer = MessageBox.Show("¿Está seguro que desea salir sin guardar los cambios?", "Sistema de Gestión", MessageBoxButtons.YesNo)
+                If result = DialogResult.Yes Then
+                    'como no se guardó elimino la orden de revisión que se generó en segundo plano.
+                    DAservicio.Servicio_ActualizarEstado(serv_id, "ANULADO")
+                    procedencia = ""
+                    guardado = "no"
+                Else
+                    e.Cancel = True
+                End If
+            End If
+        Else
+            procedencia = ""
+            guardado = "no"
+        End If
+        
+    End Sub
+
     Private Sub Servicio_nuevo_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
         If e.KeyCode = Keys.F1 Then 'F1
             Busqueda_Productos.form_procedencia = "Servicio_nuevo"
@@ -82,7 +109,7 @@
             Label_Estado.Visible = False
             Generar_cod_interno()
         Else
-            Cargar_Datos() 'falta poner que recupere cuadrilla asignada.
+            Cargar_Datos() 'tambien recupera cuadrilla asignada.
             Button1.Enabled = False 'no quiero que se cambie el cliente
         End If
 
@@ -540,6 +567,10 @@
             Dim result As Integer = MessageBox.Show("¿Está seguro que desea guardar los cambios y generar la ORDEN DE TRABAJO?", "Sistema de Gestión", MessageBoxButtons.YesNo)
             If result = DialogResult.Yes Then
                 Guardar_BD("boton_guardar_cambios")
+
+                If procedencia = "Orden_trabajo_selec_cliente" Then
+                    guardado = "si"
+                End If
 
             End If
         Else
