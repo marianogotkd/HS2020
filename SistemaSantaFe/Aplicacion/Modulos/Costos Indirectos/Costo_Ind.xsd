@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Costo_Ind" targetNamespace="http://tempuri.org/Costo_Ind.xsd" xmlns:mstns="http://tempuri.org/Costo_Ind.xsd" xmlns="http://tempuri.org/Costo_Ind.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Costo_Ind" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Costo_Ind" msprop:Generator_UserDSName="Costo_Ind">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Costo_Indirecto_Obtener" msprop:Generator_TableClassName="Costo_Indirecto_ObtenerDataTable" msprop:Generator_TableVarName="tableCosto_Indirecto_Obtener" msprop:Generator_TablePropName="Costo_Indirecto_Obtener" msprop:Generator_RowDeletingName="Costo_Indirecto_ObtenerRowDeleting" msprop:Generator_RowChangingName="Costo_Indirecto_ObtenerRowChanging" msprop:Generator_RowEvHandlerName="Costo_Indirecto_ObtenerRowChangeEventHandler" msprop:Generator_RowDeletedName="Costo_Indirecto_ObtenerRowDeleted" msprop:Generator_UserTableName="Costo_Indirecto_Obtener" msprop:Generator_RowChangedName="Costo_Indirecto_ObtenerRowChanged" msprop:Generator_RowEvArgName="Costo_Indirecto_ObtenerRowChangeEvent" msprop:Generator_RowClassName="Costo_Indirecto_ObtenerRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CostoI_id" msprop:Generator_ColumnVarNameInTable="columnCostoI_id" msprop:Generator_ColumnPropNameInRow="CostoI_id" msprop:Generator_ColumnPropNameInTable="CostoI_idColumn" msprop:Generator_UserColumnName="CostoI_id" type="xs:int" minOccurs="0" />
+              <xs:element name="CostoI_Desc" msprop:Generator_ColumnVarNameInTable="columnCostoI_Desc" msprop:Generator_ColumnPropNameInRow="CostoI_Desc" msprop:Generator_ColumnPropNameInTable="CostoI_DescColumn" msprop:Generator_UserColumnName="CostoI_Desc" type="xs:string" minOccurs="0" />
+              <xs:element name="CostoI_Total" msprop:Generator_ColumnVarNameInTable="columnCostoI_Total" msprop:Generator_ColumnPropNameInRow="CostoI_Total" msprop:Generator_ColumnPropNameInTable="CostoI_TotalColumn" msprop:Generator_UserColumnName="CostoI_Total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CostoI_fecha" msprop:Generator_ColumnVarNameInTable="columnCostoI_fecha" msprop:Generator_ColumnPropNameInRow="CostoI_fecha" msprop:Generator_ColumnPropNameInTable="CostoI_fechaColumn" msprop:Generator_UserColumnName="CostoI_fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CostoI_Estado" msprop:Generator_ColumnVarNameInTable="columnCostoI_Estado" msprop:Generator_ColumnPropNameInRow="CostoI_Estado" msprop:Generator_ColumnPropNameInTable="CostoI_EstadoColumn" msprop:Generator_UserColumnName="CostoI_Estado" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Detalle" msprop:Generator_TableClassName="DetalleDataTable" msprop:Generator_TableVarName="tableDetalle" msprop:Generator_TablePropName="Detalle" msprop:Generator_RowDeletingName="DetalleRowDeleting" msprop:Generator_RowChangingName="DetalleRowChanging" msprop:Generator_RowEvHandlerName="DetalleRowChangeEventHandler" msprop:Generator_RowDeletedName="DetalleRowDeleted" msprop:Generator_UserTableName="Detalle" msprop:Generator_RowChangedName="DetalleRowChanged" msprop:Generator_RowEvArgName="DetalleRowChangeEvent" msprop:Generator_RowClassName="DetalleRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CostoInDet_id" msprop:Generator_ColumnVarNameInTable="columnCostoInDet_id" msprop:Generator_ColumnPropNameInRow="CostoInDet_id" msprop:Generator_ColumnPropNameInTable="CostoInDet_idColumn" msprop:Generator_UserColumnName="CostoInDet_id" type="xs:string" minOccurs="0" />
+              <xs:element name="CostoInDet_desc" msprop:Generator_ColumnVarNameInTable="columnCostoInDet_desc" msprop:Generator_ColumnPropNameInRow="CostoInDet_desc" msprop:Generator_ColumnPropNameInTable="CostoInDet_descColumn" msprop:Generator_UserColumnName="CostoInDet_desc" type="xs:string" minOccurs="0" />
+              <xs:element name="CostoInDet_costo" msprop:Generator_ColumnVarNameInTable="columnCostoInDet_costo" msprop:Generator_ColumnPropNameInRow="CostoInDet_costo" msprop:Generator_ColumnPropNameInTable="CostoInDet_costoColumn" msprop:Generator_UserColumnName="CostoInDet_costo" type="xs:string" minOccurs="0" />
+              <xs:element name="CostoI_id" msprop:Generator_ColumnVarNameInTable="columnCostoI_id" msprop:Generator_ColumnPropNameInRow="CostoI_id" msprop:Generator_ColumnPropNameInTable="CostoI_idColumn" msprop:Generator_UserColumnName="CostoI_id" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

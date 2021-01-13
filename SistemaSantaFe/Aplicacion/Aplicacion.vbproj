@@ -315,6 +315,20 @@
     <Compile Include="Modulos\Costos Indirectos\CostoInd_alta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Costos Indirectos\CostosInd_Consulta.Designer.vb">
+      <DependentUpon>CostosInd_Consulta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Costos Indirectos\CostosInd_Consulta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Costos Indirectos\Costo_Ind.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Costo_Ind.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Costos Indirectos\Costo_Ind.vb">
+      <DependentUpon>Costo_Ind.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Cuadrilla\Cuadrilla_agregar_empleado.Designer.vb">
       <DependentUpon>Cuadrilla_agregar_empleado.vb</DependentUpon>
     </Compile>
@@ -1296,6 +1310,9 @@
     <EmbeddedResource Include="Modulos\Costos Indirectos\CostoInd_alta.resx">
       <DependentUpon>CostoInd_alta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Costos Indirectos\CostosInd_Consulta.resx">
+      <DependentUpon>CostosInd_Consulta.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Cuadrilla\Cuadrilla_agregar_empleado.resx">
       <DependentUpon>Cuadrilla_agregar_empleado.vb</DependentUpon>
     </EmbeddedResource>
@@ -1737,6 +1754,17 @@
     </None>
     <None Include="Modulos\Configuraciones\DS_configuraciones.xss">
       <DependentUpon>DS_configuraciones.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Costos Indirectos\Costo_Ind.xsc">
+      <DependentUpon>Costo_Ind.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Costos Indirectos\Costo_Ind.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Costo_Ind.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulos\Costos Indirectos\Costo_Ind.xss">
+      <DependentUpon>Costo_Ind.xsd</DependentUpon>
     </None>
     <None Include="Modulos\Cuadrilla\Ds_cuadrilla.xsc">
       <DependentUpon>Ds_cuadrilla.xsd</DependentUpon>

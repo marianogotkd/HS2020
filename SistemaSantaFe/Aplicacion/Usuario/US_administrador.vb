@@ -879,7 +879,7 @@ Public Property EnabledCerrar() As Boolean
 
   
     Private Sub CostosIndirectosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CostosIndirectosToolStripMenuItem.Click
-        CostoInd_alta.Show()
+        CostosInd_Consulta.Show()
     End Sub
 
     Private Sub NuevaOrdenDeTrabajoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NuevaOrdenDeTrabajoToolStripMenuItem.Click

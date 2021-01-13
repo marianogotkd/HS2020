@@ -38,9 +38,9 @@ Partial Class CostoInd_alta
         Me.tb_horas_hora = New System.Windows.Forms.NumericUpDown()
         Me.tb_costo = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.btn_guardar = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Panel_hora = New System.Windows.Forms.Panel()
+        Me.tb_costo_total_Hora = New System.Windows.Forms.TextBox()
         Me.tb_hora_dia = New System.Windows.Forms.NumericUpDown()
         Me.btn_hora = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -68,12 +68,21 @@ Partial Class CostoInd_alta
         Me.tb_empCost = New System.Windows.Forms.TextBox()
         Me.btn_emp = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Total_Grilla = New System.Windows.Forms.TextBox()
         Me.tb_titulo = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
+        Me.btn_guardar = New System.Windows.Forms.Button()
+        Me.lbl_err = New System.Windows.Forms.Label()
+        Me.lbl_err2 = New System.Windows.Forms.Label()
+        Me.lbl_err3 = New System.Windows.Forms.Label()
+        Me.DetalleBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Costo_Ind = New Aplicacion.Costo_Ind()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.CostoInDetidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CostoInDetdescDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CostoInDetcostoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CostoIidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.Panel_dia.SuspendLayout()
         CType(Me.tb_dia_dia, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -89,6 +98,8 @@ Partial Class CostoInd_alta
         Me.GroupBox4.SuspendLayout()
         CType(Me.tb_multi, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DetalleBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Costo_Ind, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DateTimePicker1
@@ -226,7 +237,7 @@ Partial Class CostoInd_alta
         'tb_costo
         '
         Me.tb_costo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tb_costo.Location = New System.Drawing.Point(379, 80)
+        Me.tb_costo.Location = New System.Drawing.Point(404, 82)
         Me.tb_costo.Name = "tb_costo"
         Me.tb_costo.Size = New System.Drawing.Size(112, 26)
         Me.tb_costo.TabIndex = 6
@@ -234,24 +245,11 @@ Partial Class CostoInd_alta
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(339, 90)
+        Me.Label4.Location = New System.Drawing.Point(364, 90)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(34, 13)
         Me.Label4.TabIndex = 2
         Me.Label4.Text = "Costo"
-        '
-        'btn_guardar
-        '
-        Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
-        Me.btn_guardar.Location = New System.Drawing.Point(13, 549)
-        Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_guardar.Name = "btn_guardar"
-        Me.btn_guardar.Size = New System.Drawing.Size(116, 43)
-        Me.btn_guardar.TabIndex = 8
-        Me.btn_guardar.Text = "Guardar Cambios"
-        Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btn_guardar.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
@@ -266,6 +264,7 @@ Partial Class CostoInd_alta
         '
         'Panel_hora
         '
+        Me.Panel_hora.Controls.Add(Me.tb_costo_total_Hora)
         Me.Panel_hora.Controls.Add(Me.tb_hora_dia)
         Me.Panel_hora.Controls.Add(Me.btn_hora)
         Me.Panel_hora.Controls.Add(Me.Label7)
@@ -277,6 +276,16 @@ Partial Class CostoInd_alta
         Me.Panel_hora.Name = "Panel_hora"
         Me.Panel_hora.Size = New System.Drawing.Size(275, 215)
         Me.Panel_hora.TabIndex = 37
+        '
+        'tb_costo_total_Hora
+        '
+        Me.tb_costo_total_Hora.BackColor = System.Drawing.SystemColors.Info
+        Me.tb_costo_total_Hora.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tb_costo_total_Hora.Location = New System.Drawing.Point(49, 122)
+        Me.tb_costo_total_Hora.Name = "tb_costo_total_Hora"
+        Me.tb_costo_total_Hora.ReadOnly = True
+        Me.tb_costo_total_Hora.Size = New System.Drawing.Size(165, 26)
+        Me.tb_costo_total_Hora.TabIndex = 35
         '
         'tb_hora_dia
         '
@@ -543,8 +552,10 @@ Partial Class CostoInd_alta
         '
         Me.DataGridView2.AllowUserToAddRows = False
         Me.DataGridView2.AllowUserToDeleteRows = False
+        Me.DataGridView2.AutoGenerateColumns = False
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2})
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CostoInDetidDataGridViewTextBoxColumn, Me.CostoInDetdescDataGridViewTextBoxColumn, Me.CostoInDetcostoDataGridViewTextBoxColumn, Me.CostoIidDataGridViewTextBoxColumn})
+        Me.DataGridView2.DataSource = Me.DetalleBindingSource
         Me.DataGridView2.Location = New System.Drawing.Point(13, 388)
         Me.DataGridView2.MultiSelect = False
         Me.DataGridView2.Name = "DataGridView2"
@@ -552,18 +563,6 @@ Partial Class CostoInd_alta
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView2.Size = New System.Drawing.Size(779, 159)
         Me.DataGridView2.TabIndex = 36
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Descripcion"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Costo"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
         '
         'Label11
         '
@@ -604,11 +603,116 @@ Partial Class CostoInd_alta
         Me.Label12.TabIndex = 40
         Me.Label12.Text = "Titulo"
         '
+        'btn_guardar
+        '
+        Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
+        Me.btn_guardar.Location = New System.Drawing.Point(13, 549)
+        Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_guardar.Name = "btn_guardar"
+        Me.btn_guardar.Size = New System.Drawing.Size(116, 43)
+        Me.btn_guardar.TabIndex = 8
+        Me.btn_guardar.Text = "Guardar Cambios"
+        Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btn_guardar.UseVisualStyleBackColor = True
+        '
+        'lbl_err
+        '
+        Me.lbl_err.AutoSize = True
+        Me.lbl_err.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_err.ForeColor = System.Drawing.Color.Red
+        Me.lbl_err.Location = New System.Drawing.Point(638, 34)
+        Me.lbl_err.Name = "lbl_err"
+        Me.lbl_err.Size = New System.Drawing.Size(26, 31)
+        Me.lbl_err.TabIndex = 41
+        Me.lbl_err.Text = "*"
+        Me.lbl_err.Visible = False
+        '
+        'lbl_err2
+        '
+        Me.lbl_err2.AutoSize = True
+        Me.lbl_err2.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_err2.ForeColor = System.Drawing.Color.Red
+        Me.lbl_err2.Location = New System.Drawing.Point(522, 80)
+        Me.lbl_err2.Name = "lbl_err2"
+        Me.lbl_err2.Size = New System.Drawing.Size(26, 31)
+        Me.lbl_err2.TabIndex = 42
+        Me.lbl_err2.Text = "*"
+        Me.lbl_err2.Visible = False
+        '
+        'lbl_err3
+        '
+        Me.lbl_err3.AutoSize = True
+        Me.lbl_err3.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_err3.ForeColor = System.Drawing.Color.Red
+        Me.lbl_err3.Location = New System.Drawing.Point(332, 80)
+        Me.lbl_err3.Name = "lbl_err3"
+        Me.lbl_err3.Size = New System.Drawing.Size(26, 31)
+        Me.lbl_err3.TabIndex = 43
+        Me.lbl_err3.Text = "*"
+        Me.lbl_err3.Visible = False
+        '
+        'DetalleBindingSource
+        '
+        Me.DetalleBindingSource.DataMember = "Detalle"
+        Me.DetalleBindingSource.DataSource = Me.Costo_Ind
+        '
+        'Costo_Ind
+        '
+        Me.Costo_Ind.DataSetName = "Costo_Ind"
+        Me.Costo_Ind.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Button2
+        '
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.menos
+        Me.Button2.Location = New System.Drawing.Point(136, 549)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(102, 43)
+        Me.Button2.TabIndex = 269
+        Me.Button2.Text = "Quitar"
+        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'CostoInDetidDataGridViewTextBoxColumn
+        '
+        Me.CostoInDetidDataGridViewTextBoxColumn.DataPropertyName = "CostoInDet_id"
+        Me.CostoInDetidDataGridViewTextBoxColumn.HeaderText = "CostoInDet_id"
+        Me.CostoInDetidDataGridViewTextBoxColumn.Name = "CostoInDetidDataGridViewTextBoxColumn"
+        Me.CostoInDetidDataGridViewTextBoxColumn.Visible = False
+        '
+        'CostoInDetdescDataGridViewTextBoxColumn
+        '
+        Me.CostoInDetdescDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CostoInDetdescDataGridViewTextBoxColumn.DataPropertyName = "CostoInDet_desc"
+        Me.CostoInDetdescDataGridViewTextBoxColumn.HeaderText = "Descripcion"
+        Me.CostoInDetdescDataGridViewTextBoxColumn.Name = "CostoInDetdescDataGridViewTextBoxColumn"
+        Me.CostoInDetdescDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CostoInDetcostoDataGridViewTextBoxColumn
+        '
+        Me.CostoInDetcostoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CostoInDetcostoDataGridViewTextBoxColumn.DataPropertyName = "CostoInDet_costo"
+        Me.CostoInDetcostoDataGridViewTextBoxColumn.HeaderText = "Costo"
+        Me.CostoInDetcostoDataGridViewTextBoxColumn.Name = "CostoInDetcostoDataGridViewTextBoxColumn"
+        Me.CostoInDetcostoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CostoIidDataGridViewTextBoxColumn
+        '
+        Me.CostoIidDataGridViewTextBoxColumn.DataPropertyName = "CostoI_id"
+        Me.CostoIidDataGridViewTextBoxColumn.HeaderText = "CostoI_id"
+        Me.CostoIidDataGridViewTextBoxColumn.Name = "CostoIidDataGridViewTextBoxColumn"
+        Me.CostoIidDataGridViewTextBoxColumn.Visible = False
+        '
         'CostoInd_alta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1254, 642)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.lbl_err3)
+        Me.Controls.Add(Me.lbl_err2)
+        Me.Controls.Add(Me.lbl_err)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.tb_titulo)
         Me.Controls.Add(Me.Label11)
@@ -649,6 +753,8 @@ Partial Class CostoInd_alta
         Me.GroupBox4.PerformLayout()
         CType(Me.tb_multi, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DetalleBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Costo_Ind, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -691,8 +797,6 @@ Partial Class CostoInd_alta
     Friend WithEvents btn_emp As System.Windows.Forms.Button
     Friend WithEvents tb_multi As System.Windows.Forms.NumericUpDown
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EmpleadoapeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EmpleadonomDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EmpleadodniDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -704,4 +808,15 @@ Partial Class CostoInd_alta
     Friend WithEvents Total_Grilla As System.Windows.Forms.TextBox
     Friend WithEvents tb_titulo As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents tb_costo_total_Hora As System.Windows.Forms.TextBox
+    Friend WithEvents DetalleBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Costo_Ind As Aplicacion.Costo_Ind
+    Friend WithEvents lbl_err As System.Windows.Forms.Label
+    Friend WithEvents lbl_err2 As System.Windows.Forms.Label
+    Friend WithEvents lbl_err3 As System.Windows.Forms.Label
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents CostoInDetidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CostoInDetdescDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CostoInDetcostoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CostoIidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

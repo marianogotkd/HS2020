@@ -2,6 +2,7 @@
     Dim validaciones As New Validaciones
     Dim DAemp As New Datos.Empleado
     Dim DACosto As New Datos.Costo_Indirecto
+    Public Costo_Id As Integer = 0
 
     Private Sub CostoInd_alta_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim ds_emp As DataSet = DAemp.Empleados_remuneracion_Obtener
@@ -10,9 +11,36 @@
         DataGridView1.DataSource = Nothing
         Ds_empleados.Tables("Empleado_remu").Merge(ds_emp.Tables(0))
         DataGridView1.DataSource = ds_emp.Tables(0)
+        If Costo_Id <> 0 Then
+            Cargar_Datos()
+        End If
+    End Sub
+    Private Sub Cargar_Datos()
+        Dim Ds As DataSet = DACosto.Costo_Indirecto_Obtener_Todo_X_ID(Costo_Id)
+
+        If Ds.Tables(0).Rows.Count <> 0 Then
+            tb_titulo.Text = Ds.Tables(0).Rows(0).Item("CostoI_Desc")
+            Total_Grilla.Text = Ds.Tables(0).Rows(0).Item("CostoI_Total")
+           
+
+
+            'choco 17-12-2020 ahora cargo en el gridview las sucursales que tiene asignado el cliente
+            Dim e As Integer = 0
+            If Ds.Tables(1).Rows.Count <> 0 Then
+                While e < Ds.Tables(1).Rows.Count
+                    Dim fila As DataRow = Costo_Ind.Tables("Detalle").NewRow
+                    fila("CostoInDet_id") = Ds.Tables(1).Rows(e).Item("CostoInDet_id")
+                    fila("CostoInDet_desc") = Ds.Tables(1).Rows(e).Item("CostoInDet_desc")
+                    fila("CostoInDet_costo") = Ds.Tables(1).Rows(e).Item("CostoInDet_costo")
+                    Costo_Ind.Tables("Detalle").Rows.Add(fila)
+                    e = e + 1
+                End While
+            End If
+        End If
+
+
 
     End Sub
-    
 
     Private Sub tb_sem_costo_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs)
         tb_costo.SelectAll()
@@ -74,7 +102,7 @@
     Private Sub Calcular_Costo_Hora()
         If tb_costo.Text <> "" And tb_costo.Text <> "0,00" Then
             tb_costo_total_Hora.Text = CDec(tb_costo.Text) / (tb_hora_dia.Value * tb_horas_hora.Value)
-            '  tb_costo_total_Hora.Text = (Math.Round(CDec(tb_costo_total_Hora.Text), 2).ToString("N2"))
+            tb_costo_total_Hora.Text = (Math.Round(CDec(tb_costo_total_Hora.Text), 2).ToString("N2"))
         End If
 
 
@@ -184,23 +212,57 @@
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Dia.Click
         If tb_desc.Text <> "" And tb_costo_Total_Dia.Text <> "" Then
-            DataGridView2.Rows.Add(tb_desc.Text, tb_costo_Total_Dia.Text)
+
+            Dim fila As DataRow = Costo_Ind.Tables("Detalle").NewRow
+            fila("CostoInDet_desc") = tb_desc.Text
+            fila("CostoInDet_costo") = tb_costo_Total_Dia.Text
+            Costo_Ind.Tables("Detalle").Rows.Add(fila)
+
             Total_Grilla.Text = CDec(Total_Grilla.Text) + CDec(tb_costo_Total_Dia.Text)
+        Else
+            MessageBox.Show("Complete Los Campos Obligatorios", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            lbl_err.Visible = True
+            lbl_err2.Visible = True
+            lbl_err3.Visible = True
         End If
 
     End Sub
 
     Private Sub btn_hora_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_hora.Click
         If tb_desc.Text <> "" And tb_costo_total_Hora.Text <> "" Then
-            DataGridView2.Rows.Add(tb_desc.Text, tb_costo_total_Hora.Text)
+           
+            Dim fila As DataRow = Costo_Ind.Tables("Detalle").NewRow
+            fila("CostoInDet_desc") = tb_desc.Text
+            fila("CostoInDet_costo") = tb_costo_total_Hora.Text
+            Costo_Ind.Tables("Detalle").Rows.Add(fila)
+
+
             Total_Grilla.Text = CDec(Total_Grilla.Text) + CDec(tb_costo_total_Hora.Text)
+        Else
+            MessageBox.Show("Complete Los Campos Obligatorios", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            lbl_err.Visible = True
+            lbl_err2.Visible = True
+            lbl_err3.Visible = True
         End If
     End Sub
 
     Private Sub btn_fijo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_fijo.Click
         If tb_desc.Text <> "" And tb_fijo.Text <> "" Then
-            DataGridView2.Rows.Add(tb_desc.Text, tb_fijo.Text)
+
+
+
+            Dim fila As DataRow = Costo_Ind.Tables("Detalle").NewRow
+            fila("CostoInDet_desc") = tb_desc.Text
+            fila("CostoInDet_costo") = tb_fijo.Text
+            Costo_Ind.Tables("Detalle").Rows.Add(fila)
+
+
             Total_Grilla.Text = CDec(Total_Grilla.Text) + CDec(tb_fijo.Text)
+        Else
+            MessageBox.Show("Complete Los Campos Obligatorios", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            lbl_err.Visible = True
+            lbl_err2.Visible = True
+            lbl_err3.Visible = True
         End If
     End Sub
 
@@ -208,7 +270,16 @@
 
         If tb_totalEmp.Text <> "" Then
             Dim Nombre = DataGridView1.SelectedCells.Item(0).Value.ToString + " " + DataGridView1.SelectedCells.Item(1).Value.ToString
-            DataGridView2.Rows.Add(Nombre, tb_totalEmp.Text)
+
+
+            Dim fila As DataRow = Costo_Ind.Tables("Detalle").NewRow
+            fila("CostoInDet_desc") = Nombre
+            fila("CostoInDet_costo") = tb_totalEmp.Text
+            Costo_Ind.Tables("Detalle").Rows.Add(fila)
+
+
+
+
             Total_Grilla.Text = CDec(Total_Grilla.Text) + CDec(tb_totalEmp.Text)
             tb_totalEmp.Text = 0
             tb_empCost.Text = 0
@@ -250,27 +321,55 @@
     Private Sub btn_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_guardar.Click
         If tb_titulo.Text <> "" Then
             If DataGridView2.RowCount <> 0 Then
-                Dim ds As DataSet = DACosto.Costo_Indirecto_alta(tb_titulo.Text, Total_Grilla.Text, DateTimePicker1.Value, "Activo")
+                'SI EL COSOTO_ID ES <> DE 0 ENTONCES QUIERE DECIR QUE ES UNA MODIFICACION 
+                If Costo_Id = 0 Then
+                    Dim ds As DataSet = DACosto.Costo_Indirecto_alta(tb_titulo.Text, Total_Grilla.Text, DateTimePicker1.Value, "Activo")
 
 
-                Dim i As Integer = 0
-                While i < DataGridView2.RowCount
-                    'Dim EnBD As String = DG_Servicio.Rows(e).Cells("EnBDDataGridViewTextBoxColumn").Value.ToString
-                    Dim costoI_id = CInt(ds.Tables(0).Rows(0).Item("CostI_Id"))
-                    DACosto.Costo_Indirecto_Detalle_Alta(DataGridView2.Rows(i).Cells("Column1").Value,
-                                                         DataGridView2.Rows(i).Cells("Column2").Value,
-                                                        costoI_id)
-                    i = i + 1
-                End While
-                MessageBox.Show("Los Datos se Guardaron Correctamente", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Dim i As Integer = 0
+                    While i < DataGridView2.RowCount
+                        'Dim EnBD As String = DG_Servicio.Rows(e).Cells("EnBDDataGridViewTextBoxColumn").Value.ToString
+                        Dim costoI_id = CInt(ds.Tables(0).Rows(0).Item("CostI_Id"))
+                        DACosto.Costo_Indirecto_Detalle_Alta(DataGridView2.Rows(i).Cells("CostoInDetdescDataGridViewTextBoxColumn").Value,
+                                                             DataGridView2.Rows(i).Cells("CostoInDetcostoDataGridViewTextBoxColumn").Value,
+                                                            costoI_id)
+                        i = i + 1
+                    End While
+                    MessageBox.Show("Los Datos se Guardaron Correctamente", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
+                Else
+                    'ESTA ES PARA MODIFICAR
+                    DACosto.Costo_Indirecto_modificar(Costo_Id, tb_titulo.Text, Total_Grilla.Text, DateTimePicker1.Value)
+
+                    Dim i As Integer = 0
+                    While i < DataGridView2.RowCount
+
+                        DACosto.Costo_Indirecto_Detalle_Alta(DataGridView2.Rows(i).Cells("CostoInDetdescDataGridViewTextBoxColumn").Value,
+                                                             DataGridView2.Rows(i).Cells("CostoInDetcostoDataGridViewTextBoxColumn").Value,
+                                                            Costo_Id)
+                        i = i + 1
+                    End While
+                    MessageBox.Show("Los Datos se Guardaron Correctamente", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+
+
+
+
+                End If
                 limpiar()
+                CostosInd_Consulta.Obtener_Costos_indirectos()
+
             Else
                 MessageBox.Show("Se debe tener al menos un Costo", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+            
+
 
         Else
-            MessageBox.Show("Debe Colocar un Titulo", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            tb_titulo.Focus()
+        MessageBox.Show("Debe Colocar un Titulo", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        lbl_err.Visible = True
+        tb_titulo.Focus()
         End If
     End Sub
     Private Sub limpiar()
@@ -285,7 +384,24 @@
         tb_titulo.Text = ""
 
         DataGridView2.DataSource = Nothing
+        DataGridView2.DataSource = ""
 
 
+    End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        If DataGridView2.RowCount <> 0 Then
+            DataGridView2.Rows.Remove(DataGridView2.CurrentRow)
+            Dim i = 0
+            Dim total As Decimal = 0
+
+            While i < DataGridView2.RowCount
+                total = total + CDec(DataGridView2.Rows(i).Cells("CostoInDetcostoDataGridViewTextBoxColumn").Value)
+                i = i + 1
+
+            End While
+
+            Total_Grilla.Text = total
+        End If
     End Sub
 End Class

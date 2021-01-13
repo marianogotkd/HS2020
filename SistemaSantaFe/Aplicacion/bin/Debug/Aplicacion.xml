@@ -835,6 +835,34 @@ Row event argument class
 	<summary>
 Represents a strongly typed in-memory cache of data.
 </summary>
+</member><member name="T:Aplicacion.Costo_Ind.Costo_Indirecto_ObtenerDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Aplicacion.Costo_Ind.DetalleDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:Aplicacion.Costo_Ind.Costo_Indirecto_ObtenerRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Aplicacion.Costo_Ind.DetalleRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:Aplicacion.Costo_Ind.Costo_Indirecto_ObtenerRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Costo_Ind.DetalleRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:Aplicacion.Costo_Ind">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
 </member><member name="T:Aplicacion.Proveedores_DS.Proveedor_obtener_todoDataTable">
 	<summary>
 Represents the strongly named DataTable class.
