@@ -1,6 +1,7 @@
 ﻿Public Class CostoInd_alta
     Dim validaciones As New Validaciones
     Dim DAemp As New Datos.Empleado
+    Dim DACosto As New Datos.Costo_Indirecto
 
     Private Sub CostoInd_alta_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim ds_emp As DataSet = DAemp.Empleados_remuneracion_Obtener
@@ -244,5 +245,47 @@
 
     Private Sub DataGridView2_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles DataGridView2.KeyPress
         
+    End Sub
+
+    Private Sub btn_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_guardar.Click
+        If tb_titulo.Text <> "" Then
+            If DataGridView2.RowCount <> 0 Then
+                Dim ds As DataSet = DACosto.Costo_Indirecto_alta(tb_titulo.Text, Total_Grilla.Text, DateTimePicker1.Value, "Activo")
+
+
+                Dim i As Integer = 0
+                While i < DataGridView2.RowCount
+                    'Dim EnBD As String = DG_Servicio.Rows(e).Cells("EnBDDataGridViewTextBoxColumn").Value.ToString
+                    Dim costoI_id = CInt(ds.Tables(0).Rows(0).Item("CostI_Id"))
+                    DACosto.Costo_Indirecto_Detalle_Alta(DataGridView2.Rows(i).Cells("Column1").Value,
+                                                         DataGridView2.Rows(i).Cells("Column2").Value,
+                                                        costoI_id)
+                    i = i + 1
+                End While
+                MessageBox.Show("Los Datos se Guardaron Correctamente", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                limpiar()
+            Else
+                MessageBox.Show("Se debe tener al menos un Costo", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+
+        Else
+            MessageBox.Show("Debe Colocar un Titulo", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            tb_titulo.Focus()
+        End If
+    End Sub
+    Private Sub limpiar()
+        Total_Grilla.Text = ""
+        tb_totalEmp.Text = ""
+        tb_costo_total_Hora.Text = ""
+        tb_costo_Total_Dia.Text = ""
+        tb_fijo.Text = ""
+
+        tb_costo.Text = ""
+        tb_desc.Text = ""
+        tb_titulo.Text = ""
+
+        DataGridView2.DataSource = Nothing
+
+
     End Sub
 End Class

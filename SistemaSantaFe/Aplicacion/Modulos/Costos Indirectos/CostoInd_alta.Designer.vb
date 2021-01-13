@@ -45,7 +45,6 @@ Partial Class CostoInd_alta
         Me.btn_hora = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.tb_costo_total_Hora = New System.Windows.Forms.TextBox()
         Me.RadioButton_HORA = New System.Windows.Forms.RadioButton()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Panel_fijo = New System.Windows.Forms.Panel()
@@ -73,7 +72,7 @@ Partial Class CostoInd_alta
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Total_Grilla = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.tb_titulo = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.Panel_dia.SuspendLayout()
@@ -272,7 +271,6 @@ Partial Class CostoInd_alta
         Me.Panel_hora.Controls.Add(Me.Label7)
         Me.Panel_hora.Controls.Add(Me.Label6)
         Me.Panel_hora.Controls.Add(Me.Label3)
-        Me.Panel_hora.Controls.Add(Me.tb_costo_total_Hora)
         Me.Panel_hora.Controls.Add(Me.tb_horas_hora)
         Me.Panel_hora.Enabled = False
         Me.Panel_hora.Location = New System.Drawing.Point(11, 45)
@@ -321,16 +319,6 @@ Partial Class CostoInd_alta
         Me.Label6.Size = New System.Drawing.Size(31, 13)
         Me.Label6.TabIndex = 32
         Me.Label6.Text = "Total"
-        '
-        'tb_costo_total_Hora
-        '
-        Me.tb_costo_total_Hora.BackColor = System.Drawing.SystemColors.Info
-        Me.tb_costo_total_Hora.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tb_costo_total_Hora.Location = New System.Drawing.Point(49, 122)
-        Me.tb_costo_total_Hora.Name = "tb_costo_total_Hora"
-        Me.tb_costo_total_Hora.ReadOnly = True
-        Me.tb_costo_total_Hora.Size = New System.Drawing.Size(165, 26)
-        Me.tb_costo_total_Hora.TabIndex = 29
         '
         'RadioButton_HORA
         '
@@ -598,13 +586,13 @@ Partial Class CostoInd_alta
         Me.Total_Grilla.TabIndex = 37
         Me.Total_Grilla.Text = "0"
         '
-        'TextBox1
+        'tb_titulo
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(72, 34)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(560, 26)
-        Me.TextBox1.TabIndex = 39
+        Me.tb_titulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tb_titulo.Location = New System.Drawing.Point(72, 34)
+        Me.tb_titulo.Name = "tb_titulo"
+        Me.tb_titulo.Size = New System.Drawing.Size(560, 26)
+        Me.tb_titulo.TabIndex = 39
         '
         'Label12
         '
@@ -622,7 +610,7 @@ Partial Class CostoInd_alta
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1254, 642)
         Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.tb_titulo)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Total_Grilla)
         Me.Controls.Add(Me.DataGridView2)
@@ -683,7 +671,6 @@ Partial Class CostoInd_alta
     Friend WithEvents btn_hora As System.Windows.Forms.Button
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents tb_costo_total_Hora As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents btn_fijo As System.Windows.Forms.Button
     Friend WithEvents Label8 As System.Windows.Forms.Label
@@ -715,6 +702,6 @@ Partial Class CostoInd_alta
     Friend WithEvents Ds_empleados As Aplicacion.ds_empleados
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Total_Grilla As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents tb_titulo As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
 End Class
