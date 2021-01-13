@@ -1981,13 +1981,25 @@
         If lb_dni_clie.Text <> "- - - -" Then
 
             Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni((lb_dni_clie.Text))
+            Dim ds_clie_recu As DataSet = DAcliente.Cliente_obtener_info(CInt(DG_clientes.CurrentRow.Cells("CLIidDataGridViewTextBoxColumn").Value)) 'me trae los datos del cliente y ademas las sucursales q tiene vinculadas
+
+
             Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
-            row_cliente("fantasia") = lb_fantasia.Text
+
             row_cliente("dni") = lb_dni_clie.Text
-            row_cliente("telefono") = lb_telef_clie.Text
-            row_cliente("mail") = lb_mail_clie.Text
-            row_cliente("direccion") = ds_cliente.Tables(1).Rows(0).Item("CLI_dir")
-            row_cliente("localidad") = ds_cliente.Tables(1).Rows(0).Item("provincia") + ", " + ds_cliente.Tables(1).Rows(0).Item("Localidad")
+            'busco la sucursal que seleccioné para la factura.
+            Dim a As Integer = 0
+            While a < ds_clie_recu.Tables(3).Rows.Count
+                If ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_id") = SucxClie_id Then
+                    row_cliente("fantasia") = CStr(lb_fantasia.Text) + ", " + ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_nombre")
+                    row_cliente("telefono") = ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_tel")
+                    row_cliente("mail") = ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_mail")
+                    row_cliente("direccion") = ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_dir")
+                    row_cliente("localidad") = ds_clie_recu.Tables(3).Rows(a).Item("provincia") + ", " + ds_clie_recu.Tables(3).Rows(a).Item("Localidad")
+                    Exit While
+                End If
+                a = a + 1
+            End While
             row_cliente("iva_condicion") = ds_cliente.Tables(1).Rows(0).Item("IVA_descripcion").ToString
             facturacion_ds_report.Tables("Cliente").Rows.Add(row_cliente)
         Else
@@ -2826,6 +2838,15 @@
 
         Filtro = String.Format("{0} LIKE '%{1}%'", "CLI_Fan", Busqueda.Text) 'esto para campos strings, FUNCIONA PERFECTO
         ClienteBindingSource.Filter = Filtro
+
+        If DG_clientes.Rows.Count = 0 Then
+            Filtro = String.Format("CONVERT(CLI_dni, System.String) LIKE '%{0}%'", Busqueda.Text) 'esto para campos strings, FUNCIONA PERFECTO
+            ClienteBindingSource.Filter = Filtro
+        End If
+
+
+
+
     End Sub
 
 
@@ -3098,63 +3119,74 @@
 
                             Dim ds_cuentacorrente As DataSet = DActacte.CtaCte_buscar_Cliente(remito_cliente_id)
                             If ds_cuentacorrente.Tables(0).Rows.Count <> 0 Then
-                                'valido que el monto total no exceda el limite de deuda
-                                Dim limite_deuda As Decimal = CDec(ds_cuentacorrente.Tables(0).Rows(0).Item("CtaCte_limitedeuda"))
-                                Dim deuda As Decimal = CDec(ds_cuentacorrente.Tables(0).Rows(0).Item("CtaCte_total")) + CDec(txt_total.Text)
-                                If (deuda <= limite_deuda) Or limite_deuda = 0 Then
-                                    DAventa.Remito_productos_modificar(remito_ventaprod_id, CDec(txt_total.Text),
-                                                             USU_id_gen_remito,
-                                                             "Cliente",
-                                                             remito_cliente_id, CDec(txt_subtotal.Text),
-                                                             CDec(txt_descuento.Text),
-                                                             CDec(txt_desc_porc.Text),
-                                                             CDec(ComboBox_iva.SelectedItem),
-                                                              CDec(txt_impuesto_aplicado.Text), venta_tipo_descripcion, 0, vendedor_id, "Pendiente")
-                                    'Actualizar Stock
-                                    Actualizar_stock_remito() 'suma y resta cantidades
 
-                                    'primero elimino los registros q tenia en la tabla venta_producto_detalle
-                                    DAventa.VentaProductoDetalle_eliminar(remito_ventaprod_id)
+                                Dim estado As String = ds_cuentacorrente.Tables(0).Rows(0).Item("CtaCte_estado").ToString
 
-                                    'ACTUALIZAR EN TABLA "Venta_Producto_detalle"
-                                    For Each row As DataGridViewRow In DataGridView1.Rows
-                                        If row.Cells("columna_prod_id").Value <> 0 Then
-                                            DAventa.VentaProductoDetalle_alta(remito_ventaprod_id, row.Cells(1).Value, row.Cells(5).Value, CDec(row.Cells(7).Value), CDec(row.Cells(8).Value), row.Cells(3).Value, row.Cells(2).Value, 0, CDec(row.Cells(6).Value))
-                                        End If
-                                    Next
-                                    'MessageBox.Show("El remito se modificó correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-                                    'If MessageBox.Show("¿Desea registrar ingreso y generar factura?.", "Sistema de Gestión.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = Windows.Forms.DialogResult.Yes Then
+                                If estado.ToUpper = "ACTIVO" Then
 
 
-                                    If Inicio.UT_id = 1 Then
-                                        APcaja.Caja_Validar_admin()
-                                    Else
-                                        APcaja.Caja_Validar()
-                                    End If
+
+                                    'valido que el monto total no exceda el limite de deuda
+                                    Dim limite_deuda As Decimal = CDec(ds_cuentacorrente.Tables(0).Rows(0).Item("CtaCte_limitedeuda"))
+                                    Dim deuda As Decimal = CDec(ds_cuentacorrente.Tables(0).Rows(0).Item("CtaCte_total")) + CDec(txt_total.Text)
+                                    If (deuda <= limite_deuda) Or limite_deuda = 0 Then
+                                        DAventa.Remito_productos_modificar(remito_ventaprod_id, CDec(txt_total.Text),
+                                                                 USU_id_gen_remito,
+                                                                 "Cliente",
+                                                                 remito_cliente_id, CDec(txt_subtotal.Text),
+                                                                 CDec(txt_descuento.Text),
+                                                                 CDec(txt_desc_porc.Text),
+                                                                 CDec(ComboBox_iva.SelectedItem),
+                                                                  CDec(txt_impuesto_aplicado.Text), venta_tipo_descripcion, 0, vendedor_id, "Pendiente")
+                                        'Actualizar Stock
+                                        Actualizar_stock_remito() 'suma y resta cantidades
+
+                                        'primero elimino los registros q tenia en la tabla venta_producto_detalle
+                                        DAventa.VentaProductoDetalle_eliminar(remito_ventaprod_id)
+
+                                        'ACTUALIZAR EN TABLA "Venta_Producto_detalle"
+                                        For Each row As DataGridViewRow In DataGridView1.Rows
+                                            If row.Cells("columna_prod_id").Value <> 0 Then
+                                                DAventa.VentaProductoDetalle_alta(remito_ventaprod_id, row.Cells(1).Value, row.Cells(5).Value, CDec(row.Cells(7).Value), CDec(row.Cells(8).Value), row.Cells(3).Value, row.Cells(2).Value, 0, CDec(row.Cells(6).Value))
+                                            End If
+                                        Next
+                                        'MessageBox.Show("El remito se modificó correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                                        'If MessageBox.Show("¿Desea registrar ingreso y generar factura?.", "Sistema de Gestión.", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) = Windows.Forms.DialogResult.Yes Then
 
 
-                                    'APcaja.Caja_Validar()
-                                    If APcaja.SESION_CAJA = 1 And US_administrador.no_caja <> "deshabilitar" Then '1 = caja nueva, lista para iniciar
-                                        MessageBox.Show("Error!,primero debe abrir la caja diaria para registrar la venta", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-                                        'Caja_abrir_turno.Close()
-                                        'Caja_abrir_turno.Show()
-                                    Else
-                                        If APcaja.SESION_CAJA = 2 And US_administrador.no_caja <> "deshabilitar" Then
-                                            'por aqui continuo con el registro de la factura
-                                            facturar = "si" 'valido esto en el form de caja pago, caja tarjeta y forma de pago seleccion.
-                                            Forma_de_pago_seleccion.Show()
+                                        If Inicio.UT_id = 1 Then
+                                            APcaja.Caja_Validar_admin()
                                         Else
-                                            MessageBox.Show("Error!, No puede registrar la venta, la caja actual esta siendo utilizada por el usuario: " + US_administrador.apellidoynombre, "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                            APcaja.Caja_Validar()
                                         End If
+
+
+                                        'APcaja.Caja_Validar()
+                                        If APcaja.SESION_CAJA = 1 And US_administrador.no_caja <> "deshabilitar" Then '1 = caja nueva, lista para iniciar
+                                            MessageBox.Show("Error!,primero debe abrir la caja diaria para registrar la venta", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+                                            'Caja_abrir_turno.Close()
+                                            'Caja_abrir_turno.Show()
+                                        Else
+                                            If APcaja.SESION_CAJA = 2 And US_administrador.no_caja <> "deshabilitar" Then
+                                                'por aqui continuo con el registro de la factura
+                                                facturar = "si" 'valido esto en el form de caja pago, caja tarjeta y forma de pago seleccion.
+                                                Forma_de_pago_seleccion.Show()
+                                            Else
+                                                MessageBox.Show("Error!, No puede registrar la venta, la caja actual esta siendo utilizada por el usuario: " + US_administrador.apellidoynombre, "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                            End If
+                                        End If
+                                        'Else
+                                        '   facturar = "no"
+                                        'End If
+                                    Else
+                                        MessageBox.Show("La venta excede el limite de deuda para la cuenta corriente, consulte al administrador.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
                                     End If
-                                    'Else
-                                    '   facturar = "no"
-                                    'End If
                                 Else
-                                    MessageBox.Show("La venta excede el limite de deuda para la cuenta corriente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                    MessageBox.Show("El cliente tiene deshabilitada la cuenta corriente, consulte al administrador.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
                                 End If
+
                             End If
                         End If
                     End If

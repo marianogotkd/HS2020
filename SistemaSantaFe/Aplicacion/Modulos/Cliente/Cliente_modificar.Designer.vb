@@ -35,14 +35,6 @@ Partial Class Cliente_modificar
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.DG_clientes = New System.Windows.Forms.DataGridView()
-        Me.Cliente1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Cliente_ds = New Aplicacion.Cliente_ds()
-        Me.BO_Cargar = New System.Windows.Forms.Button()
-        Me.BO_Cancelar = New System.Windows.Forms.Button()
-        Me.BO_Guardar = New System.Windows.Forms.Button()
-        Me.BO_Eliminar = New System.Windows.Forms.Button()
-        Me.DataGrid_cliente = New System.Windows.Forms.DataGridView()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.CLIidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIFanDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIapeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -53,6 +45,14 @@ Partial Class Cliente_modificar
         Me.CLImailDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DireccionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLIobservacionesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cliente1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Cliente_ds = New Aplicacion.Cliente_ds()
+        Me.BO_Cargar = New System.Windows.Forms.Button()
+        Me.BO_Cancelar = New System.Windows.Forms.Button()
+        Me.BO_Guardar = New System.Windows.Forms.Button()
+        Me.BO_Eliminar = New System.Windows.Forms.Button()
+        Me.DataGrid_cliente = New System.Windows.Forms.DataGridView()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -128,7 +128,7 @@ Partial Class Cliente_modificar
         Me.GroupBox1.Size = New System.Drawing.Size(428, 321)
         Me.GroupBox1.TabIndex = 246
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Buscar cliente por nombre (Fantasía o Razón Social): "
+        Me.GroupBox1.Text = "Buscar (Fantasía o Razón Social / DNI/CUIT): "
         '
         'TextBox1
         '
@@ -164,6 +164,84 @@ Partial Class Cliente_modificar
         Me.DG_clientes.Size = New System.Drawing.Size(402, 246)
         Me.DG_clientes.StandardTab = True
         Me.DG_clientes.TabIndex = 239
+        '
+        'CLIidDataGridViewTextBoxColumn
+        '
+        Me.CLIidDataGridViewTextBoxColumn.DataPropertyName = "CLI_id"
+        Me.CLIidDataGridViewTextBoxColumn.HeaderText = "CLI_id"
+        Me.CLIidDataGridViewTextBoxColumn.Name = "CLIidDataGridViewTextBoxColumn"
+        Me.CLIidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIidDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLIFanDataGridViewTextBoxColumn
+        '
+        Me.CLIFanDataGridViewTextBoxColumn.DataPropertyName = "CLI_Fan"
+        Me.CLIFanDataGridViewTextBoxColumn.HeaderText = "Fantasía o Razón Social"
+        Me.CLIFanDataGridViewTextBoxColumn.Name = "CLIFanDataGridViewTextBoxColumn"
+        Me.CLIFanDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CLIapeDataGridViewTextBoxColumn
+        '
+        Me.CLIapeDataGridViewTextBoxColumn.DataPropertyName = "CLI_ape"
+        Me.CLIapeDataGridViewTextBoxColumn.HeaderText = "CLI_ape"
+        Me.CLIapeDataGridViewTextBoxColumn.Name = "CLIapeDataGridViewTextBoxColumn"
+        Me.CLIapeDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIapeDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLInomDataGridViewTextBoxColumn
+        '
+        Me.CLInomDataGridViewTextBoxColumn.DataPropertyName = "CLI_nom"
+        Me.CLInomDataGridViewTextBoxColumn.HeaderText = "CLI_nom"
+        Me.CLInomDataGridViewTextBoxColumn.Name = "CLInomDataGridViewTextBoxColumn"
+        Me.CLInomDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLInomDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLIdniDataGridViewTextBoxColumn
+        '
+        Me.CLIdniDataGridViewTextBoxColumn.DataPropertyName = "CLI_dni"
+        Me.CLIdniDataGridViewTextBoxColumn.HeaderText = "DNI/CUIT"
+        Me.CLIdniDataGridViewTextBoxColumn.Name = "CLIdniDataGridViewTextBoxColumn"
+        Me.CLIdniDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CLIfnacDataGridViewTextBoxColumn
+        '
+        Me.CLIfnacDataGridViewTextBoxColumn.DataPropertyName = "CLI_fnac"
+        Me.CLIfnacDataGridViewTextBoxColumn.HeaderText = "CLI_fnac"
+        Me.CLIfnacDataGridViewTextBoxColumn.Name = "CLIfnacDataGridViewTextBoxColumn"
+        Me.CLIfnacDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIfnacDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLItelDataGridViewTextBoxColumn
+        '
+        Me.CLItelDataGridViewTextBoxColumn.DataPropertyName = "CLI_tel"
+        Me.CLItelDataGridViewTextBoxColumn.HeaderText = "Teléfono"
+        Me.CLItelDataGridViewTextBoxColumn.Name = "CLItelDataGridViewTextBoxColumn"
+        Me.CLItelDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLItelDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLImailDataGridViewTextBoxColumn
+        '
+        Me.CLImailDataGridViewTextBoxColumn.DataPropertyName = "CLI_mail"
+        Me.CLImailDataGridViewTextBoxColumn.HeaderText = "Mail"
+        Me.CLImailDataGridViewTextBoxColumn.Name = "CLImailDataGridViewTextBoxColumn"
+        Me.CLImailDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLImailDataGridViewTextBoxColumn.Visible = False
+        '
+        'DireccionDataGridViewTextBoxColumn
+        '
+        Me.DireccionDataGridViewTextBoxColumn.DataPropertyName = "direccion"
+        Me.DireccionDataGridViewTextBoxColumn.HeaderText = "Dirección"
+        Me.DireccionDataGridViewTextBoxColumn.Name = "DireccionDataGridViewTextBoxColumn"
+        Me.DireccionDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DireccionDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLIobservacionesDataGridViewTextBoxColumn
+        '
+        Me.CLIobservacionesDataGridViewTextBoxColumn.DataPropertyName = "CLI_observaciones"
+        Me.CLIobservacionesDataGridViewTextBoxColumn.HeaderText = "Observaciones"
+        Me.CLIobservacionesDataGridViewTextBoxColumn.Name = "CLIobservacionesDataGridViewTextBoxColumn"
+        Me.CLIobservacionesDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIobservacionesDataGridViewTextBoxColumn.Visible = False
         '
         'Cliente1BindingSource
         '
@@ -262,84 +340,6 @@ Partial Class Cliente_modificar
         Me.DataGrid_cliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGrid_cliente.Size = New System.Drawing.Size(623, 236)
         Me.DataGrid_cliente.TabIndex = 7
-        '
-        'CLIidDataGridViewTextBoxColumn
-        '
-        Me.CLIidDataGridViewTextBoxColumn.DataPropertyName = "CLI_id"
-        Me.CLIidDataGridViewTextBoxColumn.HeaderText = "CLI_id"
-        Me.CLIidDataGridViewTextBoxColumn.Name = "CLIidDataGridViewTextBoxColumn"
-        Me.CLIidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIidDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLIFanDataGridViewTextBoxColumn
-        '
-        Me.CLIFanDataGridViewTextBoxColumn.DataPropertyName = "CLI_Fan"
-        Me.CLIFanDataGridViewTextBoxColumn.HeaderText = "Fantasía o Razón Social"
-        Me.CLIFanDataGridViewTextBoxColumn.Name = "CLIFanDataGridViewTextBoxColumn"
-        Me.CLIFanDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CLIapeDataGridViewTextBoxColumn
-        '
-        Me.CLIapeDataGridViewTextBoxColumn.DataPropertyName = "CLI_ape"
-        Me.CLIapeDataGridViewTextBoxColumn.HeaderText = "CLI_ape"
-        Me.CLIapeDataGridViewTextBoxColumn.Name = "CLIapeDataGridViewTextBoxColumn"
-        Me.CLIapeDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIapeDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLInomDataGridViewTextBoxColumn
-        '
-        Me.CLInomDataGridViewTextBoxColumn.DataPropertyName = "CLI_nom"
-        Me.CLInomDataGridViewTextBoxColumn.HeaderText = "CLI_nom"
-        Me.CLInomDataGridViewTextBoxColumn.Name = "CLInomDataGridViewTextBoxColumn"
-        Me.CLInomDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLInomDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLIdniDataGridViewTextBoxColumn
-        '
-        Me.CLIdniDataGridViewTextBoxColumn.DataPropertyName = "CLI_dni"
-        Me.CLIdniDataGridViewTextBoxColumn.HeaderText = "DNI/CUIT"
-        Me.CLIdniDataGridViewTextBoxColumn.Name = "CLIdniDataGridViewTextBoxColumn"
-        Me.CLIdniDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CLIfnacDataGridViewTextBoxColumn
-        '
-        Me.CLIfnacDataGridViewTextBoxColumn.DataPropertyName = "CLI_fnac"
-        Me.CLIfnacDataGridViewTextBoxColumn.HeaderText = "CLI_fnac"
-        Me.CLIfnacDataGridViewTextBoxColumn.Name = "CLIfnacDataGridViewTextBoxColumn"
-        Me.CLIfnacDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIfnacDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLItelDataGridViewTextBoxColumn
-        '
-        Me.CLItelDataGridViewTextBoxColumn.DataPropertyName = "CLI_tel"
-        Me.CLItelDataGridViewTextBoxColumn.HeaderText = "Teléfono"
-        Me.CLItelDataGridViewTextBoxColumn.Name = "CLItelDataGridViewTextBoxColumn"
-        Me.CLItelDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLItelDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLImailDataGridViewTextBoxColumn
-        '
-        Me.CLImailDataGridViewTextBoxColumn.DataPropertyName = "CLI_mail"
-        Me.CLImailDataGridViewTextBoxColumn.HeaderText = "Mail"
-        Me.CLImailDataGridViewTextBoxColumn.Name = "CLImailDataGridViewTextBoxColumn"
-        Me.CLImailDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLImailDataGridViewTextBoxColumn.Visible = False
-        '
-        'DireccionDataGridViewTextBoxColumn
-        '
-        Me.DireccionDataGridViewTextBoxColumn.DataPropertyName = "direccion"
-        Me.DireccionDataGridViewTextBoxColumn.HeaderText = "Dirección"
-        Me.DireccionDataGridViewTextBoxColumn.Name = "DireccionDataGridViewTextBoxColumn"
-        Me.DireccionDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DireccionDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLIobservacionesDataGridViewTextBoxColumn
-        '
-        Me.CLIobservacionesDataGridViewTextBoxColumn.DataPropertyName = "CLI_observaciones"
-        Me.CLIobservacionesDataGridViewTextBoxColumn.HeaderText = "Observaciones"
-        Me.CLIobservacionesDataGridViewTextBoxColumn.Name = "CLIobservacionesDataGridViewTextBoxColumn"
-        Me.CLIobservacionesDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIobservacionesDataGridViewTextBoxColumn.Visible = False
         '
         'Cliente_modificar
         '

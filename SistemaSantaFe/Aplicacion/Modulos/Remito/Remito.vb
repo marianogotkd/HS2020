@@ -87,16 +87,28 @@
 
 
         Dim ds_cliente As DataSet = DAcliente.Cliente_obtener_info(cliente_id)
+        Dim ds_clie_recu As DataSet = DAcliente.Cliente_obtener_info(cliente_id) 'me trae los datos del cliente y ademas las sucursales q tiene vinculadas
+
+        Dim ds_remito_a As DataSet = DAventa.Remito_recuperar(numerofactura)
+
         Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
-        row_cliente("fantasia") = ds_cliente.Tables(1).Rows(0).Item("CLI_Fan")
+
         row_cliente("dni") = ds_cliente.Tables(1).Rows(0).Item("CLI_dni")
-        row_cliente("telefono") = ds_cliente.Tables(1).Rows(0).Item("CLI_tel")
-        row_cliente("mail") = ds_cliente.Tables(1).Rows(0).Item("CLI_mail")
-        row_cliente("direccion") = ds_cliente.Tables(1).Rows(0).Item("CLI_dir")
-        row_cliente("localidad") = ds_cliente.Tables(1).Rows(0).Item("provincia") + ", " + ds_cliente.Tables(1).Rows(0).Item("Localidad")
+        'busco la sucursal que seleccioné para la factura.
+        Dim a As Integer = 0
+        While a < ds_clie_recu.Tables(3).Rows.Count
+            If ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_id") = ds_remito_a.Tables(0).Rows(0).Item("SucxClie_id") Then
+                row_cliente("fantasia") = ds_cliente.Tables(1).Rows(0).Item("CLI_Fan") + ", " + ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_nombre")
+                row_cliente("telefono") = ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_tel")
+                row_cliente("mail") = ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_mail")
+                row_cliente("direccion") = ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_dir")
+                row_cliente("localidad") = ds_clie_recu.Tables(3).Rows(a).Item("provincia") + ", " + ds_clie_recu.Tables(3).Rows(a).Item("Localidad")
+                Exit While
+            End If
+            a = a + 1
+        End While
         row_cliente("iva_condicion") = ds_cliente.Tables(0).Rows(0).Item("IVA_descripcion").ToString
         facturacion_ds_report.Tables("Cliente").Rows.Add(row_cliente)
-
 
 
         '///////////////TABLA SUCURSAL//////////////////////////////////'
@@ -210,6 +222,7 @@
                 Else
                     Venta_Caja_gestion.tipo_vta = "Mayorista"
                 End If
+                Venta_Caja_gestion.SucxClie_id = CInt(ds_remito.Tables(0).Rows(0).Item("SucxClie_id"))
                 Venta_Caja_gestion.remito_cliente_id = CInt(DataGridView1.Rows(indice_chek).Cells("CLIidDataGridViewTextBoxColumn").Value)
                 Venta_Caja_gestion.remito_id = remito_id
                 Venta_Caja_gestion.USU_id_gen_remito = CInt(ds_remito.Tables(0).Rows(0).Item("usuario_id"))
@@ -229,6 +242,52 @@
             Else
                 MessageBox.Show("Error, el remito ya fue finalizado.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
+        End If
+    End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        Dim pregunta As String = "no" 'esta variable la uso para preg 1 sola vez si estoy seguro de eliminar los elementos seleccionados en la grilla.
+        Dim valido_seleccion As String = "no"
+
+        If DataGridView1.Rows.Count <> 0 Then
+            Dim i As Integer = 0
+            While i < DataGridView1.Rows.Count
+                If DataGridView1.Rows(i).Cells("ColumnaEditar").Value = True Then 'el value en true significa que esta checkeado para eliminar
+                    If pregunta = "no" Then
+                        valido_seleccion = "si" 'la uso solamente para indicar q si tengo algo seleccionado en el gridview
+                        Dim nro_remito As String = CStr(DataGridView1.Rows(i).Cells("RemitoidDataGridViewTextBoxColumn").Value)
+
+                        If MsgBox("¿Esta seguro que quiere eliminar el remito Nro: " + nro_remito + "?", MsgBoxStyle.YesNo, "Sistema de Gestión.") = MsgBoxResult.Yes Then
+                            pregunta = "si"
+                        Else
+                            'aqui corto el ciclo, ya que se cancelo la eliminacion
+                            i = DataGridView1.Rows.Count
+                        End If
+                    End If
+                    If pregunta = "si" Then
+                        'primero guardo el nro de item q contiene
+                        Dim item As Decimal = DataGridView1.CurrentRow.Index
+                        
+                        'DAcliente.Cliente_Sucursales_eliminar(CInt(DataGridView1.Rows(i).Cells("SucxClieidDataGridViewTextBoxColumn").Value), "ELIMINADO")
+
+                        'End If
+                        DataGridView1.Rows.RemoveAt(i)
+                        'i = 0 'lo reinicio, x q al quitar un ite, se reordenan los indices
+                        Exit While 'como voy a borrar de a uno. pongo este exit.
+                    End If
+                Else
+                    i = i + 1
+                End If
+            End While
+
+            If pregunta = "si" Then
+                MessageBox.Show("Eliminación correcta, los datos fueron actualizados.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+            If valido_seleccion = "no" Then
+                MessageBox.Show("Seleccione un remito para eliminar.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            End If
+        Else
+            MessageBox.Show("No hay remitos generados.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
 End Class

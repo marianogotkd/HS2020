@@ -401,15 +401,16 @@ Public Class Pago_caja
         If Venta_Caja_gestion.lb_dni_clie.Text <> "- - - -" Then
 
             Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni((Venta_Caja_gestion.lb_dni_clie.Text))
-            Dim ds_clie_recu As DataSet = DAcliente.Cliente_obtener_info(CInt(Venta_Caja_gestion.DG_clientes.CurrentRow.Cells("CLIidDataGridViewTextBoxColumn").Value)) 'me trae los datos del cliente y ademas las sucursales q tiene vinculadas
+            Dim ds_clie_recu As DataSet = DAcliente.Cliente_obtener_info(ds_cliente.Tables(0).Rows(0).Item("CLI_id")) 'me trae los datos del cliente y ademas las sucursales q tiene vinculadas
 
             Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
-            row_cliente("fantasia") = ds_clie_recu.Tables(1).Rows(0).Item("CLI_Fan")
+            'row_cliente("fantasia") = ds_clie_recu.Tables(1).Rows(0).Item("CLI_Fan")
             row_cliente("dni") = ds_clie_recu.Tables(1).Rows(0).Item("CLI_dni")
             'busco la sucursal que seleccioné para la factura.
             Dim a As Integer = 0
             While a < ds_clie_recu.Tables(3).Rows.Count
                 If ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_id") = Venta_Caja_gestion.SucxClie_id Then
+                    row_cliente("fantasia") = ds_clie_recu.Tables(1).Rows(0).Item("CLI_Fan") + "," + CStr(ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_nombre"))
                     row_cliente("telefono") = ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_tel")
                     row_cliente("mail") = ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_mail")
                     row_cliente("direccion") = ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_dir")
@@ -418,7 +419,7 @@ Public Class Pago_caja
                 End If
                 a = a + 1
             End While
-            row_cliente("iva_condicion") = ds_cliente.Tables(1).Rows(0).Item("IVA_descripcion").ToString
+            row_cliente("iva_condicion") = ds_cliente.Tables(0).Rows(0).Item("IVA_descripcion").ToString
             facturacion_ds_report.Tables("Cliente").Rows.Add(row_cliente)
         Else
             'Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni(CInt(Venta_Caja_gestion.lb_dni_clie.Text))

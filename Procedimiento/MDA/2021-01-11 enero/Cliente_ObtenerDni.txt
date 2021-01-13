@@ -1,0 +1,12 @@
+ALTER procedure [dbo].[Cliente_ObtenerDni]
+@CLI_dni varchar(50)
+as
+select CLI_id, CLI_ape, CLI_nom, CLI_dni, CLI_fnac, CLI_tel, CLI_mail,CLI_observaciones, IVA.IVA_Descripcion 
+from Cliente inner join IVA on Cliente.CLI_tipoiva = IVA.IVA_id 
+where CLI_dni = @CLI_dni
+
+select * from Cliente inner join Localidades on Cliente.CLI_Id_Loc = Localidades.id
+inner join Provincia on Cliente.CLI_Id_Prov = provincia.Prov_id inner join IVA on Cliente.CLI_tipoiva=IVA.IVA_id   
+
+where CLI_dni = @CLI_dni
+                      

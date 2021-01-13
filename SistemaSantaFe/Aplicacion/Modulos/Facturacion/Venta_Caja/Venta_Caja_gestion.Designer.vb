@@ -54,6 +54,16 @@ Partial Class Venta_Caja_gestion
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Busqueda = New System.Windows.Forms.TextBox()
         Me.DG_clientes = New System.Windows.Forms.DataGridView()
+        Me.CLIidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIFanDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIdniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLItelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLImailDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.direccion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIfnacDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIapeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLInomDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIobservacionesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClienteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Venta_Caja_ds = New Aplicacion.Venta_Caja_ds()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -147,16 +157,6 @@ Partial Class Venta_Caja_gestion
         Me.ProductoagregadoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ProductosCombosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CLIidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIFanDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIdniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLItelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLImailDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.direccion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIfnacDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIapeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLInomDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIobservacionesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.Venta_ds, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ProductoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -398,7 +398,7 @@ Partial Class Venta_Caja_gestion
         Me.GroupBox1.Size = New System.Drawing.Size(1221, 471)
         Me.GroupBox1.TabIndex = 245
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Buscar cliente por nombre (Fantasía o Razón Social): "
+        Me.GroupBox1.Text = "Buscar cliente : (Fantasía o Razón Social / DNI/CUIT): "
         '
         'Busqueda
         '
@@ -435,6 +435,84 @@ Partial Class Venta_Caja_gestion
         Me.DG_clientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_clientes.Size = New System.Drawing.Size(1201, 398)
         Me.DG_clientes.TabIndex = 239
+        '
+        'CLIidDataGridViewTextBoxColumn
+        '
+        Me.CLIidDataGridViewTextBoxColumn.DataPropertyName = "CLI_id"
+        Me.CLIidDataGridViewTextBoxColumn.HeaderText = "CLI_id"
+        Me.CLIidDataGridViewTextBoxColumn.Name = "CLIidDataGridViewTextBoxColumn"
+        Me.CLIidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIidDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLIFanDataGridViewTextBoxColumn
+        '
+        Me.CLIFanDataGridViewTextBoxColumn.DataPropertyName = "CLI_Fan"
+        Me.CLIFanDataGridViewTextBoxColumn.HeaderText = "Fantasía o Razón Social"
+        Me.CLIFanDataGridViewTextBoxColumn.Name = "CLIFanDataGridViewTextBoxColumn"
+        Me.CLIFanDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CLIdniDataGridViewTextBoxColumn
+        '
+        Me.CLIdniDataGridViewTextBoxColumn.DataPropertyName = "CLI_dni"
+        Me.CLIdniDataGridViewTextBoxColumn.HeaderText = "DNI/CUIT"
+        Me.CLIdniDataGridViewTextBoxColumn.Name = "CLIdniDataGridViewTextBoxColumn"
+        Me.CLIdniDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CLItelDataGridViewTextBoxColumn
+        '
+        Me.CLItelDataGridViewTextBoxColumn.DataPropertyName = "CLI_tel"
+        Me.CLItelDataGridViewTextBoxColumn.HeaderText = "Teléfono"
+        Me.CLItelDataGridViewTextBoxColumn.Name = "CLItelDataGridViewTextBoxColumn"
+        Me.CLItelDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLItelDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLImailDataGridViewTextBoxColumn
+        '
+        Me.CLImailDataGridViewTextBoxColumn.DataPropertyName = "CLI_mail"
+        Me.CLImailDataGridViewTextBoxColumn.HeaderText = "Mail"
+        Me.CLImailDataGridViewTextBoxColumn.Name = "CLImailDataGridViewTextBoxColumn"
+        Me.CLImailDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLImailDataGridViewTextBoxColumn.Visible = False
+        '
+        'direccion
+        '
+        Me.direccion.DataPropertyName = "direccion"
+        Me.direccion.HeaderText = "Dirección"
+        Me.direccion.Name = "direccion"
+        Me.direccion.ReadOnly = True
+        Me.direccion.Visible = False
+        '
+        'CLIfnacDataGridViewTextBoxColumn
+        '
+        Me.CLIfnacDataGridViewTextBoxColumn.DataPropertyName = "CLI_fnac"
+        Me.CLIfnacDataGridViewTextBoxColumn.HeaderText = "CLI_fnac"
+        Me.CLIfnacDataGridViewTextBoxColumn.Name = "CLIfnacDataGridViewTextBoxColumn"
+        Me.CLIfnacDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIfnacDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLIapeDataGridViewTextBoxColumn
+        '
+        Me.CLIapeDataGridViewTextBoxColumn.DataPropertyName = "CLI_ape"
+        Me.CLIapeDataGridViewTextBoxColumn.HeaderText = "CLI_ape"
+        Me.CLIapeDataGridViewTextBoxColumn.Name = "CLIapeDataGridViewTextBoxColumn"
+        Me.CLIapeDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIapeDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLInomDataGridViewTextBoxColumn
+        '
+        Me.CLInomDataGridViewTextBoxColumn.DataPropertyName = "CLI_nom"
+        Me.CLInomDataGridViewTextBoxColumn.HeaderText = "CLI_nom"
+        Me.CLInomDataGridViewTextBoxColumn.Name = "CLInomDataGridViewTextBoxColumn"
+        Me.CLInomDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLInomDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLIobservacionesDataGridViewTextBoxColumn
+        '
+        Me.CLIobservacionesDataGridViewTextBoxColumn.DataPropertyName = "CLI_observaciones"
+        Me.CLIobservacionesDataGridViewTextBoxColumn.HeaderText = "observaciones"
+        Me.CLIobservacionesDataGridViewTextBoxColumn.Name = "CLIobservacionesDataGridViewTextBoxColumn"
+        Me.CLIobservacionesDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIobservacionesDataGridViewTextBoxColumn.Visible = False
         '
         'ClienteBindingSource
         '
@@ -1549,84 +1627,6 @@ Partial Class Venta_Caja_gestion
         '
         Me.ProductosCombosBindingSource.DataMember = "Productos_Combos"
         Me.ProductosCombosBindingSource.DataSource = Me.Venta_Caja_ds
-        '
-        'CLIidDataGridViewTextBoxColumn
-        '
-        Me.CLIidDataGridViewTextBoxColumn.DataPropertyName = "CLI_id"
-        Me.CLIidDataGridViewTextBoxColumn.HeaderText = "CLI_id"
-        Me.CLIidDataGridViewTextBoxColumn.Name = "CLIidDataGridViewTextBoxColumn"
-        Me.CLIidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIidDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLIFanDataGridViewTextBoxColumn
-        '
-        Me.CLIFanDataGridViewTextBoxColumn.DataPropertyName = "CLI_Fan"
-        Me.CLIFanDataGridViewTextBoxColumn.HeaderText = "Fantasía o Razón Social"
-        Me.CLIFanDataGridViewTextBoxColumn.Name = "CLIFanDataGridViewTextBoxColumn"
-        Me.CLIFanDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CLIdniDataGridViewTextBoxColumn
-        '
-        Me.CLIdniDataGridViewTextBoxColumn.DataPropertyName = "CLI_dni"
-        Me.CLIdniDataGridViewTextBoxColumn.HeaderText = "DNI/CUIT"
-        Me.CLIdniDataGridViewTextBoxColumn.Name = "CLIdniDataGridViewTextBoxColumn"
-        Me.CLIdniDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CLItelDataGridViewTextBoxColumn
-        '
-        Me.CLItelDataGridViewTextBoxColumn.DataPropertyName = "CLI_tel"
-        Me.CLItelDataGridViewTextBoxColumn.HeaderText = "Teléfono"
-        Me.CLItelDataGridViewTextBoxColumn.Name = "CLItelDataGridViewTextBoxColumn"
-        Me.CLItelDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLItelDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLImailDataGridViewTextBoxColumn
-        '
-        Me.CLImailDataGridViewTextBoxColumn.DataPropertyName = "CLI_mail"
-        Me.CLImailDataGridViewTextBoxColumn.HeaderText = "Mail"
-        Me.CLImailDataGridViewTextBoxColumn.Name = "CLImailDataGridViewTextBoxColumn"
-        Me.CLImailDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLImailDataGridViewTextBoxColumn.Visible = False
-        '
-        'direccion
-        '
-        Me.direccion.DataPropertyName = "direccion"
-        Me.direccion.HeaderText = "Dirección"
-        Me.direccion.Name = "direccion"
-        Me.direccion.ReadOnly = True
-        Me.direccion.Visible = False
-        '
-        'CLIfnacDataGridViewTextBoxColumn
-        '
-        Me.CLIfnacDataGridViewTextBoxColumn.DataPropertyName = "CLI_fnac"
-        Me.CLIfnacDataGridViewTextBoxColumn.HeaderText = "CLI_fnac"
-        Me.CLIfnacDataGridViewTextBoxColumn.Name = "CLIfnacDataGridViewTextBoxColumn"
-        Me.CLIfnacDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIfnacDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLIapeDataGridViewTextBoxColumn
-        '
-        Me.CLIapeDataGridViewTextBoxColumn.DataPropertyName = "CLI_ape"
-        Me.CLIapeDataGridViewTextBoxColumn.HeaderText = "CLI_ape"
-        Me.CLIapeDataGridViewTextBoxColumn.Name = "CLIapeDataGridViewTextBoxColumn"
-        Me.CLIapeDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIapeDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLInomDataGridViewTextBoxColumn
-        '
-        Me.CLInomDataGridViewTextBoxColumn.DataPropertyName = "CLI_nom"
-        Me.CLInomDataGridViewTextBoxColumn.HeaderText = "CLI_nom"
-        Me.CLInomDataGridViewTextBoxColumn.Name = "CLInomDataGridViewTextBoxColumn"
-        Me.CLInomDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLInomDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLIobservacionesDataGridViewTextBoxColumn
-        '
-        Me.CLIobservacionesDataGridViewTextBoxColumn.DataPropertyName = "CLI_observaciones"
-        Me.CLIobservacionesDataGridViewTextBoxColumn.HeaderText = "observaciones"
-        Me.CLIobservacionesDataGridViewTextBoxColumn.Name = "CLIobservacionesDataGridViewTextBoxColumn"
-        Me.CLIobservacionesDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIobservacionesDataGridViewTextBoxColumn.Visible = False
         '
         'Venta_Caja_gestion
         '
