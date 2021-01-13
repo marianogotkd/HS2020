@@ -60,13 +60,14 @@
 
     End Sub
     Private Sub Button_Detalle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Detalle.Click
-        serv_id = DG_Servicio.SelectedCells(0).Value
-        Servicio_nuevo.Close()
-        Servicio_nuevo.Cliente_ID = DG_Servicio.SelectedCells(1).Value
-        Servicio_nuevo.serv_id = serv_id
-        Servicio_nuevo.Show()
-        Me.Close()
-
+        If DG_Servicio.Rows.Count <> 0 Then
+            serv_id = DG_Servicio.SelectedCells(0).Value
+            Servicio_nuevo.Close()
+            Servicio_nuevo.Cliente_ID = DG_Servicio.SelectedCells(1).Value
+            Servicio_nuevo.serv_id = serv_id
+            Servicio_nuevo.Show()
+            Me.Close()
+        End If
     End Sub
 
     Private Sub ComboBox_suc_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_suc.SelectedIndexChanged
@@ -138,12 +139,16 @@
   
     
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        serv_id = DG_OrdenTrabajo.CurrentRow.Cells("ServicioidDataGridViewTextBoxColumn1").Value
-        Servicio_nuevo.Close()
-        Servicio_nuevo.Cliente_ID = DG_OrdenTrabajo.CurrentRow.Cells("CLIidDataGridViewTextBoxColumn1").Value
-        Servicio_nuevo.serv_id = serv_id
-        Servicio_nuevo.Show()
-        Me.Close()
+        If DG_OrdenTrabajo.Rows.Count <> 0 Then
+            serv_id = DG_OrdenTrabajo.CurrentRow.Cells("ServicioidDataGridViewTextBoxColumn1").Value
+            Servicio_nuevo.Close()
+            Servicio_nuevo.Cliente_ID = DG_OrdenTrabajo.CurrentRow.Cells("CLIidDataGridViewTextBoxColumn1").Value
+            Servicio_nuevo.serv_id = serv_id
+            Servicio_nuevo.Show()
+            Me.Close()
+        End If
+
+        
 
     End Sub
 

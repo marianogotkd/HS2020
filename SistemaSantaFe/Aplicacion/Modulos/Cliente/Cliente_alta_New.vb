@@ -227,126 +227,137 @@ Public Class Cliente_alta_New
         Dim result As DialogResult
         result = MessageBox.Show("¿Desea modificar el Cliente?", "Sistema de Gestión", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
         If result = DialogResult.OK Then
-            'DAcliente.Cliente_Modificar(cliente_id, tx_Fan.Text, tb_Dni_Cuit.Text, Combo_Iva.SelectedValue, tx_tel.Text, tx_dir.Text, tx_Cp.Text, combo_Prov.SelectedValue, Combo_Loc.SelectedValue, tx_mail.Text)
-            DAcliente.Cliente_Modificar(cliente_id, tx_Fan.Text, tb_Dni_Cuit.Text, Combo_Iva.SelectedValue)
+            If DG_Servicio.Rows.Count <> 0 Then
 
-            'ahora veo si hace falta modificar o agrear una sucursal de las que estan en el gridview
-            Dim e As Integer = 0
-            While e < Cliente_ds.Tables("Sucursales").Rows.Count
-                Dim EnBD As String = CStr(Cliente_ds.Tables("Sucursales").Rows(e).Item("EnBD")).ToUpper
 
-                Select Case EnBD
-                    Case "NO"
-                        'AQUI HAGO UN ALTA
-                        DAcliente.Cliente_Sucursales_alta(cliente_id, Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_nombre"),
-                        Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_tel"),
-                        Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_mail"),
-                        Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_dir"),
-                        CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_CP")),
-                        CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_Prov")),
-                        CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_Loc")),
-                         "ACTIVO")
-                    Case "MODIFICAR EN BD"
-                        'aqui hago un update en sql
-                        DAcliente.Cliente_Sucursales_modificar(CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_id")),
-                                                               Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_nombre"),
-                        Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_tel"),
-                        Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_mail"),
-                        Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_dir"),
-                        CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_CP")),
-                        CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_Prov")),
-                        CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_Loc")), "ACTIVO")
-                End Select
-                e = e + 1
-            End While
 
-            'ahora veo si doy de alta una cta cte o bien modifico una existente ligada a un cliente.
-            If CheckBox_habilitar_ctacte.Checked = True Then
-                Dim ds_ctacte As DataSet = DActacte.CtaCte_buscar_id(CInt(txt_ctacte.Text))
-                If ds_ctacte.Tables(0).Rows.Count = 0 Then
-                    'no existe, doy de alta
-                    If txt_limitedeuda.Text = "" Then
-                        txt_limitedeuda.Text = "0"
+                'DAcliente.Cliente_Modificar(cliente_id, tx_Fan.Text, tb_Dni_Cuit.Text, Combo_Iva.SelectedValue, tx_tel.Text, tx_dir.Text, tx_Cp.Text, combo_Prov.SelectedValue, Combo_Loc.SelectedValue, tx_mail.Text)
+                DAcliente.Cliente_Modificar(cliente_id, tx_Fan.Text, tb_Dni_Cuit.Text, Combo_Iva.SelectedValue)
+
+                'ahora veo si hace falta modificar o agrear una sucursal de las que estan en el gridview
+                Dim e As Integer = 0
+                While e < Cliente_ds.Tables("Sucursales").Rows.Count
+                    Dim EnBD As String = CStr(Cliente_ds.Tables("Sucursales").Rows(e).Item("EnBD")).ToUpper
+
+                    Select Case EnBD
+                        Case "NO"
+                            'AQUI HAGO UN ALTA
+                            DAcliente.Cliente_Sucursales_alta(cliente_id, Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_nombre"),
+                            Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_tel"),
+                            Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_mail"),
+                            Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_dir"),
+                            CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_CP")),
+                            CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_Prov")),
+                            CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_Loc")),
+                             "ACTIVO")
+                        Case "MODIFICAR EN BD"
+                            'aqui hago un update en sql
+                            DAcliente.Cliente_Sucursales_modificar(CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_id")),
+                                                                   Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_nombre"),
+                            Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_tel"),
+                            Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_mail"),
+                            Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_dir"),
+                            CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_CP")),
+                            CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_Prov")),
+                            CInt(Cliente_ds.Tables("Sucursales").Rows(e).Item("SucxClie_Loc")), "ACTIVO")
+                    End Select
+                    e = e + 1
+                End While
+
+                'ahora veo si doy de alta una cta cte o bien modifico una existente ligada a un cliente.
+                If CheckBox_habilitar_ctacte.Checked = True Then
+                    Dim ds_ctacte As DataSet = DActacte.CtaCte_buscar_id(CInt(txt_ctacte.Text))
+                    If ds_ctacte.Tables(0).Rows.Count = 0 Then
+                        'no existe, doy de alta
+                        If txt_limitedeuda.Text = "" Then
+                            txt_limitedeuda.Text = "0"
+                        End If
+                        DActacte.CteCte_alta(cliente_id, Now, CDec(0), CDec(txt_limitedeuda.Text))
+                    Else
+                        'existe, entonces modifico.
+                        If txt_limitedeuda.Text = "" Then
+                            txt_limitedeuda.Text = "0"
+                        End If
+                        DActacte.CtaCte_modificar(CInt(txt_ctacte.Text), CheckBox_estado.Text, CDec(txt_limitedeuda.Text))
                     End If
-                    DActacte.CteCte_alta(cliente_id, Now, CDec(0), CDec(txt_limitedeuda.Text))
-                Else
-                    'existe, entonces modifico.
-                    If txt_limitedeuda.Text = "" Then
-                        txt_limitedeuda.Text = "0"
-                    End If
-                    DActacte.CtaCte_modificar(CInt(txt_ctacte.Text), CheckBox_estado.Text, CDec(txt_limitedeuda.Text))
                 End If
-            End If
 
-            Venta_Caja_gestion.Obtener_Clientes()
-            MessageBox.Show("El Cliente se modificó correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Cliente_modificar.Obtener_Clientes()
-            limpiar_deshabilitar()
-            Me.Close()
-            Cliente_modificar.Close()
-            Cliente_modificar.Show()
+                Venta_Caja_gestion.Obtener_Clientes()
+                MessageBox.Show("El Cliente se modificó correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Cliente_modificar.Obtener_Clientes()
+                limpiar_deshabilitar()
+                Me.Close()
+                Cliente_modificar.Close()
+                Cliente_modificar.Show()
+            Else
+                MessageBox.Show("Error, Debe ingresar al menos una Sucursal.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
         End If
-        limpiar_deshabilitar()
+            limpiar_deshabilitar()
     End Sub
 
 
     Private Sub alta()
         If tb_Dni_Cuit.Text <> "" And tx_Fan.Text <> "" Then
-            Dim result As DialogResult
-            result = MessageBox.Show("¿Desea dar de alta al Cliente?.", "Sistema de Gestión.", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
-            If result = DialogResult.OK Then
+            If DG_Servicio.Rows.Count <> 0 Then
+                Dim result As DialogResult
+                result = MessageBox.Show("¿Desea dar de alta al Cliente?.", "Sistema de Gestión.", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+                If result = DialogResult.OK Then
 
 
-                Dim ds_CLI_dni As DataSet = DAcliente.Cliente_VerificarDni(tb_Dni_Cuit.Text)
-                With ds_CLI_dni.Tables(0).Rows
-                    If .Count = 0 Then
+                    Dim ds_CLI_dni As DataSet = DAcliente.Cliente_VerificarDni(tb_Dni_Cuit.Text)
+                    With ds_CLI_dni.Tables(0).Rows
+                        If .Count = 0 Then
 
-                        Dim ds_cliente_alta As DataSet = DAcliente.Cliente_Alta_new(tx_Fan.Text, tb_Dni_Cuit.Text, Combo_Iva.SelectedValue)
-                        'Dim ds_cliente_alta As DataSet = DAcliente.Cliente_Alta_new(tx_Fan.Text, tb_Dni_Cuit.Text, Combo_Iva.SelectedValue, tx_tel.Text, tx_dir.Text, tx_Cp.Text, combo_Prov.SelectedValue, Combo_Loc.SelectedValue, tx_mail.Text)
-                        'choco: 02-12-2019 ////////////cuenta corriente
-                        If CheckBox_habilitar_ctacte.Checked = True Then
-                            'creamos un registro en la tabla cuentacorriente
-                            Dim CLI_id As Integer = CInt(ds_cliente_alta.Tables(0).Rows(0).Item("CLI_id"))
-                            If txt_limitedeuda.Text = "" Then
-                                txt_limitedeuda.Text = "0"
+                            Dim ds_cliente_alta As DataSet = DAcliente.Cliente_Alta_new(tx_Fan.Text, tb_Dni_Cuit.Text, Combo_Iva.SelectedValue)
+                            'Dim ds_cliente_alta As DataSet = DAcliente.Cliente_Alta_new(tx_Fan.Text, tb_Dni_Cuit.Text, Combo_Iva.SelectedValue, tx_tel.Text, tx_dir.Text, tx_Cp.Text, combo_Prov.SelectedValue, Combo_Loc.SelectedValue, tx_mail.Text)
+                            'choco: 02-12-2019 ////////////cuenta corriente
+                            If CheckBox_habilitar_ctacte.Checked = True Then
+                                'creamos un registro en la tabla cuentacorriente
+                                Dim CLI_id As Integer = CInt(ds_cliente_alta.Tables(0).Rows(0).Item("CLI_id"))
+                                If txt_limitedeuda.Text = "" Then
+                                    txt_limitedeuda.Text = "0"
+                                End If
+                                DActacte.CteCte_alta(CLI_id, Now, CDec(0), CDec(txt_limitedeuda.Text))
                             End If
-                            DActacte.CteCte_alta(CLI_id, Now, CDec(0), CDec(txt_limitedeuda.Text))
-                        End If
 
-                        '/////////////CHOCO 17-12-2020 GUARDO SUCURSALES EN TABLA AUXILIAR DE CLIENTES: CLIENTE_SUCURSALES SE LLAMA///////////////
-                        Dim e As Integer = 0
-                        While e < DG_Servicio.Rows.Count
-                            'Dim EnBD As String = DG_Servicio.Rows(e).Cells("EnBDDataGridViewTextBoxColumn").Value.ToString
-                            Dim CLI_id As Integer = CInt(ds_cliente_alta.Tables(0).Rows(0).Item("CLI_id"))
-                            DAcliente.Cliente_Sucursales_alta(CLI_id, DG_Servicio.Rows(e).Cells("SucxClienombreDataGridViewTextBoxColumn").Value,
-                                                              DG_Servicio.Rows(e).Cells("SucxClietelDataGridViewTextBoxColumn").Value,
-                                                              DG_Servicio.Rows(e).Cells("SucxCliemailDataGridViewTextBoxColumn").Value,
-                                                              DG_Servicio.Rows(e).Cells("SucxCliedirDataGridViewTextBoxColumn").Value,
-                                                              CInt(DG_Servicio.Rows(e).Cells("SucxClieCPDataGridViewTextBoxColumn").Value),
-                                                              CInt(DG_Servicio.Rows(e).Cells("SucxClieProvDataGridViewTextBoxColumn").Value),
-                                                              CInt(DG_Servicio.Rows(e).Cells("SucxClieLocDataGridViewTextBoxColumn").Value), "ACTIVO")
-                            e = e + 1
-                        End While
-                        '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            '/////////////CHOCO 17-12-2020 GUARDO SUCURSALES EN TABLA AUXILIAR DE CLIENTES: CLIENTE_SUCURSALES SE LLAMA///////////////
+                            Dim e As Integer = 0
+                            While e < DG_Servicio.Rows.Count
+                                'Dim EnBD As String = DG_Servicio.Rows(e).Cells("EnBDDataGridViewTextBoxColumn").Value.ToString
+                                Dim CLI_id As Integer = CInt(ds_cliente_alta.Tables(0).Rows(0).Item("CLI_id"))
+                                DAcliente.Cliente_Sucursales_alta(CLI_id, DG_Servicio.Rows(e).Cells("SucxClienombreDataGridViewTextBoxColumn").Value,
+                                                                  DG_Servicio.Rows(e).Cells("SucxClietelDataGridViewTextBoxColumn").Value,
+                                                                  DG_Servicio.Rows(e).Cells("SucxCliemailDataGridViewTextBoxColumn").Value,
+                                                                  DG_Servicio.Rows(e).Cells("SucxCliedirDataGridViewTextBoxColumn").Value,
+                                                                  CInt(DG_Servicio.Rows(e).Cells("SucxClieCPDataGridViewTextBoxColumn").Value),
+                                                                  CInt(DG_Servicio.Rows(e).Cells("SucxClieProvDataGridViewTextBoxColumn").Value),
+                                                                  CInt(DG_Servicio.Rows(e).Cells("SucxClieLocDataGridViewTextBoxColumn").Value), "ACTIVO")
+                                e = e + 1
+                            End While
+                            '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                        Venta_Caja_gestion.Obtener_Clientes() 'esto creo q debo comentar
-                        Cliente_modificar.Obtener_Clientes() 'esto creo que debo comentar
-                        MessageBox.Show("El Cliente fue dado de alta correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        'aqui veo si cierro el form y abro modificar, o blanqueo todo y sigo agregando
-                        If apertura = "menu_alta" Then
-                            limpiar_deshabilitar()
+                            Venta_Caja_gestion.Obtener_Clientes() 'esto creo q debo comentar
+                            Cliente_modificar.Obtener_Clientes() 'esto creo que debo comentar
+                            MessageBox.Show("El Cliente fue dado de alta correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            'aqui veo si cierro el form y abro modificar, o blanqueo todo y sigo agregando
+                            If apertura = "menu_alta" Then
+                                limpiar_deshabilitar()
+                            End If
+                            If apertura = "formulario modificar" Then
+                                Me.Close()
+                                Cliente_modificar.Close()
+                                Cliente_modificar.Show()
+                            End If
+                        Else
+                            MessageBox.Show("Error, el Cliente ya existe.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            tb_Dni_Cuit.Focus()
+                            tb_Dni_Cuit.SelectAll()
                         End If
-                        If apertura = "formulario modificar" Then
-                            Me.Close()
-                            Cliente_modificar.Close()
-                            Cliente_modificar.Show()
-                        End If
-                    Else
-                        MessageBox.Show("Error, el Cliente ya existe.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        tb_Dni_Cuit.Focus()
-                        tb_Dni_Cuit.SelectAll()
-                    End If
-                End With
+                    End With
+                End If
+            Else
+                MessageBox.Show("Error, Debe ingresar al menos una Sucursal.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Else
             MessageBox.Show("Error, Ingrese los campos obligatorios", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)

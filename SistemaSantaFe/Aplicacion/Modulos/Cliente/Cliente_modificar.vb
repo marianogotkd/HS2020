@@ -57,6 +57,12 @@ Public Class Cliente_modificar
         Dim Filtro
         Filtro = String.Format("{0} LIKE '%{1}%'", "CLI_Fan", TextBox1.Text) 'esto para campos strings, FUNCIONA PERFECTO
         Cliente1BindingSource.Filter = Filtro
+
+        If DG_clientes.Rows.Count = 0 Then
+            Filtro = String.Format("CONVERT(CLI_dni, System.String) LIKE '%{0}%'", TextBox1.Text) 'esto para campos strings, FUNCIONA PERFECTO
+            Cliente1BindingSource.Filter = Filtro
+        End If
+
     End Sub
     Private Sub BO_cliente_modificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BO_cliente_modificar.Click
         If procedencia = "Servicios" And DG_clientes.Rows.Count <> 0 Then

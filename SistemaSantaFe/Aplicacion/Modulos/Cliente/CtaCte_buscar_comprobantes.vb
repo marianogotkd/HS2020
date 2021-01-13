@@ -100,7 +100,7 @@
         facturacion_ds_report.Tables("Cliente").Rows.Clear()
         'Dim ds_cliente As DataSet = DAcliente.Cliente_obtener_info(cliente_id)
         Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
-        row_cliente("fantasia") = ds_factura.Tables(1).Rows(0).Item("CLI_Fan") + ", Suc: " + ds_factura.Tables(1).Rows(0).Item("SucxClie_nombre")
+        row_cliente("fantasia") = ds_factura.Tables(1).Rows(0).Item("CLI_Fan") + ", " + ds_factura.Tables(1).Rows(0).Item("SucxClie_nombre")
         row_cliente("dni") = ds_factura.Tables(1).Rows(0).Item("CLI_dni")
         row_cliente("telefono") = ds_factura.Tables(1).Rows(0).Item("SucxClie_tel")
         row_cliente("mail") = ds_factura.Tables(1).Rows(0).Item("SucxClie_mail")

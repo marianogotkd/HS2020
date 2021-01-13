@@ -1,0 +1,11 @@
+ALTER procedure [dbo].[Remito_recuperar]
+
+@remito_id int
+as
+SELECT     dbo.Remito.remito_id, dbo.Remito.remito_estado, dbo.Remito.ventaprod_id, dbo.Venta_Producto.ventaprod_observacion, dbo.Venta_Producto.vendedor_id,
+Venta_Producto.usuario_id, Remito.remito_fecha, SucxClie_id  
+
+FROM         dbo.Remito INNER JOIN
+                      dbo.Venta_Producto ON dbo.Remito.ventaprod_id = dbo.Venta_Producto.ventaprod_id INNER JOIN
+                      dbo.Vendedor ON dbo.Venta_Producto.vendedor_id = dbo.Vendedor.vendedor_id 
+                      where Remito.remito_id = @remito_id 

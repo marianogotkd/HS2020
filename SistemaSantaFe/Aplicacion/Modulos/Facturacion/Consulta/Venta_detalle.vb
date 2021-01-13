@@ -29,7 +29,7 @@
         If ds_venta.Tables(0).Rows.Count <> 0 Then 'la tabla es la que tiene asociado venta a un cliente, si el cliente es consumidor final, entonces esta tabla esta vacia
             'Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni(CStr(ds_venta.Tables(0).Rows(0).Item("DNI")))
             Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
-            row_cliente("fantasia") = ds_venta.Tables(0).Rows(0).Item("fantasia") + ", Suc: " + ds_venta.Tables(0).Rows(0).Item("SucxClie_nombre")
+            row_cliente("fantasia") = ds_venta.Tables(0).Rows(0).Item("fantasia") + ", " + ds_venta.Tables(0).Rows(0).Item("SucxClie_nombre")
             row_cliente("dni") = ds_venta.Tables(0).Rows(0).Item("DNI")
             row_cliente("telefono") = ds_venta.Tables(0).Rows(0).Item("SucxClie_tel")
             row_cliente("mail") = ds_venta.Tables(0).Rows(0).Item("SucxClie_mail")
@@ -175,7 +175,7 @@
         Dim ds_venta As DataSet = DAventa.Venta_consultar_detalle_venta(ventaprod_id, sucursal_id)
         '///////////////TABLA CLIENTE//////////////////////////////////'
         If ds_venta.Tables(0).Rows.Count <> 0 Then 'la tabla es la que tiene asociado venta a un cliente, si el cliente es consumidor final, entonces esta tabla esta vacia
-            TextBox_fantasia.Text = ds_venta.Tables(0).Rows(0).Item("fantasia") + ", Suc: " + ds_venta.Tables(0).Rows(0).Item("SucxClie_nombre")
+            TextBox_fantasia.Text = ds_venta.Tables(0).Rows(0).Item("fantasia") + ", " + ds_venta.Tables(0).Rows(0).Item("SucxClie_nombre")
             TextBox_dni.Text = ds_venta.Tables(0).Rows(0).Item("DNI")
             TextBox_telefono.Text = ds_venta.Tables(0).Rows(0).Item("SucxClie_tel") 'telefono
             TextBox_mail.Text = ds_venta.Tables(0).Rows(0).Item("SucxClie_mail")

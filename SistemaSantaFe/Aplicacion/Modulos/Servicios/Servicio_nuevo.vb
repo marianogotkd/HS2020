@@ -545,6 +545,10 @@
 
                     'Tareas_Consulta.Close() NO ABRO EL CALENDARIO
                     'Tareas_Consulta.Show()
+                    If procedencia = "Orden_trabajo_selec_cliente" Then
+                        guardado = "si"
+                    End If
+
                     Me.Close()
                 End If
                 estado_de_orden = "ASIGNADO"
@@ -568,9 +572,7 @@
             If result = DialogResult.Yes Then
                 Guardar_BD("boton_guardar_cambios")
 
-                If procedencia = "Orden_trabajo_selec_cliente" Then
-                    guardado = "si"
-                End If
+                
 
             End If
         Else
@@ -799,7 +801,7 @@
         'Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni(TextBox_dni.Text) 'esto ya no me sirve por que ahora los datos q van en la factura vienen de la taba cliente_sucursales.
         Dim ds_cliente As DataSet = DAservicio.Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA(serv_id) 'esto ya no me sirve por que ahora los datos q van en la factura vienen de la taba cliente_sucursales.
         Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
-        row_cliente("fantasia") = ds_cliente.Tables(0).Rows(0).Item("CLI_Fan") + ", Suc: " + ds_cliente.Tables(0).Rows(0).Item("SucxClie_nombre")
+        row_cliente("fantasia") = ds_cliente.Tables(0).Rows(0).Item("CLI_Fan") + ", " + ds_cliente.Tables(0).Rows(0).Item("SucxClie_nombre")
         row_cliente("dni") = ds_cliente.Tables(0).Rows(0).Item("CLI_dni")
         row_cliente("telefono") = ds_cliente.Tables(0).Rows(0).Item("SucxClie_tel")
         row_cliente("mail") = ds_cliente.Tables(0).Rows(0).Item("SucxClie_mail")
