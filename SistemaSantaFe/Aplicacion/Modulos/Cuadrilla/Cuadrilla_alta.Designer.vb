@@ -23,8 +23,8 @@ Partial Class Cuadrilla_alta
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lbl_err_cuadrilla = New System.Windows.Forms.Label()
         Me.txt_descripcion = New System.Windows.Forms.TextBox()
@@ -35,16 +35,19 @@ Partial Class Cuadrilla_alta
         Me.Label_total_salario = New System.Windows.Forms.Label()
         Me.Label_total_empleados = New System.Windows.Forms.Label()
         Me.DG_empleados = New System.Windows.Forms.DataGridView()
-        Me.EmpleadoidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmpleadodniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ApellidoynombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SalarioxhoraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EmpleadosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Ds_cuadrilla = New Aplicacion.Ds_cuadrilla()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btn_volver = New System.Windows.Forms.Button()
         Me.btn_cancelar = New System.Windows.Forms.Button()
         Me.btn_guardar = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.EmpleadoidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmpleadodniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ApellidoynombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SalarioxhoraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Item = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DG_empleados, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -114,6 +117,8 @@ Partial Class Cuadrilla_alta
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox2.Controls.Add(Me.Button2)
+        Me.GroupBox2.Controls.Add(Me.Button3)
         Me.GroupBox2.Controls.Add(Me.Label_total_salario)
         Me.GroupBox2.Controls.Add(Me.Label_total_empleados)
         Me.GroupBox2.Controls.Add(Me.DG_empleados)
@@ -155,7 +160,7 @@ Partial Class Cuadrilla_alta
         Me.DG_empleados.BackgroundColor = System.Drawing.Color.White
         Me.DG_empleados.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DG_empleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DG_empleados.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.EmpleadoidDataGridViewTextBoxColumn, Me.EmpleadodniDataGridViewTextBoxColumn, Me.ApellidoynombreDataGridViewTextBoxColumn, Me.SalarioxhoraDataGridViewTextBoxColumn})
+        Me.DG_empleados.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.EmpleadoidDataGridViewTextBoxColumn, Me.EmpleadodniDataGridViewTextBoxColumn, Me.ApellidoynombreDataGridViewTextBoxColumn, Me.SalarioxhoraDataGridViewTextBoxColumn, Me.Item})
         Me.DG_empleados.DataSource = Me.EmpleadosBindingSource
         Me.DG_empleados.Location = New System.Drawing.Point(17, 49)
         Me.DG_empleados.Margin = New System.Windows.Forms.Padding(4)
@@ -163,47 +168,14 @@ Partial Class Cuadrilla_alta
         Me.DG_empleados.Name = "DG_empleados"
         Me.DG_empleados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DG_empleados.RowHeadersVisible = False
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_empleados.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_empleados.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.DG_empleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DG_empleados.Size = New System.Drawing.Size(677, 156)
         Me.DG_empleados.StandardTab = True
         Me.DG_empleados.TabIndex = 240
-        '
-        'EmpleadoidDataGridViewTextBoxColumn
-        '
-        Me.EmpleadoidDataGridViewTextBoxColumn.DataPropertyName = "empleado_id"
-        Me.EmpleadoidDataGridViewTextBoxColumn.HeaderText = "empleado_id"
-        Me.EmpleadoidDataGridViewTextBoxColumn.Name = "EmpleadoidDataGridViewTextBoxColumn"
-        Me.EmpleadoidDataGridViewTextBoxColumn.Visible = False
-        '
-        'EmpleadodniDataGridViewTextBoxColumn
-        '
-        Me.EmpleadodniDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.EmpleadodniDataGridViewTextBoxColumn.DataPropertyName = "empleado_dni"
-        Me.EmpleadodniDataGridViewTextBoxColumn.HeaderText = "Dni"
-        Me.EmpleadodniDataGridViewTextBoxColumn.Name = "EmpleadodniDataGridViewTextBoxColumn"
-        Me.EmpleadodniDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ApellidoynombreDataGridViewTextBoxColumn
-        '
-        Me.ApellidoynombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ApellidoynombreDataGridViewTextBoxColumn.DataPropertyName = "apellido_y_nombre"
-        Me.ApellidoynombreDataGridViewTextBoxColumn.HeaderText = "Apellido y Nombre"
-        Me.ApellidoynombreDataGridViewTextBoxColumn.Name = "ApellidoynombreDataGridViewTextBoxColumn"
-        Me.ApellidoynombreDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'SalarioxhoraDataGridViewTextBoxColumn
-        '
-        Me.SalarioxhoraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.SalarioxhoraDataGridViewTextBoxColumn.DataPropertyName = "salario_x_hora"
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.SalarioxhoraDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
-        Me.SalarioxhoraDataGridViewTextBoxColumn.HeaderText = "Salario por Hora"
-        Me.SalarioxhoraDataGridViewTextBoxColumn.Name = "SalarioxhoraDataGridViewTextBoxColumn"
-        Me.SalarioxhoraDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'EmpleadosBindingSource
         '
@@ -268,6 +240,70 @@ Partial Class Cuadrilla_alta
         Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_guardar.UseVisualStyleBackColor = True
         '
+        'Button2
+        '
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.menos
+        Me.Button2.Location = New System.Drawing.Point(524, 209)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(80, 43)
+        Me.Button2.TabIndex = 270
+        Me.Button2.Text = "Quitar"
+        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Image = Global.Aplicacion.My.Resources.Resources.add_20x20
+        Me.Button3.Location = New System.Drawing.Point(610, 209)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(84, 43)
+        Me.Button3.TabIndex = 269
+        Me.Button3.Text = "Agregar"
+        Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'EmpleadoidDataGridViewTextBoxColumn
+        '
+        Me.EmpleadoidDataGridViewTextBoxColumn.DataPropertyName = "empleado_id"
+        Me.EmpleadoidDataGridViewTextBoxColumn.HeaderText = "empleado_id"
+        Me.EmpleadoidDataGridViewTextBoxColumn.Name = "EmpleadoidDataGridViewTextBoxColumn"
+        Me.EmpleadoidDataGridViewTextBoxColumn.Visible = False
+        '
+        'EmpleadodniDataGridViewTextBoxColumn
+        '
+        Me.EmpleadodniDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.EmpleadodniDataGridViewTextBoxColumn.DataPropertyName = "empleado_dni"
+        Me.EmpleadodniDataGridViewTextBoxColumn.HeaderText = "Dni"
+        Me.EmpleadodniDataGridViewTextBoxColumn.Name = "EmpleadodniDataGridViewTextBoxColumn"
+        Me.EmpleadodniDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ApellidoynombreDataGridViewTextBoxColumn
+        '
+        Me.ApellidoynombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ApellidoynombreDataGridViewTextBoxColumn.DataPropertyName = "apellido_y_nombre"
+        Me.ApellidoynombreDataGridViewTextBoxColumn.HeaderText = "Apellido y Nombre"
+        Me.ApellidoynombreDataGridViewTextBoxColumn.Name = "ApellidoynombreDataGridViewTextBoxColumn"
+        Me.ApellidoynombreDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SalarioxhoraDataGridViewTextBoxColumn
+        '
+        Me.SalarioxhoraDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.SalarioxhoraDataGridViewTextBoxColumn.DataPropertyName = "salario_x_hora"
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.SalarioxhoraDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        Me.SalarioxhoraDataGridViewTextBoxColumn.HeaderText = "Salario por Hora"
+        Me.SalarioxhoraDataGridViewTextBoxColumn.Name = "SalarioxhoraDataGridViewTextBoxColumn"
+        Me.SalarioxhoraDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Item
+        '
+        Me.Item.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Item.HeaderText = "item"
+        Me.Item.Name = "Item"
+        Me.Item.Width = 30
+        '
         'Cuadrilla_alta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -310,9 +346,12 @@ Partial Class Cuadrilla_alta
     Friend WithEvents btn_volver As System.Windows.Forms.Button
     Friend WithEvents btn_cancelar As System.Windows.Forms.Button
     Friend WithEvents btn_guardar As System.Windows.Forms.Button
+    Friend WithEvents lbl_err_cuadrilla As System.Windows.Forms.Label
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents EmpleadoidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EmpleadodniDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ApellidoynombreDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents SalarioxhoraDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents lbl_err_cuadrilla As System.Windows.Forms.Label
+    Friend WithEvents Item As System.Windows.Forms.DataGridViewCheckBoxColumn
 End Class

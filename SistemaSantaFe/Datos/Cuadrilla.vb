@@ -26,6 +26,22 @@ Public Class Cuadrilla
     End Function
 
 
+    Public Function Empleado_x_Cuadrilla_eliminar(ByVal Cuadrilla_id As Integer) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+        Dim comando As New OleDbCommand("Empleado_x_Cuadrilla_eliminar", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Cuadrilla_id", Cuadrilla_id))
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Cuadrilla")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
 
     Public Function Cuadrilla_alta(ByVal descripcion As String, ByVal salario As Decimal) As DataSet
         Try
@@ -45,6 +61,29 @@ Public Class Cuadrilla
         dbconn.Close()
         Return ds_JE
     End Function
+
+    Public Function Cuadrilla_modificar(ByVal Cuadrilla_id As Integer, ByVal Cuadrilla_descripcion As String, ByVal Cuadrilla_salario_x_hora As Decimal) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Cuadrilla_modificar", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Cuadrilla_id", Cuadrilla_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Cuadrilla_descripcion", Cuadrilla_descripcion))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Cuadrilla_salario_x_hora", Cuadrilla_salario_x_hora))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Cuadrilla")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
+
+
 
     Public Function Empleado_x_Cuadrilla_alta(ByVal empleado_id As Integer, ByVal Cuadrilla_id As Integer,
                                               ByVal salario As Decimal) As DataSet
@@ -77,6 +116,24 @@ Public Class Cuadrilla
         comando.CommandType = CommandType.StoredProcedure
 
         'comando.Parameters.Add(New OleDb.OleDbParameter("@empleado_id", empleado_id))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Cuadrilla")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+    Public Function Cuadrilla_recuperar_info(ByVal Cuadrilla_id As Integer) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Cuadrilla_recuperar_info", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Cuadrilla_id", Cuadrilla_id))
 
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)

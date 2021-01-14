@@ -74,6 +74,7 @@
                     DAservicio.Servicio_ActualizarEstado(serv_id, "ANULADO")
                     procedencia = ""
                     guardado = "no"
+                    Servicio_Consulta.LOAD_FORM()
                 Else
                     e.Cancel = True
                 End If
@@ -115,7 +116,7 @@
 
         GroupBox1.Text = "Orden de Revisión N°" + " " + Label_Cod.Text 'aqui tengo que colocar otro numero, que lo voy a generar automaticamente
 
-
+        txt_sucursal.ReadOnly = True 'esto no se puede cambiar x q se recupera
 
     End Sub
     Public anticipo_recuperado As Decimal = 0
@@ -254,8 +255,10 @@
             TextBox_tel.BackColor = Color.FromArgb(255, 255, 192)
             TextBox_codprod.BackColor = Color.FromArgb(255, 255, 192)
             'ComboBox1.Enabled = False
-
-
+            TextBox_codprod.ReadOnly = True
+            DateTimePicker_REP.Enabled = False
+            Button3.Enabled = False
+            btn_eliminar_seleccion.Enabled = False
             'btn_guardar.Enabled = False
             'Button_finalizar.Enabled = False
             'btn_cancelar.Text = "Salir"
@@ -549,6 +552,8 @@
                         guardado = "si"
                     End If
 
+                    Servicio_Consulta.LOAD_FORM() 'esto hago para actualizar el form de servicio_consulta que no se cierra
+
                     Me.Close()
                 End If
                 estado_de_orden = "ASIGNADO"
@@ -571,9 +576,6 @@
             Dim result As Integer = MessageBox.Show("¿Está seguro que desea guardar los cambios y generar la ORDEN DE TRABAJO?", "Sistema de Gestión", MessageBoxButtons.YesNo)
             If result = DialogResult.Yes Then
                 Guardar_BD("boton_guardar_cambios")
-
-                
-
             End If
         Else
             MessageBox.Show("Error, no se puede realizar la operación.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -723,12 +725,15 @@
 
                     Dim sin_anticipo As Decimal = CDec((Math.Round(CDec(TextBox_TOTAL.Text), 2).ToString("N2"))) + CDec((Math.Round(CDec(TextBox_Anticipo.Text), 2).ToString("N2")))
                     If CDec(TextBox_TOTAL.Text) <> CDec(0) Then
+                        Sucursales_Seleccionar.Close()
+                        Sucursales_Seleccionar.cliente_id = Cliente_ID
+                        Sucursales_Seleccionar.procedencia = "servicio_nuevo"
+                        Sucursales_Seleccionar.Show()
 
-                        Forma_de_pago_seleccion.Close()
-                        'tengo que indicarle que vengo de servicio_nuevo
-                        Forma_de_pago_seleccion.procedencia = "Servicio_Nuevo"
-                        Forma_de_pago_seleccion.Show()
-                        Mensaje = "finalizar"
+
+
+
+                                                Mensaje = "finalizar"
                         'Pago_caja.form_procedencia = "Servicio_nuevo"
                         'Pago_caja.tx_total.Text = TextBox_TOTAL.Text
                         'Pago_caja.Ser_id = Label_Cod.Text
@@ -781,8 +786,9 @@
         'genero el reporte con el comprobante de pago
         crear_reporte_comprobante_pago(ds_usuario, factura_id)
 
-        Tareas_Consulta.Close()
-        Tareas_Consulta.Show()
+        'Tareas_Consulta.Close()
+        'Tareas_Consulta.Show()
+        Servicio_Consulta.LOAD_FORM()
         Me.Close()
     End Sub
 
@@ -801,13 +807,13 @@
         'Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni(TextBox_dni.Text) 'esto ya no me sirve por que ahora los datos q van en la factura vienen de la taba cliente_sucursales.
         Dim ds_cliente As DataSet = DAservicio.Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA(serv_id) 'esto ya no me sirve por que ahora los datos q van en la factura vienen de la taba cliente_sucursales.
         Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
-        row_cliente("fantasia") = ds_cliente.Tables(0).Rows(0).Item("CLI_Fan") + ", " + ds_cliente.Tables(0).Rows(0).Item("SucxClie_nombre")
-        row_cliente("dni") = ds_cliente.Tables(0).Rows(0).Item("CLI_dni")
-        row_cliente("telefono") = ds_cliente.Tables(0).Rows(0).Item("SucxClie_tel")
-        row_cliente("mail") = ds_cliente.Tables(0).Rows(0).Item("SucxClie_mail")
-        row_cliente("direccion") = ds_cliente.Tables(0).Rows(0).Item("SucxClie_dir")
-        row_cliente("localidad") = ds_cliente.Tables(0).Rows(0).Item("provincia") + ", " + ds_cliente.Tables(0).Rows(0).Item("Localidad")
-        row_cliente("iva_condicion") = ds_cliente.Tables(0).Rows(0).Item("IVA_Descripcion").ToString
+        row_cliente("fantasia") = ds_cliente.Tables(3).Rows(0).Item("CLI_Fan") + ", " + ds_cliente.Tables(3).Rows(0).Item("SucxClie_nombre")
+        row_cliente("dni") = ds_cliente.Tables(3).Rows(0).Item("CLI_dni")
+        row_cliente("telefono") = ds_cliente.Tables(3).Rows(0).Item("SucxClie_tel")
+        row_cliente("mail") = ds_cliente.Tables(3).Rows(0).Item("SucxClie_mail")
+        row_cliente("direccion") = ds_cliente.Tables(3).Rows(0).Item("SucxClie_dir")
+        row_cliente("localidad") = ds_cliente.Tables(3).Rows(0).Item("provincia") + ", " + ds_cliente.Tables(3).Rows(0).Item("Localidad")
+        row_cliente("iva_condicion") = ds_cliente.Tables(3).Rows(0).Item("IVA_Descripcion").ToString
         facturacion_ds_report.Tables("Cliente").Rows.Add(row_cliente)
 
         '///////////////TABLA SUCURSAL//////////////////////////////////'
@@ -1109,6 +1115,8 @@
                         Tareas_Consulta.Close()
                         Tareas_Consulta.Show()
                     End If
+
+                    Servicio_Consulta.LOAD_FORM()
                     Me.Close()
 
                 Else

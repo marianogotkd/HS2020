@@ -3,6 +3,7 @@
     Dim DAcuentacorriente As New Datos.CuentaCorriente
     Dim DAproducto As New Datos.Producto
     Public procedencia As String
+    Public SucxClie_id As Integer 'viene de sucursales_seleccionar
     Private Sub Forma_de_pago_seleccion_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
         If Venta_Caja_gestion.procedencia = "Remito modificar" Then
@@ -55,7 +56,7 @@
             If RadioButton_efectivo.Checked = True Then
                 Pago_caja.Close()
                 Pago_caja.form_procedencia = "Servicio_nuevo"
-
+                Pago_caja.SucxClie_id = SucxClie_id
                 Pago_caja.tx_total.Text = (Math.Round(CDec(Servicio_nuevo.TextBox_TOTAL.Text), 2).ToString("N2"))
                 Pago_caja.tx_parcial.Text = (Math.Round(CDec(0), 2).ToString("N2"))
                 Pago_caja.Ser_id = Servicio_nuevo.Label_Cod.Text
@@ -68,6 +69,7 @@
                 Pago_tarjeta.Close()
                 Pago_tarjeta.Ser_id = Servicio_nuevo.Label_Cod.Text
                 Pago_tarjeta.form_procedencia = "Servicio_nuevo"
+                Pago_tarjeta.SucxClie_id = SucxClie_id
                 Pago_tarjeta.tx_total.Text = (Math.Round(CDec(Servicio_nuevo.TextBox_TOTAL.Text), 2).ToString("N2"))
                 Pago_tarjeta.Show()
                 Me.Close()
@@ -99,7 +101,7 @@
                                           0,
                                           0,
                                           0,
-                                          0, venta_tipo_descripcion, Servicio_nuevo.Label_Cod.Text, vendedor_id, "Pendiente", Servicio_nuevo.SucxClie_id)
+                                          0, venta_tipo_descripcion, Servicio_nuevo.Label_Cod.Text, vendedor_id, "Pendiente", SucxClie_id)
                             Dim ventaprod_id As Integer = CInt(ds_Venta.Tables(0).Rows(0).Item("ventaprod_id"))
 
                             Dim ds_factura As DataSet = DAventa.Factura_alta(ventaprod_id, Now)

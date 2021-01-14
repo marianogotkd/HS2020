@@ -32,19 +32,19 @@ Partial Class Cuadrilla_consultar
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.DG_empleados = New System.Windows.Forms.DataGridView()
-        Me.BO_Cargar = New System.Windows.Forms.Button()
-        Me.Ds_cuadrilla = New Aplicacion.Ds_cuadrilla()
-        Me.CuadrillasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CuadrillaidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CuadrilladescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MiembrosDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SalarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CuadrillasBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Ds_cuadrilla = New Aplicacion.Ds_cuadrilla()
+        Me.BO_Cargar = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DG_empleados, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Ds_cuadrilla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CuadrillasBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Ds_cuadrilla, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -151,26 +151,6 @@ Partial Class Cuadrilla_consultar
         Me.DG_empleados.StandardTab = True
         Me.DG_empleados.TabIndex = 239
         '
-        'BO_Cargar
-        '
-        Me.BO_Cargar.Image = CType(resources.GetObject("BO_Cargar.Image"), System.Drawing.Image)
-        Me.BO_Cargar.Location = New System.Drawing.Point(1048, 375)
-        Me.BO_Cargar.Margin = New System.Windows.Forms.Padding(4)
-        Me.BO_Cargar.Name = "BO_Cargar"
-        Me.BO_Cargar.Size = New System.Drawing.Size(53, 49)
-        Me.BO_Cargar.TabIndex = 0
-        Me.BO_Cargar.UseVisualStyleBackColor = True
-        '
-        'Ds_cuadrilla
-        '
-        Me.Ds_cuadrilla.DataSetName = "Ds_cuadrilla"
-        Me.Ds_cuadrilla.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'CuadrillasBindingSource
-        '
-        Me.CuadrillasBindingSource.DataMember = "Cuadrillas"
-        Me.CuadrillasBindingSource.DataSource = Me.Ds_cuadrilla
-        '
         'CuadrillaidDataGridViewTextBoxColumn
         '
         Me.CuadrillaidDataGridViewTextBoxColumn.DataPropertyName = "Cuadrilla_id"
@@ -203,6 +183,26 @@ Partial Class Cuadrilla_consultar
         Me.SalarioDataGridViewTextBoxColumn.Name = "SalarioDataGridViewTextBoxColumn"
         Me.SalarioDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'CuadrillasBindingSource
+        '
+        Me.CuadrillasBindingSource.DataMember = "Cuadrillas"
+        Me.CuadrillasBindingSource.DataSource = Me.Ds_cuadrilla
+        '
+        'Ds_cuadrilla
+        '
+        Me.Ds_cuadrilla.DataSetName = "Ds_cuadrilla"
+        Me.Ds_cuadrilla.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'BO_Cargar
+        '
+        Me.BO_Cargar.Image = CType(resources.GetObject("BO_Cargar.Image"), System.Drawing.Image)
+        Me.BO_Cargar.Location = New System.Drawing.Point(1048, 375)
+        Me.BO_Cargar.Margin = New System.Windows.Forms.Padding(4)
+        Me.BO_Cargar.Name = "BO_Cargar"
+        Me.BO_Cargar.Size = New System.Drawing.Size(53, 49)
+        Me.BO_Cargar.TabIndex = 0
+        Me.BO_Cargar.UseVisualStyleBackColor = True
+        '
         'Cuadrilla_consultar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -221,8 +221,8 @@ Partial Class Cuadrilla_consultar
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DG_empleados, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Ds_cuadrilla, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.CuadrillasBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Ds_cuadrilla, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
