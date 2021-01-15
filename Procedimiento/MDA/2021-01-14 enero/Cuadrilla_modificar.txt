@@ -1,0 +1,10 @@
+create procedure Cuadrilla_modificar
+@Cuadrilla_id int,
+@Cuadrilla_descripcion varchar(max),
+@Cuadrilla_salario_x_hora decimal (38,2)
+
+as
+update Cuadrilla set Cuadrilla_descripcion = @Cuadrilla_descripcion,
+Cuadrilla_salario_x_hora = @Cuadrilla_salario_x_hora   
+where Cuadrilla.Cuadrilla_id = @Cuadrilla_id 
+go

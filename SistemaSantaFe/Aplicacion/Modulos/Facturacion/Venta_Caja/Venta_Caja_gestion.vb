@@ -1390,7 +1390,7 @@
                 If DG_clientes.CurrentRow.Selected = True Then
                     Sucursales_Seleccionar.Close()
 
-
+                    Sucursales_Seleccionar.procedencia = "venta_caja_gestion"
                     Sucursales_Seleccionar.cliente_id = CInt(DG_clientes.CurrentRow.Cells("CLIidDataGridViewTextBoxColumn").Value)
 
                     Sucursales_Seleccionar.Show()
@@ -2000,7 +2000,7 @@
                 End If
                 a = a + 1
             End While
-            row_cliente("iva_condicion") = ds_cliente.Tables(1).Rows(0).Item("IVA_descripcion").ToString
+            row_cliente("iva_condicion") = ds_cliente.Tables(0).Rows(0).Item("IVA_descripcion").ToString
             facturacion_ds_report.Tables("Cliente").Rows.Add(row_cliente)
         Else
             'Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni(CInt(Venta_Caja_gestion.lb_dni_clie.Text))

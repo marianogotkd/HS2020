@@ -102,7 +102,7 @@
                 If result = DialogResult.OK Then
 
                     Dim ds_SevicioGuardar As DataSet = DAservicio.Servicio_alta_MDA(Cliente_ID, DateTimePicker1.Value,
-                                                                        sucursal_id, usuario_id, txt_diag.Text, "",
+                                                                        sucursal_id, usuario_id, txt_diag.Text, combo_sucursal.Text,
                                                                         "", DateTimePicker1.Value, DateTimePicker1.Value,
                                                                         CDec(0), "PENDIENTE", combo_sucursal.SelectedValue)
                     MessageBox.Show("Los datos se guardaron correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)

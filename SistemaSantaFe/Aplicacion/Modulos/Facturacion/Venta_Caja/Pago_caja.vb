@@ -7,7 +7,7 @@ Public Class Pago_caja
     Public form_procedencia As String = ""
     Public Ser_id
     Public Monto_sin_anticipo 
-
+    Public SucxClie_id As Integer ' viene de forma de pago seleccion
     Private Sub remito_gen_factura()
         'esto es en venta
         If tx_parcial.Text = "" Then
@@ -136,9 +136,11 @@ Public Class Pago_caja
                         tipo_vta = "Cliente"
                         cliente_id = Servicio_nuevo.Cliente_ID
                         'venta_tipo_descripcion = "Servicio"
+
+
                         Dim vendedor_id As Integer = 0 'OJO HAY Q VER QUE VENDEDOR ASIGNO, O SI SE PUEDE CREAR EN LA TABLA VENDEDOR UN REGISTRO QUE DIGA ...DEFECTO, SI NO SE POSEE VENDEDOR
                         vendedor_id = 1 'por AHORA LO DEJO EN DEFECTO, OJO esto no es lo optimo.
-                        Dim ds_Venta As DataSet = DAventa.VentaProducto_alta(Monto_sin_anticipo, Now, usuario_id, tipo_vta, cliente_id, Monto_sin_anticipo, 0, 0, 0, 0, venta_tipo_descripcion, Ser_id, vendedor_id, "Cobrado", Servicio_nuevo.SucxClie_id)
+                        Dim ds_Venta As DataSet = DAventa.VentaProducto_alta(Monto_sin_anticipo, Now, usuario_id, tipo_vta, cliente_id, Monto_sin_anticipo, 0, 0, 0, 0, venta_tipo_descripcion, Ser_id, vendedor_id, "Cobrado", SucxClie_id)
 
 
                         'Dim descripcion As String = "Orden de trabajo Nº" + CStr(Ser_id) 'aqui tengo q recuperar el id de la orden, no es el id del servicio

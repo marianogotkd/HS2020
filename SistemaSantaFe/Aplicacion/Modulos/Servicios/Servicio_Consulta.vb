@@ -9,8 +9,11 @@
     Dim DAventa As New Datos.Venta
 
     Private Sub Servicio_Consulta_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Sucursales_Obtener()
+        LOAD_FORM()
+    End Sub
 
+    Public Sub LOAD_FORM()
+        Sucursales_Obtener()
         usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
         Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(usuario_id)
         sucursal_id = ds_usuario.Tables(0).Rows(0).Item("sucursal_id")
@@ -24,10 +27,10 @@
         If Inicio.UT_id <> 1 Then
             ComboBox_suc.Enabled = False
         End If
-
-
-
     End Sub
+
+
+
     Private Sub obtener_Servicio(ByVal suc As Integer)
         DS_Obtener.Tables("Servicio_Obtener").Rows.Clear()
         Servicio_DS.Tables("ordentrabajo").Rows.Clear()
@@ -66,7 +69,7 @@
             Servicio_nuevo.Cliente_ID = DG_Servicio.SelectedCells(1).Value
             Servicio_nuevo.serv_id = serv_id
             Servicio_nuevo.Show()
-            Me.Close()
+            'Me.Close()
         End If
     End Sub
 
@@ -145,7 +148,7 @@
             Servicio_nuevo.Cliente_ID = DG_OrdenTrabajo.CurrentRow.Cells("CLIidDataGridViewTextBoxColumn1").Value
             Servicio_nuevo.serv_id = serv_id
             Servicio_nuevo.Show()
-            Me.Close()
+            'Me.Close()
         End If
 
         

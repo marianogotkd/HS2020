@@ -267,9 +267,9 @@
                     If pregunta = "si" Then
                         'primero guardo el nro de item q contiene
                         Dim item As Decimal = DataGridView1.CurrentRow.Index
-                        
+                        Dim remito_id As Integer = DataGridView1.Rows(i).Cells("RemitoidDataGridViewTextBoxColumn").Value
+                        DAventa.remito_modificar_estado(remito_id, "Eliminado")
                         'DAcliente.Cliente_Sucursales_eliminar(CInt(DataGridView1.Rows(i).Cells("SucxClieidDataGridViewTextBoxColumn").Value), "ELIMINADO")
-
                         'End If
                         DataGridView1.Rows.RemoveAt(i)
                         'i = 0 'lo reinicio, x q al quitar un ite, se reordenan los indices
@@ -281,6 +281,7 @@
             End While
 
             If pregunta = "si" Then
+                recuperar_remitos()
                 MessageBox.Show("Eliminación correcta, los datos fueron actualizados.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
             If valido_seleccion = "no" Then

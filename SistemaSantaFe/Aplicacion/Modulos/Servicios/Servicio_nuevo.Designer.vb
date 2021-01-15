@@ -25,14 +25,20 @@ Partial Class Servicio_nuevo
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.DG_empleados = New System.Windows.Forms.DataGridView()
+        Me.EmpleadoidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CuadrillaidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ApellidoynombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmpleadosxcuadrillaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Servicio_DS = New Aplicacion.Servicio_DS()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.Combo_cuadrilla = New System.Windows.Forms.ComboBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -79,41 +85,35 @@ Partial Class Servicio_nuevo
         Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Cod_prod = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdxSuc_ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Costo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.subtotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.prod_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioProdDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TextBox_codprod = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TextBox_Repuesto = New System.Windows.Forms.TextBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Cod_prod = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Costo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioProdDSBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Servicio_DS = New Aplicacion.Servicio_DS()
-        Me.EmpleadoidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CuadrillaidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ApellidoynombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmpleadosxcuadrillaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
         CType(Me.DG_empleados, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmpleadosxcuadrillaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Servicio_DS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox6.SuspendLayout()
         CType(Me.ServicioProdDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Servicio_DS, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmpleadosxcuadrillaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -192,6 +192,48 @@ Partial Class Servicio_nuevo
         Me.DG_empleados.Size = New System.Drawing.Size(341, 195)
         Me.DG_empleados.StandardTab = True
         Me.DG_empleados.TabIndex = 241
+        '
+        'EmpleadoidDataGridViewTextBoxColumn
+        '
+        Me.EmpleadoidDataGridViewTextBoxColumn.DataPropertyName = "empleado_id"
+        Me.EmpleadoidDataGridViewTextBoxColumn.HeaderText = "empleado_id"
+        Me.EmpleadoidDataGridViewTextBoxColumn.Name = "EmpleadoidDataGridViewTextBoxColumn"
+        Me.EmpleadoidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.EmpleadoidDataGridViewTextBoxColumn.Visible = False
+        '
+        'CuadrillaidDataGridViewTextBoxColumn
+        '
+        Me.CuadrillaidDataGridViewTextBoxColumn.DataPropertyName = "Cuadrilla_id"
+        Me.CuadrillaidDataGridViewTextBoxColumn.HeaderText = "Cuadrilla_id"
+        Me.CuadrillaidDataGridViewTextBoxColumn.Name = "CuadrillaidDataGridViewTextBoxColumn"
+        Me.CuadrillaidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CuadrillaidDataGridViewTextBoxColumn.Visible = False
+        '
+        'ApellidoynombreDataGridViewTextBoxColumn
+        '
+        Me.ApellidoynombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ApellidoynombreDataGridViewTextBoxColumn.DataPropertyName = "apellidoynombre"
+        Me.ApellidoynombreDataGridViewTextBoxColumn.HeaderText = "Empleados"
+        Me.ApellidoynombreDataGridViewTextBoxColumn.Name = "ApellidoynombreDataGridViewTextBoxColumn"
+        Me.ApellidoynombreDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'EmpleadoxCuadrillaidDataGridViewTextBoxColumn
+        '
+        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.DataPropertyName = "Empleado_x_Cuadrilla_id"
+        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.HeaderText = "Empleado_x_Cuadrilla_id"
+        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.Name = "EmpleadoxCuadrillaidDataGridViewTextBoxColumn"
+        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.Visible = False
+        '
+        'EmpleadosxcuadrillaBindingSource
+        '
+        Me.EmpleadosxcuadrillaBindingSource.DataMember = "Empleados_x_cuadrilla"
+        Me.EmpleadosxcuadrillaBindingSource.DataSource = Me.Servicio_DS
+        '
+        'Servicio_DS
+        '
+        Me.Servicio_DS.DataSetName = "Servicio_DS"
+        Me.Servicio_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'GroupBox7
         '
@@ -394,10 +436,13 @@ Partial Class Servicio_nuevo
         Me.GroupBox2.Controls.Add(Me.Button_imprimir)
         Me.GroupBox2.Controls.Add(Me.lbl_errNOM)
         Me.GroupBox2.Controls.Add(Me.Button1)
+        Me.GroupBox2.Controls.Add(Me.txt_sucursal)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.TextBox_tel)
         Me.GroupBox2.Controls.Add(Me.TextBox_dir)
+        Me.GroupBox2.Controls.Add(Me.lb_error_marca)
         Me.GroupBox2.Controls.Add(Me.Label4)
+        Me.GroupBox2.Controls.Add(Me.Label9)
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.TextBox_dni)
         Me.GroupBox2.Controls.Add(Me.Label3)
@@ -467,7 +512,7 @@ Partial Class Servicio_nuevo
         Me.TextBox_tel.Location = New System.Drawing.Point(490, 56)
         Me.TextBox_tel.Name = "TextBox_tel"
         Me.TextBox_tel.ReadOnly = True
-        Me.TextBox_tel.Size = New System.Drawing.Size(375, 22)
+        Me.TextBox_tel.Size = New System.Drawing.Size(137, 22)
         Me.TextBox_tel.TabIndex = 3
         '
         'TextBox_dir
@@ -532,13 +577,10 @@ Partial Class Servicio_nuevo
         Me.GroupBox3.Controls.Add(Me.DateTimePicker_Rev)
         Me.GroupBox3.Controls.Add(Me.DateTimePicker_REP)
         Me.GroupBox3.Controls.Add(Me.Label7)
-        Me.GroupBox3.Controls.Add(Me.txt_sucursal)
         Me.GroupBox3.Controls.Add(Me.Label8)
         Me.GroupBox3.Controls.Add(Me.txt_equipo)
         Me.GroupBox3.Controls.Add(Me.lb_error_nombre)
-        Me.GroupBox3.Controls.Add(Me.Label9)
         Me.GroupBox3.Controls.Add(Me.Label10)
-        Me.GroupBox3.Controls.Add(Me.lb_error_marca)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(7, 132)
         Me.GroupBox3.Name = "GroupBox3"
@@ -576,10 +618,11 @@ Partial Class Servicio_nuevo
         '
         'txt_sucursal
         '
+        Me.txt_sucursal.BackColor = System.Drawing.Color.LightGoldenrodYellow
         Me.txt_sucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_sucursal.Location = New System.Drawing.Point(325, 26)
+        Me.txt_sucursal.Location = New System.Drawing.Point(699, 55)
         Me.txt_sucursal.Name = "txt_sucursal"
-        Me.txt_sucursal.Size = New System.Drawing.Size(162, 22)
+        Me.txt_sucursal.Size = New System.Drawing.Size(166, 22)
         Me.txt_sucursal.TabIndex = 1
         '
         'Label8
@@ -596,7 +639,7 @@ Partial Class Servicio_nuevo
         Me.txt_equipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_equipo.Location = New System.Drawing.Point(63, 25)
         Me.txt_equipo.Name = "txt_equipo"
-        Me.txt_equipo.Size = New System.Drawing.Size(162, 22)
+        Me.txt_equipo.Size = New System.Drawing.Size(327, 22)
         Me.txt_equipo.TabIndex = 0
         '
         'lb_error_nombre
@@ -604,7 +647,7 @@ Partial Class Servicio_nuevo
         Me.lb_error_nombre.AutoSize = True
         Me.lb_error_nombre.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_error_nombre.ForeColor = System.Drawing.Color.Red
-        Me.lb_error_nombre.Location = New System.Drawing.Point(226, 16)
+        Me.lb_error_nombre.Location = New System.Drawing.Point(397, 16)
         Me.lb_error_nombre.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lb_error_nombre.Name = "lb_error_nombre"
         Me.lb_error_nombre.Size = New System.Drawing.Size(26, 31)
@@ -615,7 +658,7 @@ Partial Class Servicio_nuevo
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(259, 25)
+        Me.Label9.Location = New System.Drawing.Point(633, 58)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(60, 16)
         Me.Label9.TabIndex = 4
@@ -635,7 +678,7 @@ Partial Class Servicio_nuevo
         Me.lb_error_marca.AutoSize = True
         Me.lb_error_marca.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_error_marca.ForeColor = System.Drawing.Color.Red
-        Me.lb_error_marca.Location = New System.Drawing.Point(494, 16)
+        Me.lb_error_marca.Location = New System.Drawing.Point(872, 55)
         Me.lb_error_marca.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lb_error_marca.Name = "lb_error_marca"
         Me.lb_error_marca.Size = New System.Drawing.Size(26, 31)
@@ -745,12 +788,35 @@ Partial Class Servicio_nuevo
         Me.DataGridView1.Size = New System.Drawing.Size(736, 157)
         Me.DataGridView1.TabIndex = 1
         '
+        'Cod_prod
+        '
+        Me.Cod_prod.DataPropertyName = "Cod_prod"
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info
+        Me.Cod_prod.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Cod_prod.FillWeight = 76.39836!
+        Me.Cod_prod.HeaderText = "Codigo"
+        Me.Cod_prod.Name = "Cod_prod"
+        Me.Cod_prod.ReadOnly = True
+        Me.Cod_prod.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Cod_prod.Width = 80
+        '
         'ProdxSuc_ID
         '
         Me.ProdxSuc_ID.DataPropertyName = "ProdxSuc_ID"
         Me.ProdxSuc_ID.HeaderText = "ProdxSuc_ID"
         Me.ProdxSuc_ID.Name = "ProdxSuc_ID"
         Me.ProdxSuc_ID.Visible = False
+        '
+        'Descripcion
+        '
+        Me.Descripcion.DataPropertyName = "Descripcion"
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Info
+        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Descripcion.FillWeight = 194.224!
+        Me.Descripcion.HeaderText = "Descripcion"
+        Me.Descripcion.Name = "Descripcion"
+        Me.Descripcion.ReadOnly = True
+        Me.Descripcion.Width = 203
         '
         'Stock
         '
@@ -762,6 +828,22 @@ Partial Class Servicio_nuevo
         Me.Stock.Name = "Stock"
         Me.Stock.ReadOnly = True
         Me.Stock.Width = 70
+        '
+        'Cantidad
+        '
+        Me.Cantidad.DataPropertyName = "Cantidad"
+        Me.Cantidad.FillWeight = 78.17754!
+        Me.Cantidad.HeaderText = "Cant."
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.Width = 50
+        '
+        'Costo
+        '
+        Me.Costo.DataPropertyName = "Costo"
+        Me.Costo.FillWeight = 104.2252!
+        Me.Costo.HeaderText = "Costo"
+        Me.Costo.Name = "Costo"
+        Me.Costo.Width = 109
         '
         'subtotal
         '
@@ -788,6 +870,11 @@ Partial Class Servicio_nuevo
         Me.prod_id.HeaderText = "prod_id"
         Me.prod_id.Name = "prod_id"
         Me.prod_id.Visible = False
+        '
+        'ServicioProdDSBindingSource
+        '
+        Me.ServicioProdDSBindingSource.DataMember = "Servicio_Prod_DS"
+        Me.ServicioProdDSBindingSource.DataSource = Me.Servicio_DS
         '
         'Label13
         '
@@ -844,92 +931,6 @@ Partial Class Servicio_nuevo
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Diagnostico:"
         '
-        'Cod_prod
-        '
-        Me.Cod_prod.DataPropertyName = "Cod_prod"
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info
-        Me.Cod_prod.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Cod_prod.FillWeight = 76.39836!
-        Me.Cod_prod.HeaderText = "Codigo"
-        Me.Cod_prod.Name = "Cod_prod"
-        Me.Cod_prod.ReadOnly = True
-        Me.Cod_prod.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Cod_prod.Width = 80
-        '
-        'Descripcion
-        '
-        Me.Descripcion.DataPropertyName = "Descripcion"
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Info
-        Me.Descripcion.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Descripcion.FillWeight = 194.224!
-        Me.Descripcion.HeaderText = "Descripcion"
-        Me.Descripcion.Name = "Descripcion"
-        Me.Descripcion.ReadOnly = True
-        Me.Descripcion.Width = 203
-        '
-        'Cantidad
-        '
-        Me.Cantidad.DataPropertyName = "Cantidad"
-        Me.Cantidad.FillWeight = 78.17754!
-        Me.Cantidad.HeaderText = "Cant."
-        Me.Cantidad.Name = "Cantidad"
-        Me.Cantidad.Width = 50
-        '
-        'Costo
-        '
-        Me.Costo.DataPropertyName = "Costo"
-        Me.Costo.FillWeight = 104.2252!
-        Me.Costo.HeaderText = "Costo"
-        Me.Costo.Name = "Costo"
-        Me.Costo.Width = 109
-        '
-        'ServicioProdDSBindingSource
-        '
-        Me.ServicioProdDSBindingSource.DataMember = "Servicio_Prod_DS"
-        Me.ServicioProdDSBindingSource.DataSource = Me.Servicio_DS
-        '
-        'Servicio_DS
-        '
-        Me.Servicio_DS.DataSetName = "Servicio_DS"
-        Me.Servicio_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'EmpleadoidDataGridViewTextBoxColumn
-        '
-        Me.EmpleadoidDataGridViewTextBoxColumn.DataPropertyName = "empleado_id"
-        Me.EmpleadoidDataGridViewTextBoxColumn.HeaderText = "empleado_id"
-        Me.EmpleadoidDataGridViewTextBoxColumn.Name = "EmpleadoidDataGridViewTextBoxColumn"
-        Me.EmpleadoidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.EmpleadoidDataGridViewTextBoxColumn.Visible = False
-        '
-        'CuadrillaidDataGridViewTextBoxColumn
-        '
-        Me.CuadrillaidDataGridViewTextBoxColumn.DataPropertyName = "Cuadrilla_id"
-        Me.CuadrillaidDataGridViewTextBoxColumn.HeaderText = "Cuadrilla_id"
-        Me.CuadrillaidDataGridViewTextBoxColumn.Name = "CuadrillaidDataGridViewTextBoxColumn"
-        Me.CuadrillaidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CuadrillaidDataGridViewTextBoxColumn.Visible = False
-        '
-        'ApellidoynombreDataGridViewTextBoxColumn
-        '
-        Me.ApellidoynombreDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ApellidoynombreDataGridViewTextBoxColumn.DataPropertyName = "apellidoynombre"
-        Me.ApellidoynombreDataGridViewTextBoxColumn.HeaderText = "Empleados"
-        Me.ApellidoynombreDataGridViewTextBoxColumn.Name = "ApellidoynombreDataGridViewTextBoxColumn"
-        Me.ApellidoynombreDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'EmpleadoxCuadrillaidDataGridViewTextBoxColumn
-        '
-        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.DataPropertyName = "Empleado_x_Cuadrilla_id"
-        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.HeaderText = "Empleado_x_Cuadrilla_id"
-        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.Name = "EmpleadoxCuadrillaidDataGridViewTextBoxColumn"
-        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn.Visible = False
-        '
-        'EmpleadosxcuadrillaBindingSource
-        '
-        Me.EmpleadosxcuadrillaBindingSource.DataMember = "Empleados_x_cuadrilla"
-        Me.EmpleadosxcuadrillaBindingSource.DataSource = Me.Servicio_DS
-        '
         'Servicio_nuevo
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -945,6 +946,8 @@ Partial Class Servicio_nuevo
         Me.GroupBox1.PerformLayout()
         Me.GroupBox8.ResumeLayout(False)
         CType(Me.DG_empleados, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmpleadosxcuadrillaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Servicio_DS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
@@ -956,11 +959,9 @@ Partial Class Servicio_nuevo
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ServicioProdDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
-        CType(Me.ServicioProdDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Servicio_DS, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmpleadosxcuadrillaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

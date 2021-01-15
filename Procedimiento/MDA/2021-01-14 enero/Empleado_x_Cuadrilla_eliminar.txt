@@ -1,0 +1,6 @@
+create procedure Empleado_x_Cuadrilla_eliminar
+@Cuadrilla_id int
+as
+--elimino todos los empleados asociados a una cuadrilla
+delete from Empleado_x_Cuadrilla where Cuadrilla_id = @Cuadrilla_id 
+go

@@ -1,0 +1,15 @@
+create procedure Cuadrilla_recuperar_info
+@Cuadrilla_id integer
+as
+select
+Cuadrilla_id, Cuadrilla_descripcion, Cuadrilla_salario_x_hora
+from Cuadrilla where Cuadrilla.Cuadrilla_id = @Cuadrilla_id  
+
+select Empleado.empleado_id, 
+Empleado.empleado_dni,
+Empleado.empleado_ape +', '+Empleado.empleado_nom as 'apellido_y_nombre',
+Empleado_x_Cuadrilla.Empleado_x_Cuadrilla_salarioxhora as 'salario_x_hora'
+from Empleado_x_Cuadrilla  
+inner join Empleado on Empleado_x_Cuadrilla.empleado_id = Empleado.empleado_id where Cuadrilla_id = @Cuadrilla_id  
+ 
+go

@@ -65,4 +65,20 @@
             'End If
         End If
     End Sub
+
+    Private Sub BO_cliente_modificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BO_cliente_modificar.Click
+        If DG_empleados.Rows.Count <> 0 Then
+
+            Cuadrilla_alta.Close()
+            Cuadrilla_alta.procedencia = "modificar"
+            Cuadrilla_alta.Cuadrilla_id = CInt(DG_empleados.CurrentRow.Cells("CuadrillaidDataGridViewTextBoxColumn").Value)
+
+            Cuadrilla_alta.Show()
+
+            Me.Close()
+
+        Else
+            MessageBox.Show("Error, debe seleccionar una cuadrilla para editar.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
 End Class
