@@ -81,4 +81,6 @@
             MessageBox.Show("Error, debe seleccionar una cuadrilla para editar.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
+
+   
 End Class

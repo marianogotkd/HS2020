@@ -27,4 +27,23 @@
         CostoInd_alta.Costo_Id = DG_CostoI.SelectedCells(0).Value
         CostoInd_alta.Show()
     End Sub
+
+    Private Sub TextBox1_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox1.KeyPress
+        Dim Filtro
+        Filtro = String.Format("{0} LIKE '%{1}%'", "CostoI_Desc", TextBox1.Text) 'esto para campos strings, FUNCIONA PERFECTO
+        CostoIndirectoObtenerBindingSource.Filter = Filtro
+        'formato_grilla()
+        If DG_CostoI.Rows.Count = 0 Then
+            Filtro = String.Format("CONVERT(CostoI_id, System.String) LIKE '%{0}%'", TextBox1.Text) 'esto para campos strings, FUNCIONA PERFECTO
+            CostoIndirectoObtenerBindingSource.Filter = Filtro
+            'formato_grilla()
+            'If DG_empleados.Rows.Count = 0 Then
+            '    Filtro = String.Format("CONVERT(prod_codbarra, System.String) LIKE '%{0}%'", Tx_Buscqueda.Text) 'esto para campos strings, FUNCIONA PERFECTO
+            '    ProdxSucBindingSource.Filter = Filtro
+            '    formato_grilla()
+            'End If
+        End If
+    End Sub
+
+    
 End Class
