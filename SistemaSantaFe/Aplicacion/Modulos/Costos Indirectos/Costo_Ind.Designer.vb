@@ -630,6 +630,8 @@ Partial Public Class Costo_Ind
         
         Private columnCostoI_id As Global.System.Data.DataColumn
         
+        Private columnCostoInDet_info As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -698,6 +700,14 @@ Partial Public Class Costo_Ind
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property CostoInDet_infoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCostoInDet_info
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -734,9 +744,9 @@ Partial Public Class Costo_Ind
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddDetalleRow(ByVal CostoInDet_id As String, ByVal CostoInDet_desc As String, ByVal CostoInDet_costo As String, ByVal CostoI_id As String) As DetalleRow
+        Public Overloads Function AddDetalleRow(ByVal CostoInDet_id As String, ByVal CostoInDet_desc As String, ByVal CostoInDet_costo As String, ByVal CostoI_id As String, ByVal CostoInDet_info As String) As DetalleRow
             Dim rowDetalleRow As DetalleRow = CType(Me.NewRow,DetalleRow)
-            Dim columnValuesArray() As Object = New Object() {CostoInDet_id, CostoInDet_desc, CostoInDet_costo, CostoI_id}
+            Dim columnValuesArray() As Object = New Object() {CostoInDet_id, CostoInDet_desc, CostoInDet_costo, CostoI_id, CostoInDet_info}
             rowDetalleRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowDetalleRow)
             Return rowDetalleRow
@@ -763,6 +773,7 @@ Partial Public Class Costo_Ind
             Me.columnCostoInDet_desc = MyBase.Columns("CostoInDet_desc")
             Me.columnCostoInDet_costo = MyBase.Columns("CostoInDet_costo")
             Me.columnCostoI_id = MyBase.Columns("CostoI_id")
+            Me.columnCostoInDet_info = MyBase.Columns("CostoInDet_info")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -776,6 +787,8 @@ Partial Public Class Costo_Ind
             MyBase.Columns.Add(Me.columnCostoInDet_costo)
             Me.columnCostoI_id = New Global.System.Data.DataColumn("CostoI_id", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCostoI_id)
+            Me.columnCostoInDet_info = New Global.System.Data.DataColumn("CostoInDet_info", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCostoInDet_info)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1138,6 +1151,21 @@ Partial Public Class Costo_Ind
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property CostoInDet_info() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDetalle.CostoInDet_infoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CostoInDet_info' de la tabla 'Detalle' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDetalle.CostoInDet_infoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsCostoInDet_idNull() As Boolean
             Return Me.IsNull(Me.tableDetalle.CostoInDet_idColumn)
         End Function
@@ -1182,6 +1210,18 @@ Partial Public Class Costo_Ind
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetCostoI_idNull()
             Me(Me.tableDetalle.CostoI_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsCostoInDet_infoNull() As Boolean
+            Return Me.IsNull(Me.tableDetalle.CostoInDet_infoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetCostoInDet_infoNull()
+            Me(Me.tableDetalle.CostoInDet_infoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

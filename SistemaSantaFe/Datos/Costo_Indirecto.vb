@@ -34,8 +34,9 @@ Public Class Costo_Indirecto
 
     Public Function Costo_Indirecto_Detalle_Alta(ByVal CostoInDet_desc As String,
                                 ByVal CostoInDet_costo As Decimal,
-                                ByVal CostoI_id As Integer
-                                    ) As DataSet
+                                ByVal CostoI_id As Integer,
+                                ByVal CostoInDet_info As String
+                                            ) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -47,6 +48,7 @@ Public Class Costo_Indirecto
         comando.Parameters.Add(New OleDb.OleDbParameter("@CostoInDet_desc", CostoInDet_desc))
         comando.Parameters.Add(New OleDb.OleDbParameter("@CostoInDet_costo", CostoInDet_costo))
         comando.Parameters.Add(New OleDb.OleDbParameter("@CostoI_id", CostoI_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@CostoInDet_info", CostoInDet_info))
         'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_CP", CLI_CP))
         'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_Id_Prov", CLI_Id_Prov))
         'comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_Id_Loc", CLI_Id_Loc))
@@ -119,7 +121,7 @@ Public Class Costo_Indirecto
         comando.Parameters.Add(New OleDb.OleDbParameter("@CostoI_Desc", CostoI_Desc))
         comando.Parameters.Add(New OleDb.OleDbParameter("@CostoI_Total", CostoI_Total))
         comando.Parameters.Add(New OleDb.OleDbParameter("@CostoI_fecha", CostoI_fecha))
-      
+
 
 
         Dim ds_JE As New DataSet()
