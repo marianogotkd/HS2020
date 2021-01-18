@@ -53,13 +53,6 @@ Partial Class CostoInd_alta
         Me.tb_fijo = New System.Windows.Forms.TextBox()
         Me.RadioButton_Fijo = New System.Windows.Forms.RadioButton()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.EmpleadoapeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmpleadonomDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmpleadodniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmpleadoidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmpleadoRemuneDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EmpleadoremuBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Ds_empleados = New Aplicacion.ds_empleados()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.tb_multi = New System.Windows.Forms.NumericUpDown()
         Me.tb_totalEmp = New System.Windows.Forms.TextBox()
@@ -76,13 +69,20 @@ Partial Class CostoInd_alta
         Me.lbl_err = New System.Windows.Forms.Label()
         Me.lbl_err2 = New System.Windows.Forms.Label()
         Me.lbl_err3 = New System.Windows.Forms.Label()
-        Me.DetalleBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Costo_Ind = New Aplicacion.Costo_Ind()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.EmpleadoidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmpleadodniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SalarioPorHoraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmpleadoremuBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Ds_empleados = New Aplicacion.ds_empleados()
+        Me.Costo_Ind = New Aplicacion.Costo_Ind()
+        Me.DetalleBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CostoInDetidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CostoInDetdescDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CostoInDetcostoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CostoIidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CostoInDetinfoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.Panel_dia.SuspendLayout()
         CType(Me.tb_dia_dia, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,13 +93,13 @@ Partial Class CostoInd_alta
         Me.GroupBox3.SuspendLayout()
         Me.Panel_fijo.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmpleadoremuBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Ds_empleados, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         CType(Me.tb_multi, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DetalleBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmpleadoremuBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Ds_empleados, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Costo_Ind, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DetalleBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DateTimePicker1
@@ -411,7 +411,7 @@ Partial Class CostoInd_alta
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.EmpleadoapeDataGridViewTextBoxColumn, Me.EmpleadonomDataGridViewTextBoxColumn, Me.EmpleadodniDataGridViewTextBoxColumn, Me.EmpleadoidDataGridViewTextBoxColumn, Me.EmpleadoRemuneDataGridViewTextBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.EmpleadoidDataGridViewTextBoxColumn, Me.EmpleadodniDataGridViewTextBoxColumn, Me.NombreDataGridViewTextBoxColumn, Me.SalarioPorHoraDataGridViewTextBoxColumn})
         Me.DataGridView1.DataSource = Me.EmpleadoremuBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(6, 20)
         Me.DataGridView1.MultiSelect = False
@@ -421,52 +421,6 @@ Partial Class CostoInd_alta
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(395, 173)
         Me.DataGridView1.TabIndex = 34
-        '
-        'EmpleadoapeDataGridViewTextBoxColumn
-        '
-        Me.EmpleadoapeDataGridViewTextBoxColumn.DataPropertyName = "empleado_ape"
-        Me.EmpleadoapeDataGridViewTextBoxColumn.HeaderText = "Apellido"
-        Me.EmpleadoapeDataGridViewTextBoxColumn.Name = "EmpleadoapeDataGridViewTextBoxColumn"
-        Me.EmpleadoapeDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'EmpleadonomDataGridViewTextBoxColumn
-        '
-        Me.EmpleadonomDataGridViewTextBoxColumn.DataPropertyName = "empleado_nom"
-        Me.EmpleadonomDataGridViewTextBoxColumn.HeaderText = "Nombre"
-        Me.EmpleadonomDataGridViewTextBoxColumn.Name = "EmpleadonomDataGridViewTextBoxColumn"
-        Me.EmpleadonomDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'EmpleadodniDataGridViewTextBoxColumn
-        '
-        Me.EmpleadodniDataGridViewTextBoxColumn.DataPropertyName = "empleado_dni"
-        Me.EmpleadodniDataGridViewTextBoxColumn.HeaderText = "DNI"
-        Me.EmpleadodniDataGridViewTextBoxColumn.Name = "EmpleadodniDataGridViewTextBoxColumn"
-        Me.EmpleadodniDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'EmpleadoidDataGridViewTextBoxColumn
-        '
-        Me.EmpleadoidDataGridViewTextBoxColumn.DataPropertyName = "empleado_id"
-        Me.EmpleadoidDataGridViewTextBoxColumn.HeaderText = "empleado_id"
-        Me.EmpleadoidDataGridViewTextBoxColumn.Name = "EmpleadoidDataGridViewTextBoxColumn"
-        Me.EmpleadoidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.EmpleadoidDataGridViewTextBoxColumn.Visible = False
-        '
-        'EmpleadoRemuneDataGridViewTextBoxColumn
-        '
-        Me.EmpleadoRemuneDataGridViewTextBoxColumn.DataPropertyName = "empleado_Remune"
-        Me.EmpleadoRemuneDataGridViewTextBoxColumn.HeaderText = "Remuneracion"
-        Me.EmpleadoRemuneDataGridViewTextBoxColumn.Name = "EmpleadoRemuneDataGridViewTextBoxColumn"
-        Me.EmpleadoRemuneDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'EmpleadoremuBindingSource
-        '
-        Me.EmpleadoremuBindingSource.DataMember = "Empleado_remu"
-        Me.EmpleadoremuBindingSource.DataSource = Me.Ds_empleados
-        '
-        'Ds_empleados
-        '
-        Me.Ds_empleados.DataSetName = "ds_empleados"
-        Me.Ds_empleados.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'GroupBox4
         '
@@ -554,7 +508,7 @@ Partial Class CostoInd_alta
         Me.DataGridView2.AllowUserToDeleteRows = False
         Me.DataGridView2.AutoGenerateColumns = False
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CostoInDetidDataGridViewTextBoxColumn, Me.CostoInDetdescDataGridViewTextBoxColumn, Me.CostoInDetcostoDataGridViewTextBoxColumn, Me.CostoIidDataGridViewTextBoxColumn})
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CostoInDetidDataGridViewTextBoxColumn, Me.CostoInDetdescDataGridViewTextBoxColumn, Me.CostoInDetcostoDataGridViewTextBoxColumn, Me.CostoIidDataGridViewTextBoxColumn, Me.CostoInDetinfoDataGridViewTextBoxColumn})
         Me.DataGridView2.DataSource = Me.DetalleBindingSource
         Me.DataGridView2.Location = New System.Drawing.Point(13, 388)
         Me.DataGridView2.MultiSelect = False
@@ -652,16 +606,6 @@ Partial Class CostoInd_alta
         Me.lbl_err3.Text = "*"
         Me.lbl_err3.Visible = False
         '
-        'DetalleBindingSource
-        '
-        Me.DetalleBindingSource.DataMember = "Detalle"
-        Me.DetalleBindingSource.DataSource = Me.Costo_Ind
-        '
-        'Costo_Ind
-        '
-        Me.Costo_Ind.DataSetName = "Costo_Ind"
-        Me.Costo_Ind.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -673,6 +617,54 @@ Partial Class CostoInd_alta
         Me.Button2.Text = "Quitar"
         Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'EmpleadoidDataGridViewTextBoxColumn
+        '
+        Me.EmpleadoidDataGridViewTextBoxColumn.DataPropertyName = "empleado_id"
+        Me.EmpleadoidDataGridViewTextBoxColumn.HeaderText = "N°"
+        Me.EmpleadoidDataGridViewTextBoxColumn.Name = "EmpleadoidDataGridViewTextBoxColumn"
+        Me.EmpleadoidDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'EmpleadodniDataGridViewTextBoxColumn
+        '
+        Me.EmpleadodniDataGridViewTextBoxColumn.DataPropertyName = "empleado_dni"
+        Me.EmpleadodniDataGridViewTextBoxColumn.HeaderText = "DNI"
+        Me.EmpleadodniDataGridViewTextBoxColumn.Name = "EmpleadodniDataGridViewTextBoxColumn"
+        Me.EmpleadodniDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NombreDataGridViewTextBoxColumn
+        '
+        Me.NombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre"
+        Me.NombreDataGridViewTextBoxColumn.HeaderText = "Nombre"
+        Me.NombreDataGridViewTextBoxColumn.Name = "NombreDataGridViewTextBoxColumn"
+        Me.NombreDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'SalarioPorHoraDataGridViewTextBoxColumn
+        '
+        Me.SalarioPorHoraDataGridViewTextBoxColumn.DataPropertyName = "Salario Por Hora"
+        Me.SalarioPorHoraDataGridViewTextBoxColumn.HeaderText = "Salario Por Hora"
+        Me.SalarioPorHoraDataGridViewTextBoxColumn.Name = "SalarioPorHoraDataGridViewTextBoxColumn"
+        Me.SalarioPorHoraDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'EmpleadoremuBindingSource
+        '
+        Me.EmpleadoremuBindingSource.DataMember = "Empleado_remu"
+        Me.EmpleadoremuBindingSource.DataSource = Me.Ds_empleados
+        '
+        'Ds_empleados
+        '
+        Me.Ds_empleados.DataSetName = "ds_empleados"
+        Me.Ds_empleados.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Costo_Ind
+        '
+        Me.Costo_Ind.DataSetName = "Costo_Ind"
+        Me.Costo_Ind.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DetalleBindingSource
+        '
+        Me.DetalleBindingSource.DataMember = "Detalle"
+        Me.DetalleBindingSource.DataSource = Me.Costo_Ind
         '
         'CostoInDetidDataGridViewTextBoxColumn
         '
@@ -703,6 +695,14 @@ Partial Class CostoInd_alta
         Me.CostoIidDataGridViewTextBoxColumn.HeaderText = "CostoI_id"
         Me.CostoIidDataGridViewTextBoxColumn.Name = "CostoIidDataGridViewTextBoxColumn"
         Me.CostoIidDataGridViewTextBoxColumn.Visible = False
+        '
+        'CostoInDetinfoDataGridViewTextBoxColumn
+        '
+        Me.CostoInDetinfoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CostoInDetinfoDataGridViewTextBoxColumn.DataPropertyName = "CostoInDet_info"
+        Me.CostoInDetinfoDataGridViewTextBoxColumn.HeaderText = "Informacion"
+        Me.CostoInDetinfoDataGridViewTextBoxColumn.Name = "CostoInDetinfoDataGridViewTextBoxColumn"
+        Me.CostoInDetinfoDataGridViewTextBoxColumn.ReadOnly = True
         '
         'CostoInd_alta
         '
@@ -747,14 +747,14 @@ Partial Class CostoInd_alta
         Me.Panel_fijo.ResumeLayout(False)
         Me.Panel_fijo.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmpleadoremuBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Ds_empleados, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         CType(Me.tb_multi, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DetalleBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmpleadoremuBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Ds_empleados, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Costo_Ind, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DetalleBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -797,26 +797,26 @@ Partial Class CostoInd_alta
     Friend WithEvents btn_emp As System.Windows.Forms.Button
     Friend WithEvents tb_multi As System.Windows.Forms.NumericUpDown
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
-    Friend WithEvents EmpleadoapeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents EmpleadonomDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents EmpleadodniDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents EmpleadoidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents EmpleadoRemuneDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents EmpleadoremuBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents Ds_empleados As Aplicacion.ds_empleados
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Total_Grilla As System.Windows.Forms.TextBox
     Friend WithEvents tb_titulo As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents tb_costo_total_Hora As System.Windows.Forms.TextBox
-    Friend WithEvents DetalleBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents Costo_Ind As Aplicacion.Costo_Ind
     Friend WithEvents lbl_err As System.Windows.Forms.Label
     Friend WithEvents lbl_err2 As System.Windows.Forms.Label
     Friend WithEvents lbl_err3 As System.Windows.Forms.Label
     Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents EmpleadoidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents EmpleadodniDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents NombreDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SalarioPorHoraDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents EmpleadoremuBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Ds_empleados As Aplicacion.ds_empleados
     Friend WithEvents CostoInDetidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CostoInDetdescDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CostoInDetcostoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CostoIidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CostoInDetinfoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DetalleBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Costo_Ind As Aplicacion.Costo_Ind
 End Class

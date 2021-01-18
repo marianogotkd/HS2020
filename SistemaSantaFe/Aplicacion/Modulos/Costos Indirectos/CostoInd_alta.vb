@@ -32,6 +32,7 @@
                     fila("CostoInDet_id") = Ds.Tables(1).Rows(e).Item("CostoInDet_id")
                     fila("CostoInDet_desc") = Ds.Tables(1).Rows(e).Item("CostoInDet_desc")
                     fila("CostoInDet_costo") = Ds.Tables(1).Rows(e).Item("CostoInDet_costo")
+                    fila("CostoInDet_info") = Ds.Tables(1).Rows(e).Item("CostoInDet_info")
                     Costo_Ind.Tables("Detalle").Rows.Add(fila)
                     e = e + 1
                 End While
@@ -216,9 +217,14 @@
             Dim fila As DataRow = Costo_Ind.Tables("Detalle").NewRow
             fila("CostoInDet_desc") = tb_desc.Text
             fila("CostoInDet_costo") = tb_costo_Total_Dia.Text
+            fila("CostoInDet_info") = "Costo por Dia - Dias trabajados: " + CStr(tb_dia_dia.Value)
+
             Costo_Ind.Tables("Detalle").Rows.Add(fila)
 
             Total_Grilla.Text = CDec(Total_Grilla.Text) + CDec(tb_costo_Total_Dia.Text)
+
+
+
         Else
             MessageBox.Show("Complete Los Campos Obligatorios", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
             lbl_err.Visible = True
@@ -234,6 +240,7 @@
             Dim fila As DataRow = Costo_Ind.Tables("Detalle").NewRow
             fila("CostoInDet_desc") = tb_desc.Text
             fila("CostoInDet_costo") = tb_costo_total_Hora.Text
+            fila("CostoInDet_info") = "Costo por Hora - Dias trab.: " + CStr(tb_hora_dia.Value) + " - Horas Trab.: " + CStr(tb_hora_dia.Value)
             Costo_Ind.Tables("Detalle").Rows.Add(fila)
 
 
@@ -254,6 +261,7 @@
             Dim fila As DataRow = Costo_Ind.Tables("Detalle").NewRow
             fila("CostoInDet_desc") = tb_desc.Text
             fila("CostoInDet_costo") = tb_fijo.Text
+            fila("CostoInDet_info") = "Costo Fijo"
             Costo_Ind.Tables("Detalle").Rows.Add(fila)
 
 
@@ -275,6 +283,7 @@
             Dim fila As DataRow = Costo_Ind.Tables("Detalle").NewRow
             fila("CostoInDet_desc") = Nombre
             fila("CostoInDet_costo") = tb_totalEmp.Text
+            fila("CostoInDet_info") = "Salario por Hora de Trabajo - Horas: " + CStr(tb_multi.Value)
             Costo_Ind.Tables("Detalle").Rows.Add(fila)
 
 
@@ -288,7 +297,7 @@
     End Sub
 
     Private Sub DataGridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-        tb_empCost.Text = DataGridView1.SelectedCells.Item(4).Value.ToString
+        tb_empCost.Text = DataGridView1.SelectedCells.Item(3).Value.ToString
         If tb_empCost.Text <> "" Then
             tb_totalEmp.Text = CDec(tb_empCost.Text) * CDec(tb_multi.Value)
         End If
@@ -332,7 +341,7 @@
                         Dim costoI_id = CInt(ds.Tables(0).Rows(0).Item("CostI_Id"))
                         DACosto.Costo_Indirecto_Detalle_Alta(DataGridView2.Rows(i).Cells("CostoInDetdescDataGridViewTextBoxColumn").Value,
                                                              DataGridView2.Rows(i).Cells("CostoInDetcostoDataGridViewTextBoxColumn").Value,
-                                                            costoI_id)
+                                                            costoI_id, DataGridView2.Rows(i).Cells("CostoInDetinfoDataGridViewTextBoxColumn").Value)
                         i = i + 1
                     End While
                     MessageBox.Show("Los Datos se Guardaron Correctamente", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -347,7 +356,7 @@
 
                         DACosto.Costo_Indirecto_Detalle_Alta(DataGridView2.Rows(i).Cells("CostoInDetdescDataGridViewTextBoxColumn").Value,
                                                              DataGridView2.Rows(i).Cells("CostoInDetcostoDataGridViewTextBoxColumn").Value,
-                                                            Costo_Id)
+                                                            Costo_Id, DataGridView2.Rows(i).Cells("CostoInDetinfoDataGridViewTextBoxColumn").Value)
                         i = i + 1
                     End While
                     MessageBox.Show("Los Datos se Guardaron Correctamente", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)

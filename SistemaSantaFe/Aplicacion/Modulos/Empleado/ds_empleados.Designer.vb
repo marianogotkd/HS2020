@@ -648,15 +648,13 @@ Partial Public Class ds_empleados
     Partial Public Class Empleado_remuDataTable
         Inherits Global.System.Data.TypedTableBase(Of Empleado_remuRow)
         
-        Private columnempleado_ape As Global.System.Data.DataColumn
+        Private columnempleado_id As Global.System.Data.DataColumn
         
         Private columnempleado_dni As Global.System.Data.DataColumn
         
-        Private columnempleado_id As Global.System.Data.DataColumn
+        Private columnNombre As Global.System.Data.DataColumn
         
-        Private columnempleado_Remune As Global.System.Data.DataColumn
-        
-        Private columnempleado_nom As Global.System.Data.DataColumn
+        Private columnSalario_Por_Hora As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -695,9 +693,9 @@ Partial Public Class ds_empleados
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property empleado_apeColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property empleado_idColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnempleado_ape
+                Return Me.columnempleado_id
             End Get
         End Property
         
@@ -711,25 +709,17 @@ Partial Public Class ds_empleados
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property empleado_idColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property NombreColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnempleado_id
+                Return Me.columnNombre
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property empleado_RemuneColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property Salario_Por_HoraColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnempleado_Remune
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property empleado_nomColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnempleado_nom
+                Return Me.columnSalario_Por_Hora
             End Get
         End Property
         
@@ -770,9 +760,9 @@ Partial Public Class ds_empleados
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddEmpleado_remuRow(ByVal empleado_ape As String, ByVal empleado_dni As Integer, ByVal empleado_id As Integer, ByVal empleado_Remune As Decimal, ByVal empleado_nom As String) As Empleado_remuRow
+        Public Overloads Function AddEmpleado_remuRow(ByVal empleado_id As Integer, ByVal empleado_dni As Integer, ByVal Nombre As String, ByVal Salario_Por_Hora As Decimal) As Empleado_remuRow
             Dim rowEmpleado_remuRow As Empleado_remuRow = CType(Me.NewRow,Empleado_remuRow)
-            Dim columnValuesArray() As Object = New Object() {empleado_ape, empleado_dni, empleado_id, empleado_Remune, empleado_nom}
+            Dim columnValuesArray() As Object = New Object() {empleado_id, empleado_dni, Nombre, Salario_Por_Hora}
             rowEmpleado_remuRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowEmpleado_remuRow)
             Return rowEmpleado_remuRow
@@ -795,26 +785,23 @@ Partial Public Class ds_empleados
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnempleado_ape = MyBase.Columns("empleado_ape")
-            Me.columnempleado_dni = MyBase.Columns("empleado_dni")
             Me.columnempleado_id = MyBase.Columns("empleado_id")
-            Me.columnempleado_Remune = MyBase.Columns("empleado_Remune")
-            Me.columnempleado_nom = MyBase.Columns("empleado_nom")
+            Me.columnempleado_dni = MyBase.Columns("empleado_dni")
+            Me.columnNombre = MyBase.Columns("Nombre")
+            Me.columnSalario_Por_Hora = MyBase.Columns("Salario Por Hora")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnempleado_ape = New Global.System.Data.DataColumn("empleado_ape", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnempleado_ape)
-            Me.columnempleado_dni = New Global.System.Data.DataColumn("empleado_dni", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnempleado_dni)
             Me.columnempleado_id = New Global.System.Data.DataColumn("empleado_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnempleado_id)
-            Me.columnempleado_Remune = New Global.System.Data.DataColumn("empleado_Remune", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnempleado_Remune)
-            Me.columnempleado_nom = New Global.System.Data.DataColumn("empleado_nom", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnempleado_nom)
+            Me.columnempleado_dni = New Global.System.Data.DataColumn("empleado_dni", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnempleado_dni)
+            Me.columnNombre = New Global.System.Data.DataColumn("Nombre", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNombre)
+            Me.columnSalario_Por_Hora = New Global.System.Data.DataColumn("Salario Por Hora", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSalario_Por_Hora)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1166,16 +1153,16 @@ Partial Public Class ds_empleados
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property empleado_ape() As String
+        Public Property empleado_id() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableEmpleado_remu.empleado_apeColumn),String)
+                    Return CType(Me(Me.tableEmpleado_remu.empleado_idColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'empleado_ape' de la tabla 'Empleado_remu' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'empleado_id' de la tabla 'Empleado_remu' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableEmpleado_remu.empleado_apeColumn) = value
+                Me(Me.tableEmpleado_remu.empleado_idColumn) = value
             End Set
         End Property
         
@@ -1196,59 +1183,44 @@ Partial Public Class ds_empleados
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property empleado_id() As Integer
+        Public Property Nombre() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableEmpleado_remu.empleado_idColumn),Integer)
+                    Return CType(Me(Me.tableEmpleado_remu.NombreColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'empleado_id' de la tabla 'Empleado_remu' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Nombre' de la tabla 'Empleado_remu' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableEmpleado_remu.empleado_idColumn) = value
+                Me(Me.tableEmpleado_remu.NombreColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property empleado_Remune() As Decimal
+        Public Property Salario_Por_Hora() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableEmpleado_remu.empleado_RemuneColumn),Decimal)
+                    Return CType(Me(Me.tableEmpleado_remu.Salario_Por_HoraColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'empleado_Remune' de la tabla 'Empleado_remu' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Salario Por Hora' de la tabla 'Empleado_remu' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableEmpleado_remu.empleado_RemuneColumn) = value
+                Me(Me.tableEmpleado_remu.Salario_Por_HoraColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property empleado_nom() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableEmpleado_remu.empleado_nomColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'empleado_nom' de la tabla 'Empleado_remu' es DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableEmpleado_remu.empleado_nomColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isempleado_apeNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleado_remu.empleado_apeColumn)
+        Public Function Isempleado_idNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleado_remu.empleado_idColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setempleado_apeNull()
-            Me(Me.tableEmpleado_remu.empleado_apeColumn) = Global.System.Convert.DBNull
+        Public Sub Setempleado_idNull()
+            Me(Me.tableEmpleado_remu.empleado_idColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1265,38 +1237,26 @@ Partial Public Class ds_empleados
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isempleado_idNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleado_remu.empleado_idColumn)
+        Public Function IsNombreNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleado_remu.NombreColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setempleado_idNull()
-            Me(Me.tableEmpleado_remu.empleado_idColumn) = Global.System.Convert.DBNull
+        Public Sub SetNombreNull()
+            Me(Me.tableEmpleado_remu.NombreColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isempleado_RemuneNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleado_remu.empleado_RemuneColumn)
+        Public Function IsSalario_Por_HoraNull() As Boolean
+            Return Me.IsNull(Me.tableEmpleado_remu.Salario_Por_HoraColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setempleado_RemuneNull()
-            Me(Me.tableEmpleado_remu.empleado_RemuneColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isempleado_nomNull() As Boolean
-            Return Me.IsNull(Me.tableEmpleado_remu.empleado_nomColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setempleado_nomNull()
-            Me(Me.tableEmpleado_remu.empleado_nomColumn) = Global.System.Convert.DBNull
+        Public Sub SetSalario_Por_HoraNull()
+            Me(Me.tableEmpleado_remu.Salario_Por_HoraColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
