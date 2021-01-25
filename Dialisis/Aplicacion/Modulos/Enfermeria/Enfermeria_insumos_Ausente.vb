@@ -131,7 +131,7 @@
                             '''''''
                             ''''''''''
                             'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
-                            DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, Mov) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+                            DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, Mov, "") 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
                             ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
 
 

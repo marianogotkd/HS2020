@@ -457,11 +457,21 @@
 
                     'If cb_Movimiento.SelectedItem = "Alta de Mercaderia" Then
                     'Calculo Stock''''''''
+
                     Mov = CDec(Ds_Suc.Tables(1).Rows(0).Item("Stock_Destino")) + CDec(Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"))
+
+
+                    'CHOCO - 21-01-2021/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    'ahora calculo el stock real, para ello multiplico la cant q ingreso en el gridview por el campo contenido q traigo de la tabla producto
+                    Dim stock_real_ingreso As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")) * CDec(Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"))
+                    'ahora sumo al stock real q ya existe.
+                    Dim stock_real_nuevo As Decimal = CDec(Ds_Suc.Tables(1).Rows(0).Item("ProdxSuc_stock_real")) + stock_real_ingreso
+                    '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                     ''''''
                     ''''''''''
-                    'Actualizo stock'''''
-                    DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, cb_origen.SelectedValue, Mov)
+                    'Actualizo stock''''' en sucursal deposito
+                    DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, cb_origen.SelectedValue, Mov, stock_real_nuevo)
                     '''''''''''
 
                     'creo un registro en producto_x_sucursal_lote

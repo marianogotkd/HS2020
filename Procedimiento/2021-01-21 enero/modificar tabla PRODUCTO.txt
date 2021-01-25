@@ -1,0 +1,3 @@
+en la tabla Producto agregar esta columna
+
+[prod_contenido] [decimal](38, 2) NULL,

@@ -27,21 +27,6 @@ Partial Class Cliente_Cta_Cte_Buscar
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DG_clientes = New System.Windows.Forms.DataGridView()
-        Me.CtaCteidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIFanDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIapeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLInomDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIdniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DireccionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIfnacDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLItelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLImailDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIobservacionesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CtaCteestadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CtaCtefechaaltaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CtaCtelimitedeudaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CtaCtetotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ClienteCtaCteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Cliente_ds = New Aplicacion.Cliente_ds()
         Me.BO_cliente_modificar = New System.Windows.Forms.Button()
@@ -94,6 +79,21 @@ Partial Class Cliente_Cta_Cte_Buscar
         Me.SaldoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DetalleCtaCteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.CtaCteidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIFanDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIapeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLInomDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIdniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DireccionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIfnacDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLItelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLImailDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIobservacionesDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CtaCteestadoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CtaCtefechaaltaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CtaCtelimitedeudaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CtaCtetotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DG_clientes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ClienteCtaCteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -150,126 +150,6 @@ Partial Class Cliente_Cta_Cte_Buscar
         Me.DG_clientes.Size = New System.Drawing.Size(1024, 406)
         Me.DG_clientes.StandardTab = True
         Me.DG_clientes.TabIndex = 241
-        '
-        'CtaCteidDataGridViewTextBoxColumn
-        '
-        Me.CtaCteidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CtaCteidDataGridViewTextBoxColumn.DataPropertyName = "CtaCte_id"
-        Me.CtaCteidDataGridViewTextBoxColumn.HeaderText = "Nº Cuenta"
-        Me.CtaCteidDataGridViewTextBoxColumn.Name = "CtaCteidDataGridViewTextBoxColumn"
-        Me.CtaCteidDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CLIFanDataGridViewTextBoxColumn
-        '
-        Me.CLIFanDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CLIFanDataGridViewTextBoxColumn.DataPropertyName = "CLI_Fan"
-        Me.CLIFanDataGridViewTextBoxColumn.HeaderText = "Fantasia/Razón Social"
-        Me.CLIFanDataGridViewTextBoxColumn.Name = "CLIFanDataGridViewTextBoxColumn"
-        Me.CLIFanDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CLIidDataGridViewTextBoxColumn
-        '
-        Me.CLIidDataGridViewTextBoxColumn.DataPropertyName = "CLI_id"
-        Me.CLIidDataGridViewTextBoxColumn.HeaderText = "CLI_id"
-        Me.CLIidDataGridViewTextBoxColumn.Name = "CLIidDataGridViewTextBoxColumn"
-        Me.CLIidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIidDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLIapeDataGridViewTextBoxColumn
-        '
-        Me.CLIapeDataGridViewTextBoxColumn.DataPropertyName = "CLI_ape"
-        Me.CLIapeDataGridViewTextBoxColumn.HeaderText = "CLI_ape"
-        Me.CLIapeDataGridViewTextBoxColumn.Name = "CLIapeDataGridViewTextBoxColumn"
-        Me.CLIapeDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIapeDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLInomDataGridViewTextBoxColumn
-        '
-        Me.CLInomDataGridViewTextBoxColumn.DataPropertyName = "CLI_nom"
-        Me.CLInomDataGridViewTextBoxColumn.HeaderText = "CLI_nom"
-        Me.CLInomDataGridViewTextBoxColumn.Name = "CLInomDataGridViewTextBoxColumn"
-        Me.CLInomDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLInomDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLIdniDataGridViewTextBoxColumn
-        '
-        Me.CLIdniDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CLIdniDataGridViewTextBoxColumn.DataPropertyName = "CLI_dni"
-        Me.CLIdniDataGridViewTextBoxColumn.HeaderText = "Dni/Cuit"
-        Me.CLIdniDataGridViewTextBoxColumn.Name = "CLIdniDataGridViewTextBoxColumn"
-        Me.CLIdniDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DireccionDataGridViewTextBoxColumn
-        '
-        Me.DireccionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DireccionDataGridViewTextBoxColumn.DataPropertyName = "direccion"
-        Me.DireccionDataGridViewTextBoxColumn.HeaderText = "Dirección"
-        Me.DireccionDataGridViewTextBoxColumn.Name = "DireccionDataGridViewTextBoxColumn"
-        Me.DireccionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CLIfnacDataGridViewTextBoxColumn
-        '
-        Me.CLIfnacDataGridViewTextBoxColumn.DataPropertyName = "CLI_fnac"
-        Me.CLIfnacDataGridViewTextBoxColumn.HeaderText = "CLI_fnac"
-        Me.CLIfnacDataGridViewTextBoxColumn.Name = "CLIfnacDataGridViewTextBoxColumn"
-        Me.CLIfnacDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIfnacDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLItelDataGridViewTextBoxColumn
-        '
-        Me.CLItelDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CLItelDataGridViewTextBoxColumn.DataPropertyName = "CLI_tel"
-        Me.CLItelDataGridViewTextBoxColumn.HeaderText = "Teléfono"
-        Me.CLItelDataGridViewTextBoxColumn.Name = "CLItelDataGridViewTextBoxColumn"
-        Me.CLItelDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CLImailDataGridViewTextBoxColumn
-        '
-        Me.CLImailDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CLImailDataGridViewTextBoxColumn.DataPropertyName = "CLI_mail"
-        Me.CLImailDataGridViewTextBoxColumn.HeaderText = "Mail"
-        Me.CLImailDataGridViewTextBoxColumn.Name = "CLImailDataGridViewTextBoxColumn"
-        Me.CLImailDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CLIobservacionesDataGridViewTextBoxColumn
-        '
-        Me.CLIobservacionesDataGridViewTextBoxColumn.DataPropertyName = "CLI_observaciones"
-        Me.CLIobservacionesDataGridViewTextBoxColumn.HeaderText = "CLI_observaciones"
-        Me.CLIobservacionesDataGridViewTextBoxColumn.Name = "CLIobservacionesDataGridViewTextBoxColumn"
-        Me.CLIobservacionesDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIobservacionesDataGridViewTextBoxColumn.Visible = False
-        '
-        'CtaCteestadoDataGridViewTextBoxColumn
-        '
-        Me.CtaCteestadoDataGridViewTextBoxColumn.DataPropertyName = "CtaCte_estado"
-        Me.CtaCteestadoDataGridViewTextBoxColumn.HeaderText = "CtaCte_estado"
-        Me.CtaCteestadoDataGridViewTextBoxColumn.Name = "CtaCteestadoDataGridViewTextBoxColumn"
-        Me.CtaCteestadoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CtaCteestadoDataGridViewTextBoxColumn.Visible = False
-        '
-        'CtaCtefechaaltaDataGridViewTextBoxColumn
-        '
-        Me.CtaCtefechaaltaDataGridViewTextBoxColumn.DataPropertyName = "CtaCte_fechaalta"
-        Me.CtaCtefechaaltaDataGridViewTextBoxColumn.HeaderText = "CtaCte_fechaalta"
-        Me.CtaCtefechaaltaDataGridViewTextBoxColumn.Name = "CtaCtefechaaltaDataGridViewTextBoxColumn"
-        Me.CtaCtefechaaltaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CtaCtefechaaltaDataGridViewTextBoxColumn.Visible = False
-        '
-        'CtaCtelimitedeudaDataGridViewTextBoxColumn
-        '
-        Me.CtaCtelimitedeudaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CtaCtelimitedeudaDataGridViewTextBoxColumn.DataPropertyName = "CtaCte_limitedeuda"
-        Me.CtaCtelimitedeudaDataGridViewTextBoxColumn.HeaderText = "Limite"
-        Me.CtaCtelimitedeudaDataGridViewTextBoxColumn.Name = "CtaCtelimitedeudaDataGridViewTextBoxColumn"
-        Me.CtaCtelimitedeudaDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CtaCtetotalDataGridViewTextBoxColumn
-        '
-        Me.CtaCtetotalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CtaCtetotalDataGridViewTextBoxColumn.DataPropertyName = "CtaCte_total"
-        Me.CtaCtetotalDataGridViewTextBoxColumn.HeaderText = "Saldo"
-        Me.CtaCtetotalDataGridViewTextBoxColumn.Name = "CtaCtetotalDataGridViewTextBoxColumn"
-        Me.CtaCtetotalDataGridViewTextBoxColumn.ReadOnly = True
         '
         'ClienteCtaCteBindingSource
         '
@@ -860,6 +740,129 @@ Partial Class Cliente_Cta_Cte_Buscar
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Total de la deuda:"
         '
+        'CtaCteidDataGridViewTextBoxColumn
+        '
+        Me.CtaCteidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CtaCteidDataGridViewTextBoxColumn.DataPropertyName = "CtaCte_id"
+        Me.CtaCteidDataGridViewTextBoxColumn.HeaderText = "Nº Cuenta"
+        Me.CtaCteidDataGridViewTextBoxColumn.Name = "CtaCteidDataGridViewTextBoxColumn"
+        Me.CtaCteidDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CLIFanDataGridViewTextBoxColumn
+        '
+        Me.CLIFanDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CLIFanDataGridViewTextBoxColumn.DataPropertyName = "CLI_Fan"
+        Me.CLIFanDataGridViewTextBoxColumn.HeaderText = "Fantasia/Razón Social"
+        Me.CLIFanDataGridViewTextBoxColumn.Name = "CLIFanDataGridViewTextBoxColumn"
+        Me.CLIFanDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CLIidDataGridViewTextBoxColumn
+        '
+        Me.CLIidDataGridViewTextBoxColumn.DataPropertyName = "CLI_id"
+        Me.CLIidDataGridViewTextBoxColumn.HeaderText = "CLI_id"
+        Me.CLIidDataGridViewTextBoxColumn.Name = "CLIidDataGridViewTextBoxColumn"
+        Me.CLIidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIidDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLIapeDataGridViewTextBoxColumn
+        '
+        Me.CLIapeDataGridViewTextBoxColumn.DataPropertyName = "CLI_ape"
+        Me.CLIapeDataGridViewTextBoxColumn.HeaderText = "CLI_ape"
+        Me.CLIapeDataGridViewTextBoxColumn.Name = "CLIapeDataGridViewTextBoxColumn"
+        Me.CLIapeDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIapeDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLInomDataGridViewTextBoxColumn
+        '
+        Me.CLInomDataGridViewTextBoxColumn.DataPropertyName = "CLI_nom"
+        Me.CLInomDataGridViewTextBoxColumn.HeaderText = "CLI_nom"
+        Me.CLInomDataGridViewTextBoxColumn.Name = "CLInomDataGridViewTextBoxColumn"
+        Me.CLInomDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLInomDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLIdniDataGridViewTextBoxColumn
+        '
+        Me.CLIdniDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CLIdniDataGridViewTextBoxColumn.DataPropertyName = "CLI_dni"
+        Me.CLIdniDataGridViewTextBoxColumn.HeaderText = "Dni/Cuit"
+        Me.CLIdniDataGridViewTextBoxColumn.Name = "CLIdniDataGridViewTextBoxColumn"
+        Me.CLIdniDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DireccionDataGridViewTextBoxColumn
+        '
+        Me.DireccionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DireccionDataGridViewTextBoxColumn.DataPropertyName = "direccion"
+        Me.DireccionDataGridViewTextBoxColumn.HeaderText = "Dirección"
+        Me.DireccionDataGridViewTextBoxColumn.Name = "DireccionDataGridViewTextBoxColumn"
+        Me.DireccionDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DireccionDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLIfnacDataGridViewTextBoxColumn
+        '
+        Me.CLIfnacDataGridViewTextBoxColumn.DataPropertyName = "CLI_fnac"
+        Me.CLIfnacDataGridViewTextBoxColumn.HeaderText = "CLI_fnac"
+        Me.CLIfnacDataGridViewTextBoxColumn.Name = "CLIfnacDataGridViewTextBoxColumn"
+        Me.CLIfnacDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIfnacDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLItelDataGridViewTextBoxColumn
+        '
+        Me.CLItelDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CLItelDataGridViewTextBoxColumn.DataPropertyName = "CLI_tel"
+        Me.CLItelDataGridViewTextBoxColumn.HeaderText = "Teléfono"
+        Me.CLItelDataGridViewTextBoxColumn.Name = "CLItelDataGridViewTextBoxColumn"
+        Me.CLItelDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLItelDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLImailDataGridViewTextBoxColumn
+        '
+        Me.CLImailDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CLImailDataGridViewTextBoxColumn.DataPropertyName = "CLI_mail"
+        Me.CLImailDataGridViewTextBoxColumn.HeaderText = "Mail"
+        Me.CLImailDataGridViewTextBoxColumn.Name = "CLImailDataGridViewTextBoxColumn"
+        Me.CLImailDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLImailDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLIobservacionesDataGridViewTextBoxColumn
+        '
+        Me.CLIobservacionesDataGridViewTextBoxColumn.DataPropertyName = "CLI_observaciones"
+        Me.CLIobservacionesDataGridViewTextBoxColumn.HeaderText = "CLI_observaciones"
+        Me.CLIobservacionesDataGridViewTextBoxColumn.Name = "CLIobservacionesDataGridViewTextBoxColumn"
+        Me.CLIobservacionesDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIobservacionesDataGridViewTextBoxColumn.Visible = False
+        '
+        'CtaCteestadoDataGridViewTextBoxColumn
+        '
+        Me.CtaCteestadoDataGridViewTextBoxColumn.DataPropertyName = "CtaCte_estado"
+        Me.CtaCteestadoDataGridViewTextBoxColumn.HeaderText = "CtaCte_estado"
+        Me.CtaCteestadoDataGridViewTextBoxColumn.Name = "CtaCteestadoDataGridViewTextBoxColumn"
+        Me.CtaCteestadoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CtaCteestadoDataGridViewTextBoxColumn.Visible = False
+        '
+        'CtaCtefechaaltaDataGridViewTextBoxColumn
+        '
+        Me.CtaCtefechaaltaDataGridViewTextBoxColumn.DataPropertyName = "CtaCte_fechaalta"
+        Me.CtaCtefechaaltaDataGridViewTextBoxColumn.HeaderText = "CtaCte_fechaalta"
+        Me.CtaCtefechaaltaDataGridViewTextBoxColumn.Name = "CtaCtefechaaltaDataGridViewTextBoxColumn"
+        Me.CtaCtefechaaltaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CtaCtefechaaltaDataGridViewTextBoxColumn.Visible = False
+        '
+        'CtaCtelimitedeudaDataGridViewTextBoxColumn
+        '
+        Me.CtaCtelimitedeudaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CtaCtelimitedeudaDataGridViewTextBoxColumn.DataPropertyName = "CtaCte_limitedeuda"
+        Me.CtaCtelimitedeudaDataGridViewTextBoxColumn.HeaderText = "Limite"
+        Me.CtaCtelimitedeudaDataGridViewTextBoxColumn.Name = "CtaCtelimitedeudaDataGridViewTextBoxColumn"
+        Me.CtaCtelimitedeudaDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CtaCtetotalDataGridViewTextBoxColumn
+        '
+        Me.CtaCtetotalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CtaCtetotalDataGridViewTextBoxColumn.DataPropertyName = "CtaCte_total"
+        Me.CtaCtetotalDataGridViewTextBoxColumn.HeaderText = "Saldo"
+        Me.CtaCtetotalDataGridViewTextBoxColumn.Name = "CtaCtetotalDataGridViewTextBoxColumn"
+        Me.CtaCtetotalDataGridViewTextBoxColumn.ReadOnly = True
+        '
         'Cliente_Cta_Cte_Buscar
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -941,6 +944,7 @@ Partial Class Cliente_Cta_Cte_Buscar
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button_comprobante As System.Windows.Forms.Button
     Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents txt_total_deuda As System.Windows.Forms.TextBox
     Friend WithEvents CtaCteidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CLIFanDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CLIidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -956,5 +960,4 @@ Partial Class Cliente_Cta_Cte_Buscar
     Friend WithEvents CtaCtefechaaltaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CtaCtelimitedeudaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CtaCtetotalDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents txt_total_deuda As System.Windows.Forms.TextBox
 End Class

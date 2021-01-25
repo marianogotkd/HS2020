@@ -187,9 +187,13 @@
         'Calculo Stock''''''''
         Mov = Ds_Suc.Tables(0).Rows(0).Item("Stock_Origen") - cant_lote
         '''''''
+        Dim stock_real_ingreso As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")) * cant_lote
+        'ahora RESTO al stock real.
+        Dim stock_real_nuevo As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) - stock_real_ingreso
+
         ''''''''''
         'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
-        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
         '''''''''''
 
         'actualizo la cant en el lote asociado a un producto de una sucursal.

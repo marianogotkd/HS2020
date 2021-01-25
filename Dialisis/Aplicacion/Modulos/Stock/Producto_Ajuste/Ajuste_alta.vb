@@ -65,9 +65,15 @@
                         'Calculo Stock''''''''
                         Mov = CDec(Ds_Suc.Tables(1).Rows(0).Item("Stock_Destino")) + CDec(tb_Cant_Movi.Text)
                         ''''''
+                        Dim stock_real_ingreso As Decimal = CDec(Ds_Suc.Tables(1).Rows(0).Item("prod_contenido")) * CDec(tb_Cant_Movi.Text)
+                        'ahora sumo al stock real q ya existe.
+                        Dim stock_real_nuevo As Decimal = CDec(Ds_Suc.Tables(1).Rows(0).Item("ProdxSuc_stock_real")) + stock_real_ingreso
+
+
+
                         ''''''''''
                         'Actualizo stock'''''
-                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov)
+                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo)
                         '''''''''''
 
 

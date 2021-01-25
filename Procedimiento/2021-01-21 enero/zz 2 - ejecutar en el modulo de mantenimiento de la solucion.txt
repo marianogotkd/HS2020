@@ -1,0 +1,5 @@
+en el modulo de mantenimiento q esta en el form stock y actualizacion de productos.
+la opcion que dice : recalcular stock_real en todas las sucursales
+
+hacerlo en las 3 sucursales, para ello tengo q ir eligiendo en el combo donde aplicar los cambios
+

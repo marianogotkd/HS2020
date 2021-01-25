@@ -27,12 +27,19 @@ Partial Class Producto_alta_New
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Bo_exportar = New System.Windows.Forms.Button()
         Me.Bo_cargar = New System.Windows.Forms.Button()
-        Me.btn_prove = New System.Windows.Forms.Button()
         Me.Bo_deshacer = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.btn_prove = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Bo_codbarra = New System.Windows.Forms.Button()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.lb_fechanac = New System.Windows.Forms.Label()
+        Me.Combo_unidmedida = New System.Windows.Forms.ComboBox()
+        Me.Combo_tipo = New System.Windows.Forms.ComboBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.txt_contenido = New System.Windows.Forms.TextBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Bo_codbarra = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.DataGridView_Prod_Prov = New System.Windows.Forms.DataGridView()
         Me.ProvidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -45,7 +52,6 @@ Partial Class Producto_alta_New
         Me.Label11 = New System.Windows.Forms.Label()
         Me.CheckBox_lote = New System.Windows.Forms.CheckBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Combo_tipo = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ERROR_tx_ptorepo = New System.Windows.Forms.PictureBox()
         Me.tx_ptorepo = New System.Windows.Forms.TextBox()
@@ -69,7 +75,6 @@ Partial Class Producto_alta_New
         Me.tx_descrilarga = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.lb_fechanac = New System.Windows.Forms.Label()
         Me.lb_ape = New System.Windows.Forms.Label()
         Me.lb_tel = New System.Windows.Forms.Label()
         Me.Bo_nuevamarca = New System.Windows.Forms.Button()
@@ -94,6 +99,7 @@ Partial Class Producto_alta_New
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView_Prod_Prov, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -151,20 +157,6 @@ Partial Class Producto_alta_New
         Me.ToolTip1.SetToolTip(Me.Bo_cargar, "Cargar")
         Me.Bo_cargar.UseVisualStyleBackColor = True
         '
-        'btn_prove
-        '
-        Me.btn_prove.Image = Global.Aplicacion.My.Resources.Resources.proveedores
-        Me.btn_prove.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btn_prove.Location = New System.Drawing.Point(894, 107)
-        Me.btn_prove.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_prove.Name = "btn_prove"
-        Me.btn_prove.Size = New System.Drawing.Size(141, 45)
-        Me.btn_prove.TabIndex = 0
-        Me.btn_prove.Text = "Cargar Proveedores"
-        Me.btn_prove.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
-        Me.btn_prove.UseVisualStyleBackColor = True
-        Me.btn_prove.Visible = False
-        '
         'Bo_deshacer
         '
         Me.Bo_deshacer.Image = CType(resources.GetObject("Bo_deshacer.Image"), System.Drawing.Image)
@@ -189,18 +181,30 @@ Partial Class Producto_alta_New
         Me.PictureBox1.TabIndex = 4
         Me.PictureBox1.TabStop = False
         '
+        'btn_prove
+        '
+        Me.btn_prove.Image = Global.Aplicacion.My.Resources.Resources.proveedores
+        Me.btn_prove.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btn_prove.Location = New System.Drawing.Point(894, 107)
+        Me.btn_prove.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_prove.Name = "btn_prove"
+        Me.btn_prove.Size = New System.Drawing.Size(141, 45)
+        Me.btn_prove.TabIndex = 0
+        Me.btn_prove.Text = "Cargar Proveedores"
+        Me.btn_prove.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.btn_prove.UseVisualStyleBackColor = True
+        Me.btn_prove.Visible = False
+        '
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.GroupBox5)
         Me.GroupBox1.Controls.Add(Me.GroupBox4)
         Me.GroupBox1.Controls.Add(Me.CheckBox_lote)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Combo_tipo)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.ERROR_tx_ptorepo)
-        Me.GroupBox1.Controls.Add(Me.tx_ptorepo)
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Controls.Add(Me.tb_PrecMay)
         Me.GroupBox1.Controls.Add(Me.ERROR_tx_stock)
@@ -221,33 +225,104 @@ Partial Class Producto_alta_New
         Me.GroupBox1.Controls.Add(Me.tx_descrilarga)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.lb_fechanac)
         Me.GroupBox1.Controls.Add(Me.lb_ape)
-        Me.GroupBox1.Controls.Add(Me.lb_tel)
         Me.GroupBox1.ForeColor = System.Drawing.Color.DarkSlateGray
         Me.GroupBox1.Location = New System.Drawing.Point(8, 4)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(1091, 262)
+        Me.GroupBox1.Size = New System.Drawing.Size(1066, 314)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos del producto"
         '
-        'Bo_codbarra
+        'GroupBox5
         '
-        Me.Bo_codbarra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Bo_codbarra.Image = CType(resources.GetObject("Bo_codbarra.Image"), System.Drawing.Image)
-        Me.Bo_codbarra.Location = New System.Drawing.Point(8, 18)
-        Me.Bo_codbarra.Margin = New System.Windows.Forms.Padding(4)
-        Me.Bo_codbarra.Name = "Bo_codbarra"
-        Me.Bo_codbarra.Size = New System.Drawing.Size(396, 43)
-        Me.Bo_codbarra.TabIndex = 273
-        Me.Bo_codbarra.Text = "Buscar Proveedores"
-        Me.Bo_codbarra.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Bo_codbarra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Bo_codbarra, "Ver proveedores disponibles para asignar")
-        Me.Bo_codbarra.UseVisualStyleBackColor = True
+        Me.GroupBox5.BackColor = System.Drawing.Color.Khaki
+        Me.GroupBox5.Controls.Add(Me.lb_fechanac)
+        Me.GroupBox5.Controls.Add(Me.Combo_unidmedida)
+        Me.GroupBox5.Controls.Add(Me.Combo_tipo)
+        Me.GroupBox5.Controls.Add(Me.Label14)
+        Me.GroupBox5.Controls.Add(Me.Label13)
+        Me.GroupBox5.Controls.Add(Me.ERROR_tx_ptorepo)
+        Me.GroupBox5.Controls.Add(Me.txt_contenido)
+        Me.GroupBox5.Controls.Add(Me.tx_ptorepo)
+        Me.GroupBox5.Controls.Add(Me.lb_tel)
+        Me.GroupBox5.Location = New System.Drawing.Point(70, 181)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(453, 124)
+        Me.GroupBox5.TabIndex = 320
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Configure gestión de stock"
+        '
+        'lb_fechanac
+        '
+        Me.lb_fechanac.AutoSize = True
+        Me.lb_fechanac.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.lb_fechanac.Location = New System.Drawing.Point(14, 51)
+        Me.lb_fechanac.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.lb_fechanac.Name = "lb_fechanac"
+        Me.lb_fechanac.Size = New System.Drawing.Size(39, 16)
+        Me.lb_fechanac.TabIndex = 259
+        Me.lb_fechanac.Text = "Tipo "
+        '
+        'Combo_unidmedida
+        '
+        Me.Combo_unidmedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Combo_unidmedida.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Combo_unidmedida.FormattingEnabled = True
+        Me.Combo_unidmedida.Location = New System.Drawing.Point(335, 78)
+        Me.Combo_unidmedida.Margin = New System.Windows.Forms.Padding(4)
+        Me.Combo_unidmedida.Name = "Combo_unidmedida"
+        Me.Combo_unidmedida.Size = New System.Drawing.Size(111, 24)
+        Me.Combo_unidmedida.TabIndex = 319
+        '
+        'Combo_tipo
+        '
+        Me.Combo_tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Combo_tipo.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.Combo_tipo.FormattingEnabled = True
+        Me.Combo_tipo.Items.AddRange(New Object() {"Fraccionable", "No Fraccionable"})
+        Me.Combo_tipo.Location = New System.Drawing.Point(61, 48)
+        Me.Combo_tipo.Margin = New System.Windows.Forms.Padding(4)
+        Me.Combo_tipo.Name = "Combo_tipo"
+        Me.Combo_tipo.Size = New System.Drawing.Size(221, 24)
+        Me.Combo_tipo.TabIndex = 5
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.Label14.Location = New System.Drawing.Point(184, 81)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(143, 16)
+        Me.Label14.TabIndex = 318
+        Me.Label14.Text = "Unidad Medida BASE:"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.ForeColor = System.Drawing.Color.DarkSlateGray
+        Me.Label13.Location = New System.Drawing.Point(14, 81)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(72, 16)
+        Me.Label13.TabIndex = 316
+        Me.Label13.Text = "Contenido:"
+        '
+        'txt_contenido
+        '
+        Me.txt_contenido.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_contenido.ForeColor = System.Drawing.Color.Blue
+        Me.txt_contenido.Location = New System.Drawing.Point(94, 78)
+        Me.txt_contenido.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_contenido.Name = "txt_contenido"
+        Me.txt_contenido.Size = New System.Drawing.Size(82, 22)
+        Me.txt_contenido.TabIndex = 317
+        Me.txt_contenido.Text = "0"
+        Me.txt_contenido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ToolTip1.SetToolTip(Me.txt_contenido, "Ingrese un nro que le servirá para el control de stock")
         '
         'GroupBox4
         '
@@ -259,23 +334,38 @@ Partial Class Producto_alta_New
         Me.GroupBox4.Controls.Add(Me.Panel1)
         Me.GroupBox4.Controls.Add(Me.Label11)
         Me.GroupBox4.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.GroupBox4.Location = New System.Drawing.Point(599, 0)
+        Me.GroupBox4.Location = New System.Drawing.Point(612, 23)
         Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox4.Size = New System.Drawing.Size(467, 254)
+        Me.GroupBox4.Size = New System.Drawing.Size(446, 255)
         Me.GroupBox4.TabIndex = 271
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Proveedores asignados al producto:"
+        '
+        'Bo_codbarra
+        '
+        Me.Bo_codbarra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Bo_codbarra.Image = CType(resources.GetObject("Bo_codbarra.Image"), System.Drawing.Image)
+        Me.Bo_codbarra.Location = New System.Drawing.Point(8, 18)
+        Me.Bo_codbarra.Margin = New System.Windows.Forms.Padding(4)
+        Me.Bo_codbarra.Name = "Bo_codbarra"
+        Me.Bo_codbarra.Size = New System.Drawing.Size(409, 43)
+        Me.Bo_codbarra.TabIndex = 273
+        Me.Bo_codbarra.Text = "Buscar Proveedores"
+        Me.Bo_codbarra.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Bo_codbarra.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Bo_codbarra, "Ver proveedores disponibles para asignar")
+        Me.Bo_codbarra.UseVisualStyleBackColor = True
         '
         'Panel1
         '
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Panel1.Controls.Add(Me.DataGridView_Prod_Prov)
-        Me.Panel1.Location = New System.Drawing.Point(8, 65)
+        Me.Panel1.Location = New System.Drawing.Point(8, 68)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(409, 158)
+        Me.Panel1.Size = New System.Drawing.Size(409, 168)
         Me.Panel1.TabIndex = 273
         '
         'DataGridView_Prod_Prov
@@ -290,7 +380,7 @@ Partial Class Producto_alta_New
         Me.DataGridView_Prod_Prov.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProvidDataGridViewTextBoxColumn, Me.ProvnombreDataGridViewTextBoxColumn, Me.ProdidDataGridViewTextBoxColumn, Me.ProddescripcionDataGridViewTextBoxColumn, Me.ProvProdComfechaDataGridViewTextBoxColumn})
         Me.DataGridView_Prod_Prov.Cursor = System.Windows.Forms.Cursors.Default
         Me.DataGridView_Prod_Prov.DataSource = Me.ProveedorProductoBindingSource
-        Me.DataGridView_Prod_Prov.Location = New System.Drawing.Point(3, 4)
+        Me.DataGridView_Prod_Prov.Location = New System.Drawing.Point(8, 6)
         Me.DataGridView_Prod_Prov.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView_Prod_Prov.MultiSelect = False
         Me.DataGridView_Prod_Prov.Name = "DataGridView_Prod_Prov"
@@ -385,24 +475,11 @@ Partial Class Producto_alta_New
         Me.Label4.Text = "Lote manual:"
         Me.Label4.Visible = False
         '
-        'Combo_tipo
-        '
-        Me.Combo_tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Combo_tipo.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Combo_tipo.FormattingEnabled = True
-        Me.Combo_tipo.Items.AddRange(New Object() {"Fraccionable", "No Fraccionable"})
-        Me.Combo_tipo.Location = New System.Drawing.Point(63, 314)
-        Me.Combo_tipo.Margin = New System.Windows.Forms.Padding(4)
-        Me.Combo_tipo.Name = "Combo_tipo"
-        Me.Combo_tipo.Size = New System.Drawing.Size(221, 24)
-        Me.Combo_tipo.TabIndex = 5
-        Me.Combo_tipo.Visible = False
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.Label1.Location = New System.Drawing.Point(214, 322)
+        Me.Label1.Location = New System.Drawing.Point(214, 338)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(70, 16)
@@ -413,7 +490,7 @@ Partial Class Producto_alta_New
         'ERROR_tx_ptorepo
         '
         Me.ERROR_tx_ptorepo.Image = CType(resources.GetObject("ERROR_tx_ptorepo.Image"), System.Drawing.Image)
-        Me.ERROR_tx_ptorepo.Location = New System.Drawing.Point(575, 186)
+        Me.ERROR_tx_ptorepo.Location = New System.Drawing.Point(290, 22)
         Me.ERROR_tx_ptorepo.Margin = New System.Windows.Forms.Padding(4)
         Me.ERROR_tx_ptorepo.Name = "ERROR_tx_ptorepo"
         Me.ERROR_tx_ptorepo.Size = New System.Drawing.Size(16, 16)
@@ -426,10 +503,10 @@ Partial Class Producto_alta_New
         '
         Me.tx_ptorepo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tx_ptorepo.ForeColor = System.Drawing.Color.Blue
-        Me.tx_ptorepo.Location = New System.Drawing.Point(163, 182)
+        Me.tx_ptorepo.Location = New System.Drawing.Point(138, 19)
         Me.tx_ptorepo.Margin = New System.Windows.Forms.Padding(4)
         Me.tx_ptorepo.Name = "tx_ptorepo"
-        Me.tx_ptorepo.Size = New System.Drawing.Size(402, 22)
+        Me.tx_ptorepo.Size = New System.Drawing.Size(144, 22)
         Me.tx_ptorepo.TabIndex = 4
         Me.tx_ptorepo.Text = "0"
         Me.tx_ptorepo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -581,7 +658,7 @@ Partial Class Producto_alta_New
         'ERROR_tx_unidadmedida
         '
         Me.ERROR_tx_unidadmedida.Image = CType(resources.GetObject("ERROR_tx_unidadmedida.Image"), System.Drawing.Image)
-        Me.ERROR_tx_unidadmedida.Location = New System.Drawing.Point(346, 320)
+        Me.ERROR_tx_unidadmedida.Location = New System.Drawing.Point(346, 336)
         Me.ERROR_tx_unidadmedida.Margin = New System.Windows.Forms.Padding(4)
         Me.ERROR_tx_unidadmedida.Name = "ERROR_tx_unidadmedida"
         Me.ERROR_tx_unidadmedida.Size = New System.Drawing.Size(16, 16)
@@ -606,7 +683,7 @@ Partial Class Producto_alta_New
         '
         Me.tx_unimedida.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tx_unimedida.ForeColor = System.Drawing.Color.Blue
-        Me.tx_unimedida.Location = New System.Drawing.Point(292, 314)
+        Me.tx_unimedida.Location = New System.Drawing.Point(292, 330)
         Me.tx_unimedida.Margin = New System.Windows.Forms.Padding(4)
         Me.tx_unimedida.Name = "tx_unimedida"
         Me.tx_unimedida.Size = New System.Drawing.Size(46, 22)
@@ -672,18 +749,6 @@ Partial Class Producto_alta_New
         Me.Label2.TabIndex = 265
         Me.Label2.Text = "Código interno:"
         '
-        'lb_fechanac
-        '
-        Me.lb_fechanac.AutoSize = True
-        Me.lb_fechanac.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.lb_fechanac.Location = New System.Drawing.Point(23, 322)
-        Me.lb_fechanac.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
-        Me.lb_fechanac.Name = "lb_fechanac"
-        Me.lb_fechanac.Size = New System.Drawing.Size(39, 16)
-        Me.lb_fechanac.TabIndex = 259
-        Me.lb_fechanac.Text = "Tipo "
-        Me.lb_fechanac.Visible = False
-        '
         'lb_ape
         '
         Me.lb_ape.AutoSize = True
@@ -699,7 +764,7 @@ Partial Class Producto_alta_New
         '
         Me.lb_tel.AutoSize = True
         Me.lb_tel.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.lb_tel.Location = New System.Drawing.Point(22, 186)
+        Me.lb_tel.Location = New System.Drawing.Point(14, 22)
         Me.lb_tel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lb_tel.Name = "lb_tel"
         Me.lb_tel.Size = New System.Drawing.Size(116, 16)
@@ -764,11 +829,11 @@ Partial Class Producto_alta_New
         Me.GroupBox3.Controls.Add(Me.Label10)
         Me.GroupBox3.Controls.Add(Me.Bo_nuevamarca)
         Me.GroupBox3.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.GroupBox3.Location = New System.Drawing.Point(8, 234)
+        Me.GroupBox3.Location = New System.Drawing.Point(8, 316)
         Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(1066, 232)
+        Me.GroupBox3.Size = New System.Drawing.Size(1066, 187)
         Me.GroupBox3.TabIndex = 269
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Marca, Categoria, Rubro y Subrubro"
@@ -898,7 +963,7 @@ Partial Class Producto_alta_New
         '
         Me.Bo_cancelar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Bo_cancelar.Image = CType(resources.GetObject("Bo_cancelar.Image"), System.Drawing.Image)
-        Me.Bo_cancelar.Location = New System.Drawing.Point(787, 475)
+        Me.Bo_cancelar.Location = New System.Drawing.Point(779, 446)
         Me.Bo_cancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.Bo_cancelar.Name = "Bo_cancelar"
         Me.Bo_cancelar.Size = New System.Drawing.Size(139, 52)
@@ -912,7 +977,7 @@ Partial Class Producto_alta_New
         '
         Me.Bo_guardar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Bo_guardar.Image = CType(resources.GetObject("Bo_guardar.Image"), System.Drawing.Image)
-        Me.Bo_guardar.Location = New System.Drawing.Point(934, 474)
+        Me.Bo_guardar.Location = New System.Drawing.Point(926, 445)
         Me.Bo_guardar.Margin = New System.Windows.Forms.Padding(4)
         Me.Bo_guardar.Name = "Bo_guardar"
         Me.Bo_guardar.Size = New System.Drawing.Size(140, 53)
@@ -930,7 +995,7 @@ Partial Class Producto_alta_New
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackgroundImage = Global.Aplicacion.My.Resources.Resources.silver_3
-        Me.ClientSize = New System.Drawing.Size(1112, 553)
+        Me.ClientSize = New System.Drawing.Size(1112, 509)
         Me.Controls.Add(Me.Bo_cancelar)
         Me.Controls.Add(Me.Bo_guardar)
         Me.Controls.Add(Me.GroupBox3)
@@ -945,6 +1010,8 @@ Partial Class Producto_alta_New
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.Panel1.ResumeLayout(False)
@@ -1031,4 +1098,9 @@ Partial Class Producto_alta_New
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Bo_codbarra As System.Windows.Forms.Button
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Combo_unidmedida As System.Windows.Forms.ComboBox
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents txt_contenido As System.Windows.Forms.TextBox
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
 End Class

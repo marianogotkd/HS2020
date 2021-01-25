@@ -107,6 +107,7 @@
     <Compile Include="Sucursal.vb" />
     <Compile Include="Terminal.vb" />
     <Compile Include="Turno.vb" />
+    <Compile Include="Unidad_medida.vb" />
     <Compile Include="Usuario.vb" />
     <Compile Include="Vendedor.vb" />
     <Compile Include="Venta.vb" />

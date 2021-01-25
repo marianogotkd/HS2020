@@ -5,13 +5,14 @@ Public Class Producto
     Inherits Datos.Conexion
 
     Public Function Producto_Alta_New(ByVal prod_descripcion As String, ByVal prod_descrilarga As String, ByVal prod_precio_vta As Decimal, ByVal prod_stock As Integer, ByVal prod_ptorepo As String, ByVal prod_codinterno As String,
-                                  ByVal prod_codbarra As String, ByVal idcat As Integer, ByVal nrocat As Integer, ByVal idmarca As Integer, ByVal prod_unimedida As String, ByVal producto_foto() As Byte, ByVal prod_precio_vta_May As Decimal, ByVal prod_tipo As String, ByVal prod_lote As String) As DataSet
+                                  ByVal prod_codbarra As String, ByVal idcat As Integer, ByVal nrocat As Integer, ByVal idmarca As Integer, ByVal prod_unimedida As String, ByVal producto_foto() As Byte, ByVal prod_precio_vta_May As Decimal, ByVal prod_tipo As String, ByVal prod_lote As String,
+                                  ByVal prod_contenido As Decimal) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
         End Try
 
-        Dim comando As New OleDbCommand("Producto_Alta_New", dbconn)
+        Dim comando As New OleDbCommand("Producto_alta_New", dbconn)
         comando.CommandType = CommandType.StoredProcedure
 
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_descripcion", prod_descripcion))
@@ -29,6 +30,8 @@ Public Class Producto
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_precio_vta_May", prod_precio_vta_May))
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_tipo", prod_tipo))
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_lote", prod_lote))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prod_contenido", prod_contenido))
+
 
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)
@@ -233,7 +236,8 @@ Public Class Producto
                                   ByVal prod_precio_vta_May As Decimal,
                                   ByVal prod_ptorepo As Integer,
                                 ByVal prod_tipo As String,
-                                ByVal prod_lote As String) As DataSet
+                                ByVal prod_lote As String,
+                                ByVal prod_contenido As Decimal) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -256,6 +260,7 @@ Public Class Producto
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_ptorepo", prod_ptorepo))
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_tipo", prod_tipo))
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_lote", prod_lote))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prod_contenido", prod_contenido))
         'comando.Parameters.Add(New OleDb.OleDbParameter("@producto_foto", producto_foto))
 
         Dim ds_JE As New DataSet()
@@ -466,7 +471,7 @@ Public Class Producto
         Return ds_JE
     End Function
 
-    Public Function Producto_x_sucursal_ALTA(ByVal prod_id As Integer, ByVal sucursal_id As Integer, ByVal ProdxSuc_stock As Integer, ByVal ProdxSuc_ptorepo As Integer) As DataSet
+    Public Function Producto_x_sucursal_ALTA(ByVal prod_id As Integer, ByVal sucursal_id As Integer, ByVal ProdxSuc_stock As Integer, ByVal ProdxSuc_ptorepo As Integer, ByVal ProdxSuc_stock_real As Decimal) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -477,6 +482,7 @@ Public Class Producto
         comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
         comando.Parameters.Add(New OleDb.OleDbParameter("@ProdxSuc_stock", ProdxSuc_stock))
         comando.Parameters.Add(New OleDb.OleDbParameter("@ProdxSuc_ptorepo", ProdxSuc_ptorepo))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@ProdxSuc_stock_real", ProdxSuc_stock_real))
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)
         da_JE.Fill(ds_JE, "Producto")
@@ -506,7 +512,7 @@ Public Class Producto
 
 
 
-    Public Sub Producto_x_sucursal_Actualizar_Stock(ByVal prod_id As Integer, ByVal suc_id As Integer, ByVal Cant As Decimal)
+    Public Sub Producto_x_sucursal_Actualizar_Stock(ByVal prod_id As Integer, ByVal suc_id As Integer, ByVal Cant As Decimal, ByVal STOCK_REAL_NUEVO As Decimal)
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -517,6 +523,7 @@ Public Class Producto
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_id", prod_id))
         comando.Parameters.Add(New OleDb.OleDbParameter("@suc_id", suc_id))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Cant", Cant))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@STOCK_REAL_NUEVO", STOCK_REAL_NUEVO))
 
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)

@@ -466,6 +466,12 @@
     <Compile Include="Modulos\Enfermeria\Sesiones_consulta_global.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Enfermeria\Sesiones_prod_agregar.Designer.vb">
+      <DependentUpon>Sesiones_prod_agregar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Enfermeria\Sesiones_prod_agregar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Enfermeria\Sesion_pacientes.Designer.vb">
       <DependentUpon>Sesion_pacientes.vb</DependentUpon>
     </Compile>
@@ -1816,6 +1822,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Enfermeria\Sesiones_consulta_global.resx">
       <DependentUpon>Sesiones_consulta_global.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Enfermeria\Sesiones_prod_agregar.resx">
+      <DependentUpon>Sesiones_prod_agregar.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Enfermeria\Sesion_pacientes.resx">
       <DependentUpon>Sesion_pacientes.vb</DependentUpon>
