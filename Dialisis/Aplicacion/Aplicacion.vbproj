@@ -409,6 +409,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Ds_enfermeria.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Enfermeria\Ds_enfermeria.vb">
+      <DependentUpon>Ds_enfermeria.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Enfermeria\Enfermeria_Acceso_Vascular.Designer.vb">
       <DependentUpon>Enfermeria_Acceso_Vascular.vb</DependentUpon>
     </Compile>
@@ -431,6 +434,12 @@
       <DependentUpon>Enfermeria_reporte_fechas.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Enfermeria\Enfermeria_reporte_fechas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Enfermeria\Insumos_Predefinidos.Designer.vb">
+      <DependentUpon>Insumos_Predefinidos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Enfermeria\Insumos_Predefinidos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulos\Enfermeria\msj_esperar_sesiones.Designer.vb">
@@ -1792,6 +1801,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Enfermeria\Enfermeria_reporte_fechas.resx">
       <DependentUpon>Enfermeria_reporte_fechas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Enfermeria\Insumos_Predefinidos.resx">
+      <DependentUpon>Insumos_Predefinidos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Enfermeria\msj_esperar_sesiones.resx">
       <DependentUpon>msj_esperar_sesiones.vb</DependentUpon>

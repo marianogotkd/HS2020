@@ -231,7 +231,8 @@
             lbl_err2.Visible = True
             lbl_err3.Visible = True
         End If
-
+        tb_desc.Focus()
+        tb_desc.SelectAll()
     End Sub
 
     Private Sub btn_hora_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_hora.Click
@@ -251,6 +252,8 @@
             lbl_err2.Visible = True
             lbl_err3.Visible = True
         End If
+        tb_desc.Focus()
+        tb_desc.SelectAll()
     End Sub
 
     Private Sub btn_fijo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_fijo.Click
@@ -272,6 +275,8 @@
             lbl_err2.Visible = True
             lbl_err3.Visible = True
         End If
+        tb_desc.Focus()
+        tb_desc.SelectAll()
     End Sub
 
     Private Sub btn_emp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_emp.Click

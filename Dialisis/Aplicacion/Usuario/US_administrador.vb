@@ -1318,4 +1318,9 @@ Public Property EnabledCerrar() As Boolean
         Producto_modificar.Show()
 
     End Sub
+
+    Private Sub InsumosPredefinidosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InsumosPredefinidosToolStripMenuItem.Click
+        Insumos_Predefinidos.Show()
+
+    End Sub
 End Class

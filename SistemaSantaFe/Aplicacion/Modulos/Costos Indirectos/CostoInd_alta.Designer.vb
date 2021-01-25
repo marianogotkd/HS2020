@@ -107,7 +107,7 @@ Partial Class CostoInd_alta
         Me.DateTimePicker1.Location = New System.Drawing.Point(1032, 12)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(200, 20)
-        Me.DateTimePicker1.TabIndex = 0
+        Me.DateTimePicker1.TabIndex = 7
         '
         'Label1
         '
@@ -124,7 +124,7 @@ Partial Class CostoInd_alta
         Me.tb_desc.Location = New System.Drawing.Point(88, 82)
         Me.tb_desc.Name = "tb_desc"
         Me.tb_desc.Size = New System.Drawing.Size(238, 26)
-        Me.tb_desc.TabIndex = 2
+        Me.tb_desc.TabIndex = 1
         '
         'GroupBox1
         '
@@ -134,7 +134,7 @@ Partial Class CostoInd_alta
         Me.GroupBox1.Location = New System.Drawing.Point(13, 112)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(253, 270)
-        Me.GroupBox1.TabIndex = 5
+        Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Costo Por Dia"
         '
@@ -241,7 +241,7 @@ Partial Class CostoInd_alta
         Me.tb_costo.Location = New System.Drawing.Point(404, 82)
         Me.tb_costo.Name = "tb_costo"
         Me.tb_costo.Size = New System.Drawing.Size(112, 26)
-        Me.tb_costo.TabIndex = 6
+        Me.tb_costo.TabIndex = 2
         '
         'Label4
         '
@@ -260,7 +260,7 @@ Partial Class CostoInd_alta
         Me.GroupBox2.Location = New System.Drawing.Point(272, 112)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(301, 270)
-        Me.GroupBox2.TabIndex = 33
+        Me.GroupBox2.TabIndex = 4
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Costo Por Hora"
         '
@@ -350,7 +350,7 @@ Partial Class CostoInd_alta
         Me.GroupBox3.Location = New System.Drawing.Point(579, 112)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(247, 278)
-        Me.GroupBox3.TabIndex = 33
+        Me.GroupBox3.TabIndex = 5
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Costo Fijo"
         '
@@ -479,7 +479,7 @@ Partial Class CostoInd_alta
         Me.GroupBox4.Location = New System.Drawing.Point(832, 112)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(411, 319)
-        Me.GroupBox4.TabIndex = 35
+        Me.GroupBox4.TabIndex = 6
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Costo Empleados"
         '
@@ -640,7 +640,7 @@ Partial Class CostoInd_alta
         Me.tb_titulo.Location = New System.Drawing.Point(72, 34)
         Me.tb_titulo.Name = "tb_titulo"
         Me.tb_titulo.Size = New System.Drawing.Size(560, 26)
-        Me.tb_titulo.TabIndex = 39
+        Me.tb_titulo.TabIndex = 0
         '
         'Label12
         '
