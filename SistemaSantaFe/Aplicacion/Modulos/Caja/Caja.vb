@@ -53,32 +53,34 @@
 
         End If
 
+        '18/1/21 desabhilito el bloqueo de botones en cuando la caja esta cerrada y todas las variantes
+
         Select Case (SESION_CAJA)
             Case (1)
                 Dim Ruta As String = Application.StartupPath & "\..\..\\Resources\Caja.png"
                 US_administrador.BO_Caja.Image = Image.FromFile(Ruta)
                 US_Empleado.BO_Caja.Image = Image.FromFile(Ruta)
 
-                US_administrador.ToolStripDropDownButton6.Enabled = True   'boton de ventas  ADMINISTRADOR
-                US_administrador.ToolStripDropDownButton6.DropDownItems("VentaEnCajaToolStripMenuItem").Enabled = False   'venta en caja
-                US_administrador.ToolStripDropDownButton6.DropDownItems("VentaEnMesas2ToolStripMenuItem").Enabled = False  'venta en mesas
-                US_administrador.ToolStripDropDownButton6.DropDownItems("VentasConsultasToolStripMenuItem").Enabled = True  'venta consulta
+                'US_administrador.ToolStripDropDownButton6.Enabled = True   'boton de ventas  ADMINISTRADOR
+                'US_administrador.ToolStripDropDownButton6.DropDownItems("VentaEnCajaToolStripMenuItem").Enabled = False   'venta en caja
+                'US_administrador.ToolStripDropDownButton6.DropDownItems("VentaEnMesas2ToolStripMenuItem").Enabled = False  'venta en mesas
+                'US_administrador.ToolStripDropDownButton6.DropDownItems("VentasConsultasToolStripMenuItem").Enabled = True  'venta consulta
 
-                'boton Servicios desabilitado por caja cerrada
+                ''boton Servicios desabilitado por caja cerrada
 
-                US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem_servicio_nuevo").Enabled = False 'servicio alta
-                US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem3").Enabled = False
-                US_Empleado.ToolStripDropDownButton6.Enabled = True   'boton de ventas  EMPLEADO
-                US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaEnCajaToolStripMenuItem").Enabled = False   'venta en caja
-                US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaEnMesasToolStripMenuItem").Enabled = False  'venta en mesas
-                US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaConsultaToolStripMenuItem").Enabled = True  'venta consulta
-                US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem_servicio_nuevo").Enabled = False
-                US_administrador.TurnoGestionToolStripMenuItem.Enabled = False
-                US_administrador.TurnoFijoNuevoToolStripMenuItem.Enabled = False
-                US_administrador.TurnoComunNuevoToolStripMenuItem.Enabled = False
-                US_Empleado.TurnoGestionToolStripMenuItem.Enabled = False
-                US_Empleado.TurnoFijoNuevoToolStripMenuItem1.Enabled = False
-                US_Empleado.TurnoComunNuevoToolStripMenuItem.Enabled = False
+                'US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem_servicio_nuevo").Enabled = False 'servicio alta
+                'US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem3").Enabled = False
+                'US_Empleado.ToolStripDropDownButton6.Enabled = True   'boton de ventas  EMPLEADO
+                'US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaEnCajaToolStripMenuItem").Enabled = False   'venta en caja
+                'US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaEnMesasToolStripMenuItem").Enabled = False  'venta en mesas
+                'US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaConsultaToolStripMenuItem").Enabled = True  'venta consulta
+                'US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem_servicio_nuevo").Enabled = False
+                'US_administrador.TurnoGestionToolStripMenuItem.Enabled = False
+                'US_administrador.TurnoFijoNuevoToolStripMenuItem.Enabled = False
+                'US_administrador.TurnoComunNuevoToolStripMenuItem.Enabled = False
+                'US_Empleado.TurnoGestionToolStripMenuItem.Enabled = False
+                'US_Empleado.TurnoFijoNuevoToolStripMenuItem1.Enabled = False
+                'US_Empleado.TurnoComunNuevoToolStripMenuItem.Enabled = False
             Case (2)
                 Dim Ruta As String = Application.StartupPath & "\..\..\\Resources\CajaAbierta.png"
                 US_administrador.BO_Caja.Image = Image.FromFile(Ruta)
@@ -89,27 +91,27 @@
 
 
 
-                US_administrador.ToolStripDropDownButton6.Enabled = True   'boton de ventas  ADMINISTRADOR
-                US_administrador.ToolStripDropDownButton6.DropDownItems("VentaEnCajaToolStripMenuItem").Enabled = True    'venta en caja
-                US_administrador.ToolStripDropDownButton6.DropDownItems("VentaEnMesas2ToolStripMenuItem").Enabled = True   'venta en mesas
-                US_administrador.ToolStripDropDownButton6.DropDownItems("VentasConsultasToolStripMenuItem").Enabled = True   'venta consulta
+                'US_administrador.ToolStripDropDownButton6.Enabled = True   'boton de ventas  ADMINISTRADOR
+                'US_administrador.ToolStripDropDownButton6.DropDownItems("VentaEnCajaToolStripMenuItem").Enabled = True    'venta en caja
+                'US_administrador.ToolStripDropDownButton6.DropDownItems("VentaEnMesas2ToolStripMenuItem").Enabled = True   'venta en mesas
+                'US_administrador.ToolStripDropDownButton6.DropDownItems("VentasConsultasToolStripMenuItem").Enabled = True   'venta consulta
 
-                US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem_servicio_nuevo").Enabled = True 'servicio alta
-                US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem3").Enabled = True
+                'US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem_servicio_nuevo").Enabled = True 'servicio alta
+                'US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem3").Enabled = True
 
 
-                US_Empleado.ToolStripDropDownButton6.Enabled = True   'boton de ventas EMPLEADO
-                US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaEnCajaToolStripMenuItem").Enabled = True    'venta en caja
-                US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaEnMesasToolStripMenuItem").Enabled = True   'venta en mesas
-                US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaConsultaToolStripMenuItem").Enabled = True   'venta consulta
+                'US_Empleado.ToolStripDropDownButton6.Enabled = True   'boton de ventas EMPLEADO
+                'US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaEnCajaToolStripMenuItem").Enabled = True    'venta en caja
+                'US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaEnMesasToolStripMenuItem").Enabled = True   'venta en mesas
+                'US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaConsultaToolStripMenuItem").Enabled = True   'venta consulta
 
-                US_administrador.TurnoGestionToolStripMenuItem.Enabled = True
-                US_administrador.TurnoFijoNuevoToolStripMenuItem.Enabled = True
-                US_administrador.TurnoComunNuevoToolStripMenuItem.Enabled = True
+                'US_administrador.TurnoGestionToolStripMenuItem.Enabled = True
+                'US_administrador.TurnoFijoNuevoToolStripMenuItem.Enabled = True
+                'US_administrador.TurnoComunNuevoToolStripMenuItem.Enabled = True
 
-                US_Empleado.TurnoGestionToolStripMenuItem.Enabled = True
-                US_Empleado.TurnoFijoNuevoToolStripMenuItem1.Enabled = True
-                US_Empleado.TurnoComunNuevoToolStripMenuItem.Enabled = True
+                'US_Empleado.TurnoGestionToolStripMenuItem.Enabled = True
+                'US_Empleado.TurnoFijoNuevoToolStripMenuItem1.Enabled = True
+                'US_Empleado.TurnoComunNuevoToolStripMenuItem.Enabled = True
             Case (3)
                 Dim Ruta As String = Application.StartupPath & "\..\..\\Resources\CajaCerrada.png"
                 US_administrador.BO_Caja.Image = Image.FromFile(Ruta)
@@ -120,25 +122,25 @@
 
 
                 US_administrador.ToolStripDropDownButton6.Enabled = True   'boton de ventas  ADMINISTRADOR
-                US_administrador.ToolStripDropDownButton6.DropDownItems("VentaEnCajaToolStripMenuItem").Enabled = False   'venta en caja
-                US_administrador.ToolStripDropDownButton6.DropDownItems("VentaEnMesas2ToolStripMenuItem").Enabled = False  'venta en mesas
-                US_administrador.ToolStripDropDownButton6.DropDownItems("VentasConsultasToolStripMenuItem").Enabled = True  'venta consulta
+                'US_administrador.ToolStripDropDownButton6.DropDownItems("VentaEnCajaToolStripMenuItem").Enabled = False   'venta en caja
+                'US_administrador.ToolStripDropDownButton6.DropDownItems("VentaEnMesas2ToolStripMenuItem").Enabled = False  'venta en mesas
+                'US_administrador.ToolStripDropDownButton6.DropDownItems("VentasConsultasToolStripMenuItem").Enabled = True  'venta consulta
 
-                US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem_servicio_nuevo").Enabled = False 'servicio alta
-                US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem3").Enabled = False
+                'US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem_servicio_nuevo").Enabled = False 'servicio alta
+                'US_administrador.ToolStripDropDownButtonServicios.DropDownItems("ToolStripMenuItem3").Enabled = False
 
-                US_Empleado.ToolStripDropDownButton6.Enabled = True  'boton de ventas EMPLEADO
-                US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaEnCajaToolStripMenuItem").Enabled = False   'venta en caja
-                US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaEnMesasToolStripMenuItem").Enabled = False  'venta en mesas
-                US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaConsultaToolStripMenuItem").Enabled = True  'venta consulta
+                'US_Empleado.ToolStripDropDownButton6.Enabled = True  'boton de ventas EMPLEADO
+                'US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaEnCajaToolStripMenuItem").Enabled = False   'venta en caja
+                'US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaEnMesasToolStripMenuItem").Enabled = False  'venta en mesas
+                'US_Empleado.ToolStripDropDownButton6.DropDownItems("VentaConsultaToolStripMenuItem").Enabled = True  'venta consulta
 
-                US_administrador.TurnoGestionToolStripMenuItem.Enabled = False
-                US_administrador.TurnoFijoNuevoToolStripMenuItem.Enabled = False
-                US_administrador.TurnoComunNuevoToolStripMenuItem.Enabled = False
+                'US_administrador.TurnoGestionToolStripMenuItem.Enabled = False
+                'US_administrador.TurnoFijoNuevoToolStripMenuItem.Enabled = False
+                'US_administrador.TurnoComunNuevoToolStripMenuItem.Enabled = False
 
-                US_Empleado.TurnoGestionToolStripMenuItem.Enabled = False
-                US_Empleado.TurnoFijoNuevoToolStripMenuItem1.Enabled = False
-                US_Empleado.TurnoComunNuevoToolStripMenuItem.Enabled = False
+                'US_Empleado.TurnoGestionToolStripMenuItem.Enabled = False
+                'US_Empleado.TurnoFijoNuevoToolStripMenuItem1.Enabled = False
+                'US_Empleado.TurnoComunNuevoToolStripMenuItem.Enabled = False
         End Select
     End Sub
 
