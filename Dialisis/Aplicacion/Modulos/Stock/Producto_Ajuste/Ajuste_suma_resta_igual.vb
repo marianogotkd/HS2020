@@ -192,9 +192,14 @@
         'Calculo Stock''''''''
         Mov = CDec(Ds_Suc.Tables(1).Rows(0).Item("Stock_Destino")) + CDec(tb_nueva_cant.Text)
         ''''''
+        Dim stock_real_ingreso As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")) * CDec(tb_nueva_cant.Text)
+        'ahora sumo al stock real q ya existe.
+        Dim stock_real_nuevo As Decimal = CDec(Ds_Suc.Tables(1).Rows(0).Item("ProdxSuc_stock_real")) + stock_real_ingreso
+
+
         ''''''''''
         'Actualizo stock'''''
-        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov)
+        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo)
 
         'creo un registro en producto_x_sucursal_lote
         'CHOCO 14-07-2020 aqui veo si existe el lote, actualizo la cantidad, pero si no existe registro como nuevo
@@ -238,9 +243,15 @@
         'Calculo Stock''''''''
         Mov = Ds_Suc.Tables(0).Rows(0).Item("Stock_Origen") - CDec(tb_nueva_cant.Text)
         '''''''
+
+        Dim stock_real_ingreso As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")) * CDec(tb_nueva_cant.Text)
+        'ahora sumo al stock real q ya existe.
+        Dim stock_real_nuevo As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) - stock_real_ingreso
+
+
         ''''''''''
         'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
-        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
         '''''''''''
 
 
@@ -288,9 +299,18 @@
         'segundo, sumo lo que quiero poner ahora
         Mov = CDec(Mov) + CDec(tb_nueva_cant.Text)
         ''''''
+
+        Dim stock_real_ingreso As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")) * CDec(tb_cant_actual.Text)
+        'primero resto lo que habia en existencia del lote
+        Dim stock_real_nuevo As Decimal = CDec(Ds_Suc.Tables(1).Rows(0).Item("ProdxSuc_stock_real")) - stock_real_ingreso
+        'segundo, sumo lo que quiero poner ahora
+        stock_real_ingreso = CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")) * CDec(tb_nueva_cant.Text)
+        stock_real_nuevo = stock_real_nuevo + stock_real_ingreso
+
+
         ''''''''''
         'Actualizo stock'''''
-        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov)
+        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo)
 
         'creo un registro en producto_x_sucursal_lote
         'CHOCO 14-07-2020 aqui veo si existe el lote, actualizo la cantidad, pero si no existe registro como nuevo

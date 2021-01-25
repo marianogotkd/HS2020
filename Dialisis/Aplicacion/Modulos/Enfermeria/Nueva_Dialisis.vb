@@ -164,12 +164,23 @@
 
     Private Sub btn_Buscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Buscar.Click
         'es lo mismo que baja de mercaderia
-        GM_Baja_Producto.Close() 'hay q tener la precaucion de cerrarlo antes, ya que este modulo se lo usa para diversos fines
-        GM_Baja_Producto.sucursal_id = 3 ' el ID 3 es La Sucursal Sala de Dialisis
-        GM_Baja_Producto.form_procedencia = "Gestion_Mercaderia"
-        GM_Baja_Producto.Text = "Enfermeria"
-        GM_Baja_Producto.tipo_movimiento = "consumir producto en enfermeria"
-        GM_Baja_Producto.Show()
+        'GM_Baja_Producto.Close() 'hay q tener la precaucion de cerrarlo antes, ya que este modulo se lo usa para diversos fines
+        'GM_Baja_Producto.sucursal_id = 3 ' el ID 3 es La Sucursal Sala de Dialisis
+        'GM_Baja_Producto.form_procedencia = "Gestion_Mercaderia"
+        'GM_Baja_Producto.Text = "Enfermeria"
+        'GM_Baja_Producto.tipo_movimiento = "consumir producto en enfermeria"
+        'GM_Baja_Producto.Show()
+
+
+
+        Sesiones_prod_agregar.Close() 'hay q tener la precaucion de cerrarlo antes, ya que este modulo se lo usa para diversos fines
+        Sesiones_prod_agregar.sucursal_id = 3 ' el ID 3 es La Sucursal Sala de Dialisis
+        Sesiones_prod_agregar.form_procedencia = "Gestion_Mercaderia"
+        Sesiones_prod_agregar.Text = "Enfermeria"
+        Sesiones_prod_agregar.tipo_movimiento = "consumir producto en enfermeria"
+        Sesiones_prod_agregar.Show()
+
+
     End Sub
 
     Private Sub limpiar()
@@ -330,7 +341,7 @@
                             '''''''
                             ''''''''''
                             'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
-                            DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, Mov) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+                            DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, Mov, "") 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
                             ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
 
 

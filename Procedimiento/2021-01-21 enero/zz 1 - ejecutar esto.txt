@@ -1,0 +1,4 @@
+update Producto set prod_unidadmedida = 'UND',
+prod_contenido = '1'
+
+con esto ya tengo todos los productos con contenido en 1 y unidadmedida en und

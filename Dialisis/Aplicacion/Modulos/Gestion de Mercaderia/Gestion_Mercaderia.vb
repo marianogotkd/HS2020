@@ -162,14 +162,23 @@
                         'Calculo Stock''''''''
                         Origen = Ds_Suc.Tables(0).Rows(0).Item("Stock_Origen") - Mov_DS.Tables("Mov").Rows(i).Item("Cantidad")
                         ''''''''''
-                        'Actualizo stock'''''
-                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, cb_origen.SelectedValue, Origen)
+                        Dim stock_real_ingreso As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")) * CDec(Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"))
+                        'ahora resto al stock real q ya existe en suc origne.
+                        Dim stock_real_nuevo As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) - stock_real_ingreso
+
+
+                        'Actualizo stock en origen'''''
+                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, cb_origen.SelectedValue, Origen, stock_real_nuevo)
                         '''''''''''
                         'Calculo Stock''''''''
                         Destino = Ds_Suc.Tables(1).Rows(0).Item("Stock_Destino") + Mov_DS.Tables("Mov").Rows(i).Item("Cantidad")
                         ''''''''''
-                        'Actualizo stock'''''
-                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, cb_destino.SelectedValue, Destino)
+                        stock_real_ingreso = CDec(Ds_Suc.Tables(1).Rows(0).Item("prod_contenido")) * CDec(Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"))
+                        'ahora sumo al stock real q ya existe en suc destino.
+                        stock_real_nuevo = CDec(Ds_Suc.Tables(1).Rows(0).Item("ProdxSuc_stock_real")) + stock_real_ingreso
+
+                        'Actualizo stock en destino'''''
+                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, cb_destino.SelectedValue, Destino, stock_real_nuevo)
                         '''''''''''
 
                         'Choco 10-07-2020 ---aqui pongo todo lo referente a la creacion y movimiento de cantidades entre lotes.
@@ -274,9 +283,13 @@
                         'Calculo Stock''''''''
                         Mov = Ds_Suc.Tables(0).Rows(0).Item("Stock_Origen") - Mov_DS.Tables("Mov").Rows(i).Item("Cantidad")
                         '''''''
+                        Dim stock_real_ingreso As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")) * CDec(Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"))
+                        'ahora resto al stock real q ya existe en suc origne.
+                        Dim stock_real_nuevo As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) - stock_real_ingreso
+
                         ''''''''''
                         'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
-                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, cb_origen.SelectedValue, Mov) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, cb_origen.SelectedValue, Mov, stock_real_nuevo) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
                         '''''''''''
 
                         '////////////////choco: 08-07-2020///////////////////////////////////

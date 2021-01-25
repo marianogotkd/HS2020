@@ -2,6 +2,7 @@
 Imports System.Data.OleDb
 Public Class Producto_alta_New
     Dim DAproducto As New Datos.Producto
+    Dim DAunidad_medida As New Datos.Unidad_medida
     Dim DAcategoria As New Datos.Categoria
     Dim DAmarca As New Datos.Marca
     Dim DAproveedores As New Datos.Proveedor
@@ -22,6 +23,8 @@ Public Class Producto_alta_New
             recuperar_datos_producto() 'recupera los proveedores asignados, y los carga en la grilla DataGridView_Prod_Prov
             Me.tx_codbarra.Focus()
             Me.tx_codbarra.SelectAll()
+            txt_contenido.ReadOnly = True
+
             'Bo_guardar.Enabled = False
             Clipboard.SetDataObject(Me.PictureBox1.Image)
         Else
@@ -62,6 +65,12 @@ Public Class Producto_alta_New
         tx_descripcion.Text = ds_prod.Tables(0).Rows(0).Item(1)
         tx_descrilarga.Text = ds_prod.Tables(0).Rows(0).Item(2).ToString
         tx_unimedida.Text = ds_prod.Tables(0).Rows(0).Item(11)
+        Combo_unidmedida.Text = ds_prod.Tables(0).Rows(0).Item(11) 'choco: 21-01-2021
+        txt_contenido.Text = ds_prod.Tables(0).Rows(0).Item("prod_contenido").ToString
+        If txt_contenido.Text = "" Then
+            txt_contenido.Text = CDec(0)
+        End If
+
         tx_codbarra.Text = ds_prod.Tables(0).Rows(0).Item(7)
         tx_ptorepo.Text = ds_prod.Tables(0).Rows(0).Item(5)
         tx_stock.Text = ds_prod.Tables(0).Rows(0).Item(4)
@@ -189,6 +198,12 @@ Public Class Producto_alta_New
         End If
         Combo_tipo.SelectedIndex = 1
 
+        Dim ds_unidad As DataSet = DAunidad_medida.Unidad_medida_obtener_todo
+
+        Combo_unidmedida.DataSource = ds_unidad.Tables(0)
+        Combo_unidmedida.DisplayMember = "unid_medida_desc"
+        Combo_unidmedida.ValueMember = "unid_medida_id"
+        Combo_unidmedida.SelectedIndex = 0
 
     End Sub
 
@@ -658,7 +673,11 @@ Public Class Producto_alta_New
                 Else
                     lote = "no"
                 End If
-                Dim ds_prodid As DataSet = DAproducto.Producto_Alta_New(tx_descripcion.Text, tx_descrilarga.Text, CDec(0), 0, CInt(tx_ptorepo.Text), tx_codinterno.Text, tx_codbarra.Text, idcat, nrocat, idmarca, "", producto_foto, CDec(0), Combo_tipo.SelectedItem, lote)
+                If txt_contenido.Text = "" Or CDec(txt_contenido.Text) = CDec(0) Then
+                    txt_contenido.Text = 1
+                End If
+
+                Dim ds_prodid As DataSet = DAproducto.Producto_Alta_New(tx_descripcion.Text, tx_descrilarga.Text, CDec(0), 0, CInt(tx_ptorepo.Text), tx_codinterno.Text, tx_codbarra.Text, idcat, nrocat, idmarca, Combo_unidmedida.Text, producto_foto, CDec(0), Combo_tipo.SelectedItem, lote, CDec(txt_contenido.Text))
                 '/////////////////////////////////////////////////////////////////////////////////
 
                 Dim prodid As Integer = ds_prodid.Tables(0).Rows(0).Item(0)
@@ -685,7 +704,7 @@ Public Class Producto_alta_New
                     Dim a As Integer = 0
                     While a < ds_prodid.Tables(1).Rows.Count
                         Dim sucursal_id As Integer = ds_prodid.Tables(1).Rows(a).Item("sucursal_id")
-                    DAproducto.Producto_x_sucursal_ALTA(prodid, sucursal_id, 0, 0)
+                    DAproducto.Producto_x_sucursal_ALTA(prodid, sucursal_id, 0, 0, 0)
                         a = a + 1
                     End While
                     limpiar_deshabilitar()
@@ -757,7 +776,11 @@ Public Class Producto_alta_New
                 Else
                     lote = "no"
                 End If
-                Dim ds_prodid As DataSet = DAproducto.Producto_modificar(tx_descripcion.Text, tx_descrilarga.Text, Tb_PrecMin.Text, tx_codinterno.Text, tx_codbarra.Text, idcat, nrocat, idmarca, tx_unimedida.Text, producto_foto, tb_PrecMay.Text, CInt(tx_ptorepo.Text), Combo_tipo.SelectedItem, lote)
+                If txt_contenido.Text = "" Or CDec(txt_contenido.Text) = CDec(0) Then
+                    txt_contenido.Text = 1
+                End If
+
+                Dim ds_prodid As DataSet = DAproducto.Producto_modificar(tx_descripcion.Text, tx_descrilarga.Text, Tb_PrecMin.Text, tx_codinterno.Text, tx_codbarra.Text, idcat, nrocat, idmarca, Combo_unidmedida.Text, producto_foto, tb_PrecMay.Text, CInt(tx_ptorepo.Text), Combo_tipo.SelectedItem, lote, CDec(txt_contenido.Text))
                 Dim prodid As Integer = ds_prodid.Tables(0).Rows(0).Item(0)
 
                 'primero borro los datos de la tabla proveedorproducto,
@@ -779,6 +802,12 @@ Public Class Producto_alta_New
                     DAproducto.ProveedorProductoCompra_alta(provprodid, row.Cells("ProvProdComfechaDataGridViewTextBoxColumn").Value)
                 Next
                 ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+                'como se cambia el campo contenido se recalcula
+
+                'consultarlo con mariano, porque si se cambia el valor que va en el textbox "contenido" se deberia recalcular el stock real, pero ojo q no afecte a lo que ya se tiene consumido.
+
 
                 limpiar_deshabilitar()
                 If form_procedencia = "modificar" Then
@@ -904,16 +933,16 @@ Public Class Producto_alta_New
 
     
     Private Sub Combo_tipo_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Combo_tipo.SelectedIndexChanged
-        If Combo_tipo.SelectedIndex = 0 Then
-            tx_unimedida.Text = "KG"
-            tx_unimedida.Visible = True
-            Combo_tipo.Width = 138
+        'If Combo_tipo.SelectedIndex = 0 Then
+        '    tx_unimedida.Text = "KG"
+        '    tx_unimedida.Visible = True
+        '    Combo_tipo.Width = 138
 
-        Else
-            tx_unimedida.Text = ""
-            tx_unimedida.Visible = False
-            Combo_tipo.Width = 269
-        End If
+        'Else
+        '    tx_unimedida.Text = ""
+        '    tx_unimedida.Visible = False
+        '    Combo_tipo.Width = 269
+        'End If
     End Sub
 
     Private Sub Label5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label5.Click
@@ -932,5 +961,9 @@ Public Class Producto_alta_New
         Else
             MessageBox.Show("Debe Ingresar el nombre del Producto", "Sistema de Gestion.", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
+    End Sub
+    Dim daValidaciones As New Validaciones
+    Private Sub txt_contenido_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_contenido.KeyPress
+        daValidaciones.Restricciones_textbox(e, "Decimal", txt_contenido)
     End Sub
 End Class

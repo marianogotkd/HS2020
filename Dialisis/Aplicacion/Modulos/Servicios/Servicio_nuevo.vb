@@ -492,7 +492,7 @@
                 Calculo = Ds_Suc.Tables(0).Rows(0).Item("Stock_Origen") - DataGridView1.Rows(j).Cells("Cantidad").Value
                 ''''''''''
                 'Actualizo stock'''''
-                DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Calculo)
+                DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Calculo, "")
 
             End If
 

@@ -80,17 +80,20 @@
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Anular.Click
-        If DG_Servicio.CurrentRow.Cells("Servicio_Estado").Value = "PENDIENTE" Then
+        If DG_Servicio.Rows.Count <> 0 Then
+            If DG_Servicio.CurrentRow.Cells("Servicio_Estado").Value = "PENDIENTE" Then
 
-            Dim result As Integer = MessageBox.Show("¿Está seguro que desea Anular el Servicio?", "Sistema de Gestión", MessageBoxButtons.YesNo)
-            If result = DialogResult.Yes Then
-                DAservicio.Servicio_ActualizarEstado(DG_Servicio.SelectedCells(0).Value, "ANULADO")
-                DAservicio.Actividad_Servicio_alta(usuario_id, sucursal_id, DG_Servicio.SelectedCells(0).Value, Now, "ANULADO")
+                Dim result As Integer = MessageBox.Show("¿Está seguro que desea Anular el Servicio?", "Sistema de Gestión", MessageBoxButtons.YesNo)
+                If result = DialogResult.Yes Then
+                    DAservicio.Servicio_ActualizarEstado(DG_Servicio.SelectedCells(0).Value, "ANULADO")
+                    DAservicio.Actividad_Servicio_alta(usuario_id, sucursal_id, DG_Servicio.SelectedCells(0).Value, Now, "ANULADO")
+                End If
+            Else
+                MessageBox.Show("No se puede cambiar el estado del Servicio seleccionado", "Sistema de Gestión", MessageBoxButtons.OK)
             End If
-        Else
-            MessageBox.Show("No se puede cambiar el estado del Servicio seleccionado", "Sistema de Gestión", MessageBoxButtons.OK)
+            obtener_Servicio(ComboBox_suc.SelectedValue)
         End If
-        obtener_Servicio(ComboBox_suc.SelectedValue)
+        
     End Sub
 
     Private Sub pedidos_formato_estado()

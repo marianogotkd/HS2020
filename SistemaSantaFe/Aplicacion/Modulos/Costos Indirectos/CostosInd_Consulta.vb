@@ -24,7 +24,10 @@
     End Sub
 
     Private Sub BO_cliente_modificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BO_cliente_modificar.Click
-        CostoInd_alta.Costo_Id = DG_CostoI.SelectedCells(0).Value
-        CostoInd_alta.Show()
+        If DG_CostoI.Rows.Count <> 0 Then
+            CostoInd_alta.Costo_Id = DG_CostoI.SelectedCells(0).Value
+            CostoInd_alta.Show()
+        End If
+        
     End Sub
 End Class
