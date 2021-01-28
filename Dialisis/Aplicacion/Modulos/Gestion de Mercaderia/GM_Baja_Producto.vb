@@ -5,6 +5,7 @@ Public Class GM_Baja_Producto
     Dim DAlista As New Datos.Lista
     Dim DAVentas As New Datos.Venta
     Dim DAGestion_Mercaderia As New Datos.Gestion_Mercaderia
+
     Dim DApedidos As New Datos.Pedidos
     Dim DAmarca As New Datos.Marca
     Dim ds_PROD As DataSet
@@ -380,6 +381,43 @@ Public Class GM_Baja_Producto
                         End If
                     End If
                 End With
+
+            Case "Predefinido"
+                'aqui solamente muestro los productos en stock en una determinada sucursal, para ello necesito el id de sucursal.
+
+                'Me.Text = "Stock en Sucursal: " + sucursal_nombre
+
+                'BO_agregar.Visible = False 'choco-04-07-2020
+                ds_PROD = DAVentas.Venta_obtenerProducto_Combos_sucursal(sucursal_id)
+                'junto los prod y los combos..para mostrarlos en el mismo grid
+                With ds_PROD.Tables(2).Rows
+                    If .Count > 0 Then
+                        rb_no_combo = "si"
+                        'ds_PROD.Tables(1).Merge(ds_PROD.Tables(2)) choco: 04-07-2020 no uno las tablas, si ya no manejo combos
+                        Venta_Caja_ds.Tables("Prod_consulta").Rows.Clear()
+                        Venta_Caja_ds.Tables("Prod_consulta").Merge(ds_PROD.Tables(1))
+                        'DataGridView2.DataSource = ds_PROD.Tables(3)
+                        'Call Formato_combos()
+                        'aqui como se selecciona automaticamente el primero, q pase los datos a los box de la derecha
+                        ' Label_codinterno.Text = DG_Producto.CurrentRow.Cells(1).Value
+                        'Label_preciolista.Text = DG_Producto.CurrentRow.Cells(4).Value ' lo paso a decima para obtener el formato 00,00
+                        'TX_LISTA_PROD_precio.Text = DG_Producto.CurrentRow.Cells(4).Value ' lo paso a decima para obtener el formato 00,00
+                        'TX_LISTA_PROD_cant.Text = "1"
+                        'Label_preciototal.Text = DG_Producto.CurrentRow.Cells(4).Value
+                    Else
+                        'DataGridView1.Enabled = False
+                        If ds_PROD.Tables(1).Rows.Count <> 0 Then
+                            Venta_Caja_ds.Tables("Prod_consulta").Rows.Clear()
+                            Venta_Caja_ds.Tables("Prod_consulta").Merge(ds_PROD.Tables(1))
+                        Else
+                            DataGridView1.DataSource = Nothing
+                        End If
+
+                        'IM_ERROR.Visible = True
+                        'LB_ERROR.Visible = True
+                    End If
+                End With
+
         End Select
 
 
@@ -406,7 +444,9 @@ Public Class GM_Baja_Producto
     End Sub
 
     Private Sub GM_Baja_Producto_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        
+        If form_procedencia = "Predefinido" Then
+            Btn_Predef.Visible = True
+        End If
     End Sub
 
     Private Sub formato_control_stock_vto()
@@ -3979,5 +4019,33 @@ Public Class GM_Baja_Producto
         TabPage4.Parent = Nothing 'oculto pestaña de lotes
         msj_esperar_sesiones.procedencia = "GM_Baja_Producto_load"
         msj_esperar_sesiones.Show()
+    End Sub
+
+    Private Sub Btn_Predef_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Predef.Click
+        Dim B = 0
+        Dim i As Integer = 0
+
+        While i < Insumos_Predefinidos.datagridview_Predef.Rows.Count
+
+
+            If (Insumos_Predefinidos.datagridview_Predef.Rows(i).Cells("ProdcodinternoDataGridViewTextBoxColumn").Value = DataGridView1.SelectedCells(1).Value) Then
+                MessageBox.Show("El Producto ya se encuntra agregado", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                B = 0
+                Exit While
+            Else
+                B = 1
+            End If
+            i = i + 1
+        End While
+        If B = 1 Or Insumos_Predefinidos.datagridview_Predef.Rows.Count = 0 Then
+            Dim newCustomersRow As DataRow = Insumos_Predefinidos.Ds_enfermeria.Tables("Predefinidos").NewRow
+            newCustomersRow("prod_codinterno") = DataGridView1.SelectedCells(1).Value 'prod_codinterno
+            newCustomersRow("Descripcion") = DataGridView1.SelectedCells(2).Value      'prod_descripcion 
+
+            Insumos_Predefinidos.Ds_enfermeria.Tables("Predefinidos").Rows.Add(newCustomersRow)
+            MessageBox.Show("Producto agregado correctamente", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        End If
+
+
     End Sub
 End Class

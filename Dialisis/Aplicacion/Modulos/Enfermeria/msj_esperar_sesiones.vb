@@ -55,6 +55,7 @@
                 Cliente_alta_New.ACEPTAR()
                 Me.Close()
             End If
+
         End If
     End Sub
 End Class

@@ -23,10 +23,10 @@ Partial Class GM_Baja_Producto
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GM_Baja_Producto))
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
@@ -95,6 +95,20 @@ Partial Class GM_Baja_Producto
         Me.Label_descripcion = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.ProdidDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdcodinternoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProddescripcionDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdxSucstockDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LoteidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LotenroDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LotecantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LotefechafabDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LotefechavtoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LotevenceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SucursalidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LotebajaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Mov_DS1 = New Aplicacion.Mov_DS()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
@@ -123,7 +137,6 @@ Partial Class GM_Baja_Producto
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.DataGridView3 = New System.Windows.Forms.DataGridView()
-        Me.Mov_DS = New Aplicacion.Mov_DS()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -139,20 +152,8 @@ Partial Class GM_Baja_Producto
         Me.DataGridViewCheckBoxColumn2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.tope = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Prov_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProdidDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProdcodinternoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProddescripcionDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProdxSucstockDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LoteidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LotenroDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LotecantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LotefechafabDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LotefechavtoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LotevenceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SucursalidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Mov_DS = New Aplicacion.Mov_DS()
+        Me.Btn_Predef = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -196,6 +197,7 @@ Partial Class GM_Baja_Producto
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Btn_Predef)
         Me.TabPage1.Controls.Add(Me.GroupBox5)
         Me.TabPage1.Controls.Add(Me.btn_siguiente)
         Me.TabPage1.Controls.Add(Me.Label1)
@@ -301,10 +303,10 @@ Partial Class GM_Baja_Producto
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(943, 252)
         Me.DataGridView1.StandardTab = True
@@ -918,14 +920,122 @@ Partial Class GM_Baja_Producto
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.ReadOnly = True
         Me.DataGridView2.RowHeadersVisible = False
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView2.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView2.RowsDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView2.Size = New System.Drawing.Size(967, 252)
         Me.DataGridView2.StandardTab = True
         Me.DataGridView2.TabIndex = 26
+        '
+        'ProdidDataGridViewTextBoxColumn1
+        '
+        Me.ProdidDataGridViewTextBoxColumn1.DataPropertyName = "prod_id"
+        Me.ProdidDataGridViewTextBoxColumn1.HeaderText = "prod_id"
+        Me.ProdidDataGridViewTextBoxColumn1.Name = "ProdidDataGridViewTextBoxColumn1"
+        Me.ProdidDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.ProdidDataGridViewTextBoxColumn1.Visible = False
+        '
+        'ProdcodinternoDataGridViewTextBoxColumn1
+        '
+        Me.ProdcodinternoDataGridViewTextBoxColumn1.DataPropertyName = "prod_codinterno"
+        Me.ProdcodinternoDataGridViewTextBoxColumn1.HeaderText = "prod_codinterno"
+        Me.ProdcodinternoDataGridViewTextBoxColumn1.Name = "ProdcodinternoDataGridViewTextBoxColumn1"
+        Me.ProdcodinternoDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.ProdcodinternoDataGridViewTextBoxColumn1.Visible = False
+        '
+        'ProddescripcionDataGridViewTextBoxColumn1
+        '
+        Me.ProddescripcionDataGridViewTextBoxColumn1.DataPropertyName = "prod_descripcion"
+        Me.ProddescripcionDataGridViewTextBoxColumn1.HeaderText = "prod_descripcion"
+        Me.ProddescripcionDataGridViewTextBoxColumn1.Name = "ProddescripcionDataGridViewTextBoxColumn1"
+        Me.ProddescripcionDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.ProddescripcionDataGridViewTextBoxColumn1.Visible = False
+        '
+        'ProdxSucstockDataGridViewTextBoxColumn
+        '
+        Me.ProdxSucstockDataGridViewTextBoxColumn.DataPropertyName = "ProdxSuc_stock"
+        Me.ProdxSucstockDataGridViewTextBoxColumn.HeaderText = "ProdxSuc_stock"
+        Me.ProdxSucstockDataGridViewTextBoxColumn.Name = "ProdxSucstockDataGridViewTextBoxColumn"
+        Me.ProdxSucstockDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProdxSucstockDataGridViewTextBoxColumn.Visible = False
+        '
+        'LoteidDataGridViewTextBoxColumn
+        '
+        Me.LoteidDataGridViewTextBoxColumn.DataPropertyName = "lote_id"
+        Me.LoteidDataGridViewTextBoxColumn.HeaderText = "lote_id"
+        Me.LoteidDataGridViewTextBoxColumn.Name = "LoteidDataGridViewTextBoxColumn"
+        Me.LoteidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.LoteidDataGridViewTextBoxColumn.Visible = False
+        '
+        'LotenroDataGridViewTextBoxColumn
+        '
+        Me.LotenroDataGridViewTextBoxColumn.DataPropertyName = "lote_nro"
+        Me.LotenroDataGridViewTextBoxColumn.HeaderText = "Nº/Lote"
+        Me.LotenroDataGridViewTextBoxColumn.Name = "LotenroDataGridViewTextBoxColumn"
+        Me.LotenroDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn12
+        '
+        Me.DataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn12.DataPropertyName = "Proveedor"
+        Me.DataGridViewTextBoxColumn12.HeaderText = "Proveedor"
+        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
+        Me.DataGridViewTextBoxColumn12.ReadOnly = True
+        '
+        'LotecantidadDataGridViewTextBoxColumn
+        '
+        Me.LotecantidadDataGridViewTextBoxColumn.DataPropertyName = "lote_cantidad"
+        Me.LotecantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
+        Me.LotecantidadDataGridViewTextBoxColumn.Name = "LotecantidadDataGridViewTextBoxColumn"
+        Me.LotecantidadDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'LotefechafabDataGridViewTextBoxColumn
+        '
+        Me.LotefechafabDataGridViewTextBoxColumn.DataPropertyName = "lote_fechafab"
+        Me.LotefechafabDataGridViewTextBoxColumn.HeaderText = "Fecha Fab."
+        Me.LotefechafabDataGridViewTextBoxColumn.Name = "LotefechafabDataGridViewTextBoxColumn"
+        Me.LotefechafabDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'LotefechavtoDataGridViewTextBoxColumn
+        '
+        Me.LotefechavtoDataGridViewTextBoxColumn.DataPropertyName = "lote_fechavto"
+        Me.LotefechavtoDataGridViewTextBoxColumn.HeaderText = "Fecha Vto."
+        Me.LotefechavtoDataGridViewTextBoxColumn.Name = "LotefechavtoDataGridViewTextBoxColumn"
+        Me.LotefechavtoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'LotevenceDataGridViewTextBoxColumn
+        '
+        Me.LotevenceDataGridViewTextBoxColumn.DataPropertyName = "lote_vence"
+        Me.LotevenceDataGridViewTextBoxColumn.HeaderText = "Vence"
+        Me.LotevenceDataGridViewTextBoxColumn.Name = "LotevenceDataGridViewTextBoxColumn"
+        Me.LotevenceDataGridViewTextBoxColumn.ReadOnly = True
+        Me.LotevenceDataGridViewTextBoxColumn.Visible = False
+        '
+        'SucursalidDataGridViewTextBoxColumn
+        '
+        Me.SucursalidDataGridViewTextBoxColumn.DataPropertyName = "sucursal_id"
+        Me.SucursalidDataGridViewTextBoxColumn.HeaderText = "sucursal_id"
+        Me.SucursalidDataGridViewTextBoxColumn.Name = "SucursalidDataGridViewTextBoxColumn"
+        Me.SucursalidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SucursalidDataGridViewTextBoxColumn.Visible = False
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewCheckBoxColumn1.FillWeight = 5.497368!
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "item"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "Prov_id"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Prov_id"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        Me.DataGridViewTextBoxColumn13.ReadOnly = True
+        Me.DataGridViewTextBoxColumn13.Visible = False
         '
         'LotebajaBindingSource
         '
@@ -1228,19 +1338,14 @@ Partial Class GM_Baja_Producto
         Me.DataGridView3.MultiSelect = False
         Me.DataGridView3.Name = "DataGridView3"
         Me.DataGridView3.RowHeadersVisible = False
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView3.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView3.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView3.Size = New System.Drawing.Size(906, 196)
         Me.DataGridView3.StandardTab = True
         Me.DataGridView3.TabIndex = 40
-        '
-        'Mov_DS
-        '
-        Me.Mov_DS.DataSetName = "Mov_DS"
-        Me.Mov_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'DataGridViewTextBoxColumn1
         '
@@ -1358,113 +1463,24 @@ Partial Class GM_Baja_Producto
         Me.Prov_id.Name = "Prov_id"
         Me.Prov_id.Visible = False
         '
-        'ProdidDataGridViewTextBoxColumn1
+        'Mov_DS
         '
-        Me.ProdidDataGridViewTextBoxColumn1.DataPropertyName = "prod_id"
-        Me.ProdidDataGridViewTextBoxColumn1.HeaderText = "prod_id"
-        Me.ProdidDataGridViewTextBoxColumn1.Name = "ProdidDataGridViewTextBoxColumn1"
-        Me.ProdidDataGridViewTextBoxColumn1.ReadOnly = True
-        Me.ProdidDataGridViewTextBoxColumn1.Visible = False
+        Me.Mov_DS.DataSetName = "Mov_DS"
+        Me.Mov_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'ProdcodinternoDataGridViewTextBoxColumn1
+        'Btn_Predef
         '
-        Me.ProdcodinternoDataGridViewTextBoxColumn1.DataPropertyName = "prod_codinterno"
-        Me.ProdcodinternoDataGridViewTextBoxColumn1.HeaderText = "prod_codinterno"
-        Me.ProdcodinternoDataGridViewTextBoxColumn1.Name = "ProdcodinternoDataGridViewTextBoxColumn1"
-        Me.ProdcodinternoDataGridViewTextBoxColumn1.ReadOnly = True
-        Me.ProdcodinternoDataGridViewTextBoxColumn1.Visible = False
-        '
-        'ProddescripcionDataGridViewTextBoxColumn1
-        '
-        Me.ProddescripcionDataGridViewTextBoxColumn1.DataPropertyName = "prod_descripcion"
-        Me.ProddescripcionDataGridViewTextBoxColumn1.HeaderText = "prod_descripcion"
-        Me.ProddescripcionDataGridViewTextBoxColumn1.Name = "ProddescripcionDataGridViewTextBoxColumn1"
-        Me.ProddescripcionDataGridViewTextBoxColumn1.ReadOnly = True
-        Me.ProddescripcionDataGridViewTextBoxColumn1.Visible = False
-        '
-        'ProdxSucstockDataGridViewTextBoxColumn
-        '
-        Me.ProdxSucstockDataGridViewTextBoxColumn.DataPropertyName = "ProdxSuc_stock"
-        Me.ProdxSucstockDataGridViewTextBoxColumn.HeaderText = "ProdxSuc_stock"
-        Me.ProdxSucstockDataGridViewTextBoxColumn.Name = "ProdxSucstockDataGridViewTextBoxColumn"
-        Me.ProdxSucstockDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProdxSucstockDataGridViewTextBoxColumn.Visible = False
-        '
-        'LoteidDataGridViewTextBoxColumn
-        '
-        Me.LoteidDataGridViewTextBoxColumn.DataPropertyName = "lote_id"
-        Me.LoteidDataGridViewTextBoxColumn.HeaderText = "lote_id"
-        Me.LoteidDataGridViewTextBoxColumn.Name = "LoteidDataGridViewTextBoxColumn"
-        Me.LoteidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.LoteidDataGridViewTextBoxColumn.Visible = False
-        '
-        'LotenroDataGridViewTextBoxColumn
-        '
-        Me.LotenroDataGridViewTextBoxColumn.DataPropertyName = "lote_nro"
-        Me.LotenroDataGridViewTextBoxColumn.HeaderText = "Nº/Lote"
-        Me.LotenroDataGridViewTextBoxColumn.Name = "LotenroDataGridViewTextBoxColumn"
-        Me.LotenroDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn12
-        '
-        Me.DataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn12.DataPropertyName = "Proveedor"
-        Me.DataGridViewTextBoxColumn12.HeaderText = "Proveedor"
-        Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
-        Me.DataGridViewTextBoxColumn12.ReadOnly = True
-        '
-        'LotecantidadDataGridViewTextBoxColumn
-        '
-        Me.LotecantidadDataGridViewTextBoxColumn.DataPropertyName = "lote_cantidad"
-        Me.LotecantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
-        Me.LotecantidadDataGridViewTextBoxColumn.Name = "LotecantidadDataGridViewTextBoxColumn"
-        Me.LotecantidadDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'LotefechafabDataGridViewTextBoxColumn
-        '
-        Me.LotefechafabDataGridViewTextBoxColumn.DataPropertyName = "lote_fechafab"
-        Me.LotefechafabDataGridViewTextBoxColumn.HeaderText = "Fecha Fab."
-        Me.LotefechafabDataGridViewTextBoxColumn.Name = "LotefechafabDataGridViewTextBoxColumn"
-        Me.LotefechafabDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'LotefechavtoDataGridViewTextBoxColumn
-        '
-        Me.LotefechavtoDataGridViewTextBoxColumn.DataPropertyName = "lote_fechavto"
-        Me.LotefechavtoDataGridViewTextBoxColumn.HeaderText = "Fecha Vto."
-        Me.LotefechavtoDataGridViewTextBoxColumn.Name = "LotefechavtoDataGridViewTextBoxColumn"
-        Me.LotefechavtoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'LotevenceDataGridViewTextBoxColumn
-        '
-        Me.LotevenceDataGridViewTextBoxColumn.DataPropertyName = "lote_vence"
-        Me.LotevenceDataGridViewTextBoxColumn.HeaderText = "Vence"
-        Me.LotevenceDataGridViewTextBoxColumn.Name = "LotevenceDataGridViewTextBoxColumn"
-        Me.LotevenceDataGridViewTextBoxColumn.ReadOnly = True
-        Me.LotevenceDataGridViewTextBoxColumn.Visible = False
-        '
-        'SucursalidDataGridViewTextBoxColumn
-        '
-        Me.SucursalidDataGridViewTextBoxColumn.DataPropertyName = "sucursal_id"
-        Me.SucursalidDataGridViewTextBoxColumn.HeaderText = "sucursal_id"
-        Me.SucursalidDataGridViewTextBoxColumn.Name = "SucursalidDataGridViewTextBoxColumn"
-        Me.SucursalidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.SucursalidDataGridViewTextBoxColumn.Visible = False
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewCheckBoxColumn1.FillWeight = 5.497368!
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "item"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "Prov_id"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "Prov_id"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        Me.DataGridViewTextBoxColumn13.ReadOnly = True
-        Me.DataGridViewTextBoxColumn13.Visible = False
+        Me.Btn_Predef.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btn_Predef.Image = Global.Aplicacion.My.Resources.Resources.Pasar
+        Me.Btn_Predef.Location = New System.Drawing.Point(815, 478)
+        Me.Btn_Predef.Margin = New System.Windows.Forms.Padding(4)
+        Me.Btn_Predef.Name = "Btn_Predef"
+        Me.Btn_Predef.Size = New System.Drawing.Size(136, 43)
+        Me.Btn_Predef.TabIndex = 250
+        Me.Btn_Predef.Text = "Seleccionar"
+        Me.Btn_Predef.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Btn_Predef.UseVisualStyleBackColor = True
+        Me.Btn_Predef.Visible = False
         '
         'GM_Baja_Producto
         '
@@ -1643,4 +1659,5 @@ Partial Class GM_Baja_Producto
     Friend WithEvents DataGridViewCheckBoxColumn2 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents tope As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Prov_id As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Btn_Predef As System.Windows.Forms.Button
 End Class
