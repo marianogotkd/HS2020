@@ -4037,14 +4037,16 @@ Public Class GM_Baja_Producto
             End If
             i = i + 1
         End While
+
         If B = 1 Or Insumos_Predefinidos.datagridview_Predef.Rows.Count = 0 Then
             Dim newCustomersRow As DataRow = Insumos_Predefinidos.Ds_enfermeria.Tables("Predefinidos").NewRow
             newCustomersRow("prod_codinterno") = DataGridView1.SelectedCells(1).Value 'prod_codinterno
             newCustomersRow("Descripcion") = DataGridView1.SelectedCells(2).Value      'prod_descripcion 
-
+            newCustomersRow("Predef_Cantidad") = 0
             Insumos_Predefinidos.Ds_enfermeria.Tables("Predefinidos").Rows.Add(newCustomersRow)
             MessageBox.Show("Producto agregado correctamente", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
+        Insumos_Predefinidos.Contar()
 
 
     End Sub
