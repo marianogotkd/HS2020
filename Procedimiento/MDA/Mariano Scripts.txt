@@ -1,0 +1,155 @@
+USE [SantaFe]
+GO
+
+/****** Object:  Table [dbo].[Costo_Indirecto]    Script Date: 01/25/2021 13:17:21 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Costo_Indirecto](
+	[CostoI_id] [int] IDENTITY(1,1) NOT NULL,
+	[CostoI_Desc] [varchar](max) NULL,
+	[CostoI_Total] [decimal](38, 2) NULL,
+	[CostoI_fecha] [datetime] NULL,
+	[CostoI_Estado] [varchar](50) NULL
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+
+CREATE TABLE [dbo].[Costo_Indirecto_Detalle](
+	[CostoInDet_id] [int] IDENTITY(1,1) NOT NULL,
+	[CostoInDet_desc] [varchar](50) NULL,
+	[CostoInDet_costo] [decimal](38, 2) NULL,
+	[CostoI_id] [int] NULL,
+	[CostoInDet_info] [varchar](max) NULL
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+
+USE [SantaFe]
+GO
+/****** Object:  StoredProcedure [dbo].[Costo_Indirecto_alta]    Script Date: 01/25/2021 13:18:55 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create	procedure [dbo].[Costo_Indirecto_alta]
+
+@CostoI_Desc varchar(max),
+@CostoI_Total Decimal,
+@CostoI_fecha date,
+@CostoI_Estado varchar(max)
+
+as
+
+insert Costo_Indirecto (CostoI_Desc,  CostoI_Total, CostoI_fecha, CostoI_Estado)
+
+values (@CostoI_Desc,@CostoI_Total,@CostoI_fecha,@CostoI_Estado)
+
+SELECT @@IDENTITY as 'CostI_Id'
+
+
+USE [SantaFe]
+GO
+/****** Object:  StoredProcedure [dbo].[Costo_Indirecto_bloquear]    Script Date: 01/25/2021 13:19:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[Costo_Indirecto_bloquear]
+
+@CostoI_id int
+as
+
+
+
+update Costo_Indirecto set
+ 
+   
+  CostoI_Estado='Inactivo'
+ 
+ where CostoI_id=@CostoI_id
+ 
+USE [SantaFe]
+GO
+/****** Object:  StoredProcedure [dbo].[Costo_Indirecto_Detalle_Alta]    Script Date: 01/25/2021 13:19:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[Costo_Indirecto_Detalle_Alta]
+
+@CostoInDet_desc varchar(max),
+@CostoInDet_costo Decimal,
+@CostoI_id int,
+@CostoInDet_info varchar(max)
+as
+
+insert dbo.Costo_Indirecto_Detalle (CostoInDet_desc, CostoInDet_costo, CostoI_id, CostoInDet_info)
+
+values (@CostoInDet_desc,@CostoInDet_costo,@CostoI_id,@CostoInDet_info)
+
+USE [SantaFe]
+GO
+/****** Object:  StoredProcedure [dbo].[Costo_Indirecto_modificar]    Script Date: 01/25/2021 13:19:20 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[Costo_Indirecto_modificar]
+
+@CostoI_id int,
+@CostoI_Desc varchar(max),
+@CostoI_Total Decimal,
+@CostoI_fecha date
+as
+
+update Costo_Indirecto set
+ 
+  CostoI_Desc=@CostoI_Desc,
+  CostoI_Total=@CostoI_Total,
+  CostoI_fecha=@CostoI_fecha 
+ 
+ where CostoI_id=@CostoI_id
+ 
+ delete from Costo_Indirecto_Detalle where CostoI_id=@CostoI_id
+
+ 
+ USE [SantaFe]
+GO
+/****** Object:  StoredProcedure [dbo].[Costo_Indirecto_Obtener]    Script Date: 01/25/2021 13:19:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER Procedure [dbo].[Costo_Indirecto_Obtener]
+as
+select CostoI_id, CostoI_Desc, CostoI_Total, CostoI_fecha, CostoI_Estado from Costo_Indirecto order by CostoI_fecha desc
+
+
+USE [SantaFe]
+GO
+/****** Object:  StoredProcedure [dbo].[Costo_Indirecto_Obtener_Todo_X_ID]    Script Date: 01/25/2021 13:19:46 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create Procedure [dbo].[Costo_Indirecto_Obtener_Todo_X_ID]
+@CostoI_id as int
+as
+select CostoI_id, CostoI_Desc, CostoI_Total, CostoI_fecha, CostoI_Estado from Costo_Indirecto where Costo_Indirecto.CostoI_id=@CostoI_id
+
+select CostoInDet_id, CostoInDet_desc, CostoInDet_costo, CostoI_id, CostoInDet_info from Costo_Indirecto_Detalle where Costo_Indirecto_Detalle.CostoI_id=@CostoI_id

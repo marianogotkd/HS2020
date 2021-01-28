@@ -14,4 +14,8 @@ Public Class Conexion
     'Conexion local NoteMariano
     Public dbconn As New OleDb.OleDbConnection("Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=SantaFe;Data Source=(local)")
 
+    'Conexion MDA Electricidad
+    'Public dbconn As New OleDb.OleDbConnection("Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=SantaFe;Data Source=DESKTOP-CK4O564\SQLEXPRESS")
+
+
 End Class

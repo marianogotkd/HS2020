@@ -1,0 +1,11 @@
+CREATE procedure Servicio_modificar_revision_MDA
+@Servicio_id int,
+@Servicio_Diagnostico varchar(max)
+as
+
+update servicio set 
+Servicio_Diagnostico = @Servicio_Diagnostico 
+
+where Servicio.Servicio_id=@Servicio_id
+
+go

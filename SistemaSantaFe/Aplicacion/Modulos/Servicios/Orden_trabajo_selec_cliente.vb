@@ -21,7 +21,7 @@
                 Dim ds_SevicioGuardar As DataSet = DAservicio.Servicio_alta_MDA(Cliente_ID, DateTimePicker1.Value,
                                                                     sucursal_id, usuario_id, "", combo_sucursal.Text,
                                                                     "", DateTimePicker1.Value, DateTimePicker1.Value,
-                                                                    CDec(0), "PENDIENTE", combo_sucursal.SelectedValue)
+                                                                    CDec(0), "PENDIENTE", combo_sucursal.SelectedValue, 0, 0, 0)
                 'MessageBox.Show("Los datos se guardaron correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 'AQUI TENGO QUE ABRIR EL REPORTE CON LA ORDEN DE REVISION.
                 'Dim result2 As Integer = MessageBox.Show("¿Desea ver la orden de revisión para imprimir?", "Sistema de Gestión", MessageBoxButtons.YesNo)

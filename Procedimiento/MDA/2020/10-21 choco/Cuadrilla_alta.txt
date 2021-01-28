@@ -1,0 +1,11 @@
+create procedure Cuadrilla_alta
+
+@descripcion as varchar(max),
+@salario as decimal(38,2)
+as
+
+insert Cuadrilla ( Cuadrilla_descripcion, Cuadrilla_salario_x_hora)
+values (@descripcion, @salario  )
+
+select @@IDENTITY as 'Cuadrilla_id'
+go

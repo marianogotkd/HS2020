@@ -33,6 +33,14 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Cuadrilla" msprop:Generator_TableClassName="CuadrillaDataTable" msprop:Generator_TableVarName="tableCuadrilla" msprop:Generator_RowChangedName="CuadrillaRowChanged" msprop:Generator_TablePropName="Cuadrilla" msprop:Generator_RowDeletingName="CuadrillaRowDeleting" msprop:Generator_RowChangingName="CuadrillaRowChanging" msprop:Generator_RowEvHandlerName="CuadrillaRowChangeEventHandler" msprop:Generator_RowDeletedName="CuadrillaRowDeleted" msprop:Generator_RowClassName="CuadrillaRow" msprop:Generator_UserTableName="Cuadrilla" msprop:Generator_RowEvArgName="CuadrillaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Cuadrilla_nom" msprop:Generator_ColumnVarNameInTable="columnCuadrilla_nom" msprop:Generator_ColumnPropNameInRow="Cuadrilla_nom" msprop:Generator_ColumnPropNameInTable="Cuadrilla_nomColumn" msprop:Generator_UserColumnName="Cuadrilla_nom" type="xs:string" minOccurs="0" />
+              <xs:element name="Nombres" msprop:Generator_ColumnVarNameInTable="columnNombres" msprop:Generator_ColumnPropNameInRow="Nombres" msprop:Generator_ColumnPropNameInTable="NombresColumn" msprop:Generator_UserColumnName="Nombres" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

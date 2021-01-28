@@ -74,7 +74,10 @@ Public Class Servicio
                               ByVal Servicio_FechaRep As Date,
                               ByVal Servicio_Anticipo As Decimal,
                               ByVal Servicio_id As Integer,
-                              ByVal estado As String)
+                              ByVal estado As String,
+                              ByVal Servicio_Desc_peso As Decimal,
+                              ByVal Servicio_Desc_porc As Decimal,
+                              ByVal Servicio_IVA As Decimal)
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -94,6 +97,10 @@ Public Class Servicio
         comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Anticipo", Servicio_Anticipo))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_id", Servicio_id))
         comando.Parameters.Add(New OleDb.OleDbParameter("@estado", estado))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Desc_peso", Servicio_Desc_peso))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Desc_porc", Servicio_Desc_porc))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_IVA", Servicio_IVA))
+
 
 
         Dim ds_JE As New DataSet()
@@ -116,7 +123,10 @@ Public Class Servicio
                               ByVal Servicio_FechaRep As Date,
                               ByVal Servicio_Anticipo As Decimal,
                               ByVal Servicio_Estado As String,
-                              ByVal SucxClie_id As Integer)
+                              ByVal SucxClie_id As Integer,
+                              ByVal Servicio_Desc_peso As Decimal,
+                              ByVal Servicio_Desc_porc As Decimal,
+                              ByVal Servicio_IVA As Decimal)
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -136,6 +146,10 @@ Public Class Servicio
         comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Anticipo", Servicio_Anticipo))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Estado", Servicio_Estado))
         comando.Parameters.Add(New OleDb.OleDbParameter("@SucxClie_id", SucxClie_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Desc_peso", Servicio_Desc_peso))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Desc_porc", Servicio_Desc_porc))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_IVA", Servicio_IVA))
+
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)
         da_JE.Fill(ds_JE, "Servicio")

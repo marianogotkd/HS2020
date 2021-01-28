@@ -1,0 +1,7 @@
+create procedure Cuadrilla_validar
+
+@cuadrilla_descripcion varchar(max)
+as
+select * from Cuadrilla where Cuadrilla.Cuadrilla_descripcion = @cuadrilla_descripcion  
+
+go

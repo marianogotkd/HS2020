@@ -1,0 +1,30 @@
+USE [SantaFe]
+GO
+/****** Object:  StoredProcedure [dbo].[Cliente_modificar]    Script Date: 12/17/2020 17:32:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER  procedure [dbo].[Cliente_modificar]
+@CLI_id int,
+@CLI_Fan varchar(50),
+@CLI_dni_cuit varchar(50),
+@CLI_TipoIva int
+--@CLI_tel varchar(50),
+--@CLI_Direccion varchar(50),
+--@CLI_Cp int,
+--@CLI_Id_Prov int,
+--@CLI_Id_loc int,
+--@CLI_mail varchar(50)
+as
+update Cliente set
+CLI_Fan=@CLI_Fan ,
+CLI_dni=@CLI_dni_cuit,
+CLI_TipoIva=@CLI_TipoIva
+--CLI_tel=@CLI_tel,
+--CLI_dir=@CLI_Direccion,
+--CLI_Cp=@CLI_Cp,
+--CLI_Id_Prov=@CLI_Id_Prov,
+--CLI_Id_loc=@CLI_Id_loc,
+--CLI_mail=@CLI_mail
+where CLI_id = @CLI_id

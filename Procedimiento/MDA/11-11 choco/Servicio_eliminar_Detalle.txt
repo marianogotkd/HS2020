@@ -1,9 +1,0 @@
-
-create procedure Servicio_eliminar_Detalle
-
-@Servicio_Id int
-as
-
-delete from Servicio_Producto where Servicio_Producto.Servicio_Id = @Servicio_Id  
-
-go

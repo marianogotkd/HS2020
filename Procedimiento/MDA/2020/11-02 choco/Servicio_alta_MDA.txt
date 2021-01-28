@@ -1,0 +1,50 @@
+choco////al parametro @Servicio_Diagnostico varchar(max) se le puso varchar(max)
+
+USE [SantaFe]
+GO
+/****** Object:  StoredProcedure [dbo].[Servicio_alta_MDA]    Script Date: 11/02/2020 20:21:24 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[Servicio_alta_MDA]
+@CLI_id int,
+@Servicio_fecha date,
+@sucursal_id int,
+@USU_id int,
+@Servicio_Diagnostico varchar(max),
+@Servicio_Sucursal varchar(50),
+@Servicio_Equipo varchar(50),
+@Servicio_FechaRev date,
+@Servicio_FechaRep date,
+@Servicio_Anticipo decimal(8,2),
+@Servicio_Estado varchar(50)
+
+as
+
+insert servicio ( CLI_id, Servicio_fecha, sucursal_id, USU_id,
+Servicio_Diagnostico,
+Servicio_Sucursal,
+Servicio_Equipo,
+Servicio_FechaRev,
+Servicio_FechaRep,
+Servicio_Anticipo,
+Servicio_Estado)
+
+values (@CLI_id,
+@Servicio_fecha,
+@sucursal_id,
+@USU_id,
+@Servicio_Diagnostico,
+@Servicio_Sucursal,
+@Servicio_Equipo,
+@Servicio_FechaRev,
+@Servicio_FechaRep,
+@Servicio_Anticipo,
+@Servicio_Estado)
+
+select @@IDENTITY 
+
+
+
+

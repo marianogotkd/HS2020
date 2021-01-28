@@ -1,9 +1,0 @@
-create procedure Empleados_obtenertodos
-as
-select
-empleado_id, 
-empleado_dni, empleado_ape + ', '+empleado_nom as 'apellido_y_nombre', 
-empleado_dir, empleado_mail, empleado_tel, empleado_cel
-from Empleado order by empleado_dni asc
-
-go

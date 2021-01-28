@@ -1,7 +1,0 @@
-create procedure  Cliente_Sucursales_eliminar
----la eliminacion es´logica, se cambia el estado a "ELIMINADO"
-@SucxClie_id int,
-@SucxClie_estado varchar(50)
-as
-update Cliente_Sucursales set SucxClie_estado = @SucxClie_estado where SucxClie_id = @SucxClie_id  
-go

@@ -94,6 +94,7 @@
     End Sub
 
     Private Sub Servicio_nuevo_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        ComboBox_iva.SelectedIndex = 0
         'Me.Show()
         usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
         Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(usuario_id)
@@ -118,10 +119,26 @@
 
         txt_sucursal.ReadOnly = True 'esto no se puede cambiar x q se recupera
 
+
     End Sub
     Public anticipo_recuperado As Decimal = 0
     Private Sub Cargar_Datos()
         Dim Ds_servicio As DataSet = DAservicio.Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA(serv_id)
+        'Descuentos
+        txt_desc_pesos.Text = Ds_servicio.Tables(0).Rows(0).Item("Servicio_Desc_peso").ToString
+        txt_desc_porc.Text = Ds_servicio.Tables(0).Rows(0).Item("Servicio_Desc_porc").ToString
+        If Ds_servicio.Tables(0).Rows(0).Item("Servicio_IVA") = 0 Then
+            ComboBox_iva.SelectedIndex = 0
+        Else
+            If Ds_servicio.Tables(0).Rows(0).Item("Servicio_IVA") = 21 Then
+                ComboBox_iva.SelectedIndex = 2
+            Else
+                ComboBox_iva.SelectedIndex = 1
+            End If
+        End If
+
+
+        'Detalle
         Dim i As Integer = 0
         Dim index As Integer = 1
         While i < Ds_servicio.Tables(0).Rows.Count
@@ -139,11 +156,8 @@
             DateTimePicker_Rev.Value = Ds_servicio.Tables(0).Rows(i).Item("Servicio_FechaRev")
             DateTimePicker_Rev.Enabled = False
             DateTimePicker1.Value = Ds_servicio.Tables(0).Rows(i).Item("Servicio_FechaRev")
-            'txt_Frev.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_imei").ToString
-            ' txt_Frep.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Color").ToString
-            ' ComboBox1.SelectedValue = Ds_servicio.Tables(0).Rows(i).Item("Servicio_bat").ToString
             ' TextBox_ManoO.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_ManoObra").ToString
-            TextBox_Anticipo.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Anticipo").ToString
+            ' TextBox_Anticipo.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Anticipo").ToString
             anticipo_recuperado = CDec(Ds_servicio.Tables(0).Rows(i).Item("Servicio_Anticipo").ToString)
             'TextBox_Nombre.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Nombre").ToString
 
@@ -211,6 +225,8 @@
         'End While
 
         Calcular_Totales()
+        aplicar_iva()
+
 
 
 
@@ -224,8 +240,8 @@
             'GroupBox5.Enabled = False
             'GroupBox6.Enabled = False
 
-            TextBox_Anticipo.ReadOnly = True
-            ' txt_Frep.ReadOnly = True
+            'TextBox_Anticipo.ReadOnly = True
+            '' txt_Frep.ReadOnly = True
             TextBox_dir.ReadOnly = True
             TextBox_dni.ReadOnly = True
             '  txt_Frev.ReadOnly = True
@@ -241,7 +257,7 @@
             DataGridView1.ReadOnly = True
             DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
 
-            TextBox_Anticipo.BackColor = Color.FromArgb(255, 255, 192)
+            '  TextBox_Anticipo.BackColor = Color.FromArgb(255, 255, 192)
             '  txt_Frep.BackColor = Color.FromArgb(255, 255, 192)
             TextBox_dir.BackColor = Color.FromArgb(255, 255, 192)
             TextBox_dni.BackColor = Color.FromArgb(255, 255, 192)
@@ -295,15 +311,19 @@
 
         TextBox_Repuesto.Text = (Math.Round(CDec(repuesto), 2).ToString("N2"))
 
-        If TextBox_Repuesto.Text <> "" And TextBox_Anticipo.Text <> "" Then
+        If TextBox_Repuesto.Text <> "" Then '
 
-            total = repuesto - CDec(TextBox_Anticipo.Text)
+            total = repuesto
 
         End If
 
 
 
-        TextBox_TOTAL.Text = (Math.Round(CDec(total), 2).ToString("N2"))
+        txt_subtotal.Text = (Math.Round(CDec(total), 2).ToString("N2"))
+        txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_descuento.Text) + CDec(txt_impuesto_aplicado.Text)
+        txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+
+
 
 
 
@@ -406,26 +426,8 @@
         'TextBox_ManoO.BackColor = Color.White
     End Sub
 
-    Private Sub TextBox_Anticipo_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles TextBox_Anticipo.KeyPress
-        validaciones.Restricciones_textbox(e, "Decimal", TextBox_Anticipo)
-        If e.KeyChar = ChrW(Keys.Enter) Then 'cuando presiono la tecla ENTER calcula
-            If TextBox_Anticipo.Text = "" Then
-                TextBox_Anticipo.Text = (Math.Round(CDec(0), 2).ToString("N2"))
-            Else
-                TextBox_Anticipo.Text = (Math.Round(CDec(TextBox_Anticipo.Text), 2).ToString("N2"))
-            End If
-            Calcular_Totales()
-        End If
-    End Sub
-    Private Sub TextBox_Anticipo_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_Anticipo.LostFocus
-        If TextBox_Anticipo.Text = "" Then
-            TextBox_Anticipo.Text = (Math.Round(CDec(0), 2).ToString("N2"))
-        Else
-            TextBox_Anticipo.Text = (Math.Round(CDec(TextBox_Anticipo.Text), 2).ToString("N2"))
-        End If
-        Calcular_Totales()
-        TextBox_Anticipo.BackColor = Color.White
-    End Sub
+    
+    
     Dim servicio_id_recuperado As Integer = 0
     'Dim procedencia As String = ""
     Public Sub Guardar_BD(ByVal form_de_donde_vengo As String)
@@ -436,7 +438,7 @@
                 Dim ds_SevicioGuardar As DataSet = DAservicio.Servicio_alta_MDA(Cliente_ID, DateTimePicker1.Value,
                                                                                 sucursal_id, usuario_id, txt_diag.Text, txt_sucursal.Text,
                                                                                 txt_equipo.Text, DateTimePicker_REP.Value, DateTimePicker_Rev.Value,
-                                                                                TextBox_Anticipo.Text, "PENDIENTE", SucxClie_id)
+                                                                                0, "PENDIENTE", SucxClie_id, txt_desc_pesos.Text, txt_desc_porc.Text, ComboBox_iva.Text) ' el 0 es txt anticipo que se borro 
 
 
                 ''Detalle''''
@@ -463,8 +465,8 @@
 
                 '/////////////CAJA/////////////////ME FIJO SI AGREGO O NO EL ANTICIPO
                 If form_de_donde_vengo = "boton_guardar_cambios" Then
-                    If CDec(TextBox_Anticipo.Text) <> CDec(0) Then ' si me dejaron mas plata hacer la diferencia
-                        Dim anticipo_diferencias As Decimal = CDec(TextBox_Anticipo.Text) - anticipo_recuperado
+                    If CDec(0) <> CDec(0) Then ' si me dejaron mas plata hacer la diferencia
+                        Dim anticipo_diferencias As Decimal = CDec(0) - anticipo_recuperado
                         If anticipo_diferencias <= 0 Then
 
                         Else
@@ -485,8 +487,8 @@
                 Dim ds_SevicioActualizar As DataSet = DAservicio.Servicio_Modificar_MDA(Cliente_ID, DateTimePicker1.Value,
                                                                                 sucursal_id, usuario_id, txt_diag.Text, txt_sucursal.Text,
                                                                                txt_equipo.Text, DateTimePicker_Rev.Value, DateTimePicker_REP.Value,
-                                                                               TextBox_Anticipo.Text,
-                                                                            serv_id, "ASIGNADO") 'pongo el estado en ASIGNADO
+                                                                               0,
+                                                                            serv_id, "ASIGNADO", txt_desc_pesos.Text, txt_desc_porc.Text, ComboBox_iva.Text) 'pongo el estado en ASIGNADO ------El 0 es txt anticipo//26-1-21
 
                 'primero elimino el detalle
                 DAservicio.Servicio_eliminar_Detalle(serv_id)
@@ -516,8 +518,8 @@
 
                 '/////////////CAJA/////////////////ME FIJO SI AGREGO O NO EL ANTICIPO
                 If form_de_donde_vengo = "boton_guardar_cambios" Then
-                    If CDec(TextBox_Anticipo.Text) <> CDec(0) Then ' si me dejaron mas plata hacer la diferencia
-                        Dim anticipo_diferencias As Decimal = CDec(TextBox_Anticipo.Text) - anticipo_recuperado
+                    If CDec(0) <> CDec(0) Then ' si me dejaron mas plata hacer la diferencia
+                        Dim anticipo_diferencias As Decimal = CDec(0) - anticipo_recuperado
                         If anticipo_diferencias <= 0 Then
 
                         Else
@@ -608,6 +610,7 @@
     Private Sub reporte(ByVal orden_trabajo_id As Integer)
         ds_revision_reporte.Tables("Revision").Rows.Clear()
         ds_revision_reporte.Tables("repuestos").Rows.Clear()
+        ds_revision_reporte.Tables("Cuadrilla").Rows.Clear()
 
         Dim fila As DataRow = ds_revision_reporte.Tables("Revision").NewRow
         fila("id_revision") = orden_trabajo_id
@@ -633,12 +636,24 @@
             i = i + 1
         End While
 
+        Dim cont As Integer = 0
+        Dim fila3 As DataRow = ds_revision_reporte.Tables("Cuadrilla").NewRow
+        fila3("Cuadrilla_nom") = Combo_cuadrilla.Text
+        ds_revision_reporte.Tables("Cuadrilla").Rows.Add(fila3)
+
+        While cont < DG_empleados.Rows.Count
+            Dim fila4 As DataRow = ds_revision_reporte.Tables("Cuadrilla").NewRow
+            fila4("Nombres") = DG_empleados.Rows(cont).Cells("ApellidoynombreDataGridViewTextBoxColumn").Value 'item
+            ds_revision_reporte.Tables("Cuadrilla").Rows.Add(fila4)
+            cont = cont + 1
+        End While
 
         Dim CrReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
         CrReport = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
         CrReport.Load(Application.StartupPath & "\..\..\Modulos\Servicios\Reportes\CR_orden_trabajo.rpt")
         CrReport.Database.Tables("Revision").SetDataSource(ds_revision_reporte.Tables("Revision"))
         CrReport.Database.Tables("repuestos").SetDataSource(ds_revision_reporte.Tables("repuestos"))
+        CrReport.Database.Tables("Cuadrilla").SetDataSource(ds_revision_reporte.Tables("Cuadrilla"))
 
         Dim visor As New Facturacion_report_show
         visor.CrystalReportViewer1.ReportSource = CrReport
@@ -723,8 +738,8 @@
 
 
 
-                    Dim sin_anticipo As Decimal = CDec((Math.Round(CDec(TextBox_TOTAL.Text), 2).ToString("N2"))) + CDec((Math.Round(CDec(TextBox_Anticipo.Text), 2).ToString("N2")))
-                    If CDec(TextBox_TOTAL.Text) <> CDec(0) Then
+                    Dim sin_anticipo As Decimal = CDec((Math.Round(CDec(txt_total.Text), 2).ToString("N2")))
+                    If CDec(txt_total.Text) <> CDec(0) Then
                         Sucursales_Seleccionar.Close()
                         Sucursales_Seleccionar.cliente_id = Cliente_ID
                         Sucursales_Seleccionar.procedencia = "servicio_nuevo"
@@ -733,7 +748,7 @@
 
 
 
-                                                Mensaje = "finalizar"
+                        Mensaje = "finalizar"
                         'Pago_caja.form_procedencia = "Servicio_nuevo"
                         'Pago_caja.tx_total.Text = TextBox_TOTAL.Text
                         'Pago_caja.Ser_id = Label_Cod.Text
@@ -846,12 +861,12 @@
         '///////////////TABLA TOTALES APLICADOS//////////////////////////////////'
         Facturacion_ds_report.Tables("Totales_aplicados").Rows.Clear()
         Dim row_totales As DataRow = Facturacion_ds_report.Tables("Totales_aplicados").NewRow()
-        row_totales("subtotal") = CDec(TextBox_TOTAL.Text)
-        row_totales("total") = CDec(TextBox_TOTAL.Text)
-        row_totales("iva") = CDec(0)
-        row_totales("descuento_porcentaje") = CDec(0)
-        row_totales("descuento_pesos") = CDec(0)
-        row_totales("iva_pesos") = CDec(0)
+        row_totales("subtotal") = CDec(txt_total.Text)
+        row_totales("total") = CDec(txt_total.Text)
+        'row_totales("iva") = ds_cliente.Tables(0).Rows(0).Item("Servicio_IVA")
+        row_totales("descuento_porcentaje") = ds_cliente.Tables(0).Rows(0).Item("Servicio_Desc_porc")
+        row_totales("descuento_pesos") = ds_cliente.Tables(0).Rows(0).Item("Servicio_Desc_peso")
+        row_totales("iva_pesos") = ds_cliente.Tables(0).Rows(0).Item("Servicio_IVA")
         Facturacion_ds_report.Tables("Totales_aplicados").Rows.Add(row_totales)
 
         '///////////////TABLA PRODUCTO AGREGADO//////////////////////////////////'
@@ -1058,9 +1073,9 @@
         TextBox_codprod.BackColor = Color.FromArgb(255, 255, 192)
     End Sub
 
-    Private Sub TextBox_Anticipo_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox_Anticipo.GotFocus
-        TextBox_Anticipo.SelectAll()
-        TextBox_Anticipo.BackColor = Color.FromArgb(255, 255, 192)
+    Private Sub TextBox_Anticipo_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        ' TextBox_Anticipo.SelectAll()
+        'TextBox_Anticipo.BackColor = Color.FromArgb(255, 255, 192)
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
@@ -1086,8 +1101,8 @@
                     Dim ds_SevicioActualizar As DataSet = DAservicio.Servicio_Modificar_MDA(Cliente_ID, DateTimePicker1.Value,
                                                                                     sucursal_id, usuario_id, txt_diag.Text, txt_sucursal.Text,
                                                                                    txt_equipo.Text, DateTimePicker_Rev.Value, DateTimePicker_REP.Value,
-                                                                                   TextBox_Anticipo.Text,
-                                                                                serv_id, "REPARADO") 'pongo el estado en REPARADO
+                                                                                  0,
+                                                                                serv_id, "REPARADO", txt_desc_pesos.Text, txt_desc_porc.Text, ComboBox_iva.Text) 'pongo el estado en REPARADO ----- el 0 es el txt anticipo
 
                     'primero elimino el detalle
                     DAservicio.Servicio_eliminar_Detalle(serv_id)
@@ -1135,4 +1150,204 @@
     Private Sub Button_imprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_imprimir.Click
         reporte(orden_trabajo_id)
     End Sub
+
+
+    Private Sub txt_desc_porc_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_desc_porc.KeyPress
+        'si toco asterisco me toma el total
+        'If e.KeyChar.ToString = "*" Then
+        '    tx_parcial.Text = tx_total.Text
+        'End If
+        'aqui pongo el codigo para remplazar el punto por una coma
+        If e.KeyChar.ToString() = "." Then
+            e.KeyChar = ","
+        End If
+        'a continuacion el codigo para impedir el ingreso de dos comas o letras
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                If e.KeyChar = "," And Not Me.txt_desc_porc.Text.IndexOf(",") Then
+                    e.Handled = True
+                Else
+                    If e.KeyChar = "," Then
+                        e.Handled = False
+                    Else
+                        e.Handled = True
+                    End If
+                End If
+            End If
+        End If
+        If e.KeyChar = ChrW(Keys.Enter) Then 'aqui se bloque el ingresodo de letras
+            If txt_desc_porc.Text = "" Then
+                txt_desc_porc.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            End If
+            Dim calculo_pesos As Decimal = (CDec(txt_desc_porc.Text) * CDec(txt_subtotal.Text)) / 100
+            txt_desc_pesos.Text = calculo_pesos
+            'txt_total.Text = CDec(txt_subtotal.Text) - calculo_pesos
+            'txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            txt_descuento.Text = (Math.Round(CDec(calculo_pesos), 2).ToString("N2"))
+
+            'If txt_desc_porc.Text = (Math.Round(CDec(0), 2).ToString("N2")) Then
+            '    calcular_totales()
+            'End If
+            '----------------------------------------------------------------------
+            'formateo ambos txt, porcentaje y precio
+            txt_desc_pesos.Text = (Math.Round(CDec(txt_desc_pesos.Text), 2).ToString("N2"))
+            txt_desc_porc.Text = (Math.Round(CDec(txt_desc_porc.Text), 2).ToString("N2"))
+            '----------------------------------------------------------------------
+            aplicar_iva()
+            txt_desc_porc.SelectAll()
+            txt_desc_porc.Text = (Math.Round(CDec(txt_desc_porc.Text), 2).ToString("N2"))
+            'If TextBox1.Text < 0 Then
+            '    TextBox1.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            'End If
+
+        End If
+    End Sub
+
+    Private Sub txt_desc_pesos_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_desc_pesos.KeyPress
+        'si toco asterisco me toma el total
+        'If e.KeyChar.ToString = "*" Then
+        '    tx_parcial.Text = tx_total.Text
+        'End If
+
+        'aqui pongo el codigo para remplazar el punto por una coma
+        If e.KeyChar.ToString() = "." Then
+            e.KeyChar = ","
+        End If
+        'a continuacion el codigo para impedir el ingreso de dos comas o letras
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                If e.KeyChar = "," And Not Me.txt_desc_pesos.Text.IndexOf(",") Then
+                    e.Handled = True
+                Else
+                    If e.KeyChar = "," Then
+                        e.Handled = False
+                    Else
+                        e.Handled = True
+                    End If
+                End If
+            End If
+        End If
+        If e.KeyChar = ChrW(Keys.Enter) Then 'cuando presiono la tecla ENTER calcula
+            If txt_desc_pesos.Text = "" Then
+                txt_desc_pesos.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            End If
+            Dim calculo_porc As Decimal = (CDec(txt_desc_pesos.Text) * 100) / CDec(txt_subtotal.Text)
+            txt_desc_porc.Text = calculo_porc
+
+            'txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_desc_pesos.Text)
+            'txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+
+            'If txt_desc_porc.Text = (Math.Round(CDec(0), 2).ToString("N2")) Then
+            '    calcular_totales()
+            'End If
+
+            '----------------------------------------------------------------------
+            'formateo ambos txt, porcentaje y precio
+            txt_desc_pesos.Text = (Math.Round(CDec(txt_desc_pesos.Text), 2).ToString("N2"))
+            txt_desc_porc.Text = (Math.Round(CDec(txt_desc_porc.Text), 2).ToString("N2"))
+            '----------------------------------------------------------------------
+            txt_desc_pesos.SelectAll()
+            aplicar_iva()
+            txt_desc_porc.Text = (Math.Round(CDec(txt_desc_porc.Text), 2).ToString("N2"))
+
+            'aqui llamo arutina para aplicar iva, si corresponde
+
+            'If TextBox1.Text < 0 Then
+            '    TextBox1.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            'End If
+        End If
+
+    End Sub
+
+    Public Sub aplicar_iva()
+        txt_total.Text = 0
+        If ComboBox_iva.SelectedItem = "0" And CDec(txt_subtotal.Text) <> 0 Then
+            '///////////////////IMPUESTO////////////////////////////
+            txt_impuesto_aplicado.Text = CDec(0)
+            '//////////////////////////////////////////////////////
+            'como es el 0, debo volver a poner el total sin iva, y si corresponde aplico el descuento
+            If txt_desc_pesos.Text = "" Then
+                txt_desc_pesos.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            End If
+            Dim calculo_porc As Decimal = (CDec(txt_desc_pesos.Text) * 100) / CDec(txt_subtotal.Text)
+            txt_desc_porc.Text = (Math.Round(CDec(calculo_porc), 2).ToString("N2"))
+
+            '///////////////////////TOTAL A PAGAR/////////////////////////
+            txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_desc_pesos.Text)
+            txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////////
+
+            '///////////////////DESCUENTO//////////////////////////////
+            txt_descuento.Text = (Math.Round(CDec(txt_desc_pesos.Text), 2).ToString("N2"))
+            '/////////////////////////////////////////////////////////
+
+            'If txt_desc_porc.Text = (Math.Round(CDec(0), 2).ToString("N2")) Then
+            '    calcular_totales()
+            'End If
+
+        End If
+        If ComboBox_iva.SelectedItem = "10,5" And CDec(txt_subtotal.Text) <> 0 Then
+            If txt_desc_pesos.Text = "" Then
+                txt_desc_pesos.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            End If
+            Dim calculo_porc As Decimal = (CDec(txt_desc_pesos.Text) * 100) / CDec(txt_subtotal.Text)
+            txt_desc_porc.Text = (Math.Round(CDec(calculo_porc), 2).ToString("N2"))
+            '///////////////////////DESCUENTO/////////////////////////
+            'txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_desc_pesos.Text)
+            'txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            txt_descuento.Text = CDec(txt_desc_pesos.Text)
+            txt_descuento.Text = (Math.Round(CDec(txt_descuento.Text), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////
+
+            '////////////////////////////IMPUESTO////////////////////////////////////////
+            'calculo el 10.5% al subtotla de la venta.
+            Dim calculo As Decimal = (CDec(10.5) * CDec(txt_subtotal.Text)) / 100 'esto me da en pesos cuanto se paga
+            txt_impuesto_aplicado.Text = (Math.Round(CDec(calculo), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////////////////////////
+
+            '/////////////////////TOTAL A PAGAR//////////////////////////////////
+            txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_descuento.Text) + CDec(txt_impuesto_aplicado.Text)
+            txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////////////
+
+        End If
+        If ComboBox_iva.SelectedItem = "21" And CDec(txt_subtotal.Text) <> 0 Then
+            If txt_desc_pesos.Text = "" Then
+                txt_desc_pesos.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            End If
+            Dim calculo_porc As Decimal = (CDec(txt_desc_pesos.Text) * 100) / CDec(txt_subtotal.Text)
+            txt_desc_porc.Text = (Math.Round(CDec(calculo_porc), 2).ToString("N2"))
+
+            '///////////////////////DESCUENTO/////////////////////////
+            'txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_desc_pesos.Text)
+            'txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            txt_descuento.Text = CDec(txt_desc_pesos.Text)
+            txt_descuento.Text = (Math.Round(CDec(txt_descuento.Text), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////
+
+            '////////////////////////////IMPUESTO////////////////////////////////////////
+            'aplico el 21% al total de la venta.
+            Dim calculo As Decimal = (CDec(21) * CDec(txt_subtotal.Text)) / 100 'esto me da en pesos cuanto se paga
+            txt_impuesto_aplicado.Text = (Math.Round(CDec(calculo), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////////////////////////
+
+            '/////////////////////TOTAL A PAGAR//////////////////////////////////
+            txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_descuento.Text) + CDec(txt_impuesto_aplicado.Text)
+            txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////////////
+        End If
+    End Sub
+
+    Private Sub ComboBox_iva_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBox_iva.SelectedValueChanged
+        aplicar_iva()
+    End Sub
+
 End Class
