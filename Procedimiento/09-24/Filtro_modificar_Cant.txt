@@ -1,5 +1,0 @@
-ALTER  procedure [dbo].[Filtro_modificar_Cant]
-@Filtro_id int,
-@Filtro_cant_reuso int
-as
-update Filtro set Filtro_cant_reuso = @Filtro_cant_reuso where Filtro_id = @Filtro_id  

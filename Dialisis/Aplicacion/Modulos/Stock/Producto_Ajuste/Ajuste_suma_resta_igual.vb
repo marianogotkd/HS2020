@@ -13,9 +13,18 @@
     Public fechavencimiento As Date 'me la envia el formulario Producto_ajuste
 
     Private Sub tb_nueva_cant_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tb_nueva_cant.KeyPress
-        Dim tipo As String = "Entero"
-        Validaciones.Restricciones_textbox(e, tipo, tb_nueva_cant)
+        If Producto_ajuste.tipo_producto = "Fraccionable" Then
+            Dim tipo As String = "Decimal"
+            Validaciones.Restricciones_textbox(e, tipo, tb_nueva_cant)
+        Else
+            'es no fraccionable
+            Dim tipo As String = "Entero"
+            Validaciones.Restricciones_textbox(e, tipo, tb_nueva_cant)
 
+        End If
+
+
+        
         'ahora con el enter hago el calculo, dependiendo lo que tenga en el combo de operacion
 
         If e.KeyChar = ChrW(Keys.Enter) Then 'cuando presiono la tecla ENTER calcula
@@ -199,7 +208,8 @@
 
         ''''''''''
         'Actualizo stock'''''
-        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo)
+        recupero_y_recalculo_totales(prod_id)
+        'DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo)
 
         'creo un registro en producto_x_sucursal_lote
         'CHOCO 14-07-2020 aqui veo si existe el lote, actualizo la cantidad, pero si no existe registro como nuevo
@@ -209,7 +219,7 @@
             
 
             Dim ds_lote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_suma(txt_nrolote.Text, prod_id, sucursal_id,
-                                                                          CDec(tb_nueva_cant.Text), proveedor_id)
+                                                                          CDec(tb_nueva_cant.Text), proveedor_id, stock_real_ingreso)
             lote_id = ds_lote.Tables(0).Rows(0).Item("lote_id")
         End If
 
@@ -251,7 +261,9 @@
 
         ''''''''''
         'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
-        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+        recupero_y_recalculo_totales(prod_id)
+
+        'DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
         '''''''''''
 
 
@@ -260,7 +272,7 @@
         Dim lote_nro As String = txt_nrolote.Text
         Dim cant_a_quitar As Decimal = CDec(tb_nueva_cant.Text)
         'Dim Prov_id As Integer = Mov_DS.Tables("Mov").Rows(i).Item("Prov_id")
-        Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, sucursal_id, cant_a_quitar, proveedor_id)
+        Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, sucursal_id, cant_a_quitar, proveedor_id, stock_real_ingreso, CDec(0))
 
         lote_id = dslote.Tables(0).Rows(0).Item("lote_id")
 
@@ -310,7 +322,9 @@
 
         ''''''''''
         'Actualizo stock'''''
-        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo)
+        recupero_y_recalculo_totales(prod_id)
+
+        'DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo)
 
         'creo un registro en producto_x_sucursal_lote
         'CHOCO 14-07-2020 aqui veo si existe el lote, actualizo la cantidad, pero si no existe registro como nuevo
@@ -320,13 +334,29 @@
 
 
             Dim ds_lote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_igualar(txt_nrolote.Text, prod_id, sucursal_id,
-                                                                          CDec(tb_nueva_cant.Text), proveedor_id)
+                                                                          CDec(tb_nueva_cant.Text), proveedor_id, stock_real_ingreso, CDec(0))
             lote_id = ds_lote.Tables(0).Rows(0).Item("lote_id")
         End If
 
         '''''' Alta Tabla Detalle'''''' de movimiento claro está
         'alta en tabla mercaderia_detalle_alta
         DAMovintoMer.Movimiento_Mercaderia_Detalle_alta(CDec(tb_nueva_cant.Text), MovMer_id, codinterno, lote_id, CDec(0), CDec(0))
+    End Sub
+
+
+    Private Sub recupero_y_recalculo_totales(ByVal prod_id As Integer)
+        Dim ds_lotes As DataSet = DAlote.Producto_x_sucursal_lote_recuperartodos(codinterno, sucursal_id)
+        Dim stock As Decimal = 0
+        Dim stock_real As Decimal = 0
+        Dim i As Integer = 0
+        While i < ds_lotes.Tables(0).Rows.Count
+            stock = stock + CInt(ds_lotes.Tables(0).Rows(i).Item("lote_cantidad"))
+            stock_real = stock_real + CInt(ds_lotes.Tables(0).Rows(i).Item("lote_stock_real"))
+
+            i = i + 1
+        End While
+        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, stock, stock_real)
+
     End Sub
 
     Private Sub btn_agregarr_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_agregarr.Click

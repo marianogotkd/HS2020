@@ -1,0 +1,42 @@
+USE [Dialisis]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[Paciente_todos_reporte_x_rango]
+
+@fecha_desde datetime,
+@fecha_hasta datetime
+
+as
+select
+Paciente.PACnumafi,
+paciente.PAC_dni ,
+Paciente.PAC_ape +', '+paciente.PAC_nom as 'Nombre',
+paciente.PAc_dir ,
+paciente.PAC_sexo, 
+paciente.PAC_fnac, ---para calcular edad
+paciente.PAC_tipodialisis,
+Obra_Social.Obrasocial_id,
+Obra_Social.Obrasocial_nombre,
+paciente.PAC_fechaingreso,
+Paciente.PAC_estado       
+from Paciente inner join Obra_Social on Paciente.Obrasocial_id = Obra_Social.Obrasocial_id 
+where Paciente.PAC_estado = 'Activo' and (Paciente.PAC_fechaingreso between @fecha_desde  and DATEADD(day, 1, @fecha_hasta)) order by paciente.PACnumafi asc 
+
+select
+Paciente.PACnumafi,
+paciente.PAC_dni ,
+Paciente.PAC_ape +', '+paciente.PAC_nom as 'Nombre',
+paciente.PAc_dir ,
+paciente.PAC_sexo, 
+paciente.PAC_fnac, ---para calcular edad
+paciente.PAC_tipodialisis,
+Obra_Social.Obrasocial_id,
+Obra_Social.Obrasocial_nombre,
+paciente.PAC_fechaingreso,
+paciente.PAC_estado       
+from Paciente inner join Obra_Social on Paciente.Obrasocial_id = Obra_Social.Obrasocial_id 
+where Paciente.PAC_estado = 'Inactivo' and (Paciente.PAC_fechaingreso  between @fecha_desde  and DATEADD(day, 1, @fecha_hasta))  order by paciente.PACnumafi asc

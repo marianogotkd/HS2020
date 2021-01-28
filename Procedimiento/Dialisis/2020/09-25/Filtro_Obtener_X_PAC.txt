@@ -1,0 +1,6 @@
+Alter procedure [dbo].[Filtro_Obtener_X_PAC]
+@PAC_id int
+as
+
+select Filtro_id, PAC_id, Filtro_fecha, Filtro_cant_reuso, Sesiones_id 
+from Filtro where PAC_id=@PAC_id  order by Filtro_id desc
