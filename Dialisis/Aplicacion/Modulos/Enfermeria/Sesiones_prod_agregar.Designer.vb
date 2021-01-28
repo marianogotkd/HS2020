@@ -99,6 +99,8 @@ Partial Class Sesiones_prod_agregar
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.txt_totalreal = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.btn_quitar = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -132,6 +134,8 @@ Partial Class Sesiones_prod_agregar
         Me.LotenroDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Proveedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LotecantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lote_stock_real = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lote_aux = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LotefechafabDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LotefechavtoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LotevenceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -141,8 +145,7 @@ Partial Class Sesiones_prod_agregar
         Me.tope = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LotebajaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Mov_DS = New Aplicacion.Mov_DS()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.txt_totalreal = New System.Windows.Forms.TextBox()
+        Me.txt_unidmedida = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -959,6 +962,25 @@ Partial Class Sesiones_prod_agregar
         Me.TabPage4.Text = "Lotes del producto seleccionado"
         Me.TabPage4.UseVisualStyleBackColor = True
         '
+        'txt_totalreal
+        '
+        Me.txt_totalreal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_totalreal.Location = New System.Drawing.Point(517, 94)
+        Me.txt_totalreal.Name = "txt_totalreal"
+        Me.txt_totalreal.ReadOnly = True
+        Me.txt_totalreal.Size = New System.Drawing.Size(148, 22)
+        Me.txt_totalreal.TabIndex = 263
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(409, 96)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(107, 16)
+        Me.Label17.TabIndex = 262
+        Me.Label17.Text = "Total de UND:"
+        '
         'Button7
         '
         Me.Button7.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -976,7 +998,7 @@ Partial Class Sesiones_prod_agregar
         '
         Me.btn_quitar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_quitar.Image = CType(resources.GetObject("btn_quitar.Image"), System.Drawing.Image)
-        Me.btn_quitar.Location = New System.Drawing.Point(766, 355)
+        Me.btn_quitar.Location = New System.Drawing.Point(766, 266)
         Me.btn_quitar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_quitar.Name = "btn_quitar"
         Me.btn_quitar.Size = New System.Drawing.Size(168, 34)
@@ -1027,14 +1049,15 @@ Partial Class Sesiones_prod_agregar
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.txt_unidmedida)
         Me.GroupBox3.Controls.Add(Me.Button3)
         Me.GroupBox3.Controls.Add(Me.Panel_cant_mover)
         Me.GroupBox3.Controls.Add(Me.RichTextBox1)
         Me.GroupBox3.Controls.Add(Me.Label9)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(28, 392)
+        Me.GroupBox3.Location = New System.Drawing.Point(28, 307)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(906, 156)
+        Me.GroupBox3.Size = New System.Drawing.Size(906, 241)
         Me.GroupBox3.TabIndex = 48
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Ingrese la cantidad a mover:"
@@ -1043,7 +1066,7 @@ Partial Class Sesiones_prod_agregar
         '
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
-        Me.Button3.Location = New System.Drawing.Point(243, 25)
+        Me.Button3.Location = New System.Drawing.Point(270, 27)
         Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(124, 56)
@@ -1058,7 +1081,7 @@ Partial Class Sesiones_prod_agregar
         Me.Panel_cant_mover.Controls.Add(Me.txt_cant_mov)
         Me.Panel_cant_mover.Location = New System.Drawing.Point(86, 25)
         Me.Panel_cant_mover.Name = "Panel_cant_mover"
-        Me.Panel_cant_mover.Size = New System.Drawing.Size(150, 60)
+        Me.Panel_cant_mover.Size = New System.Drawing.Size(89, 60)
         Me.Panel_cant_mover.TabIndex = 52
         '
         'txt_cant_mov
@@ -1067,14 +1090,14 @@ Partial Class Sesiones_prod_agregar
         Me.txt_cant_mov.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_cant_mov.Location = New System.Drawing.Point(4, 12)
         Me.txt_cant_mov.Name = "txt_cant_mov"
-        Me.txt_cant_mov.Size = New System.Drawing.Size(143, 30)
+        Me.txt_cant_mov.Size = New System.Drawing.Size(71, 30)
         Me.txt_cant_mov.TabIndex = 39
         Me.txt_cant_mov.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'RichTextBox1
         '
         Me.RichTextBox1.ForeColor = System.Drawing.Color.Blue
-        Me.RichTextBox1.Location = New System.Drawing.Point(6, 94)
+        Me.RichTextBox1.Location = New System.Drawing.Point(6, 160)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.Size = New System.Drawing.Size(882, 37)
         Me.RichTextBox1.TabIndex = 40
@@ -1219,7 +1242,7 @@ Partial Class Sesiones_prod_agregar
         Me.DataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView3.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView3.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProdidDataGridViewTextBoxColumn1, Me.ProdcodinternoDataGridViewTextBoxColumn1, Me.ProddescripcionDataGridViewTextBoxColumn1, Me.ProdxSucstockDataGridViewTextBoxColumn, Me.LoteidDataGridViewTextBoxColumn, Me.LotenroDataGridViewTextBoxColumn, Me.Proveedor, Me.LotecantidadDataGridViewTextBoxColumn, Me.LotefechafabDataGridViewTextBoxColumn, Me.LotefechavtoDataGridViewTextBoxColumn, Me.LotevenceDataGridViewTextBoxColumn, Me.SucursalidDataGridViewTextBoxColumn, Me.Prov_id, Me.DataGridViewCheckBoxColumn2, Me.tope})
+        Me.DataGridView3.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProdidDataGridViewTextBoxColumn1, Me.ProdcodinternoDataGridViewTextBoxColumn1, Me.ProddescripcionDataGridViewTextBoxColumn1, Me.ProdxSucstockDataGridViewTextBoxColumn, Me.LoteidDataGridViewTextBoxColumn, Me.LotenroDataGridViewTextBoxColumn, Me.Proveedor, Me.LotecantidadDataGridViewTextBoxColumn, Me.lote_stock_real, Me.lote_aux, Me.LotefechafabDataGridViewTextBoxColumn, Me.LotefechavtoDataGridViewTextBoxColumn, Me.LotevenceDataGridViewTextBoxColumn, Me.SucursalidDataGridViewTextBoxColumn, Me.Prov_id, Me.DataGridViewCheckBoxColumn2, Me.tope})
         Me.DataGridView3.DataSource = Me.LotebajaBindingSource
         Me.DataGridView3.Location = New System.Drawing.Point(28, 151)
         Me.DataGridView3.Margin = New System.Windows.Forms.Padding(4)
@@ -1231,7 +1254,7 @@ Partial Class Sesiones_prod_agregar
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
         Me.DataGridView3.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView3.Size = New System.Drawing.Size(906, 196)
+        Me.DataGridView3.Size = New System.Drawing.Size(906, 107)
         Me.DataGridView3.StandardTab = True
         Me.DataGridView3.TabIndex = 40
         '
@@ -1283,6 +1306,20 @@ Partial Class Sesiones_prod_agregar
         Me.LotecantidadDataGridViewTextBoxColumn.DataPropertyName = "lote_cantidad"
         Me.LotecantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
         Me.LotecantidadDataGridViewTextBoxColumn.Name = "LotecantidadDataGridViewTextBoxColumn"
+        '
+        'lote_stock_real
+        '
+        Me.lote_stock_real.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.lote_stock_real.DataPropertyName = "lote_stock_real"
+        Me.lote_stock_real.HeaderText = "lote_stock_real"
+        Me.lote_stock_real.Name = "lote_stock_real"
+        '
+        'lote_aux
+        '
+        Me.lote_aux.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.lote_aux.DataPropertyName = "lote_aux"
+        Me.lote_aux.HeaderText = "lote_aux"
+        Me.lote_aux.Name = "lote_aux"
         '
         'LotefechafabDataGridViewTextBoxColumn
         '
@@ -1340,24 +1377,16 @@ Partial Class Sesiones_prod_agregar
         Me.Mov_DS.DataSetName = "Mov_DS"
         Me.Mov_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'Label17
+        'txt_unidmedida
         '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(409, 96)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(107, 16)
-        Me.Label17.TabIndex = 262
-        Me.Label17.Text = "Total de UND:"
-        '
-        'txt_totalreal
-        '
-        Me.txt_totalreal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_totalreal.Location = New System.Drawing.Point(517, 94)
-        Me.txt_totalreal.Name = "txt_totalreal"
-        Me.txt_totalreal.ReadOnly = True
-        Me.txt_totalreal.Size = New System.Drawing.Size(148, 22)
-        Me.txt_totalreal.TabIndex = 263
+        Me.txt_unidmedida.BackColor = System.Drawing.SystemColors.Info
+        Me.txt_unidmedida.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_unidmedida.Location = New System.Drawing.Point(181, 37)
+        Me.txt_unidmedida.Name = "txt_unidmedida"
+        Me.txt_unidmedida.ReadOnly = True
+        Me.txt_unidmedida.Size = New System.Drawing.Size(82, 30)
+        Me.txt_unidmedida.TabIndex = 251
+        Me.txt_unidmedida.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Sesiones_prod_agregar
         '
@@ -1497,21 +1526,6 @@ Partial Class Sesiones_prod_agregar
     Friend WithEvents Venta_Caja_ds As Aplicacion.Venta_Caja_ds
     Friend WithEvents LotebajaBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents Mov_DS As Aplicacion.Mov_DS
-    Friend WithEvents ProdidDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ProdcodinternoDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ProddescripcionDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ProdxSucstockDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents LoteidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents LotenroDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Proveedor As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents LotecantidadDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents LotefechafabDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents LotefechavtoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents LotevenceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents SucursalidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Prov_id As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewCheckBoxColumn2 As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents tope As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProdidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProdcodinternoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProddescripcionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -1525,4 +1539,22 @@ Partial Class Sesiones_prod_agregar
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents txt_totalreal As System.Windows.Forms.TextBox
     Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents ProdidDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ProdcodinternoDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ProddescripcionDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ProdxSucstockDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LoteidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LotenroDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Proveedor As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LotecantidadDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents lote_stock_real As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents lote_aux As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LotefechafabDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LotefechavtoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LotevenceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SucursalidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Prov_id As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn2 As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents tope As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents txt_unidmedida As System.Windows.Forms.TextBox
 End Class

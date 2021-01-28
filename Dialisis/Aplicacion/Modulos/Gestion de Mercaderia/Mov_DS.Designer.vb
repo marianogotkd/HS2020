@@ -1611,6 +1611,10 @@ Partial Public Class Mov_DS
         
         Private columnProveedor As Global.System.Data.DataColumn
         
+        Private columnlote_stock_real As Global.System.Data.DataColumn
+        
+        Private columnlote_aux As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1751,6 +1755,22 @@ Partial Public Class Mov_DS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property lote_stock_realColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlote_stock_real
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property lote_auxColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlote_aux
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1787,9 +1807,9 @@ Partial Public Class Mov_DS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function Addlote_bajaRow(ByVal prod_id As Long, ByVal prod_codinterno As Integer, ByVal prod_descripcion As String, ByVal ProdxSuc_stock As Decimal, ByVal lote_id As Integer, ByVal lote_nro As String, ByVal lote_cantidad As Decimal, ByVal lote_fechafab As Date, ByVal lote_fechavto As Date, ByVal lote_vence As String, ByVal sucursal_id As Integer, ByVal Prov_id As Integer, ByVal Proveedor As String) As lote_bajaRow
+        Public Overloads Function Addlote_bajaRow(ByVal prod_id As Long, ByVal prod_codinterno As Integer, ByVal prod_descripcion As String, ByVal ProdxSuc_stock As Decimal, ByVal lote_id As Integer, ByVal lote_nro As String, ByVal lote_cantidad As Decimal, ByVal lote_fechafab As Date, ByVal lote_fechavto As Date, ByVal lote_vence As String, ByVal sucursal_id As Integer, ByVal Prov_id As Integer, ByVal Proveedor As String, ByVal lote_stock_real As Decimal, ByVal lote_aux As Decimal) As lote_bajaRow
             Dim rowlote_bajaRow As lote_bajaRow = CType(Me.NewRow,lote_bajaRow)
-            Dim columnValuesArray() As Object = New Object() {prod_id, prod_codinterno, prod_descripcion, ProdxSuc_stock, lote_id, lote_nro, lote_cantidad, lote_fechafab, lote_fechavto, lote_vence, sucursal_id, Prov_id, Proveedor}
+            Dim columnValuesArray() As Object = New Object() {prod_id, prod_codinterno, prod_descripcion, ProdxSuc_stock, lote_id, lote_nro, lote_cantidad, lote_fechafab, lote_fechavto, lote_vence, sucursal_id, Prov_id, Proveedor, lote_stock_real, lote_aux}
             rowlote_bajaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowlote_bajaRow)
             Return rowlote_bajaRow
@@ -1825,6 +1845,8 @@ Partial Public Class Mov_DS
             Me.columnsucursal_id = MyBase.Columns("sucursal_id")
             Me.columnProv_id = MyBase.Columns("Prov_id")
             Me.columnProveedor = MyBase.Columns("Proveedor")
+            Me.columnlote_stock_real = MyBase.Columns("lote_stock_real")
+            Me.columnlote_aux = MyBase.Columns("lote_aux")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1856,6 +1878,10 @@ Partial Public Class Mov_DS
             MyBase.Columns.Add(Me.columnProv_id)
             Me.columnProveedor = New Global.System.Data.DataColumn("Proveedor", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnProveedor)
+            Me.columnlote_stock_real = New Global.System.Data.DataColumn("lote_stock_real", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlote_stock_real)
+            Me.columnlote_aux = New Global.System.Data.DataColumn("lote_aux", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlote_aux)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4347,6 +4373,36 @@ Partial Public Class Mov_DS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property lote_stock_real() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablelote_baja.lote_stock_realColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'lote_stock_real' de la tabla 'lote_baja' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablelote_baja.lote_stock_realColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property lote_aux() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablelote_baja.lote_auxColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'lote_aux' de la tabla 'lote_baja' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablelote_baja.lote_auxColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isprod_idNull() As Boolean
             Return Me.IsNull(Me.tablelote_baja.prod_idColumn)
         End Function
@@ -4499,6 +4555,30 @@ Partial Public Class Mov_DS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetProveedorNull()
             Me(Me.tablelote_baja.ProveedorColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Islote_stock_realNull() As Boolean
+            Return Me.IsNull(Me.tablelote_baja.lote_stock_realColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setlote_stock_realNull()
+            Me(Me.tablelote_baja.lote_stock_realColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Islote_auxNull() As Boolean
+            Return Me.IsNull(Me.tablelote_baja.lote_auxColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setlote_auxNull()
+            Me(Me.tablelote_baja.lote_auxColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

@@ -193,7 +193,7 @@
                         'ahora hago la diferencia
                         'Dim diferencia_para_origen As Decimal = cant_lote_existente - cant_a_mover
                         'ahora actualizo cant en lote origen.
-                        Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, cb_origen.SelectedValue, cant_a_mover, Mov_DS.Tables("Mov").Rows(i).Item("Prov_id"))
+                        Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, cb_origen.SelectedValue, cant_a_mover, Mov_DS.Tables("Mov").Rows(i).Item("Prov_id"), stock_real_ingreso, CDec(0))
 
                         '2) ahora actualizo en sucursal destino, 
                         '2a) tengo dos situaciones: que exista el lote en cuyo caso actualizo, o bien que no exista y lo doy de alta.
@@ -215,14 +215,14 @@
                                                                                           fechavencimiento,
                                                                                           prod_id,
                                                                                           cb_destino.SelectedValue,
-                                                                                          Mov_DS.Tables("Mov").Rows(i).Item("Vence"), Mov_DS.Tables("Mov").Rows(i).Item("Prov_id"))
+                                                                                          Mov_DS.Tables("Mov").Rows(i).Item("Vence"), Mov_DS.Tables("Mov").Rows(i).Item("Prov_id"), stock_real_ingreso, CDec(0))
                             lote_id = ds_lote.Tables(0).Rows(0).Item("lote_id")
                         Else
                             'si existe, lo modificamos.
 
                             'Dim lote_nro As String = Mov_DS.Tables("Mov").Rows(i).Item("Lote")
                             Dim cant_a_sumar As Decimal = CDec(Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"))
-                            Dim dslote2 As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_suma(lote_nro, prod_id, cb_destino.SelectedValue, cant_a_sumar, Mov_DS.Tables("Mov").Rows(i).Item("Prov_id"))
+                            Dim dslote2 As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_suma(lote_nro, prod_id, cb_destino.SelectedValue, cant_a_sumar, Mov_DS.Tables("Mov").Rows(i).Item("Prov_id"), stock_real_ingreso)
 
                             lote_id = dslote2.Tables(0).Rows(0).Item("lote_id")
 
@@ -297,7 +297,7 @@
                         Dim lote_nro As String = Mov_DS.Tables("Mov").Rows(i).Item("Lote")
                         Dim cant_a_quitar As Decimal = CDec(Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"))
                         Dim Prov_id As Integer = Mov_DS.Tables("Mov").Rows(i).Item("Prov_id")
-                        Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, cb_origen.SelectedValue, cant_a_quitar, Mov_DS.Tables("Mov").Rows(i).Item("Prov_id"))
+                        Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, cb_origen.SelectedValue, cant_a_quitar, Mov_DS.Tables("Mov").Rows(i).Item("Prov_id"), stock_real_ingreso, CDec(0))
 
                         lote_id = dslote.Tables(0).Rows(0).Item("lote_id")
                     End If

@@ -1,0 +1,3 @@
+CREATE TABLE [dbo].[Movimiento_Mercaderia_Detalle](
+
+	[MovMerDet_Cantidad] [decimal](38, 2) NULL,

@@ -1,0 +1,7 @@
+CREATE TABLE [dbo].[Consumo_Mercaderia_detalle](
+	
+cambiar este campo
+
+	[Consumo_mercaderiadetalle_cantidad] [decimal](38, 2) NULL,
+	
+	

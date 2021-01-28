@@ -97,7 +97,7 @@
                                                                                       fechavencimiento,
                                                                                       prod_id,
                                                                                       sucursal_id,
-                                                                                      Vence, cb_proveedor.SelectedValue)
+                                                                                      Vence, cb_proveedor.SelectedValue, stock_real_ingreso, CDec(0))
                         lote_id = ds_lotes.Tables(0).Rows(0).Item("lote_id")
 
 
@@ -209,8 +209,14 @@
 
     Dim Validaciones As New Validaciones
     Private Sub tb_Cant_Movi_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tb_Cant_Movi.KeyPress
-        Dim tipo As String = "Entero"
-        Validaciones.Restricciones_textbox(e, tipo, tb_Cant_Movi)
+        If Producto_ajuste.tipo_producto = "Fraccionable" Then
+            Dim tipo As String = "Decimal"
+            Validaciones.Restricciones_textbox(e, tipo, tb_Cant_Movi)
+        End If
+        If Producto_ajuste.tipo_producto = "No Fraccionable" Then
+            Dim tipo As String = "Entero"
+            Validaciones.Restricciones_textbox(e, tipo, tb_Cant_Movi)
+        End If
     End Sub
 
     Private Sub txt_nrolote_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_nrolote.KeyPress

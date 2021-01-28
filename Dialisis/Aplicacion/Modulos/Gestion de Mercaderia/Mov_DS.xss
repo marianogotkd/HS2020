@@ -9,7 +9,7 @@
     <Shape ID="DesignTable:Mov" ZOrder="8" X="25" Y="57" Height="310" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="306" />
     <Shape ID="DesignTable:movimientos_consulta" ZOrder="1" X="190" Y="75" Height="372" Width="195" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="368" />
     <Shape ID="DesignTable:movimientos_detalle" ZOrder="7" X="377" Y="116" Height="310" Width="217" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="306" />
-    <Shape ID="DesignTable:lote_baja" ZOrder="6" X="1007" Y="170" Height="286" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="282" />
+    <Shape ID="DesignTable:lote_baja" ZOrder="6" X="1013" Y="105" Height="334" Width="150" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="330" />
     <Shape ID="DesignTable:consumos_consulta" ZOrder="5" X="282" Y="511" Height="241" Width="367" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="237" />
     <Shape ID="DesignTable:consumos_detalle" ZOrder="4" X="725" Y="454" Height="241" Width="273" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="237" />
     <Shape ID="DesignTable:consumos_detalle_full" ZOrder="3" X="1314" Y="495" Height="263" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="259" />

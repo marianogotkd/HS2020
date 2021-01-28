@@ -489,7 +489,7 @@
                             fechavencimiento = Today
                         End If
                         Dim ds_lote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_suma(Mov_DS.Tables("Mov").Rows(i).Item("Lote"), prod_id, cb_origen.SelectedValue,
-                                                                                      Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"), cb_proveedor.SelectedValue)
+                                                                                      Mov_DS.Tables("Mov").Rows(i).Item("Cantidad"), cb_proveedor.SelectedValue, stock_real_ingreso)
                         lote_id = ds_lote.Tables(0).Rows(0).Item("lote_id")
 
                     Else
@@ -509,7 +509,8 @@
                                                                                       fechavencimiento,
                                                                                       prod_id,
                                                                                       cb_origen.SelectedValue,
-                                                                                      Mov_DS.Tables("Mov").Rows(i).Item("Vence"), cb_proveedor.SelectedValue)
+                                                                                      Mov_DS.Tables("Mov").Rows(i).Item("Vence"), cb_proveedor.SelectedValue,
+                                                                                      stock_real_ingreso, CDec(0))
                         lote_id = ds_lote.Tables(0).Rows(0).Item("lote_id")
                     End If
 

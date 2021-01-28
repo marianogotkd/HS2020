@@ -4,7 +4,7 @@
     Dim DAMovintoMer As New Datos.Gestion_Mercaderia
     Public sucursal_id As Integer
     Dim DAsucursal As New Datos.Sucursal
-
+    Public tipo_producto As String 'me indica si es string
     Public Sub recuperar_lotes()
         Mov_DS.Tables("lote_baja").Rows.Clear() 'siempre borro
         Dim prodcodinterno As Integer = CInt(txt_codigo.Text)
@@ -31,8 +31,11 @@
                 nuevoRow("sucursal_id") = ds_lotes.Tables(0).Rows(i).Item("sucursal_id")
                 nuevoRow("Prov_id") = ds_lotes.Tables(0).Rows(i).Item("Prov_id")
                 nuevoRow("Proveedor") = ds_lotes.Tables(0).Rows(i).Item("Proveedor")
+                nuevoRow("lote_stock_real") = ds_lotes.Tables(0).Rows(i).Item("lote_stock_real")
+                nuevoRow("lote_aux") = ds_lotes.Tables(0).Rows(i).Item("lote_aux")
 
-
+                tipo_producto = ds_lotes.Tables(0).Rows(i).Item("prod_tipo")
+                txt_totalreal.Text = ds_lotes.Tables(0).Rows(i).Item("ProdxSuc_stock_real").ToString + " " + ds_lotes.Tables(0).Rows(i).Item("prod_unidadmedida")
                 Mov_DS.Tables("lote_baja").Rows.Add(nuevoRow)
                 i = i + 1
             End While
@@ -200,7 +203,7 @@
         'Dim lote_nro As String = Mov_DS.Tables("Mov").Rows(i).Item("Lote")
         Dim cant_a_quitar As Decimal = cant_lote
         'Dim Prov_id As Integer = Mov_DS.Tables("Mov").Rows(i).Item("Prov_id")
-        Dim dslote As DataSet = dalote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, sucursal_id, cant_a_quitar, Prov_id)
+        Dim dslote As DataSet = dalote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, sucursal_id, cant_a_quitar, Prov_id, stock_real_ingreso, CDec(0))
 
         lote_id = dslote.Tables(0).Rows(0).Item("lote_id")
 
@@ -325,9 +328,6 @@
         Ajuste_alta.sucursal_id = sucursal_id
         Ajuste_alta.codinterno = CInt(txt_codigo.Text)
 
-
-
-
         Ajuste_alta.Show()
 
     End Sub
@@ -381,6 +381,48 @@
             MessageBox.Show("No hay lotes en el listado.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
 
+
+
+    End Sub
+
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        'VALIDAR QUE ESTE ALGO CHEQUEADO EN EL GRIDVIEW
+        Dim valido_seleccion As String = "no"
+        If DataGridView2.Rows.Count <> 0 Then
+            Dim i As Integer = 0
+            While i < DataGridView2.Rows.Count
+                If DataGridView2.Rows(i).Cells("Item").Value = True Then 'el value en true significa que esta checkeado para eliminar
+                    valido_seleccion = "si"
+
+                    Dim item As Decimal = DataGridView2.CurrentRow.Index
+
+                    Ajuste_vencimiento.Close()
+                    Ajuste_vencimiento.lote_id = DataGridView2.Rows(i).Cells("LoteidDataGridViewTextBoxColumn").Value
+                    Ajuste_vencimiento.txt_nrolote.Text = DataGridView2.Rows(i).Cells("LotenroDataGridViewTextBoxColumn").Value
+                    Ajuste_vencimiento.codinterno = CInt(txt_codigo.Text)
+                    If DataGridView2.Rows(i).Cells("LotevenceDataGridViewTextBoxColumn").Value = "si" Then
+                        Ajuste_vencimiento.DateTimePicker_fvencimiento.Value = DataGridView2.Rows(i).Cells("LotefechavtoDataGridViewTextBoxColumn").Value
+                        Ajuste_vencimiento.DateTimePicker_ffabricacion.Value = DataGridView2.Rows(i).Cells("LotefechafabDataGridViewTextBoxColumn").Value
+                    End If
+                    Ajuste_vencimiento.vence = DataGridView2.Rows(i).Cells("LotevenceDataGridViewTextBoxColumn").Value
+                    Ajuste_vencimiento.Show()
+
+                    Exit While
+
+
+                Else
+                    i = i + 1
+                End If
+
+            End While
+
+            If valido_seleccion = "no" Then
+                MessageBox.Show("Debe seleccinar un lote para editar el vencimiento.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            End If
+
+        Else
+            MessageBox.Show("No hay lotes en el listado.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
 
 
     End Sub

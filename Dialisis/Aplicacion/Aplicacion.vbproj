@@ -1303,6 +1303,12 @@
     <Compile Include="Modulos\Stock\Producto_Ajuste\Ajuste_suma_resta_igual.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Stock\Producto_Ajuste\Ajuste_vencimiento.Designer.vb">
+      <DependentUpon>Ajuste_vencimiento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Stock\Producto_Ajuste\Ajuste_vencimiento.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modulos\Stock\Producto_Ajuste\Producto_ajuste.Designer.vb">
       <DependentUpon>Producto_ajuste.vb</DependentUpon>
     </Compile>
@@ -2189,6 +2195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Stock\Producto_Ajuste\Ajuste_suma_resta_igual.resx">
       <DependentUpon>Ajuste_suma_resta_igual.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Stock\Producto_Ajuste\Ajuste_vencimiento.resx">
+      <DependentUpon>Ajuste_vencimiento.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Stock\Producto_Ajuste\Producto_ajuste.resx">
       <DependentUpon>Producto_ajuste.vb</DependentUpon>
