@@ -229,6 +229,7 @@ C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Enferm
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Enfermeria_insumos_Ausente.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Enfermeria_pacientes_seleccionar.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Enfermeria_reporte_fechas.resources
+C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Insumos_Predefinidos.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.msj_esperar_sesiones.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Nueva_Dialisis.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Nueva_sesion.resources
