@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Ds_turnodialisis" targetNamespace="http://tempuri.org/Ds_turnodialisis.xsd" xmlns:mstns="http://tempuri.org/Ds_turnodialisis.xsd" xmlns="http://tempuri.org/Ds_turnodialisis.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Ds_turnodialisis" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Ds_turnodialisis" msprop:Generator_UserDSName="Ds_turnodialisis">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TurnoDialisis_consulta" msprop:Generator_TableClassName="TurnoDialisis_consultaDataTable" msprop:Generator_TableVarName="tableTurnoDialisis_consulta" msprop:Generator_TablePropName="TurnoDialisis_consulta" msprop:Generator_RowDeletingName="TurnoDialisis_consultaRowDeleting" msprop:Generator_RowChangingName="TurnoDialisis_consultaRowChanging" msprop:Generator_RowEvHandlerName="TurnoDialisis_consultaRowChangeEventHandler" msprop:Generator_RowDeletedName="TurnoDialisis_consultaRowDeleted" msprop:Generator_UserTableName="TurnoDialisis_consulta" msprop:Generator_RowChangedName="TurnoDialisis_consultaRowChanged" msprop:Generator_RowEvArgName="TurnoDialisis_consultaRowChangeEvent" msprop:Generator_RowClassName="TurnoDialisis_consultaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Turnodialisis_id" msprop:Generator_ColumnVarNameInTable="columnTurnodialisis_id" msprop:Generator_ColumnPropNameInRow="Turnodialisis_id" msprop:Generator_ColumnPropNameInTable="Turnodialisis_idColumn" msprop:Generator_UserColumnName="Turnodialisis_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Turnodialisis_Desc" msprop:Generator_ColumnVarNameInTable="columnTurnodialisis_Desc" msprop:Generator_ColumnPropNameInRow="Turnodialisis_Desc" msprop:Generator_ColumnPropNameInTable="Turnodialisis_DescColumn" msprop:Generator_UserColumnName="Turnodialisis_Desc" type="xs:string" minOccurs="0" />
+              <xs:element name="Horario" msprop:Generator_ColumnVarNameInTable="columnHorario" msprop:Generator_ColumnPropNameInRow="Horario" msprop:Generator_ColumnPropNameInTable="HorarioColumn" msprop:Generator_UserColumnName="Horario" type="xs:string" minOccurs="0" />
+              <xs:element name="Dias" msprop:Generator_ColumnVarNameInTable="columnDias" msprop:Generator_ColumnPropNameInRow="Dias" msprop:Generator_ColumnPropNameInTable="DiasColumn" msprop:Generator_UserColumnName="Dias" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
