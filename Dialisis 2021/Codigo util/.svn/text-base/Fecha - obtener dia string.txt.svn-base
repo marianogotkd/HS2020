@@ -1,0 +1,35 @@
+
+
+
+por ejemplo quiero guardar en una variable string el nombre del dia seleciconado en un componente datetimepicker 
+
+/////////////////////////////////////
+dim GP_Primero as string
+GP_Primero = WeekdayName(Weekday(DT_fecha.Value.Date) - 1) + " " + DT_fecha.Value.Date
+
+
+
+OTRA SOLUCION
+
+dim GP_Primero as string
+GP_Primero = WeekdayName(Weekday(DT_fecha.Value.Date))
+
+IF GP_Primero = "domingo" then
+	GP_Primero = "sábado"
+end if 
+
+
+
+
+////////////////////////////////
+
+aclaro q en la funcion weekdatname(weekday ...se le resta 1 a la fecha ya q sino te da el dia siguiente
+ya q esta es una funcion Yankee)
+
+
+...el resultado seria
+
+GP_Primero = Viernes
+
+
+pero ojo si es domingo...el indice es 0...por ello si lo resto en 1..da error.asi q sirve para algunos casos

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Cliente_reporte_ds" targetNamespace="http://tempuri.org/Cliente_reporte_ds.xsd" xmlns:mstns="http://tempuri.org/Cliente_reporte_ds.xsd" xmlns="http://tempuri.org/Cliente_reporte_ds.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Cliente_reporte_ds" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Cliente_reporte_ds" msprop:Generator_UserDSName="Cliente_reporte_ds">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Cliente" msprop:Generator_TableClassName="ClienteDataTable" msprop:Generator_TableVarName="tableCliente" msprop:Generator_RowChangedName="ClienteRowChanged" msprop:Generator_TablePropName="Cliente" msprop:Generator_RowDeletingName="ClienteRowDeleting" msprop:Generator_RowChangingName="ClienteRowChanging" msprop:Generator_RowEvHandlerName="ClienteRowChangeEventHandler" msprop:Generator_RowDeletedName="ClienteRowDeleted" msprop:Generator_RowClassName="ClienteRow" msprop:Generator_UserTableName="Cliente" msprop:Generator_RowEvArgName="ClienteRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Fantasia" msprop:Generator_ColumnVarNameInTable="columnFantasia" msprop:Generator_ColumnPropNameInRow="Fantasia" msprop:Generator_ColumnPropNameInTable="FantasiaColumn" msprop:Generator_UserColumnName="Fantasia" type="xs:string" minOccurs="0" />
+              <xs:element name="DNI" msprop:Generator_ColumnVarNameInTable="columnDNI" msprop:Generator_ColumnPropNameInRow="DNI" msprop:Generator_ColumnPropNameInTable="DNIColumn" msprop:Generator_UserColumnName="DNI" type="xs:string" minOccurs="0" />
+              <xs:element name="tipo_iva" msprop:Generator_ColumnVarNameInTable="columntipo_iva" msprop:Generator_ColumnPropNameInRow="tipo_iva" msprop:Generator_ColumnPropNameInTable="tipo_ivaColumn" msprop:Generator_UserColumnName="tipo_iva" type="xs:string" minOccurs="0" />
+              <xs:element name="telefono" msprop:Generator_ColumnVarNameInTable="columntelefono" msprop:Generator_ColumnPropNameInRow="telefono" msprop:Generator_ColumnPropNameInTable="telefonoColumn" msprop:Generator_UserColumnName="telefono" type="xs:string" minOccurs="0" />
+              <xs:element name="direccion" msprop:Generator_ColumnVarNameInTable="columndireccion" msprop:Generator_ColumnPropNameInRow="direccion" msprop:Generator_ColumnPropNameInTable="direccionColumn" msprop:Generator_UserColumnName="direccion" type="xs:string" minOccurs="0" />
+              <xs:element name="codigo_postal" msprop:Generator_ColumnVarNameInTable="columncodigo_postal" msprop:Generator_ColumnPropNameInRow="codigo_postal" msprop:Generator_ColumnPropNameInTable="codigo_postalColumn" msprop:Generator_UserColumnName="codigo_postal" type="xs:int" minOccurs="0" />
+              <xs:element name="provincia" msprop:Generator_ColumnVarNameInTable="columnprovincia" msprop:Generator_ColumnPropNameInRow="provincia" msprop:Generator_ColumnPropNameInTable="provinciaColumn" msprop:Generator_UserColumnName="provincia" type="xs:string" minOccurs="0" />
+              <xs:element name="localidad" msprop:Generator_ColumnVarNameInTable="columnlocalidad" msprop:Generator_ColumnPropNameInRow="localidad" msprop:Generator_ColumnPropNameInTable="localidadColumn" msprop:Generator_UserColumnName="localidad" type="xs:string" minOccurs="0" />
+              <xs:element name="mail" msprop:Generator_ColumnVarNameInTable="columnmail" msprop:Generator_ColumnPropNameInRow="mail" msprop:Generator_ColumnPropNameInTable="mailColumn" msprop:Generator_UserColumnName="mail" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Empresa" msprop:Generator_TableClassName="EmpresaDataTable" msprop:Generator_TableVarName="tableEmpresa" msprop:Generator_TablePropName="Empresa" msprop:Generator_RowDeletingName="EmpresaRowDeleting" msprop:Generator_RowChangingName="EmpresaRowChanging" msprop:Generator_RowEvHandlerName="EmpresaRowChangeEventHandler" msprop:Generator_RowDeletedName="EmpresaRowDeleted" msprop:Generator_UserTableName="Empresa" msprop:Generator_RowChangedName="EmpresaRowChanged" msprop:Generator_RowEvArgName="EmpresaRowChangeEvent" msprop:Generator_RowClassName="EmpresaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="empresa_id" msprop:Generator_ColumnVarNameInTable="columnempresa_id" msprop:Generator_ColumnPropNameInRow="empresa_id" msprop:Generator_ColumnPropNameInTable="empresa_idColumn" msprop:Generator_UserColumnName="empresa_id" type="xs:int" minOccurs="0" />
+              <xs:element name="empresa_Nombre" msprop:Generator_ColumnVarNameInTable="columnempresa_Nombre" msprop:Generator_ColumnPropNameInRow="empresa_Nombre" msprop:Generator_ColumnPropNameInTable="empresa_NombreColumn" msprop:Generator_UserColumnName="empresa_Nombre" type="xs:string" minOccurs="0" />
+              <xs:element name="empresa_dir" msprop:Generator_ColumnVarNameInTable="columnempresa_dir" msprop:Generator_ColumnPropNameInRow="empresa_dir" msprop:Generator_ColumnPropNameInTable="empresa_dirColumn" msprop:Generator_UserColumnName="empresa_dir" type="xs:string" minOccurs="0" />
+              <xs:element name="empresa_telefono" msprop:Generator_ColumnVarNameInTable="columnempresa_telefono" msprop:Generator_ColumnPropNameInRow="empresa_telefono" msprop:Generator_ColumnPropNameInTable="empresa_telefonoColumn" msprop:Generator_UserColumnName="empresa_telefono" type="xs:string" minOccurs="0" />
+              <xs:element name="empresa_eslogan" msprop:Generator_ColumnVarNameInTable="columnempresa_eslogan" msprop:Generator_ColumnPropNameInRow="empresa_eslogan" msprop:Generator_ColumnPropNameInTable="empresa_esloganColumn" msprop:Generator_UserColumnName="empresa_eslogan" type="xs:string" minOccurs="0" />
+              <xs:element name="empresa_mail" msprop:Generator_ColumnVarNameInTable="columnempresa_mail" msprop:Generator_ColumnPropNameInRow="empresa_mail" msprop:Generator_ColumnPropNameInTable="empresa_mailColumn" msprop:Generator_UserColumnName="empresa_mail" type="xs:string" minOccurs="0" />
+              <xs:element name="empresa_cuit" msprop:Generator_ColumnVarNameInTable="columnempresa_cuit" msprop:Generator_ColumnPropNameInRow="empresa_cuit" msprop:Generator_ColumnPropNameInTable="empresa_cuitColumn" msprop:Generator_UserColumnName="empresa_cuit" type="xs:string" minOccurs="0" />
+              <xs:element name="empresa_foto" msprop:Generator_ColumnVarNameInTable="columnempresa_foto" msprop:Generator_ColumnPropNameInRow="empresa_foto" msprop:Generator_ColumnPropNameInTable="empresa_fotoColumn" msprop:Generator_UserColumnName="empresa_foto" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

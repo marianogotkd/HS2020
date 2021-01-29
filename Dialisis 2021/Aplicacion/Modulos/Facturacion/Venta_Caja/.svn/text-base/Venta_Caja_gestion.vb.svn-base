@@ -1,0 +1,2201 @@
+﻿Public Class Venta_Caja_gestion
+    Dim DAcliente As New Datos.Cliente
+    Dim DAlista As New Datos.Lista
+    Dim DAventa As New Datos.Venta
+    Dim DAproducto As New Datos.Producto
+    Public VentaGestion_DS_PROD As DataSet
+    Public tipo_vta As String 'esta variable me sirve para saber con que precio trabajar, mayorista o minorista
+    Public tipo_prod
+
+
+#Region "METODOS Y EVENTOS DE LA GRILLA DE PRODUCTOS"
+    Dim Encontrado As String = "no"
+    Public Sub Buscar_y_cargar_en_grilla(ByVal cod_ingresado As Integer)
+        Select Case tipo_vta
+            Case "Minorista"
+                '-----------------------------------------------------------------
+                '-----------------------------------------------------------------
+                'LA BUSQUEDA DE PRODUCTO ES EN LA TABLA PRODUCTOS X SUCURSAL, Y SOLO TOMA PRECIOS MINORISTAS
+                '-----------------------------------------------------------------
+                '-----------------------------------------------------------------
+                Encontrado = "no" 'siempre por defecto, "IMPÒRTANTISIMO"
+                Dim i As Integer = 0
+                'AQUI SOLO BUSCO EN TABLA PRODUCTOS, NO EN PROMOCIONES
+                While i < VentaGestion_DS_PROD.Tables(1).Rows.Count 'la tabla 1 es para los prod comunes, no para los de la lista regular
+                    Dim cod_interno As String = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_codinterno").ToString
+                    Dim cod_barra As String = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_codbarra").ToString
+
+                 
+
+                    If cod_ingresado = cod_interno Or CStr(cod_ingresado) = cod_barra Then
+
+                        '' si es fraccionable o no el producto solamente por este if pasa''
+                        tipo_prod = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_tipo").ToString
+                        '''''''''''''''''''''''''''''MARIANO 17/6/19'''''''''''''''''''''''
+
+                        Dim index As Integer = DataGridView1.CurrentRow.Index
+                        DataGridView1.CurrentRow.Cells("columna_item").Value = CInt(DataGridView1.CurrentRow.Index + 1)
+                        DataGridView1.CurrentRow.Cells("columna_prod_id").Value = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_id").ToString
+                        DataGridView1.CurrentRow.Cells("columna_codinterno").Value = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_codinterno").ToString
+                        DataGridView1.CurrentRow.Cells("columna_descripcion").Value = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_descripcion").ToString
+                        DataGridView1.CurrentRow.Cells("columna_detalle").Value = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_descrilarga").ToString
+                        DataGridView1.CurrentRow.Cells("columna_cantidad").Value = CInt(1)
+                        DataGridView1.CurrentRow.Cells("columna_precio_unitario").Value = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_precio_vta")
+                        Dim total As Decimal = 0
+                        total = CDec(VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_precio_vta"))
+                        DataGridView1.CurrentRow.Cells("columna_precio_subtotal").Value = CDec(total)   'CDec(Math.Round(total, 2)).ToString("N2")
+                        DataGridView1.CurrentRow.Cells("columna_codbarra").Value = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_codbarra").ToString
+                        Encontrado = "si"
+                        i = VentaGestion_DS_PROD.Tables(1).Rows.Count
+                    End If
+                    i = i + 1
+                End While
+                If Encontrado = "no" Then
+                    i = 0
+                    'Lo busco como promocion
+                    While i < VentaGestion_ds_PROMO.Tables(0).Rows.Count
+                        Dim cod_interno As String = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_codinterno").ToString
+                        If cod_ingresado.ToString.ToUpper = cod_interno Then
+                            DataGridView1.CurrentRow.Cells("columna_item").Value = CInt(DataGridView1.CurrentRow.Index + 1)
+                            DataGridView1.CurrentRow.Cells("columna_prod_id").Value = " "
+                            DataGridView1.CurrentRow.Cells("columna_codinterno").Value = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_codinterno").ToString
+                            DataGridView1.CurrentRow.Cells("columna_descripcion").Value = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_nom").ToString
+                            DataGridView1.CurrentRow.Cells("columna_detalle").Value = " "
+                            DataGridView1.CurrentRow.Cells("columna_cantidad").Value = CInt(1)
+                            DataGridView1.CurrentRow.Cells("columna_precio_unitario").Value = CDec(VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_total"))
+                            Dim total As Decimal = 0
+                            total = CDec(VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_total"))
+                            DataGridView1.CurrentRow.Cells("columna_precio_subtotal").Value = CDec(total) 'CDec(Math.Round(total, 2)).ToString("N2")
+                            DataGridView1.CurrentRow.Cells("columna_codbarra").Value = " "
+
+                            Encontrado = "si"
+                            i = VentaGestion_ds_PROMO.Tables(0).Rows.Count
+                        End If
+                        i = i + 1
+                    End While
+                End If
+                If Encontrado = "no" Then
+                    'buscar por codigo de barras
+                    DataGridView1.CurrentRow.Cells("columna_item").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_prod_id").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_codinterno").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_descripcion").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_detalle").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_cantidad").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_precio_unitario").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_precio_subtotal").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_codbarra").Value = ""
+
+                    MessageBox.Show("No Existe el Producto", "Sistema de Gestión")
+                Else
+                    calcular_totales()
+                    aplicar_iva()
+                    'ademas agrego un row mas para el proximo item, SIEMPRE Y CUANDO NO TENGA YA un row vacio disponible al final
+                    Dim a As Integer = 0
+                    If DataGridView1.Rows(DataGridView1.Rows.Count - 1).Cells(2).Value <> "" Then
+                        DataGridView1.Rows.Add()
+                    End If
+                End If
+            Case "Mayorista"
+                '-----------------------------------------------------------------
+                '-----------------------------------------------------------------
+                'LA BUSQUEDA DE PRODUCTO ES EN LA TABLA PRODUCTOS X SUCURSAL, Y SOLO TOMA PRECIOS MAYORISTAS
+                '-----------------------------------------------------------------
+                '-----------------------------------------------------------------
+                Encontrado = "no" 'siempre por defecto, "IMPÒRTANTISIMO"
+                Dim i As Integer = 0
+                'AQUI SOLO BUSCO EN TABLA PRODUCTOS, NO EN PROMOCIONES
+                While i < VentaGestion_DS_PROD.Tables(1).Rows.Count 'la tabla 1 es para los prod comunes, no para los de la lista regular
+                    Dim cod_interno As String = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_codinterno").ToString
+                    Dim cod_barra As String = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_codbarra").ToString
+                    If cod_ingresado = cod_interno Or CStr(cod_ingresado) = cod_barra Then
+                        Dim index As Integer = DataGridView1.CurrentRow.Index
+                        DataGridView1.CurrentRow.Cells("columna_item").Value = CInt(DataGridView1.CurrentRow.Index + 1)
+                        DataGridView1.CurrentRow.Cells("columna_prod_id").Value = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_id").ToString
+                        DataGridView1.CurrentRow.Cells("columna_codinterno").Value = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_codinterno").ToString
+                        DataGridView1.CurrentRow.Cells("columna_descripcion").Value = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_descripcion").ToString
+                        DataGridView1.CurrentRow.Cells("columna_detalle").Value = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_descrilarga").ToString
+                        DataGridView1.CurrentRow.Cells("columna_cantidad").Value = CInt(1)
+                        DataGridView1.CurrentRow.Cells("columna_precio_unitario").Value = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_precio_vta_May")
+                        Dim total As Decimal = 0
+                        total = CDec(VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_precio_vta_May"))
+                        DataGridView1.CurrentRow.Cells("columna_precio_subtotal").Value = CDec(total)   'CDec(Math.Round(total, 2)).ToString("N2")
+                        DataGridView1.CurrentRow.Cells("columna_codbarra").Value = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_codbarra").ToString
+                        Encontrado = "si"
+                        i = VentaGestion_DS_PROD.Tables(1).Rows.Count
+                    End If
+                    i = i + 1
+                End While
+                If Encontrado = "no" Then
+                    i = 0
+                    'Lo busco como promocion
+                    While i < VentaGestion_ds_PROMO.Tables(0).Rows.Count
+                        Dim cod_interno As String = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_codinterno").ToString
+                        If cod_ingresado.ToString.ToUpper = cod_interno Then
+                            DataGridView1.CurrentRow.Cells("columna_item").Value = CInt(DataGridView1.CurrentRow.Index + 1)
+                            DataGridView1.CurrentRow.Cells("columna_prod_id").Value = " "
+                            DataGridView1.CurrentRow.Cells("columna_codinterno").Value = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_codinterno").ToString
+                            DataGridView1.CurrentRow.Cells("columna_descripcion").Value = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_nom").ToString
+                            DataGridView1.CurrentRow.Cells("columna_detalle").Value = " "
+                            DataGridView1.CurrentRow.Cells("columna_cantidad").Value = CInt(1)
+                            DataGridView1.CurrentRow.Cells("columna_precio_unitario").Value = CDec(VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_total"))
+                            Dim total As Decimal = 0
+                            total = CDec(VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_total"))
+                            DataGridView1.CurrentRow.Cells("columna_precio_subtotal").Value = CDec(total) 'CDec(Math.Round(total, 2)).ToString("N2")
+                            DataGridView1.CurrentRow.Cells("columna_codbarra").Value = " "
+
+                            Encontrado = "si"
+                            i = VentaGestion_ds_PROMO.Tables(0).Rows.Count
+                        End If
+                        i = i + 1
+                    End While
+                End If
+                If Encontrado = "no" Then
+                    'buscar por codigo de barras
+                    DataGridView1.CurrentRow.Cells("columna_item").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_prod_id").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_codinterno").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_descripcion").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_detalle").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_cantidad").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_precio_unitario").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_precio_subtotal").Value = ""
+                    DataGridView1.CurrentRow.Cells("columna_codbarra").Value = ""
+
+                    MessageBox.Show("No Existe el Producto", "Sistema de Gestión")
+                Else
+                    calcular_totales()
+                    aplicar_iva()
+                    'ademas agrego un row mas para el proximo item, SIEMPRE Y CUANDO NO TENGA YA un row vacio disponible al final
+                    Dim a As Integer = 0
+                    If DataGridView1.Rows(DataGridView1.Rows.Count - 1).Cells(2).Value <> "" Then
+                        DataGridView1.Rows.Add()
+                    End If
+                End If
+        End Select
+        'If TX_busc_codinterno.Text <> "" Then
+        '    Dim i As Integer = 0
+        '    Dim encontrado As String = "No"
+        '    Dim T As Integer = 0
+        '    If RB_No.Checked = True Then 'ESTO LO HAGO X Q EN EL MISMO DATA SET para los productos comunes es table 1, y para las lista regular seleccionada es table 0
+        '        T = 1
+        '    End If
+
+        '    While i < VentaGestion_DS_PROD.Tables(T).Rows.Count
+        '        Dim cod_interno As String = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codinterno").ToString
+        '        If TX_busc_codinterno.Text = cod_interno Then
+        '            'primero verifico que el producto q ingreso no este ya en la grilla
+        '            Dim item = 0
+        '            Dim presente = "no"
+        '            Dim fila_editar = 0
+        '            While item < DataG_lista.Rows.Count
+        '                If DataG_lista.Rows(item).Cells(2).Value = TX_busc_codinterno.Text Then
+        '                    presente = "si"
+        '                    fila_editar = item
+        '                End If
+        '                item = item + 1
+        '            End While
+        '            'ahora veo de agregar o editar
+        '            If presente = "no" Then
+        '                'agrego una nueva fila
+        '                Dim newCustomersRow As DataRow = Venta_Caja_ds.Tables("Producto_agregado").NewRow()
+        '                newCustomersRow("PROD_id") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_id").ToString
+        '                newCustomersRow("codinterno") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codinterno").ToString
+        '                If RB_No.Checked = True Then
+        '                    newCustomersRow("descripcion") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_descripcion").ToString
+        '                Else
+        '                    newCustomersRow("descripcion") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_descripcion").ToString + " " + "x" + VentaGestion_DS_PROD.Tables(T).Rows(i).Item("Lista_Prod_cantidad").ToString
+        '                End If
+        '                newCustomersRow("detalle") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_descrilarga").ToString
+
+        '                If tx_cantidad.Text = "" Then
+        '                    tx_cantidad.Text = CInt(1)
+        '                End If
+        '                Dim cant As Integer = CInt(tx_cantidad.Text)
+        '                newCustomersRow("cantidad") = cant
+        '                newCustomersRow("precio_unitario") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_precio_vta")
+        '                Dim total As Decimal = 0
+        '                total = cant * CDec(VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_precio_vta"))
+        '                newCustomersRow("precio_subtotal") = CDec(Math.Round(total, 2)).ToString("N2")
+        '                newCustomersRow("codbarra") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codbarra").ToString
+        '                Venta_Caja_ds.Tables("Producto_agregado").Rows.Add(newCustomersRow)
+        '                DataG_lista.DataSource = Venta_Caja_ds.Tables("Producto_agregado")
+        '                Dim a As Integer = DataG_lista.Rows.Count
+        '                DataG_lista.Rows(a - 1).Cells(0).Value = a
+        '            Else
+
+        '                'edito una fila existente, solo si el usuario lo desea, pregunta!!!
+        '                'Dim result As DialogResult
+        '                'result = MessageBox.Show("Ya esta agregado ¿Desea modificar?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+        '                'If result = DialogResult.OK Then
+        '                If tx_cantidad.Text = "" Then
+        '                    tx_cantidad.Text = CInt(1)
+        '                End If
+        '                Dim cant As Integer = CInt(tx_cantidad.Text) + CInt(DataG_lista.Rows(fila_editar).Cells(5).Value)
+        '                'DataG_lista.Rows(fila_editar).Cells(0).Value = DG_Producto.CurrentRow.Cells(0).Value.ToString
+        '                DataG_lista.Rows(fila_editar).Cells(5).Value = cant
+        '                Dim total As Decimal = 0
+        '                total = cant * CDec(DataG_lista.Rows(fila_editar).Cells(6).Value)
+        '                DataG_lista.Rows(fila_editar).Cells(7).Value = CDec(Math.Round(total, 2)).ToString("N2")
+        '                ''edito una fila existente, solo si el usuario lo desea, pregunta!!!
+        '                'Dim result As DialogResult
+        '                'result = MessageBox.Show("Ya esta agregado ¿Desea modificar?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+        '                'If result = DialogResult.OK Then
+        '                '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(0).Value = DG_Producto.CurrentRow.Cells(0).Value.ToString
+        '                '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(1).Value = DG_Producto.CurrentRow.Cells(1).Value.ToString
+        '                '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(2).Value = DG_Producto.CurrentRow.Cells(2).Value.ToString
+        '                '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(3).Value = TX_LISTA_PROD_cant.Text
+        '                '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(4).Value = Label_preciolista.Text
+        '                '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(5).Value = CDec(Label_preciototal.Text)
+        '                'End If
+        '            End If
+        '            encontrado = "Si"
+        '        End If
+        '        i = i + 1
+        '    End While
+        '    If encontrado = "No" Then
+        '        i = 0
+        '        'lo busco como promocion
+        '        While i < VentaGestion_ds_PROMO.Tables(0).Rows.Count
+        '            Dim cod_interno As String = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_codinterno").ToString
+        '            If TX_busc_codinterno.Text.ToUpper = cod_interno Then
+        '                'primero verifico que el producto q ingreso no este ya en la grilla
+        '                Dim item = 0
+        '                Dim presente = "no"
+        '                Dim fila_editar = 0
+        '                While item < DataG_lista.Rows.Count
+        '                    If DataG_lista.Rows(item).Cells(2).Value = TX_busc_codinterno.Text.ToUpper Then
+        '                        presente = "si"
+        '                        fila_editar = item
+        '                    End If
+        '                    item = item + 1
+        '                End While
+        '                'ahora veo de agregar o editar
+        '                If presente = "no" Then
+        '                    'agrego una nueva fila
+        '                    Dim newCustomersRow As DataRow = Venta_Caja_ds.Tables("Producto_agregado").NewRow()
+        '                    newCustomersRow("PROD_id") = CStr("0")
+        '                    newCustomersRow("codinterno") = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_codinterno").ToString
+        '                    newCustomersRow("descripcion") = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_nom").ToString
+        '                    'newCustomersRow("detalle") = 
+        '                    If tx_cantidad.Text = "" Then
+        '                        tx_cantidad.Text = CInt(1)
+        '                    End If
+        '                    Dim cant As Integer = CInt(tx_cantidad.Text)
+        '                    newCustomersRow("cantidad") = cant
+        '                    newCustomersRow("precio_unitario") = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_total")
+
+        '                    Dim total As Decimal = 0
+        '                    total = cant * CDec(VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_total"))
+        '                    newCustomersRow("precio_subtotal") = CDec(Math.Round(total, 2)).ToString("N2")
+        '                    newCustomersRow("codbarra") = " "
+        '                    Venta_Caja_ds.Tables("Producto_agregado").Rows.Add(newCustomersRow)
+        '                    DataG_lista.DataSource = Venta_Caja_ds.Tables("Producto_agregado")
+        '                    Dim a As Integer = DataG_lista.Rows.Count
+        '                    DataG_lista.Rows(a - 1).Cells(0).Value = a
+
+        '                Else
+        '                    'edito una fila existente, solo si el usuario lo desea, pregunta!!!
+        '                    'Dim result As DialogResult
+        '                    'result = MessageBox.Show("Ya esta agregado ¿Desea modificar?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+        '                    'If result = DialogResult.OK Then
+        '                    If tx_cantidad.Text = "" Then
+        '                        tx_cantidad.Text = CInt(1)
+        '                    End If
+        '                    Dim cant As Integer = CInt(tx_cantidad.Text) + CInt(DataG_lista.Rows(fila_editar).Cells(5).Value)
+        '                    'DataG_lista.Rows(fila_editar).Cells(0).Value = DG_Producto.CurrentRow.Cells(0).Value.ToString
+        '                    DataG_lista.Rows(fila_editar).Cells(5).Value = cant
+        '                    Dim total As Decimal = 0
+        '                    total = cant * CDec(DataG_lista.Rows(fila_editar).Cells(6).Value)
+        '                    DataG_lista.Rows(fila_editar).Cells(7).Value = CDec(Math.Round(total, 2)).ToString("N2")
+        '                    'End If
+        '                End If
+        '                encontrado = "Si"
+        '            End If
+        '            i = i + 1
+        '        End While
+        '        If encontrado = "No" Then
+        '            MsgBox("no existe")
+        '            TX_busc_codinterno.SelectAll()
+        '        Else
+
+        '            tx_cantidad.Text = "1"
+        '            'tx_cantidad.Focus()
+        '            'tx_cantidad.SelectAll()
+        '            TX_busc_codinterno.Text = ""
+        '            TX_busc_codinterno.Focus()
+        '            TX_busc_codinterno.SelectAll()
+        '        End If
+        '    Else
+        '        tx_cantidad.Text = "1"
+        '        TX_busc_codinterno.Text = ""
+        '        TX_busc_codinterno.Focus()
+        '        TX_busc_codinterno.SelectAll()
+        '        'tx_cantidad.Focus()
+        '        'tx_cantidad.SelectAll()
+        '    End If
+        'End If
+    End Sub
+    Dim fila_mover As Integer = 0
+    Dim listo As String = "no"
+
+    Private Sub DataGridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        'NOTA: cuando hago click sobre las celdas q no son editables se cambia el foco a las celdas cod_interno y cantidad 
+        Dim celda_actual As Integer = DataGridView1.CurrentCell.ColumnIndex
+        Select Case celda_actual
+            Case 0
+                SendKeys.Send("{TAB}")
+            Case 3
+                SendKeys.Send("{LEFT}")
+            Case 6
+                SendKeys.Send("{LEFT}")
+            Case 7
+                SendKeys.Send("{LEFT}")
+                SendKeys.Send("{LEFT}")
+        End Select
+    End Sub
+
+    Private Sub DataGridView1_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.SelectionChanged
+        If Encontrado = "si" Then
+            If listo = "si" Then
+                'volver a seleccionar anterior
+                DataGridView1.CurrentCell = DataGridView1(5, fila_mover)
+                listo = "no"
+            End If
+            If listo = "si, sig fila" Then
+                'valido que no sea la ultima fila de la grilla - choco: 25-06-2019
+                'If DataGridView1.CurrentRow.Index <> DataGridView1.Rows.Count - 1 Then 'si no estoy en la ultima fila, salto a la siguiente
+                'And CDec(DataGridView1.CurrentRow.Cells("columna_cantidad").Value) <> CDec(0)
+                'If DataGridView1.CurrentRow.Cells("columna_codinterno").Value <> "" Then
+                'volver a seleccionar anterior
+                'generar_fila_grid()
+                DataGridView1.CurrentCell = DataGridView1(2, fila_mover + 1)
+                listo = "no"
+                'End If
+                'End If
+
+
+
+            End If
+        Else
+            'si no lo encuentra quedar en la misma celda
+            'DataGridView1.CurrentCell = DataGridView1(2, fila_mover)
+            listo = "no"
+        End If
+
+
+
+    End Sub
+
+    Private Sub DataGridView1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles DataGridView1.KeyDown
+        If DataGridView1.CurrentCell.ColumnIndex = 2 And CStr(DataGridView1.CurrentRow.Cells("columna_item").Value) <> "" Then
+            If e.KeyCode = Keys.Enter Then
+                e.SuppressKeyPress = True
+                'DataGridView1.CurrentRow.Cells("columna_descripcion").Value = "producto"
+                'DataGridView1.CurrentRow.Cells("columna_cantidad").Value = "10"
+                SendKeys.Send("{TAB}")
+                SendKeys.Send("{TAB}")
+            End If
+        End If
+        If DataGridView1.CurrentCell.ColumnIndex = 5 Then
+            If e.KeyCode = Keys.Enter Then
+                e.SuppressKeyPress = True
+                SendKeys.Send("{TAB}")
+                SendKeys.Send("{TAB}")
+                SendKeys.Send("{TAB}")
+                SendKeys.Send("{TAB}")
+                SendKeys.Send("{TAB}")
+            End If
+        End If
+        'If DataGridView1.CurrentCell.ColumnIndex = 2 And e.KeyCode = Keys.Right Or Keys.Left Then 'esto anula la nav x teclado
+        '    e.SuppressKeyPress = True
+        'End If
+        'If DataGridView1.CurrentCell.ColumnIndex = 5 And e.KeyCode = Keys.Left Or Keys.Right Then 'esto anula la nav x teclado
+        '    e.SuppressKeyPress = True
+        'End If
+        'If e.KeyCode = Keys.Enter Then
+        '    'DataGridView1.Rows(DataGridView1.CurrentRow.Index).Cells("columna_cantidad").Selected = True
+        'End If
+    End Sub
+
+    Public agregado_de_busqueda As String = "no"
+    Private Sub DataGridView1_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellEndEdit
+        If DataGridView1.CurrentCell.ColumnIndex = 2 Then 'la columna 2 es Cod interno
+            If DataGridView1.CurrentCell.Value Is DBNull.Value Then
+                DataGridView1.CurrentCell.Value = 0
+            End If
+            Buscar_y_cargar_en_grilla(CInt(DataGridView1.CurrentCell.Value))
+            'DataGridView1.CurrentRow.Cells("columna_descripcion").Value = "producto"
+            'DataGridView1.CurrentRow.Cells("columna_cantidad").Value = "10"
+            fila_mover = DataGridView1.CurrentRow.Index
+            listo = "si"
+        End If
+        If DataGridView1.CurrentCell.ColumnIndex = 5 Then 'la columna 5 es Cantidad
+            If DataGridView1.CurrentCell.Value Is DBNull.Value Then
+                DataGridView1.CurrentCell.Value = 1
+            End If
+            Dim precio As Decimal = 0
+            'Dim cantidad As Integer = CInt(DataGridView1.CurrentRow.Cells("columna_cantidad").Value)
+            Dim cantidad As Decimal = CDec(DataGridView1.CurrentRow.Cells("columna_cantidad").Value)
+            precio = cantidad * CDec(DataGridView1.CurrentRow.Cells("columna_precio_unitario").Value)
+            DataGridView1.CurrentRow.Cells("columna_precio_subtotal").Value = CDec(precio) 'CDec(Math.Round(precio, 2)).ToString("N2")
+            fila_mover = DataGridView1.CurrentRow.Index
+            calcular_totales()
+            aplicar_iva()
+            listo = "si, sig fila"
+        End If
+
+
+    End Sub
+
+    Public Sub calcular_totales()
+        DataG_listaTotal.Rows.Clear()
+        DataG_listaTotal.Rows.Add()
+        'sumamos los subtotales con un ciclo
+        Dim sumar As Decimal = "0,00"
+        Dim ii As Integer = 0
+        While ii < DataGridView1.Rows.Count   'DataG_lista.Rows.Count
+            sumar = sumar + CDec(DataGridView1.Rows(ii).Cells("columna_precio_subtotal").Value)
+            ii = ii + 1
+        End While
+        sumar = Math.Round(sumar, 2)
+        DataG_listaTotal.Rows(0).Cells(0).Value = "TOTAL"
+        DataG_listaTotal.Rows(0).Cells(1).Value = CDec(sumar) 'Math.Round(sumar, 2).ToString("N2")
+        txt_subtotal.Text = CDec(sumar)
+    End Sub
+
+#End Region
+
+
+
+
+
+#Region "EVENTOS"
+    Private Sub Venta_Caja_gestion_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+        'NOTA: DEBE ESTAR LA PROPIEDAD DEL FORM "KEYPREVIEW = TRUE" para q se ejecute el evento keydown.
+        If e.KeyCode = Keys.F1 Then 'F1
+            Busqueda_Productos.form_procedencia = "Venta_Caja_gestion"
+            Busqueda_Productos.Show()
+            'Busqueda_Productos.tx_Buscar.Focus()
+        End If
+        If e.KeyCode = Keys.F2 Then
+            'Ver_promocion.form_procedencia = "Venta_Caja_gestion"
+            'Ver_promocion.Show()
+
+            'Ver_promocion.tx_Buscar.Focus()
+        End If
+
+        If e.KeyCode = Keys.F5 Then
+            Busqueda_CodBarra.Show()
+            'Ver_promocion.form_procedencia = "Venta_Caja_gestion"
+            'Ver_promocion.Show()
+
+            'Ver_promocion.tx_Buscar.Focus()
+        End If
+
+        'If e.KeyCode = Keys.Right Then
+        '    If CELDA = 2 Then
+        '        'MOVER A LA 5
+
+        '        Me.Focus()
+        '        DataGridView1.Focus()
+        '        'DataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically
+        '        DataGridView1.Rows(FILA).Cells("columna_cantidad").Selected = True
+        '        DataGridView1.EditMode = DataGridViewEditMode.EditOnEnter
+        '        CELDA = 5
+        '    Else
+        '        'MOVER ABAJO A AL SIG FILA
+        '        FILA = FILA + 1
+
+        '        Me.Focus()
+        '        DataGridView1.Focus()
+        '        'DataGridView1.EditMode = DataGridViewEditMode.EditProgrammatically
+        '        DataGridView1.Rows(FILA).Cells("columna_codinterno").Selected = True
+        '        DataGridView1.EditMode = DataGridViewEditMode.EditOnEnter
+        '        CELDA = 2
+        '    End If
+        'End If
+
+
+        'If e.KeyCode = Keys.Enter Then
+        'DataGridView1.Rows(0).Cells("columna_cantidad").Selected = True
+        'End If
+
+
+    End Sub
+
+    Private Sub obtener_usuario_y_sucursal()
+        'ojo esto funciona con la referencia al menu...
+        Dim USU_ID As Integer = CInt(US_administrador.USU_id)
+        Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(USU_ID)
+        If ds_usuario.Tables(0).Rows.Count <> 0 Then
+            'cargamos datos en los label
+
+
+            '-------------GRUPBOX VENTA----------------
+            'aqui recupero el ultimo nro de factura y le sumo 1
+            Dim ds_facturanro As DataSet = DAventa.obtener_ultimo_nrofactura
+            If ds_facturanro.Tables(0).Rows.Count <> 0 Then
+                lb_factura_vta.Text = ds_facturanro.Tables(0).Rows(0).Item("ventaprod_id") + 1
+            End If
+
+
+
+            lb_vendedor_vta.Text = ds_usuario.Tables(0).Rows(0).Item("USU_ape") + ", " + ds_usuario.Tables(0).Rows(0).Item("USU_nom")
+            lb_fecha_vta.Text = Today
+
+            '-------------GRUPBOX DATOS COMERCIALES---------
+            lb_nombre_sucursal.Text = ds_usuario.Tables(0).Rows(0).Item("sucursal_nombre")
+            lb_direccion_sucursal.Text = ds_usuario.Tables(0).Rows(0).Item("sucursal_direccion")
+            lb_telefono_sucursal.Text = ds_usuario.Tables(0).Rows(0).Item("sucursal_telefono")
+            lb_mail_sucursal.Text = ds_usuario.Tables(0).Rows(0).Item("sucursal_mail")
+
+            '-----------GRUPBOX CLIENTE.
+            If RB_Cliente.Checked = True And DG_clientes.Rows.Count <> 0 Then
+                Dim ds As DataSet = DAcliente.Cliente_obtener_info(CInt(DG_clientes.CurrentRow.Cells("CLIidDataGridViewTextBoxColumn").Value))
+                lb_fantasia.Text = ds.Tables(0).Rows(0).Item("CLI_Fan").ToString
+                lb_dni_clie.Text = ds.Tables(0).Rows(0).Item("CLI_dni").ToString
+                lb_telef_clie.Text = ds.Tables(0).Rows(0).Item("CLI_tel").ToString
+                lb_mail_clie.Text = ds.Tables(0).Rows(0).Item("CLI_mail").ToString
+                lb_tipoIVA_clie.Text = ds.Tables(0).Rows(0).Item("IVA_Descripcion").ToString
+            Else
+                lb_fantasia.Text = "- - - -"
+                lb_dni_clie.Text = "- - - -"
+                lb_telef_clie.Text = "- - - -"
+                lb_mail_clie.Text = "- - - -"
+                lb_tipoIVA_clie.Text = "- - - -"
+            End If
+        End If
+
+    End Sub
+
+    Private Sub Venta_Caja_gestion_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Me.Focus()
+        'tx_cantidad.MaxLength = 6
+        'recupero todos los clientes de la bd
+        Call Obtener_Clientes()
+        'Call Obtener_Promociones()
+        Obtener_Promociones_2()
+        Obtener_Productos_Combos()
+
+
+        TabPage2.Parent = Nothing
+
+        'agregamos grilla vacia.
+        'DataGridView1.DataSource = Venta_Caja_ds.Tables("Producto_agregado")
+        'generar_fila_grid()
+
+
+
+    End Sub
+
+
+    Private Sub DG_clientes_CellClick1(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
+        'If e.ColumnIndex <> 1 Then Exit Sub
+
+        ''primero quito la seleccion de los demas
+        'Dim i = 0
+        'While i < DG_clientes_old.Rows.Count
+        '    DG_clientes_old.Rows(i).Cells(1).Value = False
+        '    i = i + 1
+        'End While
+
+        'If DG_clientes_old.Rows(e.RowIndex).Cells(1).Value = True Then
+
+        '    DG_clientes_old.Rows(e.RowIndex).Cells(1).Value = False
+        'Else
+        '    DG_clientes_old.Rows(e.RowIndex).Cells(1).Value = True
+        'End If
+    End Sub
+
+    Private Sub RB_Consumidor_CheckedChanged1(ByVal sender As Object, ByVal e As System.EventArgs) Handles RB_Consumidor.CheckedChanged
+        If RB_Consumidor.Checked = True Then
+            DG_clientes.Enabled = False
+            Dim i = 0
+            'While i < DG_clientes_old.Rows.Count
+            '    DG_clientes_old.Rows(i).Cells(1).Value = False
+            '    i = i + 1
+            'End While
+
+        End If
+    End Sub
+
+    Private Sub RB_Cliente_CheckedChanged1(ByVal sender As Object, ByVal e As System.EventArgs) Handles RB_Cliente.CheckedChanged
+        If RB_Cliente.Checked = True Then
+            DG_clientes.Enabled = True
+            Busqueda.Focus()
+            Busqueda.SelectAll()
+        End If
+    End Sub
+
+    Private Sub BO_Nuevo_Click1(ByVal sender As Object, ByVal e As System.EventArgs) Handles BO_Nuevo.Click
+        llamar_Form(Cliente_alta, Me)
+    End Sub
+
+
+#End Region
+
+
+#Region "METODOS"
+    Dim ds_clie As DataSet
+    'recupero todos los clientes
+    Public Sub Obtener_Clientes()
+        ds_clie = DAcliente.Cliente_obtenertodo()
+        If ds_clie.Tables(0).Rows.Count <> 0 Then
+
+            Venta_Caja_ds.Tables("Cliente").Rows.Clear() 'borro el contenido del dataset.datatable clientes
+            Venta_Caja_ds.Tables("Cliente").Merge(ds_clie.Tables(0)) '' al combinarla con el dataset "cliente" ya puedo filtrar
+
+            'DG_clientes.DataSource = ds_clie.Tables(0)
+            'DG_clientes_old.DataSource = ds_clie.Tables(0)
+        End If
+    End Sub
+    Private Sub Filtrar_datatable(ByVal parametro As String)
+        If ds_clie.Tables.Count <> 0 Then
+            ''uso ds_CLIE que trae los productos buscados en sql
+            Dim table_filtrada As New DataTable
+            table_filtrada.Columns.Add("CLI_id")
+            table_filtrada.Columns.Add("CLI_ape")
+            table_filtrada.Columns.Add("CLI_nom")
+            table_filtrada.Columns.Add("CLI_dni")
+            table_filtrada.Columns.Add("CLI_fnac")
+            table_filtrada.Columns.Add("CLI_tel")
+            table_filtrada.Columns.Add("CLI_mail")
+
+            DG_clientes.DataSource = Nothing
+
+            Dim table As DataTable = ds_clie.Tables(0)
+
+            Dim apellido As String = parametro
+            Dim a = 0
+            While a < table.Rows.Count
+                Dim fila As String = table.Rows(a).Item("CLI_ape")
+                fila = fila.ToLower()
+                parametro = parametro.ToLower()
+                Dim primercaracter As Integer = fila.IndexOf(parametro)
+                If primercaracter <> -1 Then
+                    table_filtrada.ImportRow(table.Rows(a))
+                End If
+
+                Dim fila2 As String = table.Rows(a).Item("CLI_dni")
+                fila2 = fila2.ToLower()
+                parametro = parametro.ToLower()
+                Dim primercaracter2 As Integer = fila2.IndexOf(parametro)
+                If primercaracter2 <> -1 Then
+                    table_filtrada.ImportRow(table.Rows(a))
+                End If
+
+
+                Dim fila3 As String = table.Rows(a).Item("CLI_nom")
+                fila3 = fila3.ToLower()
+                parametro = parametro.ToLower()
+                Dim primercaracter3 As Integer = fila3.IndexOf(parametro)
+                If primercaracter3 <> -1 Then
+                    table_filtrada.ImportRow(table.Rows(a))
+                End If
+
+
+                'If apellido = table.Rows(a).Item("CLI_ape") Then
+                '    table_filtrada.ImportRow(table.Rows(a))
+                'End If
+                a = a + 1
+            End While
+
+            If table_filtrada.Rows.Count <> 0 Then
+                DG_clientes.DataSource = table_filtrada
+            Else
+                DG_clientes.DataSource = ds_clie.Tables(0)
+            End If
+        End If
+    End Sub
+    Private Sub Obtener_combo()
+        Dim ds_listas As DataSet = DAlista.Lista_Regular_obtener()
+        'Cargar Proveedor
+        CB_lista.DataSource = ds_listas.Tables(0)
+        CB_lista.DisplayMember = "LISTA_nom"
+        CB_lista.ValueMember = "LISTA_id"
+    End Sub
+
+
+
+    Public Sub Obtener_Productos_Combos() 'CORRECCION (CHOCO):27-09-2018
+        If RB_Si.Checked = False Then 'quiere decir q no estoy usando listas definidas
+            VentaGestion_DS_PROD = DAventa.Venta_obtenerProducto_Combos(Inicio.USU_id) 'rutina que trae productos x sucursal, precios minoristas y mayorista (corregido el 11-10-2018)
+            'junto los prod y los combos..para mostrarlos en el mismo grid
+            With VentaGestion_DS_PROD.Tables(2).Rows
+                If .Count > 0 Then
+                    VentaGestion_DS_PROD.Tables(1).Merge(VentaGestion_DS_PROD.Tables(2))
+                    'DataGridView1.DataSource = DS_PROD.Tables(1)
+                Else
+                    If VentaGestion_DS_PROD.Tables(1).Rows.Count <> 0 Then
+                        '    DataGridView1.DataSource = DS_PROD.Tables(1)
+                    Else
+                        '   DataGridView1.Enabled = False
+                        'DataGridView1.DataSource = Nothing
+                    End If
+                End If
+            End With
+        Else
+            If RB_No.Checked = False Then
+                VentaGestion_DS_PROD = DAventa.Venta_obtenerProducto_listaregular(CB_lista.SelectedValue)
+                'junto los prod y los combos..para mostrarlos en el mismo grid
+                With VentaGestion_DS_PROD.Tables(1).Rows
+                    If .Count > 0 Then
+                        VentaGestion_DS_PROD.Tables(0).Merge(VentaGestion_DS_PROD.Tables(1))
+                        'DataGridView1.DataSource = DS_PROD.Tables(0)
+                    Else
+                        If VentaGestion_DS_PROD.Tables(0).Rows.Count <> 0 Then
+                            'DataGridView1.DataSource = DS_PROD.Tables(0)
+                        Else
+                            'DataGridView1.Enabled = False
+                            'DataGridView1.DataSource = Nothing
+                        End If
+                        'IM_ERROR.Visible = True
+                        'LB_ERROR.Visible = True
+                    End If
+                End With
+            End If
+        End If
+    End Sub
+    Public VentaGestion_ds_PROMO As DataSet
+    Public Function Obtener_Promociones_SUB(ByRef i As Integer, ByRef borrado As String)
+
+        If VentaGestion_ds_PROMO.Tables(0).Rows.Count <> 0 Then
+            Dim dia_actual As Date = Today
+            'Dim dia_actual As Date = "14 / 12 /2013"   esta la uso para probar si funciona bien en determinado dia
+            Dim dia As String = dia_actual.ToString("dddd")
+
+
+            Dim d As Integer = 0
+            Dim dia_valido As String = ""
+            While d < VentaGestion_ds_PROMO.Tables(1).Rows.Count
+                If VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_id") = VentaGestion_ds_PROMO.Tables(1).Rows(d).Item("LISTA_id") Then
+                    dia_valido = "no"
+                    Dim dia_semana As String = ""
+                    If CInt(VentaGestion_ds_PROMO.Tables(1).Rows(d).Item("DIA_id")) = "1" Then
+                        dia_semana = "domingo"
+                    End If
+                    If CInt(VentaGestion_ds_PROMO.Tables(1).Rows(d).Item("DIA_id")) = "2" Then
+                        dia_semana = "lunes"
+                    End If
+                    If CInt(VentaGestion_ds_PROMO.Tables(1).Rows(d).Item("DIA_id")) = "3" Then
+                        dia_semana = "martes"
+                    End If
+                    If CInt(VentaGestion_ds_PROMO.Tables(1).Rows(d).Item("DIA_id")) = "4" Then
+                        dia_semana = "miércoles"
+                    End If
+                    If CInt(VentaGestion_ds_PROMO.Tables(1).Rows(d).Item("DIA_id")) = "5" Then
+                        dia_semana = "jueves"
+                    End If
+                    If CInt(VentaGestion_ds_PROMO.Tables(1).Rows(d).Item("DIA_id")) = "6" Then
+                        dia_semana = "viernes"
+                    End If
+                    If CInt(VentaGestion_ds_PROMO.Tables(1).Rows(d).Item("DIA_id")) = "7" Then
+                        dia_semana = "sábado"
+                    End If
+                    If dia = dia_semana Then
+                        dia_valido = "si"
+                        d = VentaGestion_ds_PROMO.Tables(1).Rows.Count
+                    End If
+                End If
+                d = d + 1
+            End While
+
+            If dia_valido = "no" Then
+                borrado = "si"
+                'ds_PROMO.Tables(0).Rows(i).Delete()
+            Else
+                dia_valido = ""
+                '//////esto es para VIGENCIA/////////////////
+                Dim j As Integer = 0
+                While j < VentaGestion_ds_PROMO.Tables(2).Rows.Count
+                    Dim desde As Date = VentaGestion_ds_PROMO.Tables(2).Rows(j).Item("LISTA_VIG_desde")
+                    Dim hasta As Date = VentaGestion_ds_PROMO.Tables(2).Rows(j).Item("LISTA_VIG_hasta")
+                    If VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_id") = VentaGestion_ds_PROMO.Tables(2).Rows(j).Item("LISTA_id") Then
+                        If (Today < desde) Or (Today > hasta) Then
+                            'If (Today < CDate(ds_PROD.Tables(2).Rows(j).Item("LISTA_VIG_desde"))) Or (Today > CDate(ds_PROD.Tables(2).Rows(j).Item("LISTA_VIG_hasta"))) Then
+
+                            'ds_PROMO.Tables(0).Rows(i).Delete()
+                            borrado = "si"
+                            j = VentaGestion_ds_PROMO.Tables(2).Rows.Count
+                        End If
+                    End If
+                    j = j + 1
+                End While
+            End If
+        End If
+        Return (borrado)
+    End Function
+    Public Sub Obtener_Promociones_2()
+        VentaGestion_ds_PROMO = DAlista.Lista_Promocion_obtener()
+        'junto los prod y los combos..para mostrarlos en el mismo grid
+
+        If VentaGestion_ds_PROMO.Tables(0).Rows.Count <> 0 Then
+            Dim i As Integer = 0
+            While i < VentaGestion_ds_PROMO.Tables(0).Rows.Count
+                Dim borrado As String = "no"
+                'llamada a procedimiento para borrar.
+
+                Obtener_Promociones_SUB(i, borrado)
+
+                If borrado = "si" Then
+                    'ds_PROMO.Tables(0).Rows(i).Delete()
+                    VentaGestion_ds_PROMO.Tables(0).Rows.RemoveAt(i)
+                    i = 0
+                Else
+                    i = i + 1
+                End If
+            End While
+        End If
+    End Sub
+    Public Sub habilitar_columnas_edicion()
+
+        'Dim columgri1 As Integer = 0
+        'While columgri1 <= 7
+        '    Me.DataG_lista.Columns(columgri1).ReadOnly = True
+        '    columgri1 = columgri1 + 1
+        'End While
+
+        ''2 y 5
+        'DataG_lista.Columns(2).ReadOnly = False 'cod interno
+        'DataG_lista.Columns(5).ReadOnly = False 'cantidad
+
+
+        'cambio el color de las columnas editables
+        Dim fila As Integer = 0
+        While fila < Me.DataGridView1.Rows.Count
+
+
+            Me.DataGridView1.Rows(fila).Cells(0).Style.BackColor = Color.GhostWhite
+            Me.DataGridView1.Rows(fila).Cells(1).Style.BackColor = Color.GhostWhite
+            Me.DataGridView1.Rows(fila).Cells(3).Style.BackColor = Color.GhostWhite
+            Me.DataGridView1.Rows(fila).Cells(4).Style.BackColor = Color.GhostWhite
+            Me.DataGridView1.Rows(fila).Cells(6).Style.BackColor = Color.GhostWhite
+            Me.DataGridView1.Rows(fila).Cells(7).Style.BackColor = Color.GhostWhite
+
+            'If fila = 0 Then
+            '    Me.DataG_lista.Rows(fila).Cells(2).Style.BackColor = Color.LightGoldenrodYellow
+            '    Me.DataG_lista.Rows(fila).Cells(5).Style.BackColor = Color.LightGoldenrodYellow
+            '    fila = fila + 1
+            'Else
+            '    If Me.DataG_lista.Rows(fila - 1).Cells(1).Value <> "" Then
+            '        Me.DataG_lista.Rows(fila).Cells(2).Style.BackColor = Color.LightGoldenrodYellow
+            '        Me.DataG_lista.Rows(fila).Cells(5).Style.BackColor = Color.LightGoldenrodYellow
+            '        fila = fila + 1
+            '    Else
+            '        fila = Me.DataG_lista.Rows.Count
+            '    End If
+            '    fila = fila + 1
+            'End If
+
+            fila = fila + 1
+        End While
+
+
+    End Sub
+    Public Sub Limpiar()
+        'primero lo de la pagina 2
+        'TX_busc_codinterno.Clear()
+        'tx_cantidad.Clear()
+        Venta_Caja_ds.Tables("Producto_agregado").Rows.Clear()
+        'DataG_lista.DataSource = Nothing
+        DataGridView1.Rows.Clear()
+        DataGridView1.DataSource = Nothing
+        DataG_listaTotal.DataSource = Nothing
+        DataG_listaTotal.Rows.Clear()
+        'segundo lo de la pagina 1
+        GroupBox12.Enabled = False  'deshabilito la pestaña 2
+        GroupBox1.Enabled = True
+        GroupBox2.Enabled = True
+        GroupBox3.Enabled = True
+        TabControl1.SelectedTab = TabPage1
+        TabPage2.Parent = Nothing 'oculto pestaña 2
+        TabPage1.Parent = TabControl1 'pongo visible pestaña 1
+        'textbox de subtotal, total, descuento, impuesto agregado
+        txt_subtotal.Text = CDec(0)
+        txt_descuento.Text = CDec(0)
+        txt_impuesto_aplicado.Text = CDec(0)
+        txt_total.Text = CDec(0)
+        'descuentos
+        txt_desc_pesos.Text = CDec(0)
+        txt_desc_porc.Text = CDec(0)
+    End Sub
+
+#End Region
+
+
+
+    Dim form_anterior
+    Public Sub llamar_Form(ByVal var, ByVal form_anterior)
+        If (US_administrador.PN_Entrada.Controls.Count > 0) Then
+            US_administrador.PN_Entrada.Controls.RemoveAt(0)
+            If form_anterior.ToString <> var.ToString Then
+                form_anterior.close()
+            End If
+            var.TopLevel = False
+            var.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+            var.Dock = DockStyle.Fill
+            US_administrador.PN_Entrada.Controls.Add(var)
+            US_administrador.PN_Entrada.Tag = var
+            form_anterior = var
+            var.Show()
+        Else
+            var.TopLevel = False
+            var.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+            var.Dock = DockStyle.Fill
+            US_administrador.PN_Entrada.Controls.Add(var)
+            US_administrador.PN_Entrada.Tag = var
+            form_anterior = var
+            var.Show()
+        End If
+    End Sub
+    Private Sub BO_Aceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BO_Aceptar.Click
+        If RB_Cliente.Checked = True Then
+            If DG_clientes.CurrentRow.Selected = True Then
+                GroupBox12.Enabled = True 'habilito la pestaña 2
+                GroupBox1.Enabled = False
+                GroupBox2.Enabled = False
+                GroupBox3.Enabled = False
+                TabPage1.Parent = Nothing 'oculto pestaña 1
+                TabPage2.Parent = TabControl1 'pongo visible pestaña 2
+                TabControl1.SelectedTab = TabPage2
+
+                'LIMPIAR LA GRILLA DE PROD AGREGADOS
+                'DataG_lista.DataSource = Nothing
+                DataGridView1.DataSource = Nothing
+                Call habilitar_columnas_edicion()
+                Call Obtener_Productos_Combos()
+                'tx_cantidad.Text = 1
+            Else
+                MessageBox.Show("Error, seleccione un cliente", "Sistema de Gestión")
+            End If
+        Else
+            GroupBox12.Enabled = True 'habilito la pestaña 2
+            GroupBox1.Enabled = False
+            GroupBox2.Enabled = False
+            GroupBox3.Enabled = False
+            TabPage1.Parent = Nothing 'oculto pestaña 1
+            TabPage2.Parent = TabControl1 'pongo visible pestaña 2
+            TabControl1.SelectedTab = TabPage2
+            'LIMPIAR LA GRILLA DE PROD AGREGADOS
+            'DataG_lista.DataSource = Nothing
+            DataGridView1.DataSource = Nothing
+            Call habilitar_columnas_edicion()
+            Call Obtener_Productos_Combos()
+            'tx_cantidad.Text = 1
+        End If
+        'esto va en el evento load del nuevo diseño del modulo
+        DataGridView1.Rows.Add()
+        DataGridView1.Focus()
+
+        DataGridView1.Rows(0).Cells("columna_codinterno").Selected = True
+
+        obtener_usuario_y_sucursal() 'esto info se carga en los grupbox de la segunda pestaña
+
+        'FILA = 0
+        'CELDA = 2
+        ' DataGridView1.EditMode = DataGridViewEditMode.EditOnEnter
+        ComboBox_iva.SelectedIndex = 0
+        Label_tipo_vta.Text = "Venta " + tipo_vta
+    End Sub
+    Private Sub RB_Si_CheckedChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RB_Si.CheckedChanged
+        If RB_Si.Checked = True Then
+            Call Obtener_combo()
+        End If
+    End Sub
+    Private Sub BO_Modificar_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BO_Modificar.Click
+        'If DG_clientes.CurrentRow.Selected = True Then
+        '    Cliente_modificar.TX_doc.Text = DG_clientes.CurrentRow.Cells("CLIdniDataGridViewTextBoxColumn").Value
+        'End If
+        'llamar_Form(Cliente_modificar, Me)
+    End Sub
+    Private Sub RB_No_CheckedChanged_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RB_No.CheckedChanged
+        If RB_No.Checked = True Then
+
+            CB_lista.DataSource = Nothing
+            CB_lista.Items.Add("Defecto")
+            CB_lista.SelectedIndex = 0
+        End If
+    End Sub
+    Private Sub Buscar_cod_interno_y_agregar(ByVal e As System.Windows.Forms.KeyPressEventArgs)
+        'If e.KeyChar = ChrW(Keys.Enter) Then 'aqui se bloque el ingresodo de letras
+
+        '    'cuando presiono enter busco el prod o combo en el dataset...DS_PROD
+
+        '    If TX_busc_codinterno.Text <> "" Then
+        '        Dim i As Integer = 0
+        '        Dim encontrado As String = "No"
+        '        Dim T As Integer = 0
+        '        If RB_No.Checked = True Then 'ESTO LO HAGO X Q EN EL MISMO DATA SET para los productos comunes es table 1, y para las lista regular seleccionada es table 0
+        '            T = 1
+        '        End If
+
+        '        While i < VentaGestion_DS_PROD.Tables(T).Rows.Count
+        '            Dim cod_interno As String = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codinterno").ToString
+        '            If TX_busc_codinterno.Text = cod_interno Then
+        '                'primero verifico que el producto q ingreso no este ya en la grilla
+        '                Dim item = 0
+        '                Dim presente = "no"
+        '                Dim fila_editar = 0
+        '                While item < DataG_lista.Rows.Count
+        '                    If DataG_lista.Rows(item).Cells(2).Value = TX_busc_codinterno.Text Then
+        '                        presente = "si"
+        '                        fila_editar = item
+        '                    End If
+        '                    item = item + 1
+        '                End While
+        '                'ahora veo de agregar o editar
+        '                If presente = "no" Then
+        '                    'agrego una nueva fila
+        '                    Dim newCustomersRow As DataRow = Venta_Caja_ds.Tables("Producto_agregado").NewRow()
+        '                    newCustomersRow("PROD_id") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_id").ToString
+        '                    newCustomersRow("codinterno") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codinterno").ToString
+        '                    If RB_No.Checked = True Then
+        '                        newCustomersRow("descripcion") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_descripcion").ToString
+        '                    Else
+        '                        newCustomersRow("descripcion") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_descripcion").ToString + " " + "x" + VentaGestion_DS_PROD.Tables(T).Rows(i).Item("Lista_Prod_cantidad").ToString
+        '                    End If
+        '                    newCustomersRow("detalle") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_descrilarga").ToString
+
+        '                    If tx_cantidad.Text = "" Then
+        '                        tx_cantidad.Text = CInt(1)
+        '                    End If
+        '                    Dim cant As Integer = CInt(tx_cantidad.Text)
+        '                    newCustomersRow("cantidad") = cant
+        '                    newCustomersRow("precio_unitario") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_precio_vta")
+        '                    Dim total As Decimal = 0
+        '                    total = cant * CDec(VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_precio_vta"))
+        '                    newCustomersRow("precio_subtotal") = CDec(Math.Round(total, 2)).ToString("N2")
+        '                    newCustomersRow("codbarra") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codbarra").ToString
+        '                    Venta_Caja_ds.Tables("Producto_agregado").Rows.Add(newCustomersRow)
+        '                    DataG_lista.DataSource = Venta_Caja_ds.Tables("Producto_agregado")
+        '                    Dim a As Integer = DataG_lista.Rows.Count
+        '                    DataG_lista.Rows(a - 1).Cells(0).Value = a
+        '                Else
+
+        '                    'edito una fila existente, solo si el usuario lo desea, pregunta!!!
+        '                    'Dim result As DialogResult
+        '                    'result = MessageBox.Show("Ya esta agregado ¿Desea modificar?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+        '                    'If result = DialogResult.OK Then
+        '                    If tx_cantidad.Text = "" Then
+        '                        tx_cantidad.Text = CInt(1)
+        '                    End If
+        '                    Dim cant As Integer = CInt(tx_cantidad.Text) + CInt(DataG_lista.Rows(fila_editar).Cells(5).Value)
+        '                    'DataG_lista.Rows(fila_editar).Cells(0).Value = DG_Producto.CurrentRow.Cells(0).Value.ToString
+        '                    DataG_lista.Rows(fila_editar).Cells(5).Value = cant
+        '                    Dim total As Decimal = 0
+        '                    total = cant * CDec(DataG_lista.Rows(fila_editar).Cells(6).Value)
+        '                    DataG_lista.Rows(fila_editar).Cells(7).Value = CDec(Math.Round(total, 2)).ToString("N2")
+        '                    ''edito una fila existente, solo si el usuario lo desea, pregunta!!!
+        '                    'Dim result As DialogResult
+        '                    'result = MessageBox.Show("Ya esta agregado ¿Desea modificar?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+        '                    'If result = DialogResult.OK Then
+        '                    '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(0).Value = DG_Producto.CurrentRow.Cells(0).Value.ToString
+        '                    '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(1).Value = DG_Producto.CurrentRow.Cells(1).Value.ToString
+        '                    '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(2).Value = DG_Producto.CurrentRow.Cells(2).Value.ToString
+        '                    '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(3).Value = TX_LISTA_PROD_cant.Text
+        '                    '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(4).Value = Label_preciolista.Text
+        '                    '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(5).Value = CDec(Label_preciototal.Text)
+        '                    'End If
+        '                End If
+        '                encontrado = "Si"
+        '            End If
+        '            i = i + 1
+        '        End While
+        '        If encontrado = "No" Then
+        '            i = 0
+        '            'lo busco como promocion
+        '            While i < VentaGestion_ds_PROMO.Tables(0).Rows.Count
+        '                Dim cod_interno As String = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_codinterno").ToString
+        '                If TX_busc_codinterno.Text.ToUpper = cod_interno Then
+        '                    'primero verifico que el producto q ingreso no este ya en la grilla
+        '                    Dim item = 0
+        '                    Dim presente = "no"
+        '                    Dim fila_editar = 0
+        '                    While item < DataG_lista.Rows.Count
+        '                        If DataG_lista.Rows(item).Cells(2).Value = TX_busc_codinterno.Text.ToUpper Then
+        '                            presente = "si"
+        '                            fila_editar = item
+        '                        End If
+        '                        item = item + 1
+        '                    End While
+        '                    'ahora veo de agregar o editar
+        '                    If presente = "no" Then
+        '                        'agrego una nueva fila
+        '                        Dim newCustomersRow As DataRow = Venta_Caja_ds.Tables("Producto_agregado").NewRow()
+        '                        newCustomersRow("PROD_id") = CStr("0")
+        '                        newCustomersRow("codinterno") = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_codinterno").ToString
+        '                        newCustomersRow("descripcion") = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_nom").ToString
+        '                        'newCustomersRow("detalle") = 
+        '                        If tx_cantidad.Text = "" Then
+        '                            tx_cantidad.Text = CInt(1)
+        '                        End If
+        '                        Dim cant As Integer = CInt(tx_cantidad.Text)
+        '                        newCustomersRow("cantidad") = cant
+        '                        newCustomersRow("precio_unitario") = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_total")
+
+        '                        Dim total As Decimal = 0
+        '                        total = cant * CDec(VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_total"))
+        '                        newCustomersRow("precio_subtotal") = CDec(Math.Round(total, 2)).ToString("N2")
+        '                        newCustomersRow("codbarra") = " "
+        '                        Venta_Caja_ds.Tables("Producto_agregado").Rows.Add(newCustomersRow)
+        '                        DataG_lista.DataSource = Venta_Caja_ds.Tables("Producto_agregado")
+        '                        Dim a As Integer = DataG_lista.Rows.Count
+        '                        DataG_lista.Rows(a - 1).Cells(0).Value = a
+
+        '                    Else
+        '                        'edito una fila existente, solo si el usuario lo desea, pregunta!!!
+        '                        'Dim result As DialogResult
+        '                        'result = MessageBox.Show("Ya esta agregado ¿Desea modificar?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+        '                        'If result = DialogResult.OK Then
+        '                        If tx_cantidad.Text = "" Then
+        '                            tx_cantidad.Text = CInt(1)
+        '                        End If
+        '                        Dim cant As Integer = CInt(tx_cantidad.Text) + CInt(DataG_lista.Rows(fila_editar).Cells(5).Value)
+        '                        'DataG_lista.Rows(fila_editar).Cells(0).Value = DG_Producto.CurrentRow.Cells(0).Value.ToString
+        '                        DataG_lista.Rows(fila_editar).Cells(5).Value = cant
+        '                        Dim total As Decimal = 0
+        '                        total = cant * CDec(DataG_lista.Rows(fila_editar).Cells(6).Value)
+        '                        DataG_lista.Rows(fila_editar).Cells(7).Value = CDec(Math.Round(total, 2)).ToString("N2")
+        '                        'End If
+        '                    End If
+        '                    encontrado = "Si"
+        '                End If
+        '                i = i + 1
+        '            End While
+        '            If encontrado = "No" Then
+        '                MsgBox("no existe")
+        '                TX_busc_codinterno.SelectAll()
+        '            Else
+
+        '                tx_cantidad.Text = "1"
+        '                'tx_cantidad.Focus()
+        '                'tx_cantidad.SelectAll()
+        '                TX_busc_codinterno.Text = ""
+        '                TX_busc_codinterno.Focus()
+        '                TX_busc_codinterno.SelectAll()
+        '            End If
+        '        Else
+        '            tx_cantidad.Text = "1"
+        '            TX_busc_codinterno.Text = ""
+        '            TX_busc_codinterno.Focus()
+        '            TX_busc_codinterno.SelectAll()
+        '            'tx_cantidad.Focus()
+        '            'tx_cantidad.SelectAll()
+        '        End If
+        '    End If
+        '    calcular_totales()
+        'End If
+    End Sub
+    Private Sub TX_busc_codinterno_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        'TX_busc_codinterno.BackColor = Color.Aquamarine
+    End Sub
+    Private Sub TX_busc_codinterno_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        'TX_busc_codinterno.BackColor = Color.White
+    End Sub
+    Private Sub tx_cantidad_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        'tx_cantidad.BackColor = Color.Aquamarine
+    End Sub
+    Private Sub tx_cantidad_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        'If RB_CodInterno.Checked = True Then
+        '    TX_busc_codinterno.Focus()
+        '    TX_busc_codinterno.SelectAll()
+        'Else
+        '    TX_busc_codibarra.Focus()
+        '    TX_busc_codibarra.SelectAll()
+        'End If
+        'tx_cantidad.BackColor = Color.White
+    End Sub
+
+
+    Private Sub TX_busc_codinterno_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+        'If e.KeyChar = ChrW(Keys.Enter) Then 'aqui se bloque el ingresodo de letras
+        '    tx_cantidad.Focus()
+        'End If
+    End Sub
+
+
+
+    Private Sub tx_cantidad_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+        'aqui pongo el codigo para remplazar el punto por una coma
+        If e.KeyChar.ToString() = "." Then
+            e.KeyChar = ","
+        End If
+        'a continuacion el codigo para impedir el ingreso de dos comas o letras
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                If e.KeyChar = "," Then   'aqui se bloquea el ingreso de comas y puntos
+                    e.Handled = True
+                End If
+            End If
+            If Char.IsLetter(e.KeyChar) Then 'aqui se bloque el ingresodo de letras
+                e.Handled = True
+            End If
+        End If
+
+        If e.KeyChar = ChrW(Keys.Enter) Then 'aqui se bloque el ingresodo de letras
+            Buscar_cod_interno_y_agregar(e)
+        End If
+    End Sub
+
+    Private Sub BO_buscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BO_buscar.Click
+        'guardo los indices de la celda actual
+        Busqueda_Productos.form_procedencia = "Venta_Caja_gestion"
+        'Busqueda_Productos.BO_agregar.Visible = False
+        Busqueda_Productos.Show()
+        'Busqueda_Productos.tx_Buscar.Focus()
+    End Sub
+
+    Private Sub BO_promocion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BO_promocion.Click
+        Ver_promocion.form_procedencia = "Venta_Caja_gestion"
+        'Ver_promocion.BO_agregar.Visible = False
+        Ver_promocion.Show()
+        'Ver_promocion.tx_Buscar.Focus()
+    End Sub
+
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Guardar.Click
+        If DataG_listaTotal.Rows.Count > 0 And txt_total.Text <> "" Then
+            Forma_de_pago_seleccion.Show()
+        Else
+            MessageBox.Show("No se registraron productos", "Sistema de Gestion.")
+        End If
+    End Sub
+
+    Public Sub formas_de_pago(ByVal forma As String)
+        If forma = "efectivo" Then
+            If DataG_listaTotal.Rows.Count > 0 And txt_total.Text <> "" Then
+                'Pago_caja.tx_total.Text = CDec(DataG_listaTotal.Rows(0).Cells(1).Value) 'total
+                Pago_caja.tx_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+                Pago_caja.tx_parcial.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+                Pago_caja.Show()
+            Else
+                MessageBox.Show("No se registraron productos", "Sistema de Gestion.")
+            End If
+            'Dim ruta As String
+            'ruta = Application.StartupPath & "\..\..\Sonido\Gallega actualizada.wav"
+            'My.Computer.Audio.Play(ruta, AudioPlayMode.Background)
+        End If
+        If forma = "tarjeta" Then
+            Pago_tarjeta.tx_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            Pago_tarjeta.Show()
+        End If
+
+    End Sub
+
+
+    Public Function distancia(ByVal x1 As Integer, ByVal x2 As Integer, ByVal y1 As Integer, ByVal y2 As Integer)
+
+
+
+
+        Dim result As Integer = 0
+
+        Return result
+    End Function
+
+
+    Public Sub Actualizar_Stock_Promocion(ByVal LISTA_ID As Integer, ByVal cantidad_PROMOS As Integer)
+        Dim ds As DataSet = DAlista.Lista_Promocion_obtener_items(LISTA_ID)
+        Dim I As Integer = 0
+        While I < ds.Tables(0).Rows.Count
+            Dim prod_codigo As Integer = CInt(ds.Tables(0).Rows(I).Item("prod_codinterno"))
+            Dim ds_stock As DataSet = DAproducto.Producto_buscarcod(prod_codigo)
+            If ds_stock.Tables(0).Rows.Count <> 0 Then
+                Dim cantidad_item As Integer = CInt(ds.Tables(0).Rows(I).Item("Lista_Prod_cantidad"))
+                Dim cantidad_total As Integer = CInt(cantidad_PROMOS * cantidad_item)
+                Dim diferencia As Integer = CInt(ds_stock.Tables(0).Rows(0).Item("prod_stock")) - cantidad_total
+                Dim diferencia_gondola As Integer = CInt(ds_stock.Tables(1).Rows(0).Item("prod_gondola")) - cantidad_total
+                DAventa.Venta_actualizar_stock_Caja(prod_codigo, diferencia, diferencia_gondola, 0)
+                'MsgBox("actualizo stock de producto en PROMOCION", prod_codigo)
+            End If
+            I = I + 1
+        End While
+        I = 0
+        While I < ds.Tables(1).Rows.Count
+            Dim ProdCombo_id As Integer = CInt(ds.Tables(1).Rows(I).Item("prod_id"))
+            Dim cantidad_combos As Integer = CInt(ds.Tables(1).Rows(I).Item("Lista_Prod_cantidad"))
+            Dim j As Integer = 0
+            While j < ds.Tables(2).Rows().Count
+                If ProdCombo_id = ds.Tables(2).Rows(j).Item("ProdCombo_id") Then
+                    Dim prod_id As Integer = ds.Tables(2).Rows(j).Item("prod_id")
+                    Dim cantidad_item As Integer = CInt(ds.Tables(2).Rows(j).Item("ProdComboDet_cantidad"))
+                    Dim ds_stocks As DataSet = DAproducto.Producto_buscar_id(prod_id)
+                    Dim cantidad_total As Integer = CInt(cantidad_PROMOS * cantidad_combos * cantidad_item)
+                    Dim diferencia As Integer = CInt(ds_stocks.Tables(0).Rows(0).Item("prod_stock")) - cantidad_total
+                    Dim diferencia_gondola As Integer = CInt(ds_stocks.Tables(1).Rows(0).Item("prod_gondola")) - cantidad_total
+                    DAventa.Venta_actualizar_stock_Caja_2(prod_id, diferencia, diferencia_gondola)
+                    'MsgBox("actualizo stock de combo en PROMOCION")
+                End If
+                j = j + 1
+            End While
+            I = I + 1
+        End While
+    End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        Limpiar()
+    End Sub
+
+    Private Sub Quitar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Quitar.Click
+        ''aqui elemino el producto seleccionado de la tabla "DG_ListaProducto" y recalculo el valor q va a ir en la grilla "DG_TOTALES"
+
+        Dim pregunta As String = "no" 'esta variable la uso para preg 1 sola vez si estoy seguro de eliminar los elementos seleccionados en la grilla.
+
+        If DataGridView1.Rows.Count <> 0 Then
+            Dim i As Integer = 0
+            While i < DataGridView1.Rows.Count
+                If DataGridView1.Rows(i).Cells("Column1").Value = True Then 'el value en true significa que esta checkeado para eliminar
+                    If pregunta = "no" Then
+                        If MsgBox("Esta seguro que quiere borrar la informacion del item seleccionado?", MsgBoxStyle.YesNo, "Confirmacion") = MsgBoxResult.Yes Then
+                            pregunta = "si"
+                        Else
+                            'aqui corto el ciclo, ya que se cancelo la eliminacion
+                            i = DataGridView1.Rows.Count
+                        End If
+                    End If
+
+                    If pregunta = "si" Then
+                        'primero guardo el nro de item q contiene
+                        Dim item As Decimal = DataGridView1.CurrentRow.Index
+                        DataGridView1.Rows.RemoveAt(i)
+                        i = 0 'lo reinicio, x q al quitar un ite, se reordenan los indices
+
+                        'If item <= Venta_Caja_ds.Tables("Producto_agregado").Rows.Count Then 'esta validacion es x q el ds tiene menos celdas 
+                        '    Venta_Caja_ds.Tables("Producto_agregado").Rows(item).Delete()
+                        'End If
+
+                        'DataGridView1.DataSource = Venta_Caja_ds.Tables("Producto_agregado")
+                        'cuando borro reordeno los item..o sea el nro q esta mas a la izquierda
+                        Dim a As Integer = 0
+                        While a < DataGridView1.Rows.Count
+                            If DataGridView1.Rows(a).Cells(1).Value <> 0 Then
+                                DataGridView1.Rows(a).Cells(0).Value = a + 1
+                            End If
+
+                            a = a + 1
+                        End While
+                        calcular_totales()
+                        aplicar_iva()
+                    End If
+                Else
+
+                    i = i + 1
+                End If
+
+            End While
+            If pregunta = "no" Then
+                MsgBox("Debe Seleccionar un producto de la grilla", MsgBoxStyle.OkOnly, "Sistema de Gestion")
+            End If
+
+            'ahora si me queda la grilla vacia..agrero un row para q pueda escribir
+            If DataGridView1.Rows.Count = 0 Then
+                DataGridView1.Rows.Add()
+                DataGridView1.Focus()
+                DataGridView1.Rows(0).Cells("columna_codinterno").Selected = True
+            End If
+
+        End If
+
+
+
+
+        'If DataG_lista.Rows.Count <> 0 Then
+        '    'If DataG_lista.CurrentRow.Cells(0).Value <> "" Then
+        '    'If MsgBox("Esta seguro que quiere borrar la informacion del item seleccionado?", MsgBoxStyle.YesNo, "Confirmacion") = MsgBoxResult.Yes Then
+        '    'primero guardo el nro de item q contiene
+        '    Dim item As Decimal = DataG_lista.CurrentRow.Index
+
+
+        '    If DataG_lista.CurrentRow.Cells(5).Value = "1" Then
+
+        '        'DataG_lista.Rows.RemoveAt(DataG_lista.CurrentRow.Index)
+        '        Venta_Caja_ds.Tables("Producto_agregado").Rows(item).Delete()
+        '        DataG_lista.DataSource = Venta_Caja_ds.Tables("Producto_agregado")
+        '        'cuando borro reordeno los item..o sea el nro q esta mas a la izquierda
+        '        Dim a As Integer = 0
+        '        While a < DataG_lista.Rows.Count
+        '            DataG_lista.Rows(a).Cells(0).Value = a + 1
+        '            a = a + 1
+        '        End While
+        '        calcular_totales()
+        '    Else
+        '        Venta_Caja_ds.Tables("Producto_agregado").Rows(item).Item("cantidad") = Venta_Caja_ds.Tables("Producto_agregado").Rows(item).Item("cantidad") - 1
+        '        Dim total As Decimal = 0
+        '        total = Venta_Caja_ds.Tables("Producto_agregado").Rows(item).Item("cantidad") * CDec(Venta_Caja_ds.Tables("Producto_agregado").Rows(item).Item("precio_unitario"))
+        '        Venta_Caja_ds.Tables("Producto_agregado").Rows(item).Item("precio_subtotal") = CDec(Math.Round(total, 2)).ToString("N2")
+        '        DataG_lista.DataSource = Venta_Caja_ds.Tables("Producto_agregado")
+        '        calcular_totales()
+        '    End If
+
+
+        '    'este codigo si va
+        '    'Call Cargar_Totales(añosdelproyecto)
+        '    'modificado = 1
+        '    'End If
+        '    'End If
+        'End If
+        'DataG_lista.Refresh()
+
+        ' ''aqui elemino el producto seleccionado de la tabla "DG_ListaProducto" y recalculo el valor q va a ir en la grilla "DG_TOTALES"
+        ''If DataG_lista.Rows.Count <> 0 Then
+        ''    'If DataG_lista.CurrentRow.Cells(0).Value <> "" Then
+        ''    If MsgBox("Esta seguro que quiere borrar la informacion del item seleccionado?", MsgBoxStyle.YesNo, "Confirmacion") = MsgBoxResult.Yes Then
+        ''        'primero guardo el nro de item q contiene
+        ''        Dim item As Decimal = DataG_lista.CurrentRow.Index
+        ''        DataG_lista.Rows.RemoveAt(item)
+        ''        'cuando borro reordeno los item..o sea el nro q esta mas a la izquierda
+        ''        Dim a As Integer = 0
+        ''        While a < DataG_lista.Rows.Count
+        ''            DataG_lista.Rows(a).Cells(0).Value = a + 1
+        ''            a = a + 1
+        ''        End While
+        ''        calcular_totales()
+        ''        'este codigo si va
+        ''        'Call Cargar_Totales(añosdelproyecto)
+        ''        'modificado = 1
+        ''    End If
+        ''    'End If
+        ''End If
+        ''DataG_lista.Refresh()
+
+    End Sub
+
+
+    Private Sub RB_CodInterno_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'If RB_CodInterno.Checked = True Then
+        '    TX_busc_codinterno.TabIndex = 0
+        '    TX_busc_codibarra.TabIndex = 255
+        '    TX_busc_codinterno.Enabled = True
+        '    TX_busc_codinterno.Focus()
+        '    TX_busc_codinterno.SelectAll()
+        '    TX_busc_codibarra.Enabled = False
+        'End If
+    End Sub
+
+    Private Sub RB_CodBarra_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+        'If RB_CodBarra.Checked = True Then
+        '    TX_busc_codibarra.TabIndex = 0
+        '    TX_busc_codinterno.TabIndex = 255
+        '    TX_busc_codibarra.Enabled = True
+        '    TX_busc_codibarra.Focus()
+        '    TX_busc_codibarra.SelectAll()
+        '    TX_busc_codinterno.Enabled = False
+        'End If
+    End Sub
+
+    Private Sub TX_busc_codibarra_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+        'If e.KeyChar = ChrW(Keys.Enter) Then 'aqui se bloque el ingresodo de letras
+
+        '    'cuando presiono enter busco el prod o combo en el dataset...DS_PROD
+
+        '    If TX_busc_codibarra.Text <> "" Then
+        '        Dim i As Integer = 0
+        '        Dim encontrado As String = "No"
+        '        Dim T As Integer = 0
+        '        If RB_No.Checked = True Then 'ESTO LO HAGO X Q EN EL MISMO DATA SET para los productos comunes es table 1, y para las lista regular seleccionada es table 0
+        '            T = 1
+        '        End If
+
+        '        While i < VentaGestion_DS_PROD.Tables(T).Rows.Count
+        '            Dim cod_barra As String = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codbarra").ToString
+        '            Dim cod_interno As String = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codinterno").ToString
+        '            If TX_busc_codibarra.Text = cod_barra Then
+        '                'primero verifico que el producto q ingreso no este ya en la grilla
+        '                Dim item = 0
+        '                Dim presente = "no"
+        '                Dim fila_editar = 0
+        '                While item < DataG_lista.Rows.Count
+        '                    If CStr(DataG_lista.Rows(item).Cells("codbarra").Value) = TX_busc_codibarra.Text Then
+        '                        presente = "si"
+        '                        fila_editar = item
+        '                    End If
+        '                    item = item + 1
+        '                End While
+        '                'ahora veo de agregar o editar
+        '                If presente = "no" Then
+        '                    'agrego una nueva fila
+        '                    Dim newCustomersRow As DataRow = Venta_Caja_ds.Tables("Producto_agregado").NewRow()
+        '                    newCustomersRow("PROD_id") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_id").ToString
+        '                    newCustomersRow("codinterno") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codinterno").ToString
+        '                    If RB_No.Checked = True Then
+        '                        newCustomersRow("descripcion") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_descripcion").ToString
+        '                    Else
+        '                        newCustomersRow("descripcion") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_descripcion").ToString + " " + "x" + VentaGestion_DS_PROD.Tables(T).Rows(i).Item("Lista_Prod_cantidad").ToString
+        '                    End If
+        '                    newCustomersRow("detalle") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_descrilarga").ToString
+        '                    If tx_cantidad.Text = "" Then
+        '                        tx_cantidad.Text = CInt(1)
+        '                    End If
+        '                    Dim cant As Integer = CInt(tx_cantidad.Text)
+        '                    newCustomersRow("cantidad") = cant
+        '                    newCustomersRow("precio_unitario") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_precio_vta")
+        '                    Dim total As Decimal = 0
+        '                    total = cant * CDec(VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_precio_vta"))
+        '                    newCustomersRow("precio_subtotal") = CDec(Math.Round(total, 2)).ToString("N2")
+        '                    newCustomersRow("codbarra") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codbarra").ToString
+
+        '                    Venta_Caja_ds.Tables("Producto_agregado").Rows.Add(newCustomersRow)
+        '                    DataG_lista.DataSource = Venta_Caja_ds.Tables("Producto_agregado")
+        '                    Dim a As Integer = DataG_lista.Rows.Count
+        '                    DataG_lista.Rows(a - 1).Cells(0).Value = a
+        '                Else
+
+
+        '                    'edito una fila existente, solo si el usuario lo desea, pregunta!!!
+        '                    'Dim result As DialogResult
+        '                    'result = MessageBox.Show("Ya esta agregado ¿Desea modificar?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+        '                    'If result = DialogResult.OK Then
+        '                    If tx_cantidad.Text = "" Then
+        '                        tx_cantidad.Text = CInt(1)
+        '                    End If
+        '                    Dim cant As Integer = CInt(tx_cantidad.Text) + CInt(DataG_lista.Rows(fila_editar).Cells(5).Value)
+        '                    'DataG_lista.Rows(fila_editar).Cells(0).Value = DG_Producto.CurrentRow.Cells(0).Value.ToString
+        '                    DataG_lista.Rows(fila_editar).Cells(5).Value = cant
+        '                    Dim total As Decimal = 0
+        '                    total = cant * CDec(DataG_lista.Rows(fila_editar).Cells(6).Value)
+        '                    DataG_lista.Rows(fila_editar).Cells(7).Value = CDec(Math.Round(total, 2)).ToString("N2")
+        '                    'End If
+
+
+        '                    ''edito una fila existente, solo si el usuario lo desea, pregunta!!!
+        '                    'Dim result As DialogResult
+        '                    'result = MessageBox.Show("Ya esta agregado ¿Desea modificar?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+        '                    'If result = DialogResult.OK Then
+        '                    '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(0).Value = DG_Producto.CurrentRow.Cells(0).Value.ToString
+        '                    '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(1).Value = DG_Producto.CurrentRow.Cells(1).Value.ToString
+        '                    '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(2).Value = DG_Producto.CurrentRow.Cells(2).Value.ToString
+        '                    '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(3).Value = TX_LISTA_PROD_cant.Text
+        '                    '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(4).Value = Label_preciolista.Text
+        '                    '    Lista_alta.DataG_lista.Rows(fila_editar).Cells(5).Value = CDec(Label_preciototal.Text)
+        '                    'End If
+        '                End If
+        '                encontrado = "Si"
+        '            End If
+        '            i = i + 1
+        '        End While
+        '        If encontrado = "No" Then
+        '            i = 0
+        '            'lo busco como promocion
+        '            'While i < ds_PROMO.Tables(0).Rows.Count
+        '            '    Dim cod_interno As String = ds_PROMO.Tables(0).Rows(i).Item("LISTA_codinterno").ToString
+        '            '    If TX_busc_codinterno.Text.ToUpper = cod_interno Then
+        '            '        'primero verifico que el producto q ingreso no este ya en la grilla
+        '            '        Dim item = 0
+        '            '        Dim presente = "no"
+        '            '        Dim fila_editar = 0
+        '            '        While item < DataG_lista.Rows.Count
+        '            '            If DataG_lista.Rows(item).Cells(2).Value = TX_busc_codinterno.Text.ToUpper Then
+        '            '                presente = "si"
+        '            '                fila_editar = item
+        '            '            End If
+        '            '            item = item + 1
+        '            '        End While
+        '            '        'ahora veo de agregar o editar
+        '            '        If presente = "no" Then
+        '            '            'agrego una nueva fila
+        '            '            Dim newCustomersRow As DataRow = Venta_Caja_ds.Tables("Producto_agregado").NewRow()
+        '            '            newCustomersRow("PROD_id") = CStr("0")
+        '            '            newCustomersRow("codinterno") = ds_PROMO.Tables(0).Rows(i).Item("LISTA_codinterno").ToString
+        '            '            newCustomersRow("descripcion") = ds_PROMO.Tables(0).Rows(i).Item("LISTA_nom").ToString
+        '            '            'newCustomersRow("detalle") = 
+        '            '            Dim cant As Integer = 1
+        '            '            newCustomersRow("cantidad") = cant
+        '            '            newCustomersRow("precio_unitario") = ds_PROMO.Tables(0).Rows(i).Item("LISTA_total")
+
+        '            '            Dim total As Decimal = 0
+        '            '            total = cant * CDec(ds_PROMO.Tables(0).Rows(i).Item("LISTA_total"))
+        '            '            newCustomersRow("precio_subtotal") = CDec(Math.Round(total, 2)).ToString("N2")
+        '            '            Venta_Caja_ds.Tables("Producto_agregado").Rows.Add(newCustomersRow)
+        '            '            DataG_lista.DataSource = Venta_Caja_ds.Tables("Producto_agregado")
+        '            '            Dim a As Integer = DataG_lista.Rows.Count
+        '            '            DataG_lista.Rows(a - 1).Cells(0).Value = a
+        '            '        End If
+        '            '        encontrado = "Si"
+        '            '    End If
+        '            '    i = i + 1
+        '            'End While
+        '            If encontrado = "No" Then
+        '                MsgBox("no existe")
+        '                TX_busc_codibarra.SelectAll()
+        '            Else
+        '                tx_cantidad.Text = "1"
+        '                'tx_cantidad.Focus()
+        '                'tx_cantidad.SelectAll()
+        '                'TX_busc_codibarra.Text = ""
+        '                TX_busc_codibarra.Focus()
+        '                TX_busc_codibarra.SelectAll()
+
+        '            End If
+        '        Else
+        '            tx_cantidad.Text = "1"
+        '            'tx_cantidad.Focus()
+        '            'tx_cantidad.SelectAll()
+
+        '            'TX_busc_codibarra.Text = ""
+        '            TX_busc_codibarra.Focus()
+        '            TX_busc_codibarra.SelectAll()
+
+        '        End If
+        '    End If
+        '    calcular_totales()
+        'End If
+
+    End Sub
+
+    Private Sub TX_busc_codibarra_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs)
+        'tx_cantidad.Focus()
+        'tx_cantidad.SelectAll()
+    End Sub
+
+    'Private Sub DataGridView2_CellEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
+    '    'cargo el producto buscado por codigo
+    '    'If e.KeyChar = ChrW(Keys.Enter) Then 'aqui se bloque el ingresodo de letras
+
+    '    'cuando presiono enter busco el prod o combo en el dataset...DS_PROD
+    '    If DataGridView2.Rows.Count <> 0 Then
+
+    '        If DataGridView2.CurrentRow.Cells("codinterno").Value IsNot Nothing Then
+    '            Dim i As Integer = 0
+    '            Dim encontrado As String = "No"
+    '            Dim T As Integer = 0
+    '            If RB_No.Checked = True Then 'ESTO LO HAGO X Q EN EL MISMO DATA SET para los productos comunes es table 1, y para las lista regular seleccionada es table 0
+    '                T = 1
+    '            End If
+
+    '            While i < VentaGestion_DS_PROD.Tables(T).Rows.Count
+    '                Dim cod_interno As String = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codinterno").ToString
+    '                If DataGridView2.CurrentRow.Cells("codinterno").Value = cod_interno Then
+    '                    'primero verifico que el producto q ingreso no este ya en la grilla
+    '                    Dim item = 0
+    '                    Dim presente = "no"
+    '                    Dim fila_editar = 0
+
+    '                    While item < DataGridView2.Rows.Count
+    '                        If DataGridView2.Rows(item).Cells(2).Value = DataGridView2.CurrentRow.Cells("codinterno").Value Then
+    '                            presente = "si"
+    '                            fila_editar = item
+    '                        End If
+    '                        item = item + 1
+    '                    End While
+    '                    'ahora veo de agregar o editar
+    '                    If presente = "no" Then
+    '                        'agrego una nueva fila
+    '                        Dim newCustomersRow As DataRow = Venta_Caja_ds.Tables("Producto_agregado").NewRow()
+    '                        newCustomersRow("PROD_id") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_id").ToString
+    '                        newCustomersRow("codinterno") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codinterno").ToString
+    '                        If RB_No.Checked = True Then
+    '                            newCustomersRow("descripcion") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_descripcion").ToString
+    '                        Else
+    '                            newCustomersRow("descripcion") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_descripcion").ToString + " " + "x" + VentaGestion_DS_PROD.Tables(T).Rows(i).Item("Lista_Prod_cantidad").ToString
+    '                        End If
+    '                        newCustomersRow("detalle") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_descrilarga").ToString
+
+    '                        If tx_cantidad.Text = "" Then
+    '                            tx_cantidad.Text = CInt(1)
+    '                        End If
+    '                        Dim cant As Integer = CInt(tx_cantidad.Text)
+    '                        newCustomersRow("cantidad") = cant
+    '                        newCustomersRow("precio_unitario") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_precio_vta")
+    '                        Dim total As Decimal = 0
+    '                        total = cant * CDec(VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_precio_vta"))
+    '                        newCustomersRow("precio_subtotal") = CDec(Math.Round(total, 2)).ToString("N2")
+    '                        newCustomersRow("codbarra") = VentaGestion_DS_PROD.Tables(T).Rows(i).Item("prod_codbarra").ToString
+    '                        Venta_Caja_ds.Tables("Producto_agregado").Rows.Add(newCustomersRow)
+    '                        DataGridView2.DataSource = Venta_Caja_ds.Tables("Producto_agregado")
+    '                        Dim a As Integer = DataGridView2.Rows.Count
+    '                        DataGridView2.Rows(a - 1).Cells(0).Value = a
+    '                    Else
+
+    '                        'edito una fila existente, solo si el usuario lo desea, pregunta!!!
+    '                        'Dim result As DialogResult
+    '                        'result = MessageBox.Show("Ya esta agregado ¿Desea modificar?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+    '                        'If result = DialogResult.OK Then
+    '                        If tx_cantidad.Text = "" Then
+    '                            tx_cantidad.Text = CInt(1)
+    '                        End If
+    '                        Dim cant As Integer = CInt(tx_cantidad.Text) + CInt(DataGridView2.Rows(fila_editar).Cells(5).Value)
+    '                        'DataGridView2.Rows(fila_editar).Cells(0).Value = DG_Producto.CurrentRow.Cells(0).Value.ToString
+    '                        DataGridView2.Rows(fila_editar).Cells(5).Value = cant
+    '                        Dim total As Decimal = 0
+    '                        total = cant * CDec(DataGridView2.Rows(fila_editar).Cells(6).Value)
+    '                        DataGridView2.Rows(fila_editar).Cells(7).Value = CDec(Math.Round(total, 2)).ToString("N2")
+    '                        ''edito una fila existente, solo si el usuario lo desea, pregunta!!!
+    '                        'Dim result As DialogResult
+    '                        'result = MessageBox.Show("Ya esta agregado ¿Desea modificar?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+    '                        'If result = DialogResult.OK Then
+    '                        '    Lista_alta.DataGridView2.Rows(fila_editar).Cells(0).Value = DG_Producto.CurrentRow.Cells(0).Value.ToString
+    '                        '    Lista_alta.DataGridView2.Rows(fila_editar).Cells(1).Value = DG_Producto.CurrentRow.Cells(1).Value.ToString
+    '                        '    Lista_alta.DataGridView2.Rows(fila_editar).Cells(2).Value = DG_Producto.CurrentRow.Cells(2).Value.ToString
+    '                        '    Lista_alta.DataGridView2.Rows(fila_editar).Cells(3).Value = TX_LISTA_PROD_cant.Text
+    '                        '    Lista_alta.DataGridView2.Rows(fila_editar).Cells(4).Value = Label_preciolista.Text
+    '                        '    Lista_alta.DataGridView2.Rows(fila_editar).Cells(5).Value = CDec(Label_preciototal.Text)
+    '                        'End If
+    '                    End If
+    '                    encontrado = "Si"
+    '                End If
+    '                i = i + 1
+    '            End While
+    '            If encontrado = "No" Then
+    '                i = 0
+    '                'lo busco como promocion
+    '                While i < VentaGestion_ds_PROMO.Tables(0).Rows.Count
+    '                    Dim cod_interno As String = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_codinterno").ToString
+    '                    If DataGridView2.CurrentRow.Cells("codinterno").Value.ToUpper = cod_interno Then
+    '                        'primero verifico que el producto q ingreso no este ya en la grilla
+    '                        Dim item = 0
+    '                        Dim presente = "no"
+    '                        Dim fila_editar = 0
+    '                        While item < DataGridView2.Rows.Count
+    '                            If DataGridView2.Rows(item).Cells(2).Value = DataGridView2.CurrentRow.Cells("codinterno").Value.ToUpper Then
+    '                                presente = "si"
+    '                                fila_editar = item
+    '                            End If
+    '                            item = item + 1
+    '                        End While
+    '                        'ahora veo de agregar o editar
+    '                        If presente = "no" Then
+    '                            'agrego una nueva fila
+    '                            Dim newCustomersRow As DataRow = Venta_Caja_ds.Tables("Producto_agregado").NewRow()
+    '                            newCustomersRow("PROD_id") = CStr("0")
+    '                            newCustomersRow("codinterno") = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_codinterno").ToString
+    '                            newCustomersRow("descripcion") = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_nom").ToString
+    '                            'newCustomersRow("detalle") = 
+    '                            If tx_cantidad.Text = "" Then
+    '                                tx_cantidad.Text = CInt(1)
+    '                            End If
+    '                            Dim cant As Integer = CInt(tx_cantidad.Text)
+    '                            newCustomersRow("cantidad") = cant
+    '                            newCustomersRow("precio_unitario") = VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_total")
+
+    '                            Dim total As Decimal = 0
+    '                            total = cant * CDec(VentaGestion_ds_PROMO.Tables(0).Rows(i).Item("LISTA_total"))
+    '                            newCustomersRow("precio_subtotal") = CDec(Math.Round(total, 2)).ToString("N2")
+    '                            newCustomersRow("codbarra") = " "
+    '                            Venta_Caja_ds.Tables("Producto_agregado").Rows.Add(newCustomersRow)
+    '                            DataGridView2.DataSource = Venta_Caja_ds.Tables("Producto_agregado")
+    '                            Dim a As Integer = DataGridView2.Rows.Count
+    '                            DataGridView2.Rows(a - 1).Cells(0).Value = a
+
+    '                        Else
+    '                            'edito una fila existente, solo si el usuario lo desea, pregunta!!!
+    '                            'Dim result As DialogResult
+    '                            'result = MessageBox.Show("Ya esta agregado ¿Desea modificar?", "Sistema de Gestion.", MessageBoxButtons.OKCancel)
+    '                            'If result = DialogResult.OK Then
+    '                            If tx_cantidad.Text = "" Then
+    '                                tx_cantidad.Text = CInt(1)
+    '                            End If
+    '                            Dim cant As Integer = CInt(tx_cantidad.Text) + CInt(DataGridView2.Rows(fila_editar).Cells(5).Value)
+    '                            'DataGridView2.Rows(fila_editar).Cells(0).Value = DG_Producto.CurrentRow.Cells(0).Value.ToString
+    '                            DataGridView2.Rows(fila_editar).Cells(5).Value = cant
+    '                            Dim total As Decimal = 0
+    '                            total = cant * CDec(DataGridView2.Rows(fila_editar).Cells(6).Value)
+    '                            DataGridView2.Rows(fila_editar).Cells(7).Value = CDec(Math.Round(total, 2)).ToString("N2")
+    '                            'End If
+    '                        End If
+    '                        encontrado = "Si"
+    '                    End If
+    '                    i = i + 1
+    '                End While
+    '                If encontrado = "No" Then
+    '                    MsgBox("no existe")
+    '                    TX_busc_codinterno.SelectAll()
+    '                Else
+
+    '                    tx_cantidad.Text = "1"
+    '                    'tx_cantidad.Focus()
+    '                    'tx_cantidad.SelectAll()
+    '                    TX_busc_codinterno.Text = ""
+    '                    TX_busc_codinterno.Focus()
+    '                    TX_busc_codinterno.SelectAll()
+    '                End If
+    '            Else
+    '                tx_cantidad.Text = "1"
+    '                TX_busc_codinterno.Text = ""
+    '                TX_busc_codinterno.Focus()
+    '                TX_busc_codinterno.SelectAll()
+    '                'tx_cantidad.Focus()
+    '                'tx_cantidad.SelectAll()
+    '            End If
+    '        End If
+    '        calcular_totales()
+    '        'End If
+    '    End If
+    'End Sub
+
+    'aqui pruebo escribir en grilla
+
+
+
+
+    'Private Sub generar_fila_grid()
+    '    For i As Integer = 1 To 1
+    '        Dim newCustomersRow As DataRow = Venta_Caja_ds.Tables("Producto_agregado").NewRow()
+    '        newCustomersRow("PROD_id") = i
+    '        newCustomersRow("codinterno") = "00000"
+    '        newCustomersRow("descripcion") = ""
+    '        newCustomersRow("detalle") = ""
+    '        newCustomersRow("cantidad") = 1
+    '        newCustomersRow("precio_unitario") = CDec(0)
+    '        newCustomersRow("precio_subtotal") = CDec(Math.Round(0, 2)).ToString("N2")
+    '        newCustomersRow("codbarra") = 0
+    '        Venta_Caja_ds.Tables("Producto_agregado").Rows.Add(newCustomersRow)
+    '    Next
+    'End Sub
+
+
+
+
+    Private Sub DataGridView1_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles DataGridView1.Validating
+        'If Char.IsLetter(e.KeyChar) Then
+        '    e.Cancel = True
+        'End If
+    End Sub
+
+#Region "Validacion de grilla - solo numeros en celda"
+    Private Sub DataGridView1_EditingControlShowing(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DataGridView1.EditingControlShowing
+
+        valido_fraccionable(DataGridView1.CurrentRow.Cells("columna_codinterno").Value)
+
+        'referencia a la celda
+        Dim validar As TextBox = CType(e.Control, TextBox)
+        'agregar el controlador de eventos para el keypress
+        AddHandler validar.KeyPress, AddressOf validar_Keypress
+    End Sub
+    Private Sub valido_fraccionable(ByVal cod_ingresado As String)
+        'Encontrado = "no"
+        Dim i As Integer = 0
+        While i < VentaGestion_DS_PROD.Tables(1).Rows.Count
+            Dim cod_interno As String = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_codinterno").ToString
+            If cod_ingresado = cod_interno Then
+                '' si es fraccionable o no el producto solamente por este if pasa''
+                tipo_prod = VentaGestion_DS_PROD.Tables(1).Rows(i).Item("prod_tipo").ToString
+                '''''''''''''''''''''''''''''MARIANO 17/6/19'''''''''''''''''''''''
+                'Dim index As Integer = DataGridView1.CurrentRow.Index
+                'DataGridView1.CurrentRow.Cells("item_num").Value = CInt(DataGridView1.CurrentRow.Index + 1)
+                'DataGridView1.CurrentRow.Cells("prod_id").Value = DS_PROD.Tables(0).Rows(i).Item("prod_id").ToString
+                'DataGridView1.CurrentRow.Cells("prod_codinterno").Value = DS_PROD.Tables(0).Rows(i).Item("prod_codinterno").ToString
+                'DataGridView1.CurrentRow.Cells("prod_descripcion").Value = DS_PROD.Tables(0).Rows(i).Item("prod_descripcion").ToString
+                'DataGridView1.CurrentRow.Cells("Cantidad").Value = CInt(1)
+                'Encontrado = "si"
+            End If
+            i = i + 1
+        End While
+        'If Encontrado = "no" Then
+        '    'buscar por codigo de barras
+        '    DataGridView1.CurrentRow.Cells("item_num").Value = ""
+        '    DataGridView1.CurrentRow.Cells("prod_id").Value = ""
+        '    DataGridView1.CurrentRow.Cells("prod_codinterno").Value = ""
+        '    DataGridView1.CurrentRow.Cells("prod_descripcion").Value = ""
+        '    DataGridView1.CurrentRow.Cells("Cantidad").Value = ""
+        '    MessageBox.Show("No existe el producto para ese proveedor", "Sistema de Gestión")
+        'End If
+        'If DataGridView1.Rows(DataGridView1.Rows.Count - 1).Cells(2).Value <> "" Then
+        '    DataGridView1.Rows.Add()
+        'End If
+    End Sub
+    Private Sub validar_Keypress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
+
+
+        Dim columna As Integer = DataGridView1.CurrentCell.ColumnIndex
+
+        Dim variasdasd = DataGridView1.CurrentRow.Cells("columna_codinterno").Value
+
+        If DataGridView1.CurrentRow.Cells("columna_codinterno").Value = "" And columna = 5 Then
+            'If IsDBNull(DataGridView1.CurrentRow.Cells("columna_codinterno").Value) And columna = 5 Then
+            e.Handled = True
+        Else
+            e.Handled = True 'bloqueo todo ingreso en primera instancia
+            If Char.IsNumber(e.KeyChar) Then
+                e.Handled = False 'aqui habilito si es numero
+            End If
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False 'aqui habilito si es una operacion de control como "borrar"
+            End If
+            'If e.KeyChar <> "" Then 'si es distinto de vacio valido 
+            '    If Me.DataGridView1.CurrentCell.ColumnIndex <> 1 Then 'si no es la columna 1, solo numeros y comas
+            '        e.Handled = True 'bloqueo todo ingreso en primera instancia
+            '        If Char.IsNumber(e.KeyChar) Then
+            '            e.Handled = False 'aqui habilito si es numero
+            '        End If
+            '        If Char.IsControl(e.KeyChar) Then
+            '            e.Handled = False 'aqui habilito si es una operacion de control como "borrar"
+            '        End If
+
+            '        'obtener indice de la columna
+            '        Dim columna As Integer = Me.DataGridView1.CurrentCell.ColumnIndex
+            '        'comprobar si la celda en edicion corresponde a la columnas deseadas
+            '        'If columna = 1 Or columna = 2 Then
+            '        'obtener caracter
+
+
+            If columna = 5 Then
+                If tipo_prod = "Fraccionable" Then
+
+
+
+                    Dim caracter As Char = e.KeyChar
+                    '        'referencia a la celda
+                    Dim txt As TextBox = CType(sender, TextBox)
+                    'aqui pongo el codigo para remplazar el punto por una coma
+                    If txt.ToString() = "." Then
+                        txt.Text = ","
+                    End If
+                    If caracter.ToString() = "." Then
+                        caracter = ","
+                    End If
+                    'comprobar si el caracter es un número o el retroceso, si el caracter es un separador decimal y que no contiene ya el separador
+                    If (Char.IsNumber(caracter)) Or (caracter = ChrW(Keys.Back)) Or (caracter = ",") And (txt.Text.Contains(",") = False) Then
+                        e.KeyChar = caracter
+                        e.Handled = False
+                    Else
+                        e.Handled = True
+                    End If
+                End If
+            End If
+
+            '        Dim KeyAscii As Integer = AscW(e.KeyChar)
+
+            '        If (KeyAscii >= 97 And KeyAscii <= 122) Or (KeyAscii >= 65 And KeyAscii <= 90) Then
+            '            e.Handled = True 'deshabilito si es una tela entre la a-z o A-Z
+            '        Else
+            '            e.Handled = False
+            '        End If
+
+            '    End If
+            'Else 'si la celda cero de la fila actual es vacio...no dejo escribir nada
+            '    e.Handled = True
+            'End If
+
+        End If
+    End Sub
+
+#End Region
+
+    Private Sub Busqueda_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles Busqueda.KeyPress
+        Dim Filtro
+
+        Filtro = String.Format("{0} LIKE '%{1}%'", "CLI_Fan", Busqueda.Text) 'esto para campos strings, FUNCIONA PERFECTO
+        ClienteBindingSource.Filter = Filtro
+    End Sub
+
+
+    Private Sub Timer1_Tick(ByVal sender As Object, ByVal e As System.EventArgs)
+        'label_fecha.Text = Today
+        'label_hora.Text = TimeOfDay
+    End Sub
+
+    Private Sub txt_desc_porc_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_desc_porc.KeyPress
+        'si toco asterisco me toma el total
+        'If e.KeyChar.ToString = "*" Then
+        '    tx_parcial.Text = tx_total.Text
+        'End If
+        'aqui pongo el codigo para remplazar el punto por una coma
+        If e.KeyChar.ToString() = "." Then
+            e.KeyChar = ","
+        End If
+        'a continuacion el codigo para impedir el ingreso de dos comas o letras
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                If e.KeyChar = "," And Not Me.txt_desc_porc.Text.IndexOf(",") Then
+                    e.Handled = True
+                Else
+                    If e.KeyChar = "," Then
+                        e.Handled = False
+                    Else
+                        e.Handled = True
+                    End If
+                End If
+            End If
+        End If
+        If e.KeyChar = ChrW(Keys.Enter) Then 'aqui se bloque el ingresodo de letras
+            If txt_desc_porc.Text = "" Then
+                txt_desc_porc.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            End If
+            Dim calculo_pesos As Decimal = (CDec(txt_desc_porc.Text) * CDec(txt_subtotal.Text)) / 100
+            txt_desc_pesos.Text = calculo_pesos
+            'txt_total.Text = CDec(txt_subtotal.Text) - calculo_pesos
+            'txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            txt_descuento.Text = (Math.Round(CDec(calculo_pesos), 2).ToString("N2"))
+
+            'If txt_desc_porc.Text = (Math.Round(CDec(0), 2).ToString("N2")) Then
+            '    calcular_totales()
+            'End If
+            GroupBox_pagar.Text = "Monto a pagar (" + (Math.Round(CDec(txt_desc_porc.Text), 2).ToString("N2")) + "% descuento)"
+            '----------------------------------------------------------------------
+            'formateo ambos txt, porcentaje y precio
+            txt_desc_pesos.Text = (Math.Round(CDec(txt_desc_pesos.Text), 2).ToString("N2"))
+            txt_desc_porc.Text = (Math.Round(CDec(txt_desc_porc.Text), 2).ToString("N2"))
+            '----------------------------------------------------------------------
+            aplicar_iva()
+            txt_desc_porc.SelectAll()
+            txt_desc_porc.Text = (Math.Round(CDec(txt_desc_porc.Text), 2).ToString("N2"))
+            'If TextBox1.Text < 0 Then
+            '    TextBox1.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            'End If
+
+        End If
+    End Sub
+
+    Private Sub txt_desc_pesos_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_desc_pesos.KeyPress
+        'si toco asterisco me toma el total
+        'If e.KeyChar.ToString = "*" Then
+        '    tx_parcial.Text = tx_total.Text
+        'End If
+
+        'aqui pongo el codigo para remplazar el punto por una coma
+        If e.KeyChar.ToString() = "." Then
+            e.KeyChar = ","
+        End If
+        'a continuacion el codigo para impedir el ingreso de dos comas o letras
+        If Char.IsDigit(e.KeyChar) Then
+            e.Handled = False
+        Else
+            If Char.IsControl(e.KeyChar) Then
+                e.Handled = False
+            Else
+                If e.KeyChar = "," And Not Me.txt_desc_pesos.Text.IndexOf(",") Then
+                    e.Handled = True
+                Else
+                    If e.KeyChar = "," Then
+                        e.Handled = False
+                    Else
+                        e.Handled = True
+                    End If
+                End If
+            End If
+        End If
+        If e.KeyChar = ChrW(Keys.Enter) Then 'cuando presiono la tecla ENTER calcula
+            If txt_desc_pesos.Text = "" Then
+                txt_desc_pesos.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            End If
+            Dim calculo_porc As Decimal = (CDec(txt_desc_pesos.Text) * 100) / CDec(txt_subtotal.Text)
+            txt_desc_porc.Text = calculo_porc
+
+            'txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_desc_pesos.Text)
+            'txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+
+            'If txt_desc_porc.Text = (Math.Round(CDec(0), 2).ToString("N2")) Then
+            '    calcular_totales()
+            'End If
+            GroupBox_pagar.Text = "Monto a pagar (" + (Math.Round(CDec(txt_desc_porc.Text), 2).ToString("N2")) + "% descuento)"
+            '----------------------------------------------------------------------
+            'formateo ambos txt, porcentaje y precio
+            txt_desc_pesos.Text = (Math.Round(CDec(txt_desc_pesos.Text), 2).ToString("N2"))
+            txt_desc_porc.Text = (Math.Round(CDec(txt_desc_porc.Text), 2).ToString("N2"))
+            '----------------------------------------------------------------------
+            txt_desc_pesos.SelectAll()
+            aplicar_iva()
+            txt_desc_porc.Text = (Math.Round(CDec(txt_desc_porc.Text), 2).ToString("N2"))
+
+            'aqui llamo arutina para aplicar iva, si corresponde
+
+            'If TextBox1.Text < 0 Then
+            '    TextBox1.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            'End If
+        End If
+
+    End Sub
+
+    Public Sub aplicar_iva()
+        txt_total.Text = 0
+        If ComboBox_iva.SelectedItem = "0" And CDec(txt_subtotal.Text) <> 0 Then
+            '///////////////////IMPUESTO////////////////////////////
+            txt_impuesto_aplicado.Text = CDec(0)
+            '//////////////////////////////////////////////////////
+            'como es el 0, debo volver a poner el total sin iva, y si corresponde aplico el descuento
+            If txt_desc_pesos.Text = "" Then
+                txt_desc_pesos.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            End If
+            Dim calculo_porc As Decimal = (CDec(txt_desc_pesos.Text) * 100) / CDec(txt_subtotal.Text)
+            txt_desc_porc.Text = (Math.Round(CDec(calculo_porc), 2).ToString("N2"))
+
+            '///////////////////////TOTAL A PAGAR/////////////////////////
+            txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_desc_pesos.Text)
+            txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////////
+
+            '///////////////////DESCUENTO//////////////////////////////
+            txt_descuento.Text = (Math.Round(CDec(txt_desc_pesos.Text), 2).ToString("N2"))
+            '/////////////////////////////////////////////////////////
+
+            'If txt_desc_porc.Text = (Math.Round(CDec(0), 2).ToString("N2")) Then
+            '    calcular_totales()
+            'End If
+            GroupBox_pagar.Text = "Monto a pagar (" + (Math.Round(CDec(txt_desc_porc.Text), 2).ToString("N2")) + "% descuento)"
+        End If
+        If ComboBox_iva.SelectedItem = "10,5" And CDec(txt_subtotal.Text) <> 0 Then
+            If txt_desc_pesos.Text = "" Then
+                txt_desc_pesos.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            End If
+            Dim calculo_porc As Decimal = (CDec(txt_desc_pesos.Text) * 100) / CDec(txt_subtotal.Text)
+            txt_desc_porc.Text = (Math.Round(CDec(calculo_porc), 2).ToString("N2"))
+            '///////////////////////DESCUENTO/////////////////////////
+            'txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_desc_pesos.Text)
+            'txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            txt_descuento.Text = CDec(txt_desc_pesos.Text)
+            txt_descuento.Text = (Math.Round(CDec(txt_descuento.Text), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////
+
+            '////////////////////////////IMPUESTO////////////////////////////////////////
+            'calculo el 10.5% al subtotla de la venta.
+            Dim calculo As Decimal = (CDec(10.5) * CDec(txt_subtotal.Text)) / 100 'esto me da en pesos cuanto se paga
+            txt_impuesto_aplicado.Text = (Math.Round(CDec(calculo), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////////////////////////
+
+            '/////////////////////TOTAL A PAGAR//////////////////////////////////
+            txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_descuento.Text) + CDec(txt_impuesto_aplicado.Text)
+            txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////////////
+
+        End If
+        If ComboBox_iva.SelectedItem = "21" And CDec(txt_subtotal.Text) <> 0 Then
+            If txt_desc_pesos.Text = "" Then
+                txt_desc_pesos.Text = (Math.Round(CDec(0), 2).ToString("N2"))
+            End If
+            Dim calculo_porc As Decimal = (CDec(txt_desc_pesos.Text) * 100) / CDec(txt_subtotal.Text)
+            txt_desc_porc.Text = (Math.Round(CDec(calculo_porc), 2).ToString("N2"))
+
+            '///////////////////////DESCUENTO/////////////////////////
+            'txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_desc_pesos.Text)
+            'txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            txt_descuento.Text = CDec(txt_desc_pesos.Text)
+            txt_descuento.Text = (Math.Round(CDec(txt_descuento.Text), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////
+
+            '////////////////////////////IMPUESTO////////////////////////////////////////
+            'aplico el 21% al total de la venta.
+            Dim calculo As Decimal = (CDec(21) * CDec(txt_subtotal.Text)) / 100 'esto me da en pesos cuanto se paga
+            txt_impuesto_aplicado.Text = (Math.Round(CDec(calculo), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////////////////////////
+
+            '/////////////////////TOTAL A PAGAR//////////////////////////////////
+            txt_total.Text = CDec(txt_subtotal.Text) - CDec(txt_descuento.Text) + CDec(txt_impuesto_aplicado.Text)
+            txt_total.Text = (Math.Round(CDec(txt_total.Text), 2).ToString("N2"))
+            '////////////////////////////////////////////////////////////////
+        End If
+    End Sub
+
+    Private Sub ComboBox_iva_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBox_iva.SelectedValueChanged
+        aplicar_iva()
+    End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        Venta_Caja_seleccion_tipo_vta.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub DataGridView1_DataError(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewDataErrorEventArgs) Handles DataGridView1.DataError
+        If e.Exception IsNot Nothing AndAlso e.Context = DataGridViewDataErrorContexts.Commit Then
+            MessageBox.Show("Error, ingrese un valor no nulo")
+        End If
+    End Sub
+End Class

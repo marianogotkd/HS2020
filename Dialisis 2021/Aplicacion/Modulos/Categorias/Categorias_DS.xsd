@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Categorias_DS" targetNamespace="http://tempuri.org/Categorias_DS.xsd" xmlns:mstns="http://tempuri.org/Categorias_DS.xsd" xmlns="http://tempuri.org/Categorias_DS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Categorias_DS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Categorias_DS" msprop:Generator_UserDSName="Categorias_DS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Categoria_1" msprop:Generator_TableClassName="Categoria_1DataTable" msprop:Generator_TableVarName="tableCategoria_1" msprop:Generator_TablePropName="Categoria_1" msprop:Generator_RowDeletingName="Categoria_1RowDeleting" msprop:Generator_RowChangingName="Categoria_1RowChanging" msprop:Generator_RowEvHandlerName="Categoria_1RowChangeEventHandler" msprop:Generator_RowDeletedName="Categoria_1RowDeleted" msprop:Generator_UserTableName="Categoria_1" msprop:Generator_RowChangedName="Categoria_1RowChanged" msprop:Generator_RowEvArgName="Categoria_1RowChangeEvent" msprop:Generator_RowClassName="Categoria_1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cat_id" msprop:Generator_ColumnVarNameInTable="columncat_id" msprop:Generator_ColumnPropNameInRow="cat_id" msprop:Generator_ColumnPropNameInTable="cat_idColumn" msprop:Generator_UserColumnName="cat_id" type="xs:string" minOccurs="0" />
+              <xs:element name="cat1_nom" msprop:Generator_ColumnVarNameInTable="columncat1_nom" msprop:Generator_ColumnPropNameInRow="cat1_nom" msprop:Generator_ColumnPropNameInTable="cat1_nomColumn" msprop:Generator_UserColumnName="cat1_nom" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Cat_rubro_subrubro" msprop:Generator_TableClassName="Cat_rubro_subrubroDataTable" msprop:Generator_TableVarName="tableCat_rubro_subrubro" msprop:Generator_TablePropName="Cat_rubro_subrubro" msprop:Generator_RowDeletingName="Cat_rubro_subrubroRowDeleting" msprop:Generator_RowChangingName="Cat_rubro_subrubroRowChanging" msprop:Generator_RowEvHandlerName="Cat_rubro_subrubroRowChangeEventHandler" msprop:Generator_RowDeletedName="Cat_rubro_subrubroRowDeleted" msprop:Generator_UserTableName="Cat_rubro_subrubro" msprop:Generator_RowChangedName="Cat_rubro_subrubroRowChanged" msprop:Generator_RowEvArgName="Cat_rubro_subrubroRowChangeEvent" msprop:Generator_RowClassName="Cat_rubro_subrubroRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cat_id" msprop:Generator_ColumnVarNameInTable="columncat_id" msprop:Generator_ColumnPropNameInRow="cat_id" msprop:Generator_ColumnPropNameInTable="cat_idColumn" msprop:Generator_UserColumnName="cat_id" type="xs:string" minOccurs="0" />
+              <xs:element name="cat1_nom" msprop:Generator_ColumnVarNameInTable="columncat1_nom" msprop:Generator_ColumnPropNameInRow="cat1_nom" msprop:Generator_ColumnPropNameInTable="cat1_nomColumn" msprop:Generator_UserColumnName="cat1_nom" type="xs:string" minOccurs="0" />
+              <xs:element name="rubro" msdata:Caption="rubro_subrubro" msprop:Generator_ColumnVarNameInTable="columnrubro" msprop:Generator_ColumnPropNameInRow="rubro" msprop:Generator_ColumnPropNameInTable="rubroColumn" msprop:Generator_UserColumnName="rubro" type="xs:string" minOccurs="0" />
+              <xs:element name="subrubro" msprop:Generator_ColumnVarNameInTable="columnsubrubro" msprop:Generator_ColumnPropNameInRow="subrubro" msprop:Generator_ColumnPropNameInTable="subrubroColumn" msprop:Generator_UserColumnName="subrubro" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

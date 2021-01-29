@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Medico_ds" targetNamespace="http://tempuri.org/Medico_ds.xsd" xmlns:mstns="http://tempuri.org/Medico_ds.xsd" xmlns="http://tempuri.org/Medico_ds.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Medico_ds" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Medico_ds" msprop:Generator_UserDSName="Medico_ds">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Medicos" msprop:Generator_TableClassName="MedicosDataTable" msprop:Generator_TableVarName="tableMedicos" msprop:Generator_TablePropName="Medicos" msprop:Generator_RowDeletingName="MedicosRowDeleting" msprop:Generator_RowChangingName="MedicosRowChanging" msprop:Generator_RowEvHandlerName="MedicosRowChangeEventHandler" msprop:Generator_RowDeletedName="MedicosRowDeleted" msprop:Generator_UserTableName="Medicos" msprop:Generator_RowChangedName="MedicosRowChanged" msprop:Generator_RowEvArgName="MedicosRowChangeEvent" msprop:Generator_RowClassName="MedicosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="medico_id" msprop:Generator_ColumnVarNameInTable="columnmedico_id" msprop:Generator_ColumnPropNameInRow="medico_id" msprop:Generator_ColumnPropNameInTable="medico_idColumn" msprop:Generator_UserColumnName="medico_id" type="xs:int" minOccurs="0" />
+              <xs:element name="medico_nombre" msprop:Generator_ColumnVarNameInTable="columnmedico_nombre" msprop:Generator_ColumnPropNameInRow="medico_nombre" msprop:Generator_ColumnPropNameInTable="medico_nombreColumn" msprop:Generator_UserColumnName="medico_nombre" type="xs:string" minOccurs="0" />
+              <xs:element name="medico_dni" msprop:Generator_ColumnVarNameInTable="columnmedico_dni" msprop:Generator_ColumnPropNameInRow="medico_dni" msprop:Generator_ColumnPropNameInTable="medico_dniColumn" msprop:Generator_UserColumnName="medico_dni" type="xs:int" minOccurs="0" />
+              <xs:element name="medico_esp" msprop:Generator_ColumnVarNameInTable="columnmedico_esp" msprop:Generator_ColumnPropNameInRow="medico_esp" msprop:Generator_ColumnPropNameInTable="medico_espColumn" msprop:Generator_UserColumnName="medico_esp" type="xs:string" minOccurs="0" />
+              <xs:element name="medico_matricula" msprop:Generator_ColumnVarNameInTable="columnmedico_matricula" msprop:Generator_ColumnPropNameInRow="medico_matricula" msprop:Generator_ColumnPropNameInTable="medico_matriculaColumn" msprop:Generator_UserColumnName="medico_matricula" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

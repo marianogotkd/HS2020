@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_usuario" targetNamespace="http://tempuri.org/DS_usuario.xsd" xmlns:mstns="http://tempuri.org/DS_usuario.xsd" xmlns="http://tempuri.org/DS_usuario.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_usuario" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_usuario" msprop:Generator_UserDSName="DS_usuario">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Usuarios" msprop:Generator_TableClassName="UsuariosDataTable" msprop:Generator_TableVarName="tableUsuarios" msprop:Generator_RowChangedName="UsuariosRowChanged" msprop:Generator_TablePropName="Usuarios" msprop:Generator_RowDeletingName="UsuariosRowDeleting" msprop:Generator_RowChangingName="UsuariosRowChanging" msprop:Generator_RowEvHandlerName="UsuariosRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosRowDeleted" msprop:Generator_RowClassName="UsuariosRow" msprop:Generator_UserTableName="Usuarios" msprop:Generator_RowEvArgName="UsuariosRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="USU_id" msprop:Generator_ColumnVarNameInTable="columnUSU_id" msprop:Generator_ColumnPropNameInRow="USU_id" msprop:Generator_ColumnPropNameInTable="USU_idColumn" msprop:Generator_UserColumnName="USU_id" type="xs:string" minOccurs="0" />
+              <xs:element name="USU_ape" msprop:Generator_ColumnVarNameInTable="columnUSU_ape" msprop:Generator_ColumnPropNameInRow="USU_ape" msprop:Generator_ColumnPropNameInTable="USU_apeColumn" msprop:Generator_UserColumnName="USU_ape" type="xs:string" minOccurs="0" />
+              <xs:element name="USU_nom" msprop:Generator_ColumnVarNameInTable="columnUSU_nom" msprop:Generator_ColumnPropNameInRow="USU_nom" msprop:Generator_ColumnPropNameInTable="USU_nomColumn" msprop:Generator_UserColumnName="USU_nom" type="xs:string" minOccurs="0" />
+              <xs:element name="UT_desc" msprop:Generator_ColumnVarNameInTable="columnUT_desc" msprop:Generator_ColumnPropNameInRow="UT_desc" msprop:Generator_ColumnPropNameInTable="UT_descColumn" msprop:Generator_UserColumnName="UT_desc" type="xs:string" minOccurs="0" />
+              <xs:element name="USU_dni" msprop:Generator_ColumnVarNameInTable="columnUSU_dni" msprop:Generator_ColumnPropNameInRow="USU_dni" msprop:Generator_ColumnPropNameInTable="USU_dniColumn" msprop:Generator_UserColumnName="USU_dni" type="xs:string" minOccurs="0" />
+              <xs:element name="sucursal" msprop:Generator_ColumnVarNameInTable="columnsucursal" msprop:Generator_ColumnPropNameInRow="sucursal" msprop:Generator_ColumnPropNameInTable="sucursalColumn" msprop:Generator_UserColumnName="sucursal" type="xs:string" minOccurs="0" />
+              <xs:element name="estado" msprop:Generator_ColumnVarNameInTable="columnestado" msprop:Generator_ColumnPropNameInRow="estado" msprop:Generator_ColumnPropNameInTable="estadoColumn" msprop:Generator_UserColumnName="estado" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Usuariosbloqueados" msprop:Generator_TableClassName="UsuariosbloqueadosDataTable" msprop:Generator_TableVarName="tableUsuariosbloqueados" msprop:Generator_RowChangedName="UsuariosbloqueadosRowChanged" msprop:Generator_TablePropName="Usuariosbloqueados" msprop:Generator_RowDeletingName="UsuariosbloqueadosRowDeleting" msprop:Generator_RowChangingName="UsuariosbloqueadosRowChanging" msprop:Generator_RowEvHandlerName="UsuariosbloqueadosRowChangeEventHandler" msprop:Generator_RowDeletedName="UsuariosbloqueadosRowDeleted" msprop:Generator_RowClassName="UsuariosbloqueadosRow" msprop:Generator_UserTableName="Usuariosbloqueados" msprop:Generator_RowEvArgName="UsuariosbloqueadosRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="USU_id" msprop:Generator_ColumnVarNameInTable="columnUSU_id" msprop:Generator_ColumnPropNameInRow="USU_id" msprop:Generator_ColumnPropNameInTable="USU_idColumn" msprop:Generator_UserColumnName="USU_id" type="xs:string" minOccurs="0" />
+              <xs:element name="USU_ape" msprop:Generator_ColumnVarNameInTable="columnUSU_ape" msprop:Generator_ColumnPropNameInRow="USU_ape" msprop:Generator_ColumnPropNameInTable="USU_apeColumn" msprop:Generator_UserColumnName="USU_ape" type="xs:string" minOccurs="0" />
+              <xs:element name="USU_nom" msprop:Generator_ColumnVarNameInTable="columnUSU_nom" msprop:Generator_ColumnPropNameInRow="USU_nom" msprop:Generator_ColumnPropNameInTable="USU_nomColumn" msprop:Generator_UserColumnName="USU_nom" type="xs:string" minOccurs="0" />
+              <xs:element name="UT_desc" msprop:Generator_ColumnVarNameInTable="columnUT_desc" msprop:Generator_ColumnPropNameInRow="UT_desc" msprop:Generator_ColumnPropNameInTable="UT_descColumn" msprop:Generator_UserColumnName="UT_desc" type="xs:string" minOccurs="0" />
+              <xs:element name="USU_dni" msprop:Generator_ColumnVarNameInTable="columnUSU_dni" msprop:Generator_ColumnPropNameInRow="USU_dni" msprop:Generator_ColumnPropNameInTable="USU_dniColumn" msprop:Generator_UserColumnName="USU_dni" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tipos_Usuario" msprop:Generator_TableClassName="Tipos_UsuarioDataTable" msprop:Generator_TableVarName="tableTipos_Usuario" msprop:Generator_RowChangedName="Tipos_UsuarioRowChanged" msprop:Generator_TablePropName="Tipos_Usuario" msprop:Generator_RowDeletingName="Tipos_UsuarioRowDeleting" msprop:Generator_RowChangingName="Tipos_UsuarioRowChanging" msprop:Generator_RowEvHandlerName="Tipos_UsuarioRowChangeEventHandler" msprop:Generator_RowDeletedName="Tipos_UsuarioRowDeleted" msprop:Generator_RowClassName="Tipos_UsuarioRow" msprop:Generator_UserTableName="Tipos_Usuario" msprop:Generator_RowEvArgName="Tipos_UsuarioRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UT_id" msprop:Generator_ColumnVarNameInTable="columnUT_id" msprop:Generator_ColumnPropNameInRow="UT_id" msprop:Generator_ColumnPropNameInTable="UT_idColumn" msprop:Generator_UserColumnName="UT_id" type="xs:int" minOccurs="0" />
+              <xs:element name="UT_desc" msprop:Generator_ColumnVarNameInTable="columnUT_desc" msprop:Generator_ColumnPropNameInRow="UT_desc" msprop:Generator_ColumnPropNameInTable="UT_descColumn" msprop:Generator_UserColumnName="UT_desc" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

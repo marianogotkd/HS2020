@@ -1,0 +1,470 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class Permisios_Dialisis
+    Inherits System.Windows.Forms.Form
+
+    'Form reemplaza a Dispose para limpiar la lista de componentes.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Requerido por el Diseñador de Windows Forms
+    Private components As System.ComponentModel.IContainer
+
+    'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
+    'Se puede modificar usando el Diseñador de Windows Forms.  
+    'No lo modifique con el editor de código.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Me.GroupBox_cli = New System.Windows.Forms.GroupBox()
+        Me.CheckBox_MED_cons = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_MED_nuevo = New System.Windows.Forms.CheckBox()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.CheckBox_PAC_actualizar = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_HIST_most = New System.Windows.Forms.CheckBox()
+        Me.GroupBox_Configuraciones = New System.Windows.Forms.GroupBox()
+        Me.PictureBox6 = New System.Windows.Forms.PictureBox()
+        Me.CheckBox_PAC_nuevo = New System.Windows.Forms.CheckBox()
+        Me.PictureBox5 = New System.Windows.Forms.PictureBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btn_cancelar = New System.Windows.Forms.Button()
+        Me.btn_guardar = New System.Windows.Forms.Button()
+        Me.btn_Agregar_Prod = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.GroupBox_Stock = New System.Windows.Forms.GroupBox()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox_CONS_cons = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_Cons_Gest = New System.Windows.Forms.CheckBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox_Mov_Cons = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_Mov_Ges = New System.Windows.Forms.CheckBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox_PROD_cat = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_PROD_marca = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_Prod_ACT = New System.Windows.Forms.CheckBox()
+        Me.CheckBox_Prod_Nuevo = New System.Windows.Forms.CheckBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.tx_desc = New System.Windows.Forms.TextBox()
+        Me.GroupBox_cli.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox_Configuraciones.SuspendLayout()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox_Stock.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
+        '
+        'GroupBox_cli
+        '
+        Me.GroupBox_cli.Controls.Add(Me.CheckBox_MED_cons)
+        Me.GroupBox_cli.Controls.Add(Me.CheckBox_MED_nuevo)
+        Me.GroupBox_cli.Controls.Add(Me.PictureBox1)
+        Me.GroupBox_cli.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox_cli.Location = New System.Drawing.Point(17, 56)
+        Me.GroupBox_cli.Name = "GroupBox_cli"
+        Me.GroupBox_cli.Size = New System.Drawing.Size(535, 125)
+        Me.GroupBox_cli.TabIndex = 15
+        Me.GroupBox_cli.TabStop = False
+        Me.GroupBox_cli.Text = "Medicos"
+        '
+        'CheckBox_MED_cons
+        '
+        Me.CheckBox_MED_cons.AutoSize = True
+        Me.CheckBox_MED_cons.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_MED_cons.Location = New System.Drawing.Point(166, 19)
+        Me.CheckBox_MED_cons.Name = "CheckBox_MED_cons"
+        Me.CheckBox_MED_cons.Size = New System.Drawing.Size(67, 17)
+        Me.CheckBox_MED_cons.TabIndex = 3
+        Me.CheckBox_MED_cons.Text = "Consulta"
+        Me.CheckBox_MED_cons.UseVisualStyleBackColor = True
+        '
+        'CheckBox_MED_nuevo
+        '
+        Me.CheckBox_MED_nuevo.AutoSize = True
+        Me.CheckBox_MED_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_MED_nuevo.Location = New System.Drawing.Point(102, 19)
+        Me.CheckBox_MED_nuevo.Name = "CheckBox_MED_nuevo"
+        Me.CheckBox_MED_nuevo.Size = New System.Drawing.Size(58, 17)
+        Me.CheckBox_MED_nuevo.TabIndex = 2
+        Me.CheckBox_MED_nuevo.Text = "Nuevo"
+        Me.CheckBox_MED_nuevo.UseVisualStyleBackColor = True
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.Aplicacion.My.Resources.Resources.medical_29_icon_icons_com_73943
+        Me.PictureBox1.Location = New System.Drawing.Point(6, 19)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(90, 84)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
+        'CheckBox_PAC_actualizar
+        '
+        Me.CheckBox_PAC_actualizar.AutoSize = True
+        Me.CheckBox_PAC_actualizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_PAC_actualizar.Location = New System.Drawing.Point(171, 19)
+        Me.CheckBox_PAC_actualizar.Name = "CheckBox_PAC_actualizar"
+        Me.CheckBox_PAC_actualizar.Size = New System.Drawing.Size(72, 17)
+        Me.CheckBox_PAC_actualizar.TabIndex = 5
+        Me.CheckBox_PAC_actualizar.Text = "Actualizar"
+        Me.CheckBox_PAC_actualizar.UseVisualStyleBackColor = True
+        '
+        'CheckBox_HIST_most
+        '
+        Me.CheckBox_HIST_most.AutoSize = True
+        Me.CheckBox_HIST_most.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_HIST_most.Location = New System.Drawing.Point(102, 19)
+        Me.CheckBox_HIST_most.Name = "CheckBox_HIST_most"
+        Me.CheckBox_HIST_most.Size = New System.Drawing.Size(61, 17)
+        Me.CheckBox_HIST_most.TabIndex = 4
+        Me.CheckBox_HIST_most.Text = "Mostrar"
+        Me.CheckBox_HIST_most.UseVisualStyleBackColor = True
+        '
+        'GroupBox_Configuraciones
+        '
+        Me.GroupBox_Configuraciones.Controls.Add(Me.CheckBox_HIST_most)
+        Me.GroupBox_Configuraciones.Controls.Add(Me.PictureBox6)
+        Me.GroupBox_Configuraciones.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox_Configuraciones.Location = New System.Drawing.Point(558, 182)
+        Me.GroupBox_Configuraciones.Name = "GroupBox_Configuraciones"
+        Me.GroupBox_Configuraciones.Size = New System.Drawing.Size(535, 148)
+        Me.GroupBox_Configuraciones.TabIndex = 20
+        Me.GroupBox_Configuraciones.TabStop = False
+        Me.GroupBox_Configuraciones.Text = "Historia Clinica"
+        '
+        'PictureBox6
+        '
+        Me.PictureBox6.Image = Global.Aplicacion.My.Resources.Resources.book_icon_icons_com_66064
+        Me.PictureBox6.Location = New System.Drawing.Point(6, 19)
+        Me.PictureBox6.Name = "PictureBox6"
+        Me.PictureBox6.Size = New System.Drawing.Size(90, 84)
+        Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox6.TabIndex = 0
+        Me.PictureBox6.TabStop = False
+        '
+        'CheckBox_PAC_nuevo
+        '
+        Me.CheckBox_PAC_nuevo.AutoSize = True
+        Me.CheckBox_PAC_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox_PAC_nuevo.Location = New System.Drawing.Point(102, 19)
+        Me.CheckBox_PAC_nuevo.Name = "CheckBox_PAC_nuevo"
+        Me.CheckBox_PAC_nuevo.Size = New System.Drawing.Size(58, 17)
+        Me.CheckBox_PAC_nuevo.TabIndex = 4
+        Me.CheckBox_PAC_nuevo.Text = "Nuevo"
+        Me.CheckBox_PAC_nuevo.UseVisualStyleBackColor = True
+        '
+        'PictureBox5
+        '
+        Me.PictureBox5.Image = Global.Aplicacion.My.Resources.Resources.PAC
+        Me.PictureBox5.Location = New System.Drawing.Point(6, 19)
+        Me.PictureBox5.Name = "PictureBox5"
+        Me.PictureBox5.Size = New System.Drawing.Size(90, 84)
+        Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox5.TabIndex = 0
+        Me.PictureBox5.TabStop = False
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.CheckBox_PAC_actualizar)
+        Me.GroupBox1.Controls.Add(Me.CheckBox_PAC_nuevo)
+        Me.GroupBox1.Controls.Add(Me.PictureBox5)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(558, 56)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(535, 125)
+        Me.GroupBox1.TabIndex = 19
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Pacientes"
+        '
+        'btn_cancelar
+        '
+        Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar
+        Me.btn_cancelar.Location = New System.Drawing.Point(17, 337)
+        Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_cancelar.MaximumSize = New System.Drawing.Size(124, 43)
+        Me.btn_cancelar.MinimumSize = New System.Drawing.Size(124, 43)
+        Me.btn_cancelar.Name = "btn_cancelar"
+        Me.btn_cancelar.Size = New System.Drawing.Size(124, 43)
+        Me.btn_cancelar.TabIndex = 24
+        Me.btn_cancelar.Text = "Cancelar"
+        Me.btn_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btn_cancelar.UseVisualStyleBackColor = True
+        '
+        'btn_guardar
+        '
+        Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.Guardar
+        Me.btn_guardar.Location = New System.Drawing.Point(149, 337)
+        Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_guardar.MaximumSize = New System.Drawing.Size(124, 43)
+        Me.btn_guardar.MinimumSize = New System.Drawing.Size(124, 43)
+        Me.btn_guardar.Name = "btn_guardar"
+        Me.btn_guardar.Size = New System.Drawing.Size(124, 43)
+        Me.btn_guardar.TabIndex = 23
+        Me.btn_guardar.Text = "Guardar"
+        Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btn_guardar.UseVisualStyleBackColor = True
+        '
+        'btn_Agregar_Prod
+        '
+        Me.btn_Agregar_Prod.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Agregar_Prod.Image = Global.Aplicacion.My.Resources.Resources.CargarDato
+        Me.btn_Agregar_Prod.Location = New System.Drawing.Point(281, 337)
+        Me.btn_Agregar_Prod.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_Agregar_Prod.MinimumSize = New System.Drawing.Size(124, 43)
+        Me.btn_Agregar_Prod.Name = "btn_Agregar_Prod"
+        Me.btn_Agregar_Prod.Size = New System.Drawing.Size(240, 43)
+        Me.btn_Agregar_Prod.TabIndex = 25
+        Me.btn_Agregar_Prod.Text = "Ver Tipos de Usuarios y Permisos"
+        Me.btn_Agregar_Prod.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btn_Agregar_Prod.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(13, 17)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(121, 24)
+        Me.Label3.TabIndex = 22
+        Me.Label3.Text = "Descripción"
+        '
+        'GroupBox_Stock
+        '
+        Me.GroupBox_Stock.Controls.Add(Me.GroupBox5)
+        Me.GroupBox_Stock.Controls.Add(Me.GroupBox4)
+        Me.GroupBox_Stock.Controls.Add(Me.GroupBox3)
+        Me.GroupBox_Stock.Controls.Add(Me.PictureBox2)
+        Me.GroupBox_Stock.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox_Stock.Location = New System.Drawing.Point(17, 182)
+        Me.GroupBox_Stock.Name = "GroupBox_Stock"
+        Me.GroupBox_Stock.Size = New System.Drawing.Size(535, 148)
+        Me.GroupBox_Stock.TabIndex = 16
+        Me.GroupBox_Stock.TabStop = False
+        Me.GroupBox_Stock.Text = "Stock"
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.CheckBox_CONS_cons)
+        Me.GroupBox5.Controls.Add(Me.CheckBox_Cons_Gest)
+        Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox5.Location = New System.Drawing.Point(393, 19)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(111, 115)
+        Me.GroupBox5.TabIndex = 11
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Consumos"
+        '
+        'CheckBox_CONS_cons
+        '
+        Me.CheckBox_CONS_cons.AutoSize = True
+        Me.CheckBox_CONS_cons.Location = New System.Drawing.Point(6, 42)
+        Me.CheckBox_CONS_cons.Name = "CheckBox_CONS_cons"
+        Me.CheckBox_CONS_cons.Size = New System.Drawing.Size(67, 17)
+        Me.CheckBox_CONS_cons.TabIndex = 9
+        Me.CheckBox_CONS_cons.Text = "Consulta"
+        Me.CheckBox_CONS_cons.UseVisualStyleBackColor = True
+        '
+        'CheckBox_Cons_Gest
+        '
+        Me.CheckBox_Cons_Gest.AutoSize = True
+        Me.CheckBox_Cons_Gest.Location = New System.Drawing.Point(6, 19)
+        Me.CheckBox_Cons_Gest.Name = "CheckBox_Cons_Gest"
+        Me.CheckBox_Cons_Gest.Size = New System.Drawing.Size(62, 17)
+        Me.CheckBox_Cons_Gest.TabIndex = 8
+        Me.CheckBox_Cons_Gest.Text = "Gestion"
+        Me.CheckBox_Cons_Gest.UseVisualStyleBackColor = True
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.CheckBox_Mov_Cons)
+        Me.GroupBox4.Controls.Add(Me.CheckBox_Mov_Ges)
+        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox4.Location = New System.Drawing.Point(253, 19)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(111, 115)
+        Me.GroupBox4.TabIndex = 10
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Movimientos"
+        '
+        'CheckBox_Mov_Cons
+        '
+        Me.CheckBox_Mov_Cons.AutoSize = True
+        Me.CheckBox_Mov_Cons.Location = New System.Drawing.Point(6, 42)
+        Me.CheckBox_Mov_Cons.Name = "CheckBox_Mov_Cons"
+        Me.CheckBox_Mov_Cons.Size = New System.Drawing.Size(67, 17)
+        Me.CheckBox_Mov_Cons.TabIndex = 9
+        Me.CheckBox_Mov_Cons.Text = "Consulta"
+        Me.CheckBox_Mov_Cons.UseVisualStyleBackColor = True
+        '
+        'CheckBox_Mov_Ges
+        '
+        Me.CheckBox_Mov_Ges.AutoSize = True
+        Me.CheckBox_Mov_Ges.Location = New System.Drawing.Point(6, 19)
+        Me.CheckBox_Mov_Ges.Name = "CheckBox_Mov_Ges"
+        Me.CheckBox_Mov_Ges.Size = New System.Drawing.Size(62, 17)
+        Me.CheckBox_Mov_Ges.TabIndex = 8
+        Me.CheckBox_Mov_Ges.Text = "Gestion"
+        Me.CheckBox_Mov_Ges.UseVisualStyleBackColor = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.CheckBox_PROD_cat)
+        Me.GroupBox3.Controls.Add(Me.CheckBox_PROD_marca)
+        Me.GroupBox3.Controls.Add(Me.CheckBox_Prod_ACT)
+        Me.GroupBox3.Controls.Add(Me.CheckBox_Prod_Nuevo)
+        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Location = New System.Drawing.Point(120, 19)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(111, 115)
+        Me.GroupBox3.TabIndex = 7
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Producto"
+        '
+        'CheckBox_PROD_cat
+        '
+        Me.CheckBox_PROD_cat.AutoSize = True
+        Me.CheckBox_PROD_cat.Location = New System.Drawing.Point(6, 88)
+        Me.CheckBox_PROD_cat.Name = "CheckBox_PROD_cat"
+        Me.CheckBox_PROD_cat.Size = New System.Drawing.Size(71, 17)
+        Me.CheckBox_PROD_cat.TabIndex = 11
+        Me.CheckBox_PROD_cat.Text = "Categoria"
+        Me.CheckBox_PROD_cat.UseVisualStyleBackColor = True
+        '
+        'CheckBox_PROD_marca
+        '
+        Me.CheckBox_PROD_marca.AutoSize = True
+        Me.CheckBox_PROD_marca.Location = New System.Drawing.Point(6, 65)
+        Me.CheckBox_PROD_marca.Name = "CheckBox_PROD_marca"
+        Me.CheckBox_PROD_marca.Size = New System.Drawing.Size(56, 17)
+        Me.CheckBox_PROD_marca.TabIndex = 10
+        Me.CheckBox_PROD_marca.Text = "Marca"
+        Me.CheckBox_PROD_marca.UseVisualStyleBackColor = True
+        '
+        'CheckBox_Prod_ACT
+        '
+        Me.CheckBox_Prod_ACT.AutoSize = True
+        Me.CheckBox_Prod_ACT.Location = New System.Drawing.Point(6, 42)
+        Me.CheckBox_Prod_ACT.Name = "CheckBox_Prod_ACT"
+        Me.CheckBox_Prod_ACT.Size = New System.Drawing.Size(72, 17)
+        Me.CheckBox_Prod_ACT.TabIndex = 9
+        Me.CheckBox_Prod_ACT.Text = "Actualizar"
+        Me.CheckBox_Prod_ACT.UseVisualStyleBackColor = True
+        '
+        'CheckBox_Prod_Nuevo
+        '
+        Me.CheckBox_Prod_Nuevo.AutoSize = True
+        Me.CheckBox_Prod_Nuevo.Location = New System.Drawing.Point(6, 19)
+        Me.CheckBox_Prod_Nuevo.Name = "CheckBox_Prod_Nuevo"
+        Me.CheckBox_Prod_Nuevo.Size = New System.Drawing.Size(58, 17)
+        Me.CheckBox_Prod_Nuevo.TabIndex = 8
+        Me.CheckBox_Prod_Nuevo.Text = "Nuevo"
+        Me.CheckBox_Prod_Nuevo.UseVisualStyleBackColor = True
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = Global.Aplicacion.My.Resources.Resources.Stock
+        Me.PictureBox2.Location = New System.Drawing.Point(6, 19)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(90, 84)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 0
+        Me.PictureBox2.TabStop = False
+        '
+        'tx_desc
+        '
+        Me.tx_desc.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tx_desc.Location = New System.Drawing.Point(149, 12)
+        Me.tx_desc.Name = "tx_desc"
+        Me.tx_desc.Size = New System.Drawing.Size(404, 29)
+        Me.tx_desc.TabIndex = 27
+        '
+        'Permisios_Dialisis
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(1170, 471)
+        Me.Controls.Add(Me.tx_desc)
+        Me.Controls.Add(Me.GroupBox_cli)
+        Me.Controls.Add(Me.GroupBox_Configuraciones)
+        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.btn_cancelar)
+        Me.Controls.Add(Me.btn_guardar)
+        Me.Controls.Add(Me.btn_Agregar_Prod)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.GroupBox_Stock)
+<<<<<<< HEAD
+=======
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+>>>>>>> 5c7970be30fd50b28be2e5bdb9f23b78d274138f
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(1176, 500)
+        Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(1176, 500)
+        Me.Name = "Permisios_Dialisis"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Permisios"
+        Me.GroupBox_cli.ResumeLayout(False)
+        Me.GroupBox_cli.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox_Configuraciones.ResumeLayout(False)
+        Me.GroupBox_Configuraciones.PerformLayout()
+        CType(Me.PictureBox6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        Me.GroupBox_Stock.ResumeLayout(False)
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
+    End Sub
+    Friend WithEvents GroupBox_cli As System.Windows.Forms.GroupBox
+    Friend WithEvents CheckBox_MED_cons As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox_MED_nuevo As System.Windows.Forms.CheckBox
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents CheckBox_PAC_actualizar As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox_HIST_most As System.Windows.Forms.CheckBox
+    Friend WithEvents GroupBox_Configuraciones As System.Windows.Forms.GroupBox
+    Friend WithEvents PictureBox6 As System.Windows.Forms.PictureBox
+    Friend WithEvents CheckBox_PAC_nuevo As System.Windows.Forms.CheckBox
+    Friend WithEvents PictureBox5 As System.Windows.Forms.PictureBox
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents btn_cancelar As System.Windows.Forms.Button
+    Friend WithEvents btn_guardar As System.Windows.Forms.Button
+    Friend WithEvents btn_Agregar_Prod As System.Windows.Forms.Button
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents GroupBox_Stock As System.Windows.Forms.GroupBox
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents tx_desc As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents CheckBox_Prod_ACT As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox_Prod_Nuevo As System.Windows.Forms.CheckBox
+    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
+    Friend WithEvents CheckBox_CONS_cons As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox_Cons_Gest As System.Windows.Forms.CheckBox
+    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents CheckBox_Mov_Cons As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox_Mov_Ges As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox_PROD_cat As System.Windows.Forms.CheckBox
+    Friend WithEvents CheckBox_PROD_marca As System.Windows.Forms.CheckBox
+End Class
