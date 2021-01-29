@@ -229,12 +229,10 @@ C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Enferm
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Enfermeria_insumos_Ausente.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Enfermeria_pacientes_seleccionar.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Enfermeria_reporte_fechas.resources
-C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Insumos_Predefinidos.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.msj_esperar_sesiones.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Nueva_Dialisis.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Nueva_sesion.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Sesiones_consulta_global.resources
-C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Sesiones_prod_agregar.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Sesion_pacientes.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Sesion_registro_x_paciente.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Turno_seleccionar.resources
@@ -317,7 +315,6 @@ C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Servic
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Servicio_nuevo.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Ajuste_alta.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Ajuste_suma_resta_igual.resources
-C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Ajuste_vencimiento.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Producto_ajuste.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Producto_alta.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Producto_alta_New.resources
@@ -367,3 +364,5 @@ C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.vbproj
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.exe
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.xml
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.pdb
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Insumos_Predefinidos.resources
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Sesiones_prod_agregar.resources

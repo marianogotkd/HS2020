@@ -794,6 +794,12 @@ Partial Public Class Servicio_DS
         
         Private columnOrden_trabajo_id As Global.System.Data.DataColumn
         
+        Private columnServicio_Desc_peso As Global.System.Data.DataColumn
+        
+        Private columnServicio_Desc_porc As Global.System.Data.DataColumn
+        
+        Private columnServicio_IVA As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1030,6 +1036,30 @@ Partial Public Class Servicio_DS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Servicio_Desc_pesoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnServicio_Desc_peso
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Servicio_Desc_porcColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnServicio_Desc_porc
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Servicio_IVAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnServicio_IVA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1091,9 +1121,12 @@ Partial Public Class Servicio_DS
                     ByVal Servicio_FechaRep As Date,  _
                     ByVal CLI_Fan As String,  _
                     ByVal CLI_dni As String,  _
-                    ByVal Orden_trabajo_id As Integer) As Servicio_ObtenerRow
+                    ByVal Orden_trabajo_id As Integer,  _
+                    ByVal Servicio_Desc_peso As Decimal,  _
+                    ByVal Servicio_Desc_porc As Decimal,  _
+                    ByVal Servicio_IVA As Decimal) As Servicio_ObtenerRow
             Dim rowServicio_ObtenerRow As Servicio_ObtenerRow = CType(Me.NewRow,Servicio_ObtenerRow)
-            Dim columnValuesArray() As Object = New Object() {Servicio_id, Servicio_fecha, Servicio_imei, Servicio_Marca, Servicio_Modelo, Servicio_Color, Servicio_bat, Servicio_Obs, Servicio_ManoObra, Servicio_Anticipo, Servicio_Nombre, Servicio_dni, Servicio_dir, Servicio_tel, Servicio_Estado, USU_id, Servicio_Diagnostico, CLI_id, Servicio_Sucursal, Servicio_Equipo, Servicio_FechaRev, Servicio_FechaRep, CLI_Fan, CLI_dni, Orden_trabajo_id}
+            Dim columnValuesArray() As Object = New Object() {Servicio_id, Servicio_fecha, Servicio_imei, Servicio_Marca, Servicio_Modelo, Servicio_Color, Servicio_bat, Servicio_Obs, Servicio_ManoObra, Servicio_Anticipo, Servicio_Nombre, Servicio_dni, Servicio_dir, Servicio_tel, Servicio_Estado, USU_id, Servicio_Diagnostico, CLI_id, Servicio_Sucursal, Servicio_Equipo, Servicio_FechaRev, Servicio_FechaRep, CLI_Fan, CLI_dni, Orden_trabajo_id, Servicio_Desc_peso, Servicio_Desc_porc, Servicio_IVA}
             rowServicio_ObtenerRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowServicio_ObtenerRow)
             Return rowServicio_ObtenerRow
@@ -1141,6 +1174,9 @@ Partial Public Class Servicio_DS
             Me.columnCLI_Fan = MyBase.Columns("CLI_Fan")
             Me.columnCLI_dni = MyBase.Columns("CLI_dni")
             Me.columnOrden_trabajo_id = MyBase.Columns("Orden_trabajo_id")
+            Me.columnServicio_Desc_peso = MyBase.Columns("Servicio_Desc_peso")
+            Me.columnServicio_Desc_porc = MyBase.Columns("Servicio_Desc_porc")
+            Me.columnServicio_IVA = MyBase.Columns("Servicio_IVA")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1196,6 +1232,12 @@ Partial Public Class Servicio_DS
             MyBase.Columns.Add(Me.columnCLI_dni)
             Me.columnOrden_trabajo_id = New Global.System.Data.DataColumn("Orden_trabajo_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOrden_trabajo_id)
+            Me.columnServicio_Desc_peso = New Global.System.Data.DataColumn("Servicio_Desc_peso", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnServicio_Desc_peso)
+            Me.columnServicio_Desc_porc = New Global.System.Data.DataColumn("Servicio_Desc_porc", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnServicio_Desc_porc)
+            Me.columnServicio_IVA = New Global.System.Data.DataColumn("Servicio_IVA", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnServicio_IVA)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2870,6 +2912,53 @@ Partial Public Class Servicio_DS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Servicio_Desc_peso() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableServicio_Obtener.Servicio_Desc_pesoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Servicio_Desc_peso' de la tabla 'Servicio_Obtener' es DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableServicio_Obtener.Servicio_Desc_pesoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Servicio_Desc_porc() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableServicio_Obtener.Servicio_Desc_porcColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Servicio_Desc_porc' de la tabla 'Servicio_Obtener' es DBN"& _ 
+                            "ull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableServicio_Obtener.Servicio_Desc_porcColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Servicio_IVA() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableServicio_Obtener.Servicio_IVAColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Servicio_IVA' de la tabla 'Servicio_Obtener' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableServicio_Obtener.Servicio_IVAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsServicio_idNull() As Boolean
             Return Me.IsNull(Me.tableServicio_Obtener.Servicio_idColumn)
         End Function
@@ -3166,6 +3255,42 @@ Partial Public Class Servicio_DS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetOrden_trabajo_idNull()
             Me(Me.tableServicio_Obtener.Orden_trabajo_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsServicio_Desc_pesoNull() As Boolean
+            Return Me.IsNull(Me.tableServicio_Obtener.Servicio_Desc_pesoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetServicio_Desc_pesoNull()
+            Me(Me.tableServicio_Obtener.Servicio_Desc_pesoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsServicio_Desc_porcNull() As Boolean
+            Return Me.IsNull(Me.tableServicio_Obtener.Servicio_Desc_porcColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetServicio_Desc_porcNull()
+            Me(Me.tableServicio_Obtener.Servicio_Desc_porcColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsServicio_IVANull() As Boolean
+            Return Me.IsNull(Me.tableServicio_Obtener.Servicio_IVAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetServicio_IVANull()
+            Me(Me.tableServicio_Obtener.Servicio_IVAColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

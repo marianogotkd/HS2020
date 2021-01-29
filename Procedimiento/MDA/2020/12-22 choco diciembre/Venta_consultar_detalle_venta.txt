@@ -1,0 +1,66 @@
+USE [SantaFe]
+GO
+/****** Object:  StoredProcedure [dbo].[Venta_consultar_detalle_venta]    Script Date: 12/22/2020 14:24:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[Venta_consultar_detalle_venta]
+@ventaprod_id int, --clave principal
+@sucursal_id int
+as
+
+--0) esta es una venta que tiene un cliente asociado
+select
+Venta_Producto.ventaprod_id, venta_id, ventaprod_total, ventaprod_fecha as 'fecha', usuario_id, ventaprod_tipovta, cliente_id, ventaprod_pagoparcial, ventaprod_estado, ventaprod_nromesa, ventaprod_sectorusuario, ventaprod_subtotal, ventaprod_descuento_pesos, ventaprod_descuento_porcentaje, ventaprod_iva_porcentaje, ventaprod_iva_pesos, ventaprod_observacion,
+--DATOS DEL CLIENTE
+Cliente.CLI_id, CLI_Fan  AS 'fantasia', CLI_dni as 'DNI', CLI_fnac, CLI_tel as 'telefono', CLI_mail as 'mail', CLI_observaciones, CLI_Tipo, CLI_Fan, CLI_tipoiva, CLI_dir, CLI_CP, CLI_Id_Prov, CLI_Id_Loc,
+--datos usuario que hizo la venta
+Usuario.USU_ape +', '+Usuario.USU_nom as 'vendedor', Factura.factura_id, Factura.factura_fecha,
+--datos de la suc del cliente
+Cliente_Sucursales.SucxClie_nombre, Cliente_Sucursales.SucxClie_tel, Cliente_Sucursales.SucxClie_mail, Cliente_Sucursales.SucxClie_dir,   
+IVA.IVA_Descripcion, Provincia.provincia, Localidades.Localidad
+from Venta_Producto inner join Cliente on Venta_Producto.cliente_id = Cliente.CLI_id inner join Usuario on Venta_Producto.usuario_id=Usuario.USU_id
+inner join Factura on Venta_Producto.ventaprod_id = Factura.ventaprod_id
+inner join Cliente_Sucursales on Cliente_Sucursales.SucxClie_id = Venta_Producto.SucxClie_id
+inner join IVA on Cliente.CLI_tipoiva = IVA.IVA_id 
+inner join Provincia on Cliente_Sucursales.SucxClie_Prov = provincia.Prov_id 
+inner join Localidades on Cliente_Sucursales.SucxClie_Loc = Localidades.id   
+where Venta_Producto.ventaprod_id=@ventaprod_id
+
+--1) esta es: si la venta no tiene cliente asociado, es decir es CONSUMIDOR FINAL
+select
+Venta_Producto.ventaprod_id, venta_id, ventaprod_total, ventaprod_fecha as 'fecha', usuario_id, ventaprod_tipovta, cliente_id, ventaprod_pagoparcial, ventaprod_estado, ventaprod_nromesa, ventaprod_sectorusuario, ventaprod_subtotal, ventaprod_descuento_pesos, ventaprod_descuento_porcentaje, ventaprod_iva_porcentaje, ventaprod_iva_pesos, ventaprod_observacion,
+--datos usuario que hizo la venta
+Usuario.USU_ape +', '+Usuario.USU_nom as 'vendedor', Factura.factura_id, Factura.factura_fecha
+from Venta_Producto inner join Usuario on Venta_Producto.usuario_id=Usuario.USU_id
+inner join Factura on Venta_Producto.ventaprod_id = Factura.ventaprod_id
+ where Venta_Producto.ventaprod_id=@ventaprod_id
+
+--2) DETALLE DE LOS PRODUCTOS DE LA VENTA
+select
+ventaprodetalle_id,
+ventaprod_id,
+producto.prod_id,
+Producto.prod_codinterno,  
+ventaprod_cant,
+ventaprod_precio,
+ventaprod_subtotal,
+ventaprod_descripcion,
+codigointerno, TURNO_id,
+Producto.prod_descrilarga,
+ventaprod_descuento_porc as 'descuento'  
+from Venta_Producto_detalle inner join Producto on Venta_Producto_detalle.prod_id=Producto.prod_id where Venta_Producto_detalle.ventaprod_id=@ventaprod_id
+
+--3) datos de sucursal
+select
+sucursal_id, sucursal_nombre as 'sucursal', sucursal_direccion as 'direccion', sucursal_telefono as 'telefono', sucursal_mail as 'mail', prov_id, localidad_id, sucursal_config_minorista, sucursal_config_mayorista, empresa_id
+from Sucursal where Sucursal.sucursal_id=@sucursal_id
+--4) datos empresa
+select empresa.empresa_id, empresa_Nombre, empresa_dir, empresa_telefono, empresa_eslogan, empresa_mail, empresa_cuit, empresa_foto
+from Sucursal inner join Empresa on Sucursal.empresa_id = Empresa.empresa_id where Sucursal.sucursal_id=@sucursal_id   
+
+--5) si la venta se hizo con tarjeta de credito el siguiente select muestra los datos
+select  
+Venta_x_tarjeta_id, ventaprod_id, Venta_x_tarjeta_montototal, Venta_x_tarjeta_nrotarjeta, Venta_x_tarjeta_nrocomprobante
+from Venta_x_tarjeta where Venta_x_tarjeta.ventaprod_id = @ventaprod_id

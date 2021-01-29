@@ -104,7 +104,7 @@
                     Dim ds_SevicioGuardar As DataSet = DAservicio.Servicio_alta_MDA(Cliente_ID, DateTimePicker1.Value,
                                                                         sucursal_id, usuario_id, txt_diag.Text, combo_sucursal.Text,
                                                                         "", DateTimePicker1.Value, DateTimePicker1.Value,
-                                                                        CDec(0), "PENDIENTE", combo_sucursal.SelectedValue)
+                                                                        CDec(0), "PENDIENTE", combo_sucursal.SelectedValue, 0, 0, 0)
                     MessageBox.Show("Los datos se guardaron correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     'AQUI TENGO QUE ABRIR EL REPORTE CON LA ORDEN DE REVISION.
                     Dim result2 As Integer = MessageBox.Show("¿Desea ver la orden de revisión para imprimir?", "Sistema de Gestión", MessageBoxButtons.YesNo)
@@ -182,7 +182,7 @@
         'fila("direccion") = TextBox_dir.Text
         'la direccion la recupero de la tabla cliente sucursales.
 
-
+        fila("Sucursal") = combo_sucursal.Text
         fila("fecha") = DateTimePicker1.Value.Date
         fila("diagnostico_previo") = txt_diag.Text
         ds_revision_reporte.Tables("Revision").Rows.Add(fila)

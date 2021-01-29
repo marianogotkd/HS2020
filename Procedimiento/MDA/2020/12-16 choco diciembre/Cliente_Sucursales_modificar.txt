@@ -1,0 +1,30 @@
+USE [SantaFe]
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[Cliente_Sucursales_modificar]
+
+@SucxClie_id int,
+@SucxClie_nombre varchar(50), 
+@SucxClie_tel varchar(50), 
+@SucxClie_mail varchar(50), 
+@SucxClie_dir varchar(50), 
+@SucxClie_CP int, 
+@SucxClie_Prov int, 
+@SucxClie_Loc int, 
+@SucxClie_estado varchar(50)
+
+as
+update dbo.Cliente_Sucursales set
+SucxClie_nombre = @SucxClie_nombre, 
+SucxClie_tel=@SucxClie_tel, 
+SucxClie_mail=@SucxClie_mail, 
+SucxClie_dir=@SucxClie_dir, 
+SucxClie_CP=@SucxClie_CP, 
+SucxClie_Prov=@SucxClie_Prov, 
+SucxClie_Loc=@SucxClie_Loc, 
+SucxClie_estado=@SucxClie_estado
+where SucxClie_id=@SucxClie_id

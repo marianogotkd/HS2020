@@ -1,0 +1,54 @@
+USE [SantaFe]
+GO
+/****** Object:  StoredProcedure [dbo].[VentaProducto_alta]    Script Date: 12/22/2020 14:27:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[VentaProducto_alta]
+
+@ventaprod_total as decimal(38,2),
+@ventaprod_fecha as datetime,
+@usuario_id as integer,
+@ventaprod_tipovta as varchar(max),
+@cliente_id as integer,
+@ventaprod_subtotal as decimal(38,2), --este parametro trae el total sumado de productos, sin descuento ni iva aplicado
+@ventaprod_descuento_pesos as decimal (38,2), 
+@ventaprod_descuento_porcentaje as decimal (5,2),
+@ventaprod_iva_porcentaje as decimal (5,2),
+@ventaprod_iva_pesos as decimal (38,2),
+@ventaprod_observacion as varchar(50),
+@Servicio_id  int,
+@vendedor_id int,
+@ventaprod_estado varchar(max),
+@SucxClie_id int
+
+as
+
+insert Venta_Producto (
+ventaprod_total, 
+ventaprod_fecha,
+usuario_id,
+ventaprod_tipovta,
+cliente_id,
+ventaprod_estado,
+ventaprod_subtotal,
+ventaprod_descuento_pesos,
+ventaprod_descuento_porcentaje,
+ventaprod_iva_porcentaje,
+ventaprod_iva_pesos,
+ventaprod_observacion,
+Servicio_id, vendedor_id,
+SucxClie_id
+)
+values (@ventaprod_total, @ventaprod_fecha, @usuario_id, @ventaprod_tipovta, @cliente_id, @ventaprod_estado ,
+@ventaprod_subtotal,
+@ventaprod_descuento_pesos,
+@ventaprod_descuento_porcentaje,
+@ventaprod_iva_porcentaje,
+@ventaprod_iva_pesos,
+@ventaprod_observacion,@Servicio_id, @vendedor_id, @SucxClie_id)
+
+select ventaprod_id
+from dbo.Venta_Producto
+where @ventaprod_fecha=ventaprod_fecha order by ventaprod_id desc

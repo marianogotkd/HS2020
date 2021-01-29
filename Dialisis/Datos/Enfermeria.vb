@@ -276,7 +276,68 @@ Public Class Enfermeria
     End Function
 
 
+    Public Function Insumos_Predefinidos_alta(
+                              ByVal predef_cant As Decimal,
+                              ByVal Predef_Desc As String,
+                               ByVal prod_codinterno As Integer
+                            ) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Insumos_Predefinidos_alta", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@predef_cant", predef_cant))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Predef_Desc", Predef_Desc))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prod_codinterno", prod_codinterno))
 
 
 
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Insumos_Predefinidos")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
+    Public Function Insumos_Predefinidos_Obtener() As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Insumos_Predefinidos_Obtener", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Dialisis")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
+
+    Public Function Insumos_Predefinidos_Eliminar() As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Insumos_Predefinidos_Eliminar", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Dialisis")
+        dbconn.Close()
+        Return ds_JE
+    End Function
 End Class

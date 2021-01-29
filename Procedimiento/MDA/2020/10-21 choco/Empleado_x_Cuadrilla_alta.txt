@@ -1,0 +1,8 @@
+create procedure Empleado_x_Cuadrilla_alta
+@empleado_id int,
+@Cuadrilla_id int,
+@salario decimal(38,2)
+as
+insert Empleado_x_Cuadrilla (empleado_id, Cuadrilla_id, Empleado_x_Cuadrilla_salarioxhora)
+values (@empleado_id , @Cuadrilla_id, @salario)
+go

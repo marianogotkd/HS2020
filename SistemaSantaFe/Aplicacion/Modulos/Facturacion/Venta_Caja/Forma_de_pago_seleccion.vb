@@ -57,10 +57,10 @@
                 Pago_caja.Close()
                 Pago_caja.form_procedencia = "Servicio_nuevo"
                 Pago_caja.SucxClie_id = SucxClie_id
-                Pago_caja.tx_total.Text = (Math.Round(CDec(Servicio_nuevo.TextBox_TOTAL.Text), 2).ToString("N2"))
+                Pago_caja.tx_total.Text = (Math.Round(CDec(Servicio_nuevo.txt_total.Text), 2).ToString("N2"))
                 Pago_caja.tx_parcial.Text = (Math.Round(CDec(0), 2).ToString("N2"))
                 Pago_caja.Ser_id = Servicio_nuevo.Label_Cod.Text
-                Pago_caja.Monto_sin_anticipo = CDec((Math.Round(CDec(Servicio_nuevo.TextBox_TOTAL.Text), 2).ToString("N2"))) + CDec((Math.Round(CDec(Servicio_nuevo.TextBox_Anticipo.Text), 2).ToString("N2")))
+                Pago_caja.Monto_sin_anticipo = CDec((Math.Round(CDec(Servicio_nuevo.txt_total.Text), 2).ToString("N2")))
                 Pago_caja.Show()
                 Me.Close()
             End If
@@ -70,7 +70,7 @@
                 Pago_tarjeta.Ser_id = Servicio_nuevo.Label_Cod.Text
                 Pago_tarjeta.form_procedencia = "Servicio_nuevo"
                 Pago_tarjeta.SucxClie_id = SucxClie_id
-                Pago_tarjeta.tx_total.Text = (Math.Round(CDec(Servicio_nuevo.TextBox_TOTAL.Text), 2).ToString("N2"))
+                Pago_tarjeta.tx_total.Text = (Math.Round(CDec(Servicio_nuevo.txt_total.Text), 2).ToString("N2"))
                 Pago_tarjeta.Show()
                 Me.Close()
             End If
@@ -91,16 +91,16 @@
                     If estado.ToUpper = "ACTIVO" Then
                         'valido que el monto total no exceda el limite de deuda
                         Dim limite_deuda As Decimal = CDec(ds_cuentacorrente.Tables(0).Rows(0).Item("CtaCte_limitedeuda"))
-                        Dim deuda As Decimal = CDec(ds_cuentacorrente.Tables(0).Rows(0).Item("CtaCte_total")) + CDec(Servicio_nuevo.TextBox_TOTAL.Text)
+                        Dim deuda As Decimal = CDec(ds_cuentacorrente.Tables(0).Rows(0).Item("CtaCte_total")) + CDec(Servicio_nuevo.txt_total.Text)
                         If deuda <= limite_deuda Or limite_deuda = 0 Then
-                            Dim ds_Venta As DataSet = DAventa.VentaProducto_alta(CDec(Servicio_nuevo.TextBox_TOTAL.Text),
+                            Dim ds_Venta As DataSet = DAventa.VentaProducto_alta(CDec(Servicio_nuevo.txt_total.Text),
                                          Now,
                                          usuario_id,
                                          tipo_vta,
-                                         cliente_id, CDec(Servicio_nuevo.TextBox_TOTAL.Text),
-                                          0,
-                                          0,
-                                          0,
+                                         cliente_id, CDec(Servicio_nuevo.txt_total.Text),
+                                          Servicio_nuevo.txt_desc_pesos.Text,
+                                          Servicio_nuevo.txt_desc_porc.Text,
+                                          Servicio_nuevo.ComboBox_iva.Text,
                                           0, venta_tipo_descripcion, Servicio_nuevo.Label_Cod.Text, vendedor_id, "Pendiente", SucxClie_id)
                             Dim ventaprod_id As Integer = CInt(ds_Venta.Tables(0).Rows(0).Item("ventaprod_id"))
 
@@ -112,7 +112,7 @@
                             DAcuentacorriente.CtaCte_registrar_egreso(CtaCte_id, deuda)
                             DAcuentacorriente.Venta_CtaCte_alta(factura_id, CtaCte_id)
                             Dim concepto As String = "Factura Nº: " + CStr(factura_id)
-                            DAcuentacorriente.CtaCte_movimiento_alta(CtaCte_id, "Ingreso", concepto, CDec(Servicio_nuevo.TextBox_TOTAL.Text), Now)
+                            DAcuentacorriente.CtaCte_movimiento_alta(CtaCte_id, "Ingreso", concepto, CDec(Servicio_nuevo.txt_total.Text), Now)
                             '//////////////////////////////////////////////////////////////////////////////////
                             'GUARDAR EN TABLA "Venta_Producto_detalle"
                             For Each row As DataGridViewRow In Servicio_nuevo.DataGridView1.Rows
