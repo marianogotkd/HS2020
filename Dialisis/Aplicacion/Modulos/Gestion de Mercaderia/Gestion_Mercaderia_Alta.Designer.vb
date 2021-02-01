@@ -178,7 +178,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.ComboBox_iva.Name = "ComboBox_iva"
         Me.ComboBox_iva.Size = New System.Drawing.Size(178, 28)
         Me.ComboBox_iva.TabIndex = 22
-        Me.ComboBox_iva.Visible = False
         '
         'Label21
         '
@@ -190,7 +189,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.Label21.Size = New System.Drawing.Size(45, 25)
         Me.Label21.TabIndex = 21
         Me.Label21.Text = "IVA"
-        Me.Label21.Visible = False
         '
         'txt_total
         '
@@ -203,7 +201,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.txt_total.Size = New System.Drawing.Size(178, 30)
         Me.txt_total.TabIndex = 20
         Me.txt_total.Text = "0"
-        Me.txt_total.Visible = False
         '
         'Label19
         '
@@ -215,7 +212,6 @@ Partial Class Gestion_Mercaderia_Alta
         Me.Label19.Size = New System.Drawing.Size(106, 25)
         Me.Label19.TabIndex = 19
         Me.Label19.Text = "TOTAL $: "
-        Me.Label19.Visible = False
         '
         'btn_limpiar
         '
