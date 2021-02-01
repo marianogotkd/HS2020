@@ -1444,6 +1444,10 @@ Partial Public Class Producto_ds
         
         Private columnprod_codbarra As Global.System.Data.DataColumn
         
+        Private columnContenido As Global.System.Data.DataColumn
+        
+        Private columnContenido_total As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1552,6 +1556,22 @@ Partial Public Class Producto_ds
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ContenidoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnContenido
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Contenido_totalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnContenido_total
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1588,9 +1608,9 @@ Partial Public Class Producto_ds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddProdxSucRow(ByVal prod_descripcion As String, ByVal prod_precio_vta As Decimal, ByVal prod_id As Integer, ByVal prod_codinterno As Integer, ByVal prod_ptorepo As Integer, ByVal prod_precio_vta_May As Decimal, ByVal ProdxSuc_stock As Decimal, ByVal sucursal_id As Integer, ByVal prod_codbarra As String) As ProdxSucRow
+        Public Overloads Function AddProdxSucRow(ByVal prod_descripcion As String, ByVal prod_precio_vta As Decimal, ByVal prod_id As Integer, ByVal prod_codinterno As Integer, ByVal prod_ptorepo As Integer, ByVal prod_precio_vta_May As Decimal, ByVal ProdxSuc_stock As Decimal, ByVal sucursal_id As Integer, ByVal prod_codbarra As String, ByVal Contenido As String, ByVal Contenido_total As String) As ProdxSucRow
             Dim rowProdxSucRow As ProdxSucRow = CType(Me.NewRow,ProdxSucRow)
-            Dim columnValuesArray() As Object = New Object() {prod_descripcion, prod_precio_vta, prod_id, prod_codinterno, prod_ptorepo, prod_precio_vta_May, ProdxSuc_stock, sucursal_id, prod_codbarra}
+            Dim columnValuesArray() As Object = New Object() {prod_descripcion, prod_precio_vta, prod_id, prod_codinterno, prod_ptorepo, prod_precio_vta_May, ProdxSuc_stock, sucursal_id, prod_codbarra, Contenido, Contenido_total}
             rowProdxSucRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowProdxSucRow)
             Return rowProdxSucRow
@@ -1622,6 +1642,8 @@ Partial Public Class Producto_ds
             Me.columnProdxSuc_stock = MyBase.Columns("ProdxSuc_stock")
             Me.columnsucursal_id = MyBase.Columns("sucursal_id")
             Me.columnprod_codbarra = MyBase.Columns("prod_codbarra")
+            Me.columnContenido = MyBase.Columns("Contenido")
+            Me.columnContenido_total = MyBase.Columns("Contenido_total")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1645,6 +1667,10 @@ Partial Public Class Producto_ds
             MyBase.Columns.Add(Me.columnsucursal_id)
             Me.columnprod_codbarra = New Global.System.Data.DataColumn("prod_codbarra", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnprod_codbarra)
+            Me.columnContenido = New Global.System.Data.DataColumn("Contenido", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnContenido)
+            Me.columnContenido_total = New Global.System.Data.DataColumn("Contenido_total", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnContenido_total)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2948,6 +2974,36 @@ Partial Public Class Producto_ds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Contenido() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableProdxSuc.ContenidoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Contenido' de la tabla 'ProdxSuc' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProdxSuc.ContenidoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Contenido_total() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableProdxSuc.Contenido_totalColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Contenido_total' de la tabla 'ProdxSuc' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProdxSuc.Contenido_totalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isprod_descripcionNull() As Boolean
             Return Me.IsNull(Me.tableProdxSuc.prod_descripcionColumn)
         End Function
@@ -3052,6 +3108,30 @@ Partial Public Class Producto_ds
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Setprod_codbarraNull()
             Me(Me.tableProdxSuc.prod_codbarraColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsContenidoNull() As Boolean
+            Return Me.IsNull(Me.tableProdxSuc.ContenidoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetContenidoNull()
+            Me(Me.tableProdxSuc.ContenidoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsContenido_totalNull() As Boolean
+            Return Me.IsNull(Me.tableProdxSuc.Contenido_totalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetContenido_totalNull()
+            Me(Me.tableProdxSuc.Contenido_totalColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

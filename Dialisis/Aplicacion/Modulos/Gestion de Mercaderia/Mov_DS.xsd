@@ -131,6 +131,8 @@
               <xs:element name="PrecioU" msprop:Generator_ColumnVarNameInTable="columnPrecioU" msprop:Generator_ColumnPropNameInRow="PrecioU" msprop:Generator_ColumnPropNameInTable="PrecioUColumn" msprop:Generator_UserColumnName="PrecioU" type="xs:decimal" minOccurs="0" />
               <xs:element name="Subtotal" msprop:Generator_ColumnVarNameInTable="columnSubtotal" msprop:Generator_ColumnPropNameInRow="Subtotal" msprop:Generator_ColumnPropNameInTable="SubtotalColumn" msprop:Generator_UserColumnName="Subtotal" type="xs:decimal" minOccurs="0" />
               <xs:element name="Prov_id" msprop:Generator_ColumnVarNameInTable="columnProv_id" msprop:Generator_ColumnPropNameInRow="Prov_id" msprop:Generator_ColumnPropNameInTable="Prov_idColumn" msprop:Generator_UserColumnName="Prov_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Cantidad_a_consumir" msprop:Generator_ColumnVarNameInTable="columnCantidad_a_consumir" msprop:Generator_ColumnPropNameInRow="Cantidad_a_consumir" msprop:Generator_ColumnPropNameInTable="Cantidad_a_consumirColumn" msprop:Generator_UserColumnName="Cantidad_a_consumir" type="xs:string" minOccurs="0" />
+              <xs:element name="EnBD" msprop:Generator_ColumnVarNameInTable="columnEnBD" msprop:Generator_ColumnPropNameInRow="EnBD" msprop:Generator_ColumnPropNameInTable="EnBDColumn" msprop:Generator_UserColumnName="EnBD" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

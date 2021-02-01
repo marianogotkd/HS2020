@@ -594,17 +594,26 @@
     Private Sub tx_Buscar_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tx_Buscar.KeyPress
         If form_procedencia = "Venta_Caja_gestion" Or form_procedencia = "Pedido_Productos" Or form_procedencia = "GM_Carga_Producto" Or form_procedencia = "Gestion_Mercaderia" Or form_procedencia = "Servicio_nuevo" Then
             Dim Filtro
-            Filtro = String.Format("{0} LIKE '%{1}%'", "prod_descripcion", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
-
+            Filtro = String.Format("CONVERT(prod_codinterno, System.String) LIKE '%{0}%'", tx_Buscar.Text)
             ProdconsultaBindingSource.Filter = Filtro
             If DataGridView1.Rows.Count = 0 Then
-                Filtro = String.Format("CONVERT(prod_codinterno, System.String) LIKE '%{0}%'", tx_Buscar.Text)
+                Filtro = String.Format("CONVERT(prod_codbarra, System.String) LIKE '%{0}%'", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
                 ProdconsultaBindingSource.Filter = Filtro
                 If DataGridView1.Rows.Count = 0 Then
-                    Filtro = String.Format("CONVERT(prod_codbarra, System.String) LIKE '%{0}%'", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
+                    Filtro = String.Format("{0} LIKE '%{1}%'", "prod_descripcion", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
                     ProdconsultaBindingSource.Filter = Filtro
                 End If
             End If
+            'Filtro = String.Format("{0} LIKE '%{1}%'", "prod_descripcion", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
+            'ProdconsultaBindingSource.Filter = Filtro
+            'If DataGridView1.Rows.Count = 0 Then
+            '    Filtro = String.Format("CONVERT(prod_codinterno, System.String) LIKE '%{0}%'", tx_Buscar.Text)
+            '    ProdconsultaBindingSource.Filter = Filtro
+            '    If DataGridView1.Rows.Count = 0 Then
+            '        Filtro = String.Format("CONVERT(prod_codbarra, System.String) LIKE '%{0}%'", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
+            '        ProdconsultaBindingSource.Filter = Filtro
+            '    End If
+            'End If
         Else
             If e.KeyChar = ChrW(Keys.Enter) Then 'cuando presiono la tecla ENTER calcula
                 DataGridView1.DataSource = Nothing
@@ -2304,6 +2313,7 @@
                     End While
                     '///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 End If
+                txt_cant_mov.Focus()
             Else
                 MessageBox.Show("Error, seleccione un producto.", "Sistema de Gestión", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
@@ -3507,6 +3517,8 @@
                     newCustomersRow1("Descripcion") = txt_descripcion_mov.Text
                     newCustomersRow1("Cantidad") = (Math.Round(CDec(txt_cant_mov.Text), 2).ToString("N2"))
                     newCustomersRow1("Prov_id") = DataGridView3.Rows(0).Cells("Prov_id").Value
+                    newCustomersRow1("Cantidad_a_consumir") = CStr((Math.Round(CDec(txt_cant_mov.Text), 2).ToString("N2"))) + " " + txt_unidmedida.Text
+                    newCustomersRow1("EnBD") = "no"
 
                     Nueva_Dialisis.Mov_DS.Tables("Mov_Enf").Rows.Add(newCustomersRow1)
 
@@ -3698,11 +3710,17 @@
             If tipo_movimiento = "consumir producto" Or tipo_movimiento = "consumir producto en enfermeria" Or tipo_movimiento = "consumir Ausente" Then
                 Dim stock As Decimal = CDec(DataGridView1.CurrentRow.Cells("ProdstockDataGridViewTextBoxColumn").Value)
                 Dim vencidos As Decimal = CDec(DataGridView1.CurrentRow.Cells("CantvencimientoDataGridViewTextBoxColumn").Value)
-                If stock = vencidos Then
-                    MessageBox.Show("No puede realizar la operación. Todos los insumos estan vencidos", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                If stock = 0 Then
+                    MessageBox.Show("No puede realizar la operación. No hay stock disponible.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Else
-                    ir_consumir() 'aqui se quitaran aquellos lotes que esten vencidos, esos no se pueden consumir
+                    If stock = vencidos Then
+                        MessageBox.Show("No puede realizar la operación. Todos los insumos estan vencidos", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Else
+                        ir_consumir() 'aqui se quitaran aquellos lotes que esten vencidos, esos no se pueden consumir
+                    End If
+
                 End If
+                
             End If
         End If
 

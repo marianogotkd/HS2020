@@ -23,12 +23,13 @@ Partial Class Nueva_Dialisis
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Nueva_Dialisis))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tb_numHemo = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lb_estado = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.tb_Dni_Cuit = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
@@ -67,6 +68,7 @@ Partial Class Nueva_Dialisis
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.GroupBox_insumos = New System.Windows.Forms.GroupBox()
+        Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.CodprodDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DescripcionDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -83,6 +85,22 @@ Partial Class Nueva_Dialisis
         Me.Label22 = New System.Windows.Forms.Label()
         Me.btn_limpiar = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.NDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CodprodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DesdeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HaciaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad_a_consumir = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Lote = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaFabricacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaVencimientoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VenceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioUDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SubtotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Prov_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.EnBD = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MovEnfBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Mov_DS = New Aplicacion.Mov_DS()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -107,19 +125,8 @@ Partial Class Nueva_Dialisis
         Me.Label20 = New System.Windows.Forms.Label()
         Me.btn_cancelar = New System.Windows.Forms.Button()
         Me.btn_guardar = New System.Windows.Forms.Button()
-        Me.NDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CodprodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DesdeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HaciaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Lote = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaFabricacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaVencimientoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VenceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioUDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SubtotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Prov_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.btn_finalizar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -155,6 +162,7 @@ Partial Class Nueva_Dialisis
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.lb_estado)
         Me.GroupBox1.Controls.Add(Me.Label17)
         Me.GroupBox1.Controls.Add(Me.tb_Dni_Cuit)
         Me.GroupBox1.Controls.Add(Me.Label21)
@@ -175,6 +183,18 @@ Partial Class Nueva_Dialisis
         Me.GroupBox1.Size = New System.Drawing.Size(1212, 108)
         Me.GroupBox1.TabIndex = 251
         Me.GroupBox1.TabStop = False
+        '
+        'lb_estado
+        '
+        Me.lb_estado.AutoSize = True
+        Me.lb_estado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_estado.ForeColor = System.Drawing.Color.Green
+        Me.lb_estado.Location = New System.Drawing.Point(999, 16)
+        Me.lb_estado.Name = "lb_estado"
+        Me.lb_estado.Size = New System.Drawing.Size(131, 16)
+        Me.lb_estado.TabIndex = 269
+        Me.lb_estado.Text = "ESTADO: NUEVO"
+        Me.lb_estado.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'Label17
         '
@@ -552,6 +572,7 @@ Partial Class Nueva_Dialisis
         '
         'GroupBox_insumos
         '
+        Me.GroupBox_insumos.Controls.Add(Me.btn_eliminar_seleccion)
         Me.GroupBox_insumos.Controls.Add(Me.DataGridView2)
         Me.GroupBox_insumos.Controls.Add(Me.btn_Buscar)
         Me.GroupBox_insumos.Controls.Add(Me.Label22)
@@ -562,6 +583,21 @@ Partial Class Nueva_Dialisis
         Me.GroupBox_insumos.Size = New System.Drawing.Size(1212, 269)
         Me.GroupBox_insumos.TabIndex = 330
         Me.GroupBox_insumos.TabStop = False
+        '
+        'btn_eliminar_seleccion
+        '
+        Me.btn_eliminar_seleccion.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btn_eliminar_seleccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_seleccion.Image = Global.Aplicacion.My.Resources.Resources.menos
+        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(213, 36)
+        Me.btn_eliminar_seleccion.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_eliminar_seleccion.Name = "btn_eliminar_seleccion"
+        Me.btn_eliminar_seleccion.Size = New System.Drawing.Size(94, 40)
+        Me.btn_eliminar_seleccion.TabIndex = 337
+        Me.btn_eliminar_seleccion.Text = "Quitar"
+        Me.btn_eliminar_seleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_eliminar_seleccion, "Quitar insumos seleccionados")
+        Me.btn_eliminar_seleccion.UseVisualStyleBackColor = True
         '
         'DataGridView2
         '
@@ -574,21 +610,21 @@ Partial Class Nueva_Dialisis
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodprodDataGridViewTextBoxColumn1, Me.DescripcionDataGridViewTextBoxColumn1, Me.DesdeDataGridViewTextBoxColumn1, Me.HaciaDataGridViewTextBoxColumn1, Me.CantidadrealDataGridViewTextBoxColumn, Me.LoteidDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn13, Me.ProvidDataGridViewTextBoxColumn, Me.Column1})
         Me.DataGridView2.DataSource = Me.ConsumorealBindingSource
-        Me.DataGridView2.Location = New System.Drawing.Point(7, 156)
+        Me.DataGridView2.Location = New System.Drawing.Point(469, 84)
         Me.DataGridView2.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView2.MultiSelect = False
         Me.DataGridView2.Name = "DataGridView2"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridView2.RowHeadersVisible = False
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView2.Size = New System.Drawing.Size(1188, 64)
+        Me.DataGridView2.Size = New System.Drawing.Size(687, 156)
         Me.DataGridView2.StandardTab = True
         Me.DataGridView2.TabIndex = 336
         '
@@ -687,10 +723,11 @@ Partial Class Nueva_Dialisis
         Me.btn_limpiar.Location = New System.Drawing.Point(111, 36)
         Me.btn_limpiar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_limpiar.Name = "btn_limpiar"
-        Me.btn_limpiar.Size = New System.Drawing.Size(151, 39)
+        Me.btn_limpiar.Size = New System.Drawing.Size(94, 40)
         Me.btn_limpiar.TabIndex = 333
-        Me.btn_limpiar.Text = "Borrar Listado"
+        Me.btn_limpiar.Text = "Quitar Listado"
         Me.btn_limpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_limpiar, "Quitar todos los insumos listados")
         Me.btn_limpiar.UseVisualStyleBackColor = True
         '
         'DataGridView1
@@ -702,25 +739,156 @@ Partial Class Nueva_Dialisis
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NDataGridViewTextBoxColumn, Me.CodprodDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.DesdeDataGridViewTextBoxColumn, Me.HaciaDataGridViewTextBoxColumn, Me.CantidadDataGridViewTextBoxColumn, Me.Lote, Me.FechaFabricacionDataGridViewTextBoxColumn, Me.FechaVencimientoDataGridViewTextBoxColumn, Me.VenceDataGridViewTextBoxColumn, Me.PrecioUDataGridViewTextBoxColumn, Me.SubtotalDataGridViewTextBoxColumn, Me.Prov_id})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NDataGridViewTextBoxColumn, Me.CodprodDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.DesdeDataGridViewTextBoxColumn, Me.HaciaDataGridViewTextBoxColumn, Me.CantidadDataGridViewTextBoxColumn, Me.Cantidad_a_consumir, Me.Lote, Me.FechaFabricacionDataGridViewTextBoxColumn, Me.FechaVencimientoDataGridViewTextBoxColumn, Me.VenceDataGridViewTextBoxColumn, Me.PrecioUDataGridViewTextBoxColumn, Me.SubtotalDataGridViewTextBoxColumn, Me.Prov_id, Me.Column2, Me.EnBD})
         Me.DataGridView1.DataSource = Me.MovEnfBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(5, 84)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(1188, 64)
+        Me.DataGridView1.Size = New System.Drawing.Size(440, 156)
         Me.DataGridView1.StandardTab = True
         Me.DataGridView1.TabIndex = 331
+        '
+        'NDataGridViewTextBoxColumn
+        '
+        Me.NDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.NDataGridViewTextBoxColumn.DataPropertyName = "N°"
+        Me.NDataGridViewTextBoxColumn.FillWeight = 35.53299!
+        Me.NDataGridViewTextBoxColumn.HeaderText = "N°"
+        Me.NDataGridViewTextBoxColumn.Name = "NDataGridViewTextBoxColumn"
+        Me.NDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.NDataGridViewTextBoxColumn.Width = 71
+        '
+        'CodprodDataGridViewTextBoxColumn
+        '
+        Me.CodprodDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CodprodDataGridViewTextBoxColumn.DataPropertyName = "Cod_prod"
+        Me.CodprodDataGridViewTextBoxColumn.FillWeight = 110.7445!
+        Me.CodprodDataGridViewTextBoxColumn.HeaderText = "Codigo"
+        Me.CodprodDataGridViewTextBoxColumn.Name = "CodprodDataGridViewTextBoxColumn"
+        Me.CodprodDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DescripcionDataGridViewTextBoxColumn
+        '
+        Me.DescripcionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DescripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion"
+        Me.DescripcionDataGridViewTextBoxColumn.FillWeight = 110.7445!
+        Me.DescripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion"
+        Me.DescripcionDataGridViewTextBoxColumn.Name = "DescripcionDataGridViewTextBoxColumn"
+        Me.DescripcionDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'DesdeDataGridViewTextBoxColumn
+        '
+        Me.DesdeDataGridViewTextBoxColumn.DataPropertyName = "Desde"
+        Me.DesdeDataGridViewTextBoxColumn.HeaderText = "Desde"
+        Me.DesdeDataGridViewTextBoxColumn.Name = "DesdeDataGridViewTextBoxColumn"
+        Me.DesdeDataGridViewTextBoxColumn.Visible = False
+        '
+        'HaciaDataGridViewTextBoxColumn
+        '
+        Me.HaciaDataGridViewTextBoxColumn.DataPropertyName = "Hacia"
+        Me.HaciaDataGridViewTextBoxColumn.HeaderText = "Hacia"
+        Me.HaciaDataGridViewTextBoxColumn.Name = "HaciaDataGridViewTextBoxColumn"
+        Me.HaciaDataGridViewTextBoxColumn.Visible = False
+        '
+        'CantidadDataGridViewTextBoxColumn
+        '
+        Me.CantidadDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad"
+        Me.CantidadDataGridViewTextBoxColumn.FillWeight = 110.7445!
+        Me.CantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
+        Me.CantidadDataGridViewTextBoxColumn.Name = "CantidadDataGridViewTextBoxColumn"
+        Me.CantidadDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CantidadDataGridViewTextBoxColumn.Visible = False
+        '
+        'Cantidad_a_consumir
+        '
+        Me.Cantidad_a_consumir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Cantidad_a_consumir.DataPropertyName = "Cantidad_a_consumir"
+        Me.Cantidad_a_consumir.HeaderText = "Cantidad a consumir"
+        Me.Cantidad_a_consumir.Name = "Cantidad_a_consumir"
+        Me.Cantidad_a_consumir.ReadOnly = True
+        '
+        'Lote
+        '
+        Me.Lote.DataPropertyName = "Lote"
+        Me.Lote.FillWeight = 110.7445!
+        Me.Lote.HeaderText = "Lote"
+        Me.Lote.Name = "Lote"
+        Me.Lote.Visible = False
+        '
+        'FechaFabricacionDataGridViewTextBoxColumn
+        '
+        Me.FechaFabricacionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.FechaFabricacionDataGridViewTextBoxColumn.DataPropertyName = "FechaFabricacion"
+        Me.FechaFabricacionDataGridViewTextBoxColumn.FillWeight = 110.7445!
+        Me.FechaFabricacionDataGridViewTextBoxColumn.HeaderText = "Fecha de Fabricacion"
+        Me.FechaFabricacionDataGridViewTextBoxColumn.Name = "FechaFabricacionDataGridViewTextBoxColumn"
+        Me.FechaFabricacionDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FechaFabricacionDataGridViewTextBoxColumn.Visible = False
+        '
+        'FechaVencimientoDataGridViewTextBoxColumn
+        '
+        Me.FechaVencimientoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.FechaVencimientoDataGridViewTextBoxColumn.DataPropertyName = "FechaVencimiento"
+        Me.FechaVencimientoDataGridViewTextBoxColumn.FillWeight = 110.7445!
+        Me.FechaVencimientoDataGridViewTextBoxColumn.HeaderText = "Fecha de Vencimiento"
+        Me.FechaVencimientoDataGridViewTextBoxColumn.Name = "FechaVencimientoDataGridViewTextBoxColumn"
+        Me.FechaVencimientoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.FechaVencimientoDataGridViewTextBoxColumn.Visible = False
+        '
+        'VenceDataGridViewTextBoxColumn
+        '
+        Me.VenceDataGridViewTextBoxColumn.DataPropertyName = "Vence"
+        Me.VenceDataGridViewTextBoxColumn.HeaderText = "Vence"
+        Me.VenceDataGridViewTextBoxColumn.Name = "VenceDataGridViewTextBoxColumn"
+        Me.VenceDataGridViewTextBoxColumn.Visible = False
+        '
+        'PrecioUDataGridViewTextBoxColumn
+        '
+        Me.PrecioUDataGridViewTextBoxColumn.DataPropertyName = "PrecioU"
+        Me.PrecioUDataGridViewTextBoxColumn.HeaderText = "PrecioU"
+        Me.PrecioUDataGridViewTextBoxColumn.Name = "PrecioUDataGridViewTextBoxColumn"
+        Me.PrecioUDataGridViewTextBoxColumn.Visible = False
+        '
+        'SubtotalDataGridViewTextBoxColumn
+        '
+        Me.SubtotalDataGridViewTextBoxColumn.DataPropertyName = "Subtotal"
+        Me.SubtotalDataGridViewTextBoxColumn.HeaderText = "Subtotal"
+        Me.SubtotalDataGridViewTextBoxColumn.Name = "SubtotalDataGridViewTextBoxColumn"
+        Me.SubtotalDataGridViewTextBoxColumn.Visible = False
+        '
+        'Prov_id
+        '
+        Me.Prov_id.DataPropertyName = "Prov_id"
+        Me.Prov_id.HeaderText = "Prov_id"
+        Me.Prov_id.Name = "Prov_id"
+        Me.Prov_id.Visible = False
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Column2.HeaderText = "Item"
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 40
+        '
+        'EnBD
+        '
+        Me.EnBD.DataPropertyName = "EnBD"
+        Me.EnBD.HeaderText = "EnBD"
+        Me.EnBD.Name = "EnBD"
+        Me.EnBD.Visible = False
         '
         'MovEnfBindingSource
         '
@@ -957,7 +1125,7 @@ Partial Class Nueva_Dialisis
         '
         Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar
-        Me.btn_cancelar.Location = New System.Drawing.Point(968, 613)
+        Me.btn_cancelar.Location = New System.Drawing.Point(834, 613)
         Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_cancelar.MaximumSize = New System.Drawing.Size(124, 43)
         Me.btn_cancelar.MinimumSize = New System.Drawing.Size(124, 43)
@@ -972,124 +1140,31 @@ Partial Class Nueva_Dialisis
         '
         Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.Guardar
-        Me.btn_guardar.Location = New System.Drawing.Point(1100, 613)
+        Me.btn_guardar.Location = New System.Drawing.Point(964, 613)
         Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_guardar.MaximumSize = New System.Drawing.Size(124, 43)
         Me.btn_guardar.MinimumSize = New System.Drawing.Size(124, 43)
         Me.btn_guardar.Name = "btn_guardar"
         Me.btn_guardar.Size = New System.Drawing.Size(124, 43)
         Me.btn_guardar.TabIndex = 335
-        Me.btn_guardar.Text = "Guardar"
+        Me.btn_guardar.Text = "Conectar"
         Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_guardar.UseVisualStyleBackColor = True
         '
-        'NDataGridViewTextBoxColumn
+        'btn_finalizar
         '
-        Me.NDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.NDataGridViewTextBoxColumn.DataPropertyName = "N°"
-        Me.NDataGridViewTextBoxColumn.FillWeight = 35.53299!
-        Me.NDataGridViewTextBoxColumn.HeaderText = "N°"
-        Me.NDataGridViewTextBoxColumn.Name = "NDataGridViewTextBoxColumn"
-        Me.NDataGridViewTextBoxColumn.ReadOnly = True
-        Me.NDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.NDataGridViewTextBoxColumn.Width = 71
-        '
-        'CodprodDataGridViewTextBoxColumn
-        '
-        Me.CodprodDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CodprodDataGridViewTextBoxColumn.DataPropertyName = "Cod_prod"
-        Me.CodprodDataGridViewTextBoxColumn.FillWeight = 110.7445!
-        Me.CodprodDataGridViewTextBoxColumn.HeaderText = "Codigo"
-        Me.CodprodDataGridViewTextBoxColumn.Name = "CodprodDataGridViewTextBoxColumn"
-        Me.CodprodDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DescripcionDataGridViewTextBoxColumn
-        '
-        Me.DescripcionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DescripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion"
-        Me.DescripcionDataGridViewTextBoxColumn.FillWeight = 110.7445!
-        Me.DescripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion"
-        Me.DescripcionDataGridViewTextBoxColumn.Name = "DescripcionDataGridViewTextBoxColumn"
-        Me.DescripcionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'DesdeDataGridViewTextBoxColumn
-        '
-        Me.DesdeDataGridViewTextBoxColumn.DataPropertyName = "Desde"
-        Me.DesdeDataGridViewTextBoxColumn.HeaderText = "Desde"
-        Me.DesdeDataGridViewTextBoxColumn.Name = "DesdeDataGridViewTextBoxColumn"
-        Me.DesdeDataGridViewTextBoxColumn.Visible = False
-        '
-        'HaciaDataGridViewTextBoxColumn
-        '
-        Me.HaciaDataGridViewTextBoxColumn.DataPropertyName = "Hacia"
-        Me.HaciaDataGridViewTextBoxColumn.HeaderText = "Hacia"
-        Me.HaciaDataGridViewTextBoxColumn.Name = "HaciaDataGridViewTextBoxColumn"
-        Me.HaciaDataGridViewTextBoxColumn.Visible = False
-        '
-        'CantidadDataGridViewTextBoxColumn
-        '
-        Me.CantidadDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad"
-        Me.CantidadDataGridViewTextBoxColumn.FillWeight = 110.7445!
-        Me.CantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
-        Me.CantidadDataGridViewTextBoxColumn.Name = "CantidadDataGridViewTextBoxColumn"
-        Me.CantidadDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Lote
-        '
-        Me.Lote.DataPropertyName = "Lote"
-        Me.Lote.FillWeight = 110.7445!
-        Me.Lote.HeaderText = "Lote"
-        Me.Lote.Name = "Lote"
-        Me.Lote.Visible = False
-        '
-        'FechaFabricacionDataGridViewTextBoxColumn
-        '
-        Me.FechaFabricacionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.FechaFabricacionDataGridViewTextBoxColumn.DataPropertyName = "FechaFabricacion"
-        Me.FechaFabricacionDataGridViewTextBoxColumn.FillWeight = 110.7445!
-        Me.FechaFabricacionDataGridViewTextBoxColumn.HeaderText = "Fecha de Fabricacion"
-        Me.FechaFabricacionDataGridViewTextBoxColumn.Name = "FechaFabricacionDataGridViewTextBoxColumn"
-        Me.FechaFabricacionDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FechaFabricacionDataGridViewTextBoxColumn.Visible = False
-        '
-        'FechaVencimientoDataGridViewTextBoxColumn
-        '
-        Me.FechaVencimientoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.FechaVencimientoDataGridViewTextBoxColumn.DataPropertyName = "FechaVencimiento"
-        Me.FechaVencimientoDataGridViewTextBoxColumn.FillWeight = 110.7445!
-        Me.FechaVencimientoDataGridViewTextBoxColumn.HeaderText = "Fecha de Vencimiento"
-        Me.FechaVencimientoDataGridViewTextBoxColumn.Name = "FechaVencimientoDataGridViewTextBoxColumn"
-        Me.FechaVencimientoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.FechaVencimientoDataGridViewTextBoxColumn.Visible = False
-        '
-        'VenceDataGridViewTextBoxColumn
-        '
-        Me.VenceDataGridViewTextBoxColumn.DataPropertyName = "Vence"
-        Me.VenceDataGridViewTextBoxColumn.HeaderText = "Vence"
-        Me.VenceDataGridViewTextBoxColumn.Name = "VenceDataGridViewTextBoxColumn"
-        Me.VenceDataGridViewTextBoxColumn.Visible = False
-        '
-        'PrecioUDataGridViewTextBoxColumn
-        '
-        Me.PrecioUDataGridViewTextBoxColumn.DataPropertyName = "PrecioU"
-        Me.PrecioUDataGridViewTextBoxColumn.HeaderText = "PrecioU"
-        Me.PrecioUDataGridViewTextBoxColumn.Name = "PrecioUDataGridViewTextBoxColumn"
-        Me.PrecioUDataGridViewTextBoxColumn.Visible = False
-        '
-        'SubtotalDataGridViewTextBoxColumn
-        '
-        Me.SubtotalDataGridViewTextBoxColumn.DataPropertyName = "Subtotal"
-        Me.SubtotalDataGridViewTextBoxColumn.HeaderText = "Subtotal"
-        Me.SubtotalDataGridViewTextBoxColumn.Name = "SubtotalDataGridViewTextBoxColumn"
-        Me.SubtotalDataGridViewTextBoxColumn.Visible = False
-        '
-        'Prov_id
-        '
-        Me.Prov_id.DataPropertyName = "Prov_id"
-        Me.Prov_id.HeaderText = "Prov_id"
-        Me.Prov_id.Name = "Prov_id"
-        Me.Prov_id.Visible = False
+        Me.btn_finalizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_finalizar.Image = Global.Aplicacion.My.Resources.Resources.Guardar
+        Me.btn_finalizar.Location = New System.Drawing.Point(1096, 613)
+        Me.btn_finalizar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_finalizar.MaximumSize = New System.Drawing.Size(124, 43)
+        Me.btn_finalizar.MinimumSize = New System.Drawing.Size(124, 43)
+        Me.btn_finalizar.Name = "btn_finalizar"
+        Me.btn_finalizar.Size = New System.Drawing.Size(124, 43)
+        Me.btn_finalizar.TabIndex = 337
+        Me.btn_finalizar.Text = "Finalizar"
+        Me.btn_finalizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btn_finalizar.UseVisualStyleBackColor = True
         '
         'Nueva_Dialisis
         '
@@ -1097,6 +1172,7 @@ Partial Class Nueva_Dialisis
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Aplicacion.My.Resources.Resources.silver_3
         Me.ClientSize = New System.Drawing.Size(1264, 681)
+        Me.Controls.Add(Me.btn_finalizar)
         Me.Controls.Add(Me.btn_cancelar)
         Me.Controls.Add(Me.btn_guardar)
         Me.Controls.Add(Me.GroupBox7)
@@ -1212,12 +1288,15 @@ Partial Class Nueva_Dialisis
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents ConsumorealBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents Ds_enfermeria As Aplicacion.Ds_enfermeria
+    Friend WithEvents btn_eliminar_seleccion As System.Windows.Forms.Button
+    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents NDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CodprodDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DescripcionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DesdeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents HaciaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CantidadDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Cantidad_a_consumir As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Lote As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents FechaFabricacionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents FechaVencimientoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -1225,4 +1304,8 @@ Partial Class Nueva_Dialisis
     Friend WithEvents PrecioUDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents SubtotalDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Prov_id As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents EnBD As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents lb_estado As System.Windows.Forms.Label
+    Friend WithEvents btn_finalizar As System.Windows.Forms.Button
 End Class

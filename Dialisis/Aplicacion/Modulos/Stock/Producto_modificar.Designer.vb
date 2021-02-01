@@ -59,6 +59,9 @@ Partial Class Producto_modificar
         Me.cb_origen = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DG_Producto = New System.Windows.Forms.DataGridView()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.ProdxSucBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Producto_ds = New Aplicacion.Producto_ds()
         Me.prod_codinterno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.prod_descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdxSuc_stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -68,19 +71,18 @@ Partial Class Producto_modificar
         Me.prod_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.sucursal_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.prod_codbarra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Contenido = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Contenido_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ProdxSucBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Producto_ds = New Aplicacion.Producto_ds()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DG_Producto, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabControl1.SuspendLayout()
         CType(Me.ProdxSucBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Producto_ds, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'OpenFileDialog1
@@ -518,7 +520,7 @@ Partial Class Producto_modificar
         Me.DG_Producto.AutoGenerateColumns = False
         Me.DG_Producto.BackgroundColor = System.Drawing.Color.White
         Me.DG_Producto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DG_Producto.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.prod_codinterno, Me.prod_descripcion, Me.ProdxSuc_stock, Me.prod_ptorepo, Me.prod_precio_vta, Me.prod_precio_vta_May, Me.prod_id, Me.sucursal_id, Me.prod_codbarra, Me.Column1})
+        Me.DG_Producto.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.prod_codinterno, Me.prod_descripcion, Me.ProdxSuc_stock, Me.prod_ptorepo, Me.prod_precio_vta, Me.prod_precio_vta_May, Me.prod_id, Me.sucursal_id, Me.prod_codbarra, Me.Contenido, Me.Contenido_total, Me.Column1})
         Me.DG_Producto.DataSource = Me.ProdxSucBindingSource
         Me.DG_Producto.Location = New System.Drawing.Point(5, 23)
         Me.DG_Producto.Margin = New System.Windows.Forms.Padding(4)
@@ -534,6 +536,30 @@ Partial Class Producto_modificar
         Me.DG_Producto.Size = New System.Drawing.Size(1240, 249)
         Me.DG_Producto.StandardTab = True
         Me.DG_Producto.TabIndex = 0
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabControl1.Location = New System.Drawing.Point(2, 6)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(1291, 607)
+        Me.TabControl1.TabIndex = 0
+        '
+        'ProdxSucBindingSource
+        '
+        Me.ProdxSucBindingSource.DataMember = "ProdxSuc"
+        Me.ProdxSucBindingSource.DataSource = Me.Producto_ds
+        '
+        'Producto_ds
+        '
+        Me.Producto_ds.DataSetName = "Producto_ds"
+        Me.Producto_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'prod_codinterno
         '
@@ -556,13 +582,12 @@ Partial Class Producto_modificar
         '
         'ProdxSuc_stock
         '
-        Me.ProdxSuc_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ProdxSuc_stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.ProdxSuc_stock.DataPropertyName = "ProdxSuc_stock"
         Me.ProdxSuc_stock.FillWeight = 87.05584!
         Me.ProdxSuc_stock.HeaderText = "Stock"
         Me.ProdxSuc_stock.Name = "ProdxSuc_stock"
         Me.ProdxSuc_stock.ReadOnly = True
-        Me.ProdxSuc_stock.Width = 70
         '
         'prod_ptorepo
         '
@@ -615,6 +640,22 @@ Partial Class Producto_modificar
         Me.prod_codbarra.Name = "prod_codbarra"
         Me.prod_codbarra.Visible = False
         '
+        'Contenido
+        '
+        Me.Contenido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Contenido.DataPropertyName = "Contenido"
+        Me.Contenido.HeaderText = "Contenido"
+        Me.Contenido.Name = "Contenido"
+        Me.Contenido.ReadOnly = True
+        '
+        'Contenido_total
+        '
+        Me.Contenido_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Contenido_total.DataPropertyName = "Contenido_total"
+        Me.Contenido_total.HeaderText = "Contenido total"
+        Me.Contenido_total.Name = "Contenido_total"
+        Me.Contenido_total.ReadOnly = True
+        '
         'Column1
         '
         Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
@@ -623,30 +664,6 @@ Partial Class Producto_modificar
         Me.Column1.Name = "Column1"
         Me.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'ProdxSucBindingSource
-        '
-        Me.ProdxSucBindingSource.DataMember = "ProdxSuc"
-        Me.ProdxSucBindingSource.DataSource = Me.Producto_ds
-        '
-        'Producto_ds
-        '
-        Me.Producto_ds.DataSetName = "Producto_ds"
-        Me.Producto_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.Location = New System.Drawing.Point(2, 6)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1291, 607)
-        Me.TabControl1.TabIndex = 0
         '
         'Producto_modificar
         '
@@ -669,9 +686,9 @@ Partial Class Producto_modificar
         Me.Panel1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.DG_Producto, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabControl1.ResumeLayout(False)
         CType(Me.ProdxSucBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Producto_ds, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -710,6 +727,8 @@ Partial Class Producto_modificar
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents prod_codinterno As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents prod_descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProdxSuc_stock As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -719,7 +738,7 @@ Partial Class Producto_modificar
     Friend WithEvents prod_id As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents sucursal_id As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents prod_codbarra As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Contenido As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Contenido_total As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class

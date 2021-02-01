@@ -11,3 +11,11 @@
 '    End Class
 
 'End Class
+
+
+Partial Public Class Ds_enfermeria
+End Class
+
+
+Partial Public Class Ds_enfermeria
+End Class

@@ -173,11 +173,11 @@ Partial Class Producto_ajuste
         'Label_totalunidades
         '
         Me.Label_totalunidades.AutoSize = True
-        Me.Label_totalunidades.Location = New System.Drawing.Point(46, 82)
+        Me.Label_totalunidades.Location = New System.Drawing.Point(98, 82)
         Me.Label_totalunidades.Name = "Label_totalunidades"
-        Me.Label_totalunidades.Size = New System.Drawing.Size(95, 13)
+        Me.Label_totalunidades.Size = New System.Drawing.Size(43, 13)
         Me.Label_totalunidades.TabIndex = 43
-        Me.Label_totalunidades.Text = "Total de unidades:"
+        Me.Label_totalunidades.Text = "STOCK"
         '
         'Label_codigo
         '
@@ -440,11 +440,11 @@ Partial Class Producto_ajuste
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(87, 115)
+        Me.Label1.Location = New System.Drawing.Point(60, 115)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(54, 13)
+        Me.Label1.Size = New System.Drawing.Size(81, 13)
         Me.Label1.TabIndex = 260
-        Me.Label1.Text = "Total real:"
+        Me.Label1.Text = "Contenido total:"
         '
         'txt_totalreal
         '

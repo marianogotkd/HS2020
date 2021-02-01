@@ -409,19 +409,22 @@ Public Class Producto_modificar
     Public Sub Cargar_grilla()
         If paso = 1 Then
             If cb_origen.SelectedValue = "0" Then
-                Grilla_Global()
-                'desabilito filtros
-                check_categoria.Enabled = False
-                check_marca.Enabled = False
-                check_proveedor.Enabled = False
-                check_rubro.Enabled = False
-                check_subrubro.Enabled = False
+                MessageBox.Show("No se encuentra disponible esta opción. Seleccione otra sucursal.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                'choco 29-01-2021, lo que esta a continuacion lo comento, no podemos mostrar el stock total, es un lio recuperar inform como el contenido real de todas las suc.
+                cb_origen.SelectedValue = 1 'q apunte a la primera suc disponible
+                'Grilla_Global()
+                ''desabilito filtros
+                'check_categoria.Enabled = False
+                'check_marca.Enabled = False
+                'check_proveedor.Enabled = False
+                'check_rubro.Enabled = False
+                'check_subrubro.Enabled = False
 
-                cb_categoria.Enabled = False
-                cb_marca.Enabled = False
-                cb_proveedor.Enabled = False
-                cb_rubro.Enabled = False
-                cb_subrubro.Enabled = False
+                'cb_categoria.Enabled = False
+                'cb_marca.Enabled = False
+                'cb_proveedor.Enabled = False
+                'cb_rubro.Enabled = False
+                'cb_subrubro.Enabled = False
             Else
                 'Habilito filtros filtros
                 check_categoria.Enabled = True
@@ -1126,6 +1129,8 @@ Public Class Producto_modificar
                         row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
                         row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
                         row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+                        row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+                        row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
                         Producto_ds.Tables("ProdxSuc").Rows.Add(row)
                     End If
                 End If
@@ -1145,6 +1150,8 @@ Public Class Producto_modificar
                                 row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
                                 row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
                                 Producto_ds.Tables("ProdxSuc").Rows.Add(row)
                                 j = ds_productos.Tables(2).Rows.Count
                             End If
@@ -1168,6 +1175,8 @@ Public Class Producto_modificar
                                 row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
                                 row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
                                 Producto_ds.Tables("ProdxSuc").Rows.Add(row)
                                 j = ds_productos.Tables(3).Rows.Count
                             End If
@@ -1219,6 +1228,8 @@ Public Class Producto_modificar
                                 row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
                                 row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
                                 Producto_ds.Tables("ProdxSuc").Rows.Add(row)
                                 j = ds_productos.Tables(2).Rows.Count
                             End If
@@ -1242,6 +1253,8 @@ Public Class Producto_modificar
                                 row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
                                 row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
                                 Producto_ds.Tables("ProdxSuc").Rows.Add(row)
                                 j = ds_productos.Tables(3).Rows.Count
                             End If
@@ -1296,6 +1309,8 @@ Public Class Producto_modificar
                                 row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
                                 row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
                                 Producto_ds.Tables("ProdxSuc").Rows.Add(row)
                                 j = ds_productos.Tables(3).Rows.Count
                             End If
