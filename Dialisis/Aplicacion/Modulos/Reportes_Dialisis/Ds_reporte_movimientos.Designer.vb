@@ -560,6 +560,10 @@ Partial Public Class Ds_reporte_movimientos
         
         Private columnrango_hasta As Global.System.Data.DataColumn
         
+        Private columnMovMer_IVA As Global.System.Data.DataColumn
+        
+        Private columnMovMer_TOTAL As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -724,6 +728,22 @@ Partial Public Class Ds_reporte_movimientos
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property MovMer_IVAColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMovMer_IVA
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property MovMer_TOTALColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMovMer_TOTAL
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -776,9 +796,11 @@ Partial Public Class Ds_reporte_movimientos
                     ByVal remito_fecha As String,  _
                     ByVal Proveedor As String,  _
                     ByVal rango_desde As Date,  _
-                    ByVal rango_hasta As Date) As movimientos_consultaRow
+                    ByVal rango_hasta As Date,  _
+                    ByVal MovMer_IVA As Decimal,  _
+                    ByVal MovMer_TOTAL As Decimal) As movimientos_consultaRow
             Dim rowmovimientos_consultaRow As movimientos_consultaRow = CType(Me.NewRow,movimientos_consultaRow)
-            Dim columnValuesArray() As Object = New Object() {MovMer_id, MovMer_Concepto, MovMer_FechaHora, sucursal_id_Origen, Origen, sucursal_id_Destino, Destino, Usuario, USU_id, factura_nro, factura_fecha, remito_nro, remito_fecha, Proveedor, rango_desde, rango_hasta}
+            Dim columnValuesArray() As Object = New Object() {MovMer_id, MovMer_Concepto, MovMer_FechaHora, sucursal_id_Origen, Origen, sucursal_id_Destino, Destino, Usuario, USU_id, factura_nro, factura_fecha, remito_nro, remito_fecha, Proveedor, rango_desde, rango_hasta, MovMer_IVA, MovMer_TOTAL}
             rowmovimientos_consultaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowmovimientos_consultaRow)
             Return rowmovimientos_consultaRow
@@ -817,6 +839,8 @@ Partial Public Class Ds_reporte_movimientos
             Me.columnProveedor = MyBase.Columns("Proveedor")
             Me.columnrango_desde = MyBase.Columns("rango_desde")
             Me.columnrango_hasta = MyBase.Columns("rango_hasta")
+            Me.columnMovMer_IVA = MyBase.Columns("MovMer_IVA")
+            Me.columnMovMer_TOTAL = MyBase.Columns("MovMer_TOTAL")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -854,6 +878,10 @@ Partial Public Class Ds_reporte_movimientos
             MyBase.Columns.Add(Me.columnrango_desde)
             Me.columnrango_hasta = New Global.System.Data.DataColumn("rango_hasta", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnrango_hasta)
+            Me.columnMovMer_IVA = New Global.System.Data.DataColumn("MovMer_IVA", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMovMer_IVA)
+            Me.columnMovMer_TOTAL = New Global.System.Data.DataColumn("MovMer_TOTAL", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMovMer_TOTAL)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3531,6 +3559,38 @@ Partial Public Class Ds_reporte_movimientos
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property MovMer_IVA() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablemovimientos_consulta.MovMer_IVAColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'MovMer_IVA' de la tabla 'movimientos_consulta' es DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemovimientos_consulta.MovMer_IVAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property MovMer_TOTAL() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablemovimientos_consulta.MovMer_TOTALColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'MovMer_TOTAL' de la tabla 'movimientos_consulta' es DBNul"& _ 
+                            "l.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablemovimientos_consulta.MovMer_TOTALColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsMovMer_idNull() As Boolean
             Return Me.IsNull(Me.tablemovimientos_consulta.MovMer_idColumn)
         End Function
@@ -3719,6 +3779,30 @@ Partial Public Class Ds_reporte_movimientos
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Setrango_hastaNull()
             Me(Me.tablemovimientos_consulta.rango_hastaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsMovMer_IVANull() As Boolean
+            Return Me.IsNull(Me.tablemovimientos_consulta.MovMer_IVAColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetMovMer_IVANull()
+            Me(Me.tablemovimientos_consulta.MovMer_IVAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsMovMer_TOTALNull() As Boolean
+            Return Me.IsNull(Me.tablemovimientos_consulta.MovMer_TOTALColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetMovMer_TOTALNull()
+            Me(Me.tablemovimientos_consulta.MovMer_TOTALColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

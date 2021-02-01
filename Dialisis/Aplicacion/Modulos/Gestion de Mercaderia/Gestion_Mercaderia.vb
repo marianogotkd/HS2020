@@ -142,7 +142,7 @@
 
             If result = DialogResult.Yes Then
                 Dim lote_id As Integer
-                Dim ds_movid As DataSet = DAMovintoMer.Movimiento_Mercaderia_alta3(concepto, Today, Inicio.USU_id, cb_origen.SelectedValue, cb_destino.SelectedValue, "", Today, "", Today, tipo_mov, 0)
+                Dim ds_movid As DataSet = DAMovintoMer.Movimiento_Mercaderia_alta3(concepto, Today, Inicio.USU_id, cb_origen.SelectedValue, cb_destino.SelectedValue, "", Today, "", Today, tipo_mov, 0, 0, 0)
                 ''''''''''''''''''''''''''''''''''''''''''''''''
 
                 Dim MovMer_id As Integer = ds_movid.Tables(0).Rows(0).Item(0)

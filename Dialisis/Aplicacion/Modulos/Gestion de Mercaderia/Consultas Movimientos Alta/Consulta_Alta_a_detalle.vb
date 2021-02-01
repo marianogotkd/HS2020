@@ -15,6 +15,8 @@
         Dim ds_detalle As DataSet = DAgestion_mercaderia.Movimiento_Mercaderia_Alta_obtener_detalle(id)
         If ds_detalle.Tables(0).Rows.Count <> 0 Then
             TextBox_proveedor.Text = ds_detalle.Tables(1).Rows(0).Item("Prov_nombre")
+            tb_iva.Text = ds_detalle.Tables(1).Rows(0).Item("MovMer_IVA")
+            tb_total.Text = ds_detalle.Tables(1).Rows(0).Item("MovMer_TOTAL")
 
             D_consulta_mov_alta.Tables("movimientos_detalle").Rows.Clear()
             D_consulta_mov_alta.Tables("movimientos_detalle").Merge(ds_detalle.Tables(0))
@@ -27,7 +29,7 @@
 
                 i = i + 1
             End While
-            TextBox1.Text = (Math.Round(CDec(TOTAL), 2).ToString("N2"))
+            tb_subtotal.Text = (Math.Round(CDec(TOTAL), 2).ToString("N2"))
 
         End If
     End Sub
@@ -86,6 +88,8 @@
         fila("remito_nro") = remito_nro.Text
         fila("remito_fecha") = remito_fecha.Text
         fila("Proveedor") = TextBox_proveedor.Text
+        fila("MovMer_IVA") = tb_iva.Text
+        fila("MovMer_TOTAL") = tb_total.Text
         Ds_reporte_movimientos.Tables("movimientos_consulta").Rows.Add(fila)
 
         'ahora el detalle
@@ -105,6 +109,7 @@
             Ds_reporte_movimientos.Tables("movimientos_detalle").Rows.Add(fila_det)
             j = j + 1
         End While
+
         'End If
 
         ' i = i + 1
@@ -126,4 +131,5 @@
 
     End Sub
 
+    
 End Class

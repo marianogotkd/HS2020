@@ -143,7 +143,8 @@ Public Class Gestion_Mercaderia
     Public Function Movimiento_Mercaderia_alta3(ByVal MovMer_Concepto As String, ByVal MovMer_FechaHora As Date, ByVal USU_id As Integer,
                                                ByVal sucursal_id_Origen As Integer, ByVal sucursal_id_Destino As Integer,
                                                ByVal MovMer_facturaNRO As String, ByVal MovMer_facturafecha As Date, ByVal MovMer_remitoNRO As String,
-                                               ByVal MovMer_remitofecha As Date, ByVal tipo As Integer, ByVal Prov_id As Integer) As DataSet
+                                               ByVal MovMer_remitofecha As Date, ByVal tipo As Integer, ByVal Prov_id As Integer,
+                                               ByVal MovMer_IVA As Decimal, ByVal MovMer_TOTAL As Decimal) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -166,6 +167,8 @@ Public Class Gestion_Mercaderia
         comando.Parameters.Add(New OleDb.OleDbParameter("@MovMer_remitofecha", MovMer_remitofecha))
         comando.Parameters.Add(New OleDb.OleDbParameter("@MovMerTipo_id", tipo))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Prov_id", Prov_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@MovMer_IVA", MovMer_IVA))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@MovMer_TOTAL", MovMer_TOTAL))
 
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)

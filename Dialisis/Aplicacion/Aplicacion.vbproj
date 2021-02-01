@@ -757,6 +757,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>D_consulta_mov_alta.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Gestion de Mercaderia\Consultas Movimientos Alta\D_consulta_mov_alta.vb">
+      <DependentUpon>D_consulta_mov_alta.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Gestion de Mercaderia\Consultas Movimientos_b\Consultas_Movimientos_b.Designer.vb">
       <DependentUpon>Consultas_Movimientos_b.vb</DependentUpon>
     </Compile>

@@ -45,7 +45,7 @@
                         Dim lote_id As Integer
 
                         'controlamos factura y remito
-                        Dim ds_movid As DataSet = DAMovintoMer.Movimiento_Mercaderia_alta3(concepto, Today, Inicio.USU_id, sucursal_id, sucursal_id, "", Today, "", Today, tipo_mov, cb_proveedor.SelectedValue)
+                        Dim ds_movid As DataSet = DAMovintoMer.Movimiento_Mercaderia_alta3(concepto, Today, Inicio.USU_id, sucursal_id, sucursal_id, "", Today, "", Today, tipo_mov, cb_proveedor.SelectedValue, 0, 0)
                         ''''''''''''''''''''''''''''''''''''''''''''''''
                         Dim MovMer_id As Integer = ds_movid.Tables(0).Rows(0).Item(0)
                         Dim i As Integer = 0
