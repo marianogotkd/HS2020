@@ -393,7 +393,7 @@
         Cargarcombo_marca()
         cargar_combos_categoria()
         agregar_cant_vencida()
-        formato_control_stock_vto()
+        'formato_control_stock_vto()
         evento_load_completo = "si"
         'TextBox111.SetWaterMark("Descripcion o Codigo")
 
@@ -402,23 +402,7 @@
         'TabPage2.Parent = TabControl1 'pongo visible pestaña 2
     End Sub
 
-    Private Sub formato_control_stock_vto()
-        If DataGridView1.Rows.Count <> 0 Then
-            Dim i As Integer = 0
-            While i < DataGridView1.Rows.Count
-                Dim stock As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdstockDataGridViewTextBoxColumn").Value)
-                Dim pto_reposicion As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdptorepoDataGridViewTextBoxColumn").Value)
-
-                If stock <= pto_reposicion Then
-                    DataGridView1.Rows(i).DefaultCellStyle.ForeColor = Color.Blue
-                Else
-                    DataGridView1.Rows(i).DefaultCellStyle.ForeColor = Color.Black
-                End If
-                i = i + 1
-            End While
-        End If
-    End Sub
-
+    '
     Private Sub agregar_cant_vencida()
         Dim j As Integer = 0
         While j < Venta_Caja_ds.Tables("Prod_consulta").Rows.Count
@@ -3728,9 +3712,77 @@
 
 
 
-    Private Sub DataGridView1_ColumnHeaderMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridView1.ColumnHeaderMouseClick
-        formato_control_stock_vto() 'cuando click en el encabezado de las columnas se vuelve a poner los colores correspondientes
+    Private Sub DataGridView1_RowValidated(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.RowValidated
+        
     End Sub
+
+    Private Sub formato_control_stock_v()
+        'no lo uso mas, ahora uso el evento cellformating del gridview 1
+        If DataGridView1.Rows.Count <> 0 Then
+            Dim i As Integer = 0
+            While i < DataGridView1.Rows.Count
+                Dim stock As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdstockDataGridViewTextBoxColumn").Value)
+                Dim pto_reposicion As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdptorepoDataGridViewTextBoxColumn").Value)
+
+                If stock <= pto_reposicion Then
+                    DataGridView1.Rows(i).DefaultCellStyle.ForeColor = Color.Blue
+
+
+                Else
+                    DataGridView1.Rows(i).DefaultCellStyle.ForeColor = Color.Black
+                End If
+                i = i + 1
+            End While
+        End If
+    End Sub
+
+    Private Sub DataGridView1_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
+        If DataGridView1.Rows.Count <> 0 Then
+            Dim i As Integer = 0
+            While i < DataGridView1.Rows.Count
+                Dim stock As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdstockDataGridViewTextBoxColumn").Value)
+                Dim pto_reposicion As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdptorepoDataGridViewTextBoxColumn").Value)
+
+                If stock <= pto_reposicion Then
+                    DataGridView1.Rows(i).DefaultCellStyle.ForeColor = Color.Blue
+                Else
+                    DataGridView1.Rows(i).DefaultCellStyle.ForeColor = Color.Black
+                End If
+                i = i + 1
+            End While
+        End If
+
+        'Dim stock As Decimal = CDec(0)
+        'If DataGridView1.Columns(e.ColumnIndex).Name = "ProdstockDataGridViewTextBoxColumn" Then
+        '    stock = CDec(e.Value)
+        'End If
+        'If DataGridView1.Columns(e.ColumnIndex).Name = "ProdptorepoDataGridViewTextBoxColumn" Then
+        '    Dim pto_repo As Decimal = CDec(e.Value)
+        '    If stock <= pto_repo Then
+        '        e.CellStyle.ForeColor = Color.Blue
+        '        e.CellStyle.SelectionForeColor = Color.Blue
+        '    End If
+        'End If
+
+
+
+        If DataGridView1.Columns(e.ColumnIndex).Name = "CantvencimientoDataGridViewTextBoxColumn" Then 'esto significa que voy a validar esta celda
+            Dim vencidos As Decimal = CDec(e.Value)
+            If vencidos <> CDec(0) Then
+                e.CellStyle.ForeColor = Color.Red
+                e.CellStyle.SelectionForeColor = Color.Red
+            End If
+        End If
+
+    End Sub
+
+
+
+    Private Sub DataGridView1_ColumnHeaderMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridView1.ColumnHeaderMouseClick
+        'formato_control_stock_vto() 'cuando click en el encabezado de las columnas se vuelve a poner los colores correspondientes
+    End Sub
+
+    
 
 
     Private Sub DataGridView1_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.SelectionChanged

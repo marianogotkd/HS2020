@@ -207,9 +207,6 @@
 
 
         ''''''''''
-        'Actualizo stock'''''
-        recupero_y_recalculo_totales(prod_id)
-        'DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo)
 
         'creo un registro en producto_x_sucursal_lote
         'CHOCO 14-07-2020 aqui veo si existe el lote, actualizo la cantidad, pero si no existe registro como nuevo
@@ -222,6 +219,12 @@
                                                                           CDec(tb_nueva_cant.Text), proveedor_id, stock_real_ingreso)
             lote_id = ds_lote.Tables(0).Rows(0).Item("lote_id")
         End If
+
+        'Actualizo stock'''''
+        recupero_y_recalculo_totales(prod_id)
+        'DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo)
+
+
 
         '''''' Alta Tabla Detalle'''''' de movimiento claro está
         'alta en tabla mercaderia_detalle_alta
@@ -276,6 +279,16 @@
 
         lote_id = dslote.Tables(0).Rows(0).Item("lote_id")
 
+
+        ''''''''''
+        'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
+        recupero_y_recalculo_totales(prod_id)
+
+        'DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+        '''''''''''
+
+
+
         '''''' Alta Tabla Detalle'''''' de movimiento claro está
         'alta en tabla mercaderia_detalle_alta
         DAMovintoMer.Movimiento_Mercaderia_Detalle_alta(CDec(tb_nueva_cant.Text), MovMer_id, codinterno, lote_id, CDec(0), CDec(0))
@@ -320,9 +333,6 @@
         stock_real_nuevo = stock_real_nuevo + stock_real_ingreso
 
 
-        ''''''''''
-        'Actualizo stock'''''
-        recupero_y_recalculo_totales(prod_id)
 
         'DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, Mov, stock_real_nuevo)
 
@@ -337,6 +347,12 @@
                                                                           CDec(tb_nueva_cant.Text), proveedor_id, stock_real_ingreso, CDec(0))
             lote_id = ds_lote.Tables(0).Rows(0).Item("lote_id")
         End If
+
+
+        ''''''''''
+        'Actualizo stock'''''
+        recupero_y_recalculo_totales(prod_id)
+
 
         '''''' Alta Tabla Detalle'''''' de movimiento claro está
         'alta en tabla mercaderia_detalle_alta

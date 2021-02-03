@@ -469,6 +469,25 @@ Public Class Servicio
         Return ds_JE
     End Function
 
+    Public Function Orden_trabajo_eliminar(ByVal Servicio_Id As Integer)
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Orden_trabajo_eliminar", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Servicio_Id", Servicio_Id))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Orden_trabajo")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
 
 #End Region
 End Class

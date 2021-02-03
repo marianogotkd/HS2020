@@ -43,6 +43,8 @@ Partial Public Class Ds_enfermeria
     
     Private tablelote_x_suc As lote_x_sucDataTable
     
+    Private tableConsumo_real1_aux As Consumo_real1_auxDataTable
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -98,6 +100,9 @@ Partial Public Class Ds_enfermeria
             End If
             If (Not (ds.Tables("lote_x_suc")) Is Nothing) Then
                 MyBase.Tables.Add(New lote_x_sucDataTable(ds.Tables("lote_x_suc")))
+            End If
+            If (Not (ds.Tables("Consumo_real1_aux")) Is Nothing) Then
+                MyBase.Tables.Add(New Consumo_real1_auxDataTable(ds.Tables("Consumo_real1_aux")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -208,6 +213,16 @@ Partial Public Class Ds_enfermeria
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property Consumo_real1_aux() As Consumo_real1_auxDataTable
+        Get
+            Return Me.tableConsumo_real1_aux
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.BrowsableAttribute(true),  _
      Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Visible)>  _
     Public Overrides Property SchemaSerializationMode() As Global.System.Data.SchemaSerializationMode
@@ -300,6 +315,9 @@ Partial Public Class Ds_enfermeria
             If (Not (ds.Tables("lote_x_suc")) Is Nothing) Then
                 MyBase.Tables.Add(New lote_x_sucDataTable(ds.Tables("lote_x_suc")))
             End If
+            If (Not (ds.Tables("Consumo_real1_aux")) Is Nothing) Then
+                MyBase.Tables.Add(New Consumo_real1_auxDataTable(ds.Tables("Consumo_real1_aux")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -386,6 +404,12 @@ Partial Public Class Ds_enfermeria
                 Me.tablelote_x_suc.InitVars
             End If
         End If
+        Me.tableConsumo_real1_aux = CType(MyBase.Tables("Consumo_real1_aux"),Consumo_real1_auxDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableConsumo_real1_aux) Is Nothing) Then
+                Me.tableConsumo_real1_aux.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -414,6 +438,8 @@ Partial Public Class Ds_enfermeria
         MyBase.Tables.Add(Me.tablePredefinidos)
         Me.tablelote_x_suc = New lote_x_sucDataTable()
         MyBase.Tables.Add(Me.tablelote_x_suc)
+        Me.tableConsumo_real1_aux = New Consumo_real1_auxDataTable()
+        MyBase.Tables.Add(Me.tableConsumo_real1_aux)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -467,6 +493,12 @@ Partial Public Class Ds_enfermeria
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializelote_x_suc() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializeConsumo_real1_aux() As Boolean
         Return false
     End Function
     
@@ -554,6 +586,9 @@ Partial Public Class Ds_enfermeria
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub lote_x_sucRowChangeEventHandler(ByVal sender As Object, ByVal e As lote_x_sucRowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub Consumo_real1_auxRowChangeEventHandler(ByVal sender As Object, ByVal e As Consumo_real1_auxRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -3663,6 +3698,418 @@ Partial Public Class Ds_enfermeria
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class Consumo_real1_auxDataTable
+        Inherits Global.System.Data.TypedTableBase(Of Consumo_real1_auxRow)
+        
+        Private _columnN_ As Global.System.Data.DataColumn
+        
+        Private columnCod_prod As Global.System.Data.DataColumn
+        
+        Private columnDescripcion As Global.System.Data.DataColumn
+        
+        Private columnDesde As Global.System.Data.DataColumn
+        
+        Private columnHacia As Global.System.Data.DataColumn
+        
+        Private columnCantidad_real As Global.System.Data.DataColumn
+        
+        Private columnlote_id As Global.System.Data.DataColumn
+        
+        Private columnProv_id As Global.System.Data.DataColumn
+        
+        Private columnConsumo_mercaderiadetalle_id As Global.System.Data.DataColumn
+        
+        Private columnConsumo_mercaderia_id As Global.System.Data.DataColumn
+        
+        Private columneliminado As Global.System.Data.DataColumn
+        
+        Private columnlote_nro As Global.System.Data.DataColumn
+        
+        Private columnlote_aux As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "Consumo_real1_aux"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property _N_Column() As Global.System.Data.DataColumn
+            Get
+                Return Me._columnN_
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Cod_prodColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCod_prod
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property DescripcionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDescripcion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property DesdeColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDesde
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property HaciaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnHacia
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Cantidad_realColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCantidad_real
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property lote_idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlote_id
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Prov_idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnProv_id
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Consumo_mercaderiadetalle_idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnConsumo_mercaderiadetalle_id
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Consumo_mercaderia_idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnConsumo_mercaderia_id
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property eliminadoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columneliminado
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property lote_nroColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlote_nro
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property lote_auxColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnlote_aux
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As Consumo_real1_auxRow
+            Get
+                Return CType(Me.Rows(index),Consumo_real1_auxRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event Consumo_real1_auxRowChanging As Consumo_real1_auxRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event Consumo_real1_auxRowChanged As Consumo_real1_auxRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event Consumo_real1_auxRowDeleting As Consumo_real1_auxRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event Consumo_real1_auxRowDeleted As Consumo_real1_auxRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddConsumo_real1_auxRow(ByVal row As Consumo_real1_auxRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddConsumo_real1_auxRow(ByVal _N_ As String, ByVal Cod_prod As String, ByVal Descripcion As String, ByVal Desde As String, ByVal Hacia As String, ByVal Cantidad_real As String, ByVal lote_id As Integer, ByVal Prov_id As Integer, ByVal Consumo_mercaderiadetalle_id As Integer, ByVal Consumo_mercaderia_id As Integer, ByVal eliminado As String, ByVal lote_nro As String, ByVal lote_aux As Decimal) As Consumo_real1_auxRow
+            Dim rowConsumo_real1_auxRow As Consumo_real1_auxRow = CType(Me.NewRow,Consumo_real1_auxRow)
+            Dim columnValuesArray() As Object = New Object() {_N_, Cod_prod, Descripcion, Desde, Hacia, Cantidad_real, lote_id, Prov_id, Consumo_mercaderiadetalle_id, Consumo_mercaderia_id, eliminado, lote_nro, lote_aux}
+            rowConsumo_real1_auxRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowConsumo_real1_auxRow)
+            Return rowConsumo_real1_auxRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As Consumo_real1_auxDataTable = CType(MyBase.Clone,Consumo_real1_auxDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New Consumo_real1_auxDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me._columnN_ = MyBase.Columns("N°")
+            Me.columnCod_prod = MyBase.Columns("Cod_prod")
+            Me.columnDescripcion = MyBase.Columns("Descripcion")
+            Me.columnDesde = MyBase.Columns("Desde")
+            Me.columnHacia = MyBase.Columns("Hacia")
+            Me.columnCantidad_real = MyBase.Columns("Cantidad_real")
+            Me.columnlote_id = MyBase.Columns("lote_id")
+            Me.columnProv_id = MyBase.Columns("Prov_id")
+            Me.columnConsumo_mercaderiadetalle_id = MyBase.Columns("Consumo_mercaderiadetalle_id")
+            Me.columnConsumo_mercaderia_id = MyBase.Columns("Consumo_mercaderia_id")
+            Me.columneliminado = MyBase.Columns("eliminado")
+            Me.columnlote_nro = MyBase.Columns("lote_nro")
+            Me.columnlote_aux = MyBase.Columns("lote_aux")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me._columnN_ = New Global.System.Data.DataColumn("N°", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me._columnN_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnN_")
+            Me._columnN_.ExtendedProperties.Add("Generator_UserColumnName", "N°")
+            MyBase.Columns.Add(Me._columnN_)
+            Me.columnCod_prod = New Global.System.Data.DataColumn("Cod_prod", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCod_prod)
+            Me.columnDescripcion = New Global.System.Data.DataColumn("Descripcion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDescripcion)
+            Me.columnDesde = New Global.System.Data.DataColumn("Desde", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDesde)
+            Me.columnHacia = New Global.System.Data.DataColumn("Hacia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnHacia)
+            Me.columnCantidad_real = New Global.System.Data.DataColumn("Cantidad_real", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCantidad_real)
+            Me.columnlote_id = New Global.System.Data.DataColumn("lote_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlote_id)
+            Me.columnProv_id = New Global.System.Data.DataColumn("Prov_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnProv_id)
+            Me.columnConsumo_mercaderiadetalle_id = New Global.System.Data.DataColumn("Consumo_mercaderiadetalle_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnConsumo_mercaderiadetalle_id)
+            Me.columnConsumo_mercaderia_id = New Global.System.Data.DataColumn("Consumo_mercaderia_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnConsumo_mercaderia_id)
+            Me.columneliminado = New Global.System.Data.DataColumn("eliminado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columneliminado)
+            Me.columnlote_nro = New Global.System.Data.DataColumn("lote_nro", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlote_nro)
+            Me.columnlote_aux = New Global.System.Data.DataColumn("lote_aux", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnlote_aux)
+            Me.columnCantidad_real.Caption = "Cantidad"
+            Me.columnlote_id.Caption = "Lote"
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewConsumo_real1_auxRow() As Consumo_real1_auxRow
+            Return CType(Me.NewRow,Consumo_real1_auxRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New Consumo_real1_auxRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(Consumo_real1_auxRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.Consumo_real1_auxRowChangedEvent) Is Nothing) Then
+                RaiseEvent Consumo_real1_auxRowChanged(Me, New Consumo_real1_auxRowChangeEvent(CType(e.Row,Consumo_real1_auxRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.Consumo_real1_auxRowChangingEvent) Is Nothing) Then
+                RaiseEvent Consumo_real1_auxRowChanging(Me, New Consumo_real1_auxRowChangeEvent(CType(e.Row,Consumo_real1_auxRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.Consumo_real1_auxRowDeletedEvent) Is Nothing) Then
+                RaiseEvent Consumo_real1_auxRowDeleted(Me, New Consumo_real1_auxRowChangeEvent(CType(e.Row,Consumo_real1_auxRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.Consumo_real1_auxRowDeletingEvent) Is Nothing) Then
+                RaiseEvent Consumo_real1_auxRowDeleting(Me, New Consumo_real1_auxRowChangeEvent(CType(e.Row,Consumo_real1_auxRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemoveConsumo_real1_auxRow(ByVal row As Consumo_real1_auxRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As Ds_enfermeria = New Ds_enfermeria()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "Consumo_real1_auxDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class TurnoDialisis_consultaRow
@@ -5777,6 +6224,376 @@ Partial Public Class Ds_enfermeria
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class Consumo_real1_auxRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableConsumo_real1_aux As Consumo_real1_auxDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableConsumo_real1_aux = CType(Me.Table,Consumo_real1_auxDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property _N_() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux._N_Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'N°' de la tabla 'Consumo_real1_aux' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux._N_Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Cod_prod() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux.Cod_prodColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Cod_prod' de la tabla 'Consumo_real1_aux' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux.Cod_prodColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Descripcion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux.DescripcionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Descripcion' de la tabla 'Consumo_real1_aux' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux.DescripcionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Desde() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux.DesdeColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Desde' de la tabla 'Consumo_real1_aux' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux.DesdeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Hacia() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux.HaciaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Hacia' de la tabla 'Consumo_real1_aux' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux.HaciaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Cantidad_real() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux.Cantidad_realColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Cantidad_real' de la tabla 'Consumo_real1_aux' es DBNull."& _ 
+                            "", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux.Cantidad_realColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property lote_id() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux.lote_idColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'lote_id' de la tabla 'Consumo_real1_aux' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux.lote_idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Prov_id() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux.Prov_idColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Prov_id' de la tabla 'Consumo_real1_aux' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux.Prov_idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Consumo_mercaderiadetalle_id() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux.Consumo_mercaderiadetalle_idColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Consumo_mercaderiadetalle_id' de la tabla 'Consumo_real1_"& _ 
+                            "aux' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux.Consumo_mercaderiadetalle_idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Consumo_mercaderia_id() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux.Consumo_mercaderia_idColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Consumo_mercaderia_id' de la tabla 'Consumo_real1_aux' es"& _ 
+                            " DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux.Consumo_mercaderia_idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property eliminado() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux.eliminadoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'eliminado' de la tabla 'Consumo_real1_aux' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux.eliminadoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property lote_nro() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux.lote_nroColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'lote_nro' de la tabla 'Consumo_real1_aux' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux.lote_nroColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property lote_aux() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableConsumo_real1_aux.lote_auxColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'lote_aux' de la tabla 'Consumo_real1_aux' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableConsumo_real1_aux.lote_auxColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Is_N_Null() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux._N_Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Set_N_Null()
+            Me(Me.tableConsumo_real1_aux._N_Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsCod_prodNull() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux.Cod_prodColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetCod_prodNull()
+            Me(Me.tableConsumo_real1_aux.Cod_prodColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsDescripcionNull() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux.DescripcionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetDescripcionNull()
+            Me(Me.tableConsumo_real1_aux.DescripcionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsDesdeNull() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux.DesdeColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetDesdeNull()
+            Me(Me.tableConsumo_real1_aux.DesdeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsHaciaNull() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux.HaciaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetHaciaNull()
+            Me(Me.tableConsumo_real1_aux.HaciaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsCantidad_realNull() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux.Cantidad_realColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetCantidad_realNull()
+            Me(Me.tableConsumo_real1_aux.Cantidad_realColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Islote_idNull() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux.lote_idColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setlote_idNull()
+            Me(Me.tableConsumo_real1_aux.lote_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsProv_idNull() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux.Prov_idColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetProv_idNull()
+            Me(Me.tableConsumo_real1_aux.Prov_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsConsumo_mercaderiadetalle_idNull() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux.Consumo_mercaderiadetalle_idColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetConsumo_mercaderiadetalle_idNull()
+            Me(Me.tableConsumo_real1_aux.Consumo_mercaderiadetalle_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsConsumo_mercaderia_idNull() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux.Consumo_mercaderia_idColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetConsumo_mercaderia_idNull()
+            Me(Me.tableConsumo_real1_aux.Consumo_mercaderia_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IseliminadoNull() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux.eliminadoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SeteliminadoNull()
+            Me(Me.tableConsumo_real1_aux.eliminadoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Islote_nroNull() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux.lote_nroColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setlote_nroNull()
+            Me(Me.tableConsumo_real1_aux.lote_nroColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Islote_auxNull() As Boolean
+            Return Me.IsNull(Me.tableConsumo_real1_aux.lote_auxColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setlote_auxNull()
+            Me(Me.tableConsumo_real1_aux.lote_auxColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -6086,6 +6903,42 @@ Partial Public Class Ds_enfermeria
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Row() As lote_x_sucRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class Consumo_real1_auxRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As Consumo_real1_auxRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As Consumo_real1_auxRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As Consumo_real1_auxRow
             Get
                 Return Me.eventRow
             End Get

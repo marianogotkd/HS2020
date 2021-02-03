@@ -577,6 +577,12 @@
         If estado_de_orden <> "REPARADO" Then
             Dim result As Integer = MessageBox.Show("¿Está seguro que desea guardar los cambios y generar la ORDEN DE TRABAJO?", "Sistema de Gestión", MessageBoxButtons.YesNo)
             If result = DialogResult.Yes Then
+                If serv_id <> 0 Then
+                    '    'anulo la orden de trabajo previa, porque se va a generar una nueva
+                    '    DAservicio.Servicio_ActualizarEstado(serv_id, "ANULADO")
+                    DAservicio.Orden_trabajo_eliminar(serv_id)
+                End If
+
                 Guardar_BD("boton_guardar_cambios")
             End If
         Else

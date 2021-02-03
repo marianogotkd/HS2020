@@ -185,9 +185,6 @@ C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Sesiones_prod_agregar.resources
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Ajuste_vencimiento.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\bin\Debug\Aplicacion.exe.config
-C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.exe
-C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.xml
-C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.pdb
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\bin\Debug\Aplicacion.exe
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\bin\Debug\Aplicacion.pdb
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\bin\Debug\Aplicacion.xml
@@ -370,3 +367,6 @@ C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.US_Emp
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.US_Empleado_stock.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.US_Pedidos.resources
 C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.vbproj.GenerateResource.Cache
+C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.exe
+C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.xml
+C:\Repositorio HS2020\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.pdb

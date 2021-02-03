@@ -1,0 +1,5 @@
+create procedure Orden_trabajo_eliminar
+@Servicio_id int
+as
+delete from Orden_trabajo where Servicio_id = @Servicio_id 
+go

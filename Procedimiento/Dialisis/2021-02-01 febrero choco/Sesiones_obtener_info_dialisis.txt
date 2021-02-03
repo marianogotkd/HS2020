@@ -1,6 +1,6 @@
 USE [Dialisis]
 GO
-/****** Object:  StoredProcedure [dbo].[Sesiones_obtener_info_dialisis]    Script Date: 02/01/2021 16:06:15 ******/
+/****** Object:  StoredProcedure [dbo].[Sesiones_obtener_info_dialisis]    Script Date: 02/02/2021 17:15:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -30,7 +30,9 @@ Producto.prod_descripcion,
 Producto_x_sucursal_lote.lote_vence ,
 Producto_x_sucursal_lote.lote_fechafab,
 Producto_x_sucursal_lote.lote_fechavto,
-Producto.prod_unidadmedida     
+Producto.prod_unidadmedida,
+Producto_x_sucursal_lote.Prov_id,
+Producto_x_sucursal_lote.lote_aux       
 from Consumo_Mercaderia inner join Consumo_Mercaderia_detalle on Consumo_Mercaderia.Consumo_mercaderia_id = Consumo_Mercaderia_detalle.Consumo_mercaderia_id 
 inner join Producto on Consumo_Mercaderia_detalle.prod_codinterno = Producto.prod_codinterno   
 inner join Producto_x_sucursal_lote on Consumo_Mercaderia_detalle.lote_id = Producto_x_sucursal_lote.lote_id   
