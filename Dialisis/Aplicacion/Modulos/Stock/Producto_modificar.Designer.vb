@@ -59,9 +59,6 @@ Partial Class Producto_modificar
         Me.cb_origen = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DG_Producto = New System.Windows.Forms.DataGridView()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.ProdxSucBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Producto_ds = New Aplicacion.Producto_ds()
         Me.prod_codinterno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.prod_descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdxSuc_stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -74,15 +71,19 @@ Partial Class Producto_modificar
         Me.Contenido = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Contenido_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ProdxSucBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Producto_ds = New Aplicacion.Producto_ds()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DG_Producto, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabControl1.SuspendLayout()
         CType(Me.ProdxSucBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Producto_ds, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'OpenFileDialog1
@@ -106,7 +107,7 @@ Partial Class Producto_modificar
         Me.BO_producto_modificar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BO_producto_modificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BO_producto_modificar.Image = Global.Aplicacion.My.Resources.Resources.Pasar
-        Me.BO_producto_modificar.Location = New System.Drawing.Point(973, 9)
+        Me.BO_producto_modificar.Location = New System.Drawing.Point(708, 14)
         Me.BO_producto_modificar.Margin = New System.Windows.Forms.Padding(4)
         Me.BO_producto_modificar.Name = "BO_producto_modificar"
         Me.BO_producto_modificar.Size = New System.Drawing.Size(124, 43)
@@ -133,7 +134,7 @@ Partial Class Producto_modificar
         Me.BO_producto_nuevo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BO_producto_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BO_producto_nuevo.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
-        Me.BO_producto_nuevo.Location = New System.Drawing.Point(841, 9)
+        Me.BO_producto_nuevo.Location = New System.Drawing.Point(576, 14)
         Me.BO_producto_nuevo.Margin = New System.Windows.Forms.Padding(4)
         Me.BO_producto_nuevo.Name = "BO_producto_nuevo"
         Me.BO_producto_nuevo.Size = New System.Drawing.Size(124, 43)
@@ -148,7 +149,7 @@ Partial Class Producto_modificar
         Me.btn_Anular.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_Anular.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Anular.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
-        Me.btn_Anular.Location = New System.Drawing.Point(708, 10)
+        Me.btn_Anular.Location = New System.Drawing.Point(443, 15)
         Me.btn_Anular.Margin = New System.Windows.Forms.Padding(5)
         Me.btn_Anular.Name = "btn_Anular"
         Me.btn_Anular.Size = New System.Drawing.Size(124, 43)
@@ -162,7 +163,7 @@ Partial Class Producto_modificar
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
-        Me.Button1.Location = New System.Drawing.Point(575, 10)
+        Me.Button1.Location = New System.Drawing.Point(310, 15)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(124, 43)
@@ -193,7 +194,7 @@ Partial Class Producto_modificar
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.DarkRed
         Me.Button3.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
-        Me.Button3.Location = New System.Drawing.Point(433, 10)
+        Me.Button3.Location = New System.Drawing.Point(168, 15)
         Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(131, 43)
@@ -453,6 +454,7 @@ Partial Class Producto_modificar
         '
         Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.Button4)
         Me.Panel1.Controls.Add(Me.Button3)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.Button1)
@@ -536,30 +538,6 @@ Partial Class Producto_modificar
         Me.DG_Producto.Size = New System.Drawing.Size(1240, 249)
         Me.DG_Producto.StandardTab = True
         Me.DG_Producto.TabIndex = 0
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.Location = New System.Drawing.Point(2, 6)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1291, 607)
-        Me.TabControl1.TabIndex = 0
-        '
-        'ProdxSucBindingSource
-        '
-        Me.ProdxSucBindingSource.DataMember = "ProdxSuc"
-        Me.ProdxSucBindingSource.DataSource = Me.Producto_ds
-        '
-        'Producto_ds
-        '
-        Me.Producto_ds.DataSetName = "Producto_ds"
-        Me.Producto_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'prod_codinterno
         '
@@ -665,6 +643,45 @@ Partial Class Producto_modificar
         Me.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         '
+        'ProdxSucBindingSource
+        '
+        Me.ProdxSucBindingSource.DataMember = "ProdxSuc"
+        Me.ProdxSucBindingSource.DataSource = Me.Producto_ds
+        '
+        'Producto_ds
+        '
+        Me.Producto_ds.DataSetName = "Producto_ds"
+        Me.Producto_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabControl1.Location = New System.Drawing.Point(2, 6)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(1291, 607)
+        Me.TabControl1.TabIndex = 0
+        '
+        'Button4
+        '
+        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.Image = Global.Aplicacion.My.Resources.Resources.icono_editar_30x30
+        Me.Button4.Location = New System.Drawing.Point(940, 10)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(154, 43)
+        Me.Button4.TabIndex = 254
+        Me.Button4.Text = "Consulta de Ajuste"
+        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button4, "Ajuste de stock")
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'Producto_modificar
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -686,9 +703,9 @@ Partial Class Producto_modificar
         Me.Panel1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.DG_Producto, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabControl1.ResumeLayout(False)
         CType(Me.ProdxSucBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Producto_ds, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -741,4 +758,5 @@ Partial Class Producto_modificar
     Friend WithEvents Contenido As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Contenido_total As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 End Class

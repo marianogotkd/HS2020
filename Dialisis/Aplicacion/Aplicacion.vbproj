@@ -1309,6 +1309,17 @@
     <Compile Include="Modulos\Stock\Producto_Ajuste\Ajuste_alta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Stock\Producto_Ajuste\Ajuste_Consulta.Designer.vb">
+      <DependentUpon>Ajuste_Consulta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Stock\Producto_Ajuste\Ajuste_Consulta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Stock\Producto_Ajuste\Ajuste_DS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ajuste_DS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Stock\Producto_Ajuste\Ajuste_suma_resta_igual.Designer.vb">
       <DependentUpon>Ajuste_suma_resta_igual.vb</DependentUpon>
     </Compile>
@@ -2208,6 +2219,9 @@
     <EmbeddedResource Include="Modulos\Stock\Producto_Ajuste\Ajuste_alta.resx">
       <DependentUpon>Ajuste_alta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Stock\Producto_Ajuste\Ajuste_Consulta.resx">
+      <DependentUpon>Ajuste_Consulta.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Stock\Producto_Ajuste\Ajuste_suma_resta_igual.resx">
       <DependentUpon>Ajuste_suma_resta_igual.vb</DependentUpon>
     </EmbeddedResource>
@@ -2741,6 +2755,17 @@
     </None>
     <None Include="Modulos\Servicios\Servicio_DS.xss">
       <DependentUpon>Servicio_DS.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Stock\Producto_Ajuste\Ajuste_DS.xsc">
+      <DependentUpon>Ajuste_DS.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Stock\Producto_Ajuste\Ajuste_DS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ajuste_DS.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulos\Stock\Producto_Ajuste\Ajuste_DS.xss">
+      <DependentUpon>Ajuste_DS.xsd</DependentUpon>
     </None>
     <None Include="Modulos\Stock\Producto_ds.xsc">
       <DependentUpon>Producto_ds.xsd</DependentUpon>

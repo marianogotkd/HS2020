@@ -337,6 +337,25 @@ Public Class Gestion_Mercaderia
         Return ds_JE
     End Function
 
+    Public Function Movimiento_Mercaderia_Alta_obtener_detalle_Ajustes() As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Movimiento_Mercaderia_Alta_obtener_detalle_Ajustes", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id_Destino", sucursal_id_Destino))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Movimientos")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
     Public Function Movimiento_Mercaderia_obtener_rango_fechas(ByVal desde As Date, ByVal hasta As Date) As DataSet
         Try
             dbconn.Open()
@@ -344,6 +363,25 @@ Public Class Gestion_Mercaderia
         End Try
 
         Dim comando As New OleDbCommand("Movimiento_Mercaderia_obtener_rango_fechas", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@desde", desde))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@hasta", hasta))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Movimientos")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+    Public Function Movimiento_Mercaderia_Alta_obtener_detalle_Ajustes_Rango_Fechas(ByVal desde As Date, ByVal hasta As Date) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Movimiento_Mercaderia_Alta_obtener_detalle_Ajustes_Rango_Fechas", dbconn)
         comando.CommandType = CommandType.StoredProcedure
 
         comando.Parameters.Add(New OleDb.OleDbParameter("@desde", desde))

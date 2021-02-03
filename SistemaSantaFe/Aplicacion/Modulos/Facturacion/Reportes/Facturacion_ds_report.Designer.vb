@@ -1543,6 +1543,10 @@ Partial Public Class Facturacion_ds_report
         
         Private columntipo_venta As Global.System.Data.DataColumn
         
+        Private columnOrden_trabajo_id As Global.System.Data.DataColumn
+        
+        Private columnSubtotal As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1611,6 +1615,22 @@ Partial Public Class Facturacion_ds_report
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Orden_trabajo_idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOrden_trabajo_id
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property SubtotalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSubtotal
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1647,9 +1667,9 @@ Partial Public Class Facturacion_ds_report
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddventaRow(ByVal nro_factura As String, ByVal fecha As Date, ByVal vendedor As String, ByVal tipo_venta As String) As ventaRow
+        Public Overloads Function AddventaRow(ByVal nro_factura As String, ByVal fecha As Date, ByVal vendedor As String, ByVal tipo_venta As String, ByVal Orden_trabajo_id As Integer, ByVal Subtotal As String) As ventaRow
             Dim rowventaRow As ventaRow = CType(Me.NewRow,ventaRow)
-            Dim columnValuesArray() As Object = New Object() {nro_factura, fecha, vendedor, tipo_venta}
+            Dim columnValuesArray() As Object = New Object() {nro_factura, fecha, vendedor, tipo_venta, Orden_trabajo_id, Subtotal}
             rowventaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowventaRow)
             Return rowventaRow
@@ -1676,6 +1696,8 @@ Partial Public Class Facturacion_ds_report
             Me.columnfecha = MyBase.Columns("fecha")
             Me.columnvendedor = MyBase.Columns("vendedor")
             Me.columntipo_venta = MyBase.Columns("tipo_venta")
+            Me.columnOrden_trabajo_id = MyBase.Columns("Orden_trabajo_id")
+            Me.columnSubtotal = MyBase.Columns("Subtotal")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1689,6 +1711,10 @@ Partial Public Class Facturacion_ds_report
             MyBase.Columns.Add(Me.columnvendedor)
             Me.columntipo_venta = New Global.System.Data.DataColumn("tipo_venta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columntipo_venta)
+            Me.columnOrden_trabajo_id = New Global.System.Data.DataColumn("Orden_trabajo_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOrden_trabajo_id)
+            Me.columnSubtotal = New Global.System.Data.DataColumn("Subtotal", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSubtotal)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3560,6 +3586,36 @@ Partial Public Class Facturacion_ds_report
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Orden_trabajo_id() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableventa.Orden_trabajo_idColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Orden_trabajo_id' de la tabla 'venta' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableventa.Orden_trabajo_idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Subtotal() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableventa.SubtotalColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Subtotal' de la tabla 'venta' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableventa.SubtotalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isnro_facturaNull() As Boolean
             Return Me.IsNull(Me.tableventa.nro_facturaColumn)
         End Function
@@ -3604,6 +3660,30 @@ Partial Public Class Facturacion_ds_report
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Settipo_ventaNull()
             Me(Me.tableventa.tipo_ventaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsOrden_trabajo_idNull() As Boolean
+            Return Me.IsNull(Me.tableventa.Orden_trabajo_idColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetOrden_trabajo_idNull()
+            Me(Me.tableventa.Orden_trabajo_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsSubtotalNull() As Boolean
+            Return Me.IsNull(Me.tableventa.SubtotalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetSubtotalNull()
+            Me(Me.tableventa.SubtotalColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
