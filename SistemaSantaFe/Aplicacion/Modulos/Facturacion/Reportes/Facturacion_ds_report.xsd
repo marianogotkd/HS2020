@@ -62,6 +62,8 @@
               <xs:element name="fecha" msprop:Generator_ColumnVarNameInTable="columnfecha" msprop:Generator_ColumnPropNameInRow="fecha" msprop:Generator_ColumnPropNameInTable="fechaColumn" msprop:Generator_UserColumnName="fecha" type="xs:dateTime" minOccurs="0" />
               <xs:element name="vendedor" msprop:Generator_ColumnVarNameInTable="columnvendedor" msprop:Generator_ColumnPropNameInRow="vendedor" msprop:Generator_ColumnPropNameInTable="vendedorColumn" msprop:Generator_UserColumnName="vendedor" type="xs:string" minOccurs="0" />
               <xs:element name="tipo_venta" msprop:Generator_ColumnVarNameInTable="columntipo_venta" msprop:Generator_ColumnPropNameInRow="tipo_venta" msprop:Generator_ColumnPropNameInTable="tipo_ventaColumn" msprop:Generator_UserColumnName="tipo_venta" type="xs:string" minOccurs="0" />
+              <xs:element name="Orden_trabajo_id" msprop:Generator_ColumnVarNameInTable="columnOrden_trabajo_id" msprop:Generator_ColumnPropNameInRow="Orden_trabajo_id" msprop:Generator_ColumnPropNameInTable="Orden_trabajo_idColumn" msprop:Generator_UserColumnName="Orden_trabajo_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Subtotal" msprop:Generator_ColumnVarNameInTable="columnSubtotal" msprop:Generator_ColumnPropNameInRow="Subtotal" msprop:Generator_ColumnPropNameInTable="SubtotalColumn" msprop:Generator_UserColumnName="Subtotal" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

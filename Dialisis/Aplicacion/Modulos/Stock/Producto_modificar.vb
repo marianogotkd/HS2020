@@ -1635,5 +1635,9 @@ Public Class Producto_modificar
 
         'End If
     End Sub
+
+    Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        Ajuste_Consulta.Show()
+    End Sub
 End Class
 

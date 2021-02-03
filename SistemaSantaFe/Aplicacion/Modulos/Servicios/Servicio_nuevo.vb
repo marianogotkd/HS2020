@@ -856,6 +856,8 @@
         row_venta("fecha") = Today 'CDate(Venta_Caja_gestion.lb_fecha_vta.Text) 'siempre se factura a la fecha del dia en este caso
         row_venta("vendedor") = ""
         row_venta("tipo_venta") = "Cliente"
+        row_venta("Orden_trabajo_id") = orden_trabajo_id
+        row_venta("Subtotal") = TextBox_Repuesto.Text
         Facturacion_ds_report.Tables("venta").Rows.Add(row_venta)
 
         '///////////////TABLA TOTALES APLICADOS//////////////////////////////////'
