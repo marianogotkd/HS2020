@@ -36,6 +36,8 @@ Partial Class Ajuste_alta
         Me.txt_nrolote = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txt_contenido = New System.Windows.Forms.TextBox()
         Me.GroupBox4.SuspendLayout()
         Me.Grupo_lote.SuspendLayout()
         Me.SuspendLayout()
@@ -56,6 +58,8 @@ Partial Class Ajuste_alta
         'Grupo_lote
         '
         Me.Grupo_lote.BackColor = System.Drawing.Color.Transparent
+        Me.Grupo_lote.Controls.Add(Me.txt_contenido)
+        Me.Grupo_lote.Controls.Add(Me.Label1)
         Me.Grupo_lote.Controls.Add(Me.Label20)
         Me.Grupo_lote.Controls.Add(Me.btn_agregarr)
         Me.Grupo_lote.Controls.Add(Me.cb_proveedor)
@@ -213,6 +217,30 @@ Partial Class Ajuste_alta
         Me.Label13.TabIndex = 21
         Me.Label13.Text = "F. Vencimiento:"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(350, 63)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(76, 15)
+        Me.Label1.TabIndex = 250
+        Me.Label1.Text = "Contenido:"
+        '
+        'txt_contenido
+        '
+        Me.txt_contenido.BackColor = System.Drawing.SystemColors.InactiveBorder
+        Me.txt_contenido.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_contenido.Location = New System.Drawing.Point(434, 58)
+        Me.txt_contenido.Margin = New System.Windows.Forms.Padding(4)
+        Me.txt_contenido.MinimumSize = New System.Drawing.Size(90, 30)
+        Me.txt_contenido.Name = "txt_contenido"
+        Me.txt_contenido.ReadOnly = True
+        Me.txt_contenido.Size = New System.Drawing.Size(123, 30)
+        Me.txt_contenido.TabIndex = 251
+        Me.txt_contenido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'Ajuste_alta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -247,4 +275,6 @@ Partial Class Ajuste_alta
     Friend WithEvents btn_agregarr As System.Windows.Forms.Button
     Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents cb_proveedor As System.Windows.Forms.ComboBox
+    Friend WithEvents txt_contenido As System.Windows.Forms.TextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

@@ -251,7 +251,28 @@ Public Class Usuario
         Return ds_usu
     End Function
 
+    'procedimiento que registra actividad de un usuario cuando hace una sesion de dialisis.
+    Public Sub UsuarioActividad_registrar_sesiones_dialisis(ByVal USU_id As Integer, ByVal sucursal_id As Integer, ByVal sesiones_id As Integer,
+                                                            ByVal ACT_fecha As DateTime, ByVal ACT_sesion As String)
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
 
+        Dim comando As New OleDbCommand("UsuarioActividad_registrar_sesiones_dialisis", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@USU_id", USU_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sesiones_id", sesiones_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@ACT_fecha", ACT_fecha))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@ACT_sesion", ACT_sesion))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "UsuarioActividad")
+        dbconn.Close()
+    End Sub
 
 #Region "Configuracion de Tipos de Usuario"
     Public Function UsuarioModulos_alta(ByVal UT_id As Integer, ByVal USUModulos_descripcion As String) As DataSet

@@ -37,8 +37,8 @@
             Dim fechavto As Date
             If CheckBox_vto.Checked = True Then
                 vence = "si"
-                fechafab = DateTimePicker_ffabricacion.Value
-                fechavto = DateTimePicker_fvencimiento.Value
+                fechafab = DateTimePicker_ffabricacion.Value.Date
+                fechavto = DateTimePicker_fvencimiento.Value.Date
             Else
                 vence = "no"
                 fechafab = Today

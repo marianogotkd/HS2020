@@ -777,7 +777,7 @@ Public Class Busqueda_Productos
             If ds_PROD.Tables(2).Rows.Count <> 0 Then 'recupera el producto solo si tiene Lote = "SI"
                 'si es distinto de 0, significa que tiene lotes que se van a colocar incrementales
                 Dim ds_lotes As DataSet = DAlote.Lote_buscar_producto(codint, Gestion_Mercaderia_Alta.cb_origen.SelectedValue)
-                If ds_lotes.Tables(0).Rows.Count = 0 Then
+                If ds_lotes.Tables(1).Rows.Count = 0 Then
                     'como no tengo lotes, creo el primer lote en 1
                     Dim nrolote_de_bd As Integer = 0
 
@@ -795,7 +795,7 @@ Public Class Busqueda_Productos
 
                 Else
                     'como tengo varios lotes, busco el ultimo e incremento en 1.
-                    Dim nrolote_de_bd As Integer = CInt(ds_lotes.Tables(0).Rows(ds_lotes.Tables(0).Rows.Count - 1).Item("lote_nro"))
+                    Dim nrolote_de_bd As Integer = CInt(ds_lotes.Tables(1).Rows(ds_lotes.Tables(1).Rows.Count - 1).Item("lote_nro"))
                     'ahora me fijo, si tengo algo en la grilla de productos agregados, incremento el nrolote.
                     Dim i As Integer = 0
                     While i < Gestion_Mercaderia_Alta.DataGridView1.Rows.Count

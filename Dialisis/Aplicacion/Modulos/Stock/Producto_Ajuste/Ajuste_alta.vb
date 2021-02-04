@@ -151,8 +151,13 @@
         recuperar_proveedores_del_producto()
         'recupero lotes e incremento en 1
         recuperar_lotes_e_incrementar()
+
+
+
     End Sub
     Private Sub recuperar_lotes_e_incrementar()
+        txt_contenido.Text = Producto_ajuste.contenido_x_unidad.ToString + " " + Producto_ajuste.unidad_medida
+
         ds_PROD = DAprod.Producto_buscarcod_en_proveedor(codinterno, cb_proveedor.SelectedValue)
         If ds_PROD.Tables(0).Rows.Count <> 0 Then
             'tb_desc.Text = ds_PROD.Tables(0).Rows(0).Item("prod_descripcion")
@@ -165,7 +170,7 @@
             If ds_PROD.Tables(2).Rows.Count <> 0 Then 'recupera el producto solo si tiene Lote = "SI"
                 'si es distinto de 0, significa que tiene lotes que se van a colocar incrementales, es decir NO
                 Dim ds_lotes As DataSet = DAlote.Lote_buscar_producto(codinterno, sucursal_id)
-                If ds_lotes.Tables(0).Rows.Count = 0 Then
+                If ds_lotes.Tables(1).Rows.Count = 0 Then
                     'como no tengo lotes, creo el primer lote en 1
                     Dim nrolote_de_bd As Integer = 0
                     'ahora me fijo, si tengo algo en la grilla de productos agregados, incremento el nrolote.
@@ -180,7 +185,7 @@
                     txt_nrolote.Text = nrolote_de_bd
                 Else
                     'como tengo varios lotes, busco el ultimo e incremento en 1.
-                    Dim nrolote_de_bd As Integer = CInt(ds_lotes.Tables(0).Rows(ds_lotes.Tables(0).Rows.Count - 1).Item("lote_nro"))
+                    Dim nrolote_de_bd As Integer = CInt(ds_lotes.Tables(1).Rows(ds_lotes.Tables(1).Rows.Count - 1).Item("lote_nro"))
                     ''ahora me fijo, si tengo algo en la grilla de productos agregados, incremento el nrolote.
                     'Dim i As Integer = 0
                     'While i < DataGridView1.Rows.Count

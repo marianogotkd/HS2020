@@ -25,6 +25,7 @@ Partial Class Enfermeria_insumos_Ausente
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Enfermeria_insumos_Ausente))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btn_cancelar = New System.Windows.Forms.Button()
         Me.btn_guardar = New System.Windows.Forms.Button()
         Me.GroupBox_insumos = New System.Windows.Forms.GroupBox()
@@ -32,19 +33,6 @@ Partial Class Enfermeria_insumos_Ausente
         Me.Label22 = New System.Windows.Forms.Label()
         Me.btn_limpiar = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.NDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CodprodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DesdeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.HaciaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.LoteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaFabricacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaVencimientoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.VenceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioUDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SubtotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProvidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MovEnfBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Mov_DS = New Aplicacion.Mov_DS()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -54,11 +42,43 @@ Partial Class Enfermeria_insumos_Ausente
         Me.Label18 = New System.Windows.Forms.Label()
         Me.tb_Filtro = New System.Windows.Forms.TextBox()
         Me.lbl_err2 = New System.Windows.Forms.Label()
+        Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
+        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.Ds_enfermeria = New Aplicacion.Ds_enfermeria()
+        Me.ConsumorealBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CodprodDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DesdeDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HaciaDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CantidadrealDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LoteidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProvidDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.NDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CodprodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DesdeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.HaciaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad_a_consumir = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LoteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaFabricacionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaVencimientoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.VenceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioUDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SubtotalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProvidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.EnBD = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox_insumos.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MovEnfBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Mov_DS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Ds_enfermeria, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ConsumorealBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btn_cancelar
@@ -93,6 +113,8 @@ Partial Class Enfermeria_insumos_Ausente
         '
         'GroupBox_insumos
         '
+        Me.GroupBox_insumos.Controls.Add(Me.DataGridView2)
+        Me.GroupBox_insumos.Controls.Add(Me.btn_eliminar_seleccion)
         Me.GroupBox_insumos.Controls.Add(Me.btn_Buscar)
         Me.GroupBox_insumos.Controls.Add(Me.Label22)
         Me.GroupBox_insumos.Controls.Add(Me.btn_limpiar)
@@ -131,7 +153,7 @@ Partial Class Enfermeria_insumos_Ausente
         '
         Me.btn_limpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_limpiar.Image = Global.Aplicacion.My.Resources.Resources.Borrar
-        Me.btn_limpiar.Location = New System.Drawing.Point(111, 36)
+        Me.btn_limpiar.Location = New System.Drawing.Point(213, 36)
         Me.btn_limpiar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_limpiar.Name = "btn_limpiar"
         Me.btn_limpiar.Size = New System.Drawing.Size(151, 39)
@@ -139,6 +161,7 @@ Partial Class Enfermeria_insumos_Ausente
         Me.btn_limpiar.Text = "Borrar Listado"
         Me.btn_limpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_limpiar.UseVisualStyleBackColor = True
+        Me.btn_limpiar.Visible = False
         '
         'DataGridView1
         '
@@ -149,7 +172,7 @@ Partial Class Enfermeria_insumos_Ausente
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NDataGridViewTextBoxColumn, Me.CodprodDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.DesdeDataGridViewTextBoxColumn, Me.HaciaDataGridViewTextBoxColumn, Me.CantidadDataGridViewTextBoxColumn, Me.LoteDataGridViewTextBoxColumn, Me.FechaFabricacionDataGridViewTextBoxColumn, Me.FechaVencimientoDataGridViewTextBoxColumn, Me.VenceDataGridViewTextBoxColumn, Me.PrecioUDataGridViewTextBoxColumn, Me.SubtotalDataGridViewTextBoxColumn, Me.ProvidDataGridViewTextBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NDataGridViewTextBoxColumn, Me.CodprodDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.DesdeDataGridViewTextBoxColumn, Me.HaciaDataGridViewTextBoxColumn, Me.CantidadDataGridViewTextBoxColumn, Me.Cantidad_a_consumir, Me.LoteDataGridViewTextBoxColumn, Me.FechaFabricacionDataGridViewTextBoxColumn, Me.FechaVencimientoDataGridViewTextBoxColumn, Me.VenceDataGridViewTextBoxColumn, Me.PrecioUDataGridViewTextBoxColumn, Me.SubtotalDataGridViewTextBoxColumn, Me.ProvidDataGridViewTextBoxColumn, Me.Column2, Me.EnBD})
         Me.DataGridView1.DataSource = Me.MovEnfBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(5, 84)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
@@ -165,94 +188,9 @@ Partial Class Enfermeria_insumos_Ausente
         Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(877, 180)
+        Me.DataGridView1.Size = New System.Drawing.Size(877, 136)
         Me.DataGridView1.StandardTab = True
         Me.DataGridView1.TabIndex = 331
-        '
-        'NDataGridViewTextBoxColumn
-        '
-        Me.NDataGridViewTextBoxColumn.DataPropertyName = "N°"
-        Me.NDataGridViewTextBoxColumn.HeaderText = "N°"
-        Me.NDataGridViewTextBoxColumn.Name = "NDataGridViewTextBoxColumn"
-        '
-        'CodprodDataGridViewTextBoxColumn
-        '
-        Me.CodprodDataGridViewTextBoxColumn.DataPropertyName = "Cod_prod"
-        Me.CodprodDataGridViewTextBoxColumn.HeaderText = "Codigo"
-        Me.CodprodDataGridViewTextBoxColumn.Name = "CodprodDataGridViewTextBoxColumn"
-        '
-        'DescripcionDataGridViewTextBoxColumn
-        '
-        Me.DescripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion"
-        Me.DescripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion"
-        Me.DescripcionDataGridViewTextBoxColumn.Name = "DescripcionDataGridViewTextBoxColumn"
-        '
-        'DesdeDataGridViewTextBoxColumn
-        '
-        Me.DesdeDataGridViewTextBoxColumn.DataPropertyName = "Desde"
-        Me.DesdeDataGridViewTextBoxColumn.HeaderText = "Desde"
-        Me.DesdeDataGridViewTextBoxColumn.Name = "DesdeDataGridViewTextBoxColumn"
-        Me.DesdeDataGridViewTextBoxColumn.Visible = False
-        '
-        'HaciaDataGridViewTextBoxColumn
-        '
-        Me.HaciaDataGridViewTextBoxColumn.DataPropertyName = "Hacia"
-        Me.HaciaDataGridViewTextBoxColumn.HeaderText = "Hacia"
-        Me.HaciaDataGridViewTextBoxColumn.Name = "HaciaDataGridViewTextBoxColumn"
-        Me.HaciaDataGridViewTextBoxColumn.Visible = False
-        '
-        'CantidadDataGridViewTextBoxColumn
-        '
-        Me.CantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad"
-        Me.CantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
-        Me.CantidadDataGridViewTextBoxColumn.Name = "CantidadDataGridViewTextBoxColumn"
-        '
-        'LoteDataGridViewTextBoxColumn
-        '
-        Me.LoteDataGridViewTextBoxColumn.DataPropertyName = "Lote"
-        Me.LoteDataGridViewTextBoxColumn.HeaderText = "Lote"
-        Me.LoteDataGridViewTextBoxColumn.Name = "LoteDataGridViewTextBoxColumn"
-        Me.LoteDataGridViewTextBoxColumn.Visible = False
-        '
-        'FechaFabricacionDataGridViewTextBoxColumn
-        '
-        Me.FechaFabricacionDataGridViewTextBoxColumn.DataPropertyName = "FechaFabricacion"
-        Me.FechaFabricacionDataGridViewTextBoxColumn.HeaderText = "FechaFabricacion"
-        Me.FechaFabricacionDataGridViewTextBoxColumn.Name = "FechaFabricacionDataGridViewTextBoxColumn"
-        '
-        'FechaVencimientoDataGridViewTextBoxColumn
-        '
-        Me.FechaVencimientoDataGridViewTextBoxColumn.DataPropertyName = "FechaVencimiento"
-        Me.FechaVencimientoDataGridViewTextBoxColumn.HeaderText = "FechaVencimiento"
-        Me.FechaVencimientoDataGridViewTextBoxColumn.Name = "FechaVencimientoDataGridViewTextBoxColumn"
-        '
-        'VenceDataGridViewTextBoxColumn
-        '
-        Me.VenceDataGridViewTextBoxColumn.DataPropertyName = "Vence"
-        Me.VenceDataGridViewTextBoxColumn.HeaderText = "Vence"
-        Me.VenceDataGridViewTextBoxColumn.Name = "VenceDataGridViewTextBoxColumn"
-        Me.VenceDataGridViewTextBoxColumn.Visible = False
-        '
-        'PrecioUDataGridViewTextBoxColumn
-        '
-        Me.PrecioUDataGridViewTextBoxColumn.DataPropertyName = "PrecioU"
-        Me.PrecioUDataGridViewTextBoxColumn.HeaderText = "PrecioU"
-        Me.PrecioUDataGridViewTextBoxColumn.Name = "PrecioUDataGridViewTextBoxColumn"
-        Me.PrecioUDataGridViewTextBoxColumn.Visible = False
-        '
-        'SubtotalDataGridViewTextBoxColumn
-        '
-        Me.SubtotalDataGridViewTextBoxColumn.DataPropertyName = "Subtotal"
-        Me.SubtotalDataGridViewTextBoxColumn.HeaderText = "Subtotal"
-        Me.SubtotalDataGridViewTextBoxColumn.Name = "SubtotalDataGridViewTextBoxColumn"
-        Me.SubtotalDataGridViewTextBoxColumn.Visible = False
-        '
-        'ProvidDataGridViewTextBoxColumn
-        '
-        Me.ProvidDataGridViewTextBoxColumn.DataPropertyName = "Prov_id"
-        Me.ProvidDataGridViewTextBoxColumn.HeaderText = "Prov_id"
-        Me.ProvidDataGridViewTextBoxColumn.Name = "ProvidDataGridViewTextBoxColumn"
-        Me.ProvidDataGridViewTextBoxColumn.Visible = False
         '
         'MovEnfBindingSource
         '
@@ -336,6 +274,231 @@ Partial Class Enfermeria_insumos_Ausente
         Me.lbl_err2.Text = "*"
         Me.lbl_err2.Visible = False
         '
+        'btn_eliminar_seleccion
+        '
+        Me.btn_eliminar_seleccion.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btn_eliminar_seleccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_seleccion.Image = Global.Aplicacion.My.Resources.Resources.menos
+        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(111, 36)
+        Me.btn_eliminar_seleccion.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_eliminar_seleccion.Name = "btn_eliminar_seleccion"
+        Me.btn_eliminar_seleccion.Size = New System.Drawing.Size(94, 40)
+        Me.btn_eliminar_seleccion.TabIndex = 338
+        Me.btn_eliminar_seleccion.Text = "Quitar"
+        Me.btn_eliminar_seleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btn_eliminar_seleccion.UseVisualStyleBackColor = True
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.AllowUserToAddRows = False
+        Me.DataGridView2.AllowUserToDeleteRows = False
+        Me.DataGridView2.AllowUserToResizeRows = False
+        Me.DataGridView2.AutoGenerateColumns = False
+        Me.DataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridView2.BackgroundColor = System.Drawing.Color.White
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodprodDataGridViewTextBoxColumn1, Me.DescripcionDataGridViewTextBoxColumn1, Me.DesdeDataGridViewTextBoxColumn1, Me.HaciaDataGridViewTextBoxColumn1, Me.CantidadrealDataGridViewTextBoxColumn, Me.LoteidDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn13, Me.ProvidDataGridViewTextBoxColumn1, Me.DataGridViewCheckBoxColumn1})
+        Me.DataGridView2.DataSource = Me.ConsumorealBindingSource
+        Me.DataGridView2.Location = New System.Drawing.Point(418, 36)
+        Me.DataGridView2.Margin = New System.Windows.Forms.Padding(4)
+        Me.DataGridView2.MultiSelect = False
+        Me.DataGridView2.Name = "DataGridView2"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridView2.RowHeadersVisible = False
+        Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridView2.Size = New System.Drawing.Size(404, 156)
+        Me.DataGridView2.StandardTab = True
+        Me.DataGridView2.TabIndex = 339
+        Me.DataGridView2.Visible = False
+        '
+        'Ds_enfermeria
+        '
+        Me.Ds_enfermeria.DataSetName = "Ds_enfermeria"
+        Me.Ds_enfermeria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ConsumorealBindingSource
+        '
+        Me.ConsumorealBindingSource.DataMember = "Consumo_real"
+        Me.ConsumorealBindingSource.DataSource = Me.Ds_enfermeria
+        '
+        'CodprodDataGridViewTextBoxColumn1
+        '
+        Me.CodprodDataGridViewTextBoxColumn1.DataPropertyName = "Cod_prod"
+        Me.CodprodDataGridViewTextBoxColumn1.HeaderText = "Cod_prod"
+        Me.CodprodDataGridViewTextBoxColumn1.Name = "CodprodDataGridViewTextBoxColumn1"
+        '
+        'DescripcionDataGridViewTextBoxColumn1
+        '
+        Me.DescripcionDataGridViewTextBoxColumn1.DataPropertyName = "Descripcion"
+        Me.DescripcionDataGridViewTextBoxColumn1.HeaderText = "Descripcion"
+        Me.DescripcionDataGridViewTextBoxColumn1.Name = "DescripcionDataGridViewTextBoxColumn1"
+        '
+        'DesdeDataGridViewTextBoxColumn1
+        '
+        Me.DesdeDataGridViewTextBoxColumn1.DataPropertyName = "Desde"
+        Me.DesdeDataGridViewTextBoxColumn1.HeaderText = "Desde"
+        Me.DesdeDataGridViewTextBoxColumn1.Name = "DesdeDataGridViewTextBoxColumn1"
+        '
+        'HaciaDataGridViewTextBoxColumn1
+        '
+        Me.HaciaDataGridViewTextBoxColumn1.DataPropertyName = "Hacia"
+        Me.HaciaDataGridViewTextBoxColumn1.HeaderText = "Hacia"
+        Me.HaciaDataGridViewTextBoxColumn1.Name = "HaciaDataGridViewTextBoxColumn1"
+        '
+        'CantidadrealDataGridViewTextBoxColumn
+        '
+        Me.CantidadrealDataGridViewTextBoxColumn.DataPropertyName = "Cantidad_real"
+        Me.CantidadrealDataGridViewTextBoxColumn.HeaderText = "Cantidad_real"
+        Me.CantidadrealDataGridViewTextBoxColumn.Name = "CantidadrealDataGridViewTextBoxColumn"
+        '
+        'LoteidDataGridViewTextBoxColumn
+        '
+        Me.LoteidDataGridViewTextBoxColumn.DataPropertyName = "lote_id"
+        Me.LoteidDataGridViewTextBoxColumn.HeaderText = "lote_id"
+        Me.LoteidDataGridViewTextBoxColumn.Name = "LoteidDataGridViewTextBoxColumn"
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "Prov_id"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Prov_id"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        Me.DataGridViewTextBoxColumn13.Visible = False
+        '
+        'ProvidDataGridViewTextBoxColumn1
+        '
+        Me.ProvidDataGridViewTextBoxColumn1.DataPropertyName = "Prov_id"
+        Me.ProvidDataGridViewTextBoxColumn1.HeaderText = "Prov_id"
+        Me.ProvidDataGridViewTextBoxColumn1.Name = "ProvidDataGridViewTextBoxColumn1"
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "Column1"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        '
+        'NDataGridViewTextBoxColumn
+        '
+        Me.NDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.NDataGridViewTextBoxColumn.DataPropertyName = "N°"
+        Me.NDataGridViewTextBoxColumn.FillWeight = 136.0544!
+        Me.NDataGridViewTextBoxColumn.HeaderText = "N°"
+        Me.NDataGridViewTextBoxColumn.Name = "NDataGridViewTextBoxColumn"
+        Me.NDataGridViewTextBoxColumn.Width = 50
+        '
+        'CodprodDataGridViewTextBoxColumn
+        '
+        Me.CodprodDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CodprodDataGridViewTextBoxColumn.DataPropertyName = "Cod_prod"
+        Me.CodprodDataGridViewTextBoxColumn.FillWeight = 87.98186!
+        Me.CodprodDataGridViewTextBoxColumn.HeaderText = "Codigo"
+        Me.CodprodDataGridViewTextBoxColumn.Name = "CodprodDataGridViewTextBoxColumn"
+        '
+        'DescripcionDataGridViewTextBoxColumn
+        '
+        Me.DescripcionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DescripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion"
+        Me.DescripcionDataGridViewTextBoxColumn.FillWeight = 87.98186!
+        Me.DescripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion"
+        Me.DescripcionDataGridViewTextBoxColumn.Name = "DescripcionDataGridViewTextBoxColumn"
+        '
+        'DesdeDataGridViewTextBoxColumn
+        '
+        Me.DesdeDataGridViewTextBoxColumn.DataPropertyName = "Desde"
+        Me.DesdeDataGridViewTextBoxColumn.HeaderText = "Desde"
+        Me.DesdeDataGridViewTextBoxColumn.Name = "DesdeDataGridViewTextBoxColumn"
+        Me.DesdeDataGridViewTextBoxColumn.Visible = False
+        '
+        'HaciaDataGridViewTextBoxColumn
+        '
+        Me.HaciaDataGridViewTextBoxColumn.DataPropertyName = "Hacia"
+        Me.HaciaDataGridViewTextBoxColumn.HeaderText = "Hacia"
+        Me.HaciaDataGridViewTextBoxColumn.Name = "HaciaDataGridViewTextBoxColumn"
+        Me.HaciaDataGridViewTextBoxColumn.Visible = False
+        '
+        'CantidadDataGridViewTextBoxColumn
+        '
+        Me.CantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad"
+        Me.CantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
+        Me.CantidadDataGridViewTextBoxColumn.Name = "CantidadDataGridViewTextBoxColumn"
+        Me.CantidadDataGridViewTextBoxColumn.Visible = False
+        '
+        'Cantidad_a_consumir
+        '
+        Me.Cantidad_a_consumir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Cantidad_a_consumir.DataPropertyName = "Cantidad_a_consumir"
+        Me.Cantidad_a_consumir.FillWeight = 87.98186!
+        Me.Cantidad_a_consumir.HeaderText = "Cantidad a consumir"
+        Me.Cantidad_a_consumir.Name = "Cantidad_a_consumir"
+        '
+        'LoteDataGridViewTextBoxColumn
+        '
+        Me.LoteDataGridViewTextBoxColumn.DataPropertyName = "Lote"
+        Me.LoteDataGridViewTextBoxColumn.HeaderText = "Lote"
+        Me.LoteDataGridViewTextBoxColumn.Name = "LoteDataGridViewTextBoxColumn"
+        Me.LoteDataGridViewTextBoxColumn.Visible = False
+        '
+        'FechaFabricacionDataGridViewTextBoxColumn
+        '
+        Me.FechaFabricacionDataGridViewTextBoxColumn.DataPropertyName = "FechaFabricacion"
+        Me.FechaFabricacionDataGridViewTextBoxColumn.HeaderText = "FechaFabricacion"
+        Me.FechaFabricacionDataGridViewTextBoxColumn.Name = "FechaFabricacionDataGridViewTextBoxColumn"
+        Me.FechaFabricacionDataGridViewTextBoxColumn.Visible = False
+        '
+        'FechaVencimientoDataGridViewTextBoxColumn
+        '
+        Me.FechaVencimientoDataGridViewTextBoxColumn.DataPropertyName = "FechaVencimiento"
+        Me.FechaVencimientoDataGridViewTextBoxColumn.HeaderText = "FechaVencimiento"
+        Me.FechaVencimientoDataGridViewTextBoxColumn.Name = "FechaVencimientoDataGridViewTextBoxColumn"
+        Me.FechaVencimientoDataGridViewTextBoxColumn.Visible = False
+        '
+        'VenceDataGridViewTextBoxColumn
+        '
+        Me.VenceDataGridViewTextBoxColumn.DataPropertyName = "Vence"
+        Me.VenceDataGridViewTextBoxColumn.HeaderText = "Vence"
+        Me.VenceDataGridViewTextBoxColumn.Name = "VenceDataGridViewTextBoxColumn"
+        Me.VenceDataGridViewTextBoxColumn.Visible = False
+        '
+        'PrecioUDataGridViewTextBoxColumn
+        '
+        Me.PrecioUDataGridViewTextBoxColumn.DataPropertyName = "PrecioU"
+        Me.PrecioUDataGridViewTextBoxColumn.HeaderText = "PrecioU"
+        Me.PrecioUDataGridViewTextBoxColumn.Name = "PrecioUDataGridViewTextBoxColumn"
+        Me.PrecioUDataGridViewTextBoxColumn.Visible = False
+        '
+        'SubtotalDataGridViewTextBoxColumn
+        '
+        Me.SubtotalDataGridViewTextBoxColumn.DataPropertyName = "Subtotal"
+        Me.SubtotalDataGridViewTextBoxColumn.HeaderText = "Subtotal"
+        Me.SubtotalDataGridViewTextBoxColumn.Name = "SubtotalDataGridViewTextBoxColumn"
+        Me.SubtotalDataGridViewTextBoxColumn.Visible = False
+        '
+        'ProvidDataGridViewTextBoxColumn
+        '
+        Me.ProvidDataGridViewTextBoxColumn.DataPropertyName = "Prov_id"
+        Me.ProvidDataGridViewTextBoxColumn.HeaderText = "Prov_id"
+        Me.ProvidDataGridViewTextBoxColumn.Name = "ProvidDataGridViewTextBoxColumn"
+        Me.ProvidDataGridViewTextBoxColumn.Visible = False
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Column2.HeaderText = "Item"
+        Me.Column2.Name = "Column2"
+        Me.Column2.Width = 50
+        '
+        'EnBD
+        '
+        Me.EnBD.DataPropertyName = "EnBD"
+        Me.EnBD.HeaderText = "EnBD"
+        Me.EnBD.Name = "EnBD"
+        Me.EnBD.Visible = False
+        '
         'Enfermeria_insumos_Ausente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -358,6 +521,9 @@ Partial Class Enfermeria_insumos_Ausente
         CType(Me.Mov_DS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Ds_enfermeria, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ConsumorealBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -370,19 +536,6 @@ Partial Class Enfermeria_insumos_Ausente
     Public WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents MovEnfBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents Mov_DS As Aplicacion.Mov_DS
-    Friend WithEvents NDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CodprodDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DescripcionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DesdeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents HaciaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CantidadDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents LoteDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents FechaFabricacionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents FechaVencimientoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents VenceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PrecioUDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents SubtotalDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ProvidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents btn_cambio As System.Windows.Forms.Button
     Friend WithEvents Label24 As System.Windows.Forms.Label
@@ -390,4 +543,33 @@ Partial Class Enfermeria_insumos_Ausente
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents tb_Filtro As System.Windows.Forms.TextBox
     Friend WithEvents lbl_err2 As System.Windows.Forms.Label
+    Friend WithEvents btn_eliminar_seleccion As System.Windows.Forms.Button
+    Public WithEvents DataGridView2 As System.Windows.Forms.DataGridView
+    Friend WithEvents ConsumorealBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Ds_enfermeria As Aplicacion.Ds_enfermeria
+    Friend WithEvents CodprodDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DescripcionDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DesdeDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents HaciaDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CantidadrealDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LoteidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn13 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ProvidDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewCheckBoxColumn1 As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents NDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CodprodDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DescripcionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DesdeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents HaciaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CantidadDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Cantidad_a_consumir As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LoteDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents FechaFabricacionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents FechaVencimientoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents VenceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PrecioUDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SubtotalDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ProvidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents EnBD As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

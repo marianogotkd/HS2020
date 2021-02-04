@@ -5,6 +5,8 @@
     Public sucursal_id As Integer
     Dim DAsucursal As New Datos.Sucursal
     Public tipo_producto As String 'me indica si es string
+    Public contenido_x_unidad As Decimal
+    Public unidad_medida As String
     Public Sub recuperar_lotes()
         Mov_DS.Tables("lote_baja").Rows.Clear() 'siempre borro
         Dim prodcodinterno As Integer = CInt(txt_codigo.Text)
@@ -34,6 +36,8 @@
                 nuevoRow("lote_stock_real") = ds_lotes.Tables(0).Rows(i).Item("lote_stock_real")
                 nuevoRow("lote_aux") = ds_lotes.Tables(0).Rows(i).Item("lote_aux")
 
+                contenido_x_unidad = ds_lotes.Tables(0).Rows(i).Item("prod_contenido")
+                unidad_medida = ds_lotes.Tables(0).Rows(i).Item("prod_unidadmedida")
                 tipo_producto = ds_lotes.Tables(0).Rows(i).Item("prod_tipo")
                 txt_totalreal.Text = ds_lotes.Tables(0).Rows(i).Item("ProdxSuc_stock_real").ToString + " " + ds_lotes.Tables(0).Rows(i).Item("prod_unidadmedida")
                 Mov_DS.Tables("lote_baja").Rows.Add(nuevoRow)
@@ -62,6 +66,7 @@
 
                     If cantdias <= 0 Then
                         DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Red
+
                     Else
                         If cantdias > 15 Then
                             DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Green
@@ -265,6 +270,54 @@
 
             DataGridView2.CurrentCell.Value = 0
         End If
+    End Sub
+
+    Private Sub DataGridView2_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DataGridView2.CellFormatting
+        Dim vence As String = "no"
+        Dim i As Integer = e.RowIndex
+        If DataGridView2.Rows(i).Cells("LotevenceDataGridViewTextBoxColumn").Value = "si" Then 'esto significa que voy a validar esta celda
+            'ahora pongo los colores
+            Dim cantdias As Integer
+            If DataGridView2.Columns(e.ColumnIndex).Name = "LotefechavtoDataGridViewTextBoxColumn" Then
+
+                cantdias = DateDiff("d", Today, e.Value)
+
+                If cantdias <= 0 Then
+                    'e.CellStyle.ForeColor = Color.Red
+                    'e.CellStyle.SelectionForeColor = Color.Red
+                    DataGridView2.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Red
+                    DataGridView2.Rows(e.RowIndex).DefaultCellStyle.SelectionForeColor = Color.Red
+                    'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Red
+                Else
+                    If cantdias > 15 Then
+                        'e.CellStyle.ForeColor = Color.Green 'esto es si quiero solamente en verde la celda y no la fila
+                        'e.CellStyle.SelectionForeColor = Color.Green
+                        DataGridView2.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Green
+                        DataGridView2.Rows(e.RowIndex).DefaultCellStyle.SelectionForeColor = Color.Green
+                        'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Green
+                    Else
+                        'menor o igual a 15 
+                        'e.CellStyle.ForeColor = Color.Orange
+                        'e.CellStyle.SelectionForeColor = Color.Orange
+                        DataGridView2.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Orange
+                        DataGridView2.Rows(e.RowIndex).DefaultCellStyle.SelectionForeColor = Color.Orange
+                        'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Orange
+                    End If
+                End If
+            End If
+        End If
+
+        
+            
+        'Dim vencidos As Decimal = CDec(e.Value)
+        'If vencidos <> CDec(0) Then
+        '    e.CellStyle.ForeColor = Color.Red
+        '    e.CellStyle.SelectionForeColor = Color.Red
+        'End If
+
+
+
+
     End Sub
 
     Private Sub DataGridView2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView2.Click

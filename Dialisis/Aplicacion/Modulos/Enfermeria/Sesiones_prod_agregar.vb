@@ -1055,6 +1055,7 @@
                 End If
                 cb_marca.Enabled = False
                 Obtener_Productos_Combos()
+                agregar_cant_vencida()
             End If
         End If
     End Sub
@@ -1799,7 +1800,7 @@
     End Sub
 #End Region
 
-#Region "filtrar Gestion Mercaderia"
+#Region "filtrar Gestion Mercaderia" 'este tambien uso en dialisis para agregar insumos para consumir
     Dim ds_prod_gestmerc
     Private Sub filtrar_solo_por_marca_GM()
         ds_prod_gestmerc = DAVentas.Venta_obtenerProducto_Combos_marca_GM(sucursal_id, cb_marca.SelectedValue)
@@ -1846,6 +1847,8 @@
                         row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
                         row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
                         row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+                        row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+                        row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
 
                         Venta_Caja_ds.Tables("Prod_consulta").Rows.Add(row)
                     End If
@@ -1866,6 +1869,8 @@
                                 row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
                                 row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
 
                                 Venta_Caja_ds.Tables("Prod_consulta").Rows.Add(row)
                                 j = ds_productos.Tables(2).Rows.Count
@@ -1890,7 +1895,8 @@
                                 row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
                                 row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
-
+                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
                                 Venta_Caja_ds.Tables("Prod_consulta").Rows.Add(row)
                                 j = ds_productos.Tables(3).Rows.Count
                             End If
@@ -1942,6 +1948,8 @@
                                 row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
                                 row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
 
                                 Venta_Caja_ds.Tables("Prod_consulta").Rows.Add(row)
                                 j = ds_productos.Tables(2).Rows.Count
@@ -1966,7 +1974,8 @@
                                 row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
                                 row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
-
+                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
                                 Venta_Caja_ds.Tables("Prod_consulta").Rows.Add(row)
                                 j = ds_productos.Tables(3).Rows.Count
                             End If
@@ -2021,7 +2030,8 @@
                                 row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
                                 row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
                                 row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
-
+                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
                                 Venta_Caja_ds.Tables("Prod_consulta").Rows.Add(row)
                                 j = ds_productos.Tables(3).Rows.Count
                             End If
@@ -3332,125 +3342,233 @@
         If validacion = "si" Then
             If Panel_cant_mover.BackColor = Color.Green And CDec(txt_cant_mov.Text) <> CDec(0) Then
                 'valido que la cant q este en el textbox no supere a la cant max de productos en sucursal
-                If CDec(txt_cant_mov.Text) <= CDec(txt_totalunidades_mov.Text) Then
-                    'ahora me fijo, si tengo algo en la grilla de productos agregados, incremento el nrolote.
-                    Dim cod_prod As String = txt_codigo_mov.Text
-                    Dim nombre_lote As String = ""
-                    Dim encontrado As String = "no" 'se pone en "si" cuando encuentra un lote ya en la lista de productos agregados
-                    Dim aa As Integer = 0
-                    While aa < DataGridView3.Rows.Count
-                        If DataGridView3.Rows(aa).Cells("DataGridViewCheckBoxColumn2").Value = True Then
-                            Dim lote_nro As String = DataGridView3.Rows(aa).Cells("DataGridViewTextBoxColumn6").Value
-                            Dim i As Integer = 0
-                            While i < Enfermeria_insumos_Ausente.DataGridView1.Rows.Count
-                                'quiero que me agregue siempre lotes distintos.
-                                If (Enfermeria_insumos_Ausente.DataGridView1.Rows(i).Cells("CodprodDataGridViewTextBoxColumn").Value = cod_prod) And (Enfermeria_insumos_Ausente.DataGridView1.Rows(i).Cells("LoteDataGridViewTextBoxColumn").Value = lote_nro) Then
-                                    encontrado = "si"
-                                    nombre_lote = lote_nro
-                                    Exit While
-                                End If
-                                i = i + 1
-                            End While
-                        End If
-                        If encontrado = "si" Then
-                            Exit While
-                        End If
-                        aa = aa + 1
-                    End While
-                    Dim agregar_valido As String = "no"
-                    If encontrado = "no" Then
-                        'como ningun lote esta agregado, ahora sumo con los que existen en la grilla de gestion_mercaderia
-                        Dim suma_lote As Decimal = 0 'esto suma los lotes que quiero agregar mas los existentes en la lista del modulo Gestion_Mercaderia
-                        Dim j As Integer = 0
-                        While j < Enfermeria_insumos_Ausente.DataGridView1.Rows.Count
-                            If (Enfermeria_insumos_Ausente.DataGridView1.Rows(j).Cells("CodprodDataGridViewTextBoxColumn").Value = cod_prod) Then
-                                suma_lote = suma_lote + CDec(Enfermeria_insumos_Ausente.DataGridView1.Rows(j).Cells("CantidadDataGridViewTextBoxColumn").Value)
+                'If CDec(txt_cant_mov.Text) <= CDec(txt_totalunidades_mov.Text) Then
+                'ahora me fijo, si tengo algo en la grilla de productos agregados, incremento el nrolote.
+                Dim cod_prod As String = txt_codigo_mov.Text
+                Dim nombre_lote As String = ""
+                Dim encontrado As String = "no" 'se pone en "si" cuando encuentra un lote ya en la lista de productos agregados
+                Dim aa As Integer = 0
+                While aa < DataGridView3.Rows.Count
+                    If DataGridView3.Rows(aa).Cells("DataGridViewCheckBoxColumn2").Value = True Then
+                        'Dim lote_nro As String = DataGridView3.Rows(aa).Cells("LotenroDataGridViewTextBoxColumn").Value
+                        Dim i As Integer = 0
+                        While i < Enfermeria_insumos_Ausente.DataGridView1.Rows.Count
+                            'NO QUIERO AGREGAR EL MISMO PRODUCTO
+                            If (Enfermeria_insumos_Ausente.DataGridView1.Rows(i).Cells("CodprodDataGridViewTextBoxColumn").Value = cod_prod) Then
+                                encontrado = "si"
+                                'nombre_lote = lote_nro
+                                Exit While
                             End If
-                            j = j + 1
+                            i = i + 1
                         End While
-                        suma_lote = suma_lote + CDec(txt_cant_mov.Text) 'este total no debe ser mayor a la cantidad en stock de la sucursal.
-                        If suma_lote <= CDec(txt_totalunidades_mov.Text) Then
-                            agregar_valido = "si"
-                        End If
                     End If
-                    If encontrado = "no" And agregar_valido = "si" Then 'quiere decir que ningun lote se encuentra en la lista de gestin_mercaderia y que ademas sumados no superan el stock total de la sucursal.
-                        'agrego todos los lotes tildados, con excepcion de los que tienen cantidad en 0
-                        Dim a As Integer = 0
-                        Dim cantidad_a_mover As Decimal = CDec(txt_cant_mov.Text)
-                        While a < DataGridView3.Rows.Count
-                            If DataGridView3.Rows(a).Cells("DataGridViewCheckBoxColumn2").Value = True Then
-                                Dim item As Integer
-                                If Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf").Rows.Count = 0 Then
-                                    item = 1
-                                Else
-                                    item = Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf").Rows.Count + 1
-                                End If
-                                Dim newCustomersRow As DataRow = Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf").NewRow()
-                                newCustomersRow("N°") = item
-                                newCustomersRow("Cod_prod") = DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn2").Value
-                                newCustomersRow("Descripcion") = txt_descripcion_mov.Text + " (Lote Nº: " + DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn6").Value + ")"
-                                'newCustomersRow("Desde") = Nueva_Dialisis.cb_origen.Text
-                                'newCustomersRow("Hacia") = Insumos_gestion.cb_origen.Text
-                                'aqui veo cuanto voy a mover. si todo, o menos.
-                                Dim cant_del_lote As Decimal = CDec(DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn7").Value)
-                                If cant_del_lote <= cantidad_a_mover Then
-                                    'paso todo
-                                    newCustomersRow("Cantidad") = (Math.Round(CDec(cant_del_lote), 2).ToString("N2"))
-                                    cantidad_a_mover = cantidad_a_mover - cant_del_lote
-                                Else
-                                    If cant_del_lote > cantidad_a_mover Then
-                                        'pongo en el dataset lo que queda en la variable cantida_a_mover
-                                        newCustomersRow("Cantidad") = (Math.Round(CDec(cantidad_a_mover), 2).ToString("N2"))
-                                        'cantidad_a_mover = cantidad_a_mover - cant_del_lote
-                                    End If
-                                End If
-                                'newCustomersRow("Cantidad") = CDec(txt_cantlote.Text)
-                                newCustomersRow("Lote") = DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn6").Value
-                                If DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn10").Value = "si" Then
-                                    newCustomersRow("Vence") = "si"
-                                    newCustomersRow("FechaFabricacion") = DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn8").Value
-                                    newCustomersRow("FechaVencimiento") = DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn9").Value
-                                Else
-                                    newCustomersRow("Vence") = "no"
-                                End If
-
-                                newCustomersRow("Prov_id") = DataGridView3.Rows(a).Cells("Prov_id").Value
-
-                                Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf").Rows.Add(newCustomersRow)
-
-                            End If
-                            a = a + 1
-                        End While
-                        Enfermeria_insumos_Ausente.DataGridView1.DataSource = Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf")
-                        'bloque origen y destino combos en form gestion_mercaderia
-                        'Nueva_Dialisis.cb_origen.Enabled = False
-                        'Insumos_gestion.cb_destino.Enabled = False
-
-                        Dim result As Integer = MessageBox.Show("¿Desea agregar más lotes a el listado?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
-                        If result = DialogResult.Yes Then
-                        ElseIf result = DialogResult.No Then
-                            Me.Close()
-                        End If
+                    If encontrado = "si" Then
+                        Exit While
+                    End If
+                    aa = aa + 1
+                End While
+                Dim agregar_valido As String = "no"
+                If encontrado = "no" Then
+                    Dim item As Integer
+                    If Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf").Rows.Count = 0 Then
+                        item = 1
                     Else
-                        If encontrado = "si" Then
-                            MessageBox.Show("El lote: " + nombre_lote + " ya se encuentra agregado a la lista.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                        Else
-                            If agregar_valido = "no" Then
-                                MessageBox.Show("Modifique cantidad, ésta superó el stock existente en la sucursal. ", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                            End If
-                        End If
+                        item = Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf").Rows.Count + 1
                     End If
+                    Dim newCustomersRow1 As DataRow = Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf").NewRow()
+                    newCustomersRow1("N°") = item
+                    newCustomersRow1("Cod_prod") = DataGridView3.Rows(0).Cells("ProdcodinternoDataGridViewTextBoxColumn1").Value
+                    newCustomersRow1("Descripcion") = txt_descripcion_mov.Text
+                    newCustomersRow1("Cantidad") = (Math.Round(CDec(txt_cant_mov.Text), 2).ToString("N2"))
+                    newCustomersRow1("Prov_id") = DataGridView3.Rows(0).Cells("Prov_id").Value
+                    newCustomersRow1("Cantidad_a_consumir") = CStr((Math.Round(CDec(txt_cant_mov.Text), 2).ToString("N2"))) + " " + txt_unidmedida.Text
+                    newCustomersRow1("EnBD") = "no"
+
+                    Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf").Rows.Add(newCustomersRow1)
+
+                    'agrego todos los lotes tildados, con excepcion de los que tienen cantidad en 0
+                    Dim a As Integer = 0
+                    Dim cantidad_a_mover As Decimal = CDec(txt_cant_mov.Text)
+                    While a < DataGridView3.Rows.Count
+                        If DataGridView3.Rows(a).Cells("DataGridViewCheckBoxColumn2").Value = True Then
+                            'Dim item As Integer
+                            'If Nueva_Dialisis.Mov_DS.Tables("Mov_Enf").Rows.Count = 0 Then
+                            '    item = 1
+                            'Else
+                            '    item = Nueva_Dialisis.Mov_DS.Tables("Mov_Enf").Rows.Count + 1
+                            'End If
+                            Dim newCustomersRow As DataRow = Enfermeria_insumos_Ausente.Ds_enfermeria.Tables("Consumo_real").NewRow()
+                            'newCustomersRow("N°") = item
+                            newCustomersRow("Cod_prod") = DataGridView3.Rows(a).Cells("ProdcodinternoDataGridViewTextBoxColumn1").Value
+                            newCustomersRow("Descripcion") = txt_descripcion_mov.Text + " (Lote Nº: " + DataGridView3.Rows(a).Cells("LotenroDataGridViewTextBoxColumn").Value + ")"
+                            'newCustomersRow("Desde") = Nueva_Dialisis.cb_origen.Text
+                            'newCustomersRow("Hacia") = Insumos_gestion.cb_origen.Text
+                            'aqui veo cuanto voy a mover. si todo, o menos.
+                            Dim cant_del_lote As Decimal = CDec(DataGridView3.Rows(a).Cells("lote_stock_real").Value)
+                            If cant_del_lote <= cantidad_a_mover Then
+                                'paso todo
+                                newCustomersRow("Cantidad_real") = (Math.Round(CDec(cant_del_lote), 2).ToString("N2"))
+                                cantidad_a_mover = cantidad_a_mover - cant_del_lote
+                            Else
+                                If cant_del_lote > cantidad_a_mover Then
+                                    'pongo en el dataset lo que queda en la variable cantida_a_mover
+                                    newCustomersRow("Cantidad_real") = (Math.Round(CDec(cantidad_a_mover), 2).ToString("N2"))
+                                    'cantidad_a_mover = cantidad_a_mover - cant_del_lote
+                                End If
+                            End If
+
+                            newCustomersRow("lote_id") = DataGridView3.Rows(a).Cells("LoteidDataGridViewTextBoxColumn").Value
+
+                            newCustomersRow("Prov_id") = DataGridView3.Rows(a).Cells("Prov_id").Value
+
+                            Enfermeria_insumos_Ausente.Ds_enfermeria.Tables("Consumo_real").Rows.Add(newCustomersRow)
+                        End If
+                        a = a + 1
+                    End While
+
+
+                    Dim result As Integer = MessageBox.Show("¿Desea agregar más insumos?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
+                    If result = DialogResult.Yes Then
+                    ElseIf result = DialogResult.No Then
+                        Me.Close()
+                    End If
+
                 Else
-                    MessageBox.Show("Modifique la cantidad, no debe superar el máximo de unidades en stock.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    'AQUI VIENE EL CARTEL QUE DIGA, EL PRODUCTO YA SE ENCUENTRA AGREGADO, ELIJA OTRO PRODUCTO.
+                    MessageBox.Show("El insumo ya se encuentra agregado a la lista.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
+
             Else
                 'MessageBox.Show("Debe ingresar una cantidad válida.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             End If
         Else
-            MessageBox.Show("Seleccione correctamente los lote a consumir o modifique la cantidad.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            MessageBox.Show("Error, modifique la cantidad.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
 
+        'Dim validacion As String = "no"
+        'If Panel_cant_mover.BackColor = Color.Green Then
+        '    validar_carga(validacion)
+        'End If
+        'If validacion = "si" Then
+        '    If Panel_cant_mover.BackColor = Color.Green And CDec(txt_cant_mov.Text) <> CDec(0) Then
+        '        'valido que la cant q este en el textbox no supere a la cant max de productos en sucursal
+        '        If CDec(txt_cant_mov.Text) <= CDec(txt_totalunidades_mov.Text) Then
+        '            'ahora me fijo, si tengo algo en la grilla de productos agregados, incremento el nrolote.
+        '            Dim cod_prod As String = txt_codigo_mov.Text
+        '            Dim nombre_lote As String = ""
+        '            Dim encontrado As String = "no" 'se pone en "si" cuando encuentra un lote ya en la lista de productos agregados
+        '            Dim aa As Integer = 0
+        '            While aa < DataGridView3.Rows.Count
+        '                If DataGridView3.Rows(aa).Cells("DataGridViewCheckBoxColumn2").Value = True Then
+        '                    Dim lote_nro As String = DataGridView3.Rows(aa).Cells("DataGridViewTextBoxColumn6").Value
+        '                    Dim i As Integer = 0
+        '                    While i < Enfermeria_insumos_Ausente.DataGridView1.Rows.Count
+        '                        'quiero que me agregue siempre lotes distintos.
+        '                        If (Enfermeria_insumos_Ausente.DataGridView1.Rows(i).Cells("CodprodDataGridViewTextBoxColumn").Value = cod_prod) And (Enfermeria_insumos_Ausente.DataGridView1.Rows(i).Cells("LoteDataGridViewTextBoxColumn").Value = lote_nro) Then
+        '                            encontrado = "si"
+        '                            nombre_lote = lote_nro
+        '                            Exit While
+        '                        End If
+        '                        i = i + 1
+        '                    End While
+        '                End If
+        '                If encontrado = "si" Then
+        '                    Exit While
+        '                End If
+        '                aa = aa + 1
+        '            End While
+        '            Dim agregar_valido As String = "no"
+        '            If encontrado = "no" Then
+        '                'como ningun lote esta agregado, ahora sumo con los que existen en la grilla de gestion_mercaderia
+        '                Dim suma_lote As Decimal = 0 'esto suma los lotes que quiero agregar mas los existentes en la lista del modulo Gestion_Mercaderia
+        '                Dim j As Integer = 0
+        '                While j < Enfermeria_insumos_Ausente.DataGridView1.Rows.Count
+        '                    If (Enfermeria_insumos_Ausente.DataGridView1.Rows(j).Cells("CodprodDataGridViewTextBoxColumn").Value = cod_prod) Then
+        '                        suma_lote = suma_lote + CDec(Enfermeria_insumos_Ausente.DataGridView1.Rows(j).Cells("CantidadDataGridViewTextBoxColumn").Value)
+        '                    End If
+        '                    j = j + 1
+        '                End While
+        '                suma_lote = suma_lote + CDec(txt_cant_mov.Text) 'este total no debe ser mayor a la cantidad en stock de la sucursal.
+        '                If suma_lote <= CDec(txt_totalunidades_mov.Text) Then
+        '                    agregar_valido = "si"
+        '                End If
+        '            End If
+        '            If encontrado = "no" And agregar_valido = "si" Then 'quiere decir que ningun lote se encuentra en la lista de gestin_mercaderia y que ademas sumados no superan el stock total de la sucursal.
+        '                'agrego todos los lotes tildados, con excepcion de los que tienen cantidad en 0
+        '                Dim a As Integer = 0
+        '                Dim cantidad_a_mover As Decimal = CDec(txt_cant_mov.Text)
+        '                While a < DataGridView3.Rows.Count
+        '                    If DataGridView3.Rows(a).Cells("DataGridViewCheckBoxColumn2").Value = True Then
+        '                        Dim item As Integer
+        '                        If Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf").Rows.Count = 0 Then
+        '                            item = 1
+        '                        Else
+        '                            item = Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf").Rows.Count + 1
+        '                        End If
+        '                        Dim newCustomersRow As DataRow = Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf").NewRow()
+        '                        newCustomersRow("N°") = item
+        '                        newCustomersRow("Cod_prod") = DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn2").Value
+        '                        newCustomersRow("Descripcion") = txt_descripcion_mov.Text + " (Lote Nº: " + DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn6").Value + ")"
+        '                        'newCustomersRow("Desde") = Nueva_Dialisis.cb_origen.Text
+        '                        'newCustomersRow("Hacia") = Insumos_gestion.cb_origen.Text
+        '                        'aqui veo cuanto voy a mover. si todo, o menos.
+        '                        Dim cant_del_lote As Decimal = CDec(DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn7").Value)
+        '                        If cant_del_lote <= cantidad_a_mover Then
+        '                            'paso todo
+        '                            newCustomersRow("Cantidad") = (Math.Round(CDec(cant_del_lote), 2).ToString("N2"))
+        '                            cantidad_a_mover = cantidad_a_mover - cant_del_lote
+        '                        Else
+        '                            If cant_del_lote > cantidad_a_mover Then
+        '                                'pongo en el dataset lo que queda en la variable cantida_a_mover
+        '                                newCustomersRow("Cantidad") = (Math.Round(CDec(cantidad_a_mover), 2).ToString("N2"))
+        '                                'cantidad_a_mover = cantidad_a_mover - cant_del_lote
+        '                            End If
+        '                        End If
+        '                        'newCustomersRow("Cantidad") = CDec(txt_cantlote.Text)
+        '                        newCustomersRow("Lote") = DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn6").Value
+        '                        If DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn10").Value = "si" Then
+        '                            newCustomersRow("Vence") = "si"
+        '                            newCustomersRow("FechaFabricacion") = DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn8").Value
+        '                            newCustomersRow("FechaVencimiento") = DataGridView3.Rows(a).Cells("DataGridViewTextBoxColumn9").Value
+        '                        Else
+        '                            newCustomersRow("Vence") = "no"
+        '                        End If
 
+        '                        newCustomersRow("Prov_id") = DataGridView3.Rows(a).Cells("Prov_id").Value
+
+        '                        Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf").Rows.Add(newCustomersRow)
+
+        '                    End If
+        '                    a = a + 1
+        '                End While
+        '                Enfermeria_insumos_Ausente.DataGridView1.DataSource = Enfermeria_insumos_Ausente.Mov_DS.Tables("Mov_Enf")
+        '                'bloque origen y destino combos en form gestion_mercaderia
+        '                'Nueva_Dialisis.cb_origen.Enabled = False
+        '                'Insumos_gestion.cb_destino.Enabled = False
+
+        '                Dim result As Integer = MessageBox.Show("¿Desea agregar más lotes a el listado?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
+        '                If result = DialogResult.Yes Then
+        '                ElseIf result = DialogResult.No Then
+        '                    Me.Close()
+        '                End If
+        '            Else
+        '                If encontrado = "si" Then
+        '                    MessageBox.Show("El lote: " + nombre_lote + " ya se encuentra agregado a la lista.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        '                Else
+        '                    If agregar_valido = "no" Then
+        '                        MessageBox.Show("Modifique cantidad, ésta superó el stock existente en la sucursal. ", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        '                    End If
+        '                End If
+        '            End If
+        '        Else
+        '            MessageBox.Show("Modifique la cantidad, no debe superar el máximo de unidades en stock.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        '        End If
+        '    Else
+        '        'MessageBox.Show("Debe ingresar una cantidad válida.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        '    End If
+        'Else
+        '    MessageBox.Show("Seleccione correctamente los lote a consumir o modifique la cantidad.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        'End If
     End Sub
 
 
@@ -3558,7 +3676,7 @@
                     'Nueva_Dialisis.cb_origen.Enabled = False
                     'Insumos_gestion.cb_destino.Enabled = False
 
-                    Dim result As Integer = MessageBox.Show("¿Desea agregar más lotes a el listado?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
+                    Dim result As Integer = MessageBox.Show("¿Desea agregar más insumos?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
                     If result = DialogResult.Yes Then
                     ElseIf result = DialogResult.No Then
                         Me.Close()
@@ -3661,7 +3779,7 @@
                 'MessageBox.Show("Debe ingresar una cantidad válida.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             End If
         Else
-            MessageBox.Show("Seleccione correctamente los lote a consumir o modifique la cantidad.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            MessageBox.Show("Error, modifique la cantidad a consumir.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
     'quitar seleccion de la grilla lotes para movimientos
@@ -3742,7 +3860,6 @@
             While i < DataGridView1.Rows.Count
                 Dim stock As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdstockDataGridViewTextBoxColumn").Value)
                 Dim pto_reposicion As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdptorepoDataGridViewTextBoxColumn").Value)
-
                 If stock <= pto_reposicion Then
                     DataGridView1.Rows(i).DefaultCellStyle.ForeColor = Color.Blue
                 Else
@@ -3767,7 +3884,15 @@
 
 
         If DataGridView1.Columns(e.ColumnIndex).Name = "CantvencimientoDataGridViewTextBoxColumn" Then 'esto significa que voy a validar esta celda
-            Dim vencidos As Decimal = CDec(e.Value)
+            Dim vencidos As Decimal
+            If IsDBNull(e.Value) Then
+                vencidos = CDec(0)
+            Else
+                vencidos = CDec(e.Value)
+            End If
+
+
+
             If vencidos <> CDec(0) Then
                 e.CellStyle.ForeColor = Color.Red
                 e.CellStyle.SelectionForeColor = Color.Red
