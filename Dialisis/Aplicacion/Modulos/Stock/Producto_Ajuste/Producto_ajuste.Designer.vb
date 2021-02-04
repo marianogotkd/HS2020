@@ -43,6 +43,12 @@ Partial Class Producto_ajuste
         Me.BO_producto_nuevo = New System.Windows.Forms.Button()
         Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.LotebajaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Mov_DS = New Aplicacion.Mov_DS()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txt_totalreal = New System.Windows.Forms.TextBox()
         Me.LotenroDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProveedorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -59,12 +65,6 @@ Partial Class Producto_ajuste
         Me.SucursalidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProvidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Item = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.LotebajaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Mov_DS = New Aplicacion.Mov_DS()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txt_totalreal = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -204,9 +204,9 @@ Partial Class Producto_ajuste
         Me.GroupBox2.Controls.Add(Me.BO_producto_nuevo)
         Me.GroupBox2.Controls.Add(Me.btn_eliminar_seleccion)
         Me.GroupBox2.Controls.Add(Me.DataGridView2)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 139)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 138)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(751, 301)
+        Me.GroupBox2.Size = New System.Drawing.Size(751, 302)
         Me.GroupBox2.TabIndex = 48
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Lotes existentes:"
@@ -261,7 +261,7 @@ Partial Class Producto_ajuste
         Me.btn_eliminar_seleccion.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btn_eliminar_seleccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_eliminar_seleccion.Image = Global.Aplicacion.My.Resources.Resources.menos
-        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(111, 251)
+        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(111, 252)
         Me.btn_eliminar_seleccion.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_eliminar_seleccion.MinimumSize = New System.Drawing.Size(124, 43)
         Me.btn_eliminar_seleccion.Name = "btn_eliminar_seleccion"
@@ -296,6 +296,47 @@ Partial Class Producto_ajuste
         Me.DataGridView2.Size = New System.Drawing.Size(721, 209)
         Me.DataGridView2.StandardTab = True
         Me.DataGridView2.TabIndex = 27
+        '
+        'LotebajaBindingSource
+        '
+        Me.LotebajaBindingSource.DataMember = "lote_baja"
+        Me.LotebajaBindingSource.DataSource = Me.Mov_DS
+        '
+        'Mov_DS
+        '
+        Me.Mov_DS.DataSetName = "Mov_DS"
+        Me.Mov_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Button4
+        '
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.Image = Global.Aplicacion.My.Resources.Resources.iniciar
+        Me.Button4.Location = New System.Drawing.Point(12, 447)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(98, 43)
+        Me.Button4.TabIndex = 259
+        Me.Button4.Text = "Volver"
+        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(60, 115)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(81, 13)
+        Me.Label1.TabIndex = 260
+        Me.Label1.Text = "Contenido total:"
+        '
+        'txt_totalreal
+        '
+        Me.txt_totalreal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_totalreal.Location = New System.Drawing.Point(147, 110)
+        Me.txt_totalreal.Name = "txt_totalreal"
+        Me.txt_totalreal.ReadOnly = True
+        Me.txt_totalreal.Size = New System.Drawing.Size(131, 22)
+        Me.txt_totalreal.TabIndex = 261
         '
         'LotenroDataGridViewTextBoxColumn
         '
@@ -360,7 +401,7 @@ Partial Class Producto_ajuste
         '
         Me.lote_stock_real.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.lote_stock_real.DataPropertyName = "lote_stock_real"
-        Me.lote_stock_real.HeaderText = "lote_stock_real"
+        Me.lote_stock_real.HeaderText = "Contenido total"
         Me.lote_stock_real.Name = "lote_stock_real"
         '
         'lote_aux
@@ -369,6 +410,7 @@ Partial Class Producto_ajuste
         Me.lote_aux.DataPropertyName = "lote_aux"
         Me.lote_aux.HeaderText = "lote_aux"
         Me.lote_aux.Name = "lote_aux"
+        Me.lote_aux.Visible = False
         '
         'LotefechafabDataGridViewTextBoxColumn
         '
@@ -413,47 +455,6 @@ Partial Class Producto_ajuste
         Me.Item.HeaderText = "Item"
         Me.Item.Name = "Item"
         Me.Item.Width = 35
-        '
-        'LotebajaBindingSource
-        '
-        Me.LotebajaBindingSource.DataMember = "lote_baja"
-        Me.LotebajaBindingSource.DataSource = Me.Mov_DS
-        '
-        'Mov_DS
-        '
-        Me.Mov_DS.DataSetName = "Mov_DS"
-        Me.Mov_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Button4
-        '
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.Image = Global.Aplicacion.My.Resources.Resources.iniciar
-        Me.Button4.Location = New System.Drawing.Point(12, 447)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(98, 43)
-        Me.Button4.TabIndex = 259
-        Me.Button4.Text = "Volver"
-        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(60, 115)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(81, 13)
-        Me.Label1.TabIndex = 260
-        Me.Label1.Text = "Contenido total:"
-        '
-        'txt_totalreal
-        '
-        Me.txt_totalreal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_totalreal.Location = New System.Drawing.Point(147, 110)
-        Me.txt_totalreal.Name = "txt_totalreal"
-        Me.txt_totalreal.ReadOnly = True
-        Me.txt_totalreal.Size = New System.Drawing.Size(131, 22)
-        Me.txt_totalreal.TabIndex = 261
         '
         'Producto_ajuste
         '
@@ -514,6 +515,9 @@ Partial Class Producto_ajuste
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents BO_producto_nuevo As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents txt_totalreal As System.Windows.Forms.TextBox
     Friend WithEvents LotenroDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProveedorDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProdidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -530,7 +534,4 @@ Partial Class Producto_ajuste
     Friend WithEvents SucursalidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProvidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Item As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents txt_totalreal As System.Windows.Forms.TextBox
 End Class

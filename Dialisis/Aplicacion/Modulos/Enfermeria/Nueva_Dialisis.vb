@@ -1,4 +1,5 @@
 ﻿Public Class Nueva_Dialisis
+    Dim DAusuario As New Datos.Usuario
     Dim DAsucursal As New Datos.Sucursal
     Dim DaEnfermeria As New Datos.Enfermeria
     Dim DAsesiones As New Datos.Sesiones
@@ -47,9 +48,24 @@
             'recupero todo lo de dialisis
             obtener_info_sesion_dialisis()
 
-            lb_estado.Text = "ESTADO: CONECTADO"
-            btn_finalizar.Enabled = True 'lo habilito ahora si se puede finalizar.
-            btn_guardar.Text = "Modificar"
+
+
+            If estado_sesion = "Conectado" Then
+                btn_finalizar.Enabled = True 'lo habilito ahora si se puede finalizar.
+                btn_guardar.Text = "Modificar"
+            Else
+                If estado_sesion = "Finalizado" Then
+                    btn_finalizar.Enabled = False
+                    btn_guardar.Enabled = False
+                    GroupBox7.Enabled = False
+                    GroupBox_insumos.Enabled = False
+
+                Else
+                    btn_finalizar.Enabled = True 'lo habilito ahora si se puede finalizar.
+                    btn_guardar.Text = "Modificar"
+                End If
+            End If
+            
             'aqui pongo en color azul y negrita las filas
             Dim ff As Integer = 0
             Dim style As New DataGridViewCellStyle
@@ -72,6 +88,10 @@
             End If
             lb_estado.Text = "ESTADO: NUEVO" 'luego cuando guardo pasa a CONECTADO, Y AL ULTIMO: FINALIZADO.
             btn_finalizar.Enabled = False
+            If tipo_operacion = "ausente" Then
+                btn_guardar.Text = "Guardar"
+            End If
+
         End If
     End Sub
 
@@ -337,7 +357,7 @@
             Filtro_var = "Nuevo"
         End If
     End Sub
-
+    Public estado_sesion As String
     Public Consumo_mercaderia_id As Integer = 0 'este parametro me lo va a enviar desde el private sub "obtener_info_sesion_dialsis" y sirve para borrar los consumos anteriormente registrados si es necesario.
     Private Sub obtener_info_sesion_dialisis()
         Consumo_mercaderia_id = 0
@@ -348,6 +368,12 @@
 
         If info_sesion.Tables(0).Rows.Count <> 0 Then
             'aqui cargo la info
+            estado_sesion = info_sesion.Tables(0).Rows(0).Item("Sesiones_estado").ToString
+            If estado_sesion = "" Then
+                estado_sesion = "Conectado"
+            End If
+
+            lb_estado.Text = "ESTADO: " + estado_sesion
 
             tb_numHemo.Text = info_sesion.Tables(0).Rows(0).Item("Dialisis_id")
             tb_PesoS.Text = info_sesion.Tables(0).Rows(0).Item("Dialisis_PesoS")
@@ -471,12 +497,20 @@
 
     Private Sub Guardar_Sesion()
         'Alta de la Sesion
-        Dim ds_sesiones As DataSet = DAsesiones.sesiones_alta(PAC_id, fecha_registrar, "Presente") 'mando el parametro fecha_registrar porque es la que tiene el resultado de la busqueda, es decir lo que se esta mostrando en la grilla
+        Dim ds_sesiones As DataSet = DAsesiones.sesiones_alta(PAC_id, fecha_registrar, "Presente", "Conectado") 'mando el parametro fecha_registrar porque es la que tiene el resultado de la busqueda, es decir lo que se esta mostrando en la grilla
         sesiones_id = ds_sesiones.Tables(0).Rows(0).Item(0) 'este recupera el id del q acabo de insertar
+
+        Dim usuario_id As String
+        usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
+
+        'registro actividad del usuario
+        DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, 3, sesiones_id, Now, "")
 
     End Sub
 
     Private Sub Guardar_dialisis()
+
+
 
 
         '///////////////////////////le doy el formado correcto a los textbox q deben ser si o si decimales con 2 digitos despues de la coma
@@ -515,9 +549,23 @@
         '''''''''''''''''''''''''''''''
     End Sub
 
+    Private Sub recupero_y_recalculo_totales(ByVal prod_id As Integer, ByVal codinterno As Integer)
+        Dim ds_lotes As DataSet = DAlote.Producto_x_sucursal_lote_recuperartodos(codinterno, 3)
+        Dim stock As Decimal = 0
+        Dim stock_real As Decimal = 0
+        Dim i As Integer = 0
+        While i < ds_lotes.Tables(0).Rows.Count
+            stock = stock + CInt(ds_lotes.Tables(0).Rows(i).Item("lote_cantidad"))
+            stock_real = stock_real + CInt(ds_lotes.Tables(0).Rows(i).Item("lote_stock_real"))
+
+            i = i + 1
+        End While
+        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, stock, stock_real)
+
+    End Sub
+
     Private Sub modificar_dialisis()
-        If tb_PesoE.Text <> "" And tb_PesoI.Text <> "" And tb_PesoS.Text <> "" And tb_TAE.Text <> "" And tb_TAI.Text <> "" And
-                        tb_talla.Text <> "" And tb_tiempoHD.Text <> "" And tb_HI.Text <> "" And tb_HE.Text <> "" And tb_Filtro.Text <> "" And tb_AV.Text <> "" Then
+        If tb_Filtro.Text <> "" And tb_AV.Text <> "No Tiene Acceso Vascular" Then
 
             'Dim concepto As String
             'concepto = "Insumo consumido en Enfermeria"
@@ -536,6 +584,14 @@
                 '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                 DaEnfermeria.Dialisis_modificar(fecha_registrar, modificar_sesiones_id, PesoS, talla, tb_HI.Text, tb_HE.Text, tb_tiempoHD.Text, PesoI, PesoE, TAI, TAE, tb_Filtro.Text, tb_Obs.Text, tb_AV.Text)
+                'registro actividad usuario///////////////////////////////////////////////////////
+                Dim usuario_id As String
+                usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
+
+                'registro actividad del usuario
+                DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, 3, modificar_sesiones_id, Now, "")
+                '//////////////////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -546,8 +602,10 @@
                 If Ds_enfermeria.Tables("Consumo_real1_aux").Rows.Count <> 0 Then
                     'controlo si alguno dice eliminado = "si"
                     Dim aa As Integer = 0
+                    Dim valido_eliminados As String = "no"
                     While aa < Ds_enfermeria.Tables("Consumo_real1_aux").Rows.Count
                         If Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("eliminado") = "si" Then
+                            valido_eliminados = "si"
                             'entonces actualizo el stock en sucursal 3, dialsis.
                             'debo sumar la cantidad en el lote que corresponda.
                             'y recalcular el total del producto en la sucursal, los parametros stock y stock_real.
@@ -562,56 +620,49 @@
                             'recupero info del lote especifico.
                             Dim ds_lote As DataSet = DAlote.Lote_buscar_producto_b(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("lote_id"))
 
+                            'TOTAL REAL = TOTAL REAL + INGRESO
+                            Dim lote_stock_real As Decimal = CDec(ds_lote.Tables(0).Rows(0).Item("lote_stock_real")) + CDec(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cantidad_real"))
 
-                            Dim TotalReal As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) 'de la tabla PRODUCTO_X_SUCURSAL
-                            TotalReal = TotalReal + CDec(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cantidad_real"))
-                            '//////////////////////
+                            'TOTAL = (TOTAL REAL / CONTENIDO) ..ESTO REDONDEO ARRIBA
+                            Dim lote_cantidad As Decimal = lote_stock_real / CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido"))
+                            'ahora lo redondeo 
+                            '/////////////////
+                            If (lote_cantidad - Int(lote_cantidad)) <> CDec(0) Then
+                                lote_cantidad = Int(lote_cantidad) + 1
+                            Else
+                                lote_cantidad = Int(lote_cantidad)
+                            End If
+                            '//////////////////////////////////////////////
 
-                            Dim TotalReal_lote As Decimal = CDec(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cantidad_real"))
-                            'lo mando asi nomas para q se sume en el proc almacenado junto con el valor del lote
-
-                            Dim VarA As Decimal = CDec(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cantidad_real")) / CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido"))
-                            '1.1
-
-
-                            Dim VarB As Decimal = CDec(ds_lote.Tables(0).Rows(0).Item("lote_aux")) - VarA
-                            '0.9+0.1 = 1
-
-                            'Dim VarB As Decimal = VarA + CDec(ds_lote.Tables(0).Rows(0).Item("lote_aux"))
-                            ''ejemplo 
-
-
-                            Dim TOTAL As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("Stock_Origen")) + Int(VarB)
-
-                            Dim AUX = VarB - Int(VarB)
-                            Dim AUX = VarB
-
-                            asdsad()
+                            Dim AUX As Decimal = CDec(ds_lote.Tables(0).Rows(0).Item("lote_aux"))
+                            Dim VarA As Decimal = (CDec(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cantidad_real")) / CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")))
+                            VarA = VarA - Int(VarA)
+                            'AUX = AUX + 1 - (CDec(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cantidad_real")) / CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")))
 
 
+                            AUX = AUX - VarA
 
-
+                            'ahora debo guardar en bd aux, lote_stocl_real, lote_cantidad
+                            Dim nrolote As Integer = Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("lote_nro")
+                            Dim proveedor_id As Integer = Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Prov_id")
+                            DAlote.Producto_x_sucursal_lote_actualizar_igualar(nrolote, prod_id, 3,
+                                                                          CDec(lote_cantidad), proveedor_id, lote_stock_real, AUX)
+                            '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            'ahora me falta actualizar en producto x sucursal, tanto ProdxSuc_stock, ProdxSuc_stock_real
+                            recupero_y_recalculo_totales(prod_id, codinterno)
                         End If
                         aa = aa + 1
                     End While
-
-
+                    If valido_eliminados = "si" Then
+                        'tenog que borrar la tabla Consumo_Mercaderia
+                        'con esta variable Consumo_mercaderia_id voy a eliminar la fila en la tabla consumo_mercaderia
+                        DAMovintoMer.Consumo_Mercaderia_eliminar_Enfermeria(Consumo_mercaderia_id)
+                    End If
                 End If
-
-
-
-
-
-
-
 
                 'aqui voy a guardar si es necesario lo que agregué nuevo en la grilla de insumos.
                 '////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 If Ds_enfermeria.Tables("Consumo_real").Rows.Count <> 0 Then 'significa que hay altas nuevas para registrar
-
-                    'me fijo si se quito algo que ya estaba guardado en la bd, ya que si es asi tendre q aumentar el stock en los lotes de la sucursal q corresponda.
-
-
 
                     Dim lote_id As Integer
                     Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria("Insumo consumido en Enfermeria", fecha_registrar, Inicio.USU_id, 3, modificar_sesiones_id)
@@ -637,7 +688,6 @@
                         'recupero info del lote especifico.
                         Dim ds_lote As DataSet = DAlote.Lote_buscar_producto_b(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("lote_id"))
 
-
                         Dim TotalReal As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) 'de la tabla PRODUCTO_X_SUCURSAL
                         TotalReal = TotalReal - CDec(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cantidad_real"))
                         '//////////////////////
@@ -651,9 +701,6 @@
                         Dim TOTAL As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("Stock_Origen")) - Int(VarB)
 
                         Dim AUX = VarB - Int(VarB)
-
-
-
 
                         'If cb_Movimiento.SelectedItem = "Baja de Mercaderia" Then
                         'Calculo Stock''''''''
@@ -683,11 +730,8 @@
                         DAMovintoMer.Consumo_mercaderia_Detalle_alta(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cantidad_real"), MovMer_id, Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cod_prod"), lote_id)
                         i = i + 1
                     End While
-
                 End If
                 '////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
                 MessageBox.Show("La información se registró correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 lbl_err.Visible = False
@@ -703,14 +747,15 @@
 
             End If
         Else
-            lbl_err.Visible = True
-            lbl_err1.Visible = True
-            lbl_err2.Visible = True
-            lbl_err3.Visible = True
-            lbl_err4.Visible = True
-            lbl_err5.Visible = True
-            lbl_err6.Visible = True
-            lbl_err7.Visible = True
+            'lbl_err.Visible = True 'peso seco
+            'lbl_err1.Visible = True 'talla
+            lbl_err2.Visible = True 'tipo filtro
+            'lbl_err3.Visible = True 'horarios
+            'lbl_err4.Visible = True 'peso
+            'lbl_err5.Visible = True 'tension arterial
+            'lbl_err6.Visible = True 'observacion
+            lbl_err7.Visible = True 'tipo acceso vascular
+
             MessageBox.Show("Complete los Campos Obligatorios. ", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
@@ -719,8 +764,9 @@
         If tipo_operacion = "modificar presente" Then
             modificar_dialisis()
         Else
-            If tb_PesoE.Text <> "00,00" And tb_PesoI.Text <> "00,00" And tb_PesoS.Text <> "00,00" And tb_TAE.Text <> "00,00" And tb_TAI.Text <> "00,00" And
-                        tb_talla.Text <> "00,00" And tb_tiempoHD.Text <> "00:00" And tb_HI.Text <> "00:00" And tb_HE.Text <> "00:00" And tb_Filtro.Text <> "" And tb_AV.Text <> "No Tiene Acceso Vascular" Then
+
+
+            If tb_Filtro.Text <> "" And tb_AV.Text <> "No Tiene Acceso Vascular" Then
 
 
                 Dim concepto As String
@@ -735,7 +781,7 @@
                         Else
                             If tipo_operacion = "ausente" Then 'en teoria ya no se usa mas, los ausentes no pueden pasar a presentes: 05-10-2020 choco
                                 'aqui voy a hacer un update del registro en la tabla sesiones, cambio estado ausente por presente
-                                DAsesiones.Sesiones_modificar(ausente_sesiones_id, fecha_registrar, "Presente")
+                                DAsesiones.Sesiones_modificar(ausente_sesiones_id, fecha_registrar, "Presente", "Conectado")
                                 sesiones_id = ausente_sesiones_id  'este recupera el id del q acabo de insertar
                             End If
                         End If
@@ -825,7 +871,7 @@
                         Else
                             If tipo_operacion = "ausente" Then 'en teoria no se usa mas esto, los ausentes no se cambian a presente: choco 05-10-2020
                                 'aqui voy a hacer un update del registro en la tabla sesiones, cambio estado ausente por presente
-                                DAsesiones.Sesiones_modificar(ausente_sesiones_id, fecha_registrar, "Presente")
+                                DAsesiones.Sesiones_modificar(ausente_sesiones_id, fecha_registrar, "Presente", "Conectado")
                                 sesiones_id = ausente_sesiones_id  'este recupera el id del q acabo de insertar
                             End If
                         End If
@@ -837,15 +883,18 @@
                         MessageBox.Show("Si desea Puede agregar Insumos", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If
                 End If
+
+
+
             Else
-                lbl_err.Visible = True
-                lbl_err1.Visible = True
-                lbl_err2.Visible = True
-                lbl_err3.Visible = True
-                lbl_err4.Visible = True
-                lbl_err5.Visible = True
-                lbl_err6.Visible = True
-                lbl_err7.Visible = True
+                'lbl_err.Visible = True 'peso seco
+                'lbl_err1.Visible = True 'talla
+                lbl_err2.Visible = True 'tipo filtro
+                'lbl_err3.Visible = True 'horarios
+                'lbl_err4.Visible = True 'peso
+                'lbl_err5.Visible = True 'tension arterial
+                'lbl_err6.Visible = True 'observacion
+                lbl_err7.Visible = True 'tipo acceso vascular
                 MessageBox.Show("Complete los Campos Obligatorios. ", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             End If
         End If
@@ -987,7 +1036,7 @@
                             While aa < Ds_enfermeria.Tables("Consumo_real1_aux").Rows.Count
                                 If codinterno = Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cod_prod") Then
                                     Ds_enfermeria.Tables("COnsumo_real1_aux").Rows(aa).Item("eliminado") = "si" 'esto hago para saber q actualizar stock, es decir sumar.
-                                    Exit While
+
                                 End If
                                 aa = aa + 1
                             End While
@@ -1040,4 +1089,234 @@
     End Sub
 
 
+    Private Sub btn_finalizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_finalizar.Click
+        If tb_Filtro.Text <> "" And tb_AV.Text <> "No Tiene Acceso Vascular" Then
+
+            'Dim concepto As String
+            'concepto = "Insumo consumido en Enfermeria"
+            ''''Alta en tabla Movimiento_Mercaderia''''''''''
+
+            Dim result As Integer = MessageBox.Show("¿Esta seguro que desea modificar la sesión?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+
+                '///////////////////////////le doy el formado correcto a los textbox q deben ser si o si decimales con 2 digitos despues de la coma
+                Dim PesoS As Decimal = (Math.Round(CDec(tb_PesoS.Text), 2).ToString("N2"))
+                Dim talla As Decimal = (Math.Round(CDec(tb_talla.Text), 2).ToString("N2"))
+                Dim PesoI As Decimal = (Math.Round(CDec(tb_PesoI.Text), 2).ToString("N2"))
+                Dim PesoE As Decimal = (Math.Round(CDec(tb_PesoE.Text), 2).ToString("N2"))
+                Dim TAI As Decimal = (Math.Round(CDec(tb_TAI.Text), 2).ToString("N2"))
+                Dim TAE As Decimal = (Math.Round(CDec(tb_TAE.Text), 2).ToString("N2"))
+                '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                DaEnfermeria.Dialisis_modificar(fecha_registrar, modificar_sesiones_id, PesoS, talla, tb_HI.Text, tb_HE.Text, tb_tiempoHD.Text, PesoI, PesoE, TAI, TAE, tb_Filtro.Text, tb_Obs.Text, tb_AV.Text)
+
+                DAsesiones.Sesiones_modificar(modificar_sesiones_id, fecha_registrar, "Presente", "Finalizado")
+
+                'registro actividad usuario///////////////////////////////////////////////////////
+                Dim usuario_id As String
+                usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
+
+                'registro actividad del usuario
+                DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, 3, modificar_sesiones_id, Now, "")
+                '//////////////////////////////////////////////////////////////////////////////////
+
+
+                Guardar_Datos_Filtro()
+
+                '1) si se sacaron productos de la grilla de consumos que ya estaban registrados, actualizo el stock.
+                If Ds_enfermeria.Tables("Consumo_real1_aux").Rows.Count <> 0 Then
+                    'controlo si alguno dice eliminado = "si"
+                    Dim aa As Integer = 0
+                    Dim valido_eliminados As String = "no"
+                    While aa < Ds_enfermeria.Tables("Consumo_real1_aux").Rows.Count
+                        If Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("eliminado") = "si" Then
+                            valido_eliminados = "si"
+                            'entonces actualizo el stock en sucursal 3, dialsis.
+                            'debo sumar la cantidad en el lote que corresponda.
+                            'y recalcular el total del producto en la sucursal, los parametros stock y stock_real.
+                            '''''Actualizacion de Stock''''''''''''''''''''''''
+                            Dim codinterno As Integer = Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cod_prod")
+                            ds_PROD = DAprod.Producto_buscarcod(codinterno)
+                            Dim prod_id = ds_PROD.Tables(0).Rows(0).Item("prod_id")
+                            Dim Ds_Suc As DataSet = DAsucursal.Sucursal_obtener_producto(prod_id, 3, 3) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+
+                            'choco///////////////27-01-2021
+                            'aqui viene el calculo siempre sobre el valor real, y dependiendo si se consumo el total del contenido se resta en stock
+                            'recupero info del lote especifico.
+                            Dim ds_lote As DataSet = DAlote.Lote_buscar_producto_b(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("lote_id"))
+
+                            'TOTAL REAL = TOTAL REAL + INGRESO
+                            Dim lote_stock_real As Decimal = CDec(ds_lote.Tables(0).Rows(0).Item("lote_stock_real")) + CDec(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cantidad_real"))
+
+                            'TOTAL = (TOTAL REAL / CONTENIDO) ..ESTO REDONDEO ARRIBA
+                            Dim lote_cantidad As Decimal = lote_stock_real / CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido"))
+                            'ahora lo redondeo 
+                            '/////////////////
+                            If (lote_cantidad - Int(lote_cantidad)) <> CDec(0) Then
+                                lote_cantidad = Int(lote_cantidad) + 1
+                            Else
+                                lote_cantidad = Int(lote_cantidad)
+                            End If
+                            '//////////////////////////////////////////////
+
+                            Dim AUX As Decimal = CDec(ds_lote.Tables(0).Rows(0).Item("lote_aux"))
+                            Dim VarA As Decimal = (CDec(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cantidad_real")) / CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")))
+                            VarA = VarA - Int(VarA)
+                            'AUX = AUX + 1 - (CDec(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cantidad_real")) / CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")))
+
+
+                            AUX = AUX - VarA
+
+                            'ahora debo guardar en bd aux, lote_stocl_real, lote_cantidad
+                            Dim nrolote As Integer = Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("lote_nro")
+                            Dim proveedor_id As Integer = Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Prov_id")
+                            DAlote.Producto_x_sucursal_lote_actualizar_igualar(nrolote, prod_id, 3,
+                                                                          CDec(lote_cantidad), proveedor_id, lote_stock_real, AUX)
+                            '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                            'ahora me falta actualizar en producto x sucursal, tanto ProdxSuc_stock, ProdxSuc_stock_real
+                            recupero_y_recalculo_totales(prod_id, codinterno)
+                        End If
+                        aa = aa + 1
+                    End While
+                    If valido_eliminados = "si" Then
+                        'tenog que borrar la tabla Consumo_Mercaderia
+                        'con esta variable Consumo_mercaderia_id voy a eliminar la fila en la tabla consumo_mercaderia
+                        DAMovintoMer.Consumo_Mercaderia_eliminar_Enfermeria(Consumo_mercaderia_id)
+                    End If
+                End If
+
+                'aqui voy a guardar si es necesario lo que agregué nuevo en la grilla de insumos.
+                '////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                If Ds_enfermeria.Tables("Consumo_real").Rows.Count <> 0 Then 'significa que hay altas nuevas para registrar
+
+                    Dim lote_id As Integer
+                    Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria("Insumo consumido en Enfermeria", fecha_registrar, Inicio.USU_id, 3, modificar_sesiones_id)
+                    ''''''''''''''''''''''''''''''''''''''''''''''''
+
+                    Dim MovMer_id As Integer = ds_movid.Tables(0).Rows(0).Item(0)
+                    Dim i As Integer = 0
+                    'While i < Mov_DS.Tables("Mov_Enf").Rows.Count
+                    While i < Ds_enfermeria.Tables("Consumo_real").Rows.Count ' esta ciclando en la grilla oculta que siempre tiene altas.
+                        '''''Actualizacion de Stock''''''''''''''''''''''''
+                        Dim Ds_Suc As DataSet
+                        'Dim Origen As Integer
+                        'Dim Destino As Integer
+                        'Dim Mov As Decimal
+                        'Dim j As Integer = 0
+                        'While i < Mov_DS.Tables("Mov").Rows.Count
+                        ds_PROD = DAprod.Producto_buscarcod(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cod_prod"))
+                        Dim prod_id = ds_PROD.Tables(0).Rows(0).Item("prod_id")
+                        Ds_Suc = DAsucursal.Sucursal_obtener_producto(prod_id, 3, 3) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+
+                        'choco///////////////27-01-2021
+                        'aqui viene el calculo siempre sobre el valor real, y dependiendo si se consumo el total del contenido se resta en stock
+                        'recupero info del lote especifico.
+                        Dim ds_lote As DataSet = DAlote.Lote_buscar_producto_b(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("lote_id"))
+
+                        Dim TotalReal As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) 'de la tabla PRODUCTO_X_SUCURSAL
+                        TotalReal = TotalReal - CDec(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cantidad_real"))
+                        '//////////////////////
+
+                        Dim TotalReal_lote As Decimal = CDec(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cantidad_real")) 'este es el tock real del lote solamente, creo q lo mando asi nomas ya que en proc alm se lo resta al valor q tengo en el lote
+
+
+                        Dim VarA As Decimal = CDec(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cantidad_real")) / CDec(Ds_Suc.Tables(0).Rows(0).Item("prod_contenido"))
+                        Dim VarB As Decimal = VarA + CDec(ds_lote.Tables(0).Rows(0).Item("lote_aux"))
+
+                        Dim TOTAL As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("Stock_Origen")) - Int(VarB)
+
+                        Dim AUX = VarB - Int(VarB)
+
+                        'If cb_Movimiento.SelectedItem = "Baja de Mercaderia" Then
+                        'Calculo Stock''''''''
+                        'Mov = Ds_Suc.Tables(0).Rows(0).Item("Stock_Origen") - Mov_DS.Tables("Mov_Enf").Rows(i).Item("Cantidad")
+                        '''''''
+                        ''''''''''
+                        'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
+                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, TOTAL, TotalReal) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+                        ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+
+
+                        '''''''''''
+                        '////////////////choco: 08-07-2020////////////////////////
+                        'actualizo la cant en el lote asociado a un producto de una sucursal.
+                        'busco lote en grilla
+                        Dim lote_nro As String = ds_lote.Tables(0).Rows(0).Item("lote_nro")
+
+
+
+                        'Dim cant_a_quitar As Decimal = CDec(Mov_DS.Tables("Mov_Enf").Rows(i).Item("Cantidad"))
+                        Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, 3, Int(VarB), Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Prov_id"), TotalReal_lote, AUX)  ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+                        lote_id = dslote.Tables(0).Rows(0).Item("lote_id")
+                        'End If
+                        ''''''''''''''''''''''''''''''''''''''
+                        '''''' Alta Tabla Detalle'''''' de movimiento claro está
+                        'alta en tabla mercaderia_detalle_alta
+                        DAMovintoMer.Consumo_mercaderia_Detalle_alta(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cantidad_real"), MovMer_id, Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cod_prod"), lote_id)
+                        i = i + 1
+                    End While
+                End If
+                '////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                MessageBox.Show("La información se registró correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                lbl_err.Visible = False
+                lbl_err1.Visible = False
+                lbl_err2.Visible = False
+                lbl_err3.Visible = False
+                lbl_err4.Visible = False
+                lbl_err5.Visible = False
+                lbl_err6.Visible = False
+                lbl_err7.Visible = False
+                limpiar()
+            Else
+
+            End If
+        Else
+            'lbl_err.Visible = True 'peso seco
+            'lbl_err1.Visible = True 'talla
+            lbl_err2.Visible = True 'tipo filtro
+            'lbl_err3.Visible = True 'horarios
+            'lbl_err4.Visible = True 'peso
+            'lbl_err5.Visible = True 'tension arterial
+            'lbl_err6.Visible = True 'observacion
+            lbl_err7.Visible = True 'tipo acceso vascular
+            MessageBox.Show("Complete los Campos Obligatorios. ", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
+    End Sub
+
+    Private Sub tb_PesoS_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_PesoS.LostFocus
+        If tb_PesoS.Text = "" Then
+            tb_PesoS.Text = CDec(0)
+        End If
+    End Sub
+
+    Private Sub tb_talla_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_talla.LostFocus
+        If tb_talla.Text = "" Then
+            tb_talla.Text = CDec(0)
+        End If
+    End Sub
+
+    Private Sub tb_PesoI_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_PesoI.LostFocus
+        If tb_PesoI.Text = "" Then
+            tb_PesoI.Text = CDec(0)
+        End If
+    End Sub
+
+    Private Sub tb_PesoE_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_PesoE.LostFocus
+        If tb_PesoE.Text = "" Then
+            tb_PesoE.Text = CDec(0)
+        End If
+    End Sub
+
+    Private Sub tb_TAI_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_TAI.LostFocus
+        If tb_TAI.Text = "" Then
+            tb_TAI.Text = CDec(0)
+        End If
+    End Sub
+
+    Private Sub tb_TAE_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_TAE.LostFocus
+        If tb_TAE.Text = "" Then
+            tb_TAE.Text = CDec(0)
+        End If
+    End Sub
 End Class

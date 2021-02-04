@@ -3123,6 +3123,10 @@ Partial Public Class Venta_Caja_ds
         
         Private columncant_vencimiento As Global.System.Data.DataColumn
         
+        Private columnContenido As Global.System.Data.DataColumn
+        
+        Private columnContenido_total As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -3239,6 +3243,22 @@ Partial Public Class Venta_Caja_ds
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ContenidoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnContenido
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Contenido_totalColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnContenido_total
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3275,9 +3295,9 @@ Partial Public Class Venta_Caja_ds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddProd_consultaRow(ByVal prod_id As Integer, ByVal prod_codinterno As Integer, ByVal prod_descripcion As String, ByVal prod_descrilarga As String, ByVal prod_precio_vta As Decimal, ByVal prod_stock As Decimal, ByVal prod_ptorepo As Integer, ByVal prod_precio_vta_May As Decimal, ByVal prod_codbarra As String, ByVal cant_vencimiento As Decimal) As Prod_consultaRow
+        Public Overloads Function AddProd_consultaRow(ByVal prod_id As Integer, ByVal prod_codinterno As Integer, ByVal prod_descripcion As String, ByVal prod_descrilarga As String, ByVal prod_precio_vta As Decimal, ByVal prod_stock As Decimal, ByVal prod_ptorepo As Integer, ByVal prod_precio_vta_May As Decimal, ByVal prod_codbarra As String, ByVal cant_vencimiento As Decimal, ByVal Contenido As String, ByVal Contenido_total As String) As Prod_consultaRow
             Dim rowProd_consultaRow As Prod_consultaRow = CType(Me.NewRow,Prod_consultaRow)
-            Dim columnValuesArray() As Object = New Object() {prod_id, prod_codinterno, prod_descripcion, prod_descrilarga, prod_precio_vta, prod_stock, prod_ptorepo, prod_precio_vta_May, prod_codbarra, cant_vencimiento}
+            Dim columnValuesArray() As Object = New Object() {prod_id, prod_codinterno, prod_descripcion, prod_descrilarga, prod_precio_vta, prod_stock, prod_ptorepo, prod_precio_vta_May, prod_codbarra, cant_vencimiento, Contenido, Contenido_total}
             rowProd_consultaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowProd_consultaRow)
             Return rowProd_consultaRow
@@ -3310,6 +3330,8 @@ Partial Public Class Venta_Caja_ds
             Me.columnprod_precio_vta_May = MyBase.Columns("prod_precio_vta_May")
             Me.columnprod_codbarra = MyBase.Columns("prod_codbarra")
             Me.columncant_vencimiento = MyBase.Columns("cant_vencimiento")
+            Me.columnContenido = MyBase.Columns("Contenido")
+            Me.columnContenido_total = MyBase.Columns("Contenido_total")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3335,6 +3357,10 @@ Partial Public Class Venta_Caja_ds
             MyBase.Columns.Add(Me.columnprod_codbarra)
             Me.columncant_vencimiento = New Global.System.Data.DataColumn("cant_vencimiento", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncant_vencimiento)
+            Me.columnContenido = New Global.System.Data.DataColumn("Contenido", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnContenido)
+            Me.columnContenido_total = New Global.System.Data.DataColumn("Contenido_total", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnContenido_total)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5064,6 +5090,36 @@ Partial Public Class Venta_Caja_ds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Contenido() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableProd_consulta.ContenidoColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Contenido' de la tabla 'Prod_consulta' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProd_consulta.ContenidoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Contenido_total() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableProd_consulta.Contenido_totalColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Contenido_total' de la tabla 'Prod_consulta' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProd_consulta.Contenido_totalColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isprod_idNull() As Boolean
             Return Me.IsNull(Me.tableProd_consulta.prod_idColumn)
         End Function
@@ -5180,6 +5236,30 @@ Partial Public Class Venta_Caja_ds
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Setcant_vencimientoNull()
             Me(Me.tableProd_consulta.cant_vencimientoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsContenidoNull() As Boolean
+            Return Me.IsNull(Me.tableProd_consulta.ContenidoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetContenidoNull()
+            Me(Me.tableProd_consulta.ContenidoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsContenido_totalNull() As Boolean
+            Return Me.IsNull(Me.tableProd_consulta.Contenido_totalColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetContenido_totalNull()
+            Me(Me.tableProd_consulta.Contenido_totalColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

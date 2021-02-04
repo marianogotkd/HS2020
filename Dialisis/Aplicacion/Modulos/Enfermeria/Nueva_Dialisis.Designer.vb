@@ -23,10 +23,10 @@ Partial Class Nueva_Dialisis
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Nueva_Dialisis))
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tb_numHemo = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -449,7 +449,7 @@ Partial Class Nueva_Dialisis
         Me.tb_PesoE.Name = "tb_PesoE"
         Me.tb_PesoE.Size = New System.Drawing.Size(79, 20)
         Me.tb_PesoE.TabIndex = 1
-        Me.tb_PesoE.Text = "00,00"
+        Me.tb_PesoE.Text = "0,00"
         Me.tb_PesoE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'tb_PesoI
@@ -458,7 +458,7 @@ Partial Class Nueva_Dialisis
         Me.tb_PesoI.Name = "tb_PesoI"
         Me.tb_PesoI.Size = New System.Drawing.Size(79, 20)
         Me.tb_PesoI.TabIndex = 0
-        Me.tb_PesoI.Text = "00,00"
+        Me.tb_PesoI.Text = "0,00"
         Me.tb_PesoI.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label9
@@ -511,7 +511,7 @@ Partial Class Nueva_Dialisis
         Me.tb_TAE.Name = "tb_TAE"
         Me.tb_TAE.Size = New System.Drawing.Size(79, 20)
         Me.tb_TAE.TabIndex = 1
-        Me.tb_TAE.Text = "00,00"
+        Me.tb_TAE.Text = "0,00"
         Me.tb_TAE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'tb_TAI
@@ -520,7 +520,7 @@ Partial Class Nueva_Dialisis
         Me.tb_TAI.Name = "tb_TAI"
         Me.tb_TAI.Size = New System.Drawing.Size(79, 20)
         Me.tb_TAI.TabIndex = 0
-        Me.tb_TAI.Text = "00,00"
+        Me.tb_TAI.Text = "0,00"
         Me.tb_TAI.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label12
@@ -590,7 +590,7 @@ Partial Class Nueva_Dialisis
         Me.btn_eliminar_seleccion.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btn_eliminar_seleccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_eliminar_seleccion.Image = Global.Aplicacion.My.Resources.Resources.menos
-        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(213, 36)
+        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(111, 36)
         Me.btn_eliminar_seleccion.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_eliminar_seleccion.Name = "btn_eliminar_seleccion"
         Me.btn_eliminar_seleccion.Size = New System.Drawing.Size(94, 40)
@@ -611,23 +611,24 @@ Partial Class Nueva_Dialisis
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodprodDataGridViewTextBoxColumn1, Me.DescripcionDataGridViewTextBoxColumn1, Me.DesdeDataGridViewTextBoxColumn1, Me.HaciaDataGridViewTextBoxColumn1, Me.CantidadrealDataGridViewTextBoxColumn, Me.LoteidDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn13, Me.ProvidDataGridViewTextBoxColumn, Me.Column1})
         Me.DataGridView2.DataSource = Me.ConsumorealBindingSource
-        Me.DataGridView2.Location = New System.Drawing.Point(469, 84)
+        Me.DataGridView2.Location = New System.Drawing.Point(719, 20)
         Me.DataGridView2.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView2.MultiSelect = False
         Me.DataGridView2.Name = "DataGridView2"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridView2.RowHeadersVisible = False
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView2.Size = New System.Drawing.Size(687, 156)
+        Me.DataGridView2.Size = New System.Drawing.Size(350, 156)
         Me.DataGridView2.StandardTab = True
         Me.DataGridView2.TabIndex = 336
+        Me.DataGridView2.Visible = False
         '
         'CodprodDataGridViewTextBoxColumn1
         '
@@ -721,7 +722,7 @@ Partial Class Nueva_Dialisis
         '
         Me.btn_limpiar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_limpiar.Image = Global.Aplicacion.My.Resources.Resources.Borrar
-        Me.btn_limpiar.Location = New System.Drawing.Point(111, 36)
+        Me.btn_limpiar.Location = New System.Drawing.Point(213, 36)
         Me.btn_limpiar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_limpiar.Name = "btn_limpiar"
         Me.btn_limpiar.Size = New System.Drawing.Size(94, 40)
@@ -730,6 +731,7 @@ Partial Class Nueva_Dialisis
         Me.btn_limpiar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.btn_limpiar, "Quitar todos los insumos listados")
         Me.btn_limpiar.UseVisualStyleBackColor = True
+        Me.btn_limpiar.Visible = False
         '
         'DataGridView1
         '
@@ -746,20 +748,20 @@ Partial Class Nueva_Dialisis
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridView1.RowHeadersVisible = False
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(440, 156)
+        Me.DataGridView1.Size = New System.Drawing.Size(1193, 156)
         Me.DataGridView1.StandardTab = True
         Me.DataGridView1.TabIndex = 331
         '
@@ -1040,7 +1042,7 @@ Partial Class Nueva_Dialisis
         Me.tb_talla.Name = "tb_talla"
         Me.tb_talla.Size = New System.Drawing.Size(79, 20)
         Me.tb_talla.TabIndex = 1
-        Me.tb_talla.Text = "00,00"
+        Me.tb_talla.Text = "0,00"
         Me.tb_talla.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'tb_PesoS
@@ -1049,7 +1051,7 @@ Partial Class Nueva_Dialisis
         Me.tb_PesoS.Name = "tb_PesoS"
         Me.tb_PesoS.Size = New System.Drawing.Size(79, 20)
         Me.tb_PesoS.TabIndex = 0
-        Me.tb_PesoS.Text = "00,00"
+        Me.tb_PesoS.Text = "0,00"
         Me.tb_PesoS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'btn_NAV

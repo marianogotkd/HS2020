@@ -38,19 +38,6 @@ Partial Class Sesiones_prod_agregar
         Me.btn_siguiente = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.ProdidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProdcodinternoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProddescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProddescrilargaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProdpreciovtaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProdstockDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProdptorepoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProdpreciovtaMayDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProdcodbarraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CantvencimientoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.ProdconsultaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Venta_Caja_ds = New Aplicacion.Venta_Caja_ds()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
@@ -146,14 +133,27 @@ Partial Class Sesiones_prod_agregar
         Me.tope = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LotebajaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Mov_DS = New Aplicacion.Mov_DS()
+        Me.ProdconsultaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Venta_Caja_ds = New Aplicacion.Venta_Caja_ds()
+        Me.ProdidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdcodinternoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProddescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProddescrilargaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdpreciovtaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdstockDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdptorepoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdpreciovtaMayDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdcodbarraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CantvencimientoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Contenido = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Contenido_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ProdconsultaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Venta_Caja_ds, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl2.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -173,6 +173,8 @@ Partial Class Sesiones_prod_agregar
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LotebajaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Mov_DS, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ProdconsultaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Venta_Caja_ds, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -297,7 +299,7 @@ Partial Class Sesiones_prod_agregar
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProdidDataGridViewTextBoxColumn, Me.ProdcodinternoDataGridViewTextBoxColumn, Me.ProddescripcionDataGridViewTextBoxColumn, Me.ProddescrilargaDataGridViewTextBoxColumn, Me.ProdpreciovtaDataGridViewTextBoxColumn, Me.ProdstockDataGridViewTextBoxColumn, Me.ProdptorepoDataGridViewTextBoxColumn, Me.ProdpreciovtaMayDataGridViewTextBoxColumn, Me.ProdcodbarraDataGridViewTextBoxColumn, Me.CantvencimientoDataGridViewTextBoxColumn, Me.Column1})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ProdidDataGridViewTextBoxColumn, Me.ProdcodinternoDataGridViewTextBoxColumn, Me.ProddescripcionDataGridViewTextBoxColumn, Me.ProddescrilargaDataGridViewTextBoxColumn, Me.ProdpreciovtaDataGridViewTextBoxColumn, Me.ProdstockDataGridViewTextBoxColumn, Me.ProdptorepoDataGridViewTextBoxColumn, Me.ProdpreciovtaMayDataGridViewTextBoxColumn, Me.ProdcodbarraDataGridViewTextBoxColumn, Me.CantvencimientoDataGridViewTextBoxColumn, Me.Contenido, Me.Contenido_total, Me.Column1})
         Me.DataGridView1.DataSource = Me.ProdconsultaBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(11, 164)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
@@ -313,105 +315,6 @@ Partial Class Sesiones_prod_agregar
         Me.DataGridView1.Size = New System.Drawing.Size(626, 205)
         Me.DataGridView1.StandardTab = True
         Me.DataGridView1.TabIndex = 25
-        '
-        'ProdidDataGridViewTextBoxColumn
-        '
-        Me.ProdidDataGridViewTextBoxColumn.DataPropertyName = "prod_id"
-        Me.ProdidDataGridViewTextBoxColumn.HeaderText = "prod_id"
-        Me.ProdidDataGridViewTextBoxColumn.Name = "ProdidDataGridViewTextBoxColumn"
-        Me.ProdidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProdidDataGridViewTextBoxColumn.Visible = False
-        '
-        'ProdcodinternoDataGridViewTextBoxColumn
-        '
-        Me.ProdcodinternoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.ProdcodinternoDataGridViewTextBoxColumn.DataPropertyName = "prod_codinterno"
-        Me.ProdcodinternoDataGridViewTextBoxColumn.HeaderText = "Cód."
-        Me.ProdcodinternoDataGridViewTextBoxColumn.Name = "ProdcodinternoDataGridViewTextBoxColumn"
-        Me.ProdcodinternoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ProddescripcionDataGridViewTextBoxColumn
-        '
-        Me.ProddescripcionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ProddescripcionDataGridViewTextBoxColumn.DataPropertyName = "prod_descripcion"
-        Me.ProddescripcionDataGridViewTextBoxColumn.HeaderText = "Descripción"
-        Me.ProddescripcionDataGridViewTextBoxColumn.Name = "ProddescripcionDataGridViewTextBoxColumn"
-        Me.ProddescripcionDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ProddescrilargaDataGridViewTextBoxColumn
-        '
-        Me.ProddescrilargaDataGridViewTextBoxColumn.DataPropertyName = "prod_descrilarga"
-        Me.ProddescrilargaDataGridViewTextBoxColumn.HeaderText = "prod_descrilarga"
-        Me.ProddescrilargaDataGridViewTextBoxColumn.Name = "ProddescrilargaDataGridViewTextBoxColumn"
-        Me.ProddescrilargaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProddescrilargaDataGridViewTextBoxColumn.Visible = False
-        '
-        'ProdpreciovtaDataGridViewTextBoxColumn
-        '
-        Me.ProdpreciovtaDataGridViewTextBoxColumn.DataPropertyName = "prod_precio_vta"
-        Me.ProdpreciovtaDataGridViewTextBoxColumn.HeaderText = "prod_precio_vta"
-        Me.ProdpreciovtaDataGridViewTextBoxColumn.Name = "ProdpreciovtaDataGridViewTextBoxColumn"
-        Me.ProdpreciovtaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProdpreciovtaDataGridViewTextBoxColumn.Visible = False
-        '
-        'ProdstockDataGridViewTextBoxColumn
-        '
-        Me.ProdstockDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ProdstockDataGridViewTextBoxColumn.DataPropertyName = "prod_stock"
-        Me.ProdstockDataGridViewTextBoxColumn.HeaderText = "Stock"
-        Me.ProdstockDataGridViewTextBoxColumn.Name = "ProdstockDataGridViewTextBoxColumn"
-        Me.ProdstockDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ProdptorepoDataGridViewTextBoxColumn
-        '
-        Me.ProdptorepoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ProdptorepoDataGridViewTextBoxColumn.DataPropertyName = "prod_ptorepo"
-        Me.ProdptorepoDataGridViewTextBoxColumn.HeaderText = "Pto.Reposición"
-        Me.ProdptorepoDataGridViewTextBoxColumn.Name = "ProdptorepoDataGridViewTextBoxColumn"
-        Me.ProdptorepoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ProdpreciovtaMayDataGridViewTextBoxColumn
-        '
-        Me.ProdpreciovtaMayDataGridViewTextBoxColumn.DataPropertyName = "prod_precio_vta_May"
-        Me.ProdpreciovtaMayDataGridViewTextBoxColumn.HeaderText = "prod_precio_vta_May"
-        Me.ProdpreciovtaMayDataGridViewTextBoxColumn.Name = "ProdpreciovtaMayDataGridViewTextBoxColumn"
-        Me.ProdpreciovtaMayDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProdpreciovtaMayDataGridViewTextBoxColumn.Visible = False
-        '
-        'ProdcodbarraDataGridViewTextBoxColumn
-        '
-        Me.ProdcodbarraDataGridViewTextBoxColumn.DataPropertyName = "prod_codbarra"
-        Me.ProdcodbarraDataGridViewTextBoxColumn.HeaderText = "prod_codbarra"
-        Me.ProdcodbarraDataGridViewTextBoxColumn.Name = "ProdcodbarraDataGridViewTextBoxColumn"
-        Me.ProdcodbarraDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ProdcodbarraDataGridViewTextBoxColumn.Visible = False
-        '
-        'CantvencimientoDataGridViewTextBoxColumn
-        '
-        Me.CantvencimientoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CantvencimientoDataGridViewTextBoxColumn.DataPropertyName = "cant_vencimiento"
-        Me.CantvencimientoDataGridViewTextBoxColumn.HeaderText = "Vencidos"
-        Me.CantvencimientoDataGridViewTextBoxColumn.Name = "CantvencimientoDataGridViewTextBoxColumn"
-        Me.CantvencimientoDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Column1
-        '
-        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column1.FillWeight = 5.497368!
-        Me.Column1.HeaderText = "item"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Visible = False
-        '
-        'ProdconsultaBindingSource
-        '
-        Me.ProdconsultaBindingSource.DataMember = "Prod_consulta"
-        Me.ProdconsultaBindingSource.DataSource = Me.Venta_Caja_ds
-        '
-        'Venta_Caja_ds
-        '
-        Me.Venta_Caja_ds.DataSetName = "Venta_Caja_ds"
-        Me.Venta_Caja_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Label2
         '
@@ -1391,6 +1294,135 @@ Partial Class Sesiones_prod_agregar
         Me.Mov_DS.DataSetName = "Mov_DS"
         Me.Mov_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'ProdconsultaBindingSource
+        '
+        Me.ProdconsultaBindingSource.DataMember = "Prod_consulta"
+        Me.ProdconsultaBindingSource.DataSource = Me.Venta_Caja_ds
+        '
+        'Venta_Caja_ds
+        '
+        Me.Venta_Caja_ds.DataSetName = "Venta_Caja_ds"
+        Me.Venta_Caja_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ProdidDataGridViewTextBoxColumn
+        '
+        Me.ProdidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ProdidDataGridViewTextBoxColumn.DataPropertyName = "prod_id"
+        Me.ProdidDataGridViewTextBoxColumn.HeaderText = "prod_id"
+        Me.ProdidDataGridViewTextBoxColumn.Name = "ProdidDataGridViewTextBoxColumn"
+        Me.ProdidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProdidDataGridViewTextBoxColumn.Visible = False
+        '
+        'ProdcodinternoDataGridViewTextBoxColumn
+        '
+        Me.ProdcodinternoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ProdcodinternoDataGridViewTextBoxColumn.DataPropertyName = "prod_codinterno"
+        Me.ProdcodinternoDataGridViewTextBoxColumn.FillWeight = 126.9036!
+        Me.ProdcodinternoDataGridViewTextBoxColumn.HeaderText = "Cód."
+        Me.ProdcodinternoDataGridViewTextBoxColumn.MinimumWidth = 50
+        Me.ProdcodinternoDataGridViewTextBoxColumn.Name = "ProdcodinternoDataGridViewTextBoxColumn"
+        Me.ProdcodinternoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProdcodinternoDataGridViewTextBoxColumn.Width = 50
+        '
+        'ProddescripcionDataGridViewTextBoxColumn
+        '
+        Me.ProddescripcionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ProddescripcionDataGridViewTextBoxColumn.DataPropertyName = "prod_descripcion"
+        Me.ProddescripcionDataGridViewTextBoxColumn.FillWeight = 85.5619!
+        Me.ProddescripcionDataGridViewTextBoxColumn.HeaderText = "Descripción"
+        Me.ProddescripcionDataGridViewTextBoxColumn.MinimumWidth = 250
+        Me.ProddescripcionDataGridViewTextBoxColumn.Name = "ProddescripcionDataGridViewTextBoxColumn"
+        Me.ProddescripcionDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ProddescrilargaDataGridViewTextBoxColumn
+        '
+        Me.ProddescrilargaDataGridViewTextBoxColumn.DataPropertyName = "prod_descrilarga"
+        Me.ProddescrilargaDataGridViewTextBoxColumn.HeaderText = "prod_descrilarga"
+        Me.ProddescrilargaDataGridViewTextBoxColumn.Name = "ProddescrilargaDataGridViewTextBoxColumn"
+        Me.ProddescrilargaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProddescrilargaDataGridViewTextBoxColumn.Visible = False
+        '
+        'ProdpreciovtaDataGridViewTextBoxColumn
+        '
+        Me.ProdpreciovtaDataGridViewTextBoxColumn.DataPropertyName = "prod_precio_vta"
+        Me.ProdpreciovtaDataGridViewTextBoxColumn.HeaderText = "prod_precio_vta"
+        Me.ProdpreciovtaDataGridViewTextBoxColumn.Name = "ProdpreciovtaDataGridViewTextBoxColumn"
+        Me.ProdpreciovtaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProdpreciovtaDataGridViewTextBoxColumn.Visible = False
+        '
+        'ProdstockDataGridViewTextBoxColumn
+        '
+        Me.ProdstockDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ProdstockDataGridViewTextBoxColumn.DataPropertyName = "prod_stock"
+        Me.ProdstockDataGridViewTextBoxColumn.FillWeight = 116.4108!
+        Me.ProdstockDataGridViewTextBoxColumn.HeaderText = "Stock"
+        Me.ProdstockDataGridViewTextBoxColumn.MinimumWidth = 50
+        Me.ProdstockDataGridViewTextBoxColumn.Name = "ProdstockDataGridViewTextBoxColumn"
+        Me.ProdstockDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ProdptorepoDataGridViewTextBoxColumn
+        '
+        Me.ProdptorepoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ProdptorepoDataGridViewTextBoxColumn.DataPropertyName = "prod_ptorepo"
+        Me.ProdptorepoDataGridViewTextBoxColumn.HeaderText = "Pto.Reposición"
+        Me.ProdptorepoDataGridViewTextBoxColumn.Name = "ProdptorepoDataGridViewTextBoxColumn"
+        Me.ProdptorepoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProdptorepoDataGridViewTextBoxColumn.Visible = False
+        '
+        'ProdpreciovtaMayDataGridViewTextBoxColumn
+        '
+        Me.ProdpreciovtaMayDataGridViewTextBoxColumn.DataPropertyName = "prod_precio_vta_May"
+        Me.ProdpreciovtaMayDataGridViewTextBoxColumn.HeaderText = "prod_precio_vta_May"
+        Me.ProdpreciovtaMayDataGridViewTextBoxColumn.Name = "ProdpreciovtaMayDataGridViewTextBoxColumn"
+        Me.ProdpreciovtaMayDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProdpreciovtaMayDataGridViewTextBoxColumn.Visible = False
+        '
+        'ProdcodbarraDataGridViewTextBoxColumn
+        '
+        Me.ProdcodbarraDataGridViewTextBoxColumn.DataPropertyName = "prod_codbarra"
+        Me.ProdcodbarraDataGridViewTextBoxColumn.HeaderText = "prod_codbarra"
+        Me.ProdcodbarraDataGridViewTextBoxColumn.Name = "ProdcodbarraDataGridViewTextBoxColumn"
+        Me.ProdcodbarraDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ProdcodbarraDataGridViewTextBoxColumn.Visible = False
+        '
+        'CantvencimientoDataGridViewTextBoxColumn
+        '
+        Me.CantvencimientoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.CantvencimientoDataGridViewTextBoxColumn.DataPropertyName = "cant_vencimiento"
+        Me.CantvencimientoDataGridViewTextBoxColumn.FillWeight = 85.5619!
+        Me.CantvencimientoDataGridViewTextBoxColumn.HeaderText = "Vencidos"
+        Me.CantvencimientoDataGridViewTextBoxColumn.Name = "CantvencimientoDataGridViewTextBoxColumn"
+        Me.CantvencimientoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CantvencimientoDataGridViewTextBoxColumn.Width = 70
+        '
+        'Contenido
+        '
+        Me.Contenido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Contenido.DataPropertyName = "Contenido"
+        Me.Contenido.HeaderText = "Contenido"
+        Me.Contenido.Name = "Contenido"
+        Me.Contenido.ReadOnly = True
+        Me.Contenido.Visible = False
+        '
+        'Contenido_total
+        '
+        Me.Contenido_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Contenido_total.DataPropertyName = "Contenido_total"
+        Me.Contenido_total.FillWeight = 85.5619!
+        Me.Contenido_total.HeaderText = "Contenido total"
+        Me.Contenido_total.Name = "Contenido_total"
+        Me.Contenido_total.ReadOnly = True
+        Me.Contenido_total.Width = 107
+        '
+        'Column1
+        '
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column1.FillWeight = 5.497368!
+        Me.Column1.HeaderText = "item"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Visible = False
+        '
         'Sesiones_prod_agregar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1413,8 +1445,6 @@ Partial Class Sesiones_prod_agregar
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ProdconsultaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Venta_Caja_ds, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl2.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
@@ -1442,6 +1472,8 @@ Partial Class Sesiones_prod_agregar
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LotebajaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Mov_DS, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ProdconsultaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Venta_Caja_ds, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1552,6 +1584,7 @@ Partial Class Sesiones_prod_agregar
     Friend WithEvents DataGridViewCheckBoxColumn2 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents tope As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents txt_unidmedida As System.Windows.Forms.TextBox
+    Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents ProdidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProdcodinternoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProddescripcionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -1562,6 +1595,7 @@ Partial Class Sesiones_prod_agregar
     Friend WithEvents ProdpreciovtaMayDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProdcodbarraDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CantvencimientoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Contenido As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Contenido_total As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents Label25 As System.Windows.Forms.Label
 End Class

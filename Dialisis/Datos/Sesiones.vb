@@ -4,7 +4,7 @@ Public Class Sesiones
     Inherits Datos.Conexion
 
     'alta ausente
-    Public Function sesiones_alta(ByVal PAC_id As Integer, ByVal Sesiones_fecha As Date, ByVal Sesiones_asistencia As String) As DataSet
+    Public Function sesiones_alta(ByVal PAC_id As Integer, ByVal Sesiones_fecha As Date, ByVal Sesiones_asistencia As String, ByVal Sesiones_estado As String) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -16,6 +16,7 @@ Public Class Sesiones
         comando.Parameters.Add(New OleDb.OleDbParameter("@PAC_id", PAC_id))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Sesiones_fecha", Sesiones_fecha))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Sesiones_asistencia", Sesiones_asistencia))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Sesiones_estado", Sesiones_estado))
 
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)
@@ -25,7 +26,7 @@ Public Class Sesiones
     End Function
 
     'actualizo ausente por presente.
-    Public Function Sesiones_modificar(ByVal Sesiones_id As Integer, ByVal Sesiones_fecha As Date, ByVal Sesiones_asistencia As String) As DataSet
+    Public Function Sesiones_modificar(ByVal Sesiones_id As Integer, ByVal Sesiones_fecha As Date, ByVal Sesiones_asistencia As String, ByVal Sesiones_estado As String) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -37,6 +38,7 @@ Public Class Sesiones
         comando.Parameters.Add(New OleDb.OleDbParameter("@Sesiones_id", Sesiones_id))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Sesiones_fecha", Sesiones_fecha))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Sesiones_asistencia", Sesiones_asistencia))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Sesiones_estado", Sesiones_estado))
 
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)
