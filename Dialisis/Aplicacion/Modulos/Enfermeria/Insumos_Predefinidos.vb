@@ -94,15 +94,7 @@
 
 
 #Region "Validacion de grilla - solo numeros en celda"
-    Private Sub DataGridView1_EditingControlShowing(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DataGridView1.EditingControlShowing
 
-        '    valido_fraccionable(datagridview_Predef.CurrentRow.Cells("columna_codinterno").Value)
-
-        'referencia a la celda
-        Dim validar As TextBox = CType(e.Control, TextBox)
-        'agregar el controlador de eventos para el keypress
-        '   AddHandler validar.KeyPress, AddressOf validar_Keypress
-    End Sub
     'Private Sub valido_fraccionable(ByVal cod_ingresado As String)
     '    'Encontrado = "no"
     '    Dim i As Integer = 0
@@ -224,4 +216,7 @@
 
 
 
+    Private Sub datagridview_Predef_EditingControlShowing(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles datagridview_Predef.EditingControlShowing
+        Dim validar As TextBox = CType(e.Control, TextBox)
+    End Sub
 End Class
