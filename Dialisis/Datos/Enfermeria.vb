@@ -279,7 +279,8 @@ Public Class Enfermeria
     Public Function Insumos_Predefinidos_alta(
                               ByVal predef_cant As Decimal,
                               ByVal Predef_Desc As String,
-                               ByVal prod_codinterno As Integer
+                               ByVal prod_codinterno As Integer,
+                               ByVal prod_unidadmedida As String
                             ) As DataSet
         Try
             dbconn.Open()
@@ -292,6 +293,7 @@ Public Class Enfermeria
         comando.Parameters.Add(New OleDb.OleDbParameter("@predef_cant", predef_cant))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Predef_Desc", Predef_Desc))
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_codinterno", prod_codinterno))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prod_unidadmedida", prod_unidadmedida))
 
 
 

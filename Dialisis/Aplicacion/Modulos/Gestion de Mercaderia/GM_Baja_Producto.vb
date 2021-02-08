@@ -4043,6 +4043,17 @@ Public Class GM_Baja_Producto
             newCustomersRow("prod_codinterno") = DataGridView1.SelectedCells(1).Value 'prod_codinterno
             newCustomersRow("Descripcion") = DataGridView1.SelectedCells(2).Value      'prod_descripcion 
             newCustomersRow("Predef_Cantidad") = 0
+            newCustomersRow("prod_id") = DataGridView1.SelectedCells(0).Value 'Prod_id
+
+            'Busqueda para agregar la unidad de medida
+            Dim x As Integer = 0
+            While x < ds_PROD.Tables(1).Rows.Count
+                If DataGridView1.SelectedCells(0).Value = ds_PROD.Tables(1).Rows(x).Item("prod_id") Then
+                    newCustomersRow("prod_unidadmedida") = ds_PROD.Tables(1).Rows(x).Item("prod_unidadmedida")
+                End If
+                x = x + 1
+            End While
+
             Insumos_Predefinidos.Ds_enfermeria.Tables("Predefinidos").Rows.Add(newCustomersRow)
             MessageBox.Show("Producto agregado correctamente", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If

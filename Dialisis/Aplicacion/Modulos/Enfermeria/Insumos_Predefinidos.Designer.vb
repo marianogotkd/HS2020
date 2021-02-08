@@ -34,12 +34,14 @@ Partial Class Insumos_Predefinidos
         Me.Button3 = New System.Windows.Forms.Button()
         Me.btn_ausente = New System.Windows.Forms.Button()
         Me.datagridview_Predef = New System.Windows.Forms.DataGridView()
+        Me.PredefinidosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Ds_enfermeria = New Aplicacion.Ds_enfermeria()
         Me.PredefIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.prod_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdcodinternoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PredefCantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PredefinidosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Ds_enfermeria = New Aplicacion.Ds_enfermeria()
+        Me.prod_unidadmedida = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.datagridview_Predef, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PredefinidosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -130,7 +132,7 @@ Partial Class Insumos_Predefinidos
         Me.datagridview_Predef.BackgroundColor = System.Drawing.Color.White
         Me.datagridview_Predef.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.datagridview_Predef.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.datagridview_Predef.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PredefIdDataGridViewTextBoxColumn, Me.ProdcodinternoDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.PredefCantidadDataGridViewTextBoxColumn})
+        Me.datagridview_Predef.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PredefIdDataGridViewTextBoxColumn, Me.prod_id, Me.ProdcodinternoDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.PredefCantidadDataGridViewTextBoxColumn, Me.prod_unidadmedida})
         Me.datagridview_Predef.DataSource = Me.PredefinidosBindingSource
         Me.datagridview_Predef.Location = New System.Drawing.Point(6, 64)
         Me.datagridview_Predef.Margin = New System.Windows.Forms.Padding(4)
@@ -147,6 +149,16 @@ Partial Class Insumos_Predefinidos
         Me.datagridview_Predef.StandardTab = True
         Me.datagridview_Predef.TabIndex = 258
         '
+        'PredefinidosBindingSource
+        '
+        Me.PredefinidosBindingSource.DataMember = "Predefinidos"
+        Me.PredefinidosBindingSource.DataSource = Me.Ds_enfermeria
+        '
+        'Ds_enfermeria
+        '
+        Me.Ds_enfermeria.DataSetName = "Ds_enfermeria"
+        Me.Ds_enfermeria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'PredefIdDataGridViewTextBoxColumn
         '
         Me.PredefIdDataGridViewTextBoxColumn.DataPropertyName = "Predef_Id"
@@ -155,6 +167,13 @@ Partial Class Insumos_Predefinidos
         Me.PredefIdDataGridViewTextBoxColumn.HeaderText = "Predef_Id"
         Me.PredefIdDataGridViewTextBoxColumn.Name = "PredefIdDataGridViewTextBoxColumn"
         Me.PredefIdDataGridViewTextBoxColumn.Visible = False
+        '
+        'prod_id
+        '
+        Me.prod_id.DataPropertyName = "prod_id"
+        Me.prod_id.HeaderText = "prod_id"
+        Me.prod_id.Name = "prod_id"
+        Me.prod_id.Visible = False
         '
         'ProdcodinternoDataGridViewTextBoxColumn
         '
@@ -176,15 +195,12 @@ Partial Class Insumos_Predefinidos
         Me.PredefCantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad"
         Me.PredefCantidadDataGridViewTextBoxColumn.Name = "PredefCantidadDataGridViewTextBoxColumn"
         '
-        'PredefinidosBindingSource
+        'prod_unidadmedida
         '
-        Me.PredefinidosBindingSource.DataMember = "Predefinidos"
-        Me.PredefinidosBindingSource.DataSource = Me.Ds_enfermeria
-        '
-        'Ds_enfermeria
-        '
-        Me.Ds_enfermeria.DataSetName = "Ds_enfermeria"
-        Me.Ds_enfermeria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.prod_unidadmedida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.prod_unidadmedida.DataPropertyName = "prod_unidadmedida"
+        Me.prod_unidadmedida.HeaderText = "Unidad de Medida"
+        Me.prod_unidadmedida.Name = "prod_unidadmedida"
         '
         'Insumos_Predefinidos
         '
@@ -214,7 +230,9 @@ Partial Class Insumos_Predefinidos
     Friend WithEvents Ds_enfermeria As Aplicacion.Ds_enfermeria
     Friend WithEvents lbl_cant As System.Windows.Forms.Label
     Friend WithEvents PredefIdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents prod_id As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProdcodinternoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DescripcionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents PredefCantidadDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents prod_unidadmedida As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
