@@ -2972,6 +2972,10 @@ Partial Public Class Ds_enfermeria
         
         Private columnDescripcion As Global.System.Data.DataColumn
         
+        Private columnprod_id As Global.System.Data.DataColumn
+        
+        Private columnprod_unidadmedida As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -3040,6 +3044,22 @@ Partial Public Class Ds_enfermeria
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property prod_idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnprod_id
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property prod_unidadmedidaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnprod_unidadmedida
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3076,9 +3096,9 @@ Partial Public Class Ds_enfermeria
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddPredefinidosRow(ByVal Predef_Id As Integer, ByVal prod_codinterno As Integer, ByVal Predef_Cantidad As Decimal, ByVal Descripcion As String) As PredefinidosRow
+        Public Overloads Function AddPredefinidosRow(ByVal Predef_Id As Integer, ByVal prod_codinterno As Integer, ByVal Predef_Cantidad As Decimal, ByVal Descripcion As String, ByVal prod_id As String, ByVal prod_unidadmedida As String) As PredefinidosRow
             Dim rowPredefinidosRow As PredefinidosRow = CType(Me.NewRow,PredefinidosRow)
-            Dim columnValuesArray() As Object = New Object() {Predef_Id, prod_codinterno, Predef_Cantidad, Descripcion}
+            Dim columnValuesArray() As Object = New Object() {Predef_Id, prod_codinterno, Predef_Cantidad, Descripcion, prod_id, prod_unidadmedida}
             rowPredefinidosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowPredefinidosRow)
             Return rowPredefinidosRow
@@ -3105,6 +3125,8 @@ Partial Public Class Ds_enfermeria
             Me.columnprod_codinterno = MyBase.Columns("prod_codinterno")
             Me.columnPredef_Cantidad = MyBase.Columns("Predef_Cantidad")
             Me.columnDescripcion = MyBase.Columns("Descripcion")
+            Me.columnprod_id = MyBase.Columns("prod_id")
+            Me.columnprod_unidadmedida = MyBase.Columns("prod_unidadmedida")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3118,6 +3140,10 @@ Partial Public Class Ds_enfermeria
             MyBase.Columns.Add(Me.columnPredef_Cantidad)
             Me.columnDescripcion = New Global.System.Data.DataColumn("Descripcion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDescripcion)
+            Me.columnprod_id = New Global.System.Data.DataColumn("prod_id", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnprod_id)
+            Me.columnprod_unidadmedida = New Global.System.Data.DataColumn("prod_unidadmedida", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnprod_unidadmedida)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5769,6 +5795,36 @@ Partial Public Class Ds_enfermeria
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property prod_id() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePredefinidos.prod_idColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'prod_id' de la tabla 'Predefinidos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePredefinidos.prod_idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property prod_unidadmedida() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablePredefinidos.prod_unidadmedidaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'prod_unidadmedida' de la tabla 'Predefinidos' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablePredefinidos.prod_unidadmedidaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsPredef_IdNull() As Boolean
             Return Me.IsNull(Me.tablePredefinidos.Predef_IdColumn)
         End Function
@@ -5813,6 +5869,30 @@ Partial Public Class Ds_enfermeria
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetDescripcionNull()
             Me(Me.tablePredefinidos.DescripcionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isprod_idNull() As Boolean
+            Return Me.IsNull(Me.tablePredefinidos.prod_idColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setprod_idNull()
+            Me(Me.tablePredefinidos.prod_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isprod_unidadmedidaNull() As Boolean
+            Return Me.IsNull(Me.tablePredefinidos.prod_unidadmedidaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setprod_unidadmedidaNull()
+            Me(Me.tablePredefinidos.prod_unidadmedidaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

@@ -114,6 +114,8 @@
               <xs:element name="prod_codinterno" msprop:Generator_ColumnVarNameInTable="columnprod_codinterno" msprop:Generator_ColumnPropNameInRow="prod_codinterno" msprop:Generator_ColumnPropNameInTable="prod_codinternoColumn" msprop:Generator_UserColumnName="prod_codinterno" type="xs:int" minOccurs="0" />
               <xs:element name="Predef_Cantidad" msprop:Generator_ColumnVarNameInTable="columnPredef_Cantidad" msprop:Generator_ColumnPropNameInRow="Predef_Cantidad" msprop:Generator_ColumnPropNameInTable="Predef_CantidadColumn" msprop:Generator_UserColumnName="Predef_Cantidad" type="xs:decimal" minOccurs="0" />
               <xs:element name="Descripcion" msprop:Generator_ColumnVarNameInTable="columnDescripcion" msprop:Generator_ColumnPropNameInRow="Descripcion" msprop:Generator_ColumnPropNameInTable="DescripcionColumn" msprop:Generator_UserColumnName="Descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="prod_id" msprop:Generator_ColumnVarNameInTable="columnprod_id" msprop:Generator_ColumnPropNameInRow="prod_id" msprop:Generator_ColumnPropNameInTable="prod_idColumn" msprop:Generator_UserColumnName="prod_id" type="xs:string" minOccurs="0" />
+              <xs:element name="prod_unidadmedida" msprop:Generator_ColumnVarNameInTable="columnprod_unidadmedida" msprop:Generator_ColumnPropNameInRow="prod_unidadmedida" msprop:Generator_ColumnPropNameInTable="prod_unidadmedidaColumn" msprop:Generator_UserColumnName="prod_unidadmedida" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
