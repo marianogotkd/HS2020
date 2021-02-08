@@ -3890,9 +3890,6 @@
             Else
                 vencidos = CDec(e.Value)
             End If
-
-
-
             If vencidos <> CDec(0) Then
                 e.CellStyle.ForeColor = Color.Red
                 e.CellStyle.SelectionForeColor = Color.Red

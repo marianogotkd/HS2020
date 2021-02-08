@@ -45,6 +45,8 @@
                 'fila("cantidad") = ""
                 fila("prod_codinterno") = ds_consumos.Tables(0).Rows(i).Item("prod_codinterno")
                 fila("Insumo") = ds_consumos.Tables(0).Rows(i).Item("Insumo")
+                Dim unidad_medida As String = ds_consumos.Tables(0).Rows(i).Item("prod_unidadmedida")
+
                 j = i
                 Dim sumado = "si"
                 While j < ds_consumos.Tables(0).Rows.Count
@@ -59,6 +61,7 @@
                     End If
                 End While
                 fila("cantidad") = sumacantidad
+                fila("cant_y_unid_medida") = sumacantidad.ToString + " " + unidad_medida
                 Ds_enfermeria.Tables("insumos_consumidos").Rows.Add(fila)
                 sumacantidad = 0
                 If sumado = "si" Then

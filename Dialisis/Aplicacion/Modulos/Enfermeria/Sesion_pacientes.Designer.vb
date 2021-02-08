@@ -23,7 +23,7 @@ Partial Class Sesion_pacientes
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Sesion_pacientes))
         Me.lb_sesionfecha = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -85,8 +85,10 @@ Partial Class Sesion_pacientes
         '
         'tb_turno
         '
+        Me.tb_turno.BackColor = System.Drawing.SystemColors.Info
         Me.tb_turno.Location = New System.Drawing.Point(74, 21)
         Me.tb_turno.Name = "tb_turno"
+        Me.tb_turno.ReadOnly = True
         Me.tb_turno.Size = New System.Drawing.Size(224, 20)
         Me.tb_turno.TabIndex = 2
         '
@@ -101,8 +103,10 @@ Partial Class Sesion_pacientes
         '
         'tb_horario
         '
+        Me.tb_horario.BackColor = System.Drawing.SystemColors.Info
         Me.tb_horario.Location = New System.Drawing.Point(74, 49)
         Me.tb_horario.Name = "tb_horario"
+        Me.tb_horario.ReadOnly = True
         Me.tb_horario.Size = New System.Drawing.Size(224, 20)
         Me.tb_horario.TabIndex = 4
         '
@@ -241,10 +245,10 @@ Partial Class Sesion_pacientes
         Me.datagridview1.ReadOnly = True
         Me.datagridview1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.datagridview1.RowHeadersVisible = False
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        Me.datagridview1.RowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        Me.datagridview1.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.datagridview1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.datagridview1.Size = New System.Drawing.Size(713, 188)
         Me.datagridview1.StandardTab = True

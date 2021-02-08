@@ -12,8 +12,6 @@
             msj_esperar_b.procedencia = "reporte_sesiones_y_consumos"
             msj_esperar_b.Show()
         End If
-
-        
     End Sub
 
 
@@ -132,6 +130,7 @@
                         filac("accesovascular_tipo") = ds_sesiones.Tables(0).Rows(i).Item("AccesoVascular")
                         filac("Consumo_mercaderia_id") = ds_sesiones.Tables(4).Rows(k).Item("Consumo_mercaderia_id")
                         filac("cantidad") = ds_sesiones.Tables(4).Rows(k).Item("cantidad")
+                        filac("unidad_medida") = ds_sesiones.Tables(4).Rows(k).Item("prod_unidadmedida")
                         filac("prod_codinterno") = ds_sesiones.Tables(4).Rows(k).Item("prod_codinterno")
                         filac("Insumo") = ds_sesiones.Tables(4).Rows(k).Item("Insumo")
                         Ds_reporte_enfermeria.Tables("sesiones_e_insumos_group").Rows.Add(filac)
@@ -174,6 +173,7 @@
                     'filac("Sesiones_id") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_id")
                     'filac("fecha_sesion") = ds_sesiones.Tables(0).Rows(i).Item("Sesiones_fecha")
                     filac("cantidad") = CDec(0)
+                    filac("unidad_medida") = ""
                     filac("prod_codinterno") = 0
                     filac("Insumo") = ""
                     Ds_reporte_enfermeria.Tables("sesiones_e_insumos_group").Rows.Add(filac)

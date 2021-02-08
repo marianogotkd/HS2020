@@ -23,12 +23,13 @@ Partial Class GM_Baja_Producto
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GM_Baja_Producto))
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Btn_Predef = New System.Windows.Forms.Button()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -153,7 +154,6 @@ Partial Class GM_Baja_Producto
         Me.tope = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Prov_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Mov_DS = New Aplicacion.Mov_DS()
-        Me.Btn_Predef = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -213,6 +213,20 @@ Partial Class GM_Baja_Producto
         Me.TabPage1.Text = "Productos en stock"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'Btn_Predef
+        '
+        Me.Btn_Predef.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Btn_Predef.Image = Global.Aplicacion.My.Resources.Resources.Pasar
+        Me.Btn_Predef.Location = New System.Drawing.Point(815, 477)
+        Me.Btn_Predef.Margin = New System.Windows.Forms.Padding(4)
+        Me.Btn_Predef.Name = "Btn_Predef"
+        Me.Btn_Predef.Size = New System.Drawing.Size(136, 43)
+        Me.Btn_Predef.TabIndex = 250
+        Me.Btn_Predef.Text = "Seleccionar"
+        Me.Btn_Predef.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Btn_Predef.UseVisualStyleBackColor = True
+        Me.Btn_Predef.Visible = False
+        '
         'GroupBox5
         '
         Me.GroupBox5.Controls.Add(Me.Label8)
@@ -234,7 +248,6 @@ Partial Class GM_Baja_Producto
         Me.Label8.Size = New System.Drawing.Size(46, 13)
         Me.Label8.TabIndex = 34
         Me.Label8.Text = "Vencido"
-        Me.Label8.Visible = False
         '
         'Label7
         '
@@ -253,7 +266,6 @@ Partial Class GM_Baja_Producto
         Me.PictureBox7.Size = New System.Drawing.Size(28, 28)
         Me.PictureBox7.TabIndex = 2
         Me.PictureBox7.TabStop = False
-        Me.PictureBox7.Visible = False
         '
         'PictureBox8
         '
@@ -303,10 +315,10 @@ Partial Class GM_Baja_Producto
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersVisible = False
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(943, 252)
         Me.DataGridView1.StandardTab = True
@@ -920,10 +932,10 @@ Partial Class GM_Baja_Producto
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.ReadOnly = True
         Me.DataGridView2.RowHeadersVisible = False
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView2.RowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView2.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView2.Size = New System.Drawing.Size(967, 252)
         Me.DataGridView2.StandardTab = True
@@ -1338,10 +1350,10 @@ Partial Class GM_Baja_Producto
         Me.DataGridView3.MultiSelect = False
         Me.DataGridView3.Name = "DataGridView3"
         Me.DataGridView3.RowHeadersVisible = False
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView3.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView3.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView3.Size = New System.Drawing.Size(906, 196)
         Me.DataGridView3.StandardTab = True
@@ -1467,20 +1479,6 @@ Partial Class GM_Baja_Producto
         '
         Me.Mov_DS.DataSetName = "Mov_DS"
         Me.Mov_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Btn_Predef
-        '
-        Me.Btn_Predef.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Btn_Predef.Image = Global.Aplicacion.My.Resources.Resources.Pasar
-        Me.Btn_Predef.Location = New System.Drawing.Point(815, 478)
-        Me.Btn_Predef.Margin = New System.Windows.Forms.Padding(4)
-        Me.Btn_Predef.Name = "Btn_Predef"
-        Me.Btn_Predef.Size = New System.Drawing.Size(136, 43)
-        Me.Btn_Predef.TabIndex = 250
-        Me.Btn_Predef.Text = "Seleccionar"
-        Me.Btn_Predef.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Btn_Predef.UseVisualStyleBackColor = True
-        Me.Btn_Predef.Visible = False
         '
         'GM_Baja_Producto
         '

@@ -728,14 +728,13 @@
 
     Private Sub tx_Buscar_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tx_Buscar.KeyPress
         Dim Filtro
-        Filtro = String.Format("{0} LIKE '%{1}%'", "prod_descripcion", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
-
+        Filtro = String.Format("CONVERT(prod_codinterno, System.String) LIKE '%{0}%'", tx_Buscar.Text)
         ProdconsultaBindingSource.Filter = Filtro
         If DataGridView1.Rows.Count = 0 Then
-            Filtro = String.Format("CONVERT(prod_codinterno, System.String) LIKE '%{0}%'", tx_Buscar.Text)
+            Filtro = String.Format("CONVERT(prod_codbarra, System.String) LIKE '%{0}%'", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
             ProdconsultaBindingSource.Filter = Filtro
             If DataGridView1.Rows.Count = 0 Then
-                Filtro = String.Format("CONVERT(prod_codbarra, System.String) LIKE '%{0}%'", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
+                Filtro = String.Format("{0} LIKE '%{1}%'", "prod_descripcion", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
                 ProdconsultaBindingSource.Filter = Filtro
             End If
         End If
@@ -800,6 +799,38 @@
                 DataGridView2.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Green
             End If
         End If
+    End Sub
+
+    Private Sub DataGridView1_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
+        'aqui voy a validar que si esta vencido se ponga en rojo la celda.
+        If DataGridView1.Rows.Count <> 0 Then
+            Dim i As Integer = 0
+            While i < DataGridView1.Rows.Count
+                Dim stock As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdstockDataGridViewTextBoxColumn").Value)
+                Dim pto_reposicion As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdptorepoDataGridViewTextBoxColumn").Value)
+                If stock <= pto_reposicion Then
+                    DataGridView1.Rows(i).DefaultCellStyle.ForeColor = Color.Blue
+                Else
+                    DataGridView1.Rows(i).DefaultCellStyle.ForeColor = Color.Black
+                End If
+                i = i + 1
+            End While
+        End If
+
+        If DataGridView1.Columns(e.ColumnIndex).Name = "CantvencimientoDataGridViewTextBoxColumn" Then 'esto significa que voy a validar esta celda
+            Dim vencidos As Decimal
+            If IsDBNull(e.Value) Then
+                vencidos = CDec(0)
+            Else
+                vencidos = CDec(e.Value)
+            End If
+            If vencidos <> CDec(0) Then
+                e.CellStyle.ForeColor = Color.Red
+                e.CellStyle.SelectionForeColor = Color.Red
+            End If
+        End If
+
+
     End Sub
 
 

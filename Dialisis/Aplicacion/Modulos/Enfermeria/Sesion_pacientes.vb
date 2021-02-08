@@ -228,7 +228,11 @@
         Dim Filtro
         Filtro = String.Format("{0} LIKE '%{1}%'", "Paciente", TextBox1.Text) 'esto para campos strings, FUNCIONA PERFECTO
         SesionactualtodospacientesBindingSource.Filter = Filtro
-        'Cliente1BindingSource.Filter = Filtro
+        'Cliente1BindingSource.Filter = Filtro        
+        If datagridview1.Rows.Count = 0 Then
+            Filtro = String.Format("CONVERT(PAC_dni, System.String) LIKE '%{0}%'", TextBox1.Text) 'esto para campos strings, FUNCIONA PERFECTO
+            SesionactualtodospacientesBindingSource.Filter = Filtro
+        End If
     End Sub
 
     Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged

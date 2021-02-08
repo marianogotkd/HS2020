@@ -1654,6 +1654,8 @@ Partial Public Class Ds_enfermeria
         
         Private columnInsumo As Global.System.Data.DataColumn
         
+        Private columncant_y_unid_medida As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1746,6 +1748,14 @@ Partial Public Class Ds_enfermeria
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property cant_y_unid_medidaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncant_y_unid_medida
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1782,9 +1792,9 @@ Partial Public Class Ds_enfermeria
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function Addinsumos_consumidosRow(ByVal Consumo_mercaderia_id As Integer, ByVal Fecha As Date, ByVal Sesiones_id As Integer, ByVal fecha_sesion As Date, ByVal cantidad As Decimal, ByVal prod_codinterno As Integer, ByVal Insumo As String) As insumos_consumidosRow
+        Public Overloads Function Addinsumos_consumidosRow(ByVal Consumo_mercaderia_id As Integer, ByVal Fecha As Date, ByVal Sesiones_id As Integer, ByVal fecha_sesion As Date, ByVal cantidad As Decimal, ByVal prod_codinterno As Integer, ByVal Insumo As String, ByVal cant_y_unid_medida As String) As insumos_consumidosRow
             Dim rowinsumos_consumidosRow As insumos_consumidosRow = CType(Me.NewRow,insumos_consumidosRow)
-            Dim columnValuesArray() As Object = New Object() {Consumo_mercaderia_id, Fecha, Sesiones_id, fecha_sesion, cantidad, prod_codinterno, Insumo}
+            Dim columnValuesArray() As Object = New Object() {Consumo_mercaderia_id, Fecha, Sesiones_id, fecha_sesion, cantidad, prod_codinterno, Insumo, cant_y_unid_medida}
             rowinsumos_consumidosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowinsumos_consumidosRow)
             Return rowinsumos_consumidosRow
@@ -1814,6 +1824,7 @@ Partial Public Class Ds_enfermeria
             Me.columncantidad = MyBase.Columns("cantidad")
             Me.columnprod_codinterno = MyBase.Columns("prod_codinterno")
             Me.columnInsumo = MyBase.Columns("Insumo")
+            Me.columncant_y_unid_medida = MyBase.Columns("cant_y_unid_medida")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1833,6 +1844,8 @@ Partial Public Class Ds_enfermeria
             MyBase.Columns.Add(Me.columnprod_codinterno)
             Me.columnInsumo = New Global.System.Data.DataColumn("Insumo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnInsumo)
+            Me.columncant_y_unid_medida = New Global.System.Data.DataColumn("cant_y_unid_medida", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncant_y_unid_medida)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4970,6 +4983,22 @@ Partial Public Class Ds_enfermeria
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property cant_y_unid_medida() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableinsumos_consumidos.cant_y_unid_medidaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'cant_y_unid_medida' de la tabla 'insumos_consumidos' es D"& _ 
+                            "BNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableinsumos_consumidos.cant_y_unid_medidaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsConsumo_mercaderia_idNull() As Boolean
             Return Me.IsNull(Me.tableinsumos_consumidos.Consumo_mercaderia_idColumn)
         End Function
@@ -5050,6 +5079,18 @@ Partial Public Class Ds_enfermeria
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetInsumoNull()
             Me(Me.tableinsumos_consumidos.InsumoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Iscant_y_unid_medidaNull() As Boolean
+            Return Me.IsNull(Me.tableinsumos_consumidos.cant_y_unid_medidaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setcant_y_unid_medidaNull()
+            Me(Me.tableinsumos_consumidos.cant_y_unid_medidaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

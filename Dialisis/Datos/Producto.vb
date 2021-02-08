@@ -270,6 +270,28 @@ Public Class Producto
         Return ds_JE
     End Function
 
+    Public Function Producto_modificar_contenido_y_unidmedida(ByVal prod_codinterno As String, ByVal prod_unimedida As String, ByVal prod_contenido As Decimal) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Producto_modificar_contenido_y_unidmedida", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prod_codinterno", prod_codinterno))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prod_unidadmedida", prod_unimedida))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prod_contenido", prod_contenido))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@producto_foto", producto_foto))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Producto")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
     Public Function Producto_modifDatos(ByVal prod_id As Integer, ByVal prod_descripcion As String, ByVal prod_descrilarga As String, ByVal prod_codbarra As String, ByVal idmarca As Integer, ByVal prod_unidadmedida As String, ByVal producto_foto() As Byte) As DataSet
         Try
             dbconn.Open()

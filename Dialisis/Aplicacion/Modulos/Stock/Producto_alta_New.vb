@@ -15,6 +15,9 @@ Public Class Producto_alta_New
     Public codint As Integer
     Public form_procedencia As String = "alta"
     Dim Producto_ds As New Producto_ds
+
+    Dim contenido As Decimal 'esto lo uso para saber si realmente se cambio, y aplicar el recalculo de stock
+
     Private Sub Producto_alta_New_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         If form_procedencia = "modificar" Then
@@ -23,7 +26,7 @@ Public Class Producto_alta_New
             recuperar_datos_producto() 'recupera los proveedores asignados, y los carga en la grilla DataGridView_Prod_Prov
             Me.tx_codbarra.Focus()
             Me.tx_codbarra.SelectAll()
-            txt_contenido.ReadOnly = True
+            'txt_contenido.ReadOnly = True
 
             'Bo_guardar.Enabled = False
             Clipboard.SetDataObject(Me.PictureBox1.Image)
@@ -68,8 +71,9 @@ Public Class Producto_alta_New
         Combo_unidmedida.Text = ds_prod.Tables(0).Rows(0).Item(11) 'choco: 21-01-2021
         txt_contenido.Text = ds_prod.Tables(0).Rows(0).Item("prod_contenido").ToString
         If txt_contenido.Text = "" Then
-            txt_contenido.Text = CDec(0)
+            txt_contenido.Text = CDec(1)
         End If
+        contenido = CDec(txt_contenido.Text)
 
         tx_codbarra.Text = ds_prod.Tables(0).Rows(0).Item(7)
         tx_ptorepo.Text = ds_prod.Tables(0).Rows(0).Item(5)
@@ -422,6 +426,7 @@ Public Class Producto_alta_New
 
         If form_procedencia = "modificar" Then
             Me.Close()
+            'Producto_modificar.Visible = True
             Producto_modificar.Show()
 
         End If
@@ -698,28 +703,28 @@ Public Class Producto_alta_New
                     DAproducto.ProveedorProductoCompra_alta(provprodid, row.Cells("ProvProdComfechaDataGridViewTextBoxColumn").Value)
                 Next
                 '///////////////////////////////////////////////////////////////////////////////
-
-
-                    'alta de producto con STOCK en 0.. en todas las sucursales.
+                'alta de producto con STOCK en 0.. en todas las sucursales.
                     Dim a As Integer = 0
                     While a < ds_prodid.Tables(1).Rows.Count
                         Dim sucursal_id As Integer = ds_prodid.Tables(1).Rows(a).Item("sucursal_id")
                     DAproducto.Producto_x_sucursal_ALTA(prodid, sucursal_id, 0, 0, 0)
                         a = a + 1
                     End While
-                    limpiar_deshabilitar()
                 If form_procedencia = "modificar" Then
-                   
+                    cargar_modificacion_en_gridview("ALTA", prodid)
                     MessageBox.Show("El producto se guardo correctamente", "Sistema de Gestion.")
-                    Close()
+                    Me.Close()
+                    Producto_modificar.Show()
                 Else
+                    cargar_modificacion_en_gridview("ALTA", prodid)
+                    Producto_modificar.Show()
+                    limpiar_deshabilitar()
                     Generar_cod_interno()
                     ds_producto_recuperado.Tables("ProveedorProducto").Rows.Clear()
                     MessageBox.Show("El producto se guardo correctamente", "Sistema de Gestion.")
-                    Producto_modificar.paso = 1
-                    Producto_modificar.Cargar_grilla()
+                    'Producto_modificar.paso = 1
+                    'Producto_modificar.Cargar_grilla()
                 End If
-
             End If
         End If
     End Sub
@@ -804,27 +809,155 @@ Public Class Producto_alta_New
                 ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-                'como se cambia el campo contenido se recalcula
-
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                'IMPORTANTE: SI CAMBIO LA UNIDAD DE MEDIDA Y CONTENIDO SE RECALCULA EL STOCK REAL EN EL DEPOSITO, NO ASI EN LAS DEMAS SUCURSALES
+                'esto lo hago solo si realmente se cambia el campo contenido, solo para el deposito.
+                'If contenido <> CDec(txt_contenido.Text) Then
+                recalcular_stock_lotes(CInt(tx_codinterno.Text), prodid)
+                'End If
                 'consultarlo con mariano, porque si se cambia el valor que va en el textbox "contenido" se deberia recalcular el stock real, pero ojo q no afecte a lo que ya se tiene consumido.
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ''/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-                limpiar_deshabilitar()
+
+
+
+
+                'limpiar_deshabilitar()
                 If form_procedencia = "modificar" Then
+                    cargar_modificacion_en_gridview("MODIFICACION", prodid)
                     MessageBox.Show("El producto se guardo correctamente", "Sistema de Gestion.")
-                    Close()
-                    Producto_modificar.paso = 1 'esto es x q obligo a seleccionar el combo de sucursal primero
-                    Producto_modificar.Cargar_grilla()
-                    'Producto_modificar.Prod_obtenertodo()
+                    'Close()
+                    'Producto_modificar.paso = 1 'esto es x q obligo a seleccionar el combo de sucursal primero
+                    'Producto_modificar.Cargar_grilla()
+                    Me.Close()
                     Producto_modificar.Show()
                 Else
                     Generar_cod_interno()
                     MessageBox.Show("El producto se guardo correctamente", "Sistema de Gestion.")
                 End If
+                limpiar_deshabilitar()
                 'End If
             End If
         End If
     End Sub
+
+    Private Sub cargar_modificacion_en_gridview(ByVal tipo_op As String, ByVal prodid As Integer)
+        Dim sucursal_id As Integer = CInt(Producto_modificar.cb_origen.SelectedValue)
+        'recupero info del producto
+        Dim ds_info As DataSet = DAprod.Producto_x_sucursal_buscarcod(CInt(CInt(tx_codinterno.Text)), sucursal_id)
+
+        If tipo_op = "MODIFICACION" Then
+            'como es una modificacion lo que tengo que hacer es buscar en el dataset 
+            Dim i As Integer = 0
+            While i < Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows.Count
+                If Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_id") = prodid Then
+                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_descripcion") = tx_descripcion.Text 'string
+                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_precio_vta") = CDec(Tb_PrecMin.Text) 'decimal
+                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
+                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_precio_vta_May") = CDec(tb_PrecMay.Text) 'decimal
+                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("ProdxSuc_stock") = ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock") 'decimal
+                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_codbarra") = tx_codbarra.Text 'string
+                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("Contenido") = txt_contenido.Text + " " + Combo_unidmedida.Text 'string contenido+unid medida
+                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("Contenido_total") = CStr(ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) + " " + Combo_unidmedida.Text 'string contenido total +unid medida
+                    Exit While
+                End If
+                i = i + 1
+            End While
+            If Producto_modificar.Tx_Buscqueda.Text <> "" Then
+                'no se si debo correr el codigo del filtro si se aplico.
+            End If
+        End If
+        If tipo_op = "ALTA" Then
+            Dim fila As DataRow = Producto_modificar.Producto_ds.Tables("ProdxSuc").NewRow
+            fila("prod_descripcion") = tx_descripcion.Text 'string
+            fila("prod_precio_vta") = CDec(0) 'decimal
+            fila("prod_id") = prodid  'int
+            fila("prod_codinterno") = CInt(tx_codinterno.Text)  'int
+            fila("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
+            fila("prod_precio_vta_May") = CDec(0) 'decimal
+            fila("ProdxSuc_stock") = ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock") 'decimal
+            fila("sucursal_id") = sucursal_id  'int
+            fila("prod_codbarra") = tx_codbarra.Text 'string
+            fila("Contenido") = txt_contenido.Text + " " + Combo_unidmedida.Text 'string contenido+unid medida
+            fila("Contenido_total") = CStr(ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) + " " + Combo_unidmedida.Text 'string contenido total +unid medida
+            Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows.Add(fila)
+            If Producto_modificar.Tx_Buscqueda.Text <> "" Then
+                'no se si debo correr el codigo del filtro si se aplico.
+            End If
+        End If
+
+    End Sub
+
+    Dim dalote As New Datos.Lote
+    'se recalculo el stock ya que se cambio el parametro "contenido"
+    Private Sub recalcular_stock_lotes(ByVal prod_codinterno As Integer, ByVal prod_id As Integer)
+        'realizo el calculo solamente en la sucursal deposito id 1, para obtener lote_stock_real y lote_aux
+        'necesito un listado de todas las sucursales.
+        'Dim ds_suc As DataSet = DAsucursal.Sucursal_obtener
+        Dim i As Integer = 0
+        'While i < ds_suc.Tables(0).Rows.Count 'ciclo en todas las sucursales
+        'Dim sucursal_id As Integer = ds_suc.Tables(0).Rows(i).Item("sucursal_id")
+        Dim sucursal_id As Integer = 1
+        'voy actualizando primero los lotes.
+        'ciclo por cada producto
+        'Dim j As Integer = 0
+        'While j < ds_prod.Tables(0).Rows.Count
+
+        'Dim prod_codinterno As Integer = ds_prod.Tables(0).Rows(j).Item("prod_codinterno")
+        'Dim prod_id As Integer = ds_prod.Tables(0).Rows(j).Item("prod_id")
+
+        'tengo q recuperar los lotes en esa sucursal.
+        Dim ds_lotes As DataSet = dalote.Producto_x_sucursal_lote_recuperartodos(prod_codinterno, sucursal_id)
+        Dim k As Integer = 0
+        While k < ds_lotes.Tables(0).Rows.Count
+            'aqui hago el calculo y actualizo lote_stock_real y lote_aux
+            Dim lote_nro As Integer = ds_lotes.Tables(0).Rows(k).Item("lote_nro")
+            Dim proveedor_id As Integer = ds_lotes.Tables(0).Rows(k).Item("Prov_id")
+            Dim cantidad As Decimal = CDec(ds_lotes.Tables(0).Rows(k).Item("lote_cantidad"))
+            Dim contenido As Decimal = CDec(txt_contenido.Text)
+            Dim lote_stock_real As Decimal = cantidad * contenido
+            Dim lote_aux As Decimal = CDec(0)
+            dalote.Producto_x_sucursal_lote_actualizar_igualar(lote_nro, prod_id, sucursal_id,
+                                                                  cantidad, proveedor_id, lote_stock_real, lote_aux)
+
+            k = k + 1
+        End While
+        'ahora que termine con los lotes tengo que actualizar en la tabla Producto_x_sucursal el campo stock_real.
+        'para ello debo sumar los lotes.
+        recupero_y_recalculo_totales(prod_id, prod_codinterno, sucursal_id)
+        'j = j + 1
+        'End While
+        'i = i + 1
+        'End While
+    End Sub
+    Dim DAprod As New Datos.Producto
+    Private Sub recupero_y_recalculo_totales(ByVal prod_id As Integer, ByVal codinterno As Integer, ByVal sucursal_id As Integer)
+        Dim ds_lotes As DataSet = dalote.Producto_x_sucursal_lote_recuperartodos(codinterno, sucursal_id)
+        Dim stock As Decimal = 0
+        Dim stock_real As Decimal = 0
+        Dim i As Integer = 0
+        While i < ds_lotes.Tables(0).Rows.Count
+            stock = stock + CInt(ds_lotes.Tables(0).Rows(i).Item("lote_cantidad"))
+            stock_real = stock_real + CInt(ds_lotes.Tables(0).Rows(i).Item("lote_stock_real"))
+            i = i + 1
+        End While
+        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, stock, stock_real)
+    End Sub
+
+
 
     'esta rutina borrar los producto cargados en la tabla "proveedorproducto"
     Private Sub proveedorproducto_borrar(ByVal prodid As Integer)
@@ -965,5 +1098,13 @@ Public Class Producto_alta_New
     Dim daValidaciones As New Validaciones
     Private Sub txt_contenido_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_contenido.KeyPress
         daValidaciones.Restricciones_textbox(e, "Decimal", txt_contenido)
+    End Sub
+
+    Private Sub txt_contenido_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles txt_contenido.LostFocus
+        If txt_contenido.Text = "" Then
+            txt_contenido.Text = CDec(1)
+        Else
+            txt_contenido.Text = CDec(txt_contenido.Text) 'siempre q sea decimal
+        End If
     End Sub
 End Class

@@ -80,6 +80,13 @@
                 End If
                 a = a + 1
             End While
+        Else
+            If ds_lotes.Tables(1).Rows.Count <> 0 Then
+                contenido_x_unidad = ds_lotes.Tables(1).Rows(0).Item("prod_contenido")
+                unidad_medida = ds_lotes.Tables(1).Rows(0).Item("prod_unidadmedida")
+                tipo_producto = ds_lotes.Tables(1).Rows(0).Item("prod_tipo")
+                txt_totalreal.Text = ds_lotes.Tables(1).Rows(0).Item("ProdxSuc_stock_real").ToString + " " + ds_lotes.Tables(1).Rows(0).Item("prod_unidadmedida")
+            End If
         End If
     End Sub
 

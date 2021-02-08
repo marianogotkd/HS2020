@@ -84,8 +84,6 @@ Partial Class GM_Consultar_Stock
         Me.Label_descripcion = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.LotebajaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Mov_DS = New Aplicacion.Mov_DS()
         Me.ProdidDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdcodinternoDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProddescripcionDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -100,6 +98,8 @@ Partial Class GM_Consultar_Stock
         Me.SucursalidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.Prov_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LotebajaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Mov_DS = New Aplicacion.Mov_DS()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -198,7 +198,6 @@ Partial Class GM_Consultar_Stock
         Me.Label8.Size = New System.Drawing.Size(46, 13)
         Me.Label8.TabIndex = 34
         Me.Label8.Text = "Vencido"
-        Me.Label8.Visible = False
         '
         'Label9
         '
@@ -217,7 +216,6 @@ Partial Class GM_Consultar_Stock
         Me.PictureBox4.Size = New System.Drawing.Size(28, 28)
         Me.PictureBox4.TabIndex = 2
         Me.PictureBox4.TabStop = False
-        Me.PictureBox4.Visible = False
         '
         'PictureBox5
         '
@@ -763,16 +761,6 @@ Partial Class GM_Consultar_Stock
         Me.DataGridView2.StandardTab = True
         Me.DataGridView2.TabIndex = 26
         '
-        'LotebajaBindingSource
-        '
-        Me.LotebajaBindingSource.DataMember = "lote_baja"
-        Me.LotebajaBindingSource.DataSource = Me.Mov_DS
-        '
-        'Mov_DS
-        '
-        Me.Mov_DS.DataSetName = "Mov_DS"
-        Me.Mov_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'ProdidDataGridViewTextBoxColumn1
         '
         Me.ProdidDataGridViewTextBoxColumn1.DataPropertyName = "prod_id"
@@ -887,6 +875,16 @@ Partial Class GM_Consultar_Stock
         Me.Prov_id.Name = "Prov_id"
         Me.Prov_id.ReadOnly = True
         Me.Prov_id.Visible = False
+        '
+        'LotebajaBindingSource
+        '
+        Me.LotebajaBindingSource.DataMember = "lote_baja"
+        Me.LotebajaBindingSource.DataSource = Me.Mov_DS
+        '
+        'Mov_DS
+        '
+        Me.Mov_DS.DataSetName = "Mov_DS"
+        Me.Mov_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'GM_Consultar_Stock
         '

@@ -643,14 +643,13 @@ Public Class GM_Baja_Producto
     Private Sub tx_Buscar_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tx_Buscar.KeyPress
         If form_procedencia = "Venta_Caja_gestion" Or form_procedencia = "Pedido_Productos" Or form_procedencia = "GM_Carga_Producto" Or form_procedencia = "Gestion_Mercaderia" Or form_procedencia = "Servicio_nuevo" Then
             Dim Filtro
-            Filtro = String.Format("{0} LIKE '%{1}%'", "prod_descripcion", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
-
+            Filtro = String.Format("CONVERT(prod_codinterno, System.String) LIKE '%{0}%'", tx_Buscar.Text)
             ProdconsultaBindingSource.Filter = Filtro
             If DataGridView1.Rows.Count = 0 Then
-                Filtro = String.Format("CONVERT(prod_codinterno, System.String) LIKE '%{0}%'", tx_Buscar.Text)
+                Filtro = String.Format("CONVERT(prod_codbarra, System.String) LIKE '%{0}%'", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
                 ProdconsultaBindingSource.Filter = Filtro
                 If DataGridView1.Rows.Count = 0 Then
-                    Filtro = String.Format("CONVERT(prod_codbarra, System.String) LIKE '%{0}%'", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
+                    Filtro = String.Format("{0} LIKE '%{1}%'", "prod_descripcion", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
                     ProdconsultaBindingSource.Filter = Filtro
                 End If
             End If
@@ -1317,6 +1316,8 @@ Public Class GM_Baja_Producto
                 End If
                 cb_marca.Enabled = False
                 Obtener_Productos_Combos()
+                agregar_cant_vencida()
+
             End If
         End If
 
@@ -1349,6 +1350,8 @@ Public Class GM_Baja_Producto
                 End If
                 cb_marca.Enabled = False
                 Obtener_Productos_Combos()
+                agregar_cant_vencida()
+
             End If
         End If
 
@@ -1381,6 +1384,8 @@ Public Class GM_Baja_Producto
                 End If
                 cb_marca.Enabled = False
                 Obtener_Productos_Combos()
+                agregar_cant_vencida()
+
             End If
         End If
     End Sub
@@ -3196,9 +3201,17 @@ Public Class GM_Baja_Producto
         Dim sumas As Decimal = 0
         Dim ii As Integer = 0
         Dim bandera1 As String = "me falta"
+        Dim vencidos As String = "no"
         While ii < DataGridView3.Rows.Count
             If DataGridView3.Rows(ii).Cells("DataGridViewCheckBoxColumn2").Value = True Then
+
+
                 sumas = sumas + CDec(DataGridView3.Rows(ii).Cells("DataGridViewTextBoxColumn7").Value)
+                If DataGridView3.Rows(ii).DefaultCellStyle.ForeColor = Color.Red Then
+                    'esta vencido el lote
+                    vencidos = "si"
+                End If
+
                 If sumas >= CDec(txt_cant_mov.Text) Then
                     If bandera1 = "me falta" Then
                         bandera1 = "completo con este lote"
@@ -3223,6 +3236,16 @@ Public Class GM_Baja_Producto
                 If CDec(txt_cant_mov.Text) <= sumas And CDec(txt_cant_mov.Text) <> CDec(0) Then
                     Panel_cant_mover.BackColor = Color.Green
                     validacion = "si"
+
+                    If vencidos = "si" Then
+                        'aqui pregunto si deseo moverlos de todas formas.
+                        Dim result As Integer = MessageBox.Show("¿Algunos lotes seleccionados estan vencidos. ¿Desea agregalos de todos modos?", "Sistema de Gestión.", MessageBoxButtons.YesNo)
+                        If result = DialogResult.Yes Then
+
+                        ElseIf result = DialogResult.No Then
+                            validacion = "no"
+                        End If
+                    End If
                 Else
                     Panel_cant_mover.BackColor = Color.Red
                     'MessageBox.Show("Seleccione correctamente los lote a mover o modifique la cantidad.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -3233,6 +3256,7 @@ Public Class GM_Baja_Producto
             'MessageBox.Show("Debe ingresar una cantidad válida.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
         Return validacion
+
     End Function
 
 
@@ -3319,6 +3343,11 @@ Public Class GM_Baja_Producto
             validar_carga(validacion)
         End If
         If validacion = "si" Then
+            'If vencidos = "si" Then
+            '    'aqui viene  la pregunta para saber si quiere moverlos de cualquier manera.
+            'End If
+
+
             If Panel_cant_mover.BackColor = Color.Green And CDec(txt_cant_mov.Text) <> CDec(0) Then
                 'valido que la cant q este en el textbox no supere a la cant max de productos en sucursal
                 If CDec(txt_cant_mov.Text) <= CDec(txt_totalunidades_mov.Text) Then
@@ -3413,11 +3442,13 @@ Public Class GM_Baja_Producto
                         Gestion_Mercaderia.cb_origen.Enabled = False
                         Gestion_Mercaderia.cb_destino.Enabled = False
 
-                        Dim result As Integer = MessageBox.Show("¿Desea agregar más lotes a el listado?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
-                        If result = DialogResult.Yes Then
-                        ElseIf result = DialogResult.No Then
-                            Me.Close()
-                        End If
+                        MessageBox.Show("Insumos agregados correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                        'Dim result As Integer = MessageBox.Show("¿Desea agregar más lotes a el listado?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
+                        'If result = DialogResult.Yes Then
+                        'ElseIf result = DialogResult.No Then
+                        '    Me.Close()
+                        'End If
                     Else
                         If encontrado = "si" Then
                             MessageBox.Show("El lote: " + nombre_lote + " ya se encuentra agregado a la lista.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -3433,6 +3464,8 @@ Public Class GM_Baja_Producto
             Else
                 'MessageBox.Show("Debe ingresar una cantidad válida.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             End If
+
+
         Else
             MessageBox.Show("Seleccione correctamente los lote a mover o modifique la cantidad.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
@@ -3541,11 +3574,13 @@ Public Class GM_Baja_Producto
                         Insumos_gestion.cb_origen.Enabled = False
                         'Insumos_gestion.cb_destino.Enabled = False
 
-                        Dim result As Integer = MessageBox.Show("¿Desea agregar más lotes a el listado?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
-                        If result = DialogResult.Yes Then
-                        ElseIf result = DialogResult.No Then
-                            Me.Close()
-                        End If
+
+                        MessageBox.Show("Insumos agregados correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        'Dim result As Integer = MessageBox.Show("¿Desea agregar más lotes a el listado?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
+                        'If result = DialogResult.Yes Then
+                        'ElseIf result = DialogResult.No Then
+                        '    Me.Close()
+                        'End If
                     Else
                         If encontrado = "si" Then
                             MessageBox.Show("El lote: " + nombre_lote + " ya se encuentra agregado a la lista.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -3690,11 +3725,12 @@ Public Class GM_Baja_Producto
                         'Nueva_Dialisis.cb_origen.Enabled = False
                         'Insumos_gestion.cb_destino.Enabled = False
 
-                        Dim result As Integer = MessageBox.Show("¿Desea agregar más lotes a el listado?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
-                        If result = DialogResult.Yes Then
-                        ElseIf result = DialogResult.No Then
-                            Me.Close()
-                        End If
+                        MessageBox.Show("Insumos agregados correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        'Dim result As Integer = MessageBox.Show("¿Desea agregar más lotes a el listado?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
+                        'If result = DialogResult.Yes Then
+                        'ElseIf result = DialogResult.No Then
+                        '    Me.Close()
+                        'End If
                     Else
                         If encontrado = "si" Then
                             MessageBox.Show("El lote: " + nombre_lote + " ya se encuentra agregado a la lista.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -3819,11 +3855,12 @@ Public Class GM_Baja_Producto
                         'Nueva_Dialisis.cb_origen.Enabled = False
                         'Insumos_gestion.cb_destino.Enabled = False
 
-                        Dim result As Integer = MessageBox.Show("¿Desea agregar más lotes a el listado?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
-                        If result = DialogResult.Yes Then
-                        ElseIf result = DialogResult.No Then
-                            Me.Close()
-                        End If
+                        MessageBox.Show("Insumos agregados correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        'Dim result As Integer = MessageBox.Show("¿Desea agregar más lotes a el listado?.", "Sistema de Gestión.", MessageBoxButtons.YesNo)
+                        'If result = DialogResult.Yes Then
+                        'ElseIf result = DialogResult.No Then
+                        '    Me.Close()
+                        'End If
                     Else
                         If encontrado = "si" Then
                             MessageBox.Show("El lote: " + nombre_lote + " ya se encuentra agregado a la lista.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -3880,6 +3917,40 @@ Public Class GM_Baja_Producto
                 End If
             End If
         End If
+
+    End Sub
+
+    Private Sub DataGridView1_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DataGridView1.CellFormatting
+
+        'aqui voy a validar que si esta vencido se ponga en rojo la celda.
+        If DataGridView1.Rows.Count <> 0 Then
+            Dim i As Integer = 0
+            While i < DataGridView1.Rows.Count
+                Dim stock As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdstockDataGridViewTextBoxColumn").Value)
+                Dim pto_reposicion As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdptorepoDataGridViewTextBoxColumn").Value)
+                If stock <= pto_reposicion Then
+                    DataGridView1.Rows(i).DefaultCellStyle.ForeColor = Color.Blue
+                Else
+                    DataGridView1.Rows(i).DefaultCellStyle.ForeColor = Color.Black
+                End If
+                i = i + 1
+            End While
+        End If
+
+        If DataGridView1.Columns(e.ColumnIndex).Name = "CantvencimientoDataGridViewTextBoxColumn" Then 'esto significa que voy a validar esta celda
+            Dim vencidos As Decimal
+            If IsDBNull(e.Value) Then
+                vencidos = CDec(0)
+            Else
+                vencidos = CDec(e.Value)
+            End If
+            If vencidos <> CDec(0) Then
+                e.CellStyle.ForeColor = Color.Red
+                e.CellStyle.SelectionForeColor = Color.Red
+            End If
+        End If
+
+
 
     End Sub
 
@@ -4029,7 +4100,7 @@ Public Class GM_Baja_Producto
 
 
             If (Insumos_Predefinidos.datagridview_Predef.Rows(i).Cells("ProdcodinternoDataGridViewTextBoxColumn").Value = DataGridView1.SelectedCells(1).Value) Then
-                MessageBox.Show("El Producto ya se encuntra agregado", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                MessageBox.Show("El Producto ya se encuentra agregado", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 B = 0
                 Exit While
             Else

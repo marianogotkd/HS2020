@@ -2771,6 +2771,8 @@ Partial Public Class Ds_reporte_enfermeria
         
         Private columnInsumo As Global.System.Data.DataColumn
         
+        Private columnunidad_medida As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -2975,6 +2977,14 @@ Partial Public Class Ds_reporte_enfermeria
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property unidad_medidaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnunidad_medida
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -3032,9 +3042,10 @@ Partial Public Class Ds_reporte_enfermeria
                     ByVal Consumo_mercaderia_id As Integer,  _
                     ByVal cantidad As Decimal,  _
                     ByVal prod_codinterno As Integer,  _
-                    ByVal Insumo As String) As sesiones_e_insumos_groupRow
+                    ByVal Insumo As String,  _
+                    ByVal unidad_medida As String) As sesiones_e_insumos_groupRow
             Dim rowsesiones_e_insumos_groupRow As sesiones_e_insumos_groupRow = CType(Me.NewRow,sesiones_e_insumos_groupRow)
-            Dim columnValuesArray() As Object = New Object() {Sesiones_id, PAC_id, Sesiones_fecha, Sesiones_asistencia, Dialisis_id, Dialisis_PesoS, Dialisis_Talla, Dialisis_HI, Dialisis_HE, Dialisis_TiempoHD, Dialisis_PesoI, Dialisis_PesoE, Dialisis_TAI, Dialisis_TAE, Dialisis_Filtro, Dialisis_Obs, accesovascular_tipo, Consumo_mercaderia_id, cantidad, prod_codinterno, Insumo}
+            Dim columnValuesArray() As Object = New Object() {Sesiones_id, PAC_id, Sesiones_fecha, Sesiones_asistencia, Dialisis_id, Dialisis_PesoS, Dialisis_Talla, Dialisis_HI, Dialisis_HE, Dialisis_TiempoHD, Dialisis_PesoI, Dialisis_PesoE, Dialisis_TAI, Dialisis_TAE, Dialisis_Filtro, Dialisis_Obs, accesovascular_tipo, Consumo_mercaderia_id, cantidad, prod_codinterno, Insumo, unidad_medida}
             rowsesiones_e_insumos_groupRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowsesiones_e_insumos_groupRow)
             Return rowsesiones_e_insumos_groupRow
@@ -3078,6 +3089,7 @@ Partial Public Class Ds_reporte_enfermeria
             Me.columncantidad = MyBase.Columns("cantidad")
             Me.columnprod_codinterno = MyBase.Columns("prod_codinterno")
             Me.columnInsumo = MyBase.Columns("Insumo")
+            Me.columnunidad_medida = MyBase.Columns("unidad_medida")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3125,6 +3137,8 @@ Partial Public Class Ds_reporte_enfermeria
             MyBase.Columns.Add(Me.columnprod_codinterno)
             Me.columnInsumo = New Global.System.Data.DataColumn("Insumo", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnInsumo)
+            Me.columnunidad_medida = New Global.System.Data.DataColumn("unidad_medida", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnunidad_medida)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5299,6 +5313,22 @@ Partial Public Class Ds_reporte_enfermeria
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property unidad_medida() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablesesiones_e_insumos_group.unidad_medidaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'unidad_medida' de la tabla 'sesiones_e_insumos_group' es "& _ 
+                            "DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablesesiones_e_insumos_group.unidad_medidaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsSesiones_idNull() As Boolean
             Return Me.IsNull(Me.tablesesiones_e_insumos_group.Sesiones_idColumn)
         End Function
@@ -5547,6 +5577,18 @@ Partial Public Class Ds_reporte_enfermeria
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetInsumoNull()
             Me(Me.tablesesiones_e_insumos_group.InsumoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isunidad_medidaNull() As Boolean
+            Return Me.IsNull(Me.tablesesiones_e_insumos_group.unidad_medidaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setunidad_medidaNull()
+            Me(Me.tablesesiones_e_insumos_group.unidad_medidaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

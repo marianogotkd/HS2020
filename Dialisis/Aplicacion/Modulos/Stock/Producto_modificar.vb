@@ -137,7 +137,9 @@ Public Class Producto_modificar
                 Producto_alta_New.form_procedencia = "modificar"
                 Producto_alta_New.Text = "Editar Producto"
                 Producto_alta_New.Show()
-                Me.Close()
+                'Me.Close()
+                Me.Hide() 'oculto
+                'Me.Visible=true'para verlo de nuevo
             Else
                 MsgBox("Seleccione un Producto", MsgBoxStyle.Information)
             End If
@@ -450,7 +452,7 @@ Public Class Producto_modificar
            
 
 
-            formato_grilla()
+            'formato_grilla()
         End If
     End Sub
     Private Sub Bo_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Bo_guardar.Click
@@ -693,17 +695,17 @@ Public Class Producto_modificar
     'Validaciones
     Private Sub Tx_Codinterno_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles Tx_Buscqueda.KeyPress
         Dim Filtro
-        Filtro = String.Format("{0} LIKE '%{1}%'", "prod_descripcion", Tx_Buscqueda.Text) 'esto para campos strings, FUNCIONA PERFECTO
+        Filtro = String.Format("CONVERT(prod_codinterno, System.String) LIKE '%{0}%'", Tx_Buscqueda.Text) 'esto para campos strings, FUNCIONA PERFECTO
         ProdxSucBindingSource.Filter = Filtro
-        formato_grilla()
+        'formato_grilla()
         If DG_Producto.Rows.Count = 0 Then
-            Filtro = String.Format("CONVERT(prod_codinterno, System.String) LIKE '%{0}%'", Tx_Buscqueda.Text) 'esto para campos strings, FUNCIONA PERFECTO
+            Filtro = String.Format("CONVERT(prod_codbarra, System.String) LIKE '%{0}%'", Tx_Buscqueda.Text) 'esto para campos strings, FUNCIONA PERFECTO
             ProdxSucBindingSource.Filter = Filtro
-            formato_grilla()
+            'formato_grilla()
             If DG_Producto.Rows.Count = 0 Then
-                Filtro = String.Format("CONVERT(prod_codbarra, System.String) LIKE '%{0}%'", Tx_Buscqueda.Text) 'esto para campos strings, FUNCIONA PERFECTO
+                Filtro = String.Format("{0} LIKE '%{1}%'", "prod_descripcion", Tx_Buscqueda.Text) 'esto para campos strings, FUNCIONA PERFECTO
                 ProdxSucBindingSource.Filter = Filtro
-                formato_grilla()
+                'formato_grilla()
             End If
         End If
         'If RadioButton_desc.Checked = True Then 'Descripcion
@@ -821,8 +823,9 @@ Public Class Producto_modificar
     End Sub
 
     Private Sub BO_producto_nuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BO_producto_nuevo.Click
-        Me.Close()
+        Me.Hide()
         Producto_alta_New.Close()
+        'Producto_alta_New.form_procedencia = "modificar"
         Producto_alta_New.Show()
     End Sub
 
@@ -1089,7 +1092,7 @@ Public Class Producto_modificar
             'tabla productos_combo
             'DataGridView1.Rows.Clear()
             Producto_ds.Tables("ProdxSuc").Merge(ds_prod_proveedor.Tables(0))
-            formato_grilla()
+            'formato_grilla()
         End If
         'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
     End Sub
@@ -1187,7 +1190,7 @@ Public Class Producto_modificar
                 i = i + 1
             End While
             'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
-            formato_grilla()
+            'formato_grilla()
         End If
     End Sub
     Private Sub filtrar_por_rubro(ByVal filtro_descrip As String)
@@ -1265,7 +1268,7 @@ Public Class Producto_modificar
                 i = i + 1
             End While
             'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
-            formato_grilla()
+            'formato_grilla()
         End If
     End Sub
     Private Sub filtrar_por_subrubro(ByVal filtro_descrip As String)
@@ -1320,7 +1323,7 @@ Public Class Producto_modificar
                 End If
                 i = i + 1
             End While
-            formato_grilla()
+            'formato_grilla()
             'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
         End If
     End Sub
@@ -1333,7 +1336,7 @@ Public Class Producto_modificar
             'tabla productos_combo
             'DataGridView1.Rows.Clear()
             Producto_ds.Tables("ProdxSuc").Merge(ds_prod_marca.Tables(0))
-            formato_grilla()
+            'formato_grilla()
 
         End If
         'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
@@ -1500,6 +1503,18 @@ Public Class Producto_modificar
                 e.CellStyle.ForeColor = Color.Red
                 e.CellStyle.SelectionForeColor = Color.Red
             End If
+        Else
+            'si esta por arriba del punto de repo los pongo en negro
+            If DG_Producto.Columns(e.ColumnIndex).Name = "ProdxSuc_stock" Then
+                'DG_Producto.Rows(e.RowIndex).Cells("ProdxSuc_stock"). = Color.Red
+                e.CellStyle.ForeColor = Color.Black
+                e.CellStyle.SelectionForeColor = Color.Black
+            End If
+            If DG_Producto.Columns(e.ColumnIndex).Name = "prod_ptorepo" Then
+                'DG_Producto.Rows(e.RowIndex).Cells("prod_ptorepo").Style.ForeColor = Color.Red
+                e.CellStyle.ForeColor = Color.Black
+                e.CellStyle.SelectionForeColor = Color.Black
+            End If
         End If
 
 
@@ -1524,7 +1539,7 @@ Public Class Producto_modificar
     End Sub
 
     Private Sub DG_Producto_ColumnHeaderMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DG_Producto.ColumnHeaderMouseClick
-        formato_grilla()
+        'formato_grilla()
     End Sub
 
 

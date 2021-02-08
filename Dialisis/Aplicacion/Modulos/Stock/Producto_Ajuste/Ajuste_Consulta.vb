@@ -76,23 +76,36 @@
 
     Private Sub tx_Buscar_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tx_Buscar.KeyPress
         Dim Filtro
-        Filtro = String.Format("{0} LIKE '%{1}%'", "MovMer_Concepto", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
-
+        Filtro = String.Format("CONVERT(prod_codinterno, System.String) LIKE '%{0}%'", tx_Buscar.Text)
         MovimientoMercaderiaAltaobtenerdetalleAjustesBindingSource.Filter = Filtro
+
         If DataGridView1.Rows.Count = 0 Then
-            Filtro = String.Format("CONVERT(MovMer_id, System.String) LIKE '%{0}%'", tx_Buscar.Text)
+            Filtro = String.Format("{0} LIKE '%{1}%'", "prod_descripcion", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
             MovimientoMercaderiaAltaobtenerdetalleAjustesBindingSource.Filter = Filtro
+
+
             If DataGridView1.Rows.Count = 0 Then
-                Filtro = String.Format("CONVERT(Usuario, System.String) LIKE '%{0}%'", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
+                Filtro = String.Format("{0} LIKE '%{1}%'", "MovMer_Concepto", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
                 MovimientoMercaderiaAltaobtenerdetalleAjustesBindingSource.Filter = Filtro
+                'If DataGridView1.Rows.Count = 0 Then
+                '    Filtro = String.Format("CONVERT(MovMer_id, System.String) LIKE '%{0}%'", tx_Buscar.Text)
+                '    MovimientoMercaderiaAltaobtenerdetalleAjustesBindingSource.Filter = Filtro
                 If DataGridView1.Rows.Count = 0 Then
-                    Filtro = String.Format("CONVERT(MovMer_FechaHora, System.String) LIKE '%{0}%'", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
+                    Filtro = String.Format("CONVERT(Usuario, System.String) LIKE '%{0}%'", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
                     MovimientoMercaderiaAltaobtenerdetalleAjustesBindingSource.Filter = Filtro
+                    If DataGridView1.Rows.Count = 0 Then
+                        Filtro = String.Format("CONVERT(MovMer_FechaHora, System.String) LIKE '%{0}%'", tx_Buscar.Text) 'esto para campos strings, FUNCIONA PERFECTO
+                        MovimientoMercaderiaAltaobtenerdetalleAjustesBindingSource.Filter = Filtro
+                    End If
                 End If
+                'End If
             End If
         End If
     End Sub
 
    
     
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+    End Sub
 End Class

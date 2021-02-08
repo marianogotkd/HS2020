@@ -94,6 +94,7 @@ Public Property EnabledCerrar() As Boolean
 
     Private Sub ActualizarProductoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ActualizarProductoToolStripMenuItem.Click
         'llamar_Form(Producto_modificar)
+        Producto_modificar.Close()
         Producto_modificar.Show()
     End Sub
 

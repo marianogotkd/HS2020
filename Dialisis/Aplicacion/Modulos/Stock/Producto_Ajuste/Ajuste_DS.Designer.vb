@@ -293,6 +293,12 @@ Partial Public Class Ajuste_DS
         
         Private columnUsuario As Global.System.Data.DataColumn
         
+        Private columnprod_descripcion As Global.System.Data.DataColumn
+        
+        Private columnprod_codinterno As Global.System.Data.DataColumn
+        
+        Private columnOrigen As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -369,6 +375,30 @@ Partial Public Class Ajuste_DS
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property prod_descripcionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnprod_descripcion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property prod_codinternoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnprod_codinterno
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property OrigenColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOrigen
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -405,9 +435,9 @@ Partial Public Class Ajuste_DS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddMovimiento_Mercaderia_Alta_obtener_detalle_AjustesRow(ByVal MovMerDet_Cantidad As Decimal, ByVal MovMer_FechaHora As Date, ByVal _MovMer_id_ As Integer, ByVal MovMer_Concepto As String, ByVal Usuario As String) As Movimiento_Mercaderia_Alta_obtener_detalle_AjustesRow
+        Public Overloads Function AddMovimiento_Mercaderia_Alta_obtener_detalle_AjustesRow(ByVal MovMerDet_Cantidad As Decimal, ByVal MovMer_FechaHora As Date, ByVal _MovMer_id_ As Integer, ByVal MovMer_Concepto As String, ByVal Usuario As String, ByVal prod_descripcion As String, ByVal prod_codinterno As Integer, ByVal Origen As String) As Movimiento_Mercaderia_Alta_obtener_detalle_AjustesRow
             Dim rowMovimiento_Mercaderia_Alta_obtener_detalle_AjustesRow As Movimiento_Mercaderia_Alta_obtener_detalle_AjustesRow = CType(Me.NewRow,Movimiento_Mercaderia_Alta_obtener_detalle_AjustesRow)
-            Dim columnValuesArray() As Object = New Object() {MovMerDet_Cantidad, MovMer_FechaHora, _MovMer_id_, MovMer_Concepto, Usuario}
+            Dim columnValuesArray() As Object = New Object() {MovMerDet_Cantidad, MovMer_FechaHora, _MovMer_id_, MovMer_Concepto, Usuario, prod_descripcion, prod_codinterno, Origen}
             rowMovimiento_Mercaderia_Alta_obtener_detalle_AjustesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowMovimiento_Mercaderia_Alta_obtener_detalle_AjustesRow)
             Return rowMovimiento_Mercaderia_Alta_obtener_detalle_AjustesRow
@@ -435,6 +465,9 @@ Partial Public Class Ajuste_DS
             Me._columnMovMer_id_ = MyBase.Columns("MovMer_id,")
             Me.columnMovMer_Concepto = MyBase.Columns("MovMer_Concepto")
             Me.columnUsuario = MyBase.Columns("Usuario")
+            Me.columnprod_descripcion = MyBase.Columns("prod_descripcion")
+            Me.columnprod_codinterno = MyBase.Columns("prod_codinterno")
+            Me.columnOrigen = MyBase.Columns("Origen")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -452,6 +485,12 @@ Partial Public Class Ajuste_DS
             MyBase.Columns.Add(Me.columnMovMer_Concepto)
             Me.columnUsuario = New Global.System.Data.DataColumn("Usuario", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUsuario)
+            Me.columnprod_descripcion = New Global.System.Data.DataColumn("prod_descripcion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnprod_descripcion)
+            Me.columnprod_codinterno = New Global.System.Data.DataColumn("prod_codinterno", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnprod_codinterno)
+            Me.columnOrigen = New Global.System.Data.DataColumn("Origen", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOrigen)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -678,6 +717,54 @@ Partial Public Class Ajuste_DS
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property prod_descripcion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.prod_descripcionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'prod_descripcion' de la tabla 'Movimiento_Mercaderia_Alta"& _ 
+                            "_obtener_detalle_Ajustes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.prod_descripcionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property prod_codinterno() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.prod_codinternoColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'prod_codinterno' de la tabla 'Movimiento_Mercaderia_Alta_"& _ 
+                            "obtener_detalle_Ajustes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.prod_codinternoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Origen() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.OrigenColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Origen' de la tabla 'Movimiento_Mercaderia_Alta_obtener_d"& _ 
+                            "etalle_Ajustes' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.OrigenColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsMovMerDet_CantidadNull() As Boolean
             Return Me.IsNull(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.MovMerDet_CantidadColumn)
         End Function
@@ -734,6 +821,42 @@ Partial Public Class Ajuste_DS
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetUsuarioNull()
             Me(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.UsuarioColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isprod_descripcionNull() As Boolean
+            Return Me.IsNull(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.prod_descripcionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setprod_descripcionNull()
+            Me(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.prod_descripcionColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isprod_codinternoNull() As Boolean
+            Return Me.IsNull(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.prod_codinternoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setprod_codinternoNull()
+            Me(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.prod_codinternoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsOrigenNull() As Boolean
+            Return Me.IsNull(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.OrigenColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetOrigenNull()
+            Me(Me.tableMovimiento_Mercaderia_Alta_obtener_detalle_Ajustes.OrigenColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

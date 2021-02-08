@@ -24,7 +24,7 @@ Partial Class Ajuste_Consulta
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Ajuste_Consulta))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -41,10 +41,13 @@ Partial Class Ajuste_Consulta
         Me.MovimientoMercaderiaAltaobtenerdetalleAjustesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Ajuste_DS = New Aplicacion.Ajuste_DS()
         Me.MovMerConceptoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.prod_descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.prod_codinterno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MovMerDetCantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MovMerFechaHoraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MovMeridDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.UsuarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Origen = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,7 +66,7 @@ Partial Class Ajuste_Consulta
         Me.GroupBox1.Controls.Add(Me.DataGridView1)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1002, 397)
+        Me.GroupBox1.Size = New System.Drawing.Size(1002, 399)
         Me.GroupBox1.TabIndex = 19
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Registro historico"
@@ -198,24 +201,24 @@ Partial Class Ajuste_Consulta
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MovMerConceptoDataGridViewTextBoxColumn, Me.MovMerDetCantidadDataGridViewTextBoxColumn, Me.MovMerFechaHoraDataGridViewTextBoxColumn, Me.MovMeridDataGridViewTextBoxColumn, Me.UsuarioDataGridViewTextBoxColumn})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MovMerConceptoDataGridViewTextBoxColumn, Me.prod_descripcion, Me.prod_codinterno, Me.MovMerDetCantidadDataGridViewTextBoxColumn, Me.MovMerFechaHoraDataGridViewTextBoxColumn, Me.MovMeridDataGridViewTextBoxColumn, Me.UsuarioDataGridViewTextBoxColumn, Me.Origen})
         Me.DataGridView1.DataSource = Me.MovimientoMercaderiaAltaobtenerdetalleAjustesBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(9, 74)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(986, 265)
+        Me.DataGridView1.Size = New System.Drawing.Size(986, 315)
         Me.DataGridView1.StandardTab = True
         Me.DataGridView1.TabIndex = 17
         '
@@ -236,6 +239,22 @@ Partial Class Ajuste_Consulta
         Me.MovMerConceptoDataGridViewTextBoxColumn.HeaderText = "Tipo de Ajuste"
         Me.MovMerConceptoDataGridViewTextBoxColumn.Name = "MovMerConceptoDataGridViewTextBoxColumn"
         Me.MovMerConceptoDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'prod_descripcion
+        '
+        Me.prod_descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.prod_descripcion.DataPropertyName = "prod_descripcion"
+        Me.prod_descripcion.HeaderText = "Insumo"
+        Me.prod_descripcion.Name = "prod_descripcion"
+        Me.prod_descripcion.ReadOnly = True
+        '
+        'prod_codinterno
+        '
+        Me.prod_codinterno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.prod_codinterno.DataPropertyName = "prod_codinterno"
+        Me.prod_codinterno.HeaderText = "Código"
+        Me.prod_codinterno.Name = "prod_codinterno"
+        Me.prod_codinterno.ReadOnly = True
         '
         'MovMerDetCantidadDataGridViewTextBoxColumn
         '
@@ -269,10 +288,18 @@ Partial Class Ajuste_Consulta
         Me.UsuarioDataGridViewTextBoxColumn.Name = "UsuarioDataGridViewTextBoxColumn"
         Me.UsuarioDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'Origen
+        '
+        Me.Origen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Origen.DataPropertyName = "Origen"
+        Me.Origen.HeaderText = "Sucursal"
+        Me.Origen.Name = "Origen"
+        Me.Origen.ReadOnly = True
+        '
         'Ajuste_Consulta
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(1066, 446)
+        Me.ClientSize = New System.Drawing.Size(1027, 414)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
@@ -305,8 +332,11 @@ Partial Class Ajuste_Consulta
     Friend WithEvents MovimientoMercaderiaAltaobtenerdetalleAjustesBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents Ajuste_DS As Aplicacion.Ajuste_DS
     Friend WithEvents MovMerConceptoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents prod_descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents prod_codinterno As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MovMerDetCantidadDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MovMerFechaHoraDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MovMeridDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents UsuarioDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Origen As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
