@@ -23,7 +23,7 @@ Partial Class Sesion_pacientes
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Sesion_pacientes))
         Me.lb_sesionfecha = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -156,7 +156,7 @@ Partial Class Sesion_pacientes
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(136, 44)
         Me.Button3.TabIndex = 264
-        Me.Button3.Text = "Nueva dialisis"
+        Me.Button3.Text = "Ir a Dialisis"
         Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button3, "Cargar info dialisis")
         Me.Button3.UseVisualStyleBackColor = True
@@ -245,10 +245,10 @@ Partial Class Sesion_pacientes
         Me.datagridview1.ReadOnly = True
         Me.datagridview1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.datagridview1.RowHeadersVisible = False
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        Me.datagridview1.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        Me.datagridview1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.datagridview1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.datagridview1.Size = New System.Drawing.Size(713, 188)
         Me.datagridview1.StandardTab = True
@@ -347,11 +347,12 @@ Partial Class Sesion_pacientes
         'Button_buscar
         '
         Me.Button_buscar.Image = CType(resources.GetObject("Button_buscar.Image"), System.Drawing.Image)
-        Me.Button_buscar.Location = New System.Drawing.Point(287, 20)
+        Me.Button_buscar.Location = New System.Drawing.Point(287, 15)
         Me.Button_buscar.Margin = New System.Windows.Forms.Padding(4)
         Me.Button_buscar.Name = "Button_buscar"
-        Me.Button_buscar.Size = New System.Drawing.Size(43, 25)
+        Me.Button_buscar.Size = New System.Drawing.Size(112, 33)
         Me.Button_buscar.TabIndex = 260
+        Me.Button_buscar.Text = "Buscar"
         Me.Button_buscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button_buscar, "Buscar sesion")
         Me.Button_buscar.UseVisualStyleBackColor = True
@@ -387,7 +388,7 @@ Partial Class Sesion_pacientes
         Me.GroupBox2.Controls.Add(Me.fecha)
         Me.GroupBox2.Location = New System.Drawing.Point(334, 21)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(371, 60)
+        Me.GroupBox2.Size = New System.Drawing.Size(406, 60)
         Me.GroupBox2.TabIndex = 261
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Busqueda avanzada de sesiones"

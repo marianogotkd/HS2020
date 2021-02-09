@@ -93,6 +93,31 @@
             End If
 
         End If
+
+        ''PESO Y TALLA AUTOMATICOS'''
+
+        Dim sesion As DataSet = daturno.TurnoDialisis_consultar_sesion_paciente(PAC_id)
+        If sesion.Tables(0).Rows.Count <> 0 Then
+
+            If sesion.Tables(0).Rows.Count = 14 Or sesion.Tables(0).Rows.Count = 28 Or sesion.Tables(0).Rows.Count = 42 Or sesion.Tables(0).Rows.Count = 56 Or sesion.Tables(0).Rows.Count = 70 Then
+
+            Else
+                Dim i = sesion.Tables(0).Rows.Count - 1
+                Dim info_sesion As DataSet = DAsesiones.Sesiones_obtener_info_dialisis(sesion.Tables(0).Rows(i).Item("Sesiones_id"))
+                tb_PesoS.Text = info_sesion.Tables(0).Rows(0).Item("Dialisis_PesoS")
+                tb_talla.Text = info_sesion.Tables(0).Rows(0).Item("Dialisis_Talla")
+
+            End If
+
+
+
+
+
+        End If
+       
+
+
+
     End Sub
 
 
@@ -766,7 +791,7 @@
         Else
 
 
-            If tb_Filtro.Text <> "" And tb_AV.Text <> "No Tiene Acceso Vascular" Then
+            If tb_Filtro.Text <> "" And tb_AV.Text <> "No Tiene Acceso Vascular" And tb_PesoS.Text <> 0 And tb_talla.Text <> 0 Then
 
 
                 Dim concepto As String
@@ -887,8 +912,8 @@
 
 
             Else
-                'lbl_err.Visible = True 'peso seco
-                'lbl_err1.Visible = True 'talla
+                lbl_err.Visible = True 'peso seco
+                lbl_err1.Visible = True 'talla
                 lbl_err2.Visible = True 'tipo filtro
                 'lbl_err3.Visible = True 'horarios
                 'lbl_err4.Visible = True 'peso

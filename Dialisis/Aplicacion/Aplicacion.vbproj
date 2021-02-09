@@ -2961,6 +2961,7 @@
     <None Include="Resources\clientes.png" />
     <None Include="Resources\empleados.png" />
     <None Include="Resources\Deposito.png" />
+    <None Include="Resources\conectar.png" />
     <Content Include="Resources\factura.png" />
     <Content Include="Resources\factura_30x30.png" />
     <None Include="Resources\logo hs_hamer.png" />

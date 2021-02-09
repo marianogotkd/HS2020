@@ -178,23 +178,23 @@
 
             Else
                 If CStr(datagridview1.CurrentRow.Cells("SesionesasistenciaDataGridViewTextBoxColumn").Value) = "Presente" Then
-                    Dim result As Integer = MessageBox.Show("Esta seguro que desea modificar los datos de la sesión de diálisis", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                    If result = DialogResult.Yes Then
-                        'aqui como esta presente, lo que hago es ir a el modulo de dialisis para modificar la info.
-                        'el id de sesiones_id lo tomo de la grilla
-                        'MessageBox.Show("Aqui voy a modificar.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        Dim sesiones_id As Integer = CInt(datagridview1.CurrentRow.Cells("SesionesidDataGridViewTextBoxColumn").Value)
-                        Nueva_Dialisis.Close()
-                        Dim PAC_id As Integer = CInt(datagridview1.CurrentRow.Cells("PACidDataGridViewTextBoxColumn").Value)
-                        Nueva_Dialisis.PAC_id = PAC_id
-                        Nueva_Dialisis.fecha_registrar = fecha_registrar
-                        Nueva_Dialisis.tipo_operacion = "modificar presente" 'aviso q ya estaba cargado como ausente, y que se va a modificar dicho estado
-                        'Dim sesiones_id As Integer = CInt(datagridview1.CurrentRow.Cells("SesionesidDataGridViewTextBoxColumn").Value)
-                        Nueva_Dialisis.modificar_sesiones_id = sesiones_id
-                        Nueva_Dialisis.Show()
-                    Else
+                    'Dim result As Integer = MessageBox.Show("Esta seguro que desea modificar los datos de la sesión de diálisis", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    'If result = DialogResult.Yes Then
+                    'aqui como esta presente, lo que hago es ir a el modulo de dialisis para modificar la info.
+                    'el id de sesiones_id lo tomo de la grilla
+                    'MessageBox.Show("Aqui voy a modificar.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Dim sesiones_id As Integer = CInt(datagridview1.CurrentRow.Cells("SesionesidDataGridViewTextBoxColumn").Value)
+                    Nueva_Dialisis.Close()
+                    Dim PAC_id As Integer = CInt(datagridview1.CurrentRow.Cells("PACidDataGridViewTextBoxColumn").Value)
+                    Nueva_Dialisis.PAC_id = PAC_id
+                    Nueva_Dialisis.fecha_registrar = fecha_registrar
+                    Nueva_Dialisis.tipo_operacion = "modificar presente" 'aviso q ya estaba cargado como ausente, y que se va a modificar dicho estado
+                    'Dim sesiones_id As Integer = CInt(datagridview1.CurrentRow.Cells("SesionesidDataGridViewTextBoxColumn").Value)
+                    Nueva_Dialisis.modificar_sesiones_id = sesiones_id
+                    Nueva_Dialisis.Show()
+                    'Else
 
-                    End If
+                    'End If
 
 
                 Else
