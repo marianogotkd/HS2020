@@ -393,7 +393,7 @@
             'ahora reflejo los cambios en el formulario Producto_ajuste
             Producto_ajuste.recuperar_lotes()
             Producto_ajuste.calcular_total()
-
+            Producto_ajuste.cargar_modificacion_en_gridview() 'se reflejan los cambios en el gridview de producto_modificar
             MessageBox.Show("Los datos se guardaron correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Me.Close()
 

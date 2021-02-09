@@ -24,7 +24,7 @@ Partial Class Producto_modificar
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Producto_modificar))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Bo_cancelar = New System.Windows.Forms.Button()
@@ -107,7 +107,7 @@ Partial Class Producto_modificar
         Me.BO_producto_modificar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BO_producto_modificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BO_producto_modificar.Image = Global.Aplicacion.My.Resources.Resources.Pasar
-        Me.BO_producto_modificar.Location = New System.Drawing.Point(708, 14)
+        Me.BO_producto_modificar.Location = New System.Drawing.Point(703, 9)
         Me.BO_producto_modificar.Margin = New System.Windows.Forms.Padding(4)
         Me.BO_producto_modificar.Name = "BO_producto_modificar"
         Me.BO_producto_modificar.Size = New System.Drawing.Size(124, 43)
@@ -134,7 +134,7 @@ Partial Class Producto_modificar
         Me.BO_producto_nuevo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BO_producto_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BO_producto_nuevo.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
-        Me.BO_producto_nuevo.Location = New System.Drawing.Point(576, 14)
+        Me.BO_producto_nuevo.Location = New System.Drawing.Point(571, 9)
         Me.BO_producto_nuevo.Margin = New System.Windows.Forms.Padding(4)
         Me.BO_producto_nuevo.Name = "BO_producto_nuevo"
         Me.BO_producto_nuevo.Size = New System.Drawing.Size(124, 43)
@@ -149,7 +149,7 @@ Partial Class Producto_modificar
         Me.btn_Anular.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_Anular.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Anular.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
-        Me.btn_Anular.Location = New System.Drawing.Point(443, 15)
+        Me.btn_Anular.Location = New System.Drawing.Point(438, 10)
         Me.btn_Anular.Margin = New System.Windows.Forms.Padding(5)
         Me.btn_Anular.Name = "btn_Anular"
         Me.btn_Anular.Size = New System.Drawing.Size(124, 43)
@@ -163,7 +163,7 @@ Partial Class Producto_modificar
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
-        Me.Button1.Location = New System.Drawing.Point(310, 15)
+        Me.Button1.Location = New System.Drawing.Point(305, 10)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(124, 43)
@@ -178,7 +178,7 @@ Partial Class Producto_modificar
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.icono_editar_30x30
-        Me.Button2.Location = New System.Drawing.Point(1102, 10)
+        Me.Button2.Location = New System.Drawing.Point(997, 9)
         Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(124, 43)
@@ -194,7 +194,7 @@ Partial Class Producto_modificar
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.DarkRed
         Me.Button3.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
-        Me.Button3.Location = New System.Drawing.Point(168, 15)
+        Me.Button3.Location = New System.Drawing.Point(163, 10)
         Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(131, 43)
@@ -209,7 +209,7 @@ Partial Class Producto_modificar
         Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.Image = Global.Aplicacion.My.Resources.Resources.icono_editar_30x30
-        Me.Button4.Location = New System.Drawing.Point(940, 10)
+        Me.Button4.Location = New System.Drawing.Point(835, 9)
         Me.Button4.Margin = New System.Windows.Forms.Padding(4)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(154, 43)
@@ -544,11 +544,11 @@ Partial Class Producto_modificar
         Me.DG_Producto.MultiSelect = False
         Me.DG_Producto.Name = "DG_Producto"
         Me.DG_Producto.RowHeadersVisible = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_Producto.RowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_Producto.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DG_Producto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_Producto.Size = New System.Drawing.Size(1240, 249)
         Me.DG_Producto.StandardTab = True
@@ -660,7 +660,7 @@ Partial Class Producto_modificar
         '
         Me.Contenido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.Contenido.DataPropertyName = "Contenido"
-        Me.Contenido.HeaderText = "Contenido"
+        Me.Contenido.HeaderText = "Contenido por unidad"
         Me.Contenido.Name = "Contenido"
         Me.Contenido.ReadOnly = True
         '

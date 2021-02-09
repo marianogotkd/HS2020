@@ -18,6 +18,7 @@ Public Class Producto_alta_New
 
     Dim contenido As Decimal 'esto lo uso para saber si realmente se cambio, y aplicar el recalculo de stock
 
+    Public reflejar_cambios As String = "no" 'esto me sirve para saber si muestro los cambios en el form "producto_modificar"
     Private Sub Producto_alta_New_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         If form_procedencia = "modificar" Then
@@ -710,18 +711,23 @@ Public Class Producto_alta_New
                     DAproducto.Producto_x_sucursal_ALTA(prodid, sucursal_id, 0, 0, 0)
                         a = a + 1
                     End While
-                If form_procedencia = "modificar" Then
-                    cargar_modificacion_en_gridview("ALTA", prodid)
-                    MessageBox.Show("El producto se guardo correctamente", "Sistema de Gestion.")
-                    Me.Close()
-                    Producto_modificar.Show()
-                Else
-                    cargar_modificacion_en_gridview("ALTA", prodid)
-                    Producto_modificar.Show()
+                If reflejar_cambios = "no" Then
+                    'cargar_modificacion_en_gridview("ALTA", prodid)
+                    'MessageBox.Show("El producto se guardo correctamente", "Sistema de Gestion.")
+                    'Me.Close()
+                    'Producto_modificar.Show()
                     limpiar_deshabilitar()
                     Generar_cod_interno()
                     ds_producto_recuperado.Tables("ProveedorProducto").Rows.Clear()
                     MessageBox.Show("El producto se guardo correctamente", "Sistema de Gestion.")
+                Else
+                    cargar_modificacion_en_gridview("ALTA", prodid)
+                    Producto_modificar.Show()
+                    limpiar_deshabilitar()
+                    Me.Close()
+                    'Generar_cod_interno()
+                    'ds_producto_recuperado.Tables("ProveedorProducto").Rows.Clear()
+                    'MessageBox.Show("El producto se guardo correctamente", "Sistema de Gestion.")
                     'Producto_modificar.paso = 1
                     'Producto_modificar.Cargar_grilla()
                 End If

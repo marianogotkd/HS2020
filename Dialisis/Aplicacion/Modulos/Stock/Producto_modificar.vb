@@ -825,7 +825,7 @@ Public Class Producto_modificar
     Private Sub BO_producto_nuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BO_producto_nuevo.Click
         Me.Hide()
         Producto_alta_New.Close()
-        'Producto_alta_New.form_procedencia = "modificar"
+        Producto_alta_New.reflejar_cambios = "si"
         Producto_alta_New.Show()
     End Sub
 
@@ -1638,6 +1638,7 @@ Public Class Producto_modificar
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         If DG_Producto.Rows.Count <> 0 Then
+            Me.Hide() 'no lo cierro, solo lo oculto
             Producto_ajuste.Close()
 
             'aqui mando los parametros para recuperar la info del producto
@@ -1650,7 +1651,7 @@ Public Class Producto_modificar
             Producto_ajuste.txt_totalunidades.Text = DG_Producto.CurrentRow.Cells("ProdxSuc_stock").Value
 
             Producto_ajuste.Show()
-            Me.Close()
+            'Me.Close()
 
         Else
             MessageBox.Show("Error, debe seleccionar un producto.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)

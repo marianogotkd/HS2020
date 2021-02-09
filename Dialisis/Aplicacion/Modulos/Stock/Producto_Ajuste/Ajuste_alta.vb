@@ -111,6 +111,7 @@
                         Producto_ajuste.recuperar_lotes()
                         'ademas vuelvo a calcular el total de stock para mostrar en el textbox "TOTAL DE UNIDADES:"
                         Producto_ajuste.calcular_total()
+                        Producto_ajuste.cargar_modificacion_en_gridview() 'se reflejan los cambios en el gridview de producto_modificar
                         MessageBox.Show("los datos fueron actualizados Correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         Me.Close()
                     End If

@@ -154,6 +154,7 @@
                 recuperar_lotes()
                 'ademas vuelvo a calcular el total de stock para mostrar en el textbox "TOTAL DE UNIDADES:"
                 calcular_total()
+                cargar_modificacion_en_gridview() 'se reflejan los cambios en el gridview de producto_modificar
                 MessageBox.Show("Eliminación correcta, los datos fueron actualizados.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
             If valido_seleccion = "no" Then
@@ -486,4 +487,32 @@
 
 
     End Sub
+
+
+    Public Sub cargar_modificacion_en_gridview()
+
+        'recupero info del producto
+        Dim ds_info As DataSet = DAprod.Producto_x_sucursal_buscarcod(CInt(CInt(txt_codigo.Text)), sucursal_id)
+
+        'If tipo_op = "MODIFICACION" Then
+        'como es una modificacion lo que tengo que hacer es buscar en el dataset 
+        Dim i As Integer = 0
+        While i < Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows.Count
+            If Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_codinterno") = CInt(txt_codigo.Text) Then
+                'Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_descripcion") = tx_descripcion.Text 'string
+                'Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_precio_vta") = CDec(Tb_PrecMin.Text) 'decimal
+                'Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
+                'Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_precio_vta_May") = CDec(tb_PrecMay.Text) 'decimal
+                Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("ProdxSuc_stock") = ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock") 'decimal
+                'Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_codbarra") = tx_codbarra.Text 'string
+                'Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("Contenido") = txt_contenido.Text + " " + Combo_unidmedida.Text 'string contenido+unid medida
+                Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("Contenido_total") = CStr(ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) + " " + unidad_medida 'string contenido total +unid medida
+                Exit While
+            End If
+            i = i + 1
+        End While
+        'End If
+
+    End Sub
+
 End Class
