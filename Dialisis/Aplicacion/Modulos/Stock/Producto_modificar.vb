@@ -317,11 +317,53 @@ Public Class Producto_modificar
         ' Buscar_codinterno() 'esto me muestra en la grilla todos los productos
         Sucursales_Obtener()
         Cargar_grilla()
+        agregar_cant_vencida()
         Cargarcombo_marca() 'choco 23-11-2018
         cargar_combos_categoria()
         evento_load_completo = "si"
        
 
+    End Sub
+    Dim dalote As New Datos.Lote
+    Private Sub agregar_cant_vencida()
+        Dim j As Integer = 0
+        While j < Producto_ds.Tables("ProdxSuc").Rows.Count
+            'recupero los lotes del producto 
+            'Dim sucursal_id As Integer = cb_sucursal.SelectedValue
+            Dim prodcodinterno As Integer = Producto_ds.Tables("ProdxSuc").Rows(j).Item("prod_codinterno")
+            Dim ds_lotes As DataSet = dalote.Producto_x_sucursal_lote_recuperartodos(prodcodinterno, CInt(cb_origen.SelectedValue))
+            Dim cant_vencidos As Decimal = CDec(0)
+            If ds_lotes.Tables(0).Rows.Count <> 0 Then
+                'aqui vemos si el item esta vencido o no, para sumarlo
+                Dim i As Integer = 0
+                While i < ds_lotes.Tables(0).Rows.Count
+                    If (ds_lotes.Tables(0).Rows(i).Item("lote_vence") = "si") And (ds_lotes.Tables(0).Rows(i).Item("lote_cantidad") <> CDec(0)) Then
+                        Dim fecha_vencimiento As Date = CDate(ds_lotes.Tables(0).Rows(i).Item("lote_fechavto"))
+                        Dim fechadeldia As Date = Today
+                        'If Format(fechadeldia, "yyyy/mm/dd") >= Format(fecha_vencimiento, "yyyy/mm/dd") Then
+                        '    DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Red
+                        'Else
+                        '    DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Green
+                        'End If
+                        Dim cantdias As Integer = DateDiff("d", Today, fecha_vencimiento)
+                        If cantdias <= 0 Then
+                            'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Red
+                            cant_vencidos = cant_vencidos + CDec(ds_lotes.Tables(0).Rows(i).Item("lote_cantidad"))
+                        Else
+                            If cantdias > 15 Then
+                                'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Green
+                            Else
+                                'menor o igual a 15 
+                                'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Orange
+                            End If
+                        End If
+                    End If
+                    i = i + 1
+                End While
+            End If
+            Producto_ds.Tables("ProdxSuc").Rows(j).Item("cant_vencimiento") = CDec(cant_vencidos)
+            j = j + 1
+        End While
     End Sub
 
     Private Sub Grilla_Global()
@@ -835,6 +877,7 @@ Public Class Producto_modificar
     End Sub
     Private Sub cb_origen_SelectedIndexChanged1(ByVal sender As Object, ByVal e As System.EventArgs) Handles cb_origen.SelectedIndexChanged
         Cargar_grilla()
+        agregar_cant_vencida()
     End Sub
 
     Dim DAproveedor As New Datos.Proveedor
@@ -940,6 +983,7 @@ Public Class Producto_modificar
 
             cb_proveedor.Enabled = False
             Cargar_grilla()
+            agregar_cant_vencida()
         End If
     End Sub
 
@@ -976,9 +1020,9 @@ Public Class Producto_modificar
             If check_proveedor.Checked = True Then
                 check_proveedor.Checked = False
             End If
-
             cb_marca.Enabled = False
             Cargar_grilla()
+            agregar_cant_vencida()
         End If
     End Sub
     Private Sub check_categoria_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles check_categoria.CheckedChanged
@@ -1016,6 +1060,7 @@ Public Class Producto_modificar
             Else
                 'voy a traer todos los productos
                 Cargar_grilla()
+                agregar_cant_vencida()
             End If
 
             'choco 25-09-2020 ////voy a deshabilitar rubro y subrubo, check y combobox
@@ -1095,6 +1140,7 @@ Public Class Producto_modificar
             'formato_grilla()
         End If
         'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
+        agregar_cant_vencida()
     End Sub
 
 
@@ -1192,6 +1238,7 @@ Public Class Producto_modificar
             'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
             'formato_grilla()
         End If
+        agregar_cant_vencida()
     End Sub
     Private Sub filtrar_por_rubro(ByVal filtro_descrip As String)
         Dim ds_productos As DataSet
@@ -1270,6 +1317,7 @@ Public Class Producto_modificar
             'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
             'formato_grilla()
         End If
+        agregar_cant_vencida()
     End Sub
     Private Sub filtrar_por_subrubro(ByVal filtro_descrip As String)
         Dim ds_productos As DataSet
@@ -1326,6 +1374,7 @@ Public Class Producto_modificar
             'formato_grilla()
             'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
         End If
+        agregar_cant_vencida()
     End Sub
     Dim ds_prod_marca As DataSet
     Private Sub filtrar_solo_por_marca()
@@ -1339,6 +1388,7 @@ Public Class Producto_modificar
             'formato_grilla()
 
         End If
+        agregar_cant_vencida()
         'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
     End Sub
 #End Region
@@ -1495,13 +1545,13 @@ Public Class Producto_modificar
         If DG_Producto.Rows(e.RowIndex).Cells("ProdxSuc_stock").Value <= DG_Producto.Rows(e.RowIndex).Cells("prod_ptorepo").Value Then
             If DG_Producto.Columns(e.ColumnIndex).Name = "ProdxSuc_stock" Then
                 'DG_Producto.Rows(e.RowIndex).Cells("ProdxSuc_stock"). = Color.Red
-                e.CellStyle.ForeColor = Color.Red
-                e.CellStyle.SelectionForeColor = Color.Red
+                e.CellStyle.ForeColor = Color.Blue
+                e.CellStyle.SelectionForeColor = Color.Blue
             End If
             If DG_Producto.Columns(e.ColumnIndex).Name = "prod_ptorepo" Then
                 'DG_Producto.Rows(e.RowIndex).Cells("prod_ptorepo").Style.ForeColor = Color.Red
-                e.CellStyle.ForeColor = Color.Red
-                e.CellStyle.SelectionForeColor = Color.Red
+                e.CellStyle.ForeColor = Color.Blue
+                e.CellStyle.SelectionForeColor = Color.Blue
             End If
         Else
             'si esta por arriba del punto de repo los pongo en negro
@@ -1514,6 +1564,21 @@ Public Class Producto_modificar
                 'DG_Producto.Rows(e.RowIndex).Cells("prod_ptorepo").Style.ForeColor = Color.Red
                 e.CellStyle.ForeColor = Color.Black
                 e.CellStyle.SelectionForeColor = Color.Black
+            End If
+        End If
+
+
+        'ahora el vencimiento
+        If DG_Producto.Columns(e.ColumnIndex).Name = "cant_vencimiento" Then 'esto significa que voy a validar esta celda
+            Dim vencidos As Decimal
+            If IsDBNull(e.Value) Then
+                vencidos = CDec(0)
+            Else
+                vencidos = CDec(e.Value)
+            End If
+            If vencidos <> CDec(0) Then
+                e.CellStyle.ForeColor = Color.Red
+                e.CellStyle.SelectionForeColor = Color.Red
             End If
         End If
 
@@ -1536,6 +1601,10 @@ Public Class Producto_modificar
             DG_Producto.CurrentRow.Cells("Column1").Value = True
             'End If
         End If
+    End Sub
+
+    Private Sub DG_Producto_ClientSizeChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DG_Producto.ClientSizeChanged
+
     End Sub
 
     Private Sub DG_Producto_ColumnHeaderMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DG_Producto.ColumnHeaderMouseClick

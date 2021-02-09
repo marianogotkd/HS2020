@@ -79,4 +79,22 @@
             MessageBox.Show("Seleccione un turno para eliminar.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
     End Sub
+
+    Private Sub DataGridView1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.Click
+        'NOTA: LO QUE HAGO AQUI ES QUE SOLO SE PERMITA HACER UN CHECK EN UNA SOLA FILA
+        If DataGridView1.Rows.Count <> 0 Then
+            'DataGridView2.Rows(i).Cells("Item").Value = True
+            'If DataGridView2.CurrentRow.Cells("item").Value = True Then
+            Dim i As Integer = 0
+            While i < DataGridView1.Rows.Count
+                If DataGridView1.Rows(i).Cells("Column1").Value = True Then
+                    DataGridView1.Rows(i).Cells("Column1").Value = False
+                End If
+                i = i + 1
+            End While
+            'ahora solo tildo el actual
+            DataGridView1.CurrentRow.Cells("Column1").Value = True
+            'End If
+        End If
+    End Sub
 End Class

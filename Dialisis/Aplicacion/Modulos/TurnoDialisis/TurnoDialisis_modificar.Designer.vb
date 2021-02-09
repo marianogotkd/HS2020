@@ -23,20 +23,20 @@ Partial Class TurnoDialisis_modificar
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.TurnoDialisisconsultaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Ds_turnodialisis = New Aplicacion.Ds_turnodialisis()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.btn_Anular = New System.Windows.Forms.Button()
-        Me.Button_Detalle = New System.Windows.Forms.Button()
         Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.TurnodialisisidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TurnodialisisDescDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.HorarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DiasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TurnoDialisisconsultaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Ds_turnodialisis = New Aplicacion.Ds_turnodialisis()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btn_Anular = New System.Windows.Forms.Button()
+        Me.Button_Detalle = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TurnoDialisisconsultaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,15 +69,62 @@ Partial Class TurnoDialisis_modificar
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(673, 246)
         Me.DataGridView1.StandardTab = True
         Me.DataGridView1.TabIndex = 11
+        '
+        'Column1
+        '
+        Me.Column1.FillWeight = 101.5228!
+        Me.Column1.HeaderText = ""
+        Me.Column1.Name = "Column1"
+        Me.Column1.Width = 50
+        '
+        'TurnodialisisidDataGridViewTextBoxColumn
+        '
+        Me.TurnodialisisidDataGridViewTextBoxColumn.DataPropertyName = "Turnodialisis_id"
+        Me.TurnodialisisidDataGridViewTextBoxColumn.HeaderText = "ID"
+        Me.TurnodialisisidDataGridViewTextBoxColumn.Name = "TurnodialisisidDataGridViewTextBoxColumn"
+        Me.TurnodialisisidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TurnodialisisidDataGridViewTextBoxColumn.Width = 50
+        '
+        'TurnodialisisDescDataGridViewTextBoxColumn
+        '
+        Me.TurnodialisisDescDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.TurnodialisisDescDataGridViewTextBoxColumn.DataPropertyName = "Turnodialisis_Desc"
+        Me.TurnodialisisDescDataGridViewTextBoxColumn.HeaderText = "Descripción"
+        Me.TurnodialisisDescDataGridViewTextBoxColumn.Name = "TurnodialisisDescDataGridViewTextBoxColumn"
+        Me.TurnodialisisDescDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'HorarioDataGridViewTextBoxColumn
+        '
+        Me.HorarioDataGridViewTextBoxColumn.DataPropertyName = "Horario"
+        Me.HorarioDataGridViewTextBoxColumn.HeaderText = "Horario"
+        Me.HorarioDataGridViewTextBoxColumn.Name = "HorarioDataGridViewTextBoxColumn"
+        Me.HorarioDataGridViewTextBoxColumn.ReadOnly = True
+        Me.HorarioDataGridViewTextBoxColumn.Width = 200
+        '
+        'DiasDataGridViewTextBoxColumn
+        '
+        Me.DiasDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DiasDataGridViewTextBoxColumn.DataPropertyName = "Dias"
+        Me.DiasDataGridViewTextBoxColumn.HeaderText = "Dias"
+        Me.DiasDataGridViewTextBoxColumn.Name = "DiasDataGridViewTextBoxColumn"
+        Me.DiasDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column2.HeaderText = ""
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Visible = False
         '
         'TurnoDialisisconsultaBindingSource
         '
@@ -128,53 +175,6 @@ Partial Class TurnoDialisis_modificar
         Me.Button_Detalle.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.Button_Detalle.UseVisualStyleBackColor = True
         '
-        'Column1
-        '
-        Me.Column1.FillWeight = 101.5228!
-        Me.Column1.HeaderText = ""
-        Me.Column1.Name = "Column1"
-        Me.Column1.Width = 50
-        '
-        'TurnodialisisidDataGridViewTextBoxColumn
-        '
-        Me.TurnodialisisidDataGridViewTextBoxColumn.DataPropertyName = "Turnodialisis_id"
-        Me.TurnodialisisidDataGridViewTextBoxColumn.HeaderText = "ID"
-        Me.TurnodialisisidDataGridViewTextBoxColumn.Name = "TurnodialisisidDataGridViewTextBoxColumn"
-        Me.TurnodialisisidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.TurnodialisisidDataGridViewTextBoxColumn.Width = 50
-        '
-        'TurnodialisisDescDataGridViewTextBoxColumn
-        '
-        Me.TurnodialisisDescDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.TurnodialisisDescDataGridViewTextBoxColumn.DataPropertyName = "Turnodialisis_Desc"
-        Me.TurnodialisisDescDataGridViewTextBoxColumn.HeaderText = "Descripción"
-        Me.TurnodialisisDescDataGridViewTextBoxColumn.Name = "TurnodialisisDescDataGridViewTextBoxColumn"
-        Me.TurnodialisisDescDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'HorarioDataGridViewTextBoxColumn
-        '
-        Me.HorarioDataGridViewTextBoxColumn.DataPropertyName = "Horario"
-        Me.HorarioDataGridViewTextBoxColumn.HeaderText = "Horario"
-        Me.HorarioDataGridViewTextBoxColumn.Name = "HorarioDataGridViewTextBoxColumn"
-        Me.HorarioDataGridViewTextBoxColumn.ReadOnly = True
-        Me.HorarioDataGridViewTextBoxColumn.Width = 200
-        '
-        'DiasDataGridViewTextBoxColumn
-        '
-        Me.DiasDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DiasDataGridViewTextBoxColumn.DataPropertyName = "Dias"
-        Me.DiasDataGridViewTextBoxColumn.HeaderText = "Dias"
-        Me.DiasDataGridViewTextBoxColumn.Name = "DiasDataGridViewTextBoxColumn"
-        Me.DiasDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column2.HeaderText = ""
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Visible = False
-        '
         'TurnoDialisis_modificar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -190,7 +190,7 @@ Partial Class TurnoDialisis_modificar
         Me.MinimizeBox = False
         Me.Name = "TurnoDialisis_modificar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "TurnoDialisis_modificar"
+        Me.Text = "Turnos generados."
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TurnoDialisisconsultaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

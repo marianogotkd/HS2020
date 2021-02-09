@@ -240,7 +240,7 @@
                     e.CellStyle.ForeColor = Color.Blue
                     e.CellStyle.SelectionForeColor = Color.Blue
                 End If
-                If e.Value = "Desconectado" Then
+                If e.Value = "Ausente" Then
                     e.CellStyle.ForeColor = Color.Red
                     e.CellStyle.SelectionForeColor = Color.Red
                 End If
