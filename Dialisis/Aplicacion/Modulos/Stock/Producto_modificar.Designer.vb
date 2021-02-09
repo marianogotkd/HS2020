@@ -36,6 +36,11 @@ Partial Class Producto_modificar
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.check_proveedor = New System.Windows.Forms.CheckBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -59,9 +64,9 @@ Partial Class Producto_modificar
         Me.cb_origen = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DG_Producto = New System.Windows.Forms.DataGridView()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.ProdxSucBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Producto_ds = New Aplicacion.Producto_ds()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.prod_codinterno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.prod_descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdxSuc_stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -73,25 +78,20 @@ Partial Class Producto_modificar
         Me.prod_codbarra = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Contenido = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Contenido_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.cant_vencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.PictureBox7 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox8 = New System.Windows.Forms.PictureBox()
+        Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.TabPage1.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DG_Producto, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabControl1.SuspendLayout()
         CType(Me.ProdxSucBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Producto_ds, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox5.SuspendLayout()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'OpenFileDialog1
@@ -229,6 +229,55 @@ Partial Class Producto_modificar
         Me.TabPage1.Size = New System.Drawing.Size(1283, 605)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Busqueda de Productos"
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.Label8)
+        Me.GroupBox5.Controls.Add(Me.Label7)
+        Me.GroupBox5.Controls.Add(Me.PictureBox7)
+        Me.GroupBox5.Controls.Add(Me.PictureBox8)
+        Me.GroupBox5.Location = New System.Drawing.Point(7, 463)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(307, 62)
+        Me.GroupBox5.TabIndex = 250
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Referencias para control de productos:"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(234, 32)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(58, 16)
+        Me.Label8.TabIndex = 34
+        Me.Label8.Text = "Vencido"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(44, 32)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(72, 16)
+        Me.Label7.TabIndex = 33
+        Me.Label7.Text = "Stock bajo"
+        '
+        'PictureBox7
+        '
+        Me.PictureBox7.BackColor = System.Drawing.Color.Red
+        Me.PictureBox7.Location = New System.Drawing.Point(200, 21)
+        Me.PictureBox7.Name = "PictureBox7"
+        Me.PictureBox7.Size = New System.Drawing.Size(28, 28)
+        Me.PictureBox7.TabIndex = 2
+        Me.PictureBox7.TabStop = False
+        '
+        'PictureBox8
+        '
+        Me.PictureBox8.BackColor = System.Drawing.Color.Blue
+        Me.PictureBox8.Location = New System.Drawing.Point(10, 21)
+        Me.PictureBox8.Name = "PictureBox8"
+        Me.PictureBox8.Size = New System.Drawing.Size(28, 28)
+        Me.PictureBox8.TabIndex = 1
+        Me.PictureBox8.TabStop = False
         '
         'GroupBox3
         '
@@ -530,7 +579,7 @@ Partial Class Producto_modificar
         Me.DG_Producto.AutoGenerateColumns = False
         Me.DG_Producto.BackgroundColor = System.Drawing.Color.White
         Me.DG_Producto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DG_Producto.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.prod_codinterno, Me.prod_descripcion, Me.ProdxSuc_stock, Me.prod_ptorepo, Me.prod_precio_vta, Me.prod_precio_vta_May, Me.prod_id, Me.sucursal_id, Me.prod_codbarra, Me.Contenido, Me.Contenido_total, Me.Column1, Me.cant_vencimiento})
+        Me.DG_Producto.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.prod_codinterno, Me.prod_descripcion, Me.ProdxSuc_stock, Me.prod_ptorepo, Me.prod_precio_vta, Me.prod_precio_vta_May, Me.prod_id, Me.sucursal_id, Me.prod_codbarra, Me.Contenido, Me.Contenido_total, Me.cant_vencimiento, Me.Column1})
         Me.DG_Producto.DataSource = Me.ProdxSucBindingSource
         Me.DG_Producto.Location = New System.Drawing.Point(5, 23)
         Me.DG_Producto.Margin = New System.Windows.Forms.Padding(4)
@@ -547,6 +596,16 @@ Partial Class Producto_modificar
         Me.DG_Producto.StandardTab = True
         Me.DG_Producto.TabIndex = 0
         '
+        'ProdxSucBindingSource
+        '
+        Me.ProdxSucBindingSource.DataMember = "ProdxSuc"
+        Me.ProdxSucBindingSource.DataSource = Me.Producto_ds
+        '
+        'Producto_ds
+        '
+        Me.Producto_ds.DataSetName = "Producto_ds"
+        Me.Producto_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'TabControl1
         '
         Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -560,16 +619,6 @@ Partial Class Producto_modificar
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(1291, 634)
         Me.TabControl1.TabIndex = 0
-        '
-        'ProdxSucBindingSource
-        '
-        Me.ProdxSucBindingSource.DataMember = "ProdxSuc"
-        Me.ProdxSucBindingSource.DataSource = Me.Producto_ds
-        '
-        'Producto_ds
-        '
-        Me.Producto_ds.DataSetName = "Producto_ds"
-        Me.Producto_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'prod_codinterno
         '
@@ -665,6 +714,13 @@ Partial Class Producto_modificar
         Me.Contenido_total.Name = "Contenido_total"
         Me.Contenido_total.ReadOnly = True
         '
+        'cant_vencimiento
+        '
+        Me.cant_vencimiento.DataPropertyName = "cant_vencimiento"
+        Me.cant_vencimiento.HeaderText = "Vencidos"
+        Me.cant_vencimiento.Name = "cant_vencimiento"
+        Me.cant_vencimiento.ReadOnly = True
+        '
         'Column1
         '
         Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
@@ -673,62 +729,6 @@ Partial Class Producto_modificar
         Me.Column1.Name = "Column1"
         Me.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        '
-        'cant_vencimiento
-        '
-        Me.cant_vencimiento.DataPropertyName = "cant_vencimiento"
-        Me.cant_vencimiento.HeaderText = "Vencidos"
-        Me.cant_vencimiento.Name = "cant_vencimiento"
-        Me.cant_vencimiento.ReadOnly = True
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.Label8)
-        Me.GroupBox5.Controls.Add(Me.Label7)
-        Me.GroupBox5.Controls.Add(Me.PictureBox7)
-        Me.GroupBox5.Controls.Add(Me.PictureBox8)
-        Me.GroupBox5.Location = New System.Drawing.Point(7, 463)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(307, 62)
-        Me.GroupBox5.TabIndex = 250
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Referencias para control de productos:"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(234, 32)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(58, 16)
-        Me.Label8.TabIndex = 34
-        Me.Label8.Text = "Vencido"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(44, 32)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(72, 16)
-        Me.Label7.TabIndex = 33
-        Me.Label7.Text = "Stock bajo"
-        '
-        'PictureBox7
-        '
-        Me.PictureBox7.BackColor = System.Drawing.Color.Red
-        Me.PictureBox7.Location = New System.Drawing.Point(200, 21)
-        Me.PictureBox7.Name = "PictureBox7"
-        Me.PictureBox7.Size = New System.Drawing.Size(28, 28)
-        Me.PictureBox7.TabIndex = 2
-        Me.PictureBox7.TabStop = False
-        '
-        'PictureBox8
-        '
-        Me.PictureBox8.BackColor = System.Drawing.Color.Blue
-        Me.PictureBox8.Location = New System.Drawing.Point(10, 21)
-        Me.PictureBox8.Name = "PictureBox8"
-        Me.PictureBox8.Size = New System.Drawing.Size(28, 28)
-        Me.PictureBox8.TabIndex = 1
-        Me.PictureBox8.TabStop = False
         '
         'Producto_modificar
         '
@@ -744,6 +744,10 @@ Partial Class Producto_modificar
         Me.Text = "Stock y Actualización de Productos"
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
+        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -751,13 +755,9 @@ Partial Class Producto_modificar
         Me.Panel1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.DG_Producto, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabControl1.ResumeLayout(False)
         CType(Me.ProdxSucBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Producto_ds, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
-        CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -798,6 +798,11 @@ Partial Class Producto_modificar
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox7 As System.Windows.Forms.PictureBox
+    Friend WithEvents PictureBox8 As System.Windows.Forms.PictureBox
     Friend WithEvents prod_codinterno As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents prod_descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProdxSuc_stock As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -809,11 +814,6 @@ Partial Class Producto_modificar
     Friend WithEvents prod_codbarra As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Contenido As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Contenido_total As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents cant_vencimiento As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents PictureBox7 As System.Windows.Forms.PictureBox
-    Friend WithEvents PictureBox8 As System.Windows.Forms.PictureBox
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewCheckBoxColumn
 End Class

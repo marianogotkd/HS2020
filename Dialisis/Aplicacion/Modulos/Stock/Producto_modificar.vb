@@ -1603,6 +1603,10 @@ Public Class Producto_modificar
         End If
     End Sub
 
+    Private Sub DG_Producto_ClientSizeChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DG_Producto.ClientSizeChanged
+
+    End Sub
+
     Private Sub DG_Producto_ColumnHeaderMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DG_Producto.ColumnHeaderMouseClick
         'formato_grilla()
     End Sub
