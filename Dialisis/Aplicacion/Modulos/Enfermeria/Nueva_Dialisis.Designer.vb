@@ -188,11 +188,11 @@ Partial Class Nueva_Dialisis
         'lb_estado
         '
         Me.lb_estado.AutoSize = True
-        Me.lb_estado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lb_estado.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_estado.ForeColor = System.Drawing.Color.Green
-        Me.lb_estado.Location = New System.Drawing.Point(999, 16)
+        Me.lb_estado.Location = New System.Drawing.Point(909, 16)
         Me.lb_estado.Name = "lb_estado"
-        Me.lb_estado.Size = New System.Drawing.Size(131, 16)
+        Me.lb_estado.Size = New System.Drawing.Size(179, 24)
         Me.lb_estado.TabIndex = 269
         Me.lb_estado.Text = "ESTADO: NUEVO"
         Me.lb_estado.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -1131,7 +1131,7 @@ Partial Class Nueva_Dialisis
         '
         Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar
-        Me.btn_cancelar.Location = New System.Drawing.Point(834, 613)
+        Me.btn_cancelar.Location = New System.Drawing.Point(832, 613)
         Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_cancelar.MaximumSize = New System.Drawing.Size(124, 43)
         Me.btn_cancelar.MinimumSize = New System.Drawing.Size(124, 43)
@@ -1145,7 +1145,7 @@ Partial Class Nueva_Dialisis
         'btn_guardar
         '
         Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.Guardar
+        Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.conectar
         Me.btn_guardar.Location = New System.Drawing.Point(964, 613)
         Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_guardar.MaximumSize = New System.Drawing.Size(124, 43)

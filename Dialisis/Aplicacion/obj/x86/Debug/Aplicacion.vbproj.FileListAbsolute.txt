@@ -184,3 +184,4 @@ C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Insumos_Predefinidos.resources
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Sesiones_prod_agregar.resources
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Ajuste_vencimiento.resources
+C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\Dialisis\Aplicacion\obj\x86\Debug\Aplicacion.Ajuste_Consulta.resources
