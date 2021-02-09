@@ -38,6 +38,7 @@ Partial Class US_administrador
         Me.MenuItem_ENF_Consulta = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuItem_ENF_RegMov = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuItem_ENF_stock = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InsumosPredefinidosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label_Enfermeria = New System.Windows.Forms.ToolStripLabel()
         Me.Separator_Enfermeria = New System.Windows.Forms.ToolStripSeparator()
         Me.Tool_Medico = New System.Windows.Forms.ToolStripDropDownButton()
@@ -163,7 +164,7 @@ Partial Class US_administrador
         Me.IngresDeMercaderiaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MovimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BajaDeInsumosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.InsumosPredefinidosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsultaDeAjustesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -178,7 +179,7 @@ Partial Class US_administrador
         Me.ToolStrip1.Location = New System.Drawing.Point(7, 71)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ToolStrip1.Size = New System.Drawing.Size(95, 910)
+        Me.ToolStrip1.Size = New System.Drawing.Size(95, 927)
         Me.ToolStrip1.TabIndex = 54
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -280,6 +281,12 @@ Partial Class US_administrador
         Me.MenuItem_ENF_stock.Size = New System.Drawing.Size(206, 22)
         Me.MenuItem_ENF_stock.Text = "Consulta de Stock"
         Me.MenuItem_ENF_stock.Visible = False
+        '
+        'InsumosPredefinidosToolStripMenuItem
+        '
+        Me.InsumosPredefinidosToolStripMenuItem.Name = "InsumosPredefinidosToolStripMenuItem"
+        Me.InsumosPredefinidosToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
+        Me.InsumosPredefinidosToolStripMenuItem.Text = "Insumos Predefinidos"
         '
         'Label_Enfermeria
         '
@@ -491,7 +498,7 @@ Partial Class US_administrador
         '
         Me.Tool_stock.AutoSize = False
         Me.Tool_stock.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Tool_stock.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListaToolStripMenuItem, Me.MenuItem_Stock_Prov, Me.MenuItem_Stock_Insumos, Me.MenuItem_Stock_marca, Me.MenuItem_Stock_Categoria, Me.MenuItem_Stock_consumir, Me.MenuItem_Stock_Consulta})
+        Me.Tool_stock.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListaToolStripMenuItem, Me.MenuItem_Stock_Prov, Me.MenuItem_Stock_Insumos, Me.MenuItem_Stock_marca, Me.MenuItem_Stock_Categoria, Me.MenuItem_Stock_consumir, Me.MenuItem_Stock_Consulta, Me.ConsultaDeAjustesToolStripMenuItem})
         Me.Tool_stock.Image = CType(resources.GetObject("Tool_stock.Image"), System.Drawing.Image)
         Me.Tool_stock.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.Tool_stock.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -1270,11 +1277,11 @@ Partial Class US_administrador
         Me.BajaDeInsumosToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.BajaDeInsumosToolStripMenuItem.Text = "Baja de Insumos"
         '
-        'InsumosPredefinidosToolStripMenuItem
+        'ConsultaDeAjustesToolStripMenuItem
         '
-        Me.InsumosPredefinidosToolStripMenuItem.Name = "InsumosPredefinidosToolStripMenuItem"
-        Me.InsumosPredefinidosToolStripMenuItem.Size = New System.Drawing.Size(206, 22)
-        Me.InsumosPredefinidosToolStripMenuItem.Text = "Insumos Predefinidos"
+        Me.ConsultaDeAjustesToolStripMenuItem.Name = "ConsultaDeAjustesToolStripMenuItem"
+        Me.ConsultaDeAjustesToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
+        Me.ConsultaDeAjustesToolStripMenuItem.Text = "Consulta de Ajustes"
         '
         'US_administrador
         '
@@ -1448,4 +1455,5 @@ Partial Class US_administrador
     Friend WithEvents MenuItem_ENF_RegMov As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MenuItem_ENF_stock As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents InsumosPredefinidosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ConsultaDeAjustesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

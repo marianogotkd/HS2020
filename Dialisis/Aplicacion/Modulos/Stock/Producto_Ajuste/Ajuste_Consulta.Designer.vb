@@ -40,9 +40,9 @@ Partial Class Ajuste_Consulta
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.MovimientoMercaderiaAltaobtenerdetalleAjustesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Ajuste_DS = New Aplicacion.Ajuste_DS()
-        Me.MovMerConceptoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.prod_descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.prod_codinterno = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.prod_descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MovMerConceptoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MovMerDetCantidadDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MovMerFechaHoraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MovMeridDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -201,7 +201,7 @@ Partial Class Ajuste_Consulta
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.MovMerConceptoDataGridViewTextBoxColumn, Me.prod_descripcion, Me.prod_codinterno, Me.MovMerDetCantidadDataGridViewTextBoxColumn, Me.MovMerFechaHoraDataGridViewTextBoxColumn, Me.MovMeridDataGridViewTextBoxColumn, Me.UsuarioDataGridViewTextBoxColumn, Me.Origen})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.prod_codinterno, Me.prod_descripcion, Me.MovMerConceptoDataGridViewTextBoxColumn, Me.MovMerDetCantidadDataGridViewTextBoxColumn, Me.MovMerFechaHoraDataGridViewTextBoxColumn, Me.MovMeridDataGridViewTextBoxColumn, Me.UsuarioDataGridViewTextBoxColumn, Me.Origen})
         Me.DataGridView1.DataSource = Me.MovimientoMercaderiaAltaobtenerdetalleAjustesBindingSource
         Me.DataGridView1.Location = New System.Drawing.Point(9, 74)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
@@ -232,13 +232,13 @@ Partial Class Ajuste_Consulta
         Me.Ajuste_DS.DataSetName = "Ajuste_DS"
         Me.Ajuste_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'MovMerConceptoDataGridViewTextBoxColumn
+        'prod_codinterno
         '
-        Me.MovMerConceptoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.MovMerConceptoDataGridViewTextBoxColumn.DataPropertyName = "MovMer_Concepto"
-        Me.MovMerConceptoDataGridViewTextBoxColumn.HeaderText = "Tipo de Ajuste"
-        Me.MovMerConceptoDataGridViewTextBoxColumn.Name = "MovMerConceptoDataGridViewTextBoxColumn"
-        Me.MovMerConceptoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.prod_codinterno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.prod_codinterno.DataPropertyName = "prod_codinterno"
+        Me.prod_codinterno.HeaderText = "Código"
+        Me.prod_codinterno.Name = "prod_codinterno"
+        Me.prod_codinterno.ReadOnly = True
         '
         'prod_descripcion
         '
@@ -248,13 +248,13 @@ Partial Class Ajuste_Consulta
         Me.prod_descripcion.Name = "prod_descripcion"
         Me.prod_descripcion.ReadOnly = True
         '
-        'prod_codinterno
+        'MovMerConceptoDataGridViewTextBoxColumn
         '
-        Me.prod_codinterno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.prod_codinterno.DataPropertyName = "prod_codinterno"
-        Me.prod_codinterno.HeaderText = "Código"
-        Me.prod_codinterno.Name = "prod_codinterno"
-        Me.prod_codinterno.ReadOnly = True
+        Me.MovMerConceptoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.MovMerConceptoDataGridViewTextBoxColumn.DataPropertyName = "MovMer_Concepto"
+        Me.MovMerConceptoDataGridViewTextBoxColumn.HeaderText = "Tipo de Ajuste"
+        Me.MovMerConceptoDataGridViewTextBoxColumn.Name = "MovMerConceptoDataGridViewTextBoxColumn"
+        Me.MovMerConceptoDataGridViewTextBoxColumn.ReadOnly = True
         '
         'MovMerDetCantidadDataGridViewTextBoxColumn
         '
@@ -331,9 +331,9 @@ Partial Class Ajuste_Consulta
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents MovimientoMercaderiaAltaobtenerdetalleAjustesBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents Ajuste_DS As Aplicacion.Ajuste_DS
-    Friend WithEvents MovMerConceptoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents prod_descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents prod_codinterno As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents prod_descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents MovMerConceptoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MovMerDetCantidadDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MovMerFechaHoraDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MovMeridDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn

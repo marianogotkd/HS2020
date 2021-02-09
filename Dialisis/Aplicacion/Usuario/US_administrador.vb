@@ -1324,4 +1324,8 @@ Public Property EnabledCerrar() As Boolean
         Insumos_Predefinidos.Show()
 
     End Sub
+
+    Private Sub ConsultaDeAjustesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConsultaDeAjustesToolStripMenuItem.Click
+        Ajuste_Consulta.Show()
+    End Sub
 End Class

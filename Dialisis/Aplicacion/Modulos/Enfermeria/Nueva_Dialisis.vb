@@ -52,7 +52,8 @@
 
             If estado_sesion = "Conectado" Then
                 btn_finalizar.Enabled = True 'lo habilito ahora si se puede finalizar.
-                btn_guardar.Text = "Modificar"
+                btn_guardar.Text = "Guardar"
+                btn_guardar.Image = My.Resources.floppy_disk30x30
             Else
                 If estado_sesion = "Finalizado" Then
                     btn_finalizar.Enabled = False
@@ -62,10 +63,11 @@
 
                 Else
                     btn_finalizar.Enabled = True 'lo habilito ahora si se puede finalizar.
-                    btn_guardar.Text = "Modificar"
+                    btn_guardar.Text = "Guardar"
+                    btn_guardar.Image = My.Resources.floppy_disk30x30
                 End If
             End If
-            
+
             'aqui pongo en color azul y negrita las filas
             Dim ff As Integer = 0
             Dim style As New DataGridViewCellStyle
@@ -108,7 +110,7 @@
                     tb_PesoS.Text = info_sesion.Tables(0).Rows(0).Item("Dialisis_PesoS")
                     tb_talla.Text = info_sesion.Tables(0).Rows(0).Item("Dialisis_Talla")
                 End If
-                
+
 
             End If
 
@@ -117,7 +119,7 @@
 
 
         End If
-       
+
 
 
 
@@ -495,7 +497,7 @@
         Return edad
     End Function
 
-    
+
 
     Private Sub btn_Buscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Buscar.Click
         'es lo mismo que baja de mercaderia
