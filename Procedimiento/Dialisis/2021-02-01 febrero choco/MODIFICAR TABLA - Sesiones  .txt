@@ -1,0 +1,2 @@
+Sesiones  
+Sesiones_estado varchar(50)
