@@ -39,6 +39,7 @@
                     fila("PACnumafi") = sesion.Tables(0).Rows(0).Item("PACnumafi")
                     fila("Obrasocial_nombre") = sesion.Tables(0).Rows(0).Item("Obrasocial_nombre")
                     fila("Sesiones_asistencia") = sesion.Tables(0).Rows(0).Item("Sesiones_asistencia")
+                    fila("Estado_sesion") = sesion.Tables(0).Rows(0).Item("Sesiones_estado")
                     Ds_enfermeria.Tables("Sesion_actual_todos_pacientes").Rows.Add(fila)
                 Else
                     'quiere decir q no registre asistencia.
@@ -54,6 +55,7 @@
                     fila("PACnumafi") = ds_inscriptos.Tables(0).Rows(i).Item("PACnumafi")
                     fila("Obrasocial_nombre") = ds_inscriptos.Tables(0).Rows(i).Item("Obrasocial_nombre")
                     fila("Sesiones_asistencia") = ""
+                    fila("Estado_sesion") = ""
                     Ds_enfermeria.Tables("Sesion_actual_todos_pacientes").Rows.Add(fila)
                 End If
                 i = i + 1
@@ -237,5 +239,25 @@
 
     Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
 
+    End Sub
+
+    Private Sub datagridview1_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles datagridview1.CellFormatting
+
+        If datagridview1.Columns(e.ColumnIndex).Name = "Estado_sesion" Then
+            If e.Value.ToString <> "" Then
+                If e.Value = "Conectado" Then
+                    e.CellStyle.ForeColor = Color.Green
+                    e.CellStyle.SelectionForeColor = Color.Green
+                End If
+                If e.Value = "Finalizado" Then
+                    e.CellStyle.ForeColor = Color.Blue
+                    e.CellStyle.SelectionForeColor = Color.Blue
+                End If
+                If e.Value = "Desconectado" Then
+                    e.CellStyle.ForeColor = Color.Red
+                    e.CellStyle.SelectionForeColor = Color.Red
+                End If
+            End If
+        End If
     End Sub
 End Class

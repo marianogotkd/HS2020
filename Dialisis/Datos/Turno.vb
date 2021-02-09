@@ -800,6 +800,26 @@ Public Class Turno
         Return ds_JE
     End Function
 
+    Public Function TurnoDialisis_consultar_sesion_paciente_presente(ByVal PAC_id As Integer) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("TurnoDialisis_consultar_sesion_paciente_presente", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add(New OleDb.OleDbParameter("@PAC_id", PAC_id))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@fecha", fecha))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@Turnodialisis_id", turnodialisis_id))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "sesiones")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
 
     Public Function TurnoDialisis_consultar_sesiones_rangofecha(ByVal desde As Date, ByVal hasta As Date) As DataSet
         Try

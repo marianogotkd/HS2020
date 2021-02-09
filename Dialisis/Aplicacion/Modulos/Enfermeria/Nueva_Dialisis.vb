@@ -96,7 +96,7 @@
 
         ''PESO Y TALLA AUTOMATICOS'''
 
-        Dim sesion As DataSet = daturno.TurnoDialisis_consultar_sesion_paciente(PAC_id)
+        Dim sesion As DataSet = daturno.TurnoDialisis_consultar_sesion_paciente_presente(PAC_id)
         If sesion.Tables(0).Rows.Count <> 0 Then
 
             If sesion.Tables(0).Rows.Count = 14 Or sesion.Tables(0).Rows.Count = 28 Or sesion.Tables(0).Rows.Count = 42 Or sesion.Tables(0).Rows.Count = 56 Or sesion.Tables(0).Rows.Count = 70 Then
@@ -104,8 +104,11 @@
             Else
                 Dim i = sesion.Tables(0).Rows.Count - 1
                 Dim info_sesion As DataSet = DAsesiones.Sesiones_obtener_info_dialisis(sesion.Tables(0).Rows(i).Item("Sesiones_id"))
-                tb_PesoS.Text = info_sesion.Tables(0).Rows(0).Item("Dialisis_PesoS")
-                tb_talla.Text = info_sesion.Tables(0).Rows(0).Item("Dialisis_Talla")
+                If info_sesion.Tables(0).Rows.Count <> 0 Then
+                    tb_PesoS.Text = info_sesion.Tables(0).Rows(0).Item("Dialisis_PesoS")
+                    tb_talla.Text = info_sesion.Tables(0).Rows(0).Item("Dialisis_Talla")
+                End If
+                
 
             End If
 

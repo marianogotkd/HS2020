@@ -922,6 +922,8 @@ Partial Public Class Ds_enfermeria
         
         Private columnSesiones_asistencia As Global.System.Data.DataColumn
         
+        Private columnEstado_sesion As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1038,6 +1040,14 @@ Partial Public Class Ds_enfermeria
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Estado_sesionColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEstado_sesion
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1074,9 +1084,9 @@ Partial Public Class Ds_enfermeria
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddSesion_actual_todos_pacientesRow(ByVal Sesiones_id As Integer, ByVal PAC_id As Integer, ByVal Sesiones_fecha As Date, ByVal Dialisis_id As String, ByVal Paciente As String, ByVal PAC_dni As String, ByVal PAc_dir As String, ByVal PACnumafi As String, ByVal Obrasocial_nombre As String, ByVal Sesiones_asistencia As String) As Sesion_actual_todos_pacientesRow
+        Public Overloads Function AddSesion_actual_todos_pacientesRow(ByVal Sesiones_id As Integer, ByVal PAC_id As Integer, ByVal Sesiones_fecha As Date, ByVal Dialisis_id As String, ByVal Paciente As String, ByVal PAC_dni As String, ByVal PAc_dir As String, ByVal PACnumafi As String, ByVal Obrasocial_nombre As String, ByVal Sesiones_asistencia As String, ByVal Estado_sesion As String) As Sesion_actual_todos_pacientesRow
             Dim rowSesion_actual_todos_pacientesRow As Sesion_actual_todos_pacientesRow = CType(Me.NewRow,Sesion_actual_todos_pacientesRow)
-            Dim columnValuesArray() As Object = New Object() {Sesiones_id, PAC_id, Sesiones_fecha, Dialisis_id, Paciente, PAC_dni, PAc_dir, PACnumafi, Obrasocial_nombre, Sesiones_asistencia}
+            Dim columnValuesArray() As Object = New Object() {Sesiones_id, PAC_id, Sesiones_fecha, Dialisis_id, Paciente, PAC_dni, PAc_dir, PACnumafi, Obrasocial_nombre, Sesiones_asistencia, Estado_sesion}
             rowSesion_actual_todos_pacientesRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSesion_actual_todos_pacientesRow)
             Return rowSesion_actual_todos_pacientesRow
@@ -1109,6 +1119,7 @@ Partial Public Class Ds_enfermeria
             Me.columnPACnumafi = MyBase.Columns("PACnumafi")
             Me.columnObrasocial_nombre = MyBase.Columns("Obrasocial_nombre")
             Me.columnSesiones_asistencia = MyBase.Columns("Sesiones_asistencia")
+            Me.columnEstado_sesion = MyBase.Columns("Estado_sesion")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1134,6 +1145,8 @@ Partial Public Class Ds_enfermeria
             MyBase.Columns.Add(Me.columnObrasocial_nombre)
             Me.columnSesiones_asistencia = New Global.System.Data.DataColumn("Sesiones_asistencia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnSesiones_asistencia)
+            Me.columnEstado_sesion = New Global.System.Data.DataColumn("Estado_sesion", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEstado_sesion)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4479,6 +4492,22 @@ Partial Public Class Ds_enfermeria
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Estado_sesion() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableSesion_actual_todos_pacientes.Estado_sesionColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Estado_sesion' de la tabla 'Sesion_actual_todos_pacientes"& _ 
+                            "' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSesion_actual_todos_pacientes.Estado_sesionColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsSesiones_idNull() As Boolean
             Return Me.IsNull(Me.tableSesion_actual_todos_pacientes.Sesiones_idColumn)
         End Function
@@ -4595,6 +4624,18 @@ Partial Public Class Ds_enfermeria
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetSesiones_asistenciaNull()
             Me(Me.tableSesion_actual_todos_pacientes.Sesiones_asistenciaColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsEstado_sesionNull() As Boolean
+            Return Me.IsNull(Me.tableSesion_actual_todos_pacientes.Estado_sesionColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetEstado_sesionNull()
+            Me(Me.tableSesion_actual_todos_pacientes.Estado_sesionColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

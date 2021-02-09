@@ -131,6 +131,7 @@
                 fila("PACnumafi") = sesion.Tables(0).Rows(i).Item("PACnumafi")
                 fila("Obrasocial_nombre") = sesion.Tables(0).Rows(i).Item("Obrasocial_nombre")
                 fila("Sesiones_asistencia") = sesion.Tables(0).Rows(i).Item("Sesiones_asistencia")
+                fila("Estado_sesion") = sesion.Tables(0).Rows(i).Item("Sesiones_estado")
                 If sesion.Tables(0).Rows(i).Item("Sesiones_asistencia") = "Presente" Then
                     cant_presente = cant_presente + 1
                 Else
@@ -225,6 +226,25 @@
 
         Else
             MessageBox.Show("Error, no hay sesiones registradas.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+    Private Sub datagridview1_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles datagridview1.CellFormatting
+        If datagridview1.Columns(e.ColumnIndex).Name = "Estado_sesion" Then
+            If e.Value.ToString <> "" Then
+                If e.Value = "Conectado" Then
+                    e.CellStyle.ForeColor = Color.Green
+                    e.CellStyle.SelectionForeColor = Color.Green
+                End If
+                If e.Value = "Finalizado" Then
+                    e.CellStyle.ForeColor = Color.Blue
+                    e.CellStyle.SelectionForeColor = Color.Blue
+                End If
+                If e.Value = "Desconectado" Then
+                    e.CellStyle.ForeColor = Color.Red
+                    e.CellStyle.SelectionForeColor = Color.Red
+                End If
+            End If
         End If
     End Sub
 End Class

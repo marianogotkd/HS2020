@@ -23,7 +23,7 @@ Partial Class Sesion_pacientes
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Sesion_pacientes))
         Me.lb_sesionfecha = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -50,6 +50,7 @@ Partial Class Sesion_pacientes
         Me.PACnumafiDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ObrasocialnombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SesionesasistenciaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Estado_sesion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SesionactualtodospacientesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Ds_enfermeria = New Aplicacion.Ds_enfermeria()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
@@ -123,7 +124,7 @@ Partial Class Sesion_pacientes
         Me.GroupBox1.Controls.Add(Me.datagridview1)
         Me.GroupBox1.Location = New System.Drawing.Point(33, 99)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(728, 377)
+        Me.GroupBox1.Size = New System.Drawing.Size(941, 377)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Inscriptos"
@@ -144,14 +145,16 @@ Partial Class Sesion_pacientes
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(10, 86)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(709, 22)
+        Me.TextBox1.Size = New System.Drawing.Size(924, 22)
         Me.TextBox1.TabIndex = 265
+        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Button3
         '
+        Me.Button3.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
-        Me.Button3.Location = New System.Drawing.Point(486, 320)
+        Me.Button3.Location = New System.Drawing.Point(697, 320)
         Me.Button3.Margin = New System.Windows.Forms.Padding(4)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(136, 44)
@@ -163,9 +166,10 @@ Partial Class Sesion_pacientes
         '
         'Button2
         '
+        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
-        Me.Button2.Location = New System.Drawing.Point(290, 320)
+        Me.Button2.Location = New System.Drawing.Point(501, 320)
         Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(188, 44)
@@ -177,6 +181,7 @@ Partial Class Sesion_pacientes
         '
         'Button1
         '
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
         Me.Button1.Location = New System.Drawing.Point(13, 320)
@@ -203,9 +208,10 @@ Partial Class Sesion_pacientes
         '
         'btn_ausente
         '
+        Me.btn_ausente.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.btn_ausente.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_ausente.Image = Global.Aplicacion.My.Resources.Resources.menos
-        Me.btn_ausente.Location = New System.Drawing.Point(630, 320)
+        Me.btn_ausente.Location = New System.Drawing.Point(841, 320)
         Me.btn_ausente.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_ausente.Name = "btn_ausente"
         Me.btn_ausente.Size = New System.Drawing.Size(93, 44)
@@ -236,7 +242,7 @@ Partial Class Sesion_pacientes
         Me.datagridview1.BackgroundColor = System.Drawing.Color.White
         Me.datagridview1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
         Me.datagridview1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.datagridview1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SesionesidDataGridViewTextBoxColumn, Me.PACidDataGridViewTextBoxColumn, Me.SesionesfechaDataGridViewTextBoxColumn, Me.DialisisidDataGridViewTextBoxColumn, Me.PACdniDataGridViewTextBoxColumn, Me.PacienteDataGridViewTextBoxColumn, Me.PAcdirDataGridViewTextBoxColumn, Me.PACnumafiDataGridViewTextBoxColumn, Me.ObrasocialnombreDataGridViewTextBoxColumn, Me.SesionesasistenciaDataGridViewTextBoxColumn})
+        Me.datagridview1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.SesionesidDataGridViewTextBoxColumn, Me.PACidDataGridViewTextBoxColumn, Me.SesionesfechaDataGridViewTextBoxColumn, Me.DialisisidDataGridViewTextBoxColumn, Me.PACdniDataGridViewTextBoxColumn, Me.PacienteDataGridViewTextBoxColumn, Me.PAcdirDataGridViewTextBoxColumn, Me.PACnumafiDataGridViewTextBoxColumn, Me.ObrasocialnombreDataGridViewTextBoxColumn, Me.SesionesasistenciaDataGridViewTextBoxColumn, Me.Estado_sesion})
         Me.datagridview1.DataSource = Me.SesionactualtodospacientesBindingSource
         Me.datagridview1.Location = New System.Drawing.Point(10, 124)
         Me.datagridview1.Margin = New System.Windows.Forms.Padding(4)
@@ -245,12 +251,12 @@ Partial Class Sesion_pacientes
         Me.datagridview1.ReadOnly = True
         Me.datagridview1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.datagridview1.RowHeadersVisible = False
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        Me.datagridview1.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.datagridview1.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.datagridview1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.datagridview1.Size = New System.Drawing.Size(713, 188)
+        Me.datagridview1.Size = New System.Drawing.Size(924, 188)
         Me.datagridview1.StandardTab = True
         Me.datagridview1.TabIndex = 258
         '
@@ -334,6 +340,14 @@ Partial Class Sesion_pacientes
         Me.SesionesasistenciaDataGridViewTextBoxColumn.Name = "SesionesasistenciaDataGridViewTextBoxColumn"
         Me.SesionesasistenciaDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'Estado_sesion
+        '
+        Me.Estado_sesion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Estado_sesion.DataPropertyName = "Estado_sesion"
+        Me.Estado_sesion.HeaderText = "Estado"
+        Me.Estado_sesion.Name = "Estado_sesion"
+        Me.Estado_sesion.ReadOnly = True
+        '
         'SesionactualtodospacientesBindingSource
         '
         Me.SesionactualtodospacientesBindingSource.DataMember = "Sesion_actual_todos_pacientes"
@@ -346,6 +360,7 @@ Partial Class Sesion_pacientes
         '
         'Button_buscar
         '
+        Me.Button_buscar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientActiveCaption
         Me.Button_buscar.Image = CType(resources.GetObject("Button_buscar.Image"), System.Drawing.Image)
         Me.Button_buscar.Location = New System.Drawing.Point(287, 15)
         Me.Button_buscar.Margin = New System.Windows.Forms.Padding(4)
@@ -399,7 +414,7 @@ Partial Class Sesion_pacientes
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Aplicacion.My.Resources.Resources.silver_3
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(785, 554)
+        Me.ClientSize = New System.Drawing.Size(986, 554)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.GroupBox1)
@@ -434,16 +449,6 @@ Partial Class Sesion_pacientes
     Friend WithEvents datagridview1 As System.Windows.Forms.DataGridView
     Friend WithEvents SesionactualtodospacientesBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents Ds_enfermeria As Aplicacion.Ds_enfermeria
-    Friend WithEvents SesionesidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PACidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents SesionesfechaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DialisisidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PACdniDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PacienteDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PAcdirDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PACnumafiDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ObrasocialnombreDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents SesionesasistenciaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents btn_ausente As System.Windows.Forms.Button
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents fecha As System.Windows.Forms.DateTimePicker
@@ -456,4 +461,15 @@ Partial Class Sesion_pacientes
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents SesionesidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PACidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SesionesfechaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DialisisidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PACdniDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PacienteDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PAcdirDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PACnumafiDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ObrasocialnombreDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SesionesasistenciaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Estado_sesion As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
