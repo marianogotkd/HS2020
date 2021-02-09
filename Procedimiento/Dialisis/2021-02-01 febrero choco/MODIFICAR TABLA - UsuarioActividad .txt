@@ -1,0 +1,2 @@
+UsuarioActividad 
+Sesiones_id int, sucursal_id int

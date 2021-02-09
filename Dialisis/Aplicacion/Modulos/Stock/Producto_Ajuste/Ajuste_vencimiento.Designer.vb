@@ -45,7 +45,7 @@ Partial Class Ajuste_vencimiento
         Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox4.Location = New System.Drawing.Point(8, 3)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(495, 179)
+        Me.GroupBox4.Size = New System.Drawing.Size(562, 179)
         Me.GroupBox4.TabIndex = 19
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Complete la información:"
@@ -54,7 +54,7 @@ Partial Class Ajuste_vencimiento
         '
         Me.btn_agregarr.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_agregarr.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
-        Me.btn_agregarr.Location = New System.Drawing.Point(384, 130)
+        Me.btn_agregarr.Location = New System.Drawing.Point(456, 130)
         Me.btn_agregarr.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_agregarr.Name = "btn_agregarr"
         Me.btn_agregarr.Size = New System.Drawing.Size(99, 41)
@@ -75,7 +75,7 @@ Partial Class Ajuste_vencimiento
         Me.Grupo_lote.Controls.Add(Me.Label13)
         Me.Grupo_lote.Location = New System.Drawing.Point(6, 18)
         Me.Grupo_lote.Name = "Grupo_lote"
-        Me.Grupo_lote.Size = New System.Drawing.Size(477, 105)
+        Me.Grupo_lote.Size = New System.Drawing.Size(550, 105)
         Me.Grupo_lote.TabIndex = 20
         Me.Grupo_lote.TabStop = False
         '
@@ -95,10 +95,10 @@ Partial Class Ajuste_vencimiento
         '
         Me.DateTimePicker_fvencimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePicker_fvencimiento.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker_fvencimiento.Location = New System.Drawing.Point(358, 65)
+        Me.DateTimePicker_fvencimiento.Location = New System.Drawing.Point(404, 65)
         Me.DateTimePicker_fvencimiento.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker_fvencimiento.Name = "DateTimePicker_fvencimiento"
-        Me.DateTimePicker_fvencimiento.Size = New System.Drawing.Size(107, 29)
+        Me.DateTimePicker_fvencimiento.Size = New System.Drawing.Size(139, 29)
         Me.DateTimePicker_fvencimiento.TabIndex = 2
         '
         'Label11
@@ -119,7 +119,7 @@ Partial Class Ajuste_vencimiento
         Me.DateTimePicker_ffabricacion.Location = New System.Drawing.Point(122, 65)
         Me.DateTimePicker_ffabricacion.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker_ffabricacion.Name = "DateTimePicker_ffabricacion"
-        Me.DateTimePicker_ffabricacion.Size = New System.Drawing.Size(107, 29)
+        Me.DateTimePicker_ffabricacion.Size = New System.Drawing.Size(138, 29)
         Me.DateTimePicker_ffabricacion.TabIndex = 1
         '
         'txt_nrolote
@@ -150,7 +150,7 @@ Partial Class Ajuste_vencimiento
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(244, 70)
+        Me.Label13.Location = New System.Drawing.Point(290, 70)
         Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(106, 15)
@@ -162,7 +162,7 @@ Partial Class Ajuste_vencimiento
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.Aplicacion.My.Resources.Resources.silver_3
-        Me.ClientSize = New System.Drawing.Size(515, 194)
+        Me.ClientSize = New System.Drawing.Size(582, 194)
         Me.Controls.Add(Me.GroupBox4)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
