@@ -1448,6 +1448,8 @@ Partial Public Class Producto_ds
         
         Private columnContenido_total As Global.System.Data.DataColumn
         
+        Private columncant_vencimiento As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1572,6 +1574,14 @@ Partial Public Class Producto_ds
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property cant_vencimientoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columncant_vencimiento
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1608,9 +1618,9 @@ Partial Public Class Producto_ds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddProdxSucRow(ByVal prod_descripcion As String, ByVal prod_precio_vta As Decimal, ByVal prod_id As Integer, ByVal prod_codinterno As Integer, ByVal prod_ptorepo As Integer, ByVal prod_precio_vta_May As Decimal, ByVal ProdxSuc_stock As Decimal, ByVal sucursal_id As Integer, ByVal prod_codbarra As String, ByVal Contenido As String, ByVal Contenido_total As String) As ProdxSucRow
+        Public Overloads Function AddProdxSucRow(ByVal prod_descripcion As String, ByVal prod_precio_vta As Decimal, ByVal prod_id As Integer, ByVal prod_codinterno As Integer, ByVal prod_ptorepo As Integer, ByVal prod_precio_vta_May As Decimal, ByVal ProdxSuc_stock As Decimal, ByVal sucursal_id As Integer, ByVal prod_codbarra As String, ByVal Contenido As String, ByVal Contenido_total As String, ByVal cant_vencimiento As Decimal) As ProdxSucRow
             Dim rowProdxSucRow As ProdxSucRow = CType(Me.NewRow,ProdxSucRow)
-            Dim columnValuesArray() As Object = New Object() {prod_descripcion, prod_precio_vta, prod_id, prod_codinterno, prod_ptorepo, prod_precio_vta_May, ProdxSuc_stock, sucursal_id, prod_codbarra, Contenido, Contenido_total}
+            Dim columnValuesArray() As Object = New Object() {prod_descripcion, prod_precio_vta, prod_id, prod_codinterno, prod_ptorepo, prod_precio_vta_May, ProdxSuc_stock, sucursal_id, prod_codbarra, Contenido, Contenido_total, cant_vencimiento}
             rowProdxSucRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowProdxSucRow)
             Return rowProdxSucRow
@@ -1644,6 +1654,7 @@ Partial Public Class Producto_ds
             Me.columnprod_codbarra = MyBase.Columns("prod_codbarra")
             Me.columnContenido = MyBase.Columns("Contenido")
             Me.columnContenido_total = MyBase.Columns("Contenido_total")
+            Me.columncant_vencimiento = MyBase.Columns("cant_vencimiento")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1671,6 +1682,8 @@ Partial Public Class Producto_ds
             MyBase.Columns.Add(Me.columnContenido)
             Me.columnContenido_total = New Global.System.Data.DataColumn("Contenido_total", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnContenido_total)
+            Me.columncant_vencimiento = New Global.System.Data.DataColumn("cant_vencimiento", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columncant_vencimiento)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3004,6 +3017,21 @@ Partial Public Class Producto_ds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property cant_vencimiento() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tableProdxSuc.cant_vencimientoColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'cant_vencimiento' de la tabla 'ProdxSuc' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProdxSuc.cant_vencimientoColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isprod_descripcionNull() As Boolean
             Return Me.IsNull(Me.tableProdxSuc.prod_descripcionColumn)
         End Function
@@ -3132,6 +3160,18 @@ Partial Public Class Producto_ds
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetContenido_totalNull()
             Me(Me.tableProdxSuc.Contenido_totalColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Iscant_vencimientoNull() As Boolean
+            Return Me.IsNull(Me.tableProdxSuc.cant_vencimientoColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setcant_vencimientoNull()
+            Me(Me.tableProdxSuc.cant_vencimientoColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
