@@ -15,8 +15,9 @@
         Dim ds_detalle As DataSet = DAgestion_mercaderia.Movimiento_Mercaderia_Alta_obtener_detalle(id)
         If ds_detalle.Tables(0).Rows.Count <> 0 Then
             TextBox_proveedor.Text = ds_detalle.Tables(1).Rows(0).Item("Prov_nombre")
-            tb_iva.Text = ds_detalle.Tables(1).Rows(0).Item("MovMer_IVA")
-            tb_total.Text = ds_detalle.Tables(1).Rows(0).Item("MovMer_TOTAL")
+            tb_iva.Text = ds_detalle.Tables(1).Rows(0).Item("MovMer_IVA").ToString
+            
+            tb_total.Text = ds_detalle.Tables(1).Rows(0).Item("MovMer_TOTAL").ToString
 
             D_consulta_mov_alta.Tables("movimientos_detalle").Rows.Clear()
             D_consulta_mov_alta.Tables("movimientos_detalle").Merge(ds_detalle.Tables(0))
@@ -30,7 +31,11 @@
                 i = i + 1
             End While
             tb_subtotal.Text = (Math.Round(CDec(TOTAL), 2).ToString("N2"))
-
+            If tb_iva.Text = "" Then
+                tb_iva.Text = CDec(0)
+                'calculo total
+                tb_total.Text = CDec(tb_subtotal.Text)
+            End If
         End If
     End Sub
     Dim DAventa As New Datos.Venta

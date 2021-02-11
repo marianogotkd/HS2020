@@ -163,6 +163,7 @@
         '            'Calculo Stock''''''''
         '            Mov = Ds_Suc.Tables(0).Rows(0).Item("Stock_Origen") - Mov_DS.Tables("Mov").Rows(i).Item("Cantidad")
         '            '''''''
+
         '            ''''''''''
         '            'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
         '            DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, cb_origen.SelectedValue, Mov, "") 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
@@ -186,7 +187,6 @@
 
         '        Limpiar()
         '        MessageBox.Show("Operación Registrada Con Éxito.", "Sistema de Gestión.")
-
 
         '    End If
         'Else
