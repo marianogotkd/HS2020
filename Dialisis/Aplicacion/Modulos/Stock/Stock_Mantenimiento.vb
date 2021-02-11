@@ -18,7 +18,7 @@
                     DAproducto.Producto_x_sucursal_borrar_cant_lote(Producto_modificar.cb_origen.SelectedValue, id_producto)
                     i = i + 1
                 End While
-                Producto_modificar.Cargar_grilla()
+                Producto_modificar.Cargar_grilla("") 'ojo con este parametro no tiene q ir vacio
                 MessageBox.Show("Los datos se actualizaron correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("No hay productos en la sucursal.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)

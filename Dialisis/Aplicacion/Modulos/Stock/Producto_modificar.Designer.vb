@@ -67,6 +67,7 @@ Partial Class Producto_modificar
         Me.ProdxSucBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Producto_ds = New Aplicacion.Producto_ds()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.prod_codinterno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.prod_descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdxSuc_stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -80,6 +81,10 @@ Partial Class Producto_modificar
         Me.Contenido_total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cant_vencimiento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.Prov_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.marca_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nrocat = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.idcat = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -579,7 +584,7 @@ Partial Class Producto_modificar
         Me.DG_Producto.AutoGenerateColumns = False
         Me.DG_Producto.BackgroundColor = System.Drawing.Color.White
         Me.DG_Producto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DG_Producto.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.prod_codinterno, Me.prod_descripcion, Me.ProdxSuc_stock, Me.prod_ptorepo, Me.prod_precio_vta, Me.prod_precio_vta_May, Me.prod_id, Me.sucursal_id, Me.prod_codbarra, Me.Contenido, Me.Contenido_total, Me.cant_vencimiento, Me.Column1})
+        Me.DG_Producto.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.prod_codinterno, Me.prod_descripcion, Me.ProdxSuc_stock, Me.prod_ptorepo, Me.prod_precio_vta, Me.prod_precio_vta_May, Me.prod_id, Me.sucursal_id, Me.prod_codbarra, Me.Contenido, Me.Contenido_total, Me.cant_vencimiento, Me.Column1, Me.Prov_id, Me.marca_id, Me.nrocat, Me.idcat})
         Me.DG_Producto.DataSource = Me.ProdxSucBindingSource
         Me.DG_Producto.Location = New System.Drawing.Point(5, 23)
         Me.DG_Producto.Margin = New System.Windows.Forms.Padding(4)
@@ -619,6 +624,10 @@ Partial Class Producto_modificar
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(1291, 634)
         Me.TabControl1.TabIndex = 0
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 1000
         '
         'prod_codinterno
         '
@@ -729,6 +738,41 @@ Partial Class Producto_modificar
         Me.Column1.Name = "Column1"
         Me.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         Me.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.Column1.Visible = False
+        '
+        'Prov_id
+        '
+        Me.Prov_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Prov_id.DataPropertyName = "Prov_id"
+        Me.Prov_id.HeaderText = "Prov_id"
+        Me.Prov_id.Name = "Prov_id"
+        Me.Prov_id.ReadOnly = True
+        Me.Prov_id.Visible = False
+        '
+        'marca_id
+        '
+        Me.marca_id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.marca_id.DataPropertyName = "marca_id"
+        Me.marca_id.HeaderText = "marca_id"
+        Me.marca_id.Name = "marca_id"
+        Me.marca_id.ReadOnly = True
+        Me.marca_id.Visible = False
+        '
+        'nrocat
+        '
+        Me.nrocat.DataPropertyName = "nrocat"
+        Me.nrocat.HeaderText = "nrocat"
+        Me.nrocat.Name = "nrocat"
+        Me.nrocat.ReadOnly = True
+        Me.nrocat.Visible = False
+        '
+        'idcat
+        '
+        Me.idcat.DataPropertyName = "idcat"
+        Me.idcat.HeaderText = "idcat"
+        Me.idcat.Name = "idcat"
+        Me.idcat.ReadOnly = True
+        Me.idcat.Visible = False
         '
         'Producto_modificar
         '
@@ -737,6 +781,7 @@ Partial Class Producto_modificar
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1274, 645)
         Me.Controls.Add(Me.TabControl1)
+        Me.KeyPreview = True
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MinimumSize = New System.Drawing.Size(1024, 665)
         Me.Name = "Producto_modificar"
@@ -803,6 +848,7 @@ Partial Class Producto_modificar
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents PictureBox7 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox8 As System.Windows.Forms.PictureBox
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents prod_codinterno As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents prod_descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProdxSuc_stock As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -816,4 +862,8 @@ Partial Class Producto_modificar
     Friend WithEvents Contenido_total As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cant_vencimiento As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents Prov_id As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents marca_id As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents nrocat As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents idcat As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

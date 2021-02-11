@@ -1450,6 +1450,14 @@ Partial Public Class Producto_ds
         
         Private columncant_vencimiento As Global.System.Data.DataColumn
         
+        Private columnProv_id As Global.System.Data.DataColumn
+        
+        Private columnmarca_id As Global.System.Data.DataColumn
+        
+        Private columnnrocat As Global.System.Data.DataColumn
+        
+        Private columnidcat As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1582,6 +1590,38 @@ Partial Public Class Producto_ds
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Prov_idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnProv_id
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property marca_idColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmarca_id
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property nrocatColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnrocat
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property idcatColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnidcat
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1618,9 +1658,25 @@ Partial Public Class Producto_ds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddProdxSucRow(ByVal prod_descripcion As String, ByVal prod_precio_vta As Decimal, ByVal prod_id As Integer, ByVal prod_codinterno As Integer, ByVal prod_ptorepo As Integer, ByVal prod_precio_vta_May As Decimal, ByVal ProdxSuc_stock As Decimal, ByVal sucursal_id As Integer, ByVal prod_codbarra As String, ByVal Contenido As String, ByVal Contenido_total As String, ByVal cant_vencimiento As Decimal) As ProdxSucRow
+        Public Overloads Function AddProdxSucRow( _
+                    ByVal prod_descripcion As String,  _
+                    ByVal prod_precio_vta As Decimal,  _
+                    ByVal prod_id As Integer,  _
+                    ByVal prod_codinterno As Integer,  _
+                    ByVal prod_ptorepo As Integer,  _
+                    ByVal prod_precio_vta_May As Decimal,  _
+                    ByVal ProdxSuc_stock As Decimal,  _
+                    ByVal sucursal_id As Integer,  _
+                    ByVal prod_codbarra As String,  _
+                    ByVal Contenido As String,  _
+                    ByVal Contenido_total As String,  _
+                    ByVal cant_vencimiento As Decimal,  _
+                    ByVal Prov_id As Integer,  _
+                    ByVal marca_id As Integer,  _
+                    ByVal nrocat As Integer,  _
+                    ByVal idcat As Integer) As ProdxSucRow
             Dim rowProdxSucRow As ProdxSucRow = CType(Me.NewRow,ProdxSucRow)
-            Dim columnValuesArray() As Object = New Object() {prod_descripcion, prod_precio_vta, prod_id, prod_codinterno, prod_ptorepo, prod_precio_vta_May, ProdxSuc_stock, sucursal_id, prod_codbarra, Contenido, Contenido_total, cant_vencimiento}
+            Dim columnValuesArray() As Object = New Object() {prod_descripcion, prod_precio_vta, prod_id, prod_codinterno, prod_ptorepo, prod_precio_vta_May, ProdxSuc_stock, sucursal_id, prod_codbarra, Contenido, Contenido_total, cant_vencimiento, Prov_id, marca_id, nrocat, idcat}
             rowProdxSucRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowProdxSucRow)
             Return rowProdxSucRow
@@ -1655,6 +1711,10 @@ Partial Public Class Producto_ds
             Me.columnContenido = MyBase.Columns("Contenido")
             Me.columnContenido_total = MyBase.Columns("Contenido_total")
             Me.columncant_vencimiento = MyBase.Columns("cant_vencimiento")
+            Me.columnProv_id = MyBase.Columns("Prov_id")
+            Me.columnmarca_id = MyBase.Columns("marca_id")
+            Me.columnnrocat = MyBase.Columns("nrocat")
+            Me.columnidcat = MyBase.Columns("idcat")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1684,6 +1744,14 @@ Partial Public Class Producto_ds
             MyBase.Columns.Add(Me.columnContenido_total)
             Me.columncant_vencimiento = New Global.System.Data.DataColumn("cant_vencimiento", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columncant_vencimiento)
+            Me.columnProv_id = New Global.System.Data.DataColumn("Prov_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnProv_id)
+            Me.columnmarca_id = New Global.System.Data.DataColumn("marca_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmarca_id)
+            Me.columnnrocat = New Global.System.Data.DataColumn("nrocat", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnrocat)
+            Me.columnidcat = New Global.System.Data.DataColumn("idcat", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnidcat)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3032,6 +3100,66 @@ Partial Public Class Producto_ds
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property Prov_id() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableProdxSuc.Prov_idColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Prov_id' de la tabla 'ProdxSuc' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProdxSuc.Prov_idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property marca_id() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableProdxSuc.marca_idColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'marca_id' de la tabla 'ProdxSuc' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProdxSuc.marca_idColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property nrocat() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableProdxSuc.nrocatColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'nrocat' de la tabla 'ProdxSuc' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProdxSuc.nrocatColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property idcat() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableProdxSuc.idcatColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'idcat' de la tabla 'ProdxSuc' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProdxSuc.idcatColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isprod_descripcionNull() As Boolean
             Return Me.IsNull(Me.tableProdxSuc.prod_descripcionColumn)
         End Function
@@ -3172,6 +3300,54 @@ Partial Public Class Producto_ds
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Setcant_vencimientoNull()
             Me(Me.tableProdxSuc.cant_vencimientoColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsProv_idNull() As Boolean
+            Return Me.IsNull(Me.tableProdxSuc.Prov_idColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetProv_idNull()
+            Me(Me.tableProdxSuc.Prov_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Ismarca_idNull() As Boolean
+            Return Me.IsNull(Me.tableProdxSuc.marca_idColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setmarca_idNull()
+            Me(Me.tableProdxSuc.marca_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsnrocatNull() As Boolean
+            Return Me.IsNull(Me.tableProdxSuc.nrocatColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetnrocatNull()
+            Me(Me.tableProdxSuc.nrocatColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsidcatNull() As Boolean
+            Return Me.IsNull(Me.tableProdxSuc.idcatColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetidcatNull()
+            Me(Me.tableProdxSuc.idcatColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
