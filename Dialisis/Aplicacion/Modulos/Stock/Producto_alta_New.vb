@@ -432,6 +432,11 @@ Public Class Producto_alta_New
 
         End If
 
+        If reflejar_cambios = "si" Then
+            Me.Close()
+            Producto_modificar.Show()
+        End If
+
     End Sub
 
     Private Sub cb_categoria_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cb_categoria.SelectedIndexChanged
@@ -859,6 +864,173 @@ Public Class Producto_alta_New
             End If
         End If
     End Sub
+    Dim daventas As New Datos.Venta
+    Private Sub cargar_tablas_auxiliares() 'se cargan las modificaciones en las tablas auxiliares
+        'traigo toda la info del producto modificado
+        Dim ds1 As DataSet = daventas.Producto_x_sucursal_obtener_detalle_full(1, CInt(tx_codinterno.Text)) 'trae datos de sucursal deposito
+        Dim i As Integer = 0
+        'lo modifico en table_deposito
+        While i < Producto_modificar.table_deposito.Rows.Count
+            'lo busco y modifico.
+            If CInt(tx_codinterno.Text) = Producto_modificar.table_deposito.Rows(i).Item("prod_codinterno") Then
+                Producto_modificar.table_deposito.Rows(i).Item("prod_descripcion") = tx_descripcion.Text 'string
+                Producto_modificar.table_deposito.Rows(i).Item("prod_precio_vta") = CDec(Tb_PrecMin.Text) 'decimal
+                Producto_modificar.table_deposito.Rows(i).Item("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
+                Producto_modificar.table_deposito.Rows(i).Item("prod_precio_vta_May") = CDec(tb_PrecMay.Text) 'decimal
+                Producto_modificar.table_deposito.Rows(i).Item("ProdxSuc_stock") = ds1.Tables(0).Rows(0).Item("ProdxSuc_stock") 'decimal
+                Producto_modificar.table_deposito.Rows(i).Item("prod_codbarra") = ds1.Tables(0).Rows(0).Item("Prod_codbarra") 'string
+                Producto_modificar.table_deposito.Rows(i).Item("Contenido") = ds1.Tables(0).Rows(0).Item("Contenido") 'string contenido+unid medida
+                Producto_modificar.table_deposito.Rows(i).Item("Contenido_total") = ds1.Tables(0).Rows(0).Item("Contenido_total")
+                Producto_modificar.table_deposito.Rows(i).Item("marca_id") = ds1.Tables(0).Rows(0).Item("marca_id")
+                Producto_modificar.table_deposito.Rows(i).Item("idcat") = ds1.Tables(0).Rows(0).Item("idcat")
+                Producto_modificar.table_deposito.Rows(i).Item("nrocat") = ds1.Tables(0).Rows(0).Item("nrocat")
+                Exit While
+            End If
+            i = i + 1
+        End While
+        'lo modifico en table_deposito_proveedor
+        i = 0
+        While i < ds1.Tables(1).Rows.Count
+            Dim prov_id As Integer = ds1.Tables(1).Rows(i).Item("Prov_id")
+            Dim j As Integer = 0
+            While j < Producto_modificar.table_deposito_proveedor.Rows.Count
+                'lo busco y modifico.
+                If (CInt(tx_codinterno.Text) = Producto_modificar.table_deposito_proveedor.Rows(j).Item("prod_codinterno")) And (prov_id = Producto_modificar.table_deposito_proveedor.Rows(j).Item("Prov_id")) Then
+                    Producto_modificar.table_deposito_proveedor.Rows(j).Item("prod_descripcion") = tx_descripcion.Text 'string
+                    Producto_modificar.table_deposito_proveedor.Rows(j).Item("prod_precio_vta") = CDec(Tb_PrecMin.Text) 'decimal
+                    Producto_modificar.table_deposito_proveedor.Rows(j).Item("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
+                    Producto_modificar.table_deposito_proveedor.Rows(j).Item("prod_precio_vta_May") = CDec(tb_PrecMay.Text) 'decimal
+                    Producto_modificar.table_deposito_proveedor.Rows(j).Item("ProdxSuc_stock") = ds1.Tables(1).Rows(i).Item("ProdxSuc_stock") 'decimal
+                    Producto_modificar.table_deposito_proveedor.Rows(j).Item("prod_codbarra") = ds1.Tables(1).Rows(i).Item("Prod_codbarra") 'string
+                    Producto_modificar.table_deposito_proveedor.Rows(j).Item("Contenido") = ds1.Tables(1).Rows(i).Item("Contenido") 'string contenido+unid medida
+                    Producto_modificar.table_deposito_proveedor.Rows(j).Item("Contenido_total") = ds1.Tables(1).Rows(i).Item("Contenido_total")
+                    'Producto_modificar.table_deposito_proveedor.Rows(j).Item("marca_id") = ds1.Tables(1).Rows(i).Item("marca_id")
+                    Producto_modificar.table_deposito_proveedor.Rows(j).Item("idcat") = ds1.Tables(1).Rows(i).Item("idcat")
+                    Producto_modificar.table_deposito_proveedor.Rows(j).Item("nrocat") = ds1.Tables(1).Rows(i).Item("nrocat")
+                    Exit While
+                End If
+                j = j + 1
+            End While
+            i = i + 1
+        End While
+        '///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        i = 0
+        ds1 = daventas.Producto_x_sucursal_obtener_detalle_full(3, CInt(tx_codinterno.Text)) 'trae datos de sucursal dialisis
+        'lo modifico en table_deposito
+        While i < Producto_modificar.table_dialisis.Rows.Count
+            'lo busco y modifico.
+            If CInt(tx_codinterno.Text) = Producto_modificar.table_dialisis.Rows(i).Item("prod_codinterno") Then
+                Producto_modificar.table_dialisis.Rows(i).Item("prod_descripcion") = tx_descripcion.Text 'string
+                Producto_modificar.table_dialisis.Rows(i).Item("prod_precio_vta") = CDec(Tb_PrecMin.Text) 'decimal
+                Producto_modificar.table_dialisis.Rows(i).Item("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
+                Producto_modificar.table_dialisis.Rows(i).Item("prod_precio_vta_May") = CDec(tb_PrecMay.Text) 'decimal
+                Producto_modificar.table_dialisis.Rows(i).Item("ProdxSuc_stock") = ds1.Tables(0).Rows(0).Item("ProdxSuc_stock") 'decimal
+                Producto_modificar.table_dialisis.Rows(i).Item("prod_codbarra") = ds1.Tables(0).Rows(0).Item("Prod_codbarra") 'string
+                Producto_modificar.table_dialisis.Rows(i).Item("Contenido") = ds1.Tables(0).Rows(0).Item("Contenido") 'string contenido+unid medida
+                Producto_modificar.table_dialisis.Rows(i).Item("Contenido_total") = ds1.Tables(0).Rows(0).Item("Contenido_total")
+                Producto_modificar.table_dialisis.Rows(i).Item("marca_id") = ds1.Tables(0).Rows(0).Item("marca_id")
+                Producto_modificar.table_dialisis.Rows(i).Item("idcat") = ds1.Tables(0).Rows(0).Item("idcat")
+                Producto_modificar.table_dialisis.Rows(i).Item("nrocat") = ds1.Tables(0).Rows(0).Item("nrocat")
+                Exit While
+            End If
+            i = i + 1
+        End While
+        'lo modifico en table_deposito_proveedor
+        i = 0
+        While i < ds1.Tables(1).Rows.Count
+            Dim prov_id As Integer = ds1.Tables(1).Rows(i).Item("Prov_id")
+            Dim j As Integer = 0
+            While j < Producto_modificar.table_dialisis_proveedor.Rows.Count
+                'lo busco y modifico.
+                If (CInt(tx_codinterno.Text) = Producto_modificar.table_dialisis_proveedor.Rows(j).Item("prod_codinterno")) And (prov_id = Producto_modificar.table_dialisis_proveedor.Rows(j).Item("Prov_id")) Then
+                    Producto_modificar.table_dialisis_proveedor.Rows(j).Item("prod_descripcion") = tx_descripcion.Text 'string
+                    Producto_modificar.table_dialisis_proveedor.Rows(j).Item("prod_precio_vta") = CDec(Tb_PrecMin.Text) 'decimal
+                    Producto_modificar.table_dialisis_proveedor.Rows(j).Item("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
+                    Producto_modificar.table_dialisis_proveedor.Rows(j).Item("prod_precio_vta_May") = CDec(tb_PrecMay.Text) 'decimal
+                    Producto_modificar.table_dialisis_proveedor.Rows(j).Item("ProdxSuc_stock") = ds1.Tables(1).Rows(i).Item("ProdxSuc_stock") 'decimal
+                    Producto_modificar.table_dialisis_proveedor.Rows(j).Item("prod_codbarra") = ds1.Tables(1).Rows(i).Item("Prod_codbarra") 'string
+                    Producto_modificar.table_dialisis_proveedor.Rows(j).Item("Contenido") = ds1.Tables(1).Rows(i).Item("Contenido") 'string contenido+unid medida
+                    Producto_modificar.table_dialisis_proveedor.Rows(j).Item("Contenido_total") = ds1.Tables(1).Rows(i).Item("Contenido_total")
+                    'Producto_modificar.table_deposito_proveedor.Rows(j).Item("marca_id") = ds1.Tables(1).Rows(i).Item("marca_id")
+                    Producto_modificar.table_dialisis_proveedor.Rows(j).Item("idcat") = ds1.Tables(1).Rows(i).Item("idcat")
+                    Producto_modificar.table_dialisis_proveedor.Rows(j).Item("nrocat") = ds1.Tables(1).Rows(i).Item("nrocat")
+                    Exit While
+                End If
+                j = j + 1
+            End While
+            i = i + 1
+        End While
+        '///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        i = 0
+        ds1 = daventas.Producto_x_sucursal_obtener_detalle_full(5, CInt(tx_codinterno.Text)) 'trae datos de sucursal dialisis de calle
+        'lo modifico en table_deposito
+        While i < Producto_modificar.table_dialisis_calle.Rows.Count
+            'lo busco y modifico.
+            If CInt(tx_codinterno.Text) = Producto_modificar.table_dialisis_calle.Rows(i).Item("prod_codinterno") Then
+                Producto_modificar.table_dialisis_calle.Rows(i).Item("prod_descripcion") = tx_descripcion.Text 'string
+                Producto_modificar.table_dialisis_calle.Rows(i).Item("prod_precio_vta") = CDec(Tb_PrecMin.Text) 'decimal
+                Producto_modificar.table_dialisis_calle.Rows(i).Item("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
+                Producto_modificar.table_dialisis_calle.Rows(i).Item("prod_precio_vta_May") = CDec(tb_PrecMay.Text) 'decimal
+                Producto_modificar.table_dialisis_calle.Rows(i).Item("ProdxSuc_stock") = ds1.Tables(0).Rows(0).Item("ProdxSuc_stock") 'decimal
+                Producto_modificar.table_dialisis_calle.Rows(i).Item("prod_codbarra") = ds1.Tables(0).Rows(0).Item("Prod_codbarra") 'string
+                Producto_modificar.table_dialisis_calle.Rows(i).Item("Contenido") = ds1.Tables(0).Rows(0).Item("Contenido") 'string contenido+unid medida
+                Producto_modificar.table_dialisis_calle.Rows(i).Item("Contenido_total") = ds1.Tables(0).Rows(0).Item("Contenido_total")
+                Producto_modificar.table_dialisis_calle.Rows(i).Item("marca_id") = ds1.Tables(0).Rows(0).Item("marca_id")
+                Producto_modificar.table_dialisis_calle.Rows(i).Item("idcat") = ds1.Tables(0).Rows(0).Item("idcat")
+                Producto_modificar.table_dialisis_calle.Rows(i).Item("nrocat") = ds1.Tables(0).Rows(0).Item("nrocat")
+                Exit While
+            End If
+            i = i + 1
+        End While
+        'lo modifico en table_deposito_proveedor
+        i = 0
+        While i < ds1.Tables(1).Rows.Count
+            Dim prov_id As Integer = ds1.Tables(1).Rows(i).Item("Prov_id")
+            Dim j As Integer = 0
+            While j < Producto_modificar.table_dialisis_calle_proveedor.Rows.Count
+                'lo busco y modifico.
+                If (CInt(tx_codinterno.Text) = Producto_modificar.table_dialisis_calle_proveedor.Rows(j).Item("prod_codinterno")) And (prov_id = Producto_modificar.table_dialisis_calle_proveedor.Rows(j).Item("Prov_id")) Then
+                    Producto_modificar.table_dialisis_calle_proveedor.Rows(j).Item("prod_descripcion") = tx_descripcion.Text 'string
+                    Producto_modificar.table_dialisis_calle_proveedor.Rows(j).Item("prod_precio_vta") = CDec(Tb_PrecMin.Text) 'decimal
+                    Producto_modificar.table_dialisis_calle_proveedor.Rows(j).Item("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
+                    Producto_modificar.table_dialisis_calle_proveedor.Rows(j).Item("prod_precio_vta_May") = CDec(tb_PrecMay.Text) 'decimal
+                    Producto_modificar.table_dialisis_calle_proveedor.Rows(j).Item("ProdxSuc_stock") = ds1.Tables(1).Rows(i).Item("ProdxSuc_stock") 'decimal
+                    Producto_modificar.table_dialisis_calle_proveedor.Rows(j).Item("prod_codbarra") = ds1.Tables(1).Rows(i).Item("Prod_codbarra") 'string
+                    Producto_modificar.table_dialisis_calle_proveedor.Rows(j).Item("Contenido") = ds1.Tables(1).Rows(i).Item("Contenido") 'string contenido+unid medida
+                    Producto_modificar.table_dialisis_calle_proveedor.Rows(j).Item("Contenido_total") = ds1.Tables(1).Rows(i).Item("Contenido_total")
+                    'Producto_modificar.table_deposito_proveedor.Rows(j).Item("marca_id") = ds1.Tables(1).Rows(i).Item("marca_id")
+                    Producto_modificar.table_dialisis_calle_proveedor.Rows(j).Item("idcat") = ds1.Tables(1).Rows(i).Item("idcat")
+                    Producto_modificar.table_dialisis_calle_proveedor.Rows(j).Item("nrocat") = ds1.Tables(1).Rows(i).Item("nrocat")
+                    Exit While
+                End If
+                j = j + 1
+            End While
+            i = i + 1
+        End While
+
+        'table_deposito = Producto_ds.Tables("ProdxSuc").Clone
+        'table_dialisis = Producto_ds.Tables("ProdxSuc").Clone 'creo una tabla con la estructura igual a "ProdxSuc"
+        'table_dialisis_calle = Producto_ds.Tables("ProdxSuc").Clone 'creo una tabla con la estructura igual a "ProdxSuc"
+        'table_deposito_proveedor = Producto_ds.Tables("ProdxSuc").Clone
+        'table_dialisis_proveedor = Producto_ds.Tables("ProdxSuc").Clone
+        'table_dialisis_calle_proveedor = Producto_ds.Tables("ProdxSuc").Clone
+
+        'cambio hago el merge con la info actualizada.
+
+        Producto_modificar.Cargar_grilla("seleccion cb_origen")
+        Producto_modificar.agregar_cant_vencida()
+
+        'quitar todos los check de los filtros
+        Producto_modificar.check_marca.Checked = False
+        Producto_modificar.check_proveedor.Checked = False
+        Producto_modificar.check_subrubro.Checked = False
+        Producto_modificar.check_rubro.Checked = False
+        Producto_modificar.check_categoria.Checked = False
+
+
+
+
+    End Sub
 
     Private Sub cargar_modificacion_en_gridview(ByVal tipo_op As String, ByVal prodid As Integer)
         Dim sucursal_id As Integer = CInt(Producto_modificar.cb_origen.SelectedValue)
@@ -866,43 +1038,189 @@ Public Class Producto_alta_New
         Dim ds_info As DataSet = DAprod.Producto_x_sucursal_buscarcod(CInt(CInt(tx_codinterno.Text)), sucursal_id)
 
         If tipo_op = "MODIFICACION" Then
-            'como es una modificacion lo que tengo que hacer es buscar en el dataset 
-            Dim i As Integer = 0
-            While i < Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows.Count
-                If Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_id") = prodid Then
-                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_descripcion") = tx_descripcion.Text 'string
-                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_precio_vta") = CDec(Tb_PrecMin.Text) 'decimal
-                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
-                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_precio_vta_May") = CDec(tb_PrecMay.Text) 'decimal
-                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("ProdxSuc_stock") = ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock") 'decimal
-                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_codbarra") = tx_codbarra.Text 'string
-                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("Contenido") = txt_contenido.Text + " " + Combo_unidmedida.Text 'string contenido+unid medida
-                    Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("Contenido_total") = CStr(ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) + " " + Combo_unidmedida.Text 'string contenido total +unid medida
-                    Exit While
-                End If
-                i = i + 1
-            End While
-            If Producto_modificar.Tx_Buscqueda.Text <> "" Then
-                'no se si debo correr el codigo del filtro si se aplico.
-            End If
+            ''como es una modificacion lo que tengo que hacer es buscar en el dataset 
+            'Dim i As Integer = 0
+            'While i < Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows.Count
+            '    If Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_id") = prodid Then
+            '        Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_descripcion") = tx_descripcion.Text 'string
+            '        Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_precio_vta") = CDec(Tb_PrecMin.Text) 'decimal
+            '        Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
+            '        Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_precio_vta_May") = CDec(tb_PrecMay.Text) 'decimal
+            '        Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("ProdxSuc_stock") = ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock") 'decimal
+            '        Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_codbarra") = tx_codbarra.Text 'string
+            '        Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("Contenido") = txt_contenido.Text + " " + Combo_unidmedida.Text 'string contenido+unid medida
+            '        Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("Contenido_total") = CStr(ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) + " " + Combo_unidmedida.Text 'string contenido total +unid medida
+
+
+
+
+            '        Exit While
+            '    End If
+            '    i = i + 1
+            'End While
+            'If Producto_modificar.Tx_Buscqueda.Text <> "" Then
+            '    'no se si debo correr el codigo del filtro si se aplico.
+            'End If
+
+            'choco 10-02-2021 esto es nuevo, ahora refleja los cambios usando table auxiliares
+            cargar_tablas_auxiliares()
+
         End If
         If tipo_op = "ALTA" Then
-            Dim fila As DataRow = Producto_modificar.Producto_ds.Tables("ProdxSuc").NewRow
-            fila("prod_descripcion") = tx_descripcion.Text 'string
-            fila("prod_precio_vta") = CDec(0) 'decimal
-            fila("prod_id") = prodid  'int
-            fila("prod_codinterno") = CInt(tx_codinterno.Text)  'int
-            fila("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
-            fila("prod_precio_vta_May") = CDec(0) 'decimal
-            fila("ProdxSuc_stock") = ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock") 'decimal
-            fila("sucursal_id") = sucursal_id  'int
-            fila("prod_codbarra") = tx_codbarra.Text 'string
-            fila("Contenido") = txt_contenido.Text + " " + Combo_unidmedida.Text 'string contenido+unid medida
-            fila("Contenido_total") = CStr(ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) + " " + Combo_unidmedida.Text 'string contenido total +unid medida
-            Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows.Add(fila)
-            If Producto_modificar.Tx_Buscqueda.Text <> "" Then
-                'no se si debo correr el codigo del filtro si se aplico.
-            End If
+            'Dim fila As DataRow = Producto_modificar.Producto_ds.Tables("ProdxSuc").NewRow
+            'fila("prod_descripcion") = tx_descripcion.Text 'string
+            'fila("prod_precio_vta") = CDec(0) 'decimal
+            'fila("prod_id") = prodid  'int
+            'fila("prod_codinterno") = CInt(tx_codinterno.Text)  'int
+            'fila("prod_ptorepo") = CInt(tx_ptorepo.Text) 'int
+            'fila("prod_precio_vta_May") = CDec(0) 'decimal
+            'fila("ProdxSuc_stock") = ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock") 'decimal
+            'fila("sucursal_id") = sucursal_id  'int
+            'fila("prod_codbarra") = tx_codbarra.Text 'string
+            'fila("Contenido") = txt_contenido.Text + " " + Combo_unidmedida.Text 'string contenido+unid medida
+            'fila("Contenido_total") = CStr(ds_info.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) + " " + Combo_unidmedida.Text 'string contenido total +unid medida
+            'Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows.Add(fila)
+            'If Producto_modificar.Tx_Buscqueda.Text <> "" Then
+            '    'no se si debo correr el codigo del filtro si se aplico.
+            'End If
+
+            'choco prueba 10-02-2021 alta de producto en table auxiliares del form producto_modificar
+            Dim ds1 As DataSet = daventas.Producto_x_sucursal_obtener_detalle_full(1, CInt(tx_codinterno.Text)) 'trae datos de sucursal deposito
+            Dim fila As DataRow = Producto_modificar.table_deposito.NewRow
+            fila("prod_descripcion") = ds1.Tables(0).Rows(0).Item("prod_descripcion")
+            fila("prod_precio_vta") = ds1.Tables(0).Rows(0).Item("prod_precio_vta")
+            fila("prod_id") = ds1.Tables(0).Rows(0).Item("prod_id")
+            fila("prod_codinterno") = ds1.Tables(0).Rows(0).Item("prod_codinterno")
+            fila("prod_ptorepo") = ds1.Tables(0).Rows(0).Item("prod_ptorepo")
+            fila("prod_precio_vta_May") = ds1.Tables(0).Rows(0).Item("prod_precio_vta_May")
+            fila("ProdxSuc_stock") = ds1.Tables(0).Rows(0).Item("ProdxSuc_stock")
+            fila("sucursal_id") = ds1.Tables(0).Rows(0).Item("sucursal_id")
+            fila("prod_codbarra") = ds1.Tables(0).Rows(0).Item("prod_codbarra")
+            fila("Contenido") = ds1.Tables(0).Rows(0).Item("Contenido")
+            fila("Contenido_total") = ds1.Tables(0).Rows(0).Item("Contenido_total")
+            fila("marca_id") = ds1.Tables(0).Rows(0).Item("marca_id")
+            fila("idcat") = ds1.Tables(0).Rows(0).Item("idcat")
+            fila("nrocat") = ds1.Tables(0).Rows(0).Item("nrocat")
+            Producto_modificar.table_deposito.Rows.Add(fila)
+
+            Dim i As Integer = 0
+            While i < ds1.Tables(1).Rows.Count
+                Dim fila2 As DataRow = Producto_modificar.table_deposito_proveedor.NewRow
+                fila2("prod_descripcion") = ds1.Tables(1).Rows(i).Item("prod_descripcion")
+                fila2("prod_precio_vta") = ds1.Tables(1).Rows(i).Item("prod_precio_vta")
+                fila2("prod_id") = ds1.Tables(0).Rows(i).Item("prod_id")
+                fila2("prod_codinterno") = ds1.Tables(i).Rows(0).Item("prod_codinterno")
+                fila2("prod_ptorepo") = ds1.Tables(1).Rows(i).Item("prod_ptorepo")
+                fila2("prod_precio_vta_May") = ds1.Tables(i).Rows(0).Item("prod_precio_vta_May")
+                fila2("ProdxSuc_stock") = ds1.Tables(1).Rows(i).Item("ProdxSuc_stock")
+                fila2("sucursal_id") = ds1.Tables(1).Rows(i).Item("sucursal_id")
+                fila2("prod_codbarra") = ds1.Tables(1).Rows(i).Item("prod_codbarra")
+                fila2("Contenido") = ds1.Tables(1).Rows(i).Item("Contenido")
+                fila2("Contenido_total") = ds1.Tables(1).Rows(i).Item("Contenido_total")
+                'fila2("marca_id") = ds1.Tables(1).Rows(i).Item("marca_id")
+                fila2("idcat") = ds1.Tables(1).Rows(i).Item("idcat")
+                fila2("nrocat") = ds1.Tables(1).Rows(i).Item("nrocat")
+                fila2("Prov_id") = ds1.Tables(1).Rows(i).Item("Prov_id")
+                Producto_modificar.table_deposito_proveedor.Rows.Add(fila2)
+                i = i + 1
+            End While
+            '////////////////////////////////////////////////////////////////////////////////////////////////
+            ds1 = daventas.Producto_x_sucursal_obtener_detalle_full(3, CInt(tx_codinterno.Text)) 'trae datos de sucursal dialisis
+            Dim filaa As DataRow = Producto_modificar.table_dialisis.NewRow
+            filaa("prod_descripcion") = ds1.Tables(0).Rows(0).Item("prod_descripcion")
+            filaa("prod_precio_vta") = ds1.Tables(0).Rows(0).Item("prod_precio_vta")
+            filaa("prod_id") = ds1.Tables(0).Rows(0).Item("prod_id")
+            filaa("prod_codinterno") = ds1.Tables(0).Rows(0).Item("prod_codinterno")
+            filaa("prod_ptorepo") = ds1.Tables(0).Rows(0).Item("prod_ptorepo")
+            filaa("prod_precio_vta_May") = ds1.Tables(0).Rows(0).Item("prod_precio_vta_May")
+            filaa("ProdxSuc_stock") = ds1.Tables(0).Rows(0).Item("ProdxSuc_stock")
+            filaa("sucursal_id") = ds1.Tables(0).Rows(0).Item("sucursal_id")
+            filaa("prod_codbarra") = ds1.Tables(0).Rows(0).Item("prod_codbarra")
+            filaa("Contenido") = ds1.Tables(0).Rows(0).Item("Contenido")
+            filaa("Contenido_total") = ds1.Tables(0).Rows(0).Item("Contenido_total")
+            filaa("marca_id") = ds1.Tables(0).Rows(0).Item("marca_id")
+            filaa("idcat") = ds1.Tables(0).Rows(0).Item("idcat")
+            filaa("nrocat") = ds1.Tables(0).Rows(0).Item("nrocat")
+            Producto_modificar.table_dialisis.Rows.Add(filaa)
+
+            i = 0
+            While i < ds1.Tables(1).Rows.Count
+                Dim fila2 As DataRow = Producto_modificar.table_dialisis_proveedor.NewRow
+                fila2("prod_descripcion") = ds1.Tables(1).Rows(i).Item("prod_descripcion")
+                fila2("prod_precio_vta") = ds1.Tables(1).Rows(i).Item("prod_precio_vta")
+                fila2("prod_id") = ds1.Tables(0).Rows(i).Item("prod_id")
+                fila2("prod_codinterno") = ds1.Tables(i).Rows(0).Item("prod_codinterno")
+                fila2("prod_ptorepo") = ds1.Tables(1).Rows(i).Item("prod_ptorepo")
+                fila2("prod_precio_vta_May") = ds1.Tables(i).Rows(0).Item("prod_precio_vta_May")
+                fila2("ProdxSuc_stock") = ds1.Tables(1).Rows(i).Item("ProdxSuc_stock")
+                fila2("sucursal_id") = ds1.Tables(1).Rows(i).Item("sucursal_id")
+                fila2("prod_codbarra") = ds1.Tables(1).Rows(i).Item("prod_codbarra")
+                fila2("Contenido") = ds1.Tables(1).Rows(i).Item("Contenido")
+                fila2("Contenido_total") = ds1.Tables(1).Rows(i).Item("Contenido_total")
+                'fila2("marca_id") = ds1.Tables(1).Rows(i).Item("marca_id")
+                fila2("idcat") = ds1.Tables(1).Rows(i).Item("idcat")
+                fila2("nrocat") = ds1.Tables(1).Rows(i).Item("nrocat")
+                fila2("Prov_id") = ds1.Tables(1).Rows(i).Item("Prov_id")
+                Producto_modificar.table_dialisis_proveedor.Rows.Add(fila2)
+                i = i + 1
+            End While
+            '///////////////////////////////////////////////////////////////////////////////////////////////
+            ds1 = daventas.Producto_x_sucursal_obtener_detalle_full(5, CInt(tx_codinterno.Text)) 'trae datos de sucursal dialisis calle
+            Dim filab As DataRow = Producto_modificar.table_dialisis_calle.NewRow
+            filab("prod_descripcion") = ds1.Tables(0).Rows(0).Item("prod_descripcion")
+            filab("prod_precio_vta") = ds1.Tables(0).Rows(0).Item("prod_precio_vta")
+            filab("prod_id") = ds1.Tables(0).Rows(0).Item("prod_id")
+            filab("prod_codinterno") = ds1.Tables(0).Rows(0).Item("prod_codinterno")
+            filab("prod_ptorepo") = ds1.Tables(0).Rows(0).Item("prod_ptorepo")
+            filab("prod_precio_vta_May") = ds1.Tables(0).Rows(0).Item("prod_precio_vta_May")
+            filab("ProdxSuc_stock") = ds1.Tables(0).Rows(0).Item("ProdxSuc_stock")
+            filab("sucursal_id") = ds1.Tables(0).Rows(0).Item("sucursal_id")
+            filab("prod_codbarra") = ds1.Tables(0).Rows(0).Item("prod_codbarra")
+            filab("Contenido") = ds1.Tables(0).Rows(0).Item("Contenido")
+            filab("Contenido_total") = ds1.Tables(0).Rows(0).Item("Contenido_total")
+            filab("marca_id") = ds1.Tables(0).Rows(0).Item("marca_id")
+            filab("idcat") = ds1.Tables(0).Rows(0).Item("idcat")
+            filab("nrocat") = ds1.Tables(0).Rows(0).Item("nrocat")
+            Producto_modificar.table_dialisis_calle.Rows.Add(filab)
+
+            i = 0
+            While i < ds1.Tables(1).Rows.Count
+                Dim fila2 As DataRow = Producto_modificar.table_dialisis_calle_proveedor.NewRow
+                fila2("prod_descripcion") = ds1.Tables(1).Rows(i).Item("prod_descripcion")
+                fila2("prod_precio_vta") = ds1.Tables(1).Rows(i).Item("prod_precio_vta")
+                fila2("prod_id") = ds1.Tables(0).Rows(i).Item("prod_id")
+                fila2("prod_codinterno") = ds1.Tables(i).Rows(0).Item("prod_codinterno")
+                fila2("prod_ptorepo") = ds1.Tables(1).Rows(i).Item("prod_ptorepo")
+                fila2("prod_precio_vta_May") = ds1.Tables(i).Rows(0).Item("prod_precio_vta_May")
+                fila2("ProdxSuc_stock") = ds1.Tables(1).Rows(i).Item("ProdxSuc_stock")
+                fila2("sucursal_id") = ds1.Tables(1).Rows(i).Item("sucursal_id")
+                fila2("prod_codbarra") = ds1.Tables(1).Rows(i).Item("prod_codbarra")
+                fila2("Contenido") = ds1.Tables(1).Rows(i).Item("Contenido")
+                fila2("Contenido_total") = ds1.Tables(1).Rows(i).Item("Contenido_total")
+                'fila2("marca_id") = ds1.Tables(1).Rows(i).Item("marca_id")
+                fila2("idcat") = ds1.Tables(1).Rows(i).Item("idcat")
+                fila2("nrocat") = ds1.Tables(1).Rows(i).Item("nrocat")
+                fila2("Prov_id") = ds1.Tables(1).Rows(i).Item("Prov_id")
+                Producto_modificar.table_dialisis_calle_proveedor.Rows.Add(fila2)
+                i = i + 1
+            End While
+            'cambio hago el merge con la info actualizada.
+
+            Producto_modificar.Cargar_grilla("seleccion cb_origen")
+            Producto_modificar.agregar_cant_vencida()
+
+            'actualizo los table de las categorias rubro y subrubro
+
+
+            'quitar todos los check de los filtros
+            Producto_modificar.check_marca.Checked = False
+            Producto_modificar.check_proveedor.Checked = False
+            Producto_modificar.check_subrubro.Checked = False
+            Producto_modificar.check_rubro.Checked = False
+            Producto_modificar.check_categoria.Checked = False
+
+
+
         End If
 
     End Sub

@@ -1,5 +1,6 @@
 ﻿Imports System.IO
 Imports System.Data.OleDb
+'Imports System.Data.DataTable
 Public Class Producto_modificar
     Dim DAcategoria As New Datos.Categoria
     Dim DAmarca As New Datos.Marca
@@ -18,10 +19,11 @@ Public Class Producto_modificar
     Private Sub Sucursales_Obtener()
         Dim ds As DataSet = DAsucursal.Sucursal_obtener()
         'agrego un proveedor que se llame "todos", cuando este se selecciona trae todos los ingresos sin importar el proveedor
-        Dim fila As DataRow = ds.Tables(0).NewRow
-        fila("sucursal_id") = 0
-        fila("sucursal_nombre") = "Todas las Sucursales"
-        ds.Tables(0).Rows.Add(fila)
+        'Dim fila As DataRow = ds.Tables(0).NewRow
+        'fila("sucursal_id") = 0
+        'fila("sucursal_nombre") = "Todas las Sucursales"
+        'ds.Tables(0).Rows.Add(fila)
+
         'Cargar Provincias en ComboBox_prov
         cb_origen.DataSource = ds.Tables(0)
         cb_origen.DisplayMember = "sucursal_nombre"
@@ -293,12 +295,22 @@ Public Class Producto_modificar
         Proveedor_alta.Show()
     End Sub
 
+    Private Sub Producto_modificar_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+        If e.KeyCode = Keys.F5 Then 'F5
+            Me.Hide()
+            msj_esperar_sesiones.procedencia = "Producto_modificar_load"
+            msj_esperar_sesiones.Show()
+        End If
+    End Sub
+
+
     Private Sub Producto_modificar_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'msj_esperar_sesiones.procedencia = "Producto_modificar_load"
         'msj_esperar_sesiones.Show()
     End Sub
-
+    Public grilla_lista As String = "no"
     Public Sub LOAD_CARGA()
+        msj_esperar_sesiones.Focus()
         If enfermeria_op = 1 Then
             Button1.Visible = False
             btn_Anular.Visible = False
@@ -316,54 +328,125 @@ Public Class Producto_modificar
 
         ' Buscar_codinterno() 'esto me muestra en la grilla todos los productos
         Sucursales_Obtener()
-        Cargar_grilla()
+        Cargar_grilla("traer todo")
         agregar_cant_vencida()
         Cargarcombo_marca() 'choco 23-11-2018
         cargar_combos_categoria()
         evento_load_completo = "si"
-       
-
+        Timer1.Start()
     End Sub
+
+    Private Sub Timer1_Tick(ByVal sender As Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        msj_esperar_sesiones.ProgressBar1.Increment(1)
+        If msj_esperar_sesiones.ProgressBar1.Value >= 100 Then
+            msj_esperar_sesiones.Close()
+            Me.Show()
+            Timer1.Stop()
+        End If
+        
+    End Sub
+
+
+
     Dim dalote As New Datos.Lote
-    Private Sub agregar_cant_vencida()
-        Dim j As Integer = 0
-        While j < Producto_ds.Tables("ProdxSuc").Rows.Count
-            'recupero los lotes del producto 
-            'Dim sucursal_id As Integer = cb_sucursal.SelectedValue
-            Dim prodcodinterno As Integer = Producto_ds.Tables("ProdxSuc").Rows(j).Item("prod_codinterno")
-            Dim ds_lotes As DataSet = dalote.Producto_x_sucursal_lote_recuperartodos(prodcodinterno, CInt(cb_origen.SelectedValue))
-            Dim cant_vencidos As Decimal = CDec(0)
-            If ds_lotes.Tables(0).Rows.Count <> 0 Then
-                'aqui vemos si el item esta vencido o no, para sumarlo
-                Dim i As Integer = 0
-                While i < ds_lotes.Tables(0).Rows.Count
-                    If (ds_lotes.Tables(0).Rows(i).Item("lote_vence") = "si") And (ds_lotes.Tables(0).Rows(i).Item("lote_cantidad") <> CDec(0)) Then
-                        Dim fecha_vencimiento As Date = CDate(ds_lotes.Tables(0).Rows(i).Item("lote_fechavto"))
-                        Dim fechadeldia As Date = Today
-                        'If Format(fechadeldia, "yyyy/mm/dd") >= Format(fecha_vencimiento, "yyyy/mm/dd") Then
-                        '    DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Red
-                        'Else
-                        '    DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Green
-                        'End If
-                        Dim cantdias As Integer = DateDiff("d", Today, fecha_vencimiento)
-                        If cantdias <= 0 Then
-                            'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Red
-                            cant_vencidos = cant_vencidos + CDec(ds_lotes.Tables(0).Rows(i).Item("lote_cantidad"))
-                        Else
-                            If cantdias > 15 Then
-                                'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Green
-                            Else
-                                'menor o igual a 15 
-                                'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Orange
+    Public Sub agregar_cant_vencida()
+        'Dim j As Integer = 0
+        'While j < Producto_ds.Tables("ProdxSuc").Rows.Count
+        '    'recupero los lotes del producto 
+        '    'Dim sucursal_id As Integer = cb_sucursal.SelectedValue
+        '    Dim prodcodinterno As Integer = Producto_ds.Tables("ProdxSuc").Rows(j).Item("prod_codinterno")
+        '    Dim ds_lotes As DataSet = dalote.Producto_x_sucursal_lote_recuperartodos(prodcodinterno, CInt(cb_origen.SelectedValue))
+        '    Dim cant_vencidos As Decimal = CDec(0)
+        '    If ds_lotes.Tables(0).Rows.Count <> 0 Then
+        '        'aqui vemos si el item esta vencido o no, para sumarlo
+        '        Dim i As Integer = 0
+        '        While i < ds_lotes.Tables(0).Rows.Count
+        '            If (ds_lotes.Tables(0).Rows(i).Item("lote_vence") = "si") And (ds_lotes.Tables(0).Rows(i).Item("lote_cantidad") <> CDec(0)) Then
+        '                Dim fecha_vencimiento As Date = CDate(ds_lotes.Tables(0).Rows(i).Item("lote_fechavto"))
+        '                Dim fechadeldia As Date = Today
+        '                'If Format(fechadeldia, "yyyy/mm/dd") >= Format(fecha_vencimiento, "yyyy/mm/dd") Then
+        '                '    DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Red
+        '                'Else
+        '                '    DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Green
+        '                'End If
+        '                Dim cantdias As Integer = DateDiff("d", Today, fecha_vencimiento)
+        '                If cantdias <= 0 Then
+        '                    'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Red
+        '                    cant_vencidos = cant_vencidos + CDec(ds_lotes.Tables(0).Rows(i).Item("lote_cantidad"))
+        '                Else
+        '                    If cantdias > 15 Then
+        '                        'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Green
+        '                    Else
+        '                        'menor o igual a 15 
+        '                        'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Orange
+        '                    End If
+        '                End If
+        '            End If
+        '            i = i + 1
+        '        End While
+        '    End If
+        '    Producto_ds.Tables("ProdxSuc").Rows(j).Item("cant_vencimiento") = CDec(cant_vencidos)
+        '    j = j + 1
+        'End While
+
+        'choco prueba 10-02-2021 ---la idea es traer con el load todos los lotes de una sucursal, sin discriminar producto. de esta forma no tengo tantos accesos frecuentes a la bd.
+        'luego tendre que buscar y contar los vencidos
+
+        If grilla_lista = "si" Then
+            Dim ds_lotes As DataTable = table_deposito_lotes.Copy
+            'veo que sucursal es
+            Select Case cb_origen.SelectedValue
+                Case 1 'es deposito
+                    ds_lotes = table_deposito_lotes.Copy
+                Case 2 'es dialisis
+                    ds_lotes = table_dialisis_lotes.Copy
+                Case 3 'es dialisis calle
+                    ds_lotes = table_dialisis_calle_lotes.Copy
+            End Select
+
+
+            Dim j As Integer = 0
+            While j < Producto_ds.Tables("ProdxSuc").Rows.Count
+                'recupero los lotes del producto 
+                'Dim sucursal_id As Integer = cb_sucursal.SelectedValue
+                Dim prodcodinterno As Integer = Producto_ds.Tables("ProdxSuc").Rows(j).Item("prod_codinterno")
+                'Dim ds_lotes As DataSet = dalote.Producto_x_sucursal_lote_recuperartodos(prodcodinterno, CInt(cb_origen.SelectedValue))
+                Dim cant_vencidos As Decimal = CDec(0)
+                If ds_lotes.Rows.Count <> 0 Then
+                    'aqui vemos si el item esta vencido o no, para sumarlo
+                    Dim i As Integer = 0
+                    While i < ds_lotes.Rows.Count
+                        If prodcodinterno = ds_lotes.Rows(i).Item("prod_codinterno") Then
+                            If (ds_lotes.Rows(i).Item("lote_vence") = "si") And (ds_lotes.Rows(i).Item("lote_cantidad") <> CDec(0)) Then
+                                Dim fecha_vencimiento As Date = CDate(ds_lotes.Rows(i).Item("lote_fechavto"))
+                                Dim fechadeldia As Date = Today
+                                'If Format(fechadeldia, "yyyy/mm/dd") >= Format(fecha_vencimiento, "yyyy/mm/dd") Then
+                                '    DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Red
+                                'Else
+                                '    DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Green
+                                'End If
+                                Dim cantdias As Integer = DateDiff("d", Today, fecha_vencimiento)
+                                If cantdias <= 0 Then
+                                    'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Red
+                                    cant_vencidos = cant_vencidos + CDec(ds_lotes.Rows(i).Item("lote_cantidad"))
+                                Else
+                                    If cantdias > 15 Then
+                                        'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Green
+                                    Else
+                                        'menor o igual a 15 
+                                        'DataGridView2.Rows(a).DefaultCellStyle.ForeColor = Color.Orange
+                                    End If
+                                End If
                             End If
                         End If
-                    End If
-                    i = i + 1
-                End While
-            End If
-            Producto_ds.Tables("ProdxSuc").Rows(j).Item("cant_vencimiento") = CDec(cant_vencidos)
-            j = j + 1
-        End While
+                        i = i + 1
+                    End While
+                End If
+                Producto_ds.Tables("ProdxSuc").Rows(j).Item("cant_vencimiento") = CDec(cant_vencidos)
+                j = j + 1
+            End While
+        End If
+
     End Sub
 
     Private Sub Grilla_Global()
@@ -450,7 +533,24 @@ Public Class Producto_modificar
             i = i + 1
         End While
     End Sub
-    Public Sub Cargar_grilla()
+
+
+
+    'Dim table_deposito As DataTable = Producto_ds.Tables("ProdxSuc") 'creo una tabla con la estructura igual a "ProdxSuc"
+    Public table_deposito As DataTable '= Producto_ds.Tables("ProdxSuc").Clone
+    Public table_deposito_proveedor As DataTable
+    Public table_dialisis As DataTable '= Producto_ds.Tables("ProdxSuc").Clone 'creo una tabla con la estructura igual a "ProdxSuc"
+    Public table_dialisis_proveedor As DataTable
+    Public table_dialisis_calle As DataTable '= Producto_ds.Tables("ProdxSuc").Clone 'creo una tabla con la estructura igual a "ProdxSuc"
+    Public table_dialisis_calle_proveedor As DataTable
+    Public table_rubro As DataTable
+    Public table_subrubro As DataTable
+    'lotes por sucursal.
+    Public table_deposito_lotes As DataTable
+    Public table_dialisis_lotes As DataTable
+    Public table_dialisis_calle_lotes As DataTable
+
+    Public Sub Cargar_grilla(ByVal operacion As String)
         If paso = 1 Then
             If cb_origen.SelectedValue = "0" Then
                 MessageBox.Show("No se encuentra disponible esta opción. Seleccione otra sucursal.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -483,15 +583,89 @@ Public Class Producto_modificar
                 cb_rubro.Enabled = True
                 cb_subrubro.Enabled = True
 
-                ds_PROD = DAVentas.Producto_x_Sucursal_obtener_todo(cb_origen.SelectedValue)
-                If ds_PROD.Tables(0).Rows.Count <> 0 Then
-                    Producto_ds.Tables("ProdxSuc").Rows.Clear()
-                    Producto_ds.Tables("ProdxSuc").Merge(ds_PROD.Tables(0))
-                Else
-                    Producto_ds.Tables("ProdxSuc").Rows.Clear()
+                'ds_PROD = DAVentas.Producto_x_Sucursal_obtener_todo(cb_origen.SelectedValue)
+
+                'PRUEBA 10-02-2021 ------------GUARDAR LOS PRODUCTOS DE CADA SUCURSAL EN DIFERENTES TABLAS.//////////////////////////////////////////////
+                If operacion = "traer todo" Then
+                    table_deposito = Producto_ds.Tables("ProdxSuc").Clone
+                    table_dialisis = Producto_ds.Tables("ProdxSuc").Clone 'creo una tabla con la estructura igual a "ProdxSuc"
+                    table_dialisis_calle = Producto_ds.Tables("ProdxSuc").Clone 'creo una tabla con la estructura igual a "ProdxSuc"
+                    table_deposito_proveedor = Producto_ds.Tables("ProdxSuc").Clone
+                    table_dialisis_proveedor = Producto_ds.Tables("ProdxSuc").Clone
+                    table_dialisis_calle_proveedor = Producto_ds.Tables("ProdxSuc").Clone
+
+
+                    'deposito///////////////////
+                    Dim ds_prod_suc_deposito As DataSet = DAVentas.Producto_x_Sucursal_obtener_todo(1) 'el deposito es sucursal_id = 1
+                    'table_rubro.Rows.Clear()
+                    'table_subrubro.Rows.Clear()
+                    table_rubro = ds_prod_suc_deposito.Tables(3).Copy
+                    table_subrubro = ds_prod_suc_deposito.Tables(4).Copy
+
+                    table_deposito.Rows.Clear() 'limpio
+                    table_deposito.Merge(ds_prod_suc_deposito.Tables(0))
+                    If ds_prod_suc_deposito.Tables(0).Rows.Count <> 0 Then
+                        Producto_ds.Tables("ProdxSuc").Rows.Clear()
+                        Producto_ds.Tables("ProdxSuc").Merge(table_deposito)
+                    Else
+                        Producto_ds.Tables("ProdxSuc").Rows.Clear()
+                    End If
+                    'dialisis///////////////////
+                    Dim ds_prod_suc_dialisis As DataSet = DAVentas.Producto_x_Sucursal_obtener_todo(3) 'la suc dialisis es sucursal_id = 3
+                    table_dialisis.Rows.Clear() 'limpio
+                    table_dialisis.Merge(ds_prod_suc_dialisis.Tables(0))
+                    'dialisis de calle/////////////
+                    Dim ds_prod_suc_dialisiscalle As DataSet = DAVentas.Producto_x_Sucursal_obtener_todo(5) 'la suc dialisis de calle es sucursal_id = 5
+                    table_dialisis_calle.Clear() 'limpio
+                    table_dialisis_calle.Merge(ds_prod_suc_dialisiscalle.Tables(0))
+
+                    'seccion de productos por proveedor///////////////////////////////////////////////////////////////////////////////////////
+                    table_deposito_proveedor.Rows.Clear() 'limpio
+                    table_deposito_proveedor.Merge(ds_prod_suc_deposito.Tables(1)) 'la tabla 1 trae todos por proveedor
+
+                    table_dialisis_proveedor.Rows.Clear() 'limpio
+                    table_dialisis_proveedor.Merge(ds_prod_suc_dialisis.Tables(1)) 'la tabla 1 trae todos por proveedor
+
+                    table_dialisis_calle_proveedor.Rows.Clear() 'limpio
+                    table_dialisis_calle_proveedor.Merge(ds_prod_suc_dialisiscalle.Tables(1)) 'la tabla 1 trae todos por proveedor
+                    '////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+                    'lotes por sucursal/////////////////////////////////////////////////////////////////////////////////////////////////////
+                    table_deposito_lotes = ds_prod_suc_deposito.Tables(5).Copy 'copy copia la estructura y contenido, clone solo copia estructura.
+                    table_dialisis_lotes = ds_prod_suc_dialisis.Tables(5).Copy
+                    table_dialisis_calle_lotes = ds_prod_suc_dialisiscalle.Tables(5).Copy
+
                 End If
+
+                If operacion = "seleccion cb_origen" Then
+                    'aqui me fijo que sucursal debo mostrar
+                    If cb_origen.SelectedValue = 1 Then 'es deposito
+                        Producto_ds.Tables("ProdxSuc").Rows.Clear()
+                        Producto_ds.Tables("ProdxSuc").Merge(table_deposito)
+                    End If
+                    If cb_origen.SelectedValue = 3 Then 'es dialisis
+                        Producto_ds.Tables("ProdxSuc").Rows.Clear()
+                        Producto_ds.Tables("ProdxSuc").Merge(table_dialisis)
+                    End If
+                    If cb_origen.SelectedValue = 5 Then
+                        Producto_ds.Tables("ProdxSuc").Rows.Clear()
+                        Producto_ds.Tables("ProdxSuc").Merge(table_dialisis)
+                    End If
+                End If
+
+                'esto comento por ahora
+                'If ds_PROD.Tables(0).Rows.Count <> 0 Then
+                '    Producto_ds.Tables("ProdxSuc").Rows.Clear()
+                '    Producto_ds.Tables("ProdxSuc").Merge(ds_PROD.Tables(0))
+                'Else
+                '    Producto_ds.Tables("ProdxSuc").Rows.Clear()
+                'End If
+                '//////////////////////////////////////////////////////////////////////
+
+
             End If
-           
+            grilla_lista = "si"
 
 
             'formato_grilla()
@@ -875,9 +1049,26 @@ Public Class Producto_modificar
         Tx_Buscqueda.SelectAll()
         Tx_Buscqueda.BackColor = Color.FromArgb(255, 255, 192)
     End Sub
+
+    Private Sub cb_origen_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cb_origen.Click
+        ''aqui viene el cartelito
+        'Cargar_grilla("seleccion cb_origen")
+        'agregar_cant_vencida()
+    End Sub
     Private Sub cb_origen_SelectedIndexChanged1(ByVal sender As Object, ByVal e As System.EventArgs) Handles cb_origen.SelectedIndexChanged
-        Cargar_grilla()
+        'se debe quitar todos los check de los filtros. IMPORTANTE.
+        'quitar todos los check de los filtros
+        check_marca.Checked = False
+        check_proveedor.Checked = False
+        check_subrubro.Checked = False
+        check_rubro.Checked = False
+        check_categoria.Checked = False
+
+        GroupBox1.Text = "Productos de la sucursal: " + CStr(cb_origen.Text)
+        Cargar_grilla("seleccion cb_origen")
         agregar_cant_vencida()
+
+
     End Sub
 
     Dim DAproveedor As New Datos.Proveedor
@@ -982,7 +1173,12 @@ Public Class Producto_modificar
 
 
             cb_proveedor.Enabled = False
-            Cargar_grilla()
+            'quito el filtro de proveedor
+            'Dim Filtro
+            'Filtro = "" 'String.Format("CONVERT(Prov_id, System.String) LIKE '%{0}%'", CStr(cb_proveedor.SelectedValue)) 'esto para campos strings, FUNCIONA PERFECTO
+            ProdxSucBindingSource.Filter = ""
+
+            Cargar_grilla("seleccion cb_origen")
             agregar_cant_vencida()
         End If
     End Sub
@@ -1021,14 +1217,16 @@ Public Class Producto_modificar
                 check_proveedor.Checked = False
             End If
             cb_marca.Enabled = False
-            Cargar_grilla()
+            'quitar filtro de marca
+            ProdxSucBindingSource.Filter = ""
+            Cargar_grilla("seleccion cb_origen")
             agregar_cant_vencida()
         End If
     End Sub
     Private Sub check_categoria_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles check_categoria.CheckedChanged
         If check_categoria.Checked = True Then
             If cb_categoria.Items.Count <> 0 Then
-                'check_marca.Checked = False
+                check_marca.Checked = False
 
                 If cb_rubro.Items.Count <> 0 Then
                     check_rubro.Enabled = True
@@ -1059,7 +1257,7 @@ Public Class Producto_modificar
                 filtrar_solo_por_marca()
             Else
                 'voy a traer todos los productos
-                Cargar_grilla()
+                Cargar_grilla("seleccion cb_origen")
                 agregar_cant_vencida()
             End If
 
@@ -1130,30 +1328,173 @@ Public Class Producto_modificar
 
     Dim ds_prod_proveedor As DataSet
     Private Sub filtrar_solo_por_proveedor()
-        ds_prod_proveedor = DAproveedor.Producto_x_Sucursal_obtener_todo_proveedor(cb_origen.SelectedValue, cb_proveedor.SelectedValue)
-        Producto_ds.Tables("ProdxSuc").Rows.Clear()
-        If ds_prod_proveedor.Tables(0).Rows.Count <> 0 Then
-            'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
-            'tabla productos_combo
-            'DataGridView1.Rows.Clear()
-            Producto_ds.Tables("ProdxSuc").Merge(ds_prod_proveedor.Tables(0))
-            'formato_grilla()
+        'ds_prod_proveedor = DAproveedor.Producto_x_Sucursal_obtener_todo_proveedor(cb_origen.SelectedValue, cb_proveedor.SelectedValue)
+        'Producto_ds.Tables("ProdxSuc").Rows.Clear()
+        'If ds_prod_proveedor.Tables(0).Rows.Count <> 0 Then
+        '    'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
+        '    'tabla productos_combo
+        '    'DataGridView1.Rows.Clear()
+        '    Producto_ds.Tables("ProdxSuc").Merge(ds_prod_proveedor.Tables(0))
+        '    'formato_grilla()
+        'End If
+        ''DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
+        'agregar_cant_vencida()
+
+
+        'choco 10-02-2021 aqui hacemos la prueba con el dataset y el filtro
+        'me fijo que sucursal es
+        If cb_origen.SelectedValue = 1 Then 'es deposito
+            Producto_ds.Tables("ProdxSuc").Rows.Clear()
+            Producto_ds.Tables("ProdxSuc").Merge(table_deposito_proveedor) 'los junto
         End If
-        'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
+        If cb_origen.SelectedValue = 3 Then 'es dialisis
+            Producto_ds.Tables("ProdxSuc").Rows.Clear()
+            Producto_ds.Tables("ProdxSuc").Merge(table_dialisis_proveedor) 'los junto
+        End If
+        If cb_origen.SelectedValue = 5 Then 'es dialisis de calle
+            Producto_ds.Tables("ProdxSuc").Rows.Clear()
+            Producto_ds.Tables("ProdxSuc").Merge(table_dialisis_calle_proveedor) 'los junto
+        End If
+        'ahora aplico filtro
+        Dim Filtro
+        Filtro = String.Format("CONVERT(Prov_id, System.String) LIKE '%{0}%'", CStr(cb_proveedor.SelectedValue)) 'esto para campos strings, FUNCIONA PERFECTO
+        ProdxSucBindingSource.Filter = Filtro
+
+
         agregar_cant_vencida()
+
     End Sub
 
 
 #Region "filtros venta gestion"
     Private Sub filtrar_por_categoria(ByVal filtro_descrip As String)
-        Dim ds_productos As DataSet
-        If filtro_descrip = "sin marca" Then
-            ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_categoria(cb_origen.SelectedValue)
-        Else
-            ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_marca(cb_origen.SelectedValue, cb_marca.SelectedValue)
-        End If
+        'Dim ds_productos As DataSet
+        'If filtro_descrip = "sin marca" Then
+        '    ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_categoria(cb_origen.SelectedValue)
+        'Else
+        '    ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_marca(cb_origen.SelectedValue, cb_marca.SelectedValue)
+        'End If
 
-        If ds_productos.Tables(0).Rows.Count <> 0 Then
+        'If ds_productos.Tables(0).Rows.Count <> 0 Then
+        '    'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
+        '    'tabla productos_combo
+        '    'DataGridView1.Rows.Clear()
+        '    Producto_ds.Tables("ProdxSuc").Rows.Clear()
+        '    Dim id_categorias As Integer = CInt(cb_categoria.SelectedValue)
+
+        '    Dim i As Integer = 0
+        '    While i < ds_productos.Tables(0).Rows.Count
+        '        Dim nrocat As Integer = CInt(ds_productos.Tables(0).Rows(i).Item("nrocat"))
+        '        Dim idcat As Integer = CInt(ds_productos.Tables(0).Rows(i).Item("idcat"))
+        '        If nrocat = 1 Then
+        '            'busco en categoria
+        '            If id_categorias = idcat Then
+        '                'lo agrego
+        '                Dim row As DataRow = Producto_ds.Tables("ProdxSuc").NewRow()
+        '                row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
+        '                row("prod_precio_vta") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta")
+        '                row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
+        '                row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
+        '                row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
+        '                row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
+        '                row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
+        '                row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
+        '                row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+        '                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+        '                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
+        '                Producto_ds.Tables("ProdxSuc").Rows.Add(row)
+        '            End If
+        '        End If
+        '        If nrocat = 2 Then
+        '            'busco en rubro
+        '            Dim j As Integer = 0
+        '            While j < ds_productos.Tables(2).Rows.Count
+        '                If idcat = ds_productos.Tables(2).Rows(j).Item("Rubro_cat2_id") Then
+        '                    If id_categorias = ds_productos.Tables(2).Rows(j).Item("Categoria_cat_id") Then
+        '                        Dim row As DataRow = Producto_ds.Tables("ProdxSuc").NewRow()
+        '                        row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
+        '                        row("prod_precio_vta") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta")
+        '                        row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
+        '                        row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
+        '                        row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
+        '                        row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
+        '                        row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
+        '                        row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
+        '                        row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+        '                        row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+        '                        row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
+        '                        Producto_ds.Tables("ProdxSuc").Rows.Add(row)
+        '                        j = ds_productos.Tables(2).Rows.Count
+        '                    End If
+        '                End If
+        '                j = j + 1
+        '            End While
+        '        End If
+        '        If nrocat = 3 Then
+        '            'busco en subrubro then
+        '            Dim j As Integer = 0
+        '            While j < ds_productos.Tables(3).Rows.Count
+        '                If idcat = ds_productos.Tables(3).Rows(j).Item("Subrubro_cat3_id") Then
+        '                    If id_categorias = ds_productos.Tables(3).Rows(j).Item("Categoria_cat_id") Then
+        '                        Dim row As DataRow = Producto_ds.Tables("ProdxSuc").NewRow()
+        '                        row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
+        '                        row("prod_precio_vta") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta")
+        '                        row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
+        '                        row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
+        '                        row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
+        '                        row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
+        '                        row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
+        '                        row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
+        '                        row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+        '                        row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+        '                        row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
+        '                        Producto_ds.Tables("ProdxSuc").Rows.Add(row)
+        '                        j = ds_productos.Tables(3).Rows.Count
+        '                    End If
+        '                End If
+        '                j = j + 1
+        '            End While
+        '        End If
+        '        i = i + 1
+        '    End While
+        '    'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
+        '    'formato_grilla()
+        'End If
+        'agregar_cant_vencida()
+
+
+
+
+        'choco prueba 10-02-2021 para manejar con datatable y filtros si es posible
+        Dim ds_productos As DataTable = table_dialisis.Copy
+        If filtro_descrip = "sin marca" Then
+            'veo que sucursal es
+            Select Case cb_origen.SelectedValue
+                Case 1 'es deposito
+                    ds_productos = table_deposito.Copy
+                Case 2 'es dialisis
+                    ds_productos = table_dialisis.Copy
+                Case 3 'es dialisis calle
+                    ds_productos = table_dialisis_calle.Copy
+            End Select
+            'ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_categoria(cb_origen.SelectedValue)
+        Else
+            Select Case cb_origen.SelectedValue
+                Case 1 'es deposito
+                    ds_productos = table_deposito.Copy
+                Case 2 'es dialisis
+                    ds_productos = table_dialisis.Copy
+                Case 3 'es dialisis calle
+                    ds_productos = table_dialisis_calle.Copy
+            End Select
+            'ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_marca(cb_origen.SelectedValue, cb_marca.SelectedValue)
+        End If
+        filtrar_cat(ds_productos)
+
+    End Sub
+
+    Private Sub filtrar_cat(ByVal ds_productos As DataTable)
+        If ds_productos.Rows.Count <> 0 Then
             'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
             'tabla productos_combo
             'DataGridView1.Rows.Clear()
@@ -1161,48 +1502,52 @@ Public Class Producto_modificar
             Dim id_categorias As Integer = CInt(cb_categoria.SelectedValue)
 
             Dim i As Integer = 0
-            While i < ds_productos.Tables(0).Rows.Count
-                Dim nrocat As Integer = CInt(ds_productos.Tables(0).Rows(i).Item("nrocat"))
-                Dim idcat As Integer = CInt(ds_productos.Tables(0).Rows(i).Item("idcat"))
+            While i < ds_productos.Rows.Count
+                Dim nrocat As Integer = CInt(ds_productos.Rows(i).Item("nrocat"))
+                Dim idcat As Integer = CInt(ds_productos.Rows(i).Item("idcat"))
                 If nrocat = 1 Then
                     'busco en categoria
                     If id_categorias = idcat Then
                         'lo agrego
                         Dim row As DataRow = Producto_ds.Tables("ProdxSuc").NewRow()
-                        row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
-                        row("prod_precio_vta") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta")
-                        row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
-                        row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
-                        row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
-                        row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
-                        row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
-                        row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
-                        row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
-                        row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
-                        row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
+                        row("prod_descripcion") = ds_productos.Rows(i).Item("prod_descripcion")
+                        row("prod_precio_vta") = ds_productos.Rows(i).Item("prod_precio_vta")
+                        row("prod_id") = ds_productos.Rows(i).Item("prod_id")
+                        row("prod_codinterno") = ds_productos.Rows(i).Item("prod_codinterno")
+                        row("prod_ptorepo") = ds_productos.Rows(i).Item("prod_ptorepo")
+                        row("prod_precio_vta_May") = ds_productos.Rows(i).Item("prod_precio_vta_May")
+                        row("ProdxSuc_stock") = ds_productos.Rows(i).Item("ProdxSuc_stock")
+                        row("sucursal_id") = ds_productos.Rows(i).Item("sucursal_id")
+                        row("prod_codbarra") = ds_productos.Rows(i).Item("prod_codbarra")
+                        row("Contenido") = ds_productos.Rows(i).Item("Contenido")
+                        row("Contenido_total") = ds_productos.Rows(i).Item("Contenido_total")
+                        row("nrocat") = ds_productos.Rows(i).Item("nrocat")
+                        row("idcat") = ds_productos.Rows(i).Item("idcat")
                         Producto_ds.Tables("ProdxSuc").Rows.Add(row)
                     End If
                 End If
                 If nrocat = 2 Then
                     'busco en rubro
                     Dim j As Integer = 0
-                    While j < ds_productos.Tables(2).Rows.Count
-                        If idcat = ds_productos.Tables(2).Rows(j).Item("Rubro_cat2_id") Then
-                            If id_categorias = ds_productos.Tables(2).Rows(j).Item("Categoria_cat_id") Then
+                    While j < table_rubro.Rows.Count
+                        If idcat = table_rubro.Rows(j).Item("Rubro_cat2_id") Then
+                            If id_categorias = table_rubro.Rows(j).Item("Categoria_cat_id") Then
                                 Dim row As DataRow = Producto_ds.Tables("ProdxSuc").NewRow()
-                                row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
-                                row("prod_precio_vta") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta")
-                                row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
-                                row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
-                                row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
-                                row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
-                                row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
-                                row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
-                                row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
-                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
-                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
+                                row("prod_descripcion") = ds_productos.Rows(i).Item("prod_descripcion")
+                                row("prod_precio_vta") = ds_productos.Rows(i).Item("prod_precio_vta")
+                                row("prod_id") = ds_productos.Rows(i).Item("prod_id")
+                                row("prod_codinterno") = ds_productos.Rows(i).Item("prod_codinterno")
+                                row("prod_ptorepo") = ds_productos.Rows(i).Item("prod_ptorepo")
+                                row("prod_precio_vta_May") = ds_productos.Rows(i).Item("prod_precio_vta_May")
+                                row("ProdxSuc_stock") = ds_productos.Rows(i).Item("ProdxSuc_stock")
+                                row("sucursal_id") = ds_productos.Rows(i).Item("sucursal_id")
+                                row("prod_codbarra") = ds_productos.Rows(i).Item("prod_codbarra")
+                                row("Contenido") = ds_productos.Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Rows(i).Item("Contenido_total")
+                                row("nrocat") = ds_productos.Rows(i).Item("nrocat")
+                                row("idcat") = ds_productos.Rows(i).Item("idcat")
                                 Producto_ds.Tables("ProdxSuc").Rows.Add(row)
-                                j = ds_productos.Tables(2).Rows.Count
+                                j = table_rubro.Rows.Count
                             End If
                         End If
                         j = j + 1
@@ -1211,23 +1556,25 @@ Public Class Producto_modificar
                 If nrocat = 3 Then
                     'busco en subrubro then
                     Dim j As Integer = 0
-                    While j < ds_productos.Tables(3).Rows.Count
-                        If idcat = ds_productos.Tables(3).Rows(j).Item("Subrubro_cat3_id") Then
-                            If id_categorias = ds_productos.Tables(3).Rows(j).Item("Categoria_cat_id") Then
+                    While j < table_subrubro.Rows.Count
+                        If idcat = table_subrubro.Rows(j).Item("Subrubro_cat3_id") Then
+                            If id_categorias = table_subrubro.Rows(j).Item("Categoria_cat_id") Then
                                 Dim row As DataRow = Producto_ds.Tables("ProdxSuc").NewRow()
-                                row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
-                                row("prod_precio_vta") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta")
-                                row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
-                                row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
-                                row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
-                                row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
-                                row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
-                                row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
-                                row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
-                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
-                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
+                                row("prod_descripcion") = ds_productos.Rows(i).Item("prod_descripcion")
+                                row("prod_precio_vta") = ds_productos.Rows(i).Item("prod_precio_vta")
+                                row("prod_id") = ds_productos.Rows(i).Item("prod_id")
+                                row("prod_codinterno") = ds_productos.Rows(i).Item("prod_codinterno")
+                                row("prod_ptorepo") = ds_productos.Rows(i).Item("prod_ptorepo")
+                                row("prod_precio_vta_May") = ds_productos.Rows(i).Item("prod_precio_vta_May")
+                                row("ProdxSuc_stock") = ds_productos.Rows(i).Item("ProdxSuc_stock")
+                                row("sucursal_id") = ds_productos.Rows(i).Item("sucursal_id")
+                                row("prod_codbarra") = ds_productos.Rows(i).Item("prod_codbarra")
+                                row("Contenido") = ds_productos.Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Rows(i).Item("Contenido_total")
+                                row("nrocat") = ds_productos.Rows(i).Item("nrocat")
+                                row("idcat") = ds_productos.Rows(i).Item("idcat")
                                 Producto_ds.Tables("ProdxSuc").Rows.Add(row)
-                                j = ds_productos.Tables(3).Rows.Count
+                                j = table_subrubro.Rows.Count
                             End If
                         End If
                         j = j + 1
@@ -1240,15 +1587,117 @@ Public Class Producto_modificar
         End If
         agregar_cant_vencida()
     End Sub
+
     Private Sub filtrar_por_rubro(ByVal filtro_descrip As String)
-        Dim ds_productos As DataSet
+        'Dim ds_productos As DataSet
+        'If filtro_descrip = "sin marca" Then
+        '    ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_categoria(cb_origen.SelectedValue)
+        'Else
+        '    ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_marca(cb_origen.SelectedValue, cb_marca.SelectedValue)
+        'End If
+
+        'If ds_productos.Tables(0).Rows.Count <> 0 Then
+        '    'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
+        '    'tabla productos_combo
+        '    'DataGridView1.Rows.Clear()
+        '    Producto_ds.Tables("ProdxSuc").Rows.Clear()
+        '    Dim id_categorias As Integer = CInt(cb_categoria.SelectedValue)
+        '    Dim id_rubro As Integer = CInt(cb_rubro.SelectedValue)
+        '    Dim i As Integer = 0
+        '    While i < ds_productos.Tables(0).Rows.Count
+        '        Dim nrocat As Integer = CInt(ds_productos.Tables(0).Rows(i).Item("nrocat"))
+        '        Dim idcat As Integer = CInt(ds_productos.Tables(0).Rows(i).Item("idcat"))
+        '        If nrocat = 1 Then
+        '            'no lo pongo
+        '        End If
+        '        If nrocat = 2 Then
+        '            'busco en rubro
+        '            Dim j As Integer = 0
+        '            While j < ds_productos.Tables(2).Rows.Count
+        '                If idcat = ds_productos.Tables(2).Rows(j).Item("Rubro_cat2_id") Then
+        '                    If id_rubro = ds_productos.Tables(2).Rows(j).Item("Rubro_cat2_id") Then
+        '                        Dim row As DataRow = Producto_ds.Tables("ProdxSuc").NewRow()
+        '                        row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
+        '                        row("prod_precio_vta") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta")
+        '                        row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
+        '                        row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
+        '                        row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
+        '                        row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
+        '                        row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
+        '                        row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
+        '                        row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+        '                        row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+        '                        row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
+        '                        Producto_ds.Tables("ProdxSuc").Rows.Add(row)
+        '                        j = ds_productos.Tables(2).Rows.Count
+        '                    End If
+        '                End If
+        '                j = j + 1
+        '            End While
+        '        End If
+        '        If nrocat = 3 Then
+        '            'busco en subrubro then
+        '            Dim j As Integer = 0
+        '            While j < ds_productos.Tables(3).Rows.Count
+        '                If idcat = ds_productos.Tables(3).Rows(j).Item("Subrubro_cat3_id") Then
+        '                    If id_rubro = ds_productos.Tables(3).Rows(j).Item("Rubro_cat2_id") Then
+        '                        Dim row As DataRow = Producto_ds.Tables("ProdxSuc").NewRow()
+        '                        row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
+        '                        row("prod_precio_vta") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta")
+        '                        row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
+        '                        row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
+        '                        row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
+        '                        row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
+        '                        row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
+        '                        row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
+        '                        row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+        '                        row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+        '                        row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
+        '                        Producto_ds.Tables("ProdxSuc").Rows.Add(row)
+        '                        j = ds_productos.Tables(3).Rows.Count
+        '                    End If
+        '                End If
+        '                j = j + 1
+        '            End While
+        '        End If
+        '        i = i + 1
+        '    End While
+        '    'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
+        '    'formato_grilla()
+        'End If
+        'agregar_cant_vencida()
+
+
+
+
+        'choco prueba 10-02-2021 filtro y datatable
+        Dim ds_productos As DataTable = table_dialisis.Copy
+        'Dim ds_productos As DataSet
         If filtro_descrip = "sin marca" Then
-            ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_categoria(cb_origen.SelectedValue)
+            'veo que sucursal es
+            Select Case cb_origen.SelectedValue
+                Case 1 'es deposito
+                    ds_productos = table_deposito.Copy
+                Case 2 'es dialisis
+                    ds_productos = table_dialisis.Copy
+                Case 3 'es dialisis calle
+                    ds_productos = table_dialisis_calle.Copy
+            End Select
+            'ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_categoria(cb_origen.SelectedValue)
         Else
-            ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_marca(cb_origen.SelectedValue, cb_marca.SelectedValue)
+            'veo que sucursal es
+            Select Case cb_origen.SelectedValue
+                Case 1 'es deposito
+                    ds_productos = table_deposito.Copy
+                Case 2 'es dialisis
+                    ds_productos = table_dialisis.Copy
+                Case 3 'es dialisis calle
+                    ds_productos = table_dialisis_calle.Copy
+            End Select
+            'ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_marca(cb_origen.SelectedValue, cb_marca.SelectedValue)
         End If
 
-        If ds_productos.Tables(0).Rows.Count <> 0 Then
+        If ds_productos.Rows.Count <> 0 Then
             'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
             'tabla productos_combo
             'DataGridView1.Rows.Clear()
@@ -1256,32 +1705,34 @@ Public Class Producto_modificar
             Dim id_categorias As Integer = CInt(cb_categoria.SelectedValue)
             Dim id_rubro As Integer = CInt(cb_rubro.SelectedValue)
             Dim i As Integer = 0
-            While i < ds_productos.Tables(0).Rows.Count
-                Dim nrocat As Integer = CInt(ds_productos.Tables(0).Rows(i).Item("nrocat"))
-                Dim idcat As Integer = CInt(ds_productos.Tables(0).Rows(i).Item("idcat"))
+            While i < ds_productos.Rows.Count
+                Dim nrocat As Integer = CInt(ds_productos.Rows(i).Item("nrocat"))
+                Dim idcat As Integer = CInt(ds_productos.Rows(i).Item("idcat"))
                 If nrocat = 1 Then
                     'no lo pongo
                 End If
                 If nrocat = 2 Then
                     'busco en rubro
                     Dim j As Integer = 0
-                    While j < ds_productos.Tables(2).Rows.Count
-                        If idcat = ds_productos.Tables(2).Rows(j).Item("Rubro_cat2_id") Then
-                            If id_rubro = ds_productos.Tables(2).Rows(j).Item("Rubro_cat2_id") Then
+                    While j < table_rubro.Rows.Count
+                        If idcat = table_rubro.Rows(j).Item("Rubro_cat2_id") Then
+                            If id_rubro = table_rubro.Rows(j).Item("Rubro_cat2_id") Then
                                 Dim row As DataRow = Producto_ds.Tables("ProdxSuc").NewRow()
-                                row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
-                                row("prod_precio_vta") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta")
-                                row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
-                                row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
-                                row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
-                                row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
-                                row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
-                                row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
-                                row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
-                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
-                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
+                                row("prod_descripcion") = ds_productos.Rows(i).Item("prod_descripcion")
+                                row("prod_precio_vta") = ds_productos.Rows(i).Item("prod_precio_vta")
+                                row("prod_id") = ds_productos.Rows(i).Item("prod_id")
+                                row("prod_codinterno") = ds_productos.Rows(i).Item("prod_codinterno")
+                                row("prod_ptorepo") = ds_productos.Rows(i).Item("prod_ptorepo")
+                                row("prod_precio_vta_May") = ds_productos.Rows(i).Item("prod_precio_vta_May")
+                                row("ProdxSuc_stock") = ds_productos.Rows(i).Item("ProdxSuc_stock")
+                                row("sucursal_id") = ds_productos.Rows(i).Item("sucursal_id")
+                                row("prod_codbarra") = ds_productos.Rows(i).Item("prod_codbarra")
+                                row("Contenido") = ds_productos.Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Rows(i).Item("Contenido_total")
+                                row("nrocat") = ds_productos.Rows(i).Item("nrocat")
+                                row("idcat") = ds_productos.Rows(i).Item("idcat")
                                 Producto_ds.Tables("ProdxSuc").Rows.Add(row)
-                                j = ds_productos.Tables(2).Rows.Count
+                                j = table_rubro.Rows.Count
                             End If
                         End If
                         j = j + 1
@@ -1290,23 +1741,25 @@ Public Class Producto_modificar
                 If nrocat = 3 Then
                     'busco en subrubro then
                     Dim j As Integer = 0
-                    While j < ds_productos.Tables(3).Rows.Count
-                        If idcat = ds_productos.Tables(3).Rows(j).Item("Subrubro_cat3_id") Then
-                            If id_rubro = ds_productos.Tables(3).Rows(j).Item("Rubro_cat2_id") Then
+                    While j < table_subrubro.Rows.Count
+                        If idcat = table_subrubro.Rows(j).Item("Subrubro_cat3_id") Then
+                            If id_rubro = table_subrubro.Rows(j).Item("Rubro_cat2_id") Then
                                 Dim row As DataRow = Producto_ds.Tables("ProdxSuc").NewRow()
-                                row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
-                                row("prod_precio_vta") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta")
-                                row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
-                                row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
-                                row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
-                                row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
-                                row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
-                                row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
-                                row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
-                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
-                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
+                                row("prod_descripcion") = ds_productos.Rows(i).Item("prod_descripcion")
+                                row("prod_precio_vta") = ds_productos.Rows(i).Item("prod_precio_vta")
+                                row("prod_id") = ds_productos.Rows(i).Item("prod_id")
+                                row("prod_codinterno") = ds_productos.Rows(i).Item("prod_codinterno")
+                                row("prod_ptorepo") = ds_productos.Rows(i).Item("prod_ptorepo")
+                                row("prod_precio_vta_May") = ds_productos.Rows(i).Item("prod_precio_vta_May")
+                                row("ProdxSuc_stock") = ds_productos.Rows(i).Item("ProdxSuc_stock")
+                                row("sucursal_id") = ds_productos.Rows(i).Item("sucursal_id")
+                                row("prod_codbarra") = ds_productos.Rows(i).Item("prod_codbarra")
+                                row("Contenido") = ds_productos.Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Rows(i).Item("Contenido_total")
+                                row("nrocat") = ds_productos.Rows(i).Item("nrocat")
+                                row("idcat") = ds_productos.Rows(i).Item("idcat")
                                 Producto_ds.Tables("ProdxSuc").Rows.Add(row)
-                                j = ds_productos.Tables(3).Rows.Count
+                                j = table_subrubro.Rows.Count
                             End If
                         End If
                         j = j + 1
@@ -1318,15 +1771,93 @@ Public Class Producto_modificar
             'formato_grilla()
         End If
         agregar_cant_vencida()
+
+
     End Sub
     Private Sub filtrar_por_subrubro(ByVal filtro_descrip As String)
-        Dim ds_productos As DataSet
+        'Dim ds_productos As DataSet
+        'If filtro_descrip = "sin marca" Then
+        '    ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_categoria(cb_origen.SelectedValue)
+        'Else
+        '    ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_marca(cb_origen.SelectedValue, cb_marca.SelectedValue)
+        'End If
+        'If ds_productos.Tables(0).Rows.Count <> 0 Then
+        '    'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
+        '    'tabla productos_combo
+        '    'DataGridView1.Rows.Clear()
+        '    Producto_ds.Tables("ProdxSuc").Rows.Clear()
+        '    Dim id_categorias As Integer = CInt(cb_categoria.SelectedValue)
+        '    Dim id_rubro As Integer = CInt(cb_rubro.SelectedValue)
+        '    Dim id_subrubro As Integer = CInt(cb_subrubro.SelectedValue)
+        '    Dim i As Integer = 0
+        '    While i < ds_productos.Tables(0).Rows.Count
+        '        Dim nrocat As Integer = CInt(ds_productos.Tables(0).Rows(i).Item("nrocat"))
+        '        Dim idcat As Integer = CInt(ds_productos.Tables(0).Rows(i).Item("idcat"))
+        '        If nrocat = 1 Then
+        '            'no lo pongo
+        '        End If
+        '        If nrocat = 2 Then
+        '            'busco en rubro
+        '        End If
+        '        If nrocat = 3 Then
+        '            'busco en subrubro then
+        '            Dim j As Integer = 0
+        '            While j < ds_productos.Tables(3).Rows.Count
+        '                If idcat = ds_productos.Tables(3).Rows(j).Item("Subrubro_cat3_id") Then
+        '                    If id_subrubro = ds_productos.Tables(3).Rows(j).Item("Subrubro_cat3_id") Then
+        '                        Dim row As DataRow = Producto_ds.Tables("ProdxSuc").NewRow()
+        '                        row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
+        '                        row("prod_precio_vta") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta")
+        '                        row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
+        '                        row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
+        '                        row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
+        '                        row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
+        '                        row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
+        '                        row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
+        '                        row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
+        '                        row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
+        '                        row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
+        '                        Producto_ds.Tables("ProdxSuc").Rows.Add(row)
+        '                        j = ds_productos.Tables(3).Rows.Count
+        '                    End If
+        '                End If
+        '                j = j + 1
+        '            End While
+        '        End If
+        '        i = i + 1
+        '    End While
+        '    'formato_grilla()
+        '    'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
+        'End If
+        'agregar_cant_vencida()
+
+        'prueba choco 10-02-2021 uso de datatable y filtros
+        Dim ds_productos As DataTable = table_dialisis.Copy
+        'Dim ds_productos As DataSet
         If filtro_descrip = "sin marca" Then
-            ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_categoria(cb_origen.SelectedValue)
+            'veo que sucursal es
+            Select Case cb_origen.SelectedValue
+                Case 1 'es deposito
+                    ds_productos = table_deposito.Copy
+                Case 2 'es dialisis
+                    ds_productos = table_dialisis.Copy
+                Case 3 'es dialisis calle
+                    ds_productos = table_dialisis_calle.Copy
+            End Select
+            'ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_categoria(cb_origen.SelectedValue)
         Else
-            ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_marca(cb_origen.SelectedValue, cb_marca.SelectedValue)
+            'veo que sucursal es
+            Select Case cb_origen.SelectedValue
+                Case 1 'es deposito
+                    ds_productos = table_deposito.Copy
+                Case 2 'es dialisis
+                    ds_productos = table_dialisis.Copy
+                Case 3 'es dialisis calle
+                    ds_productos = table_dialisis_calle.Copy
+            End Select
+            'ds_productos = DAVentas.Producto_x_Sucursal_obtener_todo_marca(cb_origen.SelectedValue, cb_marca.SelectedValue)
         End If
-        If ds_productos.Tables(0).Rows.Count <> 0 Then
+        If ds_productos.Rows.Count <> 0 Then
             'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
             'tabla productos_combo
             'DataGridView1.Rows.Clear()
@@ -1335,9 +1866,9 @@ Public Class Producto_modificar
             Dim id_rubro As Integer = CInt(cb_rubro.SelectedValue)
             Dim id_subrubro As Integer = CInt(cb_subrubro.SelectedValue)
             Dim i As Integer = 0
-            While i < ds_productos.Tables(0).Rows.Count
-                Dim nrocat As Integer = CInt(ds_productos.Tables(0).Rows(i).Item("nrocat"))
-                Dim idcat As Integer = CInt(ds_productos.Tables(0).Rows(i).Item("idcat"))
+            While i < ds_productos.Rows.Count
+                Dim nrocat As Integer = CInt(ds_productos.Rows(i).Item("nrocat"))
+                Dim idcat As Integer = CInt(ds_productos.Rows(i).Item("idcat"))
                 If nrocat = 1 Then
                     'no lo pongo
                 End If
@@ -1347,23 +1878,25 @@ Public Class Producto_modificar
                 If nrocat = 3 Then
                     'busco en subrubro then
                     Dim j As Integer = 0
-                    While j < ds_productos.Tables(3).Rows.Count
-                        If idcat = ds_productos.Tables(3).Rows(j).Item("Subrubro_cat3_id") Then
-                            If id_subrubro = ds_productos.Tables(3).Rows(j).Item("Subrubro_cat3_id") Then
+                    While j < table_subrubro.Rows.Count
+                        If idcat = table_subrubro.Rows(j).Item("Subrubro_cat3_id") Then
+                            If id_subrubro = table_subrubro.Rows(j).Item("Subrubro_cat3_id") Then
                                 Dim row As DataRow = Producto_ds.Tables("ProdxSuc").NewRow()
-                                row("prod_descripcion") = ds_productos.Tables(0).Rows(i).Item("prod_descripcion")
-                                row("prod_precio_vta") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta")
-                                row("prod_id") = ds_productos.Tables(0).Rows(i).Item("prod_id")
-                                row("prod_codinterno") = ds_productos.Tables(0).Rows(i).Item("prod_codinterno")
-                                row("prod_ptorepo") = ds_productos.Tables(0).Rows(i).Item("prod_ptorepo")
-                                row("prod_precio_vta_May") = ds_productos.Tables(0).Rows(i).Item("prod_precio_vta_May")
-                                row("ProdxSuc_stock") = ds_productos.Tables(0).Rows(i).Item("ProdxSuc_stock")
-                                row("sucursal_id") = ds_productos.Tables(0).Rows(i).Item("sucursal_id")
-                                row("prod_codbarra") = ds_productos.Tables(0).Rows(i).Item("prod_codbarra")
-                                row("Contenido") = ds_productos.Tables(0).Rows(i).Item("Contenido")
-                                row("Contenido_total") = ds_productos.Tables(0).Rows(i).Item("Contenido_total")
+                                row("prod_descripcion") = ds_productos.Rows(i).Item("prod_descripcion")
+                                row("prod_precio_vta") = ds_productos.Rows(i).Item("prod_precio_vta")
+                                row("prod_id") = ds_productos.Rows(i).Item("prod_id")
+                                row("prod_codinterno") = ds_productos.Rows(i).Item("prod_codinterno")
+                                row("prod_ptorepo") = ds_productos.Rows(i).Item("prod_ptorepo")
+                                row("prod_precio_vta_May") = ds_productos.Rows(i).Item("prod_precio_vta_May")
+                                row("ProdxSuc_stock") = ds_productos.Rows(i).Item("ProdxSuc_stock")
+                                row("sucursal_id") = ds_productos.Rows(i).Item("sucursal_id")
+                                row("prod_codbarra") = ds_productos.Rows(i).Item("prod_codbarra")
+                                row("Contenido") = ds_productos.Rows(i).Item("Contenido")
+                                row("Contenido_total") = ds_productos.Rows(i).Item("Contenido_total")
+                                row("nrocat") = ds_productos.Rows(i).Item("nrocat")
+                                row("idcat") = ds_productos.Rows(i).Item("idcat")
                                 Producto_ds.Tables("ProdxSuc").Rows.Add(row)
-                                j = ds_productos.Tables(3).Rows.Count
+                                j = table_subrubro.Rows.Count
                             End If
                         End If
                         j = j + 1
@@ -1375,21 +1908,46 @@ Public Class Producto_modificar
             'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
         End If
         agregar_cant_vencida()
+
+
     End Sub
     Dim ds_prod_marca As DataSet
     Private Sub filtrar_solo_por_marca()
-        ds_prod_marca = DAVentas.Producto_x_Sucursal_obtener_todo_marca(cb_origen.SelectedValue, cb_marca.SelectedValue)
-        Producto_ds.Tables("ProdxSuc").Rows.Clear()
-        If ds_prod_marca.Tables(0).Rows.Count <> 0 Then
-            'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
-            'tabla productos_combo
-            'DataGridView1.Rows.Clear()
-            Producto_ds.Tables("ProdxSuc").Merge(ds_prod_marca.Tables(0))
-            'formato_grilla()
+        'ds_prod_marca = DAVentas.Producto_x_Sucursal_obtener_todo_marca(cb_origen.SelectedValue, cb_marca.SelectedValue)
+        'Producto_ds.Tables("ProdxSuc").Rows.Clear()
+        'If ds_prod_marca.Tables(0).Rows.Count <> 0 Then
+        '    'si hay productos, voy a armar un dataset con los productos q realmente quiera mostrar.
+        '    'tabla productos_combo
+        '    'DataGridView1.Rows.Clear()
+        '    Producto_ds.Tables("ProdxSuc").Merge(ds_prod_marca.Tables(0))
+        '    'formato_grilla()
 
+        'End If
+        'agregar_cant_vencida()
+        ''DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
+
+
+
+        'choco prueba 10-02-2021 usar un datatable y filtro para la marca
+        'me fijo que sucursal es
+        If cb_origen.SelectedValue = 1 Then 'es deposito
+            Producto_ds.Tables("ProdxSuc").Rows.Clear()
+            Producto_ds.Tables("ProdxSuc").Merge(table_deposito) 'los junto
         End If
+        If cb_origen.SelectedValue = 3 Then 'es dialisis
+            Producto_ds.Tables("ProdxSuc").Rows.Clear()
+            Producto_ds.Tables("ProdxSuc").Merge(table_dialisis) 'los junto
+        End If
+        If cb_origen.SelectedValue = 5 Then 'es dialisis calle
+            Producto_ds.Tables("ProdxSuc").Rows.Clear()
+            Producto_ds.Tables("ProdxSuc").Merge(table_dialisis_calle) 'los junto
+        End If
+        Dim Filtro
+        Filtro = String.Format("CONVERT(marca_id, System.String) LIKE '%{0}%'", CStr(cb_marca.SelectedValue)) 'esto para campos strings, FUNCIONA PERFECTO
+        ProdxSucBindingSource.Filter = Filtro
+
+
         agregar_cant_vencida()
-        'DataGridView1.DataSource = Venta_Caja_ds.Tables("Productos_Combos")
     End Sub
 #End Region
 
@@ -1437,7 +1995,7 @@ Public Class Producto_modificar
                 If check_marca.Checked = True Then
                     filtrar_solo_por_marca()
                 Else
-                    Cargar_grilla()
+                    Cargar_grilla("")
                 End If
 
 
@@ -1469,7 +2027,7 @@ Public Class Producto_modificar
                             filtrar_por_categoria("sin marca")
                         End If
                     Else
-                        Cargar_grilla()
+                        Cargar_grilla("")
                     End If
                 End If
             End If
@@ -1499,31 +2057,45 @@ Public Class Producto_modificar
     End Sub
 
     Private Sub btn_Anular_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_Anular.Click
+        'ESTE CODIGO ES SI USO LA COLUMNA CHECK, PERO POR AHORA NO LO VOY A USAR.
+        'Dim pregunta = "no"
+        'Dim i As Integer = 0
+        'While i < DG_Producto.Rows.Count
+        '    If DG_Producto.Rows(i).Cells("Column1").Value = True Then 'el value en true significa que esta checkeado para eliminar
+        '        If pregunta = "no" Then
+        '            If MsgBox("Esta seguro que quiere borrar la informacion del item seleccionado?", MsgBoxStyle.YesNo, "Confirmacion") = MsgBoxResult.Yes Then
+        '                pregunta = "si"
+        '            Else
+        '                'aqui corto el ciclo, ya que se cancelo la eliminacion
+        '                i = DG_Producto.Rows.Count
+        '            End If
+        '        End If
+        '        If pregunta = "si" Then
+        '            'aqui elimino - OJO es logica la eliminacion...solo pongo el estado del producto en "inactivo"
+        '            Dim prod_id As Integer = DG_Producto.Rows(i).Cells("prod_id").Value
+        '            DAproducto.Producto_eliminacion_logica(prod_id)
+        '        End If
+        '    End If
+        '    i = i + 1
+        'End While
+
+        'If pregunta = "no" Then
+        '    MessageBox.Show("Debe seleccionar un insumo para poder eliminar", "Sistema de Gestión", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        'End If
+
+
         Dim pregunta = "no"
-        Dim i As Integer = 0
-        While i < DG_Producto.Rows.Count
-            If DG_Producto.Rows(i).Cells("Column1").Value = True Then 'el value en true significa que esta checkeado para eliminar
-                If pregunta = "no" Then
-                    If MsgBox("Esta seguro que quiere borrar la informacion del item seleccionado?", MsgBoxStyle.YesNo, "Confirmacion") = MsgBoxResult.Yes Then
-                        pregunta = "si"
-                    Else
-                        'aqui corto el ciclo, ya que se cancelo la eliminacion
-                        i = DG_Producto.Rows.Count
-                    End If
-                End If
-                If pregunta = "si" Then
-                    'aqui elimino - OJO es logica la eliminacion...solo pongo el estado del producto en "inactivo"
-                    Dim prod_id As Integer = DG_Producto.Rows(i).Cells("prod_id").Value
-                    DAproducto.Producto_eliminacion_logica(prod_id)
-                End If
+        If DG_Producto.Rows.Count <> 0 Then
+            If MsgBox("Esta seguro que quiere borrar la información del item seleccionado?", MsgBoxStyle.YesNo, "Confirmacion") = MsgBoxResult.Yes Then
+                pregunta = "si"
+                'aqui elimino - OJO es logica la eliminacion...solo pongo el estado del producto en "inactivo"
+                Dim prod_id As Integer = DG_Producto.CurrentRow.Cells("prod_id").Value
+                DAproducto.Producto_eliminacion_logica(prod_id)
+                MessageBox.Show("Item borrado correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Debe seleccionar un insumo para poder eliminar", "Sistema de Gestión", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If
-            i = i + 1
-        End While
-
-        If pregunta = "no" Then
-            MessageBox.Show("Debe seleccionar un insumo para poder eliminar", "Sistema de Gestión", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End If
-
         '_____________________disparo el evento check_marca...para q vuelva a cargar los productos sin ningun tipo de filtro
         check_marca.Checked = False
         If check_subrubro.Checked = True Then
@@ -1536,7 +2108,7 @@ Public Class Producto_modificar
             check_categoria.Checked = False
         End If
         cb_marca.Enabled = False
-        Cargar_grilla()
+        Cargar_grilla("")
 
         '_______________________________________________________________________________________________
     End Sub
@@ -1701,8 +2273,10 @@ Public Class Producto_modificar
     End Sub
 
     Private Sub Producto_modificar_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
+        Me.Hide()
         msj_esperar_sesiones.procedencia = "Producto_modificar_load"
         msj_esperar_sesiones.Show()
+
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click

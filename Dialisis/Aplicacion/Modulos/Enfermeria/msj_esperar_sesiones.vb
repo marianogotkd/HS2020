@@ -26,10 +26,7 @@
                 Busqueda_Productos.LOAD_CARGA()
                 Me.Close()
             End If
-            If procedencia = "Producto_modificar_load" Then
-                Producto_modificar.LOAD_CARGA()
-                Me.Close()
-            End If
+            
             If procedencia = "Gestion_Mercaderia_Alta_btn_guardad_click" Then
                 Gestion_Mercaderia_Alta.GUARDAR_CLICK()
                 Me.Close()
@@ -57,5 +54,12 @@
             End If
 
         End If
+        If ProgressBar1.Value = 80 Then
+            If procedencia = "Producto_modificar_load" Then
+                Producto_modificar.LOAD_CARGA()
+                'Me.Close()
+            End If
+        End If
+
     End Sub
 End Class
