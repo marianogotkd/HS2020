@@ -3930,6 +3930,7 @@ Public Class GM_Baja_Producto
             While i < DataGridView1.Rows.Count
                 Dim stock As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdstockDataGridViewTextBoxColumn").Value)
                 Dim pto_reposicion As Decimal = CDec(DataGridView1.Rows(i).Cells("ProdptorepoDataGridViewTextBoxColumn").Value)
+
                 If stock <= pto_reposicion Then
                     DataGridView1.Rows(i).DefaultCellStyle.ForeColor = Color.Blue
                 Else
@@ -3937,6 +3938,11 @@ Public Class GM_Baja_Producto
                 End If
                 i = i + 1
             End While
+
+
+
+
+
         End If
 
         If DataGridView1.Columns(e.ColumnIndex).Name = "CantvencimientoDataGridViewTextBoxColumn" Then 'esto significa que voy a validar esta celda
@@ -3964,18 +3970,18 @@ Public Class GM_Baja_Producto
 
 
     Private Sub DataGridView1_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles DataGridView1.SelectionChanged
-        If DataGridView1.Rows.Count <> 0 Then
-            Dim i As Integer = 0
+        'If DataGridView1.Rows.Count <> 0 Then
+        '    Dim i As Integer = 0
 
-            Dim stock As Decimal = CDec(DataGridView1.CurrentRow.Cells("ProdstockDataGridViewTextBoxColumn").Value)
-            Dim pto_reposicion As Decimal = CDec(DataGridView1.CurrentRow.Cells("ProdptorepoDataGridViewTextBoxColumn").Value)
+        '    Dim stock As Decimal = CDec(DataGridView1.CurrentRow.Cells("ProdstockDataGridViewTextBoxColumn").Value)
+        '    Dim pto_reposicion As Decimal = CDec(DataGridView1.CurrentRow.Cells("ProdptorepoDataGridViewTextBoxColumn").Value)
 
-            If stock <= pto_reposicion Then
-                DataGridView1.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Blue
-            Else
-                DataGridView1.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black
-            End If
-        End If
+        '    If stock <= pto_reposicion Then
+        '        DataGridView1.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Blue
+        '    Else
+        '        DataGridView1.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black
+        '    End If
+        'End If
 
     End Sub
 
