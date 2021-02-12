@@ -51,7 +51,28 @@
                     End If
                 End While
             End If
-
+            If tipo_consulta = "solo Sala de Dialisis" Then
+                ''quito todos los que sean bajas y altas
+                Dim k As Integer = 0
+                While k < Mov_DS.Tables("movimientos_consulta").Rows.Count
+                    If Mov_DS.Tables("movimientos_consulta").Rows(k).Item("MovMerTipo_id") <> 2 Then
+                        Mov_DS.Tables("movimientos_consulta").Rows.Remove(Mov_DS.Tables("movimientos_consulta").Rows(k))
+                        k = 0
+                    Else
+                        k = k + 1
+                    End If
+                End While
+                'Quito todos los movimientos de la sucursal calle
+                Dim x As Integer = 0
+                While x < Mov_DS.Tables("movimientos_consulta").Rows.Count
+                    If Mov_DS.Tables("movimientos_consulta").Rows(x).Item("sucursal_id_Destino") = 5 Then
+                        Mov_DS.Tables("movimientos_consulta").Rows.Remove(Mov_DS.Tables("movimientos_consulta").Rows(x))
+                        x = 0
+                    Else
+                        x = x + 1
+                    End If
+                End While
+            End If
 
 
 

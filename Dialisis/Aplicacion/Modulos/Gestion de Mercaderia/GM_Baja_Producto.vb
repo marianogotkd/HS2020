@@ -641,7 +641,7 @@ Public Class GM_Baja_Producto
 
 
     Private Sub tx_Buscar_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles tx_Buscar.KeyPress
-        If form_procedencia = "Venta_Caja_gestion" Or form_procedencia = "Pedido_Productos" Or form_procedencia = "GM_Carga_Producto" Or form_procedencia = "Gestion_Mercaderia" Or form_procedencia = "Servicio_nuevo" Then
+        If form_procedencia = "Venta_Caja_gestion" Or form_procedencia = "Pedido_Productos" Or form_procedencia = "GM_Carga_Producto" Or form_procedencia = "Gestion_Mercaderia" Or form_procedencia = "Servicio_nuevo" Or form_procedencia = "Predefinido" Then
             Dim Filtro
             Filtro = String.Format("CONVERT(prod_codinterno, System.String) LIKE '%{0}%'", tx_Buscar.Text)
             ProdconsultaBindingSource.Filter = Filtro
@@ -682,6 +682,8 @@ Public Class GM_Baja_Producto
                             DataGridView1.DataSource = ds_PROD.Tables(1)
                         Case "Pedido_Productos"
                             DataGridView1.DataSource = ds_PROD.Tables(0)
+                        Case "Predefinido"
+                            DataGridView1.DataSource = ds_PROD.Tables(1)
                     End Select
                 End If
                 tx_Buscar.SelectAll()

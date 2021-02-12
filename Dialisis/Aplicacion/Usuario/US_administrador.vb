@@ -1311,6 +1311,8 @@ Public Property EnabledCerrar() As Boolean
     Private Sub RegistroDeMovimientosToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem_ENF_RegMov.Click
         Movimientos_consulta.Close()
         Movimientos_consulta.Text = "Consulta de movimientos - registros historicos"
+        Movimientos_consulta.tipo_consulta = "solo Sala de Dialisis"
+
         Movimientos_consulta.Show()
     End Sub
 
