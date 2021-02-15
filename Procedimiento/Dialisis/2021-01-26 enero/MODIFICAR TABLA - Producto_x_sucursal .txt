@@ -1,2 +1,0 @@
-AGREGAR
-ProdxSuc_stock_real decimal (38,2)

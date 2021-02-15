@@ -1,6 +1,0 @@
-[dbo].[Producto_x_sucursal_lote](
-
-agregar los siguientes campos:
-
-[lote_stock_real] [decimal](38, 2) NULL,
-	[lote_aux] [decimal](38, 2) NULL,

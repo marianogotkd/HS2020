@@ -1,3 +1,0 @@
-agregar en la tabla sucursal
-
-una nueva cuyo id sea SI O SI 5, nombre Dialisis de Calle.
