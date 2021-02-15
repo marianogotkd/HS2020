@@ -19,6 +19,7 @@
             While e < Ds.Tables(0).Rows.Count
                 Dim fila As DataRow = Ds_enfermeria.Tables("Predefinidos").NewRow
                 fila("Predef_id") = Ds.Tables(0).Rows(e).Item("Predef_id")
+                fila("prod_id") = Ds.Tables(0).Rows(e).Item("prod_id")
                 fila("prod_codinterno") = Ds.Tables(0).Rows(e).Item("prod_codinterno")
                 fila("Predef_Cantidad") = Ds.Tables(0).Rows(e).Item("predef_cant")
                 fila("Descripcion") = Ds.Tables(0).Rows(e).Item("Predef_Desc")
@@ -100,6 +101,7 @@
 
 
     Private Sub valido_fraccionable()
+        'Dim prod_id As Integer = datagridview_Predef.CurrentRow.Cells("prod_id").Value
         If datagridview_Predef.CurrentRow.Cells("prod_id").Value Is DBNull.Value Then
 
         Else
@@ -109,7 +111,7 @@
             tipo_producto = Ds_Suc.Tables(1).Rows(0).Item("prod_tipo")
 
         End If
-      
+
 
     End Sub
     
