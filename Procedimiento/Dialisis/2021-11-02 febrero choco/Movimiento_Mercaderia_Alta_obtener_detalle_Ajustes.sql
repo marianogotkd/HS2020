@@ -1,4 +1,4 @@
-create procedure [dbo].[Movimiento_Mercaderia_Alta_obtener_detalle_Ajustes]
+alter procedure [dbo].[Movimiento_Mercaderia_Alta_obtener_detalle_Ajustes]
 ---choco 31-08-2020 este procedimiento lo utilizo para consultar en el formulario: Consulta_alta_b
 
 as

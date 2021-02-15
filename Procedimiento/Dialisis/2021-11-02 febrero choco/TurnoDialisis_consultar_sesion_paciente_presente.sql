@@ -1,4 +1,4 @@
-create procedure [dbo].[TurnoDialisis_consultar_sesion_paciente_presente]
+alter procedure [dbo].[TurnoDialisis_consultar_sesion_paciente_presente]
 @PAC_id int
 
 ---este procediento me va a recuperar todas las sesiones de un paciente en especifico ordenado por fecha ASC

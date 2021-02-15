@@ -1,4 +1,4 @@
-create procedure [dbo].[Consumo_Mercaderia_eliminar_Enfermeria]
+alter procedure [dbo].[Consumo_Mercaderia_eliminar_Enfermeria]
 @Consumo_mercaderia_id int
 as
 

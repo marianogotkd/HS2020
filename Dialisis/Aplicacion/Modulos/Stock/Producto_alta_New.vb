@@ -1226,6 +1226,7 @@ Public Class Producto_alta_New
     End Sub
 
     Dim dalote As New Datos.Lote
+    Dim DAsucursal As New Datos.Sucursal
     'se recalculo el stock ya que se cambio el parametro "contenido"
     Private Sub recalcular_stock_lotes(ByVal prod_codinterno As Integer, ByVal prod_id As Integer)
         'realizo el calculo solamente en la sucursal deposito id 1, para obtener lote_stock_real y lote_aux
@@ -1234,38 +1235,53 @@ Public Class Producto_alta_New
         Dim i As Integer = 0
         'While i < ds_suc.Tables(0).Rows.Count 'ciclo en todas las sucursales
         'Dim sucursal_id As Integer = ds_suc.Tables(0).Rows(i).Item("sucursal_id")
-        Dim sucursal_id As Integer = 1
-        'voy actualizando primero los lotes.
-        'ciclo por cada producto
-        'Dim j As Integer = 0
-        'While j < ds_prod.Tables(0).Rows.Count
 
-        'Dim prod_codinterno As Integer = ds_prod.Tables(0).Rows(j).Item("prod_codinterno")
-        'Dim prod_id As Integer = ds_prod.Tables(0).Rows(j).Item("prod_id")
 
-        'tengo q recuperar los lotes en esa sucursal.
-        Dim ds_lotes As DataSet = dalote.Producto_x_sucursal_lote_recuperartodos(prod_codinterno, sucursal_id)
-        Dim k As Integer = 0
-        While k < ds_lotes.Tables(0).Rows.Count
-            'aqui hago el calculo y actualizo lote_stock_real y lote_aux
-            Dim lote_nro As Integer = ds_lotes.Tables(0).Rows(k).Item("lote_nro")
-            Dim proveedor_id As Integer = ds_lotes.Tables(0).Rows(k).Item("Prov_id")
-            Dim cantidad As Decimal = CDec(ds_lotes.Tables(0).Rows(k).Item("lote_cantidad"))
-            Dim contenido As Decimal = CDec(txt_contenido.Text)
-            Dim lote_stock_real As Decimal = cantidad * contenido
-            Dim lote_aux As Decimal = CDec(0)
-            dalote.Producto_x_sucursal_lote_actualizar_igualar(lote_nro, prod_id, sucursal_id,
-                                                                  cantidad, proveedor_id, lote_stock_real, lote_aux)
+        'Dim sucursal_id As Integer = 1
 
-            k = k + 1
+
+        Dim ds_suc As DataSet = DAsucursal.Sucursal_obtener
+
+        While i < ds_suc.Tables(0).Rows.Count 'ciclo en todas las sucursales
+            Dim sucursal_id As Integer = ds_suc.Tables(0).Rows(i).Item("sucursal_id")
+
+            'voy actualizando primero los lotes.
+            'ciclo por cada producto
+            'Dim j As Integer = 0
+            'While j < ds_prod.Tables(0).Rows.Count
+
+            'Dim prod_codinterno As Integer = ds_prod.Tables(0).Rows(j).Item("prod_codinterno")
+            'Dim prod_id As Integer = ds_prod.Tables(0).Rows(j).Item("prod_id")
+
+            'tengo q recuperar los lotes en esa sucursal.
+            Dim ds_lotes As DataSet = dalote.Producto_x_sucursal_lote_recuperartodos(prod_codinterno, sucursal_id)
+            Dim k As Integer = 0
+            While k < ds_lotes.Tables(0).Rows.Count
+                'aqui hago el calculo y actualizo lote_stock_real y lote_aux
+                Dim lote_nro As Integer = ds_lotes.Tables(0).Rows(k).Item("lote_nro")
+                Dim proveedor_id As Integer = ds_lotes.Tables(0).Rows(k).Item("Prov_id")
+                Dim cantidad As Decimal = CDec(ds_lotes.Tables(0).Rows(k).Item("lote_cantidad"))
+                Dim contenido As Decimal = CDec(txt_contenido.Text)
+                Dim lote_stock_real As Decimal = cantidad * contenido
+                Dim lote_aux As Decimal = CDec(0)
+                dalote.Producto_x_sucursal_lote_actualizar_igualar(lote_nro, prod_id, sucursal_id,
+                                                                      cantidad, proveedor_id, lote_stock_real, lote_aux)
+
+                k = k + 1
+            End While
+            'ahora que termine con los lotes tengo que actualizar en la tabla Producto_x_sucursal el campo stock_real.
+            'para ello debo sumar los lotes.
+            recupero_y_recalculo_totales(prod_id, prod_codinterno, sucursal_id)
+            'j = j + 1
+            'End While
+            'i = i + 1
+            'End While
+
+
+
+            i = i + 1
         End While
-        'ahora que termine con los lotes tengo que actualizar en la tabla Producto_x_sucursal el campo stock_real.
-        'para ello debo sumar los lotes.
-        recupero_y_recalculo_totales(prod_id, prod_codinterno, sucursal_id)
-        'j = j + 1
-        'End While
-        'i = i + 1
-        'End While
+
     End Sub
     Dim DAprod As New Datos.Producto
     Private Sub recupero_y_recalculo_totales(ByVal prod_id As Integer, ByVal codinterno As Integer, ByVal sucursal_id As Integer)

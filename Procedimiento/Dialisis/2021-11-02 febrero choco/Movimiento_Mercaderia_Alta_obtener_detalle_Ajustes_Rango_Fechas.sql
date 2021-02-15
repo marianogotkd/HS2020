@@ -1,4 +1,4 @@
-create procedure [dbo].[Movimiento_Mercaderia_Alta_obtener_detalle_Ajustes_Rango_Fechas]
+alter procedure [dbo].[Movimiento_Mercaderia_Alta_obtener_detalle_Ajustes_Rango_Fechas]
 ---choco 31-08-2020 este procedimiento lo utilizo para consultar en el formulario: Consulta_alta_b
 @desde date,
 @hasta date

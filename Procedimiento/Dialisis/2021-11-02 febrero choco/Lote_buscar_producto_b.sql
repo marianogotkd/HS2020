@@ -1,4 +1,4 @@
-create procedure [dbo].[Lote_buscar_producto_b]
+alter procedure [dbo].[Lote_buscar_producto_b]
 @lote_id int
 
 as

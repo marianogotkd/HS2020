@@ -1,4 +1,4 @@
-create procedure [dbo].[Producto_x_sucursal_lote_recuperartodos]
+alter procedure [dbo].[Producto_x_sucursal_lote_recuperartodos]
 
 ---recupero todos los lotes cuya cantidad sea distinta de 0, ya que la mostrare en el detalle del producto.
 ---si elimino a travez del form de movimientos bajas, en realidad lo que hago es restar y poner en 0 el registro de la tabla producto_x_sucursal_lote

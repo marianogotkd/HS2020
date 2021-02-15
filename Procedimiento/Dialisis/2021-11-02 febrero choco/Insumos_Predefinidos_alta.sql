@@ -1,4 +1,4 @@
-create procedure [dbo].[Insumos_Predefinidos_alta]
+alter procedure [dbo].[Insumos_Predefinidos_alta]
 
 @predef_cant decimal(38,2),
 @Predef_Desc varchar(max),
