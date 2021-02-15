@@ -1,4 +1,4 @@
-ALTER procedure [dbo].[Sesiones_alta]
+create procedure [dbo].[Sesiones_alta]
 
 @PAC_id int, 
 @Sesiones_fecha datetime, 

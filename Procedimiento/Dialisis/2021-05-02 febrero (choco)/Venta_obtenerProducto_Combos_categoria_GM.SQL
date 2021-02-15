@@ -1,10 +1,4 @@
-USE [Dialisis]
-GO
- Object  StoredProcedure [dbo].[Venta_obtenerProducto_Combos_categoria_GM]    Script Date 02052021 160714 
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+
 ALTER procedure [dbo].[Venta_obtenerProducto_Combos_categoria_GM]
 @sucursal_id int --paso este id, y traigo todo los productos de una sucursal
 as

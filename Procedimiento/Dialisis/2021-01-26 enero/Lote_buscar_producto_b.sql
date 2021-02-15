@@ -1,4 +1,4 @@
-create procedure Lote_buscar_producto_b
+alter procedure Lote_buscar_producto_b
 @lote_id int
 
 as
