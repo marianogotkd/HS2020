@@ -628,11 +628,13 @@
 
                 Guardar_Datos_Filtro()
 
+                Dim borrado_todo_item_recuperado As String = "no"
                 '1) si se sacaron productos de la grilla de consumos que ya estaban registrados, actualizo el stock.
                 If Ds_enfermeria.Tables("Consumo_real1_aux").Rows.Count <> 0 Then
                     'controlo si alguno dice eliminado = "si"
                     Dim aa As Integer = 0
                     Dim valido_eliminados As String = "no"
+                    Dim cont_eliminados As Integer = 0
                     While aa < Ds_enfermeria.Tables("Consumo_real1_aux").Rows.Count
                         If Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("eliminado") = "si" Then
                             valido_eliminados = "si"
@@ -680,25 +682,35 @@
                             '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             'ahora me falta actualizar en producto x sucursal, tanto ProdxSuc_stock, ProdxSuc_stock_real
                             recupero_y_recalculo_totales(prod_id, codinterno)
+
+                            'ahora lo elimino de la tabla Consumo_mercaderia_detalle
+                            DAMovintoMer.Consumo_Mercaderia_Detalle_eliminar(Consumo_mercaderia_id, codinterno, CInt(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("lote_id")))
+                            cont_eliminados = cont_eliminados + 1
                         End If
                         aa = aa + 1
                     End While
                     If valido_eliminados = "si" Then
                         'tenog que borrar la tabla Consumo_Mercaderia
-                        'con esta variable Consumo_mercaderia_id voy a eliminar la fila en la tabla consumo_mercaderia
-                        DAMovintoMer.Consumo_Mercaderia_eliminar_Enfermeria(Consumo_mercaderia_id)
+                        If cont_eliminados = Ds_enfermeria.Tables("Consumo_real1_aux").Rows.Count Then
+                            'con esta variable Consumo_mercaderia_id voy a eliminar la fila en la tabla consumo_mercaderia
+                            DAMovintoMer.Consumo_Mercaderia_eliminar_Enfermeria(Consumo_mercaderia_id)
+                            borrado_todo_item_recuperado = "si"
+                        End If
                     End If
                 End If
 
                 'aqui voy a guardar si es necesario lo que agregué nuevo en la grilla de insumos.
                 '////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 If Ds_enfermeria.Tables("Consumo_real").Rows.Count <> 0 Then 'significa que hay altas nuevas para registrar
-
+                    Dim MovMer_id As Integer
                     Dim lote_id As Integer
-                    Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria("Insumo consumido en Enfermeria", fecha_registrar, Inicio.USU_id, 3, modificar_sesiones_id)
+                    If borrado_todo_item_recuperado = "si" Then
+                        Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria("Insumo consumido en Enfermeria", fecha_registrar, Inicio.USU_id, 3, modificar_sesiones_id)
+                        MovMer_id = ds_movid.Tables(0).Rows(0).Item(0)
+                    Else
+                        MovMer_id = Consumo_mercaderia_id
+                    End If
                     ''''''''''''''''''''''''''''''''''''''''''''''''
-
-                    Dim MovMer_id As Integer = ds_movid.Tables(0).Rows(0).Item(0)
                     Dim i As Integer = 0
                     'While i < Mov_DS.Tables("Mov_Enf").Rows.Count
                     While i < Ds_enfermeria.Tables("Consumo_real").Rows.Count ' esta ciclando en la grilla oculta que siempre tiene altas.
@@ -1153,11 +1165,14 @@
 
                 Guardar_Datos_Filtro()
 
+                Dim borrado_todo_item_recuperado As String = "no"
+
                 '1) si se sacaron productos de la grilla de consumos que ya estaban registrados, actualizo el stock.
                 If Ds_enfermeria.Tables("Consumo_real1_aux").Rows.Count <> 0 Then
                     'controlo si alguno dice eliminado = "si"
                     Dim aa As Integer = 0
                     Dim valido_eliminados As String = "no"
+                    Dim cont_eliminados As Integer = 0
                     While aa < Ds_enfermeria.Tables("Consumo_real1_aux").Rows.Count
                         If Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("eliminado") = "si" Then
                             valido_eliminados = "si"
@@ -1205,13 +1220,22 @@
                             '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             'ahora me falta actualizar en producto x sucursal, tanto ProdxSuc_stock, ProdxSuc_stock_real
                             recupero_y_recalculo_totales(prod_id, codinterno)
+
+                            'ahora lo elimino de la tabla Consumo_mercaderia_detalle
+                            DAMovintoMer.Consumo_Mercaderia_Detalle_eliminar(Consumo_mercaderia_id, codinterno, CInt(Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("lote_id")))
+                            cont_eliminados = cont_eliminados + 1
+
                         End If
                         aa = aa + 1
                     End While
                     If valido_eliminados = "si" Then
                         'tenog que borrar la tabla Consumo_Mercaderia
-                        'con esta variable Consumo_mercaderia_id voy a eliminar la fila en la tabla consumo_mercaderia
-                        DAMovintoMer.Consumo_Mercaderia_eliminar_Enfermeria(Consumo_mercaderia_id)
+                        If cont_eliminados = Ds_enfermeria.Tables("Consumo_real1_aux").Rows.Count Then
+                            'con esta variable Consumo_mercaderia_id voy a eliminar la fila en la tabla consumo_mercaderia
+                            DAMovintoMer.Consumo_Mercaderia_eliminar_Enfermeria(Consumo_mercaderia_id)
+                            borrado_todo_item_recuperado = "si"
+                        End If
+
                     End If
                 End If
 
@@ -1219,11 +1243,17 @@
                 '////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 If Ds_enfermeria.Tables("Consumo_real").Rows.Count <> 0 Then 'significa que hay altas nuevas para registrar
 
+                    Dim MovMer_id As Integer
                     Dim lote_id As Integer
-                    Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria("Insumo consumido en Enfermeria", fecha_registrar, Inicio.USU_id, 3, modificar_sesiones_id)
+                    If borrado_todo_item_recuperado = "si" Then
+                        Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria("Insumo consumido en Enfermeria", fecha_registrar, Inicio.USU_id, 3, modificar_sesiones_id)
+                        MovMer_id = ds_movid.Tables(0).Rows(0).Item(0)
+                    Else
+                        MovMer_id = Consumo_mercaderia_id
+                    End If
+
                     ''''''''''''''''''''''''''''''''''''''''''''''''
 
-                    Dim MovMer_id As Integer = ds_movid.Tables(0).Rows(0).Item(0)
                     Dim i As Integer = 0
                     'While i < Mov_DS.Tables("Mov_Enf").Rows.Count
                     While i < Ds_enfermeria.Tables("Consumo_real").Rows.Count ' esta ciclando en la grilla oculta que siempre tiene altas.

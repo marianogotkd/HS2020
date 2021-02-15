@@ -45,6 +45,26 @@ Public Class Gestion_Mercaderia
         Return ds_JE
     End Function
 
+    Public Function Consumo_Mercaderia_Detalle_eliminar(ByVal Consumo_mercaderia_id As Integer, ByVal prod_codinterno As Integer, ByVal lote_id As Integer) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Consumo_Mercaderia_Detalle_eliminar", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Consumo_mercaderia_id", Consumo_mercaderia_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prod_codinterno", prod_codinterno))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@lote_id", lote_id))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Producto")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
 
     Public Function Consumo_Mercaderia_alta(ByVal concepto As String, ByVal fechahora As Date, ByVal USU_id As Integer,
                                                ByVal sucursal_id_Origen As Integer) As DataSet
