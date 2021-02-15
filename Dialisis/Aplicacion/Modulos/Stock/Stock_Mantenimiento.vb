@@ -98,11 +98,11 @@
                 'tengo q recuperar los lotes en esa sucursal.
                 Dim ds_lotes As DataSet = dalote.Producto_x_sucursal_lote_recuperartodos(prod_codinterno, sucursal_id)
                 Dim k As Integer = 0
-                While k < ds_lotes.Tables(0).Rows.Count
+                While k < ds_lotes.Tables(2).Rows.Count
                     'aqui hago el calculo y actualizo lote_stock_real y lote_aux
-                    Dim lote_nro As Integer = ds_lotes.Tables(0).Rows(k).Item("lote_nro")
-                    Dim proveedor_id As Integer = ds_lotes.Tables(0).Rows(k).Item("Prov_id")
-                    Dim cantidad As Decimal = CDec(ds_lotes.Tables(0).Rows(k).Item("lote_cantidad"))
+                    Dim lote_nro As Integer = ds_lotes.Tables(2).Rows(k).Item("lote_nro")
+                    Dim proveedor_id As Integer = ds_lotes.Tables(2).Rows(k).Item("Prov_id")
+                    Dim cantidad As Decimal = CDec(ds_lotes.Tables(2).Rows(k).Item("lote_cantidad"))
                     Dim contenido As Decimal = CDec(1)
                     Dim lote_stock_real As Decimal = cantidad * contenido
                     Dim lote_aux As Decimal = CDec(0)
