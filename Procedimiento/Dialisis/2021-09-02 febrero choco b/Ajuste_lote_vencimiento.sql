@@ -1,11 +1,4 @@
-USE [Dialisis]
-GO
- Object  StoredProcedure [dbo].[Ajuste_lote_vencimiento]    Script Date 02092021 233818 
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER procedure [dbo].[Ajuste_lote_vencimiento]
+CREATE procedure [dbo].[Ajuste_lote_vencimiento]
 @lote_id int,
 @lote_vence varchar(2),
 @lote_fechafab datetime,
