@@ -6,7 +6,7 @@ Public Class Producto
 
     Public Function Producto_Alta_New(ByVal prod_descripcion As String, ByVal prod_descrilarga As String, ByVal prod_precio_vta As Decimal, ByVal prod_stock As Integer, ByVal prod_ptorepo As String, ByVal prod_codinterno As String,
                                   ByVal prod_codbarra As String, ByVal idcat As Integer, ByVal nrocat As Integer, ByVal idmarca As Integer, ByVal prod_unimedida As String, ByVal producto_foto() As Byte, ByVal prod_precio_vta_May As Decimal, ByVal prod_tipo As String, ByVal prod_lote As String,
-                                  ByVal prod_contenido As Decimal) As DataSet
+                                  ByVal prod_contenido As Decimal, ByVal prod_EsFiltro As String) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -31,7 +31,8 @@ Public Class Producto
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_tipo", prod_tipo))
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_lote", prod_lote))
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_contenido", prod_contenido))
-
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@prod_contenido", prod_contenido))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prod_EsFiltro", prod_EsFiltro))
 
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)
@@ -237,7 +238,7 @@ Public Class Producto
                                   ByVal prod_ptorepo As Integer,
                                 ByVal prod_tipo As String,
                                 ByVal prod_lote As String,
-                                ByVal prod_contenido As Decimal) As DataSet
+                                ByVal prod_contenido As Decimal, ByVal prod_EsFiltro As String) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -261,7 +262,7 @@ Public Class Producto
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_tipo", prod_tipo))
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_lote", prod_lote))
         comando.Parameters.Add(New OleDb.OleDbParameter("@prod_contenido", prod_contenido))
-        'comando.Parameters.Add(New OleDb.OleDbParameter("@producto_foto", producto_foto))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@prod_EsFiltro", prod_EsFiltro))
 
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)
@@ -530,10 +531,6 @@ Public Class Producto
     End Function
 
 
-
-
-
-
     Public Sub Producto_x_sucursal_Actualizar_Stock(ByVal prod_id As Integer, ByVal suc_id As Integer, ByVal Cant As Decimal, ByVal STOCK_REAL_NUEVO As Decimal)
         Try
             dbconn.Open()
@@ -610,6 +607,41 @@ Public Class Producto
     End Function
 
 #End Region
+
+
+    Public Function Producto_filtro_obtenertodos(ByVal sucursal_id As Integer) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+        Dim comando As New OleDbCommand("Producto_filtro_obtenertodos", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Producto")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
+    Public Function Producto_x_sucursal_obtener_info_ProdxSuc_ID(ByVal ProdxSuc_ID As Integer) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+        Dim comando As New OleDbCommand("Producto_x_sucursal_obtener_info_ProdxSuc_ID", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add(New OleDb.OleDbParameter("@ProdxSuc_ID", ProdxSuc_ID))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Producto")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
 
 
 End Class

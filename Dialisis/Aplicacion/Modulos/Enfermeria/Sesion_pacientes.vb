@@ -124,8 +124,9 @@
 
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        Turno_seleccionar.Close() 'el formulario de la carpeta enfermeria
-        Turno_seleccionar.Show() 'el formulario de la carpeta enfermeria
+        Turno_seleccionar.Show() 'lo muestro, x que estaba oculto
+        'Turno_seleccionar.Close() 'el formulario de la carpeta enfermeria
+        'Turno_seleccionar.Show() 'el formulario de la carpeta enfermeria
         Me.Close()
     End Sub
 

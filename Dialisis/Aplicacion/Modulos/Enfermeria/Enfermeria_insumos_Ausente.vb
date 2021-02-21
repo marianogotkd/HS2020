@@ -12,7 +12,26 @@
     Public tipo_operacion As String = "alta"
     Dim DAsesiones As New Datos.Sesiones
     Public fecha_registrar
+
+    Private Sub combo_filtros_recuperar()
+        'por ahora mando sucursal 3 q es dialisis
+        Dim ds_prod As DataSet = DAprod.Producto_filtro_obtenertodos(3)
+
+        'ahora cargo el combo
+        If ds_prod.Tables(0).Rows.Count <> 0 Then
+            'Carga la categoria
+            cb_filtro.DataSource = ds_prod.Tables(0)
+            'cb_categoria.DataSource = ds_categoria.Tables(0)
+            cb_filtro.DisplayMember = "prod_descripcion"
+            cb_filtro.ValueMember = "ProdxSuc_ID"
+        End If
+
+
+
+    End Sub
     Private Sub Enfermeria_insumos_Ausente_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        combo_filtros_recuperar()
+
         'recupero info del filtro
         Obtener_Filtro()
 
@@ -299,10 +318,12 @@
         If filtro_guardado = "no" Then
             Dim result2 As Integer = MessageBox.Show("¿Desea contar un rehuso del filtro?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If result2 = DialogResult.Yes Then
-                If tb_Filtro.Text <> "" Then
+                If cb_filtro.Items.Count <> 0 And tb_Filtro.Text <> "" Then
                     ''''' filtros y rehusos''''''''''''''24/9/20 MAriano'''''
                     If Filtro_var = "Nuevo" Then
-                        DaEnfermeria.Filtro_Nuevo(PAC_id, fecha_registrar, tb_CantRe.Text, sesiones_id, tb_Filtro.Text)
+                        Dim ProdxSuc_ID As Integer = cb_filtro.SelectedValue
+
+                        DaEnfermeria.Filtro_Nuevo(PAC_id, fecha_registrar, tb_CantRe.Text, sesiones_id, cb_filtro.Text, ProdxSuc_ID)
                     End If
                     If Filtro_var = "Update" Then
                         DaEnfermeria.Filtro_modificar_Cant(FiltroDS.Tables(0).Rows(0).Item("Filtro_id"), tb_CantRe.Text)
@@ -428,6 +449,14 @@
         tb_Filtro.Enabled = True
         tb_Filtro.Focus()
         tb_Filtro.SelectAll()
+
+
+        'choco 20-02-2021 filtro en combo
+        If cb_filtro.Items.Count <> 0 Then
+            cb_filtro.Enabled = True
+        Else
+            MessageBox.Show("No hay filtros en stock, consulte disponibilidad.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
     End Sub
 
     Private Sub btn_eliminar_seleccion_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_eliminar_seleccion.Click

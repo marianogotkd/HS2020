@@ -83,6 +83,7 @@ Partial Class US_administrador
         Me.MenuItem_Stock_Categoria = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuItem_Stock_consumir = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuItem_Stock_Consulta = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsultaDeAjustesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label_stock = New System.Windows.Forms.ToolStripLabel()
         Me.Separator_stock = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolS_Configuracion = New System.Windows.Forms.ToolStripDropDownButton()
@@ -164,7 +165,6 @@ Partial Class US_administrador
         Me.IngresDeMercaderiaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MovimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BajaDeInsumosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ConsultaDeAjustesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -176,17 +176,17 @@ Partial Class US_administrador
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Separator_Arriba, Me.Tool_Paciente, Me.Label_paciente, Me.Separator_Paciente, Me.Tool_Enfermeria, Me.Label_Enfermeria, Me.Separator_Enfermeria, Me.Tool_Medico, Me.Label_Medicos, Me.Separator_Medico, Me.Tool_ObraSocial, Me.Label_ObraSocial, Me.Separator_ObraSocial, Me.Tool_Deposito, Me.Label_deposito, Me.Separator_deposito, Me.Tool_stock, Me.Label_stock, Me.Separator_stock, Me.ToolS_Configuracion, Me.Label_Configuraciones, Me.Separator_Conf, Me.ToolStripDropDownButton6, Me.ToolStripDropDownButton8, Me.ToolStripDropDownButton1, Me.ToolStripDropDownButton7, Me.Separator_Abajo})
         Me.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow
-        Me.ToolStrip1.Location = New System.Drawing.Point(7, 71)
+        Me.ToolStrip1.Location = New System.Drawing.Point(7, 65)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ToolStrip1.Size = New System.Drawing.Size(95, 927)
+        Me.ToolStrip1.Size = New System.Drawing.Size(95, 910)
         Me.ToolStrip1.TabIndex = 54
         Me.ToolStrip1.Text = "ToolStrip1"
         '
         'Separator_Arriba
         '
         Me.Separator_Arriba.Name = "Separator_Arriba"
-        Me.Separator_Arriba.Size = New System.Drawing.Size(93, 6)
+        Me.Separator_Arriba.Size = New System.Drawing.Size(22, 6)
         '
         'Tool_Paciente
         '
@@ -607,6 +607,12 @@ Partial Class US_administrador
         Me.MenuItem_Stock_Consulta.Text = "Consulta de Consumos"
         Me.MenuItem_Stock_Consulta.Visible = False
         '
+        'ConsultaDeAjustesToolStripMenuItem
+        '
+        Me.ConsultaDeAjustesToolStripMenuItem.Name = "ConsultaDeAjustesToolStripMenuItem"
+        Me.ConsultaDeAjustesToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
+        Me.ConsultaDeAjustesToolStripMenuItem.Text = "Consulta de Ajustes"
+        '
         'Label_stock
         '
         Me.Label_stock.Name = "Label_stock"
@@ -789,7 +795,7 @@ Partial Class US_administrador
         'Separator_Conf
         '
         Me.Separator_Conf.Name = "Separator_Conf"
-        Me.Separator_Conf.Size = New System.Drawing.Size(93, 6)
+        Me.Separator_Conf.Size = New System.Drawing.Size(79, 6)
         Me.Separator_Conf.Visible = False
         '
         'ToolStripDropDownButton6
@@ -904,65 +910,65 @@ Partial Class US_administrador
         'TurnoGestionToolStripMenuItem
         '
         Me.TurnoGestionToolStripMenuItem.Name = "TurnoGestionToolStripMenuItem"
-        Me.TurnoGestionToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
+        Me.TurnoGestionToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.TurnoGestionToolStripMenuItem.Text = "Turno Gestion"
         '
         'TurnoComunToolStripMenuItem
         '
         Me.TurnoComunToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnoComunNuevoToolStripMenuItem, Me.TurnoComunEliminarToolStripMenuItem})
         Me.TurnoComunToolStripMenuItem.Name = "TurnoComunToolStripMenuItem"
-        Me.TurnoComunToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
+        Me.TurnoComunToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.TurnoComunToolStripMenuItem.Text = "Turno Comun"
         '
         'TurnoComunNuevoToolStripMenuItem
         '
         Me.TurnoComunNuevoToolStripMenuItem.Name = "TurnoComunNuevoToolStripMenuItem"
-        Me.TurnoComunNuevoToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
+        Me.TurnoComunNuevoToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
         Me.TurnoComunNuevoToolStripMenuItem.Text = "Turno Comun Nuevo"
         '
         'TurnoComunEliminarToolStripMenuItem
         '
         Me.TurnoComunEliminarToolStripMenuItem.Name = "TurnoComunEliminarToolStripMenuItem"
-        Me.TurnoComunEliminarToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
+        Me.TurnoComunEliminarToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
         Me.TurnoComunEliminarToolStripMenuItem.Text = "Turno Comun Eliminar"
         '
         'TurnoFijoToolStripMenuItem
         '
         Me.TurnoFijoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnoFijoNuevoToolStripMenuItem, Me.TurnoFijoActualizarToolStripMenuItem})
         Me.TurnoFijoToolStripMenuItem.Name = "TurnoFijoToolStripMenuItem"
-        Me.TurnoFijoToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
+        Me.TurnoFijoToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.TurnoFijoToolStripMenuItem.Text = "Turno Fijo"
         '
         'TurnoFijoNuevoToolStripMenuItem
         '
         Me.TurnoFijoNuevoToolStripMenuItem.Name = "TurnoFijoNuevoToolStripMenuItem"
-        Me.TurnoFijoNuevoToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.TurnoFijoNuevoToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
         Me.TurnoFijoNuevoToolStripMenuItem.Text = "Turno Fijo Nuevo"
         '
         'TurnoFijoActualizarToolStripMenuItem
         '
         Me.TurnoFijoActualizarToolStripMenuItem.Name = "TurnoFijoActualizarToolStripMenuItem"
-        Me.TurnoFijoActualizarToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.TurnoFijoActualizarToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
         Me.TurnoFijoActualizarToolStripMenuItem.Text = "Turno Fijo Actualizar"
         '
         'ConsultaToolStripMenuItem
         '
         Me.ConsultaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnoConsultaToolStripMenuItem})
         Me.ConsultaToolStripMenuItem.Name = "ConsultaToolStripMenuItem"
-        Me.ConsultaToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
+        Me.ConsultaToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.ConsultaToolStripMenuItem.Text = "Consulta"
         '
         'TurnoConsultaToolStripMenuItem
         '
         Me.TurnoConsultaToolStripMenuItem.Name = "TurnoConsultaToolStripMenuItem"
-        Me.TurnoConsultaToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.TurnoConsultaToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
         Me.TurnoConsultaToolStripMenuItem.Text = "Turno Consulta"
         '
         'ConfigurarToolStripMenuItem
         '
         Me.ConfigurarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TurnoConfigurarToolStripMenuItem, Me.MailConfigurarToolStripMenuItem, Me.EmailDestinoConfigurarToolStripMenuItem, Me.SonidoAlarmaToolStripMenuItem})
         Me.ConfigurarToolStripMenuItem.Name = "ConfigurarToolStripMenuItem"
-        Me.ConfigurarToolStripMenuItem.Size = New System.Drawing.Size(149, 22)
+        Me.ConfigurarToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.ConfigurarToolStripMenuItem.Text = "Configurar"
         '
         'TurnoConfigurarToolStripMenuItem
@@ -1027,9 +1033,13 @@ Partial Class US_administrador
         '
         Me.Separator_Abajo.Name = "Separator_Abajo"
         Me.Separator_Abajo.Size = New System.Drawing.Size(93, 6)
+        Me.Separator_Abajo.Visible = False
         '
         'PN_Entrada
         '
+        Me.PN_Entrada.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PN_Entrada.BackColor = System.Drawing.Color.Transparent
         Me.PN_Entrada.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.PN_Entrada.Location = New System.Drawing.Point(119, 71)
@@ -1088,6 +1098,7 @@ Partial Class US_administrador
         '
         'BO_USU_cerrar
         '
+        Me.BO_USU_cerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BO_USU_cerrar.Image = CType(resources.GetObject("BO_USU_cerrar.Image"), System.Drawing.Image)
         Me.BO_USU_cerrar.Location = New System.Drawing.Point(1167, 12)
         Me.BO_USU_cerrar.Margin = New System.Windows.Forms.Padding(4)
@@ -1102,6 +1113,8 @@ Partial Class US_administrador
         '
         'GroupBox2
         '
+        Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label4)
@@ -1114,11 +1127,11 @@ Partial Class US_administrador
         Me.GroupBox2.Controls.Add(Me.Label_Suc)
         Me.GroupBox2.Controls.Add(Me.BO_USU_cerrar)
         Me.GroupBox2.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.GroupBox2.Location = New System.Drawing.Point(7, 6)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(1254, 55)
+        Me.GroupBox2.Size = New System.Drawing.Size(1274, 55)
         Me.GroupBox2.TabIndex = 51
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Sesión de Usuario"
@@ -1160,6 +1173,7 @@ Partial Class US_administrador
         '
         'Button2
         '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
         Me.Button2.Location = New System.Drawing.Point(954, 12)
         Me.Button2.Margin = New System.Windows.Forms.Padding(4)
@@ -1173,6 +1187,7 @@ Partial Class US_administrador
         '
         'BO_USU_contrasena
         '
+        Me.BO_USU_contrasena.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BO_USU_contrasena.Image = CType(resources.GetObject("BO_USU_contrasena.Image"), System.Drawing.Image)
         Me.BO_USU_contrasena.Location = New System.Drawing.Point(994, 12)
         Me.BO_USU_contrasena.Margin = New System.Windows.Forms.Padding(4)
@@ -1185,6 +1200,7 @@ Partial Class US_administrador
         '
         'BO_USU_sesion
         '
+        Me.BO_USU_sesion.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BO_USU_sesion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
         Me.BO_USU_sesion.Image = CType(resources.GetObject("BO_USU_sesion.Image"), System.Drawing.Image)
         Me.BO_USU_sesion.Location = New System.Drawing.Point(1034, 12)
@@ -1277,12 +1293,6 @@ Partial Class US_administrador
         Me.BajaDeInsumosToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.BajaDeInsumosToolStripMenuItem.Text = "Baja de Insumos"
         '
-        'ConsultaDeAjustesToolStripMenuItem
-        '
-        Me.ConsultaDeAjustesToolStripMenuItem.Name = "ConsultaDeAjustesToolStripMenuItem"
-        Me.ConsultaDeAjustesToolStripMenuItem.Size = New System.Drawing.Size(197, 22)
-        Me.ConsultaDeAjustesToolStripMenuItem.Text = "Consulta de Ajustes"
-        '
         'US_administrador
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -1300,8 +1310,6 @@ Partial Class US_administrador
         Me.Controls.Add(Me.GroupBox2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(1280, 720)
         Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "US_administrador"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show

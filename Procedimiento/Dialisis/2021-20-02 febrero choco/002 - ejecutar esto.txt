@@ -1,0 +1,2 @@
+---va a actualizar todos los productos existentes, va a poner q NO SON FILTROS
+update Producto set prod_EsFiltro = 'no'

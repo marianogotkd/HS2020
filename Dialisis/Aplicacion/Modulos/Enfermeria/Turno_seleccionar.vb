@@ -52,7 +52,7 @@
                 Sesion_pacientes.tb_horario.Text = datagridview1.CurrentRow.Cells("HorarioDataGridViewTextBoxColumn").Value
                 Sesion_pacientes.lb_totalinscriptos.Text = "Total de inscriptos: " + CStr(datagridview1.CurrentRow.Cells("CantidadinscriptosDataGridViewTextBoxColumn").Value)
                 Sesion_pacientes.Show()
-
+                Me.Hide()
             Else
                 MessageBox.Show("Error, el turno no posee incriptos.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             End If

@@ -23,10 +23,10 @@ Partial Class Nueva_Dialisis
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Nueva_Dialisis))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tb_numHemo = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -110,6 +110,7 @@ Partial Class Nueva_Dialisis
         Me.tb_Obs = New System.Windows.Forms.TextBox()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cb_filtro = New System.Windows.Forms.ComboBox()
         Me.btn_cambio = New System.Windows.Forms.Button()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.tb_CantRe = New System.Windows.Forms.TextBox()
@@ -615,14 +616,14 @@ Partial Class Nueva_Dialisis
         Me.DataGridView2.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView2.MultiSelect = False
         Me.DataGridView2.Name = "DataGridView2"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView2.RowHeadersVisible = False
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView2.Size = New System.Drawing.Size(350, 156)
@@ -748,18 +749,18 @@ Partial Class Nueva_Dialisis
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.RowHeadersVisible = False
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightGray
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightGray
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(1193, 156)
         Me.DataGridView1.StandardTab = True
@@ -917,11 +918,12 @@ Partial Class Nueva_Dialisis
         '
         'tb_Filtro
         '
-        Me.tb_Filtro.Location = New System.Drawing.Point(41, 42)
+        Me.tb_Filtro.Location = New System.Drawing.Point(228, 68)
         Me.tb_Filtro.Multiline = True
         Me.tb_Filtro.Name = "tb_Filtro"
         Me.tb_Filtro.Size = New System.Drawing.Size(110, 20)
         Me.tb_Filtro.TabIndex = 331
+        Me.tb_Filtro.Visible = False
         '
         'Label19
         '
@@ -971,6 +973,7 @@ Partial Class Nueva_Dialisis
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.cb_filtro)
         Me.GroupBox2.Controls.Add(Me.btn_cambio)
         Me.GroupBox2.Controls.Add(Me.Label24)
         Me.GroupBox2.Controls.Add(Me.tb_CantRe)
@@ -984,8 +987,22 @@ Partial Class Nueva_Dialisis
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Filtro"
         '
+        'cb_filtro
+        '
+        Me.cb_filtro.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cb_filtro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cb_filtro.Enabled = False
+        Me.cb_filtro.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cb_filtro.FormattingEnabled = True
+        Me.cb_filtro.Location = New System.Drawing.Point(41, 41)
+        Me.cb_filtro.Margin = New System.Windows.Forms.Padding(4)
+        Me.cb_filtro.Name = "cb_filtro"
+        Me.cb_filtro.Size = New System.Drawing.Size(134, 21)
+        Me.cb_filtro.TabIndex = 357
+        '
         'btn_cambio
         '
+        Me.btn_cambio.Enabled = False
         Me.btn_cambio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_cambio.Location = New System.Drawing.Point(344, 40)
         Me.btn_cambio.Name = "btn_cambio"
@@ -1314,4 +1331,5 @@ Partial Class Nueva_Dialisis
     Friend WithEvents EnBD As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents lb_estado As System.Windows.Forms.Label
     Friend WithEvents btn_finalizar As System.Windows.Forms.Button
+    Friend WithEvents cb_filtro As System.Windows.Forms.ComboBox
 End Class

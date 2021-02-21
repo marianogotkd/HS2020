@@ -31,6 +31,10 @@ Public Class Producto_alta_New
 
             'Bo_guardar.Enabled = False
             Clipboard.SetDataObject(Me.PictureBox1.Image)
+
+
+            'no puedo cambiar el producto de filtro a regular
+            GroupBox6.Enabled = False
         Else
             'guardo en portapapeles la imagen por defecto para los productos
             Clipboard.SetDataObject(Me.PictureBox1.Image)
@@ -45,6 +49,10 @@ Public Class Producto_alta_New
             cargar_combos()
 
             'Bo_guardar.Enabled = False choco:30-06-2020 aqui no lo uso ya que el proveedor va a ser siempre el de "DEFECTO"
+
+            RB_filtro_no.Checked = True
+
+            GroupBox6.Enabled = True 'habilito groupbox de filtro
         End If
 
     End Sub
@@ -117,6 +125,13 @@ Public Class Producto_alta_New
         Dim ms As New MemoryStream(arrImg)
         Dim img As Image = Image.FromStream(ms)
         PictureBox1.Image = img
+
+        '/////////////////////recupero si es filtro o no//////////////////////
+        If ds_prod.Tables(0).Rows(0).Item("prod_EsFiltro") = "no" Then
+            RB_filtro_no.Checked = True
+        Else
+            RB_filtro_si.Checked = True
+        End If
 
 
     End Sub
@@ -346,6 +361,10 @@ Public Class Producto_alta_New
         '  Me.TabControl1.SelectedTab = TabPage1
 
         CheckBox_lote.Enabled = True
+
+
+        RB_filtro_no.Checked = True
+        GroupBox6.Enabled = True
     End Sub
 
     Private Sub check_rubro_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles check_rubro.CheckedChanged
@@ -688,7 +707,15 @@ Public Class Producto_alta_New
                     txt_contenido.Text = 1
                 End If
 
-                Dim ds_prodid As DataSet = DAproducto.Producto_Alta_New(tx_descripcion.Text, tx_descrilarga.Text, CDec(0), 0, CInt(tx_ptorepo.Text), tx_codinterno.Text, tx_codbarra.Text, idcat, nrocat, idmarca, Combo_unidmedida.Text, producto_foto, CDec(0), Combo_tipo.SelectedItem, lote, CDec(txt_contenido.Text))
+                '///////////////////////////////es filtro o producto normal////////////////////////////
+                Dim filtro As String = ""
+                If RB_filtro_no.Checked = True Then
+                    filtro = "no"
+                Else
+                    filtro = "si"
+                End If
+
+                Dim ds_prodid As DataSet = DAproducto.Producto_Alta_New(tx_descripcion.Text, tx_descrilarga.Text, CDec(0), 0, CInt(tx_ptorepo.Text), tx_codinterno.Text, tx_codbarra.Text, idcat, nrocat, idmarca, Combo_unidmedida.Text, producto_foto, CDec(0), Combo_tipo.SelectedItem, lote, CDec(txt_contenido.Text), filtro)
                 '/////////////////////////////////////////////////////////////////////////////////
 
                 Dim prodid As Integer = ds_prodid.Tables(0).Rows(0).Item(0)
@@ -796,7 +823,15 @@ Public Class Producto_alta_New
                     txt_contenido.Text = 1
                 End If
 
-                Dim ds_prodid As DataSet = DAproducto.Producto_modificar(tx_descripcion.Text, tx_descrilarga.Text, Tb_PrecMin.Text, tx_codinterno.Text, tx_codbarra.Text, idcat, nrocat, idmarca, Combo_unidmedida.Text, producto_foto, tb_PrecMay.Text, CInt(tx_ptorepo.Text), Combo_tipo.SelectedItem, lote, CDec(txt_contenido.Text))
+                '///////////////////////////////es filtro o producto normal////////////////////////////
+                Dim filtro As String = ""
+                If RB_filtro_no.Checked = True Then
+                    filtro = "no"
+                Else
+                    filtro = "si"
+                End If
+
+                Dim ds_prodid As DataSet = DAproducto.Producto_modificar(tx_descripcion.Text, tx_descrilarga.Text, Tb_PrecMin.Text, tx_codinterno.Text, tx_codbarra.Text, idcat, nrocat, idmarca, Combo_unidmedida.Text, producto_foto, tb_PrecMay.Text, CInt(tx_ptorepo.Text), Combo_tipo.SelectedItem, lote, CDec(txt_contenido.Text), filtro)
                 Dim prodid As Integer = ds_prodid.Tables(0).Rows(0).Item(0)
 
                 'primero borro los datos de la tabla proveedorproducto,

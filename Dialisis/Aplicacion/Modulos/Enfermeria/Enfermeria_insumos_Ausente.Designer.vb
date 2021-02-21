@@ -23,29 +23,13 @@ Partial Class Enfermeria_insumos_Ausente
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Enfermeria_insumos_Ausente))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btn_cancelar = New System.Windows.Forms.Button()
         Me.btn_guardar = New System.Windows.Forms.Button()
         Me.GroupBox_insumos = New System.Windows.Forms.GroupBox()
-        Me.btn_Buscar = New System.Windows.Forms.Button()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.btn_limpiar = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.MovEnfBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Mov_DS = New Aplicacion.Mov_DS()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.btn_cambio = New System.Windows.Forms.Button()
-        Me.Label24 = New System.Windows.Forms.Label()
-        Me.tb_CantRe = New System.Windows.Forms.TextBox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.tb_Filtro = New System.Windows.Forms.TextBox()
-        Me.lbl_err2 = New System.Windows.Forms.Label()
-        Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.Ds_enfermeria = New Aplicacion.Ds_enfermeria()
-        Me.ConsumorealBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CodprodDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DescripcionDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DesdeDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -55,6 +39,13 @@ Partial Class Enfermeria_insumos_Ausente
         Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProvidDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.ConsumorealBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Ds_enfermeria = New Aplicacion.Ds_enfermeria()
+        Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
+        Me.btn_Buscar = New System.Windows.Forms.Button()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.btn_limpiar = New System.Windows.Forms.Button()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.NDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CodprodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DescripcionDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -71,14 +62,24 @@ Partial Class Enfermeria_insumos_Ausente
         Me.ProvidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.EnBD = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MovEnfBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Mov_DS = New Aplicacion.Mov_DS()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btn_cambio = New System.Windows.Forms.Button()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.tb_CantRe = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.tb_Filtro = New System.Windows.Forms.TextBox()
+        Me.lbl_err2 = New System.Windows.Forms.Label()
+        Me.cb_filtro = New System.Windows.Forms.ComboBox()
         Me.GroupBox_insumos.SuspendLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ConsumorealBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Ds_enfermeria, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MovEnfBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Mov_DS, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Ds_enfermeria, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ConsumorealBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btn_cancelar
@@ -124,6 +125,114 @@ Partial Class Enfermeria_insumos_Ausente
         Me.GroupBox_insumos.Size = New System.Drawing.Size(902, 269)
         Me.GroupBox_insumos.TabIndex = 337
         Me.GroupBox_insumos.TabStop = False
+        '
+        'DataGridView2
+        '
+        Me.DataGridView2.AllowUserToAddRows = False
+        Me.DataGridView2.AllowUserToDeleteRows = False
+        Me.DataGridView2.AllowUserToResizeRows = False
+        Me.DataGridView2.AutoGenerateColumns = False
+        Me.DataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridView2.BackgroundColor = System.Drawing.Color.White
+        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodprodDataGridViewTextBoxColumn1, Me.DescripcionDataGridViewTextBoxColumn1, Me.DesdeDataGridViewTextBoxColumn1, Me.HaciaDataGridViewTextBoxColumn1, Me.CantidadrealDataGridViewTextBoxColumn, Me.LoteidDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn13, Me.ProvidDataGridViewTextBoxColumn1, Me.DataGridViewCheckBoxColumn1})
+        Me.DataGridView2.DataSource = Me.ConsumorealBindingSource
+        Me.DataGridView2.Location = New System.Drawing.Point(418, 36)
+        Me.DataGridView2.Margin = New System.Windows.Forms.Padding(4)
+        Me.DataGridView2.MultiSelect = False
+        Me.DataGridView2.Name = "DataGridView2"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridView2.RowHeadersVisible = False
+        Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridView2.Size = New System.Drawing.Size(404, 156)
+        Me.DataGridView2.StandardTab = True
+        Me.DataGridView2.TabIndex = 339
+        Me.DataGridView2.Visible = False
+        '
+        'CodprodDataGridViewTextBoxColumn1
+        '
+        Me.CodprodDataGridViewTextBoxColumn1.DataPropertyName = "Cod_prod"
+        Me.CodprodDataGridViewTextBoxColumn1.HeaderText = "Cod_prod"
+        Me.CodprodDataGridViewTextBoxColumn1.Name = "CodprodDataGridViewTextBoxColumn1"
+        '
+        'DescripcionDataGridViewTextBoxColumn1
+        '
+        Me.DescripcionDataGridViewTextBoxColumn1.DataPropertyName = "Descripcion"
+        Me.DescripcionDataGridViewTextBoxColumn1.HeaderText = "Descripcion"
+        Me.DescripcionDataGridViewTextBoxColumn1.Name = "DescripcionDataGridViewTextBoxColumn1"
+        '
+        'DesdeDataGridViewTextBoxColumn1
+        '
+        Me.DesdeDataGridViewTextBoxColumn1.DataPropertyName = "Desde"
+        Me.DesdeDataGridViewTextBoxColumn1.HeaderText = "Desde"
+        Me.DesdeDataGridViewTextBoxColumn1.Name = "DesdeDataGridViewTextBoxColumn1"
+        '
+        'HaciaDataGridViewTextBoxColumn1
+        '
+        Me.HaciaDataGridViewTextBoxColumn1.DataPropertyName = "Hacia"
+        Me.HaciaDataGridViewTextBoxColumn1.HeaderText = "Hacia"
+        Me.HaciaDataGridViewTextBoxColumn1.Name = "HaciaDataGridViewTextBoxColumn1"
+        '
+        'CantidadrealDataGridViewTextBoxColumn
+        '
+        Me.CantidadrealDataGridViewTextBoxColumn.DataPropertyName = "Cantidad_real"
+        Me.CantidadrealDataGridViewTextBoxColumn.HeaderText = "Cantidad_real"
+        Me.CantidadrealDataGridViewTextBoxColumn.Name = "CantidadrealDataGridViewTextBoxColumn"
+        '
+        'LoteidDataGridViewTextBoxColumn
+        '
+        Me.LoteidDataGridViewTextBoxColumn.DataPropertyName = "lote_id"
+        Me.LoteidDataGridViewTextBoxColumn.HeaderText = "lote_id"
+        Me.LoteidDataGridViewTextBoxColumn.Name = "LoteidDataGridViewTextBoxColumn"
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "Prov_id"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Prov_id"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        Me.DataGridViewTextBoxColumn13.Visible = False
+        '
+        'ProvidDataGridViewTextBoxColumn1
+        '
+        Me.ProvidDataGridViewTextBoxColumn1.DataPropertyName = "Prov_id"
+        Me.ProvidDataGridViewTextBoxColumn1.HeaderText = "Prov_id"
+        Me.ProvidDataGridViewTextBoxColumn1.Name = "ProvidDataGridViewTextBoxColumn1"
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "Column1"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        '
+        'ConsumorealBindingSource
+        '
+        Me.ConsumorealBindingSource.DataMember = "Consumo_real"
+        Me.ConsumorealBindingSource.DataSource = Me.Ds_enfermeria
+        '
+        'Ds_enfermeria
+        '
+        Me.Ds_enfermeria.DataSetName = "Ds_enfermeria"
+        Me.Ds_enfermeria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'btn_eliminar_seleccion
+        '
+        Me.btn_eliminar_seleccion.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.btn_eliminar_seleccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_seleccion.Image = Global.Aplicacion.My.Resources.Resources.menos
+        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(111, 36)
+        Me.btn_eliminar_seleccion.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_eliminar_seleccion.Name = "btn_eliminar_seleccion"
+        Me.btn_eliminar_seleccion.Size = New System.Drawing.Size(94, 40)
+        Me.btn_eliminar_seleccion.TabIndex = 338
+        Me.btn_eliminar_seleccion.Text = "Quitar"
+        Me.btn_eliminar_seleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btn_eliminar_seleccion.UseVisualStyleBackColor = True
         '
         'btn_Buscar
         '
@@ -191,196 +300,6 @@ Partial Class Enfermeria_insumos_Ausente
         Me.DataGridView1.Size = New System.Drawing.Size(877, 136)
         Me.DataGridView1.StandardTab = True
         Me.DataGridView1.TabIndex = 331
-        '
-        'MovEnfBindingSource
-        '
-        Me.MovEnfBindingSource.DataMember = "Mov_Enf"
-        Me.MovEnfBindingSource.DataSource = Me.Mov_DS
-        '
-        'Mov_DS
-        '
-        Me.Mov_DS.DataSetName = "Mov_DS"
-        Me.Mov_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.btn_cambio)
-        Me.GroupBox2.Controls.Add(Me.Label24)
-        Me.GroupBox2.Controls.Add(Me.tb_CantRe)
-        Me.GroupBox2.Controls.Add(Me.Label18)
-        Me.GroupBox2.Controls.Add(Me.tb_Filtro)
-        Me.GroupBox2.Controls.Add(Me.lbl_err2)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 12)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(491, 97)
-        Me.GroupBox2.TabIndex = 356
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Filtro"
-        '
-        'btn_cambio
-        '
-        Me.btn_cambio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_cambio.Location = New System.Drawing.Point(344, 40)
-        Me.btn_cambio.Name = "btn_cambio"
-        Me.btn_cambio.Size = New System.Drawing.Size(128, 23)
-        Me.btn_cambio.TabIndex = 356
-        Me.btn_cambio.Text = "Cambio de Filtro"
-        Me.btn_cambio.UseVisualStyleBackColor = True
-        '
-        'Label24
-        '
-        Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(187, 45)
-        Me.Label24.Name = "Label24"
-        Me.Label24.Size = New System.Drawing.Size(86, 13)
-        Me.Label24.TabIndex = 339
-        Me.Label24.Text = "Cant. de Reusos"
-        '
-        'tb_CantRe
-        '
-        Me.tb_CantRe.Enabled = False
-        Me.tb_CantRe.Location = New System.Drawing.Point(279, 42)
-        Me.tb_CantRe.Multiline = True
-        Me.tb_CantRe.Name = "tb_CantRe"
-        Me.tb_CantRe.Size = New System.Drawing.Size(59, 20)
-        Me.tb_CantRe.TabIndex = 338
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(6, 45)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(28, 13)
-        Me.Label18.TabIndex = 332
-        Me.Label18.Text = "Tipo"
-        '
-        'tb_Filtro
-        '
-        Me.tb_Filtro.Location = New System.Drawing.Point(41, 42)
-        Me.tb_Filtro.Multiline = True
-        Me.tb_Filtro.Name = "tb_Filtro"
-        Me.tb_Filtro.Size = New System.Drawing.Size(110, 20)
-        Me.tb_Filtro.TabIndex = 331
-        '
-        'lbl_err2
-        '
-        Me.lbl_err2.AutoSize = True
-        Me.lbl_err2.Font = New System.Drawing.Font("Modern No. 20", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_err2.ForeColor = System.Drawing.Color.Red
-        Me.lbl_err2.Location = New System.Drawing.Point(157, 37)
-        Me.lbl_err2.Name = "lbl_err2"
-        Me.lbl_err2.Size = New System.Drawing.Size(20, 21)
-        Me.lbl_err2.TabIndex = 337
-        Me.lbl_err2.Text = "*"
-        Me.lbl_err2.Visible = False
-        '
-        'btn_eliminar_seleccion
-        '
-        Me.btn_eliminar_seleccion.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.btn_eliminar_seleccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_seleccion.Image = Global.Aplicacion.My.Resources.Resources.menos
-        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(111, 36)
-        Me.btn_eliminar_seleccion.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_eliminar_seleccion.Name = "btn_eliminar_seleccion"
-        Me.btn_eliminar_seleccion.Size = New System.Drawing.Size(94, 40)
-        Me.btn_eliminar_seleccion.TabIndex = 338
-        Me.btn_eliminar_seleccion.Text = "Quitar"
-        Me.btn_eliminar_seleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btn_eliminar_seleccion.UseVisualStyleBackColor = True
-        '
-        'DataGridView2
-        '
-        Me.DataGridView2.AllowUserToAddRows = False
-        Me.DataGridView2.AllowUserToDeleteRows = False
-        Me.DataGridView2.AllowUserToResizeRows = False
-        Me.DataGridView2.AutoGenerateColumns = False
-        Me.DataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView2.BackgroundColor = System.Drawing.Color.White
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.CodprodDataGridViewTextBoxColumn1, Me.DescripcionDataGridViewTextBoxColumn1, Me.DesdeDataGridViewTextBoxColumn1, Me.HaciaDataGridViewTextBoxColumn1, Me.CantidadrealDataGridViewTextBoxColumn, Me.LoteidDataGridViewTextBoxColumn, Me.DataGridViewTextBoxColumn13, Me.ProvidDataGridViewTextBoxColumn1, Me.DataGridViewCheckBoxColumn1})
-        Me.DataGridView2.DataSource = Me.ConsumorealBindingSource
-        Me.DataGridView2.Location = New System.Drawing.Point(418, 36)
-        Me.DataGridView2.Margin = New System.Windows.Forms.Padding(4)
-        Me.DataGridView2.MultiSelect = False
-        Me.DataGridView2.Name = "DataGridView2"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.DataGridView2.RowHeadersVisible = False
-        Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView2.Size = New System.Drawing.Size(404, 156)
-        Me.DataGridView2.StandardTab = True
-        Me.DataGridView2.TabIndex = 339
-        Me.DataGridView2.Visible = False
-        '
-        'Ds_enfermeria
-        '
-        Me.Ds_enfermeria.DataSetName = "Ds_enfermeria"
-        Me.Ds_enfermeria.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'ConsumorealBindingSource
-        '
-        Me.ConsumorealBindingSource.DataMember = "Consumo_real"
-        Me.ConsumorealBindingSource.DataSource = Me.Ds_enfermeria
-        '
-        'CodprodDataGridViewTextBoxColumn1
-        '
-        Me.CodprodDataGridViewTextBoxColumn1.DataPropertyName = "Cod_prod"
-        Me.CodprodDataGridViewTextBoxColumn1.HeaderText = "Cod_prod"
-        Me.CodprodDataGridViewTextBoxColumn1.Name = "CodprodDataGridViewTextBoxColumn1"
-        '
-        'DescripcionDataGridViewTextBoxColumn1
-        '
-        Me.DescripcionDataGridViewTextBoxColumn1.DataPropertyName = "Descripcion"
-        Me.DescripcionDataGridViewTextBoxColumn1.HeaderText = "Descripcion"
-        Me.DescripcionDataGridViewTextBoxColumn1.Name = "DescripcionDataGridViewTextBoxColumn1"
-        '
-        'DesdeDataGridViewTextBoxColumn1
-        '
-        Me.DesdeDataGridViewTextBoxColumn1.DataPropertyName = "Desde"
-        Me.DesdeDataGridViewTextBoxColumn1.HeaderText = "Desde"
-        Me.DesdeDataGridViewTextBoxColumn1.Name = "DesdeDataGridViewTextBoxColumn1"
-        '
-        'HaciaDataGridViewTextBoxColumn1
-        '
-        Me.HaciaDataGridViewTextBoxColumn1.DataPropertyName = "Hacia"
-        Me.HaciaDataGridViewTextBoxColumn1.HeaderText = "Hacia"
-        Me.HaciaDataGridViewTextBoxColumn1.Name = "HaciaDataGridViewTextBoxColumn1"
-        '
-        'CantidadrealDataGridViewTextBoxColumn
-        '
-        Me.CantidadrealDataGridViewTextBoxColumn.DataPropertyName = "Cantidad_real"
-        Me.CantidadrealDataGridViewTextBoxColumn.HeaderText = "Cantidad_real"
-        Me.CantidadrealDataGridViewTextBoxColumn.Name = "CantidadrealDataGridViewTextBoxColumn"
-        '
-        'LoteidDataGridViewTextBoxColumn
-        '
-        Me.LoteidDataGridViewTextBoxColumn.DataPropertyName = "lote_id"
-        Me.LoteidDataGridViewTextBoxColumn.HeaderText = "lote_id"
-        Me.LoteidDataGridViewTextBoxColumn.Name = "LoteidDataGridViewTextBoxColumn"
-        '
-        'DataGridViewTextBoxColumn13
-        '
-        Me.DataGridViewTextBoxColumn13.DataPropertyName = "Prov_id"
-        Me.DataGridViewTextBoxColumn13.HeaderText = "Prov_id"
-        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
-        Me.DataGridViewTextBoxColumn13.Visible = False
-        '
-        'ProvidDataGridViewTextBoxColumn1
-        '
-        Me.ProvidDataGridViewTextBoxColumn1.DataPropertyName = "Prov_id"
-        Me.ProvidDataGridViewTextBoxColumn1.HeaderText = "Prov_id"
-        Me.ProvidDataGridViewTextBoxColumn1.Name = "ProvidDataGridViewTextBoxColumn1"
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "Column1"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
         '
         'NDataGridViewTextBoxColumn
         '
@@ -499,6 +418,102 @@ Partial Class Enfermeria_insumos_Ausente
         Me.EnBD.Name = "EnBD"
         Me.EnBD.Visible = False
         '
+        'MovEnfBindingSource
+        '
+        Me.MovEnfBindingSource.DataMember = "Mov_Enf"
+        Me.MovEnfBindingSource.DataSource = Me.Mov_DS
+        '
+        'Mov_DS
+        '
+        Me.Mov_DS.DataSetName = "Mov_DS"
+        Me.Mov_DS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.cb_filtro)
+        Me.GroupBox2.Controls.Add(Me.btn_cambio)
+        Me.GroupBox2.Controls.Add(Me.Label24)
+        Me.GroupBox2.Controls.Add(Me.tb_CantRe)
+        Me.GroupBox2.Controls.Add(Me.Label18)
+        Me.GroupBox2.Controls.Add(Me.tb_Filtro)
+        Me.GroupBox2.Controls.Add(Me.lbl_err2)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 12)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(491, 97)
+        Me.GroupBox2.TabIndex = 356
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Filtro"
+        '
+        'btn_cambio
+        '
+        Me.btn_cambio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_cambio.Location = New System.Drawing.Point(344, 40)
+        Me.btn_cambio.Name = "btn_cambio"
+        Me.btn_cambio.Size = New System.Drawing.Size(128, 23)
+        Me.btn_cambio.TabIndex = 356
+        Me.btn_cambio.Text = "Cambio de Filtro"
+        Me.btn_cambio.UseVisualStyleBackColor = True
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(187, 45)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(86, 13)
+        Me.Label24.TabIndex = 339
+        Me.Label24.Text = "Cant. de Reusos"
+        '
+        'tb_CantRe
+        '
+        Me.tb_CantRe.Enabled = False
+        Me.tb_CantRe.Location = New System.Drawing.Point(279, 42)
+        Me.tb_CantRe.Multiline = True
+        Me.tb_CantRe.Name = "tb_CantRe"
+        Me.tb_CantRe.Size = New System.Drawing.Size(59, 20)
+        Me.tb_CantRe.TabIndex = 338
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(6, 45)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(28, 13)
+        Me.Label18.TabIndex = 332
+        Me.Label18.Text = "Tipo"
+        '
+        'tb_Filtro
+        '
+        Me.tb_Filtro.Location = New System.Drawing.Point(41, 42)
+        Me.tb_Filtro.Multiline = True
+        Me.tb_Filtro.Name = "tb_Filtro"
+        Me.tb_Filtro.Size = New System.Drawing.Size(110, 20)
+        Me.tb_Filtro.TabIndex = 331
+        '
+        'lbl_err2
+        '
+        Me.lbl_err2.AutoSize = True
+        Me.lbl_err2.Font = New System.Drawing.Font("Modern No. 20", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_err2.ForeColor = System.Drawing.Color.Red
+        Me.lbl_err2.Location = New System.Drawing.Point(157, 37)
+        Me.lbl_err2.Name = "lbl_err2"
+        Me.lbl_err2.Size = New System.Drawing.Size(20, 21)
+        Me.lbl_err2.TabIndex = 337
+        Me.lbl_err2.Text = "*"
+        Me.lbl_err2.Visible = False
+        '
+        'cb_filtro
+        '
+        Me.cb_filtro.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cb_filtro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cb_filtro.Enabled = False
+        Me.cb_filtro.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cb_filtro.FormattingEnabled = True
+        Me.cb_filtro.Location = New System.Drawing.Point(41, 69)
+        Me.cb_filtro.Margin = New System.Windows.Forms.Padding(4)
+        Me.cb_filtro.Name = "cb_filtro"
+        Me.cb_filtro.Size = New System.Drawing.Size(170, 21)
+        Me.cb_filtro.TabIndex = 358
+        '
         'Enfermeria_insumos_Ausente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -516,14 +531,14 @@ Partial Class Enfermeria_insumos_Ausente
         Me.Text = "Paciente:. - Consumos de Ausente."
         Me.GroupBox_insumos.ResumeLayout(False)
         Me.GroupBox_insumos.PerformLayout()
+        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ConsumorealBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Ds_enfermeria, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MovEnfBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Mov_DS, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Ds_enfermeria, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ConsumorealBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -572,4 +587,5 @@ Partial Class Enfermeria_insumos_Ausente
     Friend WithEvents ProvidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents EnBD As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cb_filtro As System.Windows.Forms.ComboBox
 End Class

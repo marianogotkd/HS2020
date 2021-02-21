@@ -1242,6 +1242,7 @@ Public Property EnabledCerrar() As Boolean
     End Sub
 
     Private Sub HistoriaClinicaToolStripMenuItem1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem_PAC_HC.Click
+        Cliente_modificar.Close() 'lo cierro x si quedo oculto.
         Cliente_modificar.Show()
         Cliente_modificar.Focus()
     End Sub
@@ -1278,6 +1279,7 @@ Public Property EnabledCerrar() As Boolean
     End Sub
 
     Private Sub HistoriaClinicaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem_PAC_Act.Click
+        Cliente_modificar.Close() 'para q no se abra 2 veces
         Cliente_modificar.Show()
         Cliente_modificar.Focus()
     End Sub
