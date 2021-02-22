@@ -662,7 +662,7 @@
     End Sub
 
     Private Sub modificar_dialisis()
-        If tb_Filtro.Text <> "" And tb_AV.Text <> "No Tiene Acceso Vascular" Then
+        If cb_filtro.Items.Count <> 0 And tb_AV.Text <> "No Tiene Acceso Vascular" Then
 
             'Dim concepto As String
             'concepto = "Insumo consumido en Enfermeria"
@@ -875,7 +875,7 @@
         Else
 
 
-            If cb_filtro.Items.Count <> 0 And tb_Filtro.Text <> "" And tb_AV.Text <> "No Tiene Acceso Vascular" And tb_PesoS.Text <> 0 And tb_talla.Text <> 0 Then
+            If cb_filtro.Items.Count <> 0 And tb_CantRe.Text <> "" And tb_AV.Text <> "No Tiene Acceso Vascular" And tb_PesoS.Text <> 0 And tb_talla.Text <> 0 Then
 
 
                 Dim concepto As String
