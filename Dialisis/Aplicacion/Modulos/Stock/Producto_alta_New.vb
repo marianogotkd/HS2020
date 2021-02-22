@@ -33,8 +33,7 @@ Public Class Producto_alta_New
             Clipboard.SetDataObject(Me.PictureBox1.Image)
 
 
-            'no puedo cambiar el producto de filtro a regular
-            GroupBox6.Enabled = False
+        
         Else
             'guardo en portapapeles la imagen por defecto para los productos
             Clipboard.SetDataObject(Me.PictureBox1.Image)
@@ -129,8 +128,12 @@ Public Class Producto_alta_New
         '/////////////////////recupero si es filtro o no//////////////////////
         If ds_prod.Tables(0).Rows(0).Item("prod_EsFiltro") = "no" Then
             RB_filtro_no.Checked = True
+            'no puedo cambiar el producto de filtro a regular
+            GroupBox6.Enabled = True
         Else
             RB_filtro_si.Checked = True
+            'no puedo cambiar el producto de filtro a regular
+            GroupBox6.Enabled = False
         End If
 
 
@@ -1482,4 +1485,5 @@ Public Class Producto_alta_New
             txt_contenido.Text = CDec(txt_contenido.Text) 'siempre q sea decimal
         End If
     End Sub
+
 End Class
