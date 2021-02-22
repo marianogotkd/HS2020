@@ -23,14 +23,14 @@ Partial Class Historia_Clinica_Detalle
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Historia_Clinica_Detalle))
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -88,6 +88,8 @@ Partial Class Historia_Clinica_Detalle
         Me.ConsultaMedicaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Historia_Clinica = New Aplicacion.Historia_Clinica()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.tx_motivo_consulta = New System.Windows.Forms.TextBox()
+        Me.Label67 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.btn_reporte = New System.Windows.Forms.Button()
         Me.btn_ev_cancelar = New System.Windows.Forms.Button()
@@ -287,6 +289,8 @@ Partial Class Historia_Clinica_Detalle
         Me.ConsultaTrasplanteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -376,6 +380,7 @@ Partial Class Historia_Clinica_Detalle
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox1.Controls.Add(Me.Button4)
         Me.GroupBox1.Controls.Add(Me.tb_Dni_Cuit)
         Me.GroupBox1.Controls.Add(Me.Label21)
         Me.GroupBox1.Controls.Add(Me.tb_numafi)
@@ -825,10 +830,10 @@ Partial Class Historia_Clinica_Detalle
         Me.DG_CC.ReadOnly = True
         Me.DG_CC.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DG_CC.RowHeadersVisible = False
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_CC.RowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_CC.RowsDefaultCellStyle = DataGridViewCellStyle8
         Me.DG_CC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_CC.Size = New System.Drawing.Size(409, 387)
         Me.DG_CC.StandardTab = True
@@ -928,6 +933,8 @@ Partial Class Historia_Clinica_Detalle
         '
         Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
         Me.TabPage1.BackgroundImage = Global.Aplicacion.My.Resources.Resources.silver_3
+        Me.TabPage1.Controls.Add(Me.tx_motivo_consulta)
+        Me.TabPage1.Controls.Add(Me.Label67)
         Me.TabPage1.Controls.Add(Me.Button2)
         Me.TabPage1.Controls.Add(Me.btn_reporte)
         Me.TabPage1.Controls.Add(Me.btn_ev_cancelar)
@@ -953,15 +960,36 @@ Partial Class Historia_Clinica_Detalle
         Me.TabPage1.TabIndex = 1
         Me.TabPage1.Text = "Historia Clinica"
         '
+        'tx_motivo_consulta
+        '
+        Me.tx_motivo_consulta.BackColor = System.Drawing.Color.Beige
+        Me.tx_motivo_consulta.Location = New System.Drawing.Point(92, 22)
+        Me.tx_motivo_consulta.Multiline = True
+        Me.tx_motivo_consulta.Name = "tx_motivo_consulta"
+        Me.tx_motivo_consulta.ReadOnly = True
+        Me.tx_motivo_consulta.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.tx_motivo_consulta.Size = New System.Drawing.Size(885, 70)
+        Me.tx_motivo_consulta.TabIndex = 0
+        '
+        'Label67
+        '
+        Me.Label67.AutoSize = True
+        Me.Label67.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label67.Location = New System.Drawing.Point(89, 3)
+        Me.Label67.Name = "Label67"
+        Me.Label67.Size = New System.Drawing.Size(155, 16)
+        Me.Label67.TabIndex = 311
+        Me.Label67.Text = "Motivo de la consulta"
+        '
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.icono_editar_30x30
-        Me.Button2.Location = New System.Drawing.Point(592, 445)
+        Me.Button2.Location = New System.Drawing.Point(713, 494)
         Me.Button2.Margin = New System.Windows.Forms.Padding(4)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(122, 43)
-        Me.Button2.TabIndex = 8
+        Me.Button2.TabIndex = 7
         Me.Button2.Text = "Modificar"
         Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.Button2.UseVisualStyleBackColor = True
@@ -970,7 +998,7 @@ Partial Class Historia_Clinica_Detalle
         '
         Me.btn_reporte.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_reporte.Image = Global.Aplicacion.My.Resources.Resources.Pasar
-        Me.btn_reporte.Location = New System.Drawing.Point(231, 483)
+        Me.btn_reporte.Location = New System.Drawing.Point(321, 494)
         Me.btn_reporte.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_reporte.Name = "btn_reporte"
         Me.btn_reporte.Size = New System.Drawing.Size(122, 43)
@@ -985,11 +1013,11 @@ Partial Class Historia_Clinica_Detalle
         Me.btn_ev_cancelar.Enabled = False
         Me.btn_ev_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_ev_cancelar.Image = Global.Aplicacion.My.Resources.Resources.menos
-        Me.btn_ev_cancelar.Location = New System.Drawing.Point(852, 445)
+        Me.btn_ev_cancelar.Location = New System.Drawing.Point(973, 494)
         Me.btn_ev_cancelar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_ev_cancelar.Name = "btn_ev_cancelar"
         Me.btn_ev_cancelar.Size = New System.Drawing.Size(122, 43)
-        Me.btn_ev_cancelar.TabIndex = 7
+        Me.btn_ev_cancelar.TabIndex = 9
         Me.btn_ev_cancelar.Text = "Cancelar"
         Me.btn_ev_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_ev_cancelar.UseVisualStyleBackColor = True
@@ -999,11 +1027,11 @@ Partial Class Historia_Clinica_Detalle
         Me.btn_ev_guardar.Enabled = False
         Me.btn_ev_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_ev_guardar.Image = Global.Aplicacion.My.Resources.Resources.Pasar
-        Me.btn_ev_guardar.Location = New System.Drawing.Point(722, 445)
+        Me.btn_ev_guardar.Location = New System.Drawing.Point(843, 494)
         Me.btn_ev_guardar.Margin = New System.Windows.Forms.Padding(4)
         Me.btn_ev_guardar.Name = "btn_ev_guardar"
         Me.btn_ev_guardar.Size = New System.Drawing.Size(122, 43)
-        Me.btn_ev_guardar.TabIndex = 6
+        Me.btn_ev_guardar.TabIndex = 8
         Me.btn_ev_guardar.Text = "Guardar "
         Me.btn_ev_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btn_ev_guardar.UseVisualStyleBackColor = True
@@ -1011,74 +1039,74 @@ Partial Class Historia_Clinica_Detalle
         'tx_ev_EP
         '
         Me.tx_ev_EP.BackColor = System.Drawing.Color.Beige
-        Me.tx_ev_EP.Location = New System.Drawing.Point(556, 167)
+        Me.tx_ev_EP.Location = New System.Drawing.Point(559, 244)
         Me.tx_ev_EP.Multiline = True
         Me.tx_ev_EP.Name = "tx_ev_EP"
         Me.tx_ev_EP.ReadOnly = True
         Me.tx_ev_EP.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.tx_ev_EP.Size = New System.Drawing.Size(418, 105)
-        Me.tx_ev_EP.TabIndex = 4
+        Me.tx_ev_EP.Size = New System.Drawing.Size(418, 100)
+        Me.tx_ev_EP.TabIndex = 5
         '
         'tx_ev_AF
         '
         Me.tx_ev_AF.BackColor = System.Drawing.Color.Beige
-        Me.tx_ev_AF.Location = New System.Drawing.Point(89, 310)
+        Me.tx_ev_AF.Location = New System.Drawing.Point(92, 380)
         Me.tx_ev_AF.Multiline = True
         Me.tx_ev_AF.Name = "tx_ev_AF"
         Me.tx_ev_AF.ReadOnly = True
         Me.tx_ev_AF.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.tx_ev_AF.Size = New System.Drawing.Size(418, 105)
-        Me.tx_ev_AF.TabIndex = 2
+        Me.tx_ev_AF.Size = New System.Drawing.Size(418, 100)
+        Me.tx_ev_AF.TabIndex = 3
         '
         'tx_ev_AEA
         '
         Me.tx_ev_AEA.BackColor = System.Drawing.Color.Beige
-        Me.tx_ev_AEA.Location = New System.Drawing.Point(89, 35)
+        Me.tx_ev_AEA.Location = New System.Drawing.Point(92, 119)
         Me.tx_ev_AEA.Multiline = True
         Me.tx_ev_AEA.Name = "tx_ev_AEA"
         Me.tx_ev_AEA.ReadOnly = True
         Me.tx_ev_AEA.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.tx_ev_AEA.Size = New System.Drawing.Size(418, 105)
-        Me.tx_ev_AEA.TabIndex = 0
+        Me.tx_ev_AEA.Size = New System.Drawing.Size(418, 100)
+        Me.tx_ev_AEA.TabIndex = 1
         '
         'tx_ev_EF
         '
         Me.tx_ev_EF.BackColor = System.Drawing.Color.Beige
-        Me.tx_ev_EF.Location = New System.Drawing.Point(556, 35)
+        Me.tx_ev_EF.Location = New System.Drawing.Point(559, 119)
         Me.tx_ev_EF.Multiline = True
         Me.tx_ev_EF.Name = "tx_ev_EF"
         Me.tx_ev_EF.ReadOnly = True
         Me.tx_ev_EF.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.tx_ev_EF.Size = New System.Drawing.Size(418, 105)
-        Me.tx_ev_EF.TabIndex = 3
+        Me.tx_ev_EF.Size = New System.Drawing.Size(418, 100)
+        Me.tx_ev_EF.TabIndex = 4
         '
         'tx_ev_APP
         '
         Me.tx_ev_APP.BackColor = System.Drawing.Color.Beige
-        Me.tx_ev_APP.Location = New System.Drawing.Point(89, 167)
+        Me.tx_ev_APP.Location = New System.Drawing.Point(92, 244)
         Me.tx_ev_APP.Multiline = True
         Me.tx_ev_APP.Name = "tx_ev_APP"
         Me.tx_ev_APP.ReadOnly = True
         Me.tx_ev_APP.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.tx_ev_APP.Size = New System.Drawing.Size(418, 105)
-        Me.tx_ev_APP.TabIndex = 1
+        Me.tx_ev_APP.Size = New System.Drawing.Size(418, 100)
+        Me.tx_ev_APP.TabIndex = 2
         '
         'tx_ev_DN
         '
         Me.tx_ev_DN.BackColor = System.Drawing.Color.Beige
-        Me.tx_ev_DN.Location = New System.Drawing.Point(556, 310)
+        Me.tx_ev_DN.Location = New System.Drawing.Point(559, 380)
         Me.tx_ev_DN.Multiline = True
         Me.tx_ev_DN.Name = "tx_ev_DN"
         Me.tx_ev_DN.ReadOnly = True
         Me.tx_ev_DN.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.tx_ev_DN.Size = New System.Drawing.Size(418, 105)
-        Me.tx_ev_DN.TabIndex = 5
+        Me.tx_ev_DN.Size = New System.Drawing.Size(418, 100)
+        Me.tx_ev_DN.TabIndex = 6
         '
         'Label11
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(553, 282)
+        Me.Label11.Location = New System.Drawing.Point(556, 352)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(176, 16)
         Me.Label11.TabIndex = 282
@@ -1088,7 +1116,7 @@ Partial Class Historia_Clinica_Detalle
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(86, 282)
+        Me.Label12.Location = New System.Drawing.Point(89, 352)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(180, 16)
         Me.Label12.TabIndex = 281
@@ -1098,7 +1126,7 @@ Partial Class Historia_Clinica_Detalle
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(86, 16)
+        Me.Label13.Location = New System.Drawing.Point(89, 100)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(270, 16)
         Me.Label13.TabIndex = 280
@@ -1108,7 +1136,7 @@ Partial Class Historia_Clinica_Detalle
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(553, 14)
+        Me.Label16.Location = New System.Drawing.Point(556, 98)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(109, 16)
         Me.Label16.TabIndex = 276
@@ -1118,7 +1146,7 @@ Partial Class Historia_Clinica_Detalle
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(86, 148)
+        Me.Label15.Location = New System.Drawing.Point(89, 225)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(246, 16)
         Me.Label15.TabIndex = 274
@@ -1128,7 +1156,7 @@ Partial Class Historia_Clinica_Detalle
         '
         Me.Label14.AutoSize = True
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(553, 148)
+        Me.Label14.Location = New System.Drawing.Point(556, 225)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(125, 16)
         Me.Label14.TabIndex = 272
@@ -1519,10 +1547,10 @@ Partial Class Historia_Clinica_Detalle
         Me.DG_ACCV.ReadOnly = True
         Me.DG_ACCV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DG_ACCV.RowHeadersVisible = False
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_ACCV.RowsDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_ACCV.RowsDefaultCellStyle = DataGridViewCellStyle9
         Me.DG_ACCV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_ACCV.Size = New System.Drawing.Size(409, 387)
         Me.DG_ACCV.StandardTab = True
@@ -1939,10 +1967,10 @@ Partial Class Historia_Clinica_Detalle
         Me.DG_CP.ReadOnly = True
         Me.DG_CP.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DG_CP.RowHeadersVisible = False
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_CP.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_CP.RowsDefaultCellStyle = DataGridViewCellStyle10
         Me.DG_CP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_CP.Size = New System.Drawing.Size(409, 387)
         Me.DG_CP.StandardTab = True
@@ -2304,10 +2332,10 @@ Partial Class Historia_Clinica_Detalle
         Me.dgv_AS.ReadOnly = True
         Me.dgv_AS.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.dgv_AS.RowHeadersVisible = False
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        Me.dgv_AS.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black
+        Me.dgv_AS.RowsDefaultCellStyle = DataGridViewCellStyle11
         Me.dgv_AS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgv_AS.Size = New System.Drawing.Size(409, 387)
         Me.dgv_AS.StandardTab = True
@@ -2676,10 +2704,10 @@ Partial Class Historia_Clinica_Detalle
         Me.DG_Nutri.ReadOnly = True
         Me.DG_Nutri.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DG_Nutri.RowHeadersVisible = False
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_Nutri.RowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_Nutri.RowsDefaultCellStyle = DataGridViewCellStyle12
         Me.DG_Nutri.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_Nutri.Size = New System.Drawing.Size(409, 387)
         Me.DG_Nutri.StandardTab = True
@@ -3065,10 +3093,10 @@ Partial Class Historia_Clinica_Detalle
         Me.DG_Tras.ReadOnly = True
         Me.DG_Tras.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DG_Tras.RowHeadersVisible = False
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_Tras.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_Tras.RowsDefaultCellStyle = DataGridViewCellStyle13
         Me.DG_Tras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_Tras.Size = New System.Drawing.Size(409, 387)
         Me.DG_Tras.StandardTab = True
@@ -3179,14 +3207,27 @@ Partial Class Historia_Clinica_Detalle
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DataGridView1.RowHeadersVisible = False
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridView1.RowsDefaultCellStyle = DataGridViewCellStyle14
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(409, 387)
         Me.DataGridView1.StandardTab = True
         Me.DataGridView1.TabIndex = 261
+        '
+        'Button4
+        '
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.Image = Global.Aplicacion.My.Resources.Resources.iniciar
+        Me.Button4.Location = New System.Drawing.Point(1074, 10)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(44, 43)
+        Me.Button4.TabIndex = 268
+        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button4, "VOLVER")
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'Historia_Clinica_Detalle
         '
@@ -3506,4 +3547,8 @@ Partial Class Historia_Clinica_Detalle
     Friend WithEvents cb_med_cc_activos As System.Windows.Forms.ComboBox
     Friend WithEvents cb_med_CN_activos As System.Windows.Forms.ComboBox
     Friend WithEvents cb_TRAS_med_activos As System.Windows.Forms.ComboBox
+    Friend WithEvents tx_motivo_consulta As System.Windows.Forms.TextBox
+    Friend WithEvents Label67 As System.Windows.Forms.Label
+    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
 End Class

@@ -83,6 +83,7 @@ Public Class Historia_Clinica_Detalle
             Historia_Clinica.Tables("Consulta_antecedentes").Rows.Clear() 'borro el contenido del dataset.datatable clientes
             Historia_Clinica.Tables("Consulta_antecedentes").Merge(ds_historiaC.Tables("HistoriaC"))
 
+            tx_motivo_consulta.Text = (ds_historiaC.Tables("HistoriaC").Rows(0).Item("ConAnt_motivo_consulta").ToString)
             tx_ev_AEA.Text = (ds_historiaC.Tables("HistoriaC").Rows(0).Item("ConAnt_enferAct"))
             tx_ev_AF.Text = (ds_historiaC.Tables("HistoriaC").Rows(0).Item("ConAnt_familiares"))
             tx_ev_APP.Text = (ds_historiaC.Tables("HistoriaC").Rows(0).Item("ConAnt_patologico"))
@@ -1337,6 +1338,7 @@ Public Class Historia_Clinica_Detalle
     Dim ev_EP As String
     Dim ev_AF As String
     Dim ev_AEA As String
+    Dim motivo_consulta As String
 
     Private Sub Button2_Click_3(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         Dim result As Integer = MessageBox.Show("¿Desea modificar la información de la evaluación médica?.", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -1349,6 +1351,8 @@ Public Class Historia_Clinica_Detalle
             tx_ev_AF.ReadOnly = False
             tx_ev_AEA.ReadOnly = False
 
+            tx_motivo_consulta.ReadOnly = False
+
             tx_ev_DN.BackColor = Color.White
             tx_ev_APP.BackColor = Color.White
             tx_ev_EF.BackColor = Color.White
@@ -1357,6 +1361,7 @@ Public Class Historia_Clinica_Detalle
             tx_ev_AF.BackColor = Color.White
             tx_ev_AEA.BackColor = Color.White
 
+            tx_motivo_consulta.BackColor = Color.White
 
 
             'tambien voy a guardar el estado del contenido, x si decido cancelar x que me arrepiento
@@ -1366,6 +1371,8 @@ Public Class Historia_Clinica_Detalle
             ev_EP = tx_ev_EP.Text
             ev_AF = tx_ev_AF.Text
             ev_AEA = tx_ev_AEA.Text
+            motivo_consulta = tx_motivo_consulta.Text
+
             btn_ev_guardar.Enabled = True
             btn_ev_cancelar.Enabled = True
             Button2.Enabled = False
@@ -1383,6 +1390,8 @@ Public Class Historia_Clinica_Detalle
         tx_ev_AF.ReadOnly = True
         tx_ev_AEA.ReadOnly = True
 
+        tx_motivo_consulta.ReadOnly = True
+
         tx_ev_DN.BackColor = Color.Beige
         tx_ev_APP.BackColor = Color.Beige
         tx_ev_EF.BackColor = Color.Beige
@@ -1390,6 +1399,8 @@ Public Class Historia_Clinica_Detalle
         tx_ev_EP.BackColor = Color.Beige
         tx_ev_AF.BackColor = Color.Beige
         tx_ev_AEA.BackColor = Color.Beige
+
+        tx_motivo_consulta.BackColor = Color.Beige
 
         'recupero info anterior
 
@@ -1399,6 +1410,8 @@ Public Class Historia_Clinica_Detalle
         tx_ev_EP.Text = ev_EP
         tx_ev_AF.Text = ev_AF
         tx_ev_AEA.Text = ev_AEA
+        tx_motivo_consulta.Text = motivo_consulta
+
         btn_ev_guardar.Enabled = False
         Button2.Enabled = True
         btn_ev_cancelar.Enabled = False
@@ -1411,11 +1424,11 @@ Public Class Historia_Clinica_Detalle
         If ds_hist.Tables(0).Rows.Count <> 0 Then
             'como existe lo modifico
             Dim ConAnt_id As Integer = ds_hist.Tables(0).Rows(0).Item("ConAnt_id")
-            DAHistoria.Consulta_antecedentes_modificar(ConAnt_id, Today, tx_ev_AEA.Text, tx_ev_APP.Text, tx_ev_AF.Text, tx_ev_EF.Text, tx_ev_DN.Text, tx_ev_EP.Text, PAC_id, cb_med_cc.SelectedValue)
+            DAHistoria.Consulta_antecedentes_modificar(ConAnt_id, Today, tx_ev_AEA.Text, tx_ev_APP.Text, tx_ev_AF.Text, tx_ev_EF.Text, tx_ev_DN.Text, tx_ev_EP.Text, PAC_id, cb_med_cc.SelectedValue, tx_motivo_consulta.Text)
             MessageBox.Show("Consulta modificada correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Else
-            DAHistoria.Consulta_antecedentes_alta(Today, tx_ev_AEA.Text, tx_ev_APP.Text, tx_ev_AF.Text, tx_ev_EF.Text, tx_ev_DN.Text, tx_ev_EP.Text, PAC_id, cb_med_cc.SelectedValue)
+            DAHistoria.Consulta_antecedentes_alta(Today, tx_ev_AEA.Text, tx_ev_APP.Text, tx_ev_AF.Text, tx_ev_EF.Text, tx_ev_DN.Text, tx_ev_EP.Text, PAC_id, cb_med_cc.SelectedValue, tx_motivo_consulta.Text)
             MessageBox.Show("Consulta Generada correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End If
         btn_ev_cancelar.Enabled = False
@@ -1430,6 +1443,7 @@ Public Class Historia_Clinica_Detalle
         tx_ev_AF.BackColor = Color.Beige
         tx_ev_AEA.BackColor = Color.Beige
 
+        tx_motivo_consulta.BackColor = Color.Beige
 
 
     End Sub
@@ -2110,5 +2124,13 @@ Public Class Historia_Clinica_Detalle
                 i = i + 1
             End While
         End If
+    End Sub
+
+   
+    Private Sub Button4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+
+        Cliente_modificar.Show() 'lo muestro x que esta oculto 
+        Me.Close()
+
     End Sub
 End Class

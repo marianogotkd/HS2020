@@ -1,0 +1,6 @@
+TABLE [dbo].[Consulta_antecedentes](
+	
+	[ConAnt_motivo_consulta] [varchar](max) NULL,
+
+
+agregar ese campo

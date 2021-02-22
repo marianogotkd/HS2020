@@ -38,8 +38,28 @@
         End If
     End Sub
 
+    Private Sub combo_filtros_recuperar()
+        'siempre muestro todos los filtros, tengan o no tengan stock
+            'por ahora mando sucursal 3 q es dialisis
+            Dim ds_prod As DataSet = DAprod.Producto_filtro_obtenertodos(3)
 
+            'ahora cargo el combo
+        If ds_prod.Tables(1).Rows.Count <> 0 Then
+            'Carga la categoria
+            cb_filtro.DataSource = ds_prod.Tables(1)
+            'cb_categoria.DataSource = ds_categoria.Tables(0)
+            cb_filtro.DisplayMember = "prod_descripcion"
+            cb_filtro.ValueMember = "ProdxSuc_ID"
+        End If
+
+
+
+
+
+
+    End Sub
     Private Sub Nueva_Dialisis_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        combo_filtros_recuperar()
         Obetener_Cliente()
         Obtener_AV()
         Obtener_Filtro()
@@ -79,6 +99,9 @@
                 DataGridView1.Rows(ff).DefaultCellStyle = style
                 ff = ff + 1
             End While
+
+
+            btn_cambio.Enabled = False 'no puedo modificar un filtro consumido, ya tiene contado reuso y todo.
 
         Else
             'hago el alta normal o bien si es ausente
@@ -381,10 +404,14 @@
             tb_Filtro.Text = sesionDS.Tables(0).Rows(0).Item("Dialisis_Filtro")
             tb_Filtro.Enabled = False
 
+            'choco 20-02-2021
+            cb_filtro.Enabled = False
+            cb_filtro.SelectedValue = FiltroDS.Tables(0).Rows(0).Item("ProdxSuc_ID")
 
+            'deshabilito el boton de nuevo, no puedo modificar un filtro ya consumido.
+            btn_cambio.Enabled = True
         Else
-            tb_CantRe.Text = 0
-            Filtro_var = "Nuevo"
+            btn_cambio.Enabled = True
         End If
     End Sub
     Public estado_sesion As String
@@ -570,7 +597,47 @@
 
         ''''' filtros y rehusos''''''''''''''24/9/20 MAriano'''''
         If Filtro_var = "Nuevo" Then
-            DaEnfermeria.Filtro_Nuevo(PAC_id, fecha_registrar, tb_CantRe.Text, sesiones_id, tb_Filtro.Text)
+            Dim ProdxSuc_id As Integer = cb_filtro.SelectedValue
+
+
+            DaEnfermeria.Filtro_Nuevo(PAC_id, fecha_registrar, tb_CantRe.Text, sesiones_id, cb_filtro.Text, ProdxSuc_id)
+            'siempre que sea un nuevo filtro, tengo q hacer una actualización de stock.
+
+
+            Dim ds_prodxsuc As DataSet = DAprod.Producto_x_sucursal_obtener_info_ProdxSuc_ID(cb_filtro.SelectedValue)
+            Dim prod_id As Integer = ds_prodxsuc.Tables(0).Rows(0).Item("prod_id")
+
+            Dim Ds_Suc As DataSet = DAsucursal.Sucursal_obtener_producto(prod_id, 3, 3) 'sucursal 3 es dialisis
+
+            Dim TotalReal As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) 'de la tabla PRODUCTO_X_SUCURSAL
+            TotalReal = TotalReal - CDec(1)
+            Dim TotalReal_lote As Decimal = CDec(1) 'este es el tock real del lote solamente, creo q lo mando asi nomas ya que en proc alm se lo resta al valor q tengo en el lote
+
+
+            Dim VarA As Decimal = CDec(1) / CDec(Ds_Suc.Tables(1).Rows(0).Item("prod_contenido"))
+            Dim VarB As Decimal = VarA + CDec(ds_prodxsuc.Tables(1).Rows(0).Item("lote_aux"))
+
+            Dim TOTAL As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("Stock_Origen")) - Int(VarB)
+
+            Dim AUX = VarB - Int(VarB)
+
+
+
+            DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, TOTAL, TotalReal) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+
+
+            'ahora actualizo el lote
+
+            Dim lote_nro As String = ds_prodxsuc.Tables(1).Rows(0).Item("lote_nro")
+
+            Dim Prov_id As Integer = ds_prodxsuc.Tables(1).Rows(0).Item("Prov_id")
+            Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, 3, Int(VarB), Prov_id, TotalReal_lote, AUX)  ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+
+
+            '//////////////////////////////////////////////////////
+
+
+
         End If
 
         If Filtro_var = "Update" Then
@@ -808,7 +875,7 @@
         Else
 
 
-            If tb_Filtro.Text <> "" And tb_AV.Text <> "No Tiene Acceso Vascular" And tb_PesoS.Text <> 0 And tb_talla.Text <> 0 Then
+            If cb_filtro.Items.Count <> 0 And tb_Filtro.Text <> "" And tb_AV.Text <> "No Tiene Acceso Vascular" And tb_PesoS.Text <> 0 And tb_talla.Text <> 0 Then
 
 
                 Dim concepto As String
@@ -1029,11 +1096,28 @@
     End Sub
 
     Private Sub btn_cambio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_cambio.Click
-        tb_CantRe.Text = 0
-        Filtro_var = "Nuevo"
-        tb_Filtro.Enabled = True
-        tb_Filtro.Focus()
-        tb_Filtro.SelectAll()
+        'por ahora mando sucursal 3 q es dialisis
+        Dim ds_prod As DataSet = DAprod.Producto_filtro_obtenertodos(3)
+
+        'ahora cargo el combo
+        If ds_prod.Tables(0).Rows.Count <> 0 Then
+            tb_CantRe.Text = 0
+            Filtro_var = "Nuevo"
+            tb_Filtro.Enabled = True
+            tb_Filtro.Focus()
+            tb_Filtro.SelectAll()
+
+            cb_filtro.DataSource = Nothing
+            'choco 20-02-2021 filtro en combo
+            'voy a recuperar solo los filtros q tengan stock. para la sucursal.
+            cb_filtro.DataSource = ds_prod.Tables(0)
+            cb_filtro.DisplayMember = "prod_descripcion"
+            cb_filtro.ValueMember = "ProdxSuc_ID"
+
+            cb_filtro.Enabled = True
+        Else
+            MessageBox.Show("No hay filtros en stock, consulte disponibilidad.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
     End Sub
 
     Private Sub tb_HI_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tb_HI.GotFocus

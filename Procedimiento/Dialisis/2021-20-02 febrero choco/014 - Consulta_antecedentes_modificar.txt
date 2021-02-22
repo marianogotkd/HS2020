@@ -1,0 +1,32 @@
+USE [Dialisis]
+GO
+/****** Object:  StoredProcedure [dbo].[Consulta_antecedentes_modificar]    Script Date: 02/20/2021 17:48:29 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[Consulta_antecedentes_modificar]
+@ConAnt_id int,
+@ConAnt_fecha date,
+@ConAnt_enferAct varchar(max),
+@ConAnt_patologico varchar(max),
+@ConAnt_familiares varchar(max),
+@ConAnt_fisico varchar(max),
+@ConAnt_Diag varchar(max),
+@ConAnt_estudios varchar(max),
+@CLI_id int,
+@medico_id int,
+@ConAnt_motivo_consulta varchar(max)
+
+as
+update dbo.Consulta_antecedentes set ConAnt_fecha = @ConAnt_fecha , 
+ConAnt_enferAct = @ConAnt_enferAct , 
+ConAnt_patologico= @ConAnt_patologico , 
+ConAnt_familiares=@ConAnt_familiares , 
+ConAnt_fisico=@ConAnt_fisico , 
+ConAnt_Diag=@ConAnt_Diag , 
+ConAnt_estudios=@ConAnt_estudios ,
+CLI_id = @CLI_id ,
+medico_id = @medico_id,
+ConAnt_motivo_consulta = @ConAnt_motivo_consulta  
+where dbo.Consulta_antecedentes.ConAnt_id = @ConAnt_id 

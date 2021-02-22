@@ -96,6 +96,9 @@ Partial Class Producto_alta_New
         Me.Bo_cancelar = New System.Windows.Forms.Button()
         Me.Bo_guardar = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.RB_filtro_no = New System.Windows.Forms.RadioButton()
+        Me.RB_filtro_si = New System.Windows.Forms.RadioButton()
         Me.GroupBox2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -114,6 +117,7 @@ Partial Class Producto_alta_New
         CType(Me.Producto_ds1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         CType(Me.ERROR_tx_categoria, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox2
@@ -533,6 +537,7 @@ Partial Class Producto_alta_New
         'GroupBox5
         '
         Me.GroupBox5.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox5.Controls.Add(Me.GroupBox6)
         Me.GroupBox5.Controls.Add(Me.lb_fechanac)
         Me.GroupBox5.Controls.Add(Me.Combo_unidmedida)
         Me.GroupBox5.Controls.Add(Me.Combo_tipo)
@@ -553,19 +558,19 @@ Partial Class Producto_alta_New
         '
         Me.lb_fechanac.AutoSize = True
         Me.lb_fechanac.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.lb_fechanac.Location = New System.Drawing.Point(26, 77)
+        Me.lb_fechanac.Location = New System.Drawing.Point(26, 81)
         Me.lb_fechanac.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lb_fechanac.Name = "lb_fechanac"
-        Me.lb_fechanac.Size = New System.Drawing.Size(39, 16)
+        Me.lb_fechanac.Size = New System.Drawing.Size(102, 16)
         Me.lb_fechanac.TabIndex = 259
-        Me.lb_fechanac.Text = "Tipo "
+        Me.lb_fechanac.Text = "Tipo de unidad:"
         '
         'Combo_unidmedida
         '
         Me.Combo_unidmedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Combo_unidmedida.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Combo_unidmedida.FormattingEnabled = True
-        Me.Combo_unidmedida.Location = New System.Drawing.Point(349, 113)
+        Me.Combo_unidmedida.Location = New System.Drawing.Point(349, 117)
         Me.Combo_unidmedida.Margin = New System.Windows.Forms.Padding(4)
         Me.Combo_unidmedida.Name = "Combo_unidmedida"
         Me.Combo_unidmedida.Size = New System.Drawing.Size(111, 24)
@@ -577,17 +582,17 @@ Partial Class Producto_alta_New
         Me.Combo_tipo.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Combo_tipo.FormattingEnabled = True
         Me.Combo_tipo.Items.AddRange(New Object() {"Fraccionable", "No Fraccionable"})
-        Me.Combo_tipo.Location = New System.Drawing.Point(73, 74)
+        Me.Combo_tipo.Location = New System.Drawing.Point(149, 78)
         Me.Combo_tipo.Margin = New System.Windows.Forms.Padding(4)
         Me.Combo_tipo.Name = "Combo_tipo"
-        Me.Combo_tipo.Size = New System.Drawing.Size(221, 24)
+        Me.Combo_tipo.Size = New System.Drawing.Size(145, 24)
         Me.Combo_tipo.TabIndex = 1
         '
         'Label14
         '
         Me.Label14.AutoSize = True
         Me.Label14.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.Label14.Location = New System.Drawing.Point(198, 116)
+        Me.Label14.Location = New System.Drawing.Point(198, 120)
         Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(143, 16)
@@ -598,7 +603,7 @@ Partial Class Producto_alta_New
         '
         Me.Label13.AutoSize = True
         Me.Label13.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.Label13.Location = New System.Drawing.Point(28, 116)
+        Me.Label13.Location = New System.Drawing.Point(28, 120)
         Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(72, 16)
@@ -608,7 +613,7 @@ Partial Class Producto_alta_New
         'ERROR_tx_ptorepo
         '
         Me.ERROR_tx_ptorepo.Image = CType(resources.GetObject("ERROR_tx_ptorepo.Image"), System.Drawing.Image)
-        Me.ERROR_tx_ptorepo.Location = New System.Drawing.Point(301, 34)
+        Me.ERROR_tx_ptorepo.Location = New System.Drawing.Point(301, 38)
         Me.ERROR_tx_ptorepo.Margin = New System.Windows.Forms.Padding(4)
         Me.ERROR_tx_ptorepo.Name = "ERROR_tx_ptorepo"
         Me.ERROR_tx_ptorepo.Size = New System.Drawing.Size(16, 16)
@@ -621,7 +626,7 @@ Partial Class Producto_alta_New
         '
         Me.txt_contenido.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txt_contenido.ForeColor = System.Drawing.Color.Blue
-        Me.txt_contenido.Location = New System.Drawing.Point(108, 113)
+        Me.txt_contenido.Location = New System.Drawing.Point(108, 117)
         Me.txt_contenido.Margin = New System.Windows.Forms.Padding(4)
         Me.txt_contenido.Name = "txt_contenido"
         Me.txt_contenido.Size = New System.Drawing.Size(82, 22)
@@ -634,7 +639,7 @@ Partial Class Producto_alta_New
         '
         Me.tx_ptorepo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tx_ptorepo.ForeColor = System.Drawing.Color.Blue
-        Me.tx_ptorepo.Location = New System.Drawing.Point(149, 31)
+        Me.tx_ptorepo.Location = New System.Drawing.Point(149, 35)
         Me.tx_ptorepo.Margin = New System.Windows.Forms.Padding(4)
         Me.tx_ptorepo.Name = "tx_ptorepo"
         Me.tx_ptorepo.Size = New System.Drawing.Size(144, 22)
@@ -647,7 +652,7 @@ Partial Class Producto_alta_New
         '
         Me.lb_tel.AutoSize = True
         Me.lb_tel.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.lb_tel.Location = New System.Drawing.Point(25, 34)
+        Me.lb_tel.Location = New System.Drawing.Point(25, 38)
         Me.lb_tel.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lb_tel.Name = "lb_tel"
         Me.lb_tel.Size = New System.Drawing.Size(116, 16)
@@ -1007,6 +1012,39 @@ Partial Class Producto_alta_New
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.RB_filtro_si)
+        Me.GroupBox6.Controls.Add(Me.RB_filtro_no)
+        Me.GroupBox6.Location = New System.Drawing.Point(30, 139)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(192, 43)
+        Me.GroupBox6.TabIndex = 319
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Tipo de producto:"
+        '
+        'RB_filtro_no
+        '
+        Me.RB_filtro_no.AutoSize = True
+        Me.RB_filtro_no.Checked = True
+        Me.RB_filtro_no.Location = New System.Drawing.Point(3, 18)
+        Me.RB_filtro_no.Name = "RB_filtro_no"
+        Me.RB_filtro_no.Size = New System.Drawing.Size(74, 20)
+        Me.RB_filtro_no.TabIndex = 0
+        Me.RB_filtro_no.TabStop = True
+        Me.RB_filtro_no.Text = "Regular"
+        Me.RB_filtro_no.UseVisualStyleBackColor = True
+        '
+        'RB_filtro_si
+        '
+        Me.RB_filtro_si.AutoSize = True
+        Me.RB_filtro_si.Location = New System.Drawing.Point(120, 18)
+        Me.RB_filtro_si.Name = "RB_filtro_si"
+        Me.RB_filtro_si.Size = New System.Drawing.Size(55, 20)
+        Me.RB_filtro_si.TabIndex = 1
+        Me.RB_filtro_si.Text = "Filtro"
+        Me.RB_filtro_si.UseVisualStyleBackColor = True
+        '
         'Producto_alta_New
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -1048,6 +1086,8 @@ Partial Class Producto_alta_New
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.ERROR_tx_categoria, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1123,4 +1163,7 @@ Partial Class Producto_alta_New
     Friend WithEvents txt_contenido As System.Windows.Forms.TextBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
+    Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
+    Friend WithEvents RB_filtro_si As System.Windows.Forms.RadioButton
+    Friend WithEvents RB_filtro_no As System.Windows.Forms.RadioButton
 End Class

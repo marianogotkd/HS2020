@@ -1516,6 +1516,8 @@ Partial Public Class Ds_reporte_historial
         
         Private columnCLI_id As Global.System.Data.DataColumn
         
+        Private columnConAnt_motivo_consulta As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1608,6 +1610,14 @@ Partial Public Class Ds_reporte_historial
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ConAnt_motivo_consultaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnConAnt_motivo_consulta
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1644,9 +1654,9 @@ Partial Public Class Ds_reporte_historial
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddEvaluacion_MedicaRow(ByVal ConAnt_enferAct As String, ByVal ConAnt_patologico As String, ByVal ConAnt_familiares As String, ByVal ConAnt_fisico As String, ByVal ConAnt_Diag As String, ByVal ConAnt_estudios As String, ByVal CLI_id As String) As Evaluacion_MedicaRow
+        Public Overloads Function AddEvaluacion_MedicaRow(ByVal ConAnt_enferAct As String, ByVal ConAnt_patologico As String, ByVal ConAnt_familiares As String, ByVal ConAnt_fisico As String, ByVal ConAnt_Diag As String, ByVal ConAnt_estudios As String, ByVal CLI_id As String, ByVal ConAnt_motivo_consulta As String) As Evaluacion_MedicaRow
             Dim rowEvaluacion_MedicaRow As Evaluacion_MedicaRow = CType(Me.NewRow,Evaluacion_MedicaRow)
-            Dim columnValuesArray() As Object = New Object() {ConAnt_enferAct, ConAnt_patologico, ConAnt_familiares, ConAnt_fisico, ConAnt_Diag, ConAnt_estudios, CLI_id}
+            Dim columnValuesArray() As Object = New Object() {ConAnt_enferAct, ConAnt_patologico, ConAnt_familiares, ConAnt_fisico, ConAnt_Diag, ConAnt_estudios, CLI_id, ConAnt_motivo_consulta}
             rowEvaluacion_MedicaRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowEvaluacion_MedicaRow)
             Return rowEvaluacion_MedicaRow
@@ -1676,6 +1686,7 @@ Partial Public Class Ds_reporte_historial
             Me.columnConAnt_Diag = MyBase.Columns("ConAnt_Diag")
             Me.columnConAnt_estudios = MyBase.Columns("ConAnt_estudios")
             Me.columnCLI_id = MyBase.Columns("CLI_id")
+            Me.columnConAnt_motivo_consulta = MyBase.Columns("ConAnt_motivo_consulta")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1695,6 +1706,8 @@ Partial Public Class Ds_reporte_historial
             MyBase.Columns.Add(Me.columnConAnt_estudios)
             Me.columnCLI_id = New Global.System.Data.DataColumn("CLI_id", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnCLI_id)
+            Me.columnConAnt_motivo_consulta = New Global.System.Data.DataColumn("ConAnt_motivo_consulta", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnConAnt_motivo_consulta)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5967,6 +5980,22 @@ Partial Public Class Ds_reporte_historial
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ConAnt_motivo_consulta() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableEvaluacion_Medica.ConAnt_motivo_consultaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ConAnt_motivo_consulta' de la tabla 'Evaluacion_Medica' e"& _ 
+                            "s DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEvaluacion_Medica.ConAnt_motivo_consultaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsConAnt_enferActNull() As Boolean
             Return Me.IsNull(Me.tableEvaluacion_Medica.ConAnt_enferActColumn)
         End Function
@@ -6047,6 +6076,18 @@ Partial Public Class Ds_reporte_historial
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetCLI_idNull()
             Me(Me.tableEvaluacion_Medica.CLI_idColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsConAnt_motivo_consultaNull() As Boolean
+            Return Me.IsNull(Me.tableEvaluacion_Medica.ConAnt_motivo_consultaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetConAnt_motivo_consultaNull()
+            Me(Me.tableEvaluacion_Medica.ConAnt_motivo_consultaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     

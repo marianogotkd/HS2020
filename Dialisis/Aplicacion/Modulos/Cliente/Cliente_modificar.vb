@@ -369,7 +369,7 @@ Public Class Cliente_modificar
 
 
                 Historia_Clinica_Detalle.PAC_id = CInt(productoselec)
-                Me.Close()
+                Me.Hide() 'lo oculto, no lo cierro
                 Historia_Clinica_Detalle.Show()
 
             Else

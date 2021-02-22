@@ -65,6 +65,7 @@
             evaluacion("ConAnt_Diag") = (ds_historiaC.Tables("HistoriaC").Rows(0).Item("ConAnt_Diag"))
             evaluacion("ConAnt_estudios") = (ds_historiaC.Tables("HistoriaC").Rows(0).Item("ConAnt_estudios"))
             evaluacion("CLI_id") = cliente_id
+            evaluacion("ConAnt_motivo_consulta") = (ds_historiaC.Tables("HistoriaC").Rows(0).Item("ConAnt_motivo_consulta").ToString)
             ds_reporte_historial.Tables("Evaluacion_Medica").Rows.Add(evaluacion)
         End If
 
@@ -415,6 +416,7 @@
             evaluacion("ConAnt_Diag") = (ds_historiaC.Tables("HistoriaC").Rows(0).Item("ConAnt_Diag"))
             evaluacion("ConAnt_estudios") = (ds_historiaC.Tables("HistoriaC").Rows(0).Item("ConAnt_estudios"))
             evaluacion("CLI_id") = cliente_id
+            evaluacion("ConAnt_motivo_consulta") = (ds_historiaC.Tables("HistoriaC").Rows(0).Item("ConAnt_motivo_consulta"))
             ds_reporte_historial.Tables("Evaluacion_Medica").Rows.Add(evaluacion)
         End If
 

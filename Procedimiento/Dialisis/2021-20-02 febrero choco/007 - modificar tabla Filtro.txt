@@ -1,0 +1,3 @@
+TABLE [dbo].[Filtro](
+	[ProdxSuc_ID] [int] NULL,
+agregar ese campo

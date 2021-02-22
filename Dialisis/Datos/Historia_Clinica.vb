@@ -292,7 +292,7 @@ Public Class Historia_Clinica
                               ByVal ConAnt_Diag As String,
                               ByVal ConAnt_estudios As String,
                               ByVal conmed_CLI_id As Integer,
-                               ByVal conmed_medico_id As Integer) As DataSet
+                               ByVal conmed_medico_id As Integer, ByVal ConAnt_motivo_consulta As String) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -310,8 +310,7 @@ Public Class Historia_Clinica
         comando.Parameters.Add(New OleDb.OleDbParameter("@ConAnt_estudios", ConAnt_estudios))
         comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_id", conmed_CLI_id))
         comando.Parameters.Add(New OleDb.OleDbParameter("@medico_id", conmed_medico_id))
-
-
+        comando.Parameters.Add(New OleDb.OleDbParameter("@ConAnt_motivo_consulta", ConAnt_motivo_consulta))
 
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)
@@ -328,7 +327,7 @@ Public Class Historia_Clinica
                               ByVal ConAnt_Diag As String,
                               ByVal ConAnt_estudios As String,
                               ByVal conmed_CLI_id As Integer,
-                               ByVal conmed_medico_id As Integer) As DataSet
+                               ByVal conmed_medico_id As Integer, ByVal ConAnt_motivo_consulta As String) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -347,6 +346,7 @@ Public Class Historia_Clinica
         comando.Parameters.Add(New OleDb.OleDbParameter("@ConAnt_estudios", ConAnt_estudios))
         comando.Parameters.Add(New OleDb.OleDbParameter("@CLI_id", conmed_CLI_id))
         comando.Parameters.Add(New OleDb.OleDbParameter("@medico_id", conmed_medico_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@ConAnt_motivo_consulta", ConAnt_motivo_consulta))
 
 
 
