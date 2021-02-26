@@ -398,9 +398,9 @@ Public Class Producto_modificar
             Select Case cb_origen.SelectedValue
                 Case 1 'es deposito
                     ds_lotes = table_deposito_lotes.Copy
-                Case 2 'es dialisis
+                Case 3 'es dialisis
                     ds_lotes = table_dialisis_lotes.Copy
-                Case 3 'es dialisis calle
+                Case 5 'es dialisis calle
                     ds_lotes = table_dialisis_calle_lotes.Copy
             End Select
 
@@ -650,7 +650,7 @@ Public Class Producto_modificar
                     End If
                     If cb_origen.SelectedValue = 5 Then
                         Producto_ds.Tables("ProdxSuc").Rows.Clear()
-                        Producto_ds.Tables("ProdxSuc").Merge(table_dialisis)
+                        Producto_ds.Tables("ProdxSuc").Merge(table_dialisis_calle)
                     End If
                 End If
 

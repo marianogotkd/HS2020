@@ -5,6 +5,9 @@
     Dim DAturno As New Datos.Turno
     Dim fecha_registrar As Date
     Dim daenfermeria As New Datos.Enfermeria
+
+    Public sucursal_id As Integer 'me lo envia el formulario Turno_seleccionar para saber donde restar stock
+
     Private Sub Sesion_pacientes_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'lb_sesionfecha.Text = "Sesion del dia: " + CStr(Today)
 
@@ -81,7 +84,7 @@
             If result = DialogResult.Yes Then
                 If CStr(datagridview1.CurrentRow.Cells("SesionesasistenciaDataGridViewTextBoxColumn").Value) = "" Then
 
-                    Dim ds_sesiones As DataSet = DAsesiones.sesiones_alta(PAC_id, fecha_registrar, "Ausente", "Ausente") 'mando el parametro fecha_registrar porque es la que tiene el resultado de la busqueda, es decir lo que se esta mostrando en la grilla
+                    Dim ds_sesiones As DataSet = DAsesiones.sesiones_alta(PAC_id, fecha_registrar, "Ausente", "Ausente", sucursal_id) 'mando el parametro fecha_registrar porque es la que tiene el resultado de la busqueda, es decir lo que se esta mostrando en la grilla
                     Dim sesiones_id = ds_sesiones.Tables(0).Rows(0).Item(0)
 
                     'Dim result2 As Integer = MessageBox.Show("¿El Filtro del paciente fue utilizado?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -102,6 +105,7 @@
                         Enfermeria_insumos_Ausente.PAC_id = PAC_id
                         Enfermeria_insumos_Ausente.sesiones_id = sesiones_id
                         Enfermeria_insumos_Ausente.fecha_registrar = fecha_registrar
+                        Enfermeria_insumos_Ausente.sucursal_id = sucursal_id
                         Enfermeria_insumos_Ausente.Text = "Paciente: " + datagridview1.CurrentRow.Cells("PacienteDataGridViewTextBoxColumn").Value + ". - Consumir Filtro e Insumos."
                         Enfermeria_insumos_Ausente.Show()
                     Else
@@ -165,6 +169,9 @@
                     Dim PAC_id As Integer = CInt(datagridview1.CurrentRow.Cells("PACidDataGridViewTextBoxColumn").Value)
                     Nueva_Dialisis.PAC_id = PAC_id
                     Nueva_Dialisis.fecha_registrar = fecha_registrar
+
+                    Nueva_Dialisis.sucursal_id = sucursal_id 'puede ser 3 o 5, dependiendo en el turno q esté.
+
                     Nueva_Dialisis.Show()
 
                     '---Mariano 6-9-20 Esto lo hago en el form de dialisis

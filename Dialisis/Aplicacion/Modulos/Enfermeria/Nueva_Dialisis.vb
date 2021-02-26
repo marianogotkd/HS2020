@@ -17,7 +17,7 @@
     Dim FiltroDS As DataSet
     Dim daturno As New Datos.Turno
 
-
+    Public sucursal_id As Integer 'me lo envia el formulario sesion_pacientes
 
     '///////////variables que uso si el estado ya fue registrado como AUSENTE
     Public tipo_operacion As String = "alta" 'esta la uso para saber si es un alta, una modificacion, o bien un registro q era ausente y ahora actualizo a presente y hago un alta convencional
@@ -40,8 +40,8 @@
 
     Private Sub combo_filtros_recuperar()
         'siempre muestro todos los filtros, tengan o no tengan stock
-            'por ahora mando sucursal 3 q es dialisis
-            Dim ds_prod As DataSet = DAprod.Producto_filtro_obtenertodos(3)
+
+        Dim ds_prod As DataSet = DAprod.Producto_filtro_obtenertodos(sucursal_id) 'aqui mando 3 o 5 dependiendo q surcursal sea
 
             'ahora cargo el combo
         If ds_prod.Tables(1).Rows.Count <> 0 Then
@@ -168,13 +168,13 @@
                 Dim prod_id As Integer = ds_predef.Tables(0).Rows(i).Item("prod_id")
                 Dim prod_descripcion As String = ds_predef.Tables(0).Rows(i).Item("prod_descripcion")
                 'ahora recupero los lotes que tengo disponible en stock para la sucursal dialisis. OJO LA DIALISIS TIENE QUE SER SUCURSAL ID = 3. 
-                Dim Ds_Suc As DataSet = DAsucursal.Sucursal_obtener_producto(prod_id, 3, 3)
+                Dim Ds_Suc As DataSet = DAsucursal.Sucursal_obtener_producto(prod_id, sucursal_id, sucursal_id)
                 Dim unidad_medida As String = Ds_Suc.Tables(0).Rows(0).Item("prod_unidadmedida")
                 Dim contenido As Decimal = Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")
                 If Ds_Suc.Tables(0).Rows.Count <> 0 Then
                     'si existe el producto en suc, continuamos
                     'recupero los lotes de dicho insumo
-                    Dim ds_lotes As DataSet = DAlote.Producto_x_sucursal_lote_recuperartodos(prod_codinterno, 3)
+                    Dim ds_lotes As DataSet = DAlote.Producto_x_sucursal_lote_recuperartodos(prod_codinterno, sucursal_id)
                     If ds_lotes.Tables(0).Rows.Count <> 0 Then
                         'existen los lotes para el insumo
                         Ds_enfermeria.Tables("lote_x_suc").Rows.Clear() 'esta en la carpeta enfermeria, dataset "Ds_enfermeria"
@@ -364,6 +364,7 @@
 
     End Sub
     Private Sub Obetener_Cliente()
+        '3
         Dim ds_clie_recu As DataSet = DApaciente.Paciente_obtener_info(PAC_id)
         If ds_clie_recu.Tables(0).Rows.Count <> 0 Then
             tb_Dni_Cuit.Text = ds_clie_recu.Tables(0).Rows(0).Item("PAC_dni")
@@ -446,6 +447,7 @@
             tb_Obs.Text = info_sesion.Tables(0).Rows(0).Item("Dialisis_Obs")
             Dim accesovascular = info_sesion.Tables(0).Rows(0).Item("AccesoVascular")
             tb_AV.Text = info_sesion.Tables(0).Rows(0).Item("AccesoVascular")
+            sucursal_id = CInt(info_sesion.Tables(0).Rows(0).Item("sucursal_id"))
 
             'ahora si tiene consumos los coloco.
             If info_sesion.Tables(1).Rows.Count <> 0 Then
@@ -538,7 +540,7 @@
 
 
         Sesiones_prod_agregar.Close() 'hay q tener la precaucion de cerrarlo antes, ya que este modulo se lo usa para diversos fines
-        Sesiones_prod_agregar.sucursal_id = 3 ' el ID 3 es La Sucursal Sala de Dialisis
+        Sesiones_prod_agregar.sucursal_id = sucursal_id  ' el ID 3 es La Sucursal Sala de Dialisis y el 5 es dialisis de calle
         Sesiones_prod_agregar.form_procedencia = "Gestion_Mercaderia"
         Sesiones_prod_agregar.Text = "Enfermeria"
         Sesiones_prod_agregar.tipo_movimiento = "consumir producto en enfermeria"
@@ -554,14 +556,14 @@
 
     Private Sub Guardar_Sesion()
         'Alta de la Sesion
-        Dim ds_sesiones As DataSet = DAsesiones.sesiones_alta(PAC_id, fecha_registrar, "Presente", "Conectado") 'mando el parametro fecha_registrar porque es la que tiene el resultado de la busqueda, es decir lo que se esta mostrando en la grilla
+        Dim ds_sesiones As DataSet = DAsesiones.sesiones_alta(PAC_id, fecha_registrar, "Presente", "Conectado", sucursal_id) 'mando el parametro fecha_registrar porque es la que tiene el resultado de la busqueda, es decir lo que se esta mostrando en la grilla
         sesiones_id = ds_sesiones.Tables(0).Rows(0).Item(0) 'este recupera el id del q acabo de insertar
 
         Dim usuario_id As String
         usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
 
         'registro actividad del usuario
-        DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, 3, sesiones_id, Now, "")
+        DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, sucursal_id, sesiones_id, Now, "")
 
     End Sub
 
@@ -607,7 +609,7 @@
             Dim ds_prodxsuc As DataSet = DAprod.Producto_x_sucursal_obtener_info_ProdxSuc_ID(cb_filtro.SelectedValue)
             Dim prod_id As Integer = ds_prodxsuc.Tables(0).Rows(0).Item("prod_id")
 
-            Dim Ds_Suc As DataSet = DAsucursal.Sucursal_obtener_producto(prod_id, 3, 3) 'sucursal 3 es dialisis
+            Dim Ds_Suc As DataSet = DAsucursal.Sucursal_obtener_producto(prod_id, sucursal_id, sucursal_id) 'sucursal 3 es dialisis y 5 es dialisis de calle
 
             Dim TotalReal As Decimal = CDec(Ds_Suc.Tables(0).Rows(0).Item("ProdxSuc_stock_real")) 'de la tabla PRODUCTO_X_SUCURSAL
             TotalReal = TotalReal - CDec(1)
@@ -623,7 +625,7 @@
 
 
 
-            DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, TOTAL, TotalReal) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+            DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, TOTAL, TotalReal) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
 
 
             'ahora actualizo el lote
@@ -631,7 +633,7 @@
             Dim lote_nro As String = ds_prodxsuc.Tables(1).Rows(0).Item("lote_nro")
 
             Dim Prov_id As Integer = ds_prodxsuc.Tables(1).Rows(0).Item("Prov_id")
-            Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, 3, Int(VarB), Prov_id, TotalReal_lote, AUX)  ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+            Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, sucursal_id, Int(VarB), Prov_id, TotalReal_lote, AUX)  ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
 
 
             '//////////////////////////////////////////////////////
@@ -647,7 +649,7 @@
     End Sub
 
     Private Sub recupero_y_recalculo_totales(ByVal prod_id As Integer, ByVal codinterno As Integer)
-        Dim ds_lotes As DataSet = DAlote.Producto_x_sucursal_lote_recuperartodos(codinterno, 3)
+        Dim ds_lotes As DataSet = DAlote.Producto_x_sucursal_lote_recuperartodos(codinterno, sucursal_id)
         Dim stock As Decimal = 0
         Dim stock_real As Decimal = 0
         Dim i As Integer = 0
@@ -657,7 +659,7 @@
 
             i = i + 1
         End While
-        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, stock, stock_real)
+        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, stock, stock_real)
 
     End Sub
 
@@ -686,7 +688,7 @@
                 usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
 
                 'registro actividad del usuario
-                DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, 3, modificar_sesiones_id, Now, "")
+                DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, sucursal_id, modificar_sesiones_id, Now, "")
                 '//////////////////////////////////////////////////////////////////////////////////
 
 
@@ -712,7 +714,7 @@
                             Dim codinterno As Integer = Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cod_prod")
                             ds_PROD = DAprod.Producto_buscarcod(codinterno)
                             Dim prod_id = ds_PROD.Tables(0).Rows(0).Item("prod_id")
-                            Dim Ds_Suc As DataSet = DAsucursal.Sucursal_obtener_producto(prod_id, 3, 3) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+                            Dim Ds_Suc As DataSet = DAsucursal.Sucursal_obtener_producto(prod_id, sucursal_id, sucursal_id) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano y el id 5 es dialisis de calle.
 
                             'choco///////////////27-01-2021
                             'aqui viene el calculo siempre sobre el valor real, y dependiendo si se consumo el total del contenido se resta en stock
@@ -744,7 +746,7 @@
                             'ahora debo guardar en bd aux, lote_stocl_real, lote_cantidad
                             Dim nrolote As Integer = Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("lote_nro")
                             Dim proveedor_id As Integer = Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Prov_id")
-                            DAlote.Producto_x_sucursal_lote_actualizar_igualar(nrolote, prod_id, 3,
+                            DAlote.Producto_x_sucursal_lote_actualizar_igualar(nrolote, prod_id, sucursal_id,
                                                                           CDec(lote_cantidad), proveedor_id, lote_stock_real, AUX)
                             '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             'ahora me falta actualizar en producto x sucursal, tanto ProdxSuc_stock, ProdxSuc_stock_real
@@ -772,7 +774,7 @@
                     Dim MovMer_id As Integer
                     Dim lote_id As Integer
                     If borrado_todo_item_recuperado = "si" Then
-                        Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria("Insumo consumido en Enfermeria", fecha_registrar, Inicio.USU_id, 3, modificar_sesiones_id)
+                        Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria("Insumo consumido en Enfermeria", fecha_registrar, Inicio.USU_id, sucursal_id, modificar_sesiones_id)
                         MovMer_id = ds_movid.Tables(0).Rows(0).Item(0)
                     Else
                         MovMer_id = Consumo_mercaderia_id
@@ -790,7 +792,7 @@
                         'While i < Mov_DS.Tables("Mov").Rows.Count
                         ds_PROD = DAprod.Producto_buscarcod(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cod_prod"))
                         Dim prod_id = ds_PROD.Tables(0).Rows(0).Item("prod_id")
-                        Ds_Suc = DAsucursal.Sucursal_obtener_producto(prod_id, 3, 3) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+                        Ds_Suc = DAsucursal.Sucursal_obtener_producto(prod_id, sucursal_id, sucursal_id) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano y el id 5 es dialisis de calle
 
                         'choco///////////////27-01-2021
                         'aqui viene el calculo siempre sobre el valor real, y dependiendo si se consumo el total del contenido se resta en stock
@@ -817,7 +819,7 @@
                         '''''''
                         ''''''''''
                         'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
-                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, TOTAL, TotalReal) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, TOTAL, TotalReal) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
                         ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
 
 
@@ -830,7 +832,7 @@
 
 
                         'Dim cant_a_quitar As Decimal = CDec(Mov_DS.Tables("Mov_Enf").Rows(i).Item("Cantidad"))
-                        Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, 3, Int(VarB), Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Prov_id"), TotalReal_lote, AUX)  ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+                        Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, sucursal_id, Int(VarB), Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Prov_id"), TotalReal_lote, AUX)  ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
                         lote_id = dslote.Tables(0).Rows(0).Item("lote_id")
                         'End If
                         ''''''''''''''''''''''''''''''''''''''
@@ -899,7 +901,7 @@
                         Guardar_Datos_Filtro()
 
                         Dim lote_id As Integer
-                        Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria(concepto, fecha_registrar, Inicio.USU_id, 3, sesiones_id)
+                        Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria(concepto, fecha_registrar, Inicio.USU_id, sucursal_id, sesiones_id)
                         ''''''''''''''''''''''''''''''''''''''''''''''''
 
                         Dim MovMer_id As Integer = ds_movid.Tables(0).Rows(0).Item(0)
@@ -915,7 +917,7 @@
                             'While i < Mov_DS.Tables("Mov").Rows.Count
                             ds_PROD = DAprod.Producto_buscarcod(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cod_prod"))
                             Dim prod_id = ds_PROD.Tables(0).Rows(0).Item("prod_id")
-                            Ds_Suc = DAsucursal.Sucursal_obtener_producto(prod_id, 3, 3) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+                            Ds_Suc = DAsucursal.Sucursal_obtener_producto(prod_id, sucursal_id, sucursal_id) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano y el id 5 es dialisis de calle
 
                             'choco///////////////27-01-2021
                             'aqui viene el calculo siempre sobre el valor real, y dependiendo si se consumo el total del contenido se resta en stock
@@ -947,7 +949,7 @@
                             '''''''
                             ''''''''''
                             'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
-                            DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, TOTAL, TotalReal) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+                            DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, TOTAL, TotalReal) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
                             ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
 
 
@@ -960,7 +962,7 @@
 
 
                             'Dim cant_a_quitar As Decimal = CDec(Mov_DS.Tables("Mov_Enf").Rows(i).Item("Cantidad"))
-                            Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, 3, Int(VarB), Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Prov_id"), TotalReal_lote, AUX)  ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+                            Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, sucursal_id, Int(VarB), Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Prov_id"), TotalReal_lote, AUX)  ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano y el id 5 es dialisis de calle
                             lote_id = dslote.Tables(0).Rows(0).Item("lote_id")
                             'End If
                             ''''''''''''''''''''''''''''''''''''''
@@ -1097,7 +1099,7 @@
 
     Private Sub btn_cambio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_cambio.Click
         'por ahora mando sucursal 3 q es dialisis
-        Dim ds_prod As DataSet = DAprod.Producto_filtro_obtenertodos(3)
+        Dim ds_prod As DataSet = DAprod.Producto_filtro_obtenertodos(sucursal_id)
 
         'ahora cargo el combo
         If ds_prod.Tables(0).Rows.Count <> 0 Then
@@ -1243,7 +1245,7 @@
                 usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
 
                 'registro actividad del usuario
-                DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, 3, modificar_sesiones_id, Now, "")
+                DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, sucursal_id, modificar_sesiones_id, Now, "")
                 '//////////////////////////////////////////////////////////////////////////////////
 
 
@@ -1267,7 +1269,7 @@
                             Dim codinterno As Integer = Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Cod_prod")
                             ds_PROD = DAprod.Producto_buscarcod(codinterno)
                             Dim prod_id = ds_PROD.Tables(0).Rows(0).Item("prod_id")
-                            Dim Ds_Suc As DataSet = DAsucursal.Sucursal_obtener_producto(prod_id, 3, 3) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+                            Dim Ds_Suc As DataSet = DAsucursal.Sucursal_obtener_producto(prod_id, sucursal_id, sucursal_id) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano y el id 5 es dialisis de calle
 
                             'choco///////////////27-01-2021
                             'aqui viene el calculo siempre sobre el valor real, y dependiendo si se consumo el total del contenido se resta en stock
@@ -1299,7 +1301,7 @@
                             'ahora debo guardar en bd aux, lote_stocl_real, lote_cantidad
                             Dim nrolote As Integer = Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("lote_nro")
                             Dim proveedor_id As Integer = Ds_enfermeria.Tables("Consumo_real1_aux").Rows(aa).Item("Prov_id")
-                            DAlote.Producto_x_sucursal_lote_actualizar_igualar(nrolote, prod_id, 3,
+                            DAlote.Producto_x_sucursal_lote_actualizar_igualar(nrolote, prod_id, sucursal_id,
                                                                           CDec(lote_cantidad), proveedor_id, lote_stock_real, AUX)
                             '/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                             'ahora me falta actualizar en producto x sucursal, tanto ProdxSuc_stock, ProdxSuc_stock_real
@@ -1330,7 +1332,7 @@
                     Dim MovMer_id As Integer
                     Dim lote_id As Integer
                     If borrado_todo_item_recuperado = "si" Then
-                        Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria("Insumo consumido en Enfermeria", fecha_registrar, Inicio.USU_id, 3, modificar_sesiones_id)
+                        Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria("Insumo consumido en Enfermeria", fecha_registrar, Inicio.USU_id, sucursal_id, modificar_sesiones_id)
                         MovMer_id = ds_movid.Tables(0).Rows(0).Item(0)
                     Else
                         MovMer_id = Consumo_mercaderia_id
@@ -1350,7 +1352,7 @@
                         'While i < Mov_DS.Tables("Mov").Rows.Count
                         ds_PROD = DAprod.Producto_buscarcod(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cod_prod"))
                         Dim prod_id = ds_PROD.Tables(0).Rows(0).Item("prod_id")
-                        Ds_Suc = DAsucursal.Sucursal_obtener_producto(prod_id, 3, 3) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+                        Ds_Suc = DAsucursal.Sucursal_obtener_producto(prod_id, sucursal_id, sucursal_id) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano y el id 5 es dialisis de calle
 
                         'choco///////////////27-01-2021
                         'aqui viene el calculo siempre sobre el valor real, y dependiendo si se consumo el total del contenido se resta en stock
@@ -1377,7 +1379,7 @@
                         '''''''
                         ''''''''''
                         'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
-                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, TOTAL, TotalReal) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+                        DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, TOTAL, TotalReal) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
                         ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
 
 
@@ -1390,7 +1392,7 @@
 
 
                         'Dim cant_a_quitar As Decimal = CDec(Mov_DS.Tables("Mov_Enf").Rows(i).Item("Cantidad"))
-                        Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, 3, Int(VarB), Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Prov_id"), TotalReal_lote, AUX)  ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+                        Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, sucursal_id, Int(VarB), Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Prov_id"), TotalReal_lote, AUX)  ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
                         lote_id = dslote.Tables(0).Rows(0).Item("lote_id")
                         'End If
                         ''''''''''''''''''''''''''''''''''''''

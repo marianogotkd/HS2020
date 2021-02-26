@@ -4,7 +4,7 @@ Public Class Sesiones
     Inherits Datos.Conexion
 
     'alta ausente
-    Public Function sesiones_alta(ByVal PAC_id As Integer, ByVal Sesiones_fecha As Date, ByVal Sesiones_asistencia As String, ByVal Sesiones_estado As String) As DataSet
+    Public Function sesiones_alta(ByVal PAC_id As Integer, ByVal Sesiones_fecha As Date, ByVal Sesiones_asistencia As String, ByVal Sesiones_estado As String, ByVal sucursal_id As Integer) As DataSet
         Try
             dbconn.Open()
         Catch ex As Exception
@@ -17,6 +17,7 @@ Public Class Sesiones
         comando.Parameters.Add(New OleDb.OleDbParameter("@Sesiones_fecha", Sesiones_fecha))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Sesiones_asistencia", Sesiones_asistencia))
         comando.Parameters.Add(New OleDb.OleDbParameter("@Sesiones_estado", Sesiones_estado))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
 
         Dim ds_JE As New DataSet()
         Dim da_JE As New OleDbDataAdapter(comando)

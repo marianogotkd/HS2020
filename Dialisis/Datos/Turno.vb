@@ -649,6 +649,26 @@ Public Class Turno
         Return ds_JE
     End Function
 
+    Public Function Turnodialisis_validar_nombre(ByVal Turnodialisis_desc As String) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Turnodialisis_validar_nombre", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add(New OleDb.OleDbParameter("@Turnodialisis_desc", Turnodialisis_desc))
+        'comando.Parameters.Add(New OleDb.OleDbParameter("@Turnodialisis_id", turnodialisis_id))
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Turno")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+
+
 
     Public Function Turnodialisis_obtener_dias(ByVal Turnodialisis_id As Integer) As DataSet
         Try

@@ -51,6 +51,17 @@
                 Sesion_pacientes.tb_turno.Text = datagridview1.CurrentRow.Cells("TurnodialisisDescDataGridViewTextBoxColumn").Value
                 Sesion_pacientes.tb_horario.Text = datagridview1.CurrentRow.Cells("HorarioDataGridViewTextBoxColumn").Value
                 Sesion_pacientes.lb_totalinscriptos.Text = "Total de inscriptos: " + CStr(datagridview1.CurrentRow.Cells("CantidadinscriptosDataGridViewTextBoxColumn").Value)
+
+                '///////////choco 25-02-2021 /////////////////////////////////////
+                'como tengo q descontar stock dependiendo la sucursal, voy a pasar el id de la sucursal = 3 si es un turno comun y si es un turno de dialisis de calle paso sucursal = 5
+                If datagridview1.CurrentRow.Cells("TurnodialisisDescDataGridViewTextBoxColumn").Value = "Dialisis de Calle" Then
+                    Sesion_pacientes.sucursal_id = 5 'es dialisis de calle
+                Else
+                    Sesion_pacientes.sucursal_id = 3 'es sala de dialisis
+                End If
+                '/////////////////////////////////////////////////////////////////
+                Sesion_pacientes.Text = "Sesiones de diálisis - Turno: " + CStr(datagridview1.CurrentRow.Cells("TurnodialisisDescDataGridViewTextBoxColumn").Value)
+
                 Sesion_pacientes.Show()
                 Me.Hide()
             Else

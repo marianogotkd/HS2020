@@ -1,0 +1,2 @@
+desde la solucion crear un turno que se llame asi: "Dialisis de Calle" ojo textualmente tiene q ser asi.
+

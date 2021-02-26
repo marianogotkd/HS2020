@@ -65,13 +65,13 @@ Partial Class Enfermeria_insumos_Ausente
         Me.MovEnfBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Mov_DS = New Aplicacion.Mov_DS()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.cb_filtro = New System.Windows.Forms.ComboBox()
         Me.btn_cambio = New System.Windows.Forms.Button()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.tb_CantRe = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.tb_Filtro = New System.Windows.Forms.TextBox()
         Me.lbl_err2 = New System.Windows.Forms.Label()
-        Me.cb_filtro = New System.Windows.Forms.ComboBox()
         Me.GroupBox_insumos.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ConsumorealBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -444,6 +444,19 @@ Partial Class Enfermeria_insumos_Ausente
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Filtro"
         '
+        'cb_filtro
+        '
+        Me.cb_filtro.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cb_filtro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cb_filtro.Enabled = False
+        Me.cb_filtro.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cb_filtro.FormattingEnabled = True
+        Me.cb_filtro.Location = New System.Drawing.Point(41, 41)
+        Me.cb_filtro.Margin = New System.Windows.Forms.Padding(4)
+        Me.cb_filtro.Name = "cb_filtro"
+        Me.cb_filtro.Size = New System.Drawing.Size(119, 21)
+        Me.cb_filtro.TabIndex = 358
+        '
         'btn_cambio
         '
         Me.btn_cambio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -483,36 +496,24 @@ Partial Class Enfermeria_insumos_Ausente
         '
         'tb_Filtro
         '
-        Me.tb_Filtro.Location = New System.Drawing.Point(41, 42)
+        Me.tb_Filtro.Location = New System.Drawing.Point(254, 71)
         Me.tb_Filtro.Multiline = True
         Me.tb_Filtro.Name = "tb_Filtro"
         Me.tb_Filtro.Size = New System.Drawing.Size(110, 20)
         Me.tb_Filtro.TabIndex = 331
+        Me.tb_Filtro.Visible = False
         '
         'lbl_err2
         '
         Me.lbl_err2.AutoSize = True
         Me.lbl_err2.Font = New System.Drawing.Font("Modern No. 20", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_err2.ForeColor = System.Drawing.Color.Red
-        Me.lbl_err2.Location = New System.Drawing.Point(157, 37)
+        Me.lbl_err2.Location = New System.Drawing.Point(166, 37)
         Me.lbl_err2.Name = "lbl_err2"
         Me.lbl_err2.Size = New System.Drawing.Size(20, 21)
         Me.lbl_err2.TabIndex = 337
         Me.lbl_err2.Text = "*"
         Me.lbl_err2.Visible = False
-        '
-        'cb_filtro
-        '
-        Me.cb_filtro.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.cb_filtro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cb_filtro.Enabled = False
-        Me.cb_filtro.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.cb_filtro.FormattingEnabled = True
-        Me.cb_filtro.Location = New System.Drawing.Point(41, 69)
-        Me.cb_filtro.Margin = New System.Windows.Forms.Padding(4)
-        Me.cb_filtro.Name = "cb_filtro"
-        Me.cb_filtro.Size = New System.Drawing.Size(170, 21)
-        Me.cb_filtro.TabIndex = 358
         '
         'Enfermeria_insumos_Ausente
         '

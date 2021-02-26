@@ -67,10 +67,14 @@
                 Dim result As DialogResult
                 result = MessageBox.Show("¿Está seguro que desea eliminar el turno: " + DataGridView1.CurrentRow.Cells("TurnodialisisDescDataGridViewTextBoxColumn").Value + "?.", "Sistema de Gestión.", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
                 If result = DialogResult.OK Then
-                    Dim turnodialisis_id As Integer = DataGridView1.CurrentRow.Cells("TurnodialisisidDataGridViewTextBoxColumn").Value
-                    DAturno.Turnodialisis_eliminar_turno(turnodialisis_id)
-                    DAturno.Turnodialisis_eliminar_dias(turnodialisis_id)
-                    obtener_turnos()
+                    If DataGridView1.CurrentRow.Cells("TurnodialisisDescDataGridViewTextBoxColumn").Value <> "Dialisis de Calle" Then
+                        Dim turnodialisis_id As Integer = DataGridView1.CurrentRow.Cells("TurnodialisisidDataGridViewTextBoxColumn").Value
+                        DAturno.Turnodialisis_eliminar_turno(turnodialisis_id)
+                        DAturno.Turnodialisis_eliminar_dias(turnodialisis_id)
+                        obtener_turnos()
+                    Else
+                        MessageBox.Show("No se puede eliminar el turno DIALISIS DE CALLE. Consulte al administrador.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
                 End If
             Else
                 MessageBox.Show("Seleccione un turno para eliminar.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
