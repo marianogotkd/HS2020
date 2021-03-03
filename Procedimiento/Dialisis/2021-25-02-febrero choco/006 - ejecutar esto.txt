@@ -1,1 +1,0 @@
-update Sesiones set sucursal_id = '3' ---vinculo todas las sesiones existentes a la sucursal de sala de dialisis

@@ -1150,8 +1150,7 @@ Public Property EnabledCerrar() As Boolean
     End Sub
 
     Private Sub ConsultaDeConsumosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuItem_Stock_Consulta.Click
-        Consumos_consulta.Close()
-        Consumos_consulta.Show()
+        
     End Sub
 
 
@@ -1331,5 +1330,15 @@ Public Property EnabledCerrar() As Boolean
 
     Private Sub ConsultaDeAjustesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConsultaDeAjustesToolStripMenuItem.Click
         Ajuste_Consulta.Show()
+    End Sub
+
+    Private Sub RegistroDeConsumosporInsumoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistroDeConsumosporInsumoToolStripMenuItem.Click
+        Consumos_consulta.Close()
+        Consumos_consulta.Show()
+    End Sub
+
+    Private Sub RegistroDeConsumosporConceptoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistroDeConsumosporConceptoToolStripMenuItem.Click
+        Consumo_consulta_x_concepto.Close()
+        Consumo_consulta_x_concepto.Show()
     End Sub
 End Class

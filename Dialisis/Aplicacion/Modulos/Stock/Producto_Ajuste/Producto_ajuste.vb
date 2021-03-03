@@ -227,6 +227,54 @@
     End Sub
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
+        'antes de mostrar el formulario actualizo en sus data set los cambios efectuados.
+
+
+
+
+
+        Dim i As Integer = 0
+        Dim prodid As Integer = 0
+        Dim ProdxSuc_stock As Decimal = 0
+        Dim Contenido_total As Decimal = 0
+        While i < DataGridView2.Rows.Count
+            prodid = CInt(DataGridView2.Rows(i).Cells("ProdidDataGridViewTextBoxColumn").Value)
+            ProdxSuc_stock = ProdxSuc_stock + CDec(DataGridView2.Rows(i).Cells("LotecantidadDataGridViewTextBoxColumn").Value)
+            Contenido_total = Contenido_total + CDec(DataGridView2.Rows(i).Cells("lote_stock_real").Value)
+            i = i + 1
+        End While
+        i = 0
+        While i < Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows.Count
+            'busco producto para actualizar
+            If CInt(Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("prod_id")) = prodid And sucursal_id = CInt(Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("sucursal_id")) Then
+                'aqui modifico los datos
+                Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("ProdxSuc_stock") = ProdxSuc_stock
+                Producto_modificar.Producto_ds.Tables("ProdxSuc").Rows(i).Item("Contenido_total") = Contenido_total
+                Exit While
+            End If
+            i = i + 1
+        End While
+
+        'Producto_ds.Tables("ProdxSuc") 'esta es la tabla donde estan los productos: (deposito)
+
+
+        'recuperar todos los lotes
+        Dim DAVentas As New Datos.Venta
+        Dim ds_lotes_deposito As DataSet = DAVentas.Producto_x_Sucursal_obtener_lotes(1) 'id 1 es deposito
+        Dim ds_lotes_dialisis As DataSet = DAVentas.Producto_x_Sucursal_obtener_lotes(3) 'id 3 es suc dialisis
+        Dim ds_lotes_dialisis_calle As DataSet = DAVentas.Producto_x_Sucursal_obtener_lotes(5) 'id 5 es suc dialisis calle
+        Producto_modificar.table_deposito_lotes.Rows.Clear()
+        Producto_modificar.table_dialisis_lotes.Rows.Clear()
+        Producto_modificar.table_dialisis_calle_lotes.Rows.Clear()
+
+        Producto_modificar.table_deposito_lotes.Merge(ds_lotes_deposito.Tables(0)) 'copy copia la estructura y contenido, clone solo copia estructura.
+        Producto_modificar.table_dialisis_lotes.Merge(ds_lotes_dialisis.Tables(0))
+        Producto_modificar.table_dialisis_calle_lotes.Merge(ds_lotes_dialisis_calle.Tables(0))
+
+        'luego se aplica el calculo para contar los vencidos
+        Producto_modificar.agregar_cant_vencida()
+
+
         Producto_modificar.Show()
         Me.Close()
     End Sub
@@ -259,6 +307,11 @@
 
         '    End If
         'End If
+
+
+
+
+
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)

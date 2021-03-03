@@ -1,0 +1,16 @@
+USE [Dialisis]
+GO
+/****** Object:  StoredProcedure [dbo].[Producto_filtro_obtenertodos]    Script Date: 02/22/2021 00:49:47 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER procedure [dbo].[Producto_filtro_obtenertodos]
+@sucursal_id int
+
+as
+---la tabla 0 trae solo los que tienen stock
+select * from Producto INNER JOIN Producto_x_sucursal ON Producto.prod_id = Producto_x_sucursal.prod_id where Producto.prod_EsFiltro = 'si' AND Producto_x_sucursal.ProdxSuc_stock_real <> '0' and Producto_x_sucursal.sucursal_id = @sucursal_id and Producto.prod_eliminado = 'no'  
+--la tabla 1 trae todos, tengan o no stock
+select * from Producto INNER JOIN Producto_x_sucursal ON Producto.prod_id = Producto_x_sucursal.prod_id where Producto.prod_EsFiltro = 'si' AND Producto_x_sucursal.sucursal_id = @sucursal_id  
+

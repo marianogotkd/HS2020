@@ -1,4 +1,0 @@
-modificar tabla [Sesiones](
-agregar este campo
-	[sucursal_id] [int] NULL,
-

@@ -1,2 +1,0 @@
-TABLE [dbo].[Producto](
-	[prod_EsFiltro] [varchar](2) NULL,

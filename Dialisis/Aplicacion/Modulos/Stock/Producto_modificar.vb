@@ -2247,6 +2247,8 @@ Public Class Producto_modificar
                 'fila("prod_descrilarga") = DG_Producto.Rows(i).Cells("prod_ptorepo").Value
                 'fila("prod_precio_vta") = ""
                 fila("prod_stock") = DG_Producto.Rows(i).Cells("ProdxSuc_stock").Value
+                fila("cant_vencimiento") = DG_Producto.Rows(i).Cells("cant_vencimiento").Value
+                fila("Contenido_total") = DG_Producto.Rows(i).Cells("Contenido_total").Value
                 fila("prod_ptorepo") = DG_Producto.Rows(i).Cells("prod_ptorepo").Value
                 'fila("prod_precio_vta_May") = cb_origen.SelectedValue
                 'fila("prod_codbarra") = cb_origen.SelectedValue

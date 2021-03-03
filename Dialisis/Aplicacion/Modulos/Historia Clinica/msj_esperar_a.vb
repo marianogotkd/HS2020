@@ -790,6 +790,10 @@
                 Consultas_Movimientos_b.reporte_2()
                 Me.Close()
             End If
+            If procedencia = "Consumos_consulta_detalle" Then
+                Consumos_consulta_detalle.reporte()
+                Me.Close()
+            End If
         End If
     End Sub
 End Class

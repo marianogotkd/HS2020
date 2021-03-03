@@ -723,6 +723,17 @@
     <Compile Include="Modulos\Gestion de Mercaderia\Busqueda_Productos_dialisis.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Gestion de Mercaderia\Consulta consumos\Consumo_consulta_x_concepto.Designer.vb">
+      <DependentUpon>Consumo_consulta_x_concepto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Gestion de Mercaderia\Consulta consumos\Consumo_consulta_x_concepto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Gestion de Mercaderia\Consulta consumos\ds_consulta_consumos.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ds_consulta_consumos.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\Gestion de Mercaderia\Consultas Bajas_b\Consultas_Bajas_b.Designer.vb">
       <DependentUpon>Consultas_Bajas_b.vb</DependentUpon>
     </Compile>
@@ -777,10 +788,10 @@
     <Compile Include="Modulos\Gestion de Mercaderia\Consumos_consulta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Modulos\Gestion de Mercaderia\Consumos_consulta_detalle.Designer.vb">
+    <Compile Include="Modulos\Gestion de Mercaderia\Consulta consumos\Consumos_consulta_detalle.Designer.vb">
       <DependentUpon>Consumos_consulta_detalle.vb</DependentUpon>
     </Compile>
-    <Compile Include="Modulos\Gestion de Mercaderia\Consumos_consulta_detalle.vb">
+    <Compile Include="Modulos\Gestion de Mercaderia\Consulta consumos\Consumos_consulta_detalle.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulos\Gestion de Mercaderia\Consumo_reporte_elegir.Designer.vb">
@@ -1960,6 +1971,9 @@
     <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Busqueda_Productos_dialisis.resx">
       <DependentUpon>Busqueda_Productos_dialisis.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Consulta consumos\Consumo_consulta_x_concepto.resx">
+      <DependentUpon>Consumo_consulta_x_concepto.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Consultas Bajas_b\Consultas_Bajas_b.resx">
       <DependentUpon>Consultas_Bajas_b.vb</DependentUpon>
     </EmbeddedResource>
@@ -1978,7 +1992,7 @@
     <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Consumos_consulta.resx">
       <DependentUpon>Consumos_consulta.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Consumos_consulta_detalle.resx">
+    <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Consulta consumos\Consumos_consulta_detalle.resx">
       <DependentUpon>Consumos_consulta_detalle.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Gestion de Mercaderia\Consumo_reporte_elegir.resx">
@@ -2524,6 +2538,17 @@
     </None>
     <None Include="Modulos\Facturacion\Venta_Caja\Venta_Caja_ds.xss">
       <DependentUpon>Venta_Caja_ds.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Gestion de Mercaderia\Consulta consumos\ds_consulta_consumos.xsc">
+      <DependentUpon>ds_consulta_consumos.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Gestion de Mercaderia\Consulta consumos\ds_consulta_consumos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ds_consulta_consumos.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulos\Gestion de Mercaderia\Consulta consumos\ds_consulta_consumos.xss">
+      <DependentUpon>ds_consulta_consumos.xsd</DependentUpon>
     </None>
     <None Include="Modulos\Gestion de Mercaderia\Consultas Bajas_b\Ds_consulta_bajas_b.xsc">
       <DependentUpon>Ds_consulta_bajas_b.xsd</DependentUpon>

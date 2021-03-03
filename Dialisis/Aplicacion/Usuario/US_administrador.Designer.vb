@@ -165,6 +165,8 @@ Partial Class US_administrador
         Me.IngresDeMercaderiaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MovimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BajaDeInsumosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RegistroDeConsumosporConceptoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RegistroDeConsumosporInsumoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -186,7 +188,7 @@ Partial Class US_administrador
         'Separator_Arriba
         '
         Me.Separator_Arriba.Name = "Separator_Arriba"
-        Me.Separator_Arriba.Size = New System.Drawing.Size(22, 6)
+        Me.Separator_Arriba.Size = New System.Drawing.Size(93, 6)
         '
         'Tool_Paciente
         '
@@ -602,6 +604,7 @@ Partial Class US_administrador
         '
         'MenuItem_Stock_Consulta
         '
+        Me.MenuItem_Stock_Consulta.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistroDeConsumosporConceptoToolStripMenuItem, Me.RegistroDeConsumosporInsumoToolStripMenuItem})
         Me.MenuItem_Stock_Consulta.Name = "MenuItem_Stock_Consulta"
         Me.MenuItem_Stock_Consulta.Size = New System.Drawing.Size(197, 22)
         Me.MenuItem_Stock_Consulta.Text = "Consulta de Consumos"
@@ -795,7 +798,7 @@ Partial Class US_administrador
         'Separator_Conf
         '
         Me.Separator_Conf.Name = "Separator_Conf"
-        Me.Separator_Conf.Size = New System.Drawing.Size(79, 6)
+        Me.Separator_Conf.Size = New System.Drawing.Size(93, 6)
         Me.Separator_Conf.Visible = False
         '
         'ToolStripDropDownButton6
@@ -1293,6 +1296,18 @@ Partial Class US_administrador
         Me.BajaDeInsumosToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.BajaDeInsumosToolStripMenuItem.Text = "Baja de Insumos"
         '
+        'RegistroDeConsumosporConceptoToolStripMenuItem
+        '
+        Me.RegistroDeConsumosporConceptoToolStripMenuItem.Name = "RegistroDeConsumosporConceptoToolStripMenuItem"
+        Me.RegistroDeConsumosporConceptoToolStripMenuItem.Size = New System.Drawing.Size(275, 22)
+        Me.RegistroDeConsumosporConceptoToolStripMenuItem.Text = "Registro de Consumos (por concepto)"
+        '
+        'RegistroDeConsumosporInsumoToolStripMenuItem
+        '
+        Me.RegistroDeConsumosporInsumoToolStripMenuItem.Name = "RegistroDeConsumosporInsumoToolStripMenuItem"
+        Me.RegistroDeConsumosporInsumoToolStripMenuItem.Size = New System.Drawing.Size(275, 22)
+        Me.RegistroDeConsumosporInsumoToolStripMenuItem.Text = "Registro de Consumos (por insumo)"
+        '
         'US_administrador
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -1464,4 +1479,6 @@ Partial Class US_administrador
     Friend WithEvents MenuItem_ENF_stock As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents InsumosPredefinidosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ConsultaDeAjustesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RegistroDeConsumosporConceptoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RegistroDeConsumosporInsumoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
