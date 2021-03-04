@@ -1315,8 +1315,6 @@ Public Class Producto_alta_New
             'i = i + 1
             'End While
 
-
-
             i = i + 1
         End While
 
@@ -1334,8 +1332,6 @@ Public Class Producto_alta_New
         End While
         DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, stock, stock_real)
     End Sub
-
-
 
     'esta rutina borrar los producto cargados en la tabla "proveedorproducto"
     Private Sub proveedorproducto_borrar(ByVal prodid As Integer)

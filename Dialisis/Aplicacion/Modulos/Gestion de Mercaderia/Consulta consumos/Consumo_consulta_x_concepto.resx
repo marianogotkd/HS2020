@@ -117,19 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ConsumosdetalleBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 60</value>
+  <metadata name="ConsumosBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>194, 17</value>
   </metadata>
-  <metadata name="Mov_DS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1119, 17</value>
+  <metadata name="Ds_consulta_consumos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
-  <metadata name="Caja_ds.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1227, 17</value>
-  </metadata>
-  <metadata name="CajadsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1331, 17</value>
-  </metadata>
-  <metadata name="Cliente_ds.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1527, 17</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Button_buscar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAC4VAAAuFQEjmkqzAAADUElE
+        QVQ4T5WUW0iTYRjH103Q4WYUkV1EEO7gllqWncTqIjSyTCvnmlulaHNqmkp4WKmtLEwqrRTLc4FZucwO
+        aoqmUBlurXk2ZpSU7cIiMcnK+vo/5je+jQV18Xv59vI+v/fwPM94IvdYR5YBHegQroj5DMbxbQJ5QAqc
+        xdhwnMgUrYiZchUfmhS4qavFnnFasefhFKFEU4G5j5AzWFMA5nBi7OD+uI5ABpxYv+eCi39q3ZJAXfPa
+        4OwWr8CM+gU+oRdnY40aG5G0FcybibOD/cgkmcTriMwvWT87srJvZdpdS3xCdX+u4srLQcVV8zdlaXdZ
+        kK5poYdPqo9ArP6BmEpWwoWGpSL3GDqZDjJekt7ie63jffHtF1bTrRcf6s89eq3YV2hslxcaGVVpz5ug
+        U818bLxfKNXQSTdwZQQNJ/E+X3FNfkRFr2fFs3clEDFVnSPT6E1Wq1Y/cDDksmESYkZV3ntv84ErPFdh
+        lAWxdVwZQYNB4BZd7Z9Stzit1hJfY7L2sTKC5LkNr7NDLhnekjCsuIsJSL8nRkwSYsfAXFZG8JC5MWRS
+        u1PXvC6+qv/sTeOHphscITZgcuqHEvZeMoySUFFkYkLOP1FIVyf64dpTkLg4CicgTAs+3eIlLzK9yn5g
+        UepfWofxhtOya8/fF2kquzJlBQaGFcrynyml3slbIfwJyRI7IYZuJKQcpcFXFJt/yQuM7ek1A+G5jUOn
+        zzy0JEaWmTNkM+/358pmJjCrYSUOokHNfkH8fEdhPpLyCXU2C6VRTkF4rykwDEZDL/85GYuqrOfplogS
+        nqsoyojYBq6MoEGMnahs1AGpd/nI4huugAs2HN+d83g5ysZfKJ3ummNcGcF+FAol0YxkTeLGHdr7i1Rl
+        vbVKZJPeiwi7aqZyaQs62Szw8E1fjm4ZRgwJJ8C+GYedkHqzVSCJ/i7yiAv3DSvg7Ui/Lw45/zRUltch
+        35XVuIqu6bYqIQBd8hZrScZCmbZJbWZAvVlOfwB4n0HU2VGceLvUO2kb5mIx1znTHc6wSblClk3gDvhI
+        dTZda6hV/G4ExwH1sTMpzQc7E7JQBywGVLjc0qCT/E06wBX8DySlazoKR50t/lecSducLfwfdoMuMAJa
+        RO6xbr8BNBxijn6psAcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <metadata name="Ds_consulta_consumos.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>

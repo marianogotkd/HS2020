@@ -77,43 +77,48 @@
                 Dim result As DialogResult
                 result = MessageBox.Show("¿Desea generar este turno?.", "Sistema de Gestión.", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
                 If result = DialogResult.OK Then
-                    'primero guardo el turno
-                    'Dim desde_hora As String = CStr(desde_hora.Value) + ":" + CStr(desde_min.Value)
-                    'Dim hasta As String = CStr(hasta_hora.Value) + ":" + CStr(hasta_min.Value)
+                    'valido que no exista un turno con ese nombre
 
-                    Dim ds_turno As DataSet = DAturno.Turnodialisis_alta(txt_desc.Text, CStr(desde_hora.Value), CStr(desde_min.Value), CStr(hasta_hora.Value), CStr(hasta_min.Value))
-                    Dim turnodialisis_id As Integer = ds_turno.Tables(0).Rows(0).Item(0)
-                    'ahora guardo los dias
-                    If lunes.Checked = True Then
-                        DAturno.Dias_dialisis_alta("Lunes", turnodialisis_id)
+                    Dim ds_validar As DataSet = DAturno.Turnodialisis_validar_nombre(txt_desc.Text)
+                    If ds_validar.Tables(0).Rows.Count = 0 Then
+
+                        'Dim desde_hora As String = CStr(desde_hora.Value) + ":" + CStr(desde_min.Value)
+                        'Dim hasta As String = CStr(hasta_hora.Value) + ":" + CStr(hasta_min.Value)
+
+                        Dim ds_turno As DataSet = DAturno.Turnodialisis_alta(txt_desc.Text, CStr(desde_hora.Value), CStr(desde_min.Value), CStr(hasta_hora.Value), CStr(hasta_min.Value))
+                        Dim turnodialisis_id As Integer = ds_turno.Tables(0).Rows(0).Item(0)
+                        'ahora guardo los dias
+                        If lunes.Checked = True Then
+                            DAturno.Dias_dialisis_alta("Lunes", turnodialisis_id)
+                        End If
+                        If martes.Checked = True Then
+                            DAturno.Dias_dialisis_alta("Martes", turnodialisis_id)
+                        End If
+                        If miercoles.Checked = True Then
+                            DAturno.Dias_dialisis_alta("Miércoles", turnodialisis_id)
+                        End If
+                        If jueves.Checked = True Then
+                            DAturno.Dias_dialisis_alta("Jueves", turnodialisis_id)
+                        End If
+                        If viernes.Checked = True Then
+                            DAturno.Dias_dialisis_alta("Viernes", turnodialisis_id)
+                        End If
+                        If sabado.Checked = True Then
+                            DAturno.Dias_dialisis_alta("Sábado", turnodialisis_id)
+                        End If
+                        If domingo.Checked = True Then
+                            DAturno.Dias_dialisis_alta("Domingo", turnodialisis_id)
+                        End If
+                        MessageBox.Show("Los datos se guardaron correctamente.", "Sistema de Gestión", MessageBoxButtons.OK)
+                        Me.Close()
+                    Else
+                        MessageBox.Show("Ya existe un turno con ese nombre, modifique por favor.", "Sistema de Gestión", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
-                    If martes.Checked = True Then
-                        DAturno.Dias_dialisis_alta("Martes", turnodialisis_id)
-                    End If
-                    If miercoles.Checked = True Then
-                        DAturno.Dias_dialisis_alta("Miércoles", turnodialisis_id)
-                    End If
-                    If jueves.Checked = True Then
-                        DAturno.Dias_dialisis_alta("Jueves", turnodialisis_id)
-                    End If
-                    If viernes.Checked = True Then
-                        DAturno.Dias_dialisis_alta("Viernes", turnodialisis_id)
-                    End If
-                    If sabado.Checked = True Then
-                        DAturno.Dias_dialisis_alta("Sábado", turnodialisis_id)
-                    End If
-                    If domingo.Checked = True Then
-                        DAturno.Dias_dialisis_alta("Domingo", turnodialisis_id)
-                    End If
-                    MessageBox.Show("Los datos se guardaron correctamente.", "Sistema de Gestión", MessageBoxButtons.OK)
-                    Me.Close()
                 End If
-
-
             End If
 
         Else
-            MessageBox.Show("Error, debe ingresar descripción del turno.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Error, debe ingresar descripción del turno.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
 
@@ -139,6 +144,10 @@
         Dim ds_turno As DataSet = DAturno.Turnodialisis_obtener_info(turnodialisis_id)
         If ds_turno.Tables(0).Rows.Count <> 0 Then
             txt_desc.Text = ds_turno.Tables(0).Rows(0).Item("Turnodialisis_desc")
+            If txt_desc.Text = "Dialisis de Calle" Then
+                txt_desc.ReadOnly = True
+            End If
+
             desde_hora.Value = CInt(ds_turno.Tables(0).Rows(0).Item("Turnodialisis_desde_hora"))
             desde_min.Value = CInt(ds_turno.Tables(0).Rows(0).Item("Turnodialisis_desde_minutos"))
             hasta_hora.Value = CInt(ds_turno.Tables(0).Rows(0).Item("Turnodialisis_hasta_hora"))

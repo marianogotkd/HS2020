@@ -633,6 +633,23 @@ Public Class Venta
         Return ds_JE
     End Function
 
+    Public Function Producto_x_Sucursal_obtener_lotes(ByVal sucursal_id As Integer) As DataSet
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Producto_x_Sucursal_obtener_lotes", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@sucursal_id", sucursal_id))
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "ProductoCombo")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
 
     'lo uso en el modulo producto_alta_new para recuperar todo lo que modifique y poder mandarlo al form producto_modificar
     Public Function Producto_x_sucursal_obtener_detalle_full(ByVal sucursal_id As Integer, ByVal prod_codinterno As Integer) As DataSet

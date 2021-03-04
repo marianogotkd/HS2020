@@ -100,7 +100,8 @@
                     Movimientos_consulta_detalle.tipo_consulta = "solo movimientos"
                 End If
                 Movimientos_consulta_detalle.Show()
-                Me.Close()
+                Me.Hide()
+                'Me.Close()
             Else
                 MsgBox("Seleccione un movimiento", MsgBoxStyle.Information)
             End If

@@ -32,6 +32,7 @@
             If ds_lote.Tables(0).Rows.Count <> 0 Then
                 'ya existe
                 MessageBox.Show("Ya existen unidades en stock con Nº lote: " + txt_nrolote.Text + ". Modifique el Nº de lote.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                txt_nrolote.Text = CInt(txt_nrolote.Text) + 1
             Else
                 'lo puedo agregar
                 If tb_Cant_Movi.Text <> "" Then

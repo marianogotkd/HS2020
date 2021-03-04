@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ds_consulta_consumos" targetNamespace="http://tempuri.org/ds_consulta_consumos.xsd" xmlns:mstns="http://tempuri.org/ds_consulta_consumos.xsd" xmlns="http://tempuri.org/ds_consulta_consumos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ds_consulta_consumos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ds_consulta_consumos" msprop:Generator_UserDSName="ds_consulta_consumos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Consumos" msprop:Generator_TableClassName="ConsumosDataTable" msprop:Generator_TableVarName="tableConsumos" msprop:Generator_TablePropName="Consumos" msprop:Generator_RowDeletingName="ConsumosRowDeleting" msprop:Generator_RowChangingName="ConsumosRowChanging" msprop:Generator_RowEvHandlerName="ConsumosRowChangeEventHandler" msprop:Generator_RowDeletedName="ConsumosRowDeleted" msprop:Generator_UserTableName="Consumos" msprop:Generator_RowChangedName="ConsumosRowChanged" msprop:Generator_RowEvArgName="ConsumosRowChangeEvent" msprop:Generator_RowClassName="ConsumosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Consumo_mercaderia_id" msprop:Generator_ColumnVarNameInTable="columnConsumo_mercaderia_id" msprop:Generator_ColumnPropNameInRow="Consumo_mercaderia_id" msprop:Generator_ColumnPropNameInTable="Consumo_mercaderia_idColumn" msprop:Generator_UserColumnName="Consumo_mercaderia_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Consumo_mercaderia_concepto" msprop:Generator_ColumnVarNameInTable="columnConsumo_mercaderia_concepto" msprop:Generator_ColumnPropNameInRow="Consumo_mercaderia_concepto" msprop:Generator_ColumnPropNameInTable="Consumo_mercaderia_conceptoColumn" msprop:Generator_UserColumnName="Consumo_mercaderia_concepto" type="xs:string" minOccurs="0" />
+              <xs:element name="Consumo_mercaderia_FechaHora" msprop:Generator_ColumnVarNameInTable="columnConsumo_mercaderia_FechaHora" msprop:Generator_ColumnPropNameInRow="Consumo_mercaderia_FechaHora" msprop:Generator_ColumnPropNameInTable="Consumo_mercaderia_FechaHoraColumn" msprop:Generator_UserColumnName="Consumo_mercaderia_FechaHora" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="sucursal_id_Origen" msprop:Generator_ColumnVarNameInTable="columnsucursal_id_Origen" msprop:Generator_ColumnPropNameInRow="sucursal_id_Origen" msprop:Generator_ColumnPropNameInTable="sucursal_id_OrigenColumn" msprop:Generator_UserColumnName="sucursal_id_Origen" type="xs:int" minOccurs="0" />
+              <xs:element name="Origen" msprop:Generator_ColumnVarNameInTable="columnOrigen" msprop:Generator_ColumnPropNameInRow="Origen" msprop:Generator_ColumnPropNameInTable="OrigenColumn" msprop:Generator_UserColumnName="Origen" type="xs:string" minOccurs="0" />
+              <xs:element name="Usuario" msprop:Generator_ColumnVarNameInTable="columnUsuario" msprop:Generator_ColumnPropNameInRow="Usuario" msprop:Generator_ColumnPropNameInTable="UsuarioColumn" msprop:Generator_UserColumnName="Usuario" type="xs:string" minOccurs="0" />
+              <xs:element name="USU_id" msprop:Generator_ColumnVarNameInTable="columnUSU_id" msprop:Generator_ColumnPropNameInRow="USU_id" msprop:Generator_ColumnPropNameInTable="USU_idColumn" msprop:Generator_UserColumnName="USU_id" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

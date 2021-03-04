@@ -12,10 +12,12 @@
     Public tipo_operacion As String = "alta"
     Dim DAsesiones As New Datos.Sesiones
     Public fecha_registrar
+    Public sucursal_id As Integer 'me lo envia el formulario sesion_pacientes
+
 
     Private Sub combo_filtros_recuperar()
         'por ahora mando sucursal 3 q es dialisis
-        Dim ds_prod As DataSet = DAprod.Producto_filtro_obtenertodos(3)
+        Dim ds_prod As DataSet = DAprod.Producto_filtro_obtenertodos(sucursal_id) '3 es sala dialisis y 5 es dialisis de calle
 
         'ahora cargo el combo
         If ds_prod.Tables(0).Rows.Count <> 0 Then
@@ -58,13 +60,13 @@
                 Dim prod_id As Integer = ds_predef.Tables(0).Rows(i).Item("prod_id")
                 Dim prod_descripcion As String = ds_predef.Tables(0).Rows(i).Item("prod_descripcion")
                 'ahora recupero los lotes que tengo disponible en stock para la sucursal dialisis. OJO LA DIALISIS TIENE QUE SER SUCURSAL ID = 3. 
-                Dim Ds_Suc As DataSet = DAsucursal.Sucursal_obtener_producto(prod_id, 3, 3)
+                Dim Ds_Suc As DataSet = DAsucursal.Sucursal_obtener_producto(prod_id, sucursal_id, sucursal_id)
                 Dim unidad_medida As String = Ds_Suc.Tables(0).Rows(0).Item("prod_unidadmedida")
                 Dim contenido As Decimal = Ds_Suc.Tables(0).Rows(0).Item("prod_contenido")
                 If Ds_Suc.Tables(0).Rows.Count <> 0 Then
                     'si existe el producto en suc, continuamos
                     'recupero los lotes de dicho insumo
-                    Dim ds_lotes As DataSet = DAlote.Producto_x_sucursal_lote_recuperartodos(prod_codinterno, 3)
+                    Dim ds_lotes As DataSet = DAlote.Producto_x_sucursal_lote_recuperartodos(prod_codinterno, sucursal_id)
                     If ds_lotes.Tables(0).Rows.Count <> 0 Then
                         'existen los lotes para el insumo
                         Ds_enfermeria.Tables("lote_x_suc").Rows.Clear() 'esta en la carpeta enfermeria, dataset "Ds_enfermeria"
@@ -265,11 +267,19 @@
             tb_Filtro.Enabled = False
 
 
-        Else
-            tb_CantRe.Text = 0
-            Filtro_var = "Nuevo"
-        End If
+            'choco 20-02-2021
+            cb_filtro.Enabled = False
+            cb_filtro.SelectedValue = FiltroDS.Tables(0).Rows(0).Item("ProdxSuc_ID")
 
+            'deshabilito el boton de nuevo, no puedo modificar un filtro ya consumido.
+            btn_cambio.Enabled = True
+
+        Else
+            'tb_CantRe.Text = 0
+            'Filtro_var = "Nuevo"
+
+            btn_cambio.Enabled = True
+        End If
 
     End Sub
 
@@ -283,7 +293,7 @@
         'GM_Baja_Producto.Show()
 
         Sesiones_prod_agregar.Close() 'hay q tener la precaucion de cerrarlo antes, ya que este modulo se lo usa para diversos fines
-        Sesiones_prod_agregar.sucursal_id = 3 ' el ID 3 es La Sucursal Sala de Dialisis
+        Sesiones_prod_agregar.sucursal_id = sucursal_id  ' el ID 3 es La Sucursal Sala de Dialisis
         Sesiones_prod_agregar.form_procedencia = "Gestion_Mercaderia"
         Sesiones_prod_agregar.Text = "Enfermeria"
         Sesiones_prod_agregar.tipo_movimiento = "consumir Ausente"
@@ -318,7 +328,7 @@
         If filtro_guardado = "no" Then
             Dim result2 As Integer = MessageBox.Show("¿Desea contar un rehuso del filtro?", "Sistema de Gestión", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If result2 = DialogResult.Yes Then
-                If cb_filtro.Items.Count <> 0 And tb_Filtro.Text <> "" Then
+                If cb_filtro.Items.Count <> 0 And tb_CantRe.Text <> "" Then
                     ''''' filtros y rehusos''''''''''''''24/9/20 MAriano'''''
                     If Filtro_var = "Nuevo" Then
                         Dim ProdxSuc_ID As Integer = cb_filtro.SelectedValue
@@ -336,7 +346,7 @@
                     'registro actividad usuario
                     Dim usuario_id As String
                     usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
-                    DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, 3, sesiones_id, Now, "")
+                    DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, sucursal_id, sesiones_id, Now, "")
 
                 Else
                     MessageBox.Show("Error, Debe cargar un filtro.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -358,13 +368,13 @@
                         'registro actividad usuario
                         Dim usuario_id As String
                         usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
-                        DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, 3, sesiones_id, Now, "")
+                        DAusuario.UsuarioActividad_registrar_sesiones_dialisis(usuario_id, sucursal_id, sesiones_id, Now, "")
                         ''''''''''''''''''''''''''''''''''
 
 
                         Dim lote_id As Integer
                         Dim concepto = "Consumo Ausente"
-                        Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria(concepto, fecha_registrar, Inicio.USU_id, 3, sesiones_id)
+                        Dim ds_movid As DataSet = DAMovintoMer.Consumo_Mercaderia_alta_Enfermeria(concepto, fecha_registrar, Inicio.USU_id, sucursal_id, sesiones_id)
                         ''''''''''''''''''''''''''''''''''''''''''''''''
 
                         Dim MovMer_id As Integer = ds_movid.Tables(0).Rows(0).Item(0)
@@ -379,7 +389,7 @@
                             'While i < Mov_DS.Tables("Mov").Rows.Count
                             ds_PROD = DAprod.Producto_buscarcod(Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Cod_prod"))
                             Dim prod_id = ds_PROD.Tables(0).Rows(0).Item("prod_id")
-                            Ds_Suc = DAsucursal.Sucursal_obtener_producto(prod_id, 3, 3) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+                            Ds_Suc = DAsucursal.Sucursal_obtener_producto(prod_id, sucursal_id, sucursal_id) ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
 
                             'choco///////////////27-01-2021
                             'aqui viene el calculo siempre sobre el valor real, y dependiendo si se consumo el total del contenido se resta en stock
@@ -401,7 +411,7 @@
                             '''''''
                             ''''''''''
                             'Actualizo stock''''' no quito el registro del producto en la sucursal, en realidad lo que hago es actualizar su cantidad a 0. OJO No tiene que hacerse negativo.
-                            DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, 3, TOTAL, TotalReal) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
+                            DAprod.Producto_x_sucursal_Actualizar_Stock(prod_id, sucursal_id, TOTAL, TotalReal) 'mov envia la diferencia entre el stock en la sucursal y la cant a quitar.
                             ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
 
 
@@ -414,7 +424,7 @@
 
 
                             'Dim cant_a_quitar As Decimal = CDec(Mov_DS.Tables("Mov_Enf").Rows(i).Item("Cantidad"))
-                            Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, 3, Int(VarB), Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Prov_id"), TotalReal_lote, AUX)  ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
+                            Dim dslote As DataSet = DAlote.Producto_x_sucursal_lote_actualizar_resto(lote_nro, prod_id, sucursal_id, Int(VarB), Ds_enfermeria.Tables("Consumo_real").Rows(i).Item("Prov_id"), TotalReal_lote, AUX)  ' el ID 3 es La Sucursal Sala de Dialisis 7/9/20 Mariano
                             lote_id = dslote.Tables(0).Rows(0).Item("lote_id")
                             'End If
                             ''''''''''''''''''''''''''''''''''''''
@@ -444,15 +454,25 @@
     End Sub
 
     Private Sub btn_cambio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_cambio.Click
-        tb_CantRe.Text = 0
-        Filtro_var = "Nuevo"
-        tb_Filtro.Enabled = True
-        tb_Filtro.Focus()
-        tb_Filtro.SelectAll()
 
+        'por ahora mando sucursal 3 q es dialisis
+        Dim ds_prod As DataSet = DAprod.Producto_filtro_obtenertodos(sucursal_id)
 
-        'choco 20-02-2021 filtro en combo
-        If cb_filtro.Items.Count <> 0 Then
+        'ahora cargo el combo
+        If ds_prod.Tables(0).Rows.Count <> 0 Then
+            tb_CantRe.Text = 0
+            Filtro_var = "Nuevo"
+            tb_Filtro.Enabled = True
+            tb_Filtro.Focus()
+            tb_Filtro.SelectAll()
+
+            cb_filtro.DataSource = Nothing
+            'choco 20-02-2021 filtro en combo
+            'voy a recuperar solo los filtros q tengan stock. para la sucursal.
+            cb_filtro.DataSource = ds_prod.Tables(0)
+            cb_filtro.DisplayMember = "prod_descripcion"
+            cb_filtro.ValueMember = "ProdxSuc_ID"
+
             cb_filtro.Enabled = True
         Else
             MessageBox.Show("No hay filtros en stock, consulte disponibilidad.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)

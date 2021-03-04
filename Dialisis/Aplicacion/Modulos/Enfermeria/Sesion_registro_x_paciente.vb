@@ -137,6 +137,7 @@
                 Else
                     cant_ausente = cant_ausente + 1
                 End If
+                fila("sucursal_id") = sesion.Tables(0).Rows(i).Item("sucursal_id")
                 Ds_enfermeria.Tables("Sesion_actual_todos_pacientes").Rows.Add(fila)
 
                 i = i + 1
@@ -175,6 +176,7 @@
                 Nueva_Dialisis.fecha_registrar = CDate(datagridview1.CurrentRow.Cells("SesionesfechaDataGridViewTextBoxColumn").Value).Date
                 Nueva_Dialisis.tipo_operacion = "modificar presente" 'aviso q ya estaba cargado como ausente, y que se va a modificar dicho estado
                 'Dim sesiones_id As Integer = CInt(datagridview1.CurrentRow.Cells("SesionesidDataGridViewTextBoxColumn").Value)
+                Nueva_Dialisis.sucursal_id = CInt(datagridview1.CurrentRow.Cells("sucursal_id").Value)
                 Nueva_Dialisis.modificar_sesiones_id = sesiones_id
                 Nueva_Dialisis.Show()
 

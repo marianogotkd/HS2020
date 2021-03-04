@@ -180,7 +180,8 @@
                 Consulta_Alta_a_detalle.remito_nro.Text = DataGridView1.CurrentRow.Cells("MovMer_remitoNRO").Value
                 Consulta_Alta_a_detalle.remito_fecha.Text = DataGridView1.CurrentRow.Cells("MovMer_remitofecha").Value
                 Consulta_Alta_a_detalle.Show()
-                Me.Close()
+                Me.Hide()
+                'Me.Close()
             Else
                 MsgBox("Seleccione un movimiento", MsgBoxStyle.Information)
             End If

@@ -23,7 +23,7 @@ Partial Class Consumos_consulta_detalle
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
@@ -46,6 +46,7 @@ Partial Class Consumos_consulta_detalle
         Me.CajadsBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Cliente_ds = New Aplicacion.Cliente_ds()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ConsumosdetalleBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,7 +84,7 @@ Partial Class Consumos_consulta_detalle
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(25, 126)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(166, 17)
+        Me.Label1.Size = New System.Drawing.Size(130, 13)
         Me.Label1.TabIndex = 35
         Me.Label1.Text = "Listado de productos:"
         '
@@ -103,14 +104,14 @@ Partial Class Consumos_consulta_detalle
         Me.DataGridView2.MultiSelect = False
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.ReadOnly = True
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridView2.RowHeadersVisible = False
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView2.Size = New System.Drawing.Size(779, 252)
@@ -157,7 +158,7 @@ Partial Class Consumos_consulta_detalle
         Me.TextBox_origen.Location = New System.Drawing.Point(536, 54)
         Me.TextBox_origen.Name = "TextBox_origen"
         Me.TextBox_origen.ReadOnly = True
-        Me.TextBox_origen.Size = New System.Drawing.Size(254, 22)
+        Me.TextBox_origen.Size = New System.Drawing.Size(254, 20)
         Me.TextBox_origen.TabIndex = 32
         '
         'TextBox_usuario
@@ -166,7 +167,7 @@ Partial Class Consumos_consulta_detalle
         Me.TextBox_usuario.Location = New System.Drawing.Point(536, 32)
         Me.TextBox_usuario.Name = "TextBox_usuario"
         Me.TextBox_usuario.ReadOnly = True
-        Me.TextBox_usuario.Size = New System.Drawing.Size(254, 22)
+        Me.TextBox_usuario.Size = New System.Drawing.Size(254, 20)
         Me.TextBox_usuario.TabIndex = 31
         '
         'TextBox_fecha
@@ -175,7 +176,7 @@ Partial Class Consumos_consulta_detalle
         Me.TextBox_fecha.Location = New System.Drawing.Point(120, 76)
         Me.TextBox_fecha.Name = "TextBox_fecha"
         Me.TextBox_fecha.ReadOnly = True
-        Me.TextBox_fecha.Size = New System.Drawing.Size(265, 22)
+        Me.TextBox_fecha.Size = New System.Drawing.Size(265, 20)
         Me.TextBox_fecha.TabIndex = 30
         '
         'TextBox_concepto
@@ -184,7 +185,7 @@ Partial Class Consumos_consulta_detalle
         Me.TextBox_concepto.Location = New System.Drawing.Point(120, 54)
         Me.TextBox_concepto.Name = "TextBox_concepto"
         Me.TextBox_concepto.ReadOnly = True
-        Me.TextBox_concepto.Size = New System.Drawing.Size(265, 22)
+        Me.TextBox_concepto.Size = New System.Drawing.Size(265, 20)
         Me.TextBox_concepto.TabIndex = 29
         '
         'TextBox_ID
@@ -193,7 +194,7 @@ Partial Class Consumos_consulta_detalle
         Me.TextBox_ID.Location = New System.Drawing.Point(120, 32)
         Me.TextBox_ID.Name = "TextBox_ID"
         Me.TextBox_ID.ReadOnly = True
-        Me.TextBox_ID.Size = New System.Drawing.Size(130, 22)
+        Me.TextBox_ID.Size = New System.Drawing.Size(130, 20)
         Me.TextBox_ID.TabIndex = 28
         '
         'Lb_origen
@@ -201,7 +202,7 @@ Partial Class Consumos_consulta_detalle
         Me.Lb_origen.AutoSize = True
         Me.Lb_origen.Location = New System.Drawing.Point(396, 58)
         Me.Lb_origen.Name = "Lb_origen"
-        Me.Lb_origen.Size = New System.Drawing.Size(134, 17)
+        Me.Lb_origen.Size = New System.Drawing.Size(100, 13)
         Me.Lb_origen.TabIndex = 26
         Me.Lb_origen.Text = "Sucursal de Origen:"
         '
@@ -210,7 +211,7 @@ Partial Class Consumos_consulta_detalle
         Me.Lb_id.AutoSize = True
         Me.Lb_id.Location = New System.Drawing.Point(25, 36)
         Me.Lb_id.Name = "Lb_id"
-        Me.Lb_id.Size = New System.Drawing.Size(25, 17)
+        Me.Lb_id.Size = New System.Drawing.Size(21, 13)
         Me.Lb_id.TabIndex = 22
         Me.Lb_id.Text = "ID:"
         '
@@ -219,7 +220,7 @@ Partial Class Consumos_consulta_detalle
         Me.Lb_concepto.AutoSize = True
         Me.Lb_concepto.Location = New System.Drawing.Point(25, 58)
         Me.Lb_concepto.Name = "Lb_concepto"
-        Me.Lb_concepto.Size = New System.Drawing.Size(72, 17)
+        Me.Lb_concepto.Size = New System.Drawing.Size(56, 13)
         Me.Lb_concepto.TabIndex = 23
         Me.Lb_concepto.Text = "Concepto:"
         '
@@ -228,7 +229,7 @@ Partial Class Consumos_consulta_detalle
         Me.Lb_fecha.AutoSize = True
         Me.Lb_fecha.Location = New System.Drawing.Point(25, 80)
         Me.Lb_fecha.Name = "Lb_fecha"
-        Me.Lb_fecha.Size = New System.Drawing.Size(97, 17)
+        Me.Lb_fecha.Size = New System.Drawing.Size(74, 13)
         Me.Lb_fecha.TabIndex = 24
         Me.Lb_fecha.Text = "Fecha y Hora:"
         '
@@ -237,7 +238,7 @@ Partial Class Consumos_consulta_detalle
         Me.Lb_usuario.AutoSize = True
         Me.Lb_usuario.Location = New System.Drawing.Point(396, 36)
         Me.Lb_usuario.Name = "Lb_usuario"
-        Me.Lb_usuario.Size = New System.Drawing.Size(61, 17)
+        Me.Lb_usuario.Size = New System.Drawing.Size(46, 13)
         Me.Lb_usuario.TabIndex = 25
         Me.Lb_usuario.Text = "Usuario:"
         '
@@ -260,7 +261,7 @@ Partial Class Consumos_consulta_detalle
         '
         Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button4.Image = Global.Aplicacion.My.Resources.Resources.iniciar
-        Me.Button4.Location = New System.Drawing.Point(711, 418)
+        Me.Button4.Location = New System.Drawing.Point(711, 415)
         Me.Button4.Margin = New System.Windows.Forms.Padding(4)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(98, 43)
@@ -268,12 +269,25 @@ Partial Class Consumos_consulta_detalle
         Me.Button4.Text = "Volver"
         Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.Button4.UseVisualStyleBackColor = True
-        Me.Button4.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.icono_reporte_medico_30x30
+        Me.Button1.Location = New System.Drawing.Point(579, 415)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(124, 43)
+        Me.Button1.TabIndex = 260
+        Me.Button1.Text = "Generar reporte"
+        Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Consumos_consulta_detalle
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(830, 465)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Button4)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -314,4 +328,5 @@ Partial Class Consumos_consulta_detalle
     Friend WithEvents ProdcodinternoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProddescripcionDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ConsumomercaderiadetallecantidadDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class
