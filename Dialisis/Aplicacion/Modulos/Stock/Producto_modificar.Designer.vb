@@ -64,10 +64,6 @@ Partial Class Producto_modificar
         Me.cb_origen = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DG_Producto = New System.Windows.Forms.DataGridView()
-        Me.ProdxSucBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Producto_ds = New Aplicacion.Producto_ds()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.prod_codinterno = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.prod_descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdxSuc_stock = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -85,6 +81,10 @@ Partial Class Producto_modificar
         Me.marca_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nrocat = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.idcat = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ProdxSucBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Producto_ds = New Aplicacion.Producto_ds()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.TabPage1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -216,6 +216,7 @@ Partial Class Producto_modificar
         Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.ToolTip1.SetToolTip(Me.Button3, "Generar reporte")
         Me.Button3.UseVisualStyleBackColor = False
+        Me.Button3.Visible = False
         '
         'TabPage1
         '
@@ -601,34 +602,6 @@ Partial Class Producto_modificar
         Me.DG_Producto.StandardTab = True
         Me.DG_Producto.TabIndex = 0
         '
-        'ProdxSucBindingSource
-        '
-        Me.ProdxSucBindingSource.DataMember = "ProdxSuc"
-        Me.ProdxSucBindingSource.DataSource = Me.Producto_ds
-        '
-        'Producto_ds
-        '
-        Me.Producto_ds.DataSetName = "Producto_ds"
-        Me.Producto_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.Location = New System.Drawing.Point(2, 6)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1291, 634)
-        Me.TabControl1.TabIndex = 0
-        '
-        'Timer1
-        '
-        Me.Timer1.Interval = 1000
-        '
         'prod_codinterno
         '
         Me.prod_codinterno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
@@ -773,6 +746,34 @@ Partial Class Producto_modificar
         Me.idcat.Name = "idcat"
         Me.idcat.ReadOnly = True
         Me.idcat.Visible = False
+        '
+        'ProdxSucBindingSource
+        '
+        Me.ProdxSucBindingSource.DataMember = "ProdxSuc"
+        Me.ProdxSucBindingSource.DataSource = Me.Producto_ds
+        '
+        'Producto_ds
+        '
+        Me.Producto_ds.DataSetName = "Producto_ds"
+        Me.Producto_ds.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabControl1.Location = New System.Drawing.Point(2, 6)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(1291, 634)
+        Me.TabControl1.TabIndex = 0
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 1000
         '
         'Producto_modificar
         '
