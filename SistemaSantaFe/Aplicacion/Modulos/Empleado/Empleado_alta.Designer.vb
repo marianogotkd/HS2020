@@ -67,6 +67,9 @@ Partial Class Empleado_alta
         '
         'TabControl1
         '
+        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Location = New System.Drawing.Point(12, 9)
         Me.TabControl1.Name = "TabControl1"
@@ -90,6 +93,9 @@ Partial Class Empleado_alta
         '
         'GroupBox3
         '
+        Me.GroupBox3.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox3.Controls.Add(Me.lb_dir)
         Me.GroupBox3.Controls.Add(Me.lb_tel)
         Me.GroupBox3.Controls.Add(Me.lb_mail)
@@ -98,7 +104,7 @@ Partial Class Empleado_alta
         Me.GroupBox3.Controls.Add(Me.tx_dir_emp)
         Me.GroupBox3.Controls.Add(Me.tx_cel_emp)
         Me.GroupBox3.Controls.Add(Me.lb_cel)
-        Me.GroupBox3.Location = New System.Drawing.Point(14, 130)
+        Me.GroupBox3.Location = New System.Drawing.Point(14, 126)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(390, 129)
         Me.GroupBox3.TabIndex = 2
@@ -240,6 +246,9 @@ Partial Class Empleado_alta
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.ERROR_tx_dni_emp)
         Me.GroupBox1.Controls.Add(Me.ERROR_tx_nom_emp)
         Me.GroupBox1.Controls.Add(Me.ERROR_tx_ape_emp)
@@ -250,17 +259,18 @@ Partial Class Empleado_alta
         Me.GroupBox1.Controls.Add(Me.lb_dni)
         Me.GroupBox1.Controls.Add(Me.tx_ape_emp)
         Me.GroupBox1.ForeColor = System.Drawing.Color.DarkSlateGray
-        Me.GroupBox1.Location = New System.Drawing.Point(6, 6)
+        Me.GroupBox1.Location = New System.Drawing.Point(14, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(398, 114)
+        Me.GroupBox1.Size = New System.Drawing.Size(390, 114)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Personales"
         '
         'ERROR_tx_dni_emp
         '
+        Me.ERROR_tx_dni_emp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.ERROR_tx_dni_emp.Image = CType(resources.GetObject("ERROR_tx_dni_emp.Image"), System.Drawing.Image)
-        Me.ERROR_tx_dni_emp.Location = New System.Drawing.Point(343, 34)
+        Me.ERROR_tx_dni_emp.Location = New System.Drawing.Point(339, 34)
         Me.ERROR_tx_dni_emp.Name = "ERROR_tx_dni_emp"
         Me.ERROR_tx_dni_emp.Size = New System.Drawing.Size(16, 16)
         Me.ERROR_tx_dni_emp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -270,8 +280,9 @@ Partial Class Empleado_alta
         '
         'ERROR_tx_nom_emp
         '
+        Me.ERROR_tx_nom_emp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.ERROR_tx_nom_emp.Image = CType(resources.GetObject("ERROR_tx_nom_emp.Image"), System.Drawing.Image)
-        Me.ERROR_tx_nom_emp.Location = New System.Drawing.Point(343, 58)
+        Me.ERROR_tx_nom_emp.Location = New System.Drawing.Point(339, 58)
         Me.ERROR_tx_nom_emp.Name = "ERROR_tx_nom_emp"
         Me.ERROR_tx_nom_emp.Size = New System.Drawing.Size(16, 16)
         Me.ERROR_tx_nom_emp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -281,8 +292,9 @@ Partial Class Empleado_alta
         '
         'ERROR_tx_ape_emp
         '
+        Me.ERROR_tx_ape_emp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.ERROR_tx_ape_emp.Image = CType(resources.GetObject("ERROR_tx_ape_emp.Image"), System.Drawing.Image)
-        Me.ERROR_tx_ape_emp.Location = New System.Drawing.Point(343, 84)
+        Me.ERROR_tx_ape_emp.Location = New System.Drawing.Point(339, 84)
         Me.ERROR_tx_ape_emp.Name = "ERROR_tx_ape_emp"
         Me.ERROR_tx_ape_emp.Size = New System.Drawing.Size(16, 16)
         Me.ERROR_tx_ape_emp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -292,8 +304,9 @@ Partial Class Empleado_alta
         '
         'lb_ape
         '
+        Me.lb_ape.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.lb_ape.AutoSize = True
-        Me.lb_ape.Location = New System.Drawing.Point(70, 87)
+        Me.lb_ape.Location = New System.Drawing.Point(66, 87)
         Me.lb_ape.Name = "lb_ape"
         Me.lb_ape.Size = New System.Drawing.Size(44, 13)
         Me.lb_ape.TabIndex = 246
@@ -301,8 +314,9 @@ Partial Class Empleado_alta
         '
         'tx_dni_emp
         '
+        Me.tx_dni_emp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.tx_dni_emp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tx_dni_emp.Location = New System.Drawing.Point(120, 32)
+        Me.tx_dni_emp.Location = New System.Drawing.Point(116, 32)
         Me.tx_dni_emp.MaxLength = 10
         Me.tx_dni_emp.Name = "tx_dni_emp"
         Me.tx_dni_emp.Size = New System.Drawing.Size(217, 20)
@@ -311,8 +325,9 @@ Partial Class Empleado_alta
         '
         'lb_nom
         '
+        Me.lb_nom.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.lb_nom.AutoSize = True
-        Me.lb_nom.Location = New System.Drawing.Point(70, 61)
+        Me.lb_nom.Location = New System.Drawing.Point(66, 61)
         Me.lb_nom.Name = "lb_nom"
         Me.lb_nom.Size = New System.Drawing.Size(44, 13)
         Me.lb_nom.TabIndex = 247
@@ -320,8 +335,9 @@ Partial Class Empleado_alta
         '
         'tx_nom_emp
         '
+        Me.tx_nom_emp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.tx_nom_emp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tx_nom_emp.Location = New System.Drawing.Point(120, 58)
+        Me.tx_nom_emp.Location = New System.Drawing.Point(116, 58)
         Me.tx_nom_emp.MaxLength = 50
         Me.tx_nom_emp.Name = "tx_nom_emp"
         Me.tx_nom_emp.Size = New System.Drawing.Size(216, 20)
@@ -330,8 +346,9 @@ Partial Class Empleado_alta
         '
         'lb_dni
         '
+        Me.lb_dni.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.lb_dni.AutoSize = True
-        Me.lb_dni.Location = New System.Drawing.Point(52, 34)
+        Me.lb_dni.Location = New System.Drawing.Point(48, 34)
         Me.lb_dni.Name = "lb_dni"
         Me.lb_dni.Size = New System.Drawing.Size(62, 13)
         Me.lb_dni.TabIndex = 250
@@ -339,8 +356,9 @@ Partial Class Empleado_alta
         '
         'tx_ape_emp
         '
+        Me.tx_ape_emp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.tx_ape_emp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tx_ape_emp.Location = New System.Drawing.Point(120, 84)
+        Me.tx_ape_emp.Location = New System.Drawing.Point(116, 84)
         Me.tx_ape_emp.MaxLength = 50
         Me.tx_ape_emp.Name = "tx_ape_emp"
         Me.tx_ape_emp.Size = New System.Drawing.Size(216, 20)
@@ -353,6 +371,7 @@ Partial Class Empleado_alta
         '
         'btn_Cancelar
         '
+        Me.btn_Cancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btn_Cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
         Me.btn_Cancelar.Location = New System.Drawing.Point(105, 318)
@@ -366,6 +385,7 @@ Partial Class Empleado_alta
         '
         'btn_Aceptar
         '
+        Me.btn_Aceptar.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.btn_Aceptar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Aceptar.Image = Global.Aplicacion.My.Resources.Resources.Guardar
         Me.btn_Aceptar.Location = New System.Drawing.Point(235, 318)
@@ -388,6 +408,9 @@ Partial Class Empleado_alta
         Me.Controls.Add(Me.btn_Aceptar)
         Me.Controls.Add(Me.TabControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(453, 396)
         Me.Name = "Empleado_alta"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Agregar Empleado"

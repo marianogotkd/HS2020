@@ -23,7 +23,7 @@ Partial Class CostosInd_Consulta
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.BO_cliente_nuevo = New System.Windows.Forms.Button()
@@ -48,6 +48,9 @@ Partial Class CostosInd_Consulta
         '
         'TabControl1
         '
+        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabControl1.Location = New System.Drawing.Point(13, 13)
@@ -73,6 +76,7 @@ Partial Class CostosInd_Consulta
         '
         'BO_cliente_nuevo
         '
+        Me.BO_cliente_nuevo.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.BO_cliente_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BO_cliente_nuevo.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
         Me.BO_cliente_nuevo.Location = New System.Drawing.Point(8, 338)
@@ -86,6 +90,7 @@ Partial Class CostosInd_Consulta
         '
         'BO_cliente_modificar
         '
+        Me.BO_cliente_modificar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BO_cliente_modificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BO_cliente_modificar.Image = Global.Aplicacion.My.Resources.Resources.cargaContratos
         Me.BO_cliente_modificar.Location = New System.Drawing.Point(362, 339)
@@ -99,6 +104,9 @@ Partial Class CostosInd_Consulta
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.TextBox1)
         Me.GroupBox1.Controls.Add(Me.DG_CostoI)
         Me.GroupBox1.ForeColor = System.Drawing.Color.DarkSlateGray
@@ -113,6 +121,8 @@ Partial Class CostosInd_Consulta
         '
         'TextBox1
         '
+        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.Location = New System.Drawing.Point(12, 22)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(513, 22)
@@ -123,6 +133,9 @@ Partial Class CostosInd_Consulta
         Me.DG_CostoI.AllowUserToAddRows = False
         Me.DG_CostoI.AllowUserToDeleteRows = False
         Me.DG_CostoI.AllowUserToResizeRows = False
+        Me.DG_CostoI.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DG_CostoI.AutoGenerateColumns = False
         Me.DG_CostoI.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DG_CostoI.BackgroundColor = System.Drawing.Color.White
@@ -137,10 +150,10 @@ Partial Class CostosInd_Consulta
         Me.DG_CostoI.ReadOnly = True
         Me.DG_CostoI.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DG_CostoI.RowHeadersVisible = False
-        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_CostoI.RowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_CostoI.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DG_CostoI.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_CostoI.Size = New System.Drawing.Size(513, 246)
         Me.DG_CostoI.StandardTab = True
@@ -202,6 +215,7 @@ Partial Class CostosInd_Consulta
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(583, 478)
         Me.Controls.Add(Me.TabControl1)
+        Me.MinimumSize = New System.Drawing.Size(599, 517)
         Me.Name = "CostosInd_Consulta"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Costos Indirectos"

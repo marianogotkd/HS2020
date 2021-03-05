@@ -101,7 +101,7 @@
                                           Servicio_nuevo.txt_desc_pesos.Text,
                                           Servicio_nuevo.txt_desc_porc.Text,
                                           Servicio_nuevo.ComboBox_iva.Text,
-                                          0, venta_tipo_descripcion, Servicio_nuevo.Label_Cod.Text, vendedor_id, "Pendiente", SucxClie_id)
+                                          CDec(Servicio_nuevo.txt_impuesto_aplicado.Text), venta_tipo_descripcion, Servicio_nuevo.Label_Cod.Text, vendedor_id, "Pendiente", SucxClie_id)
                             Dim ventaprod_id As Integer = CInt(ds_Venta.Tables(0).Rows(0).Item("ventaprod_id"))
 
                             Dim ds_factura As DataSet = DAventa.Factura_alta(ventaprod_id, Now)

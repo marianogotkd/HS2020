@@ -349,7 +349,7 @@ Partial Class CostoInd_alta
         Me.GroupBox3.Controls.Add(Me.RadioButton_Fijo)
         Me.GroupBox3.Location = New System.Drawing.Point(579, 112)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(247, 278)
+        Me.GroupBox3.Size = New System.Drawing.Size(247, 270)
         Me.GroupBox3.TabIndex = 5
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Costo Fijo"
@@ -362,7 +362,7 @@ Partial Class CostoInd_alta
         Me.Panel_fijo.Enabled = False
         Me.Panel_fijo.Location = New System.Drawing.Point(9, 47)
         Me.Panel_fijo.Name = "Panel_fijo"
-        Me.Panel_fijo.Size = New System.Drawing.Size(232, 223)
+        Me.Panel_fijo.Size = New System.Drawing.Size(232, 213)
         Me.Panel_fijo.TabIndex = 38
         '
         'btn_fijo
@@ -562,7 +562,7 @@ Partial Class CostoInd_alta
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.RowHeadersVisible = False
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView2.Size = New System.Drawing.Size(779, 159)
+        Me.DataGridView2.Size = New System.Drawing.Size(813, 159)
         Me.DataGridView2.TabIndex = 36
         '
         'CostoInDetidDataGridViewTextBoxColumn
@@ -617,7 +617,7 @@ Partial Class CostoInd_alta
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(562, 559)
+        Me.Label11.Location = New System.Drawing.Point(596, 559)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(49, 20)
         Me.Label11.TabIndex = 38
@@ -627,7 +627,7 @@ Partial Class CostoInd_alta
         '
         Me.Total_Grilla.BackColor = System.Drawing.SystemColors.Info
         Me.Total_Grilla.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Total_Grilla.Location = New System.Drawing.Point(627, 553)
+        Me.Total_Grilla.Location = New System.Drawing.Point(661, 553)
         Me.Total_Grilla.Name = "Total_Grilla"
         Me.Total_Grilla.ReadOnly = True
         Me.Total_Grilla.Size = New System.Drawing.Size(165, 26)

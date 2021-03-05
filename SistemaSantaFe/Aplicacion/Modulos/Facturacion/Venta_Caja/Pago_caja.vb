@@ -140,7 +140,7 @@ Public Class Pago_caja
 
                         Dim vendedor_id As Integer = 0 'OJO HAY Q VER QUE VENDEDOR ASIGNO, O SI SE PUEDE CREAR EN LA TABLA VENDEDOR UN REGISTRO QUE DIGA ...DEFECTO, SI NO SE POSEE VENDEDOR
                         vendedor_id = 1 'por AHORA LO DEJO EN DEFECTO, OJO esto no es lo optimo.
-                        Dim ds_Venta As DataSet = DAventa.VentaProducto_alta(Monto_sin_anticipo, Now, usuario_id, tipo_vta, cliente_id, Monto_sin_anticipo, 0, 0, 0, 0, venta_tipo_descripcion, Ser_id, vendedor_id, "Cobrado", SucxClie_id)
+                        Dim ds_Venta As DataSet = DAventa.VentaProducto_alta(Monto_sin_anticipo, Now, usuario_id, tipo_vta, cliente_id, Monto_sin_anticipo, CDec(Servicio_nuevo.txt_desc_pesos.Text), CDec(Servicio_nuevo.txt_desc_porc.Text), Servicio_nuevo.ComboBox_iva.Text, CDec(Servicio_nuevo.txt_impuesto_aplicado.Text), venta_tipo_descripcion, Ser_id, vendedor_id, "Cobrado", SucxClie_id)
 
 
                         'Dim descripcion As String = "Orden de trabajo Nº" + CStr(Ser_id) 'aqui tengo q recuperar el id de la orden, no es el id del servicio

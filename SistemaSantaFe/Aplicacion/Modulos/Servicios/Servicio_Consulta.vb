@@ -97,33 +97,81 @@
     End Sub
 
     Private Sub pedidos_formato_estado()
-        Dim style As New DataGridViewCellStyle
-        style.Font = New Font(DG_Servicio.Font, FontStyle.Bold)
-        DG_Servicio.Columns("Servicio_Estado").DefaultCellStyle = style
+        'Dim style As New DataGridViewCellStyle
+        'style.Font = New Font(DG_Servicio.Font, FontStyle.Bold)
+        'DG_Servicio.Columns("Servicio_Estado").DefaultCellStyle = style
 
-        If DG_Servicio.Rows.Count <> 0 Then
-            Dim i As Integer = 0
-            While i < DG_Servicio.Rows.Count
-                Dim estado As String = DG_Servicio.Rows(i).Cells("Servicio_Estado").Value
-                If estado = "PENDIENTE" Then
-                    DG_Servicio.Rows(i).Cells("Servicio_Estado").Style.ForeColor = Color.YellowGreen
+        'If DG_Servicio.Rows.Count <> 0 Then
+        '    Dim i As Integer = 0
+        '    While i < DG_Servicio.Rows.Count
+        '        Dim estado As String = DG_Servicio.Rows(i).Cells("Servicio_Estado").Value
+        '        If estado = "PENDIENTE" Then
+        '            DG_Servicio.Rows(i).Cells("Servicio_Estado").Style.ForeColor = Color.YellowGreen
 
-                End If
-                If estado = "FINALIZADO" Then
-                    DG_Servicio.Rows(i).Cells("Servicio_Estado").Style.ForeColor = Color.Green
-                End If
-                If estado = "ANULADO" Then
-                    DG_Servicio.Rows(i).Cells("Servicio_Estado").Style.ForeColor = Color.Red
-                End If
-                i = i + 1
-            End While
-        End If
+        '        End If
+        '        If estado = "FINALIZADO" Then
+        '            DG_Servicio.Rows(i).Cells("Servicio_Estado").Style.ForeColor = Color.Green
+        '        End If
+        '        If estado = "ANULADO" Then
+        '            DG_Servicio.Rows(i).Cells("Servicio_Estado").Style.ForeColor = Color.Red
+        '        End If
+        '        i = i + 1
+        '    End While
+        'End If
+
+        'Dim style2 As New DataGridViewCellStyle
+        'style2.Font = New Font(DG_OrdenTrabajo.Font, FontStyle.Bold)
+        'DG_OrdenTrabajo.Columns("ServicioEstado").DefaultCellStyle = style2
+        'If DG_OrdenTrabajo.Rows.Count <> 0 Then
+        '    Dim i As Integer = 0
+        '    While i < DG_OrdenTrabajo.Rows.Count
+        '        Dim estado As String = DG_OrdenTrabajo.Rows(i).Cells("ServicioEstado").Value
+        '        If estado = "PENDIENTE" Then
+        '            DG_OrdenTrabajo.Rows(i).Cells("ServicioEstado").Style.ForeColor = Color.YellowGreen
+        '            DG_OrdenTrabajo.Rows(i).Cells("ServicioEstado").Style.SelectionForeColor = Color.YellowGreen
+
+        '        End If
+        '        If estado = "FINALIZADO" Then
+        '            DG_OrdenTrabajo.Rows(i).Cells("ServicioEstado").Style.ForeColor = Color.Green
+        '            DG_OrdenTrabajo.Rows(i).Cells("ServicioEstado").Style.SelectionForeColor = Color.Green
+        '        End If
+        '        If estado = "ANULADO" Then
+        '            DG_OrdenTrabajo.Rows(i).Cells("ServicioEstado").Style.ForeColor = Color.Red
+        '            DG_OrdenTrabajo.Rows(i).Cells("ServicioEstado").Style.SelectionForeColor = Color.Red
+        '        End If
+        '        i = i + 1
+        '    End While
+        'End If
 
     End Sub
 
-    Private Sub DG_Servicio_ColumnHeaderMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DG_Servicio.ColumnHeaderMouseClick
-        pedidos_formato_estado()
+    Private Sub DG_Servicio_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DG_Servicio.CellFormatting
+        If DG_Servicio.Columns(e.ColumnIndex).Name = "Servicio_Estado" Then
+            Dim estado As String = e.Value
+            Select Case estado
+                Case "PENDIENTE"
+                    e.CellStyle.ForeColor = Color.DarkOrange
+                    e.CellStyle.SelectionForeColor = Color.DarkOrange
+                Case "ASIGNADO"
+                    e.CellStyle.ForeColor = Color.Blue
+                    e.CellStyle.SelectionForeColor = Color.Blue
+                Case "REPARADO"
+                    e.CellStyle.ForeColor = Color.Black
+                    e.CellStyle.SelectionForeColor = Color.Black
+                Case "FINALIZADO"
+                    e.CellStyle.ForeColor = Color.Green
+                    e.CellStyle.SelectionForeColor = Color.Green
+                    'e.CellStyle.Font.Bold = True
+                Case "ANULADO"
+                    e.CellStyle.ForeColor = Color.Red
+                    e.CellStyle.SelectionForeColor = Color.Red
+                    'e.CellStyle.Font.Bold = True
+            End Select
+        End If
+    End Sub
 
+    Private Sub DG_Servicio_ColumnHeaderMouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DG_Servicio.ColumnHeaderMouseClick
+        'pedidos_formato_estado()
     End Sub
 
 
@@ -174,15 +222,41 @@
     End Sub
 
     Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        If DG_Servicio.CurrentRow.Cells("Servicio_Estado").Value = "PENDIENTE" Then
+        If DG_OrdenTrabajo.CurrentRow.Cells("ServicioEstado").Value <> "FINALIZADO" Then
             Dim result As Integer = MessageBox.Show("¿Está seguro que desea Anular el Servicio?", "Sistema de Gestión", MessageBoxButtons.YesNo)
             If result = DialogResult.Yes Then
-                DAservicio.Servicio_ActualizarEstado(DG_Servicio.SelectedCells(0).Value, "ANULADO")
-                DAservicio.Actividad_Servicio_alta(usuario_id, sucursal_id, DG_Servicio.SelectedCells(0).Value, Now, "ANULADO")
+                DAservicio.Servicio_ActualizarEstado(DG_OrdenTrabajo.CurrentRow.Cells("ServicioidDataGridViewTextBoxColumn1").Value, "ANULADO")
+                DAservicio.Actividad_Servicio_alta(usuario_id, sucursal_id, DG_OrdenTrabajo.CurrentRow.Cells("ServicioidDataGridViewTextBoxColumn1").Value, Now, "ANULADO")
             End If
         Else
             MessageBox.Show("No se puede cambiar el estado del Servicio seleccionado", "Sistema de Gestión", MessageBoxButtons.OK)
         End If
         obtener_Servicio(ComboBox_suc.SelectedValue)
     End Sub
+
+    Private Sub DG_OrdenTrabajo_CellFormatting(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellFormattingEventArgs) Handles DG_OrdenTrabajo.CellFormatting
+        If DG_OrdenTrabajo.Columns(e.ColumnIndex).Name = "ServicioEstado" Then
+            Dim estado As String = e.Value
+            Select Case estado
+                Case "PENDIENTE"
+                    e.CellStyle.ForeColor = Color.DarkOrange
+                    e.CellStyle.SelectionForeColor = Color.DarkOrange
+                Case "ASIGNADO"
+                    e.CellStyle.ForeColor = Color.Blue
+                    e.CellStyle.SelectionForeColor = Color.Blue
+                Case "REPARADO"
+                    e.CellStyle.ForeColor = Color.Black
+                    e.CellStyle.SelectionForeColor = Color.Black
+                Case "FINALIZADO"
+                    e.CellStyle.ForeColor = Color.Green
+                    e.CellStyle.SelectionForeColor = Color.Green
+                    'e.CellStyle.Font.Bold = True
+                Case "ANULADO"
+                    e.CellStyle.ForeColor = Color.Red
+                    e.CellStyle.SelectionForeColor = Color.Red
+                    'e.CellStyle.Font.Bold = True
+            End Select
+        End If
+    End Sub
+
 End Class

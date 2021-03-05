@@ -48,14 +48,14 @@ Partial Class CtaCte_buscar_comprobantes
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
-        Me.ReciboBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.busqueda_recibo = New System.Windows.Forms.TextBox()
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ReciboidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.RecibofechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MontototalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CLI_id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ReciboBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.busqueda_recibo = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ComprobantesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,12 +76,15 @@ Partial Class CtaCte_buscar_comprobantes
         Me.lb_ctacte_nro.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lb_ctacte_nro.Location = New System.Drawing.Point(12, 9)
         Me.lb_ctacte_nro.Name = "lb_ctacte_nro"
-        Me.lb_ctacte_nro.Size = New System.Drawing.Size(184, 20)
+        Me.lb_ctacte_nro.Size = New System.Drawing.Size(158, 17)
         Me.lb_ctacte_nro.TabIndex = 0
         Me.lb_ctacte_nro.Text = "Nº Cuenta Corriente:"
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.DataGridView1)
         Me.GroupBox1.Location = New System.Drawing.Point(19, 82)
         Me.GroupBox1.Name = "GroupBox1"
@@ -95,6 +98,9 @@ Partial Class CtaCte_buscar_comprobantes
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToResizeRows = False
+        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -193,6 +199,8 @@ Partial Class CtaCte_buscar_comprobantes
         '
         'GroupBox2
         '
+        Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.Controls.Add(Me.Busqueda)
         Me.GroupBox2.Location = New System.Drawing.Point(19, 21)
         Me.GroupBox2.Name = "GroupBox2"
@@ -203,15 +211,19 @@ Partial Class CtaCte_buscar_comprobantes
         '
         'Busqueda
         '
+        Me.Busqueda.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Busqueda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Busqueda.Location = New System.Drawing.Point(7, 22)
         Me.Busqueda.Margin = New System.Windows.Forms.Padding(4)
         Me.Busqueda.Name = "Busqueda"
-        Me.Busqueda.Size = New System.Drawing.Size(648, 23)
+        Me.Busqueda.Size = New System.Drawing.Size(648, 20)
         Me.Busqueda.TabIndex = 241
         '
         'Button_imprimir
         '
+        Me.Button_imprimir.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button_imprimir.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button_imprimir.Image = CType(resources.GetObject("Button_imprimir.Image"), System.Drawing.Image)
         Me.Button_imprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Button_imprimir.Location = New System.Drawing.Point(19, 414)
@@ -224,6 +236,9 @@ Partial Class CtaCte_buscar_comprobantes
         '
         'TabControl1
         '
+        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Location = New System.Drawing.Point(16, 45)
@@ -237,10 +252,10 @@ Partial Class CtaCte_buscar_comprobantes
         Me.TabPage1.Controls.Add(Me.GroupBox2)
         Me.TabPage1.Controls.Add(Me.Button_imprimir)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(697, 476)
+        Me.TabPage1.Size = New System.Drawing.Size(697, 479)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Facturación"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -250,16 +265,18 @@ Partial Class CtaCte_buscar_comprobantes
         Me.TabPage2.Controls.Add(Me.Button1)
         Me.TabPage2.Controls.Add(Me.GroupBox4)
         Me.TabPage2.Controls.Add(Me.GroupBox3)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(697, 476)
+        Me.TabPage2.Size = New System.Drawing.Size(697, 479)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Recibos"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
         'Button1
         '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Button1.Location = New System.Drawing.Point(19, 414)
@@ -272,6 +289,9 @@ Partial Class CtaCte_buscar_comprobantes
         '
         'GroupBox4
         '
+        Me.GroupBox4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox4.Controls.Add(Me.DataGridView2)
         Me.GroupBox4.Location = New System.Drawing.Point(19, 82)
         Me.GroupBox4.Name = "GroupBox4"
@@ -285,6 +305,9 @@ Partial Class CtaCte_buscar_comprobantes
         Me.DataGridView2.AllowUserToAddRows = False
         Me.DataGridView2.AllowUserToDeleteRows = False
         Me.DataGridView2.AllowUserToResizeRows = False
+        Me.DataGridView2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView2.AutoGenerateColumns = False
         Me.DataGridView2.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -305,30 +328,6 @@ Partial Class CtaCte_buscar_comprobantes
         Me.DataGridView2.Size = New System.Drawing.Size(648, 277)
         Me.DataGridView2.StandardTab = True
         Me.DataGridView2.TabIndex = 12
-        '
-        'ReciboBindingSource
-        '
-        Me.ReciboBindingSource.DataMember = "Recibo"
-        Me.ReciboBindingSource.DataSource = Me.CtaCte_ds
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.busqueda_recibo)
-        Me.GroupBox3.Location = New System.Drawing.Point(19, 21)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(663, 55)
-        Me.GroupBox3.TabIndex = 251
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Buscar por Nº de Recibo:"
-        '
-        'busqueda_recibo
-        '
-        Me.busqueda_recibo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.busqueda_recibo.Location = New System.Drawing.Point(7, 22)
-        Me.busqueda_recibo.Margin = New System.Windows.Forms.Padding(4)
-        Me.busqueda_recibo.Name = "busqueda_recibo"
-        Me.busqueda_recibo.Size = New System.Drawing.Size(648, 23)
-        Me.busqueda_recibo.TabIndex = 241
         '
         'DataGridViewCheckBoxColumn1
         '
@@ -371,6 +370,34 @@ Partial Class CtaCte_buscar_comprobantes
         Me.CLI_id.ReadOnly = True
         Me.CLI_id.Visible = False
         '
+        'ReciboBindingSource
+        '
+        Me.ReciboBindingSource.DataMember = "Recibo"
+        Me.ReciboBindingSource.DataSource = Me.CtaCte_ds
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox3.Controls.Add(Me.busqueda_recibo)
+        Me.GroupBox3.Location = New System.Drawing.Point(19, 21)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(663, 55)
+        Me.GroupBox3.TabIndex = 251
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Buscar por Nº de Recibo:"
+        '
+        'busqueda_recibo
+        '
+        Me.busqueda_recibo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.busqueda_recibo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.busqueda_recibo.Location = New System.Drawing.Point(7, 22)
+        Me.busqueda_recibo.Margin = New System.Windows.Forms.Padding(4)
+        Me.busqueda_recibo.Name = "busqueda_recibo"
+        Me.busqueda_recibo.Size = New System.Drawing.Size(648, 20)
+        Me.busqueda_recibo.TabIndex = 241
+        '
         'CtaCte_buscar_comprobantes
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
@@ -379,11 +406,8 @@ Partial Class CtaCte_buscar_comprobantes
         Me.ClientSize = New System.Drawing.Size(737, 556)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.lb_ctacte_nro)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.KeyPreview = True
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
-        Me.MinimumSize = New System.Drawing.Size(699, 518)
+        Me.MinimumSize = New System.Drawing.Size(753, 595)
         Me.Name = "CtaCte_buscar_comprobantes"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

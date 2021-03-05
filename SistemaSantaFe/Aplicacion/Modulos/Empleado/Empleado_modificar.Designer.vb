@@ -24,7 +24,7 @@ Partial Class Empleado_modificar
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Empleado_modificar))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.BO_cliente_nuevo = New System.Windows.Forms.Button()
@@ -35,8 +35,6 @@ Partial Class Empleado_modificar
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.DG_empleados = New System.Windows.Forms.DataGridView()
-        Me.EmpleadosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Ds_empleados = New Aplicacion.ds_empleados()
         Me.EmpleadoidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EmpleadodniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ApellidoynombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -44,6 +42,8 @@ Partial Class Empleado_modificar
         Me.empleado_tel = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.empleado_cel = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EmpleadomailDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmpleadosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Ds_empleados = New Aplicacion.ds_empleados()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -58,6 +58,7 @@ Partial Class Empleado_modificar
         '
         'BO_cliente_nuevo
         '
+        Me.BO_cliente_nuevo.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BO_cliente_nuevo.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BO_cliente_nuevo.Image = Global.Aplicacion.My.Resources.Resources.mas30x30
         Me.BO_cliente_nuevo.Location = New System.Drawing.Point(845, 489)
@@ -72,6 +73,7 @@ Partial Class Empleado_modificar
         '
         'BO_cliente_modificar
         '
+        Me.BO_cliente_modificar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BO_cliente_modificar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BO_cliente_modificar.Image = Global.Aplicacion.My.Resources.Resources.Pasar
         Me.BO_cliente_modificar.Location = New System.Drawing.Point(977, 489)
@@ -97,6 +99,9 @@ Partial Class Empleado_modificar
         '
         'TabControl1
         '
+        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabControl1.Location = New System.Drawing.Point(4, 1)
@@ -123,6 +128,9 @@ Partial Class Empleado_modificar
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.TextBox1)
         Me.GroupBox1.Controls.Add(Me.DG_empleados)
         Me.GroupBox1.ForeColor = System.Drawing.Color.DarkSlateGray
@@ -137,6 +145,8 @@ Partial Class Empleado_modificar
         '
         'TextBox1
         '
+        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox1.ForeColor = System.Drawing.Color.Blue
         Me.TextBox1.Location = New System.Drawing.Point(12, 22)
@@ -150,6 +160,9 @@ Partial Class Empleado_modificar
         Me.DG_empleados.AllowUserToAddRows = False
         Me.DG_empleados.AllowUserToDeleteRows = False
         Me.DG_empleados.AllowUserToResizeRows = False
+        Me.DG_empleados.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DG_empleados.AutoGenerateColumns = False
         Me.DG_empleados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DG_empleados.BackgroundColor = System.Drawing.Color.White
@@ -164,24 +177,14 @@ Partial Class Empleado_modificar
         Me.DG_empleados.ReadOnly = True
         Me.DG_empleados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DG_empleados.RowHeadersVisible = False
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
-        Me.DG_empleados.RowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.DG_empleados.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.DG_empleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_empleados.Size = New System.Drawing.Size(1081, 389)
         Me.DG_empleados.StandardTab = True
         Me.DG_empleados.TabIndex = 239
-        '
-        'EmpleadosBindingSource
-        '
-        Me.EmpleadosBindingSource.DataMember = "empleados"
-        Me.EmpleadosBindingSource.DataSource = Me.Ds_empleados
-        '
-        'Ds_empleados
-        '
-        Me.Ds_empleados.DataSetName = "ds_empleados"
-        Me.Ds_empleados.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'EmpleadoidDataGridViewTextBoxColumn
         '
@@ -240,6 +243,16 @@ Partial Class Empleado_modificar
         Me.EmpleadomailDataGridViewTextBoxColumn.Name = "EmpleadomailDataGridViewTextBoxColumn"
         Me.EmpleadomailDataGridViewTextBoxColumn.ReadOnly = True
         '
+        'EmpleadosBindingSource
+        '
+        Me.EmpleadosBindingSource.DataMember = "empleados"
+        Me.EmpleadosBindingSource.DataSource = Me.Ds_empleados
+        '
+        'Ds_empleados
+        '
+        Me.Ds_empleados.DataSetName = "ds_empleados"
+        Me.Ds_empleados.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Empleado_modificar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -249,6 +262,7 @@ Partial Class Empleado_modificar
         Me.ClientSize = New System.Drawing.Size(1133, 579)
         Me.Controls.Add(Me.TabControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MinimumSize = New System.Drawing.Size(1139, 608)
         Me.Name = "Empleado_modificar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Empleados registrados"
