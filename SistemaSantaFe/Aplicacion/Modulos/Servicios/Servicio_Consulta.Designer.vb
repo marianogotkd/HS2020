@@ -26,6 +26,33 @@ Partial Class Servicio_Consulta
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DG_Servicio = New System.Windows.Forms.DataGridView()
+        Me.ServicioidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Servicio_Desc_peso = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Servicio_Desc_porc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Servicio_IVA = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIFanDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CLIdniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioFechaRevDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiciofechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioimeiDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioMarcaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioModeloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioColorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiciobatDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioObsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioManoObraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioAnticipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioNombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiciodniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiciodirDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServiciotelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Servicio_Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.USUidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioDiagnosticoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioEquipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ServicioFechaRepDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ServicioObtenerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Servicio_DS = New Aplicacion.Servicio_DS()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -70,33 +97,6 @@ Partial Class Servicio_Consulta
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.ServicioidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_Desc_peso = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_Desc_porc = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_IVA = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIFanDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CLIdniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioFechaRevDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServiciofechaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioimeiDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioMarcaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioModeloDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioColorDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServiciobatDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioObsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioManoObraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioAnticipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioNombreDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServiciodniDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServiciodirDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServiciotelDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Servicio_Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.USUidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioDiagnosticoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioSucursalDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioEquipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ServicioFechaRepDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DG_Servicio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ServicioObtenerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Servicio_DS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,6 +112,9 @@ Partial Class Servicio_Consulta
         Me.DG_Servicio.AllowUserToAddRows = False
         Me.DG_Servicio.AllowUserToDeleteRows = False
         Me.DG_Servicio.AllowUserToResizeRows = False
+        Me.DG_Servicio.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DG_Servicio.AutoGenerateColumns = False
         Me.DG_Servicio.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DG_Servicio.BackgroundColor = System.Drawing.Color.White
@@ -133,6 +136,223 @@ Partial Class Servicio_Consulta
         Me.DG_Servicio.Size = New System.Drawing.Size(856, 468)
         Me.DG_Servicio.StandardTab = True
         Me.DG_Servicio.TabIndex = 9
+        '
+        'ServicioidDataGridViewTextBoxColumn
+        '
+        Me.ServicioidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.ServicioidDataGridViewTextBoxColumn.DataPropertyName = "Servicio_id"
+        Me.ServicioidDataGridViewTextBoxColumn.HeaderText = "Nº Orden de Revisión"
+        Me.ServicioidDataGridViewTextBoxColumn.Name = "ServicioidDataGridViewTextBoxColumn"
+        Me.ServicioidDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Servicio_Desc_peso
+        '
+        Me.Servicio_Desc_peso.DataPropertyName = "Servicio_Desc_peso"
+        Me.Servicio_Desc_peso.HeaderText = "Servicio_Desc_peso"
+        Me.Servicio_Desc_peso.Name = "Servicio_Desc_peso"
+        Me.Servicio_Desc_peso.ReadOnly = True
+        Me.Servicio_Desc_peso.Visible = False
+        '
+        'Servicio_Desc_porc
+        '
+        Me.Servicio_Desc_porc.DataPropertyName = "Servicio_Desc_porc"
+        Me.Servicio_Desc_porc.HeaderText = "Servicio_Desc_porc"
+        Me.Servicio_Desc_porc.Name = "Servicio_Desc_porc"
+        Me.Servicio_Desc_porc.ReadOnly = True
+        Me.Servicio_Desc_porc.Visible = False
+        '
+        'Servicio_IVA
+        '
+        Me.Servicio_IVA.DataPropertyName = "Servicio_IVA"
+        Me.Servicio_IVA.HeaderText = "Servicio_IVA"
+        Me.Servicio_IVA.Name = "Servicio_IVA"
+        Me.Servicio_IVA.ReadOnly = True
+        Me.Servicio_IVA.Visible = False
+        '
+        'CLIidDataGridViewTextBoxColumn
+        '
+        Me.CLIidDataGridViewTextBoxColumn.DataPropertyName = "CLI_id"
+        Me.CLIidDataGridViewTextBoxColumn.HeaderText = "CLI_id"
+        Me.CLIidDataGridViewTextBoxColumn.Name = "CLIidDataGridViewTextBoxColumn"
+        Me.CLIidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CLIidDataGridViewTextBoxColumn.Visible = False
+        '
+        'CLIFanDataGridViewTextBoxColumn
+        '
+        Me.CLIFanDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CLIFanDataGridViewTextBoxColumn.DataPropertyName = "CLI_Fan"
+        Me.CLIFanDataGridViewTextBoxColumn.HeaderText = "Cliente"
+        Me.CLIFanDataGridViewTextBoxColumn.Name = "CLIFanDataGridViewTextBoxColumn"
+        Me.CLIFanDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'CLIdniDataGridViewTextBoxColumn
+        '
+        Me.CLIdniDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.CLIdniDataGridViewTextBoxColumn.DataPropertyName = "CLI_dni"
+        Me.CLIdniDataGridViewTextBoxColumn.HeaderText = "DNI"
+        Me.CLIdniDataGridViewTextBoxColumn.Name = "CLIdniDataGridViewTextBoxColumn"
+        Me.CLIdniDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ServicioFechaRevDataGridViewTextBoxColumn
+        '
+        Me.ServicioFechaRevDataGridViewTextBoxColumn.DataPropertyName = "Servicio_FechaRev"
+        Me.ServicioFechaRevDataGridViewTextBoxColumn.HeaderText = "Fecha Revisión"
+        Me.ServicioFechaRevDataGridViewTextBoxColumn.Name = "ServicioFechaRevDataGridViewTextBoxColumn"
+        Me.ServicioFechaRevDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'ServiciofechaDataGridViewTextBoxColumn
+        '
+        Me.ServiciofechaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.ServiciofechaDataGridViewTextBoxColumn.DataPropertyName = "Servicio_fecha"
+        Me.ServiciofechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
+        Me.ServiciofechaDataGridViewTextBoxColumn.Name = "ServiciofechaDataGridViewTextBoxColumn"
+        Me.ServiciofechaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiciofechaDataGridViewTextBoxColumn.Visible = False
+        Me.ServiciofechaDataGridViewTextBoxColumn.Width = 70
+        '
+        'ServicioimeiDataGridViewTextBoxColumn
+        '
+        Me.ServicioimeiDataGridViewTextBoxColumn.DataPropertyName = "Servicio_imei"
+        Me.ServicioimeiDataGridViewTextBoxColumn.HeaderText = "Servicio_imei"
+        Me.ServicioimeiDataGridViewTextBoxColumn.Name = "ServicioimeiDataGridViewTextBoxColumn"
+        Me.ServicioimeiDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioimeiDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioMarcaDataGridViewTextBoxColumn
+        '
+        Me.ServicioMarcaDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Marca"
+        Me.ServicioMarcaDataGridViewTextBoxColumn.HeaderText = "Servicio_Marca"
+        Me.ServicioMarcaDataGridViewTextBoxColumn.Name = "ServicioMarcaDataGridViewTextBoxColumn"
+        Me.ServicioMarcaDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioMarcaDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioModeloDataGridViewTextBoxColumn
+        '
+        Me.ServicioModeloDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Modelo"
+        Me.ServicioModeloDataGridViewTextBoxColumn.HeaderText = "Servicio_Modelo"
+        Me.ServicioModeloDataGridViewTextBoxColumn.Name = "ServicioModeloDataGridViewTextBoxColumn"
+        Me.ServicioModeloDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioModeloDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioColorDataGridViewTextBoxColumn
+        '
+        Me.ServicioColorDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Color"
+        Me.ServicioColorDataGridViewTextBoxColumn.HeaderText = "Servicio_Color"
+        Me.ServicioColorDataGridViewTextBoxColumn.Name = "ServicioColorDataGridViewTextBoxColumn"
+        Me.ServicioColorDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioColorDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServiciobatDataGridViewTextBoxColumn
+        '
+        Me.ServiciobatDataGridViewTextBoxColumn.DataPropertyName = "Servicio_bat"
+        Me.ServiciobatDataGridViewTextBoxColumn.HeaderText = "Servicio_bat"
+        Me.ServiciobatDataGridViewTextBoxColumn.Name = "ServiciobatDataGridViewTextBoxColumn"
+        Me.ServiciobatDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiciobatDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioObsDataGridViewTextBoxColumn
+        '
+        Me.ServicioObsDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Obs"
+        Me.ServicioObsDataGridViewTextBoxColumn.HeaderText = "Servicio_Obs"
+        Me.ServicioObsDataGridViewTextBoxColumn.Name = "ServicioObsDataGridViewTextBoxColumn"
+        Me.ServicioObsDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioObsDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioManoObraDataGridViewTextBoxColumn
+        '
+        Me.ServicioManoObraDataGridViewTextBoxColumn.DataPropertyName = "Servicio_ManoObra"
+        Me.ServicioManoObraDataGridViewTextBoxColumn.HeaderText = "Servicio_ManoObra"
+        Me.ServicioManoObraDataGridViewTextBoxColumn.Name = "ServicioManoObraDataGridViewTextBoxColumn"
+        Me.ServicioManoObraDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioManoObraDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioAnticipoDataGridViewTextBoxColumn
+        '
+        Me.ServicioAnticipoDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Anticipo"
+        Me.ServicioAnticipoDataGridViewTextBoxColumn.HeaderText = "Anticipo"
+        Me.ServicioAnticipoDataGridViewTextBoxColumn.Name = "ServicioAnticipoDataGridViewTextBoxColumn"
+        Me.ServicioAnticipoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioAnticipoDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioNombreDataGridViewTextBoxColumn
+        '
+        Me.ServicioNombreDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Nombre"
+        Me.ServicioNombreDataGridViewTextBoxColumn.HeaderText = "Servicio_Nombre"
+        Me.ServicioNombreDataGridViewTextBoxColumn.Name = "ServicioNombreDataGridViewTextBoxColumn"
+        Me.ServicioNombreDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioNombreDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServiciodniDataGridViewTextBoxColumn
+        '
+        Me.ServiciodniDataGridViewTextBoxColumn.DataPropertyName = "Servicio_dni"
+        Me.ServiciodniDataGridViewTextBoxColumn.HeaderText = "DNI"
+        Me.ServiciodniDataGridViewTextBoxColumn.Name = "ServiciodniDataGridViewTextBoxColumn"
+        Me.ServiciodniDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiciodniDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServiciodirDataGridViewTextBoxColumn
+        '
+        Me.ServiciodirDataGridViewTextBoxColumn.DataPropertyName = "Servicio_dir"
+        Me.ServiciodirDataGridViewTextBoxColumn.HeaderText = "Servicio_dir"
+        Me.ServiciodirDataGridViewTextBoxColumn.Name = "ServiciodirDataGridViewTextBoxColumn"
+        Me.ServiciodirDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiciodirDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServiciotelDataGridViewTextBoxColumn
+        '
+        Me.ServiciotelDataGridViewTextBoxColumn.DataPropertyName = "Servicio_tel"
+        Me.ServiciotelDataGridViewTextBoxColumn.HeaderText = "Servicio_tel"
+        Me.ServiciotelDataGridViewTextBoxColumn.Name = "ServiciotelDataGridViewTextBoxColumn"
+        Me.ServiciotelDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServiciotelDataGridViewTextBoxColumn.Visible = False
+        '
+        'Servicio_Estado
+        '
+        Me.Servicio_Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Servicio_Estado.DataPropertyName = "Servicio_Estado"
+        Me.Servicio_Estado.HeaderText = "Estado"
+        Me.Servicio_Estado.Name = "Servicio_Estado"
+        Me.Servicio_Estado.ReadOnly = True
+        '
+        'USUidDataGridViewTextBoxColumn
+        '
+        Me.USUidDataGridViewTextBoxColumn.DataPropertyName = "USU_id"
+        Me.USUidDataGridViewTextBoxColumn.HeaderText = "USU_id"
+        Me.USUidDataGridViewTextBoxColumn.Name = "USUidDataGridViewTextBoxColumn"
+        Me.USUidDataGridViewTextBoxColumn.ReadOnly = True
+        Me.USUidDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioDiagnosticoDataGridViewTextBoxColumn
+        '
+        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Diagnostico"
+        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.HeaderText = "Servicio_Diagnostico"
+        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.Name = "ServicioDiagnosticoDataGridViewTextBoxColumn"
+        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioSucursalDataGridViewTextBoxColumn
+        '
+        Me.ServicioSucursalDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Sucursal"
+        Me.ServicioSucursalDataGridViewTextBoxColumn.HeaderText = "Servicio_Sucursal"
+        Me.ServicioSucursalDataGridViewTextBoxColumn.Name = "ServicioSucursalDataGridViewTextBoxColumn"
+        Me.ServicioSucursalDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioSucursalDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioEquipoDataGridViewTextBoxColumn
+        '
+        Me.ServicioEquipoDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Equipo"
+        Me.ServicioEquipoDataGridViewTextBoxColumn.HeaderText = "Servicio_Equipo"
+        Me.ServicioEquipoDataGridViewTextBoxColumn.Name = "ServicioEquipoDataGridViewTextBoxColumn"
+        Me.ServicioEquipoDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioEquipoDataGridViewTextBoxColumn.Visible = False
+        '
+        'ServicioFechaRepDataGridViewTextBoxColumn
+        '
+        Me.ServicioFechaRepDataGridViewTextBoxColumn.DataPropertyName = "Servicio_FechaRep"
+        Me.ServicioFechaRepDataGridViewTextBoxColumn.HeaderText = "Servicio_FechaRep"
+        Me.ServicioFechaRepDataGridViewTextBoxColumn.Name = "ServicioFechaRepDataGridViewTextBoxColumn"
+        Me.ServicioFechaRepDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ServicioFechaRepDataGridViewTextBoxColumn.Visible = False
         '
         'ServicioObtenerBindingSource
         '
@@ -167,6 +387,7 @@ Partial Class Servicio_Consulta
         '
         'Button_Detalle
         '
+        Me.Button_Detalle.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button_Detalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button_Detalle.Image = Global.Aplicacion.My.Resources.Resources.Pasar
         Me.Button_Detalle.Location = New System.Drawing.Point(746, 515)
@@ -180,6 +401,7 @@ Partial Class Servicio_Consulta
         '
         'btn_Anular
         '
+        Me.btn_Anular.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_Anular.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_Anular.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
         Me.btn_Anular.Location = New System.Drawing.Point(614, 515)
@@ -193,6 +415,7 @@ Partial Class Servicio_Consulta
         '
         'Label2
         '
+        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(414, 15)
         Me.Label2.Name = "Label2"
@@ -202,6 +425,7 @@ Partial Class Servicio_Consulta
         '
         'ComboBox_buscar
         '
+        Me.ComboBox_buscar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ComboBox_buscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ComboBox_buscar.FormattingEnabled = True
@@ -213,6 +437,7 @@ Partial Class Servicio_Consulta
         '
         'TextBox1
         '
+        Me.TextBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox1.BackColor = System.Drawing.SystemColors.Info
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(623, 9)
@@ -223,6 +448,9 @@ Partial Class Servicio_Consulta
         '
         'TabControl1
         '
+        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Location = New System.Drawing.Point(12, 44)
@@ -256,15 +484,16 @@ Partial Class Servicio_Consulta
         Me.TabPage2.Controls.Add(Me.ComboBox1)
         Me.TabPage2.Controls.Add(Me.TextBox2)
         Me.TabPage2.Controls.Add(Me.Label3)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(885, 567)
+        Me.TabPage2.Size = New System.Drawing.Size(885, 564)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Ordenes de trabajo"
         '
         'Button1
         '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
         Me.Button1.Location = New System.Drawing.Point(614, 515)
@@ -275,10 +504,10 @@ Partial Class Servicio_Consulta
         Me.Button1.Text = "Anular"
         Me.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.Button1.UseVisualStyleBackColor = True
-        Me.Button1.Visible = False
         '
         'Button2
         '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.Pasar
         Me.Button2.Location = New System.Drawing.Point(746, 515)
@@ -295,6 +524,9 @@ Partial Class Servicio_Consulta
         Me.DG_OrdenTrabajo.AllowUserToAddRows = False
         Me.DG_OrdenTrabajo.AllowUserToDeleteRows = False
         Me.DG_OrdenTrabajo.AllowUserToResizeRows = False
+        Me.DG_OrdenTrabajo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DG_OrdenTrabajo.AutoGenerateColumns = False
         Me.DG_OrdenTrabajo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DG_OrdenTrabajo.BackgroundColor = System.Drawing.Color.White
@@ -524,6 +756,7 @@ Partial Class Servicio_Consulta
         '
         'ComboBox1
         '
+        Me.ComboBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.ComboBox1.FormattingEnabled = True
@@ -535,6 +768,7 @@ Partial Class Servicio_Consulta
         '
         'TextBox2
         '
+        Me.TextBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox2.BackColor = System.Drawing.SystemColors.Info
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox2.Location = New System.Drawing.Point(623, 9)
@@ -545,229 +779,13 @@ Partial Class Servicio_Consulta
         '
         'Label3
         '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(414, 15)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(76, 16)
         Me.Label3.TabIndex = 17
         Me.Label3.Text = "Buscar por:"
-        '
-        'ServicioidDataGridViewTextBoxColumn
-        '
-        Me.ServicioidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.ServicioidDataGridViewTextBoxColumn.DataPropertyName = "Servicio_id"
-        Me.ServicioidDataGridViewTextBoxColumn.HeaderText = "Nº Orden de Revisión"
-        Me.ServicioidDataGridViewTextBoxColumn.Name = "ServicioidDataGridViewTextBoxColumn"
-        Me.ServicioidDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Servicio_Desc_peso
-        '
-        Me.Servicio_Desc_peso.DataPropertyName = "Servicio_Desc_peso"
-        Me.Servicio_Desc_peso.HeaderText = "Servicio_Desc_peso"
-        Me.Servicio_Desc_peso.Name = "Servicio_Desc_peso"
-        Me.Servicio_Desc_peso.ReadOnly = True
-        Me.Servicio_Desc_peso.Visible = False
-        '
-        'Servicio_Desc_porc
-        '
-        Me.Servicio_Desc_porc.DataPropertyName = "Servicio_Desc_porc"
-        Me.Servicio_Desc_porc.HeaderText = "Servicio_Desc_porc"
-        Me.Servicio_Desc_porc.Name = "Servicio_Desc_porc"
-        Me.Servicio_Desc_porc.ReadOnly = True
-        Me.Servicio_Desc_porc.Visible = False
-        '
-        'Servicio_IVA
-        '
-        Me.Servicio_IVA.DataPropertyName = "Servicio_IVA"
-        Me.Servicio_IVA.HeaderText = "Servicio_IVA"
-        Me.Servicio_IVA.Name = "Servicio_IVA"
-        Me.Servicio_IVA.ReadOnly = True
-        Me.Servicio_IVA.Visible = False
-        '
-        'CLIidDataGridViewTextBoxColumn
-        '
-        Me.CLIidDataGridViewTextBoxColumn.DataPropertyName = "CLI_id"
-        Me.CLIidDataGridViewTextBoxColumn.HeaderText = "CLI_id"
-        Me.CLIidDataGridViewTextBoxColumn.Name = "CLIidDataGridViewTextBoxColumn"
-        Me.CLIidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.CLIidDataGridViewTextBoxColumn.Visible = False
-        '
-        'CLIFanDataGridViewTextBoxColumn
-        '
-        Me.CLIFanDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CLIFanDataGridViewTextBoxColumn.DataPropertyName = "CLI_Fan"
-        Me.CLIFanDataGridViewTextBoxColumn.HeaderText = "Cliente"
-        Me.CLIFanDataGridViewTextBoxColumn.Name = "CLIFanDataGridViewTextBoxColumn"
-        Me.CLIFanDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'CLIdniDataGridViewTextBoxColumn
-        '
-        Me.CLIdniDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.CLIdniDataGridViewTextBoxColumn.DataPropertyName = "CLI_dni"
-        Me.CLIdniDataGridViewTextBoxColumn.HeaderText = "DNI"
-        Me.CLIdniDataGridViewTextBoxColumn.Name = "CLIdniDataGridViewTextBoxColumn"
-        Me.CLIdniDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ServicioFechaRevDataGridViewTextBoxColumn
-        '
-        Me.ServicioFechaRevDataGridViewTextBoxColumn.DataPropertyName = "Servicio_FechaRev"
-        Me.ServicioFechaRevDataGridViewTextBoxColumn.HeaderText = "Fecha Revisión"
-        Me.ServicioFechaRevDataGridViewTextBoxColumn.Name = "ServicioFechaRevDataGridViewTextBoxColumn"
-        Me.ServicioFechaRevDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'ServiciofechaDataGridViewTextBoxColumn
-        '
-        Me.ServiciofechaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.ServiciofechaDataGridViewTextBoxColumn.DataPropertyName = "Servicio_fecha"
-        Me.ServiciofechaDataGridViewTextBoxColumn.HeaderText = "Fecha"
-        Me.ServiciofechaDataGridViewTextBoxColumn.Name = "ServiciofechaDataGridViewTextBoxColumn"
-        Me.ServiciofechaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServiciofechaDataGridViewTextBoxColumn.Visible = False
-        Me.ServiciofechaDataGridViewTextBoxColumn.Width = 70
-        '
-        'ServicioimeiDataGridViewTextBoxColumn
-        '
-        Me.ServicioimeiDataGridViewTextBoxColumn.DataPropertyName = "Servicio_imei"
-        Me.ServicioimeiDataGridViewTextBoxColumn.HeaderText = "Servicio_imei"
-        Me.ServicioimeiDataGridViewTextBoxColumn.Name = "ServicioimeiDataGridViewTextBoxColumn"
-        Me.ServicioimeiDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServicioimeiDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServicioMarcaDataGridViewTextBoxColumn
-        '
-        Me.ServicioMarcaDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Marca"
-        Me.ServicioMarcaDataGridViewTextBoxColumn.HeaderText = "Servicio_Marca"
-        Me.ServicioMarcaDataGridViewTextBoxColumn.Name = "ServicioMarcaDataGridViewTextBoxColumn"
-        Me.ServicioMarcaDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServicioMarcaDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServicioModeloDataGridViewTextBoxColumn
-        '
-        Me.ServicioModeloDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Modelo"
-        Me.ServicioModeloDataGridViewTextBoxColumn.HeaderText = "Servicio_Modelo"
-        Me.ServicioModeloDataGridViewTextBoxColumn.Name = "ServicioModeloDataGridViewTextBoxColumn"
-        Me.ServicioModeloDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServicioModeloDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServicioColorDataGridViewTextBoxColumn
-        '
-        Me.ServicioColorDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Color"
-        Me.ServicioColorDataGridViewTextBoxColumn.HeaderText = "Servicio_Color"
-        Me.ServicioColorDataGridViewTextBoxColumn.Name = "ServicioColorDataGridViewTextBoxColumn"
-        Me.ServicioColorDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServicioColorDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServiciobatDataGridViewTextBoxColumn
-        '
-        Me.ServiciobatDataGridViewTextBoxColumn.DataPropertyName = "Servicio_bat"
-        Me.ServiciobatDataGridViewTextBoxColumn.HeaderText = "Servicio_bat"
-        Me.ServiciobatDataGridViewTextBoxColumn.Name = "ServiciobatDataGridViewTextBoxColumn"
-        Me.ServiciobatDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServiciobatDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServicioObsDataGridViewTextBoxColumn
-        '
-        Me.ServicioObsDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Obs"
-        Me.ServicioObsDataGridViewTextBoxColumn.HeaderText = "Servicio_Obs"
-        Me.ServicioObsDataGridViewTextBoxColumn.Name = "ServicioObsDataGridViewTextBoxColumn"
-        Me.ServicioObsDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServicioObsDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServicioManoObraDataGridViewTextBoxColumn
-        '
-        Me.ServicioManoObraDataGridViewTextBoxColumn.DataPropertyName = "Servicio_ManoObra"
-        Me.ServicioManoObraDataGridViewTextBoxColumn.HeaderText = "Servicio_ManoObra"
-        Me.ServicioManoObraDataGridViewTextBoxColumn.Name = "ServicioManoObraDataGridViewTextBoxColumn"
-        Me.ServicioManoObraDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServicioManoObraDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServicioAnticipoDataGridViewTextBoxColumn
-        '
-        Me.ServicioAnticipoDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Anticipo"
-        Me.ServicioAnticipoDataGridViewTextBoxColumn.HeaderText = "Anticipo"
-        Me.ServicioAnticipoDataGridViewTextBoxColumn.Name = "ServicioAnticipoDataGridViewTextBoxColumn"
-        Me.ServicioAnticipoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServicioAnticipoDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServicioNombreDataGridViewTextBoxColumn
-        '
-        Me.ServicioNombreDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Nombre"
-        Me.ServicioNombreDataGridViewTextBoxColumn.HeaderText = "Servicio_Nombre"
-        Me.ServicioNombreDataGridViewTextBoxColumn.Name = "ServicioNombreDataGridViewTextBoxColumn"
-        Me.ServicioNombreDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServicioNombreDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServiciodniDataGridViewTextBoxColumn
-        '
-        Me.ServiciodniDataGridViewTextBoxColumn.DataPropertyName = "Servicio_dni"
-        Me.ServiciodniDataGridViewTextBoxColumn.HeaderText = "DNI"
-        Me.ServiciodniDataGridViewTextBoxColumn.Name = "ServiciodniDataGridViewTextBoxColumn"
-        Me.ServiciodniDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServiciodniDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServiciodirDataGridViewTextBoxColumn
-        '
-        Me.ServiciodirDataGridViewTextBoxColumn.DataPropertyName = "Servicio_dir"
-        Me.ServiciodirDataGridViewTextBoxColumn.HeaderText = "Servicio_dir"
-        Me.ServiciodirDataGridViewTextBoxColumn.Name = "ServiciodirDataGridViewTextBoxColumn"
-        Me.ServiciodirDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServiciodirDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServiciotelDataGridViewTextBoxColumn
-        '
-        Me.ServiciotelDataGridViewTextBoxColumn.DataPropertyName = "Servicio_tel"
-        Me.ServiciotelDataGridViewTextBoxColumn.HeaderText = "Servicio_tel"
-        Me.ServiciotelDataGridViewTextBoxColumn.Name = "ServiciotelDataGridViewTextBoxColumn"
-        Me.ServiciotelDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServiciotelDataGridViewTextBoxColumn.Visible = False
-        '
-        'Servicio_Estado
-        '
-        Me.Servicio_Estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Servicio_Estado.DataPropertyName = "Servicio_Estado"
-        Me.Servicio_Estado.HeaderText = "Estado"
-        Me.Servicio_Estado.Name = "Servicio_Estado"
-        Me.Servicio_Estado.ReadOnly = True
-        '
-        'USUidDataGridViewTextBoxColumn
-        '
-        Me.USUidDataGridViewTextBoxColumn.DataPropertyName = "USU_id"
-        Me.USUidDataGridViewTextBoxColumn.HeaderText = "USU_id"
-        Me.USUidDataGridViewTextBoxColumn.Name = "USUidDataGridViewTextBoxColumn"
-        Me.USUidDataGridViewTextBoxColumn.ReadOnly = True
-        Me.USUidDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServicioDiagnosticoDataGridViewTextBoxColumn
-        '
-        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Diagnostico"
-        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.HeaderText = "Servicio_Diagnostico"
-        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.Name = "ServicioDiagnosticoDataGridViewTextBoxColumn"
-        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServicioDiagnosticoDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServicioSucursalDataGridViewTextBoxColumn
-        '
-        Me.ServicioSucursalDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Sucursal"
-        Me.ServicioSucursalDataGridViewTextBoxColumn.HeaderText = "Servicio_Sucursal"
-        Me.ServicioSucursalDataGridViewTextBoxColumn.Name = "ServicioSucursalDataGridViewTextBoxColumn"
-        Me.ServicioSucursalDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServicioSucursalDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServicioEquipoDataGridViewTextBoxColumn
-        '
-        Me.ServicioEquipoDataGridViewTextBoxColumn.DataPropertyName = "Servicio_Equipo"
-        Me.ServicioEquipoDataGridViewTextBoxColumn.HeaderText = "Servicio_Equipo"
-        Me.ServicioEquipoDataGridViewTextBoxColumn.Name = "ServicioEquipoDataGridViewTextBoxColumn"
-        Me.ServicioEquipoDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServicioEquipoDataGridViewTextBoxColumn.Visible = False
-        '
-        'ServicioFechaRepDataGridViewTextBoxColumn
-        '
-        Me.ServicioFechaRepDataGridViewTextBoxColumn.DataPropertyName = "Servicio_FechaRep"
-        Me.ServicioFechaRepDataGridViewTextBoxColumn.HeaderText = "Servicio_FechaRep"
-        Me.ServicioFechaRepDataGridViewTextBoxColumn.Name = "ServicioFechaRepDataGridViewTextBoxColumn"
-        Me.ServicioFechaRepDataGridViewTextBoxColumn.ReadOnly = True
-        Me.ServicioFechaRepDataGridViewTextBoxColumn.Visible = False
         '
         'Servicio_Consulta
         '
@@ -777,10 +795,7 @@ Partial Class Servicio_Consulta
         Me.Controls.Add(Me.ComboBox_suc)
         Me.Controls.Add(Me.Label1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
         Me.Name = "Servicio_Consulta"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Consulta de Servicio"

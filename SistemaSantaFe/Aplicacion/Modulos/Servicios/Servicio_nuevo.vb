@@ -107,7 +107,8 @@
         recuperar_cuadrillas() 'siempre recupero independientemente si se asigno cuadrilla o no
 
         If serv_id = 0 Then 'es una alta
-            Button_finalizar.Enabled = False
+            'Button_finalizar.Enabled = False
+            ToolStripButton_finalizar.Enabled = False
             Label_Estado.Visible = False
             Generar_cod_interno()
         Else
@@ -122,6 +123,10 @@
 
     End Sub
     Public anticipo_recuperado As Decimal = 0
+
+    Dim cliente_mail As String 'lo uso en el reporte de presupuesto
+    Dim cliente_localidad As String 'lo uso en el reporte de presupuesto
+    Dim cliente_iva_condicion As String 'lo uso en el reporte de presupuesto
     Private Sub Cargar_Datos()
         Dim Ds_servicio As DataSet = DAservicio.Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA(serv_id)
         'Descuentos
@@ -152,6 +157,9 @@
             txt_equipo.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Equipo").ToString
             txt_sucursal.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Sucursal").ToString
             txt_diag.Text = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Diagnostico").ToString
+            cliente_mail = Ds_servicio.Tables(0).Rows(i).Item("SucxClie_mail").ToString
+            cliente_localidad = Ds_servicio.Tables(0).Rows(i).Item("provincia") + ", " + Ds_servicio.Tables(0).Rows(i).Item("Localidad")
+            cliente_iva_condicion = Ds_servicio.Tables(0).Rows(i).Item("IVA_Descripcion").ToString
             DateTimePicker_REP.Value = Ds_servicio.Tables(0).Rows(i).Item("Servicio_FechaRep")
             DateTimePicker_Rev.Value = Ds_servicio.Tables(0).Rows(i).Item("Servicio_FechaRev")
             DateTimePicker_Rev.Enabled = False
@@ -176,22 +184,34 @@
 
             estado_de_orden = Ds_servicio.Tables(0).Rows(i).Item("Servicio_Estado").ToString 'lo uso para validar en los botones de guardar
             If estado_de_orden = "PENDIENTE" Then 'deshabilito los botones REPARADO Y FINALIZAR
-                Button2.Enabled = False
-                Button_finalizar.Enabled = False
+                'Button2_reparado.Enabled = False
+                ToolStripButton_reparar.Enabled = False
+                'Button_finalizar.Enabled = False
+                ToolStripButton_finalizar.Enabled = False
+                ToolStripButton_presupuesto.Enabled = False 'si no tiene orden generado no lo habilito
             End If
             If estado_de_orden = "ASIGNADO" Then
-                Button_finalizar.Enabled = True
-                Button2.Enabled = True
+                'Button_finalizar.Enabled = True
+                ToolStripButton_finalizar.Enabled = True
+                'Button2_reparado.Enabled = True
+                ToolStripButton_reparar.Enabled = True
+
             End If
             If estado_de_orden = "REPARADO" Then
-                Button_finalizar.Enabled = True
-                Button2.Enabled = False
-                btn_guardar.Enabled = False
+                'Button_finalizar.Enabled = True
+                ToolStripButton_finalizar.Enabled = True
+                'Button2_reparado.Enabled = False
+                ToolStripButton_reparar.Enabled = True
+                'btn_generar.Enabled = False
+                ToolStripButton_generar.Enabled = False
             End If
-            If estado_de_orden = "FINALIZADO" Then
-                btn_guardar.Enabled = False
-                Button2.Enabled = False
-                Button_finalizar.Enabled = False
+            If (estado_de_orden = "FINALIZADO") Or (estado_de_orden = "ANULADO") Then
+                'btn_generar.Enabled = False
+                ToolStripButton_generar.Enabled = False
+                'Button2_reparado.Enabled = False
+                ToolStripButton_reparar.Enabled = False
+                'Button_finalizar.Enabled = False
+                ToolStripButton_finalizar.Enabled = False
             End If
             'le voy a sumar al estado el nro de orden de trabajo,
             If Ds_servicio.Tables(1).Rows.Count <> 0 Then
@@ -226,14 +246,9 @@
 
         Calcular_Totales()
         aplicar_iva()
-
-
-
-
-
     End Sub
     Private Sub Bloquar_grupBox(ByVal Estado As String)
-        If Estado = "FINALIZADO" Or Estado = "ANULADO" Or Estado = "REPARADO" Then
+        If Estado = "FINALIZADO" Or Estado = "ANULADO" Then 'Or Estado = "REPARADO" Then SI EL ESTADO ES REPARADO VOY A DEJAR DE MOMENTO QUE SE PUEDA INCLUIR ALGUN CAMBIO MAS, PARA GUARDAR SE TIENE Q DARLE CLICK NUEVAMENTE AL BOTON DE REPARADO
             'GroupBox2.Enabled = False
             'GroupBox3.Enabled = False
             'GroupBox4.Enabled = False
@@ -426,8 +441,8 @@
         'TextBox_ManoO.BackColor = Color.White
     End Sub
 
-    
-    
+
+
     Dim servicio_id_recuperado As Integer = 0
     'Dim procedencia As String = ""
     Public Sub Guardar_BD(ByVal form_de_donde_vengo As String)
@@ -573,7 +588,7 @@
             ' lb_error_observacion.Visible = True
         End If
     End Sub
-    Private Sub btn_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_guardar.Click
+    Private Sub btn_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If estado_de_orden <> "REPARADO" Then
             Dim result As Integer = MessageBox.Show("¿Está seguro que desea guardar los cambios y generar la ORDEN DE TRABAJO?", "Sistema de Gestión", MessageBoxButtons.YesNo)
             If result = DialogResult.Yes Then
@@ -729,7 +744,7 @@
         End While
     End Sub
 
-    Private Sub Button_finalizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_finalizar.Click
+    Private Sub Button_finalizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If estado_de_orden = "PENDIENTE" Then
             MessageBox.Show("Error, debe generar la orden de trabajo para poder finalizar y cobrar.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
@@ -871,10 +886,10 @@
         Dim row_totales As DataRow = Facturacion_ds_report.Tables("Totales_aplicados").NewRow()
         row_totales("subtotal") = CDec(txt_total.Text)
         row_totales("total") = CDec(txt_total.Text)
-        'row_totales("iva") = ds_cliente.Tables(0).Rows(0).Item("Servicio_IVA")
-        row_totales("descuento_porcentaje") = ds_cliente.Tables(0).Rows(0).Item("Servicio_Desc_porc")
-        row_totales("descuento_pesos") = ds_cliente.Tables(0).Rows(0).Item("Servicio_Desc_peso")
-        row_totales("iva_pesos") = ds_cliente.Tables(0).Rows(0).Item("Servicio_IVA")
+        row_totales("iva") = CDec(ComboBox_iva.Text)
+        row_totales("descuento_porcentaje") = CDec(txt_desc_porc.Text) 'ds_cliente.Tables(0).Rows(0).Item("Servicio_Desc_porc")
+        row_totales("descuento_pesos") = CDec(txt_desc_pesos.Text) 'ds_cliente.Tables(0).Rows(0).Item("Servicio_Desc_peso")
+        row_totales("iva_pesos") = CDec(txt_impuesto_aplicado.Text) 'ds_cliente.Tables(0).Rows(0).Item("Servicio_IVA")
         Facturacion_ds_report.Tables("Totales_aplicados").Rows.Add(row_totales)
 
         '///////////////TABLA PRODUCTO AGREGADO//////////////////////////////////'
@@ -1092,14 +1107,14 @@
 
     End Sub
 
-    
+
     Private Sub Combo_cuadrilla_SelectedValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Combo_cuadrilla.SelectedValueChanged
         If ds_cuadrilla.Tables(0).Rows.Count <> 0 And combo_cuadrilla_listo = "si" Then
             recuperar_empleados(Combo_cuadrilla.SelectedValue)
         End If
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If estado_de_orden = "ASIGNADO" Then
             Dim result As Integer = MessageBox.Show("¿Está seguro que desea cambiar el estado de la orden a REPARADO?", "Sistema de Gestión", MessageBoxButtons.YesNo)
             If result = DialogResult.Yes Then
@@ -1358,4 +1373,421 @@
         aplicar_iva()
     End Sub
 
+    Private Sub ToolStripLabel1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
+
+    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton_generar.Click
+        If estado_de_orden <> "REPARADO" Then
+            Dim result As Integer = MessageBox.Show("¿Está seguro que desea guardar los cambios y generar la ORDEN DE TRABAJO?", "Sistema de Gestión", MessageBoxButtons.YesNo)
+            If result = DialogResult.Yes Then
+                If serv_id <> 0 Then
+                    '    'anulo la orden de trabajo previa, porque se va a generar una nueva
+                    '    DAservicio.Servicio_ActualizarEstado(serv_id, "ANULADO")
+                    DAservicio.Orden_trabajo_eliminar(serv_id)
+                End If
+
+                Guardar_BD("boton_guardar_cambios")
+            End If
+        Else
+            MessageBox.Show("Error, no se puede realizar la operación.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
+        'procedencia = "boton_guardar_cambios" 'lo necesito para q no se cierre la rutina GUARDAR_BD
+        'Guardar_BD("boton_guardar_cambios")
+        'If Servicio_Consulta.serv_id = 0 Then
+        '    If CDec(TextBox_Anticipo.Text) <> CDec(0) Then
+        '        Dim descripcion As String = "Servicio Nº" + CStr(servicio_id_recuperado) + ", anticipo"
+        '        DAcaja.Caja_Actualizar2(Inicio.USU_id, descripcion, CDec(TextBox_Anticipo.Text), CDec(0), 2, CDec(0), CDec(TextBox_Anticipo.Text)) '2 es ingreso
+        '    End If
+        'Else
+        '    If CDec(TextBox_Anticipo.Text) <> CDec(0) Then ' si me dejaron mas plata hacer la diferencia
+        '        Dim anticipo_diferencias As Decimal = CDec(TextBox_Anticipo.Text) - anticipo_recuperado
+        '        If anticipo_diferencias <= 0 Then
+
+        '        Else
+        '            Dim descripcion As String = "Servicio Nº" + CStr(Label_Cod.Text) + ", anticipo"
+        '            DAcaja.Caja_Actualizar2(Inicio.USU_id, descripcion, CDec(anticipo_diferencias), CDec(0), 2, CDec(0), CDec(anticipo_diferencias)) '2 es ingreso
+        '        End If
+        '    End If
+        'End If
+
+        'Me.Close()
+    End Sub
+
+    Private Sub GroupBox1_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox1.Enter
+
+    End Sub
+
+
+    Private Sub crear_reporte_presupuesto(ByVal ds_usuario As DataSet)
+        'pregunto si quiero ver el reporte 
+        'Dim result As DialogResult
+        'result = MessageBox.Show("¿Desea ver el comprobante de pago?", "Sistema de Gestión", MessageBoxButtons.OKCancel)
+        'If result = DialogResult.OK Then
+        'primero lleno el dataset y sus respectivas table
+
+        '///////////////TABLA CLIENTE//////////////////////////////////'
+        facturacion_ds_report.Tables("Cliente").Rows.Clear()
+
+        'Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni(TextBox_dni.Text) 'esto ya no me sirve por que ahora los datos q van en la factura vienen de la taba cliente_sucursales.
+        'Dim ds_cliente As DataSet = DAservicio.Servicio_Obterner_Con_Detalle_X_Servicio_id_MDA(serv_id) 'esto ya no me sirve por que ahora los datos q van en la factura vienen de la taba cliente_sucursales.
+        Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
+        row_cliente("fantasia") = TextBox_Nombre.Text + ", " + txt_sucursal.Text 'ds_cliente.Tables(3).Rows(0).Item("CLI_Fan") + ", " + ds_cliente.Tables(3).Rows(0).Item("SucxClie_nombre")
+        row_cliente("dni") = TextBox_dni.Text 'ds_cliente.Tables(3).Rows(0).Item("CLI_dni")
+        row_cliente("telefono") = TextBox_tel.Text 'ds_cliente.Tables(3).Rows(0).Item("SucxClie_tel")
+        row_cliente("mail") = cliente_mail  'ds_cliente.Tables(3).Rows(0).Item("SucxClie_mail")
+        row_cliente("direccion") = TextBox_dir.Text 'ds_cliente.Tables(3).Rows(0).Item("SucxClie_dir")
+        row_cliente("localidad") = cliente_localidad  'ds_cliente.Tables(3).Rows(0).Item("provincia") + ", " + ds_cliente.Tables(3).Rows(0).Item("Localidad")
+        row_cliente("iva_condicion") = cliente_iva_condicion  'ds_cliente.Tables(3).Rows(0).Item("IVA_Descripcion").ToString
+        facturacion_ds_report.Tables("Cliente").Rows.Add(row_cliente)
+
+        '///////////////TABLA SUCURSAL//////////////////////////////////'
+        facturacion_ds_report.Tables("Sucursal").Rows.Clear()
+        Dim row_sucursal As DataRow = facturacion_ds_report.Tables("Sucursal").NewRow()
+        row_sucursal("sucursal") = Venta_Caja_gestion.lb_nombre_sucursal.Text
+        row_sucursal("direccion") = Venta_Caja_gestion.lb_direccion_sucursal.Text
+        row_sucursal("telefono") = Venta_Caja_gestion.lb_telefono_sucursal.Text
+        row_sucursal("mail") = Venta_Caja_gestion.lb_mail_sucursal.Text
+        row_sucursal("cuit") = "20 - 00000000 - 4"
+        facturacion_ds_report.Tables("Sucursal").Rows.Add(row_sucursal)
+
+        '///////////////TABLA EMPRESA//////////////////////////////////'
+        If ds_usuario.Tables(1).Rows.Count <> 0 Then
+            facturacion_ds_report.Tables("Empresa").Rows.Clear()
+            facturacion_ds_report.Tables("Empresa").Merge(ds_usuario.Tables(1))
+        End If
+
+        '///////////////TABLA VENTA//////////////////////////////////'
+        facturacion_ds_report.Tables("venta").Rows.Clear()
+        Dim row_venta As DataRow = facturacion_ds_report.Tables("venta").NewRow()
+        'row_venta("nro_factura") = Venta_Caja_gestion.lb_factura_vta.Text
+        'row_venta("nro_factura") = ventaprod_id
+        row_venta("nro_factura") = CInt(0)
+        row_venta("fecha") = Today 'CDate(Venta_Caja_gestion.lb_fecha_vta.Text) 'siempre se factura a la fecha del dia en este caso
+        row_venta("vendedor") = ""
+        row_venta("tipo_venta") = "Cliente"
+        row_venta("Orden_trabajo_id") = orden_trabajo_id
+        row_venta("Subtotal") = TextBox_Repuesto.Text
+        facturacion_ds_report.Tables("venta").Rows.Add(row_venta)
+
+        '///////////////TABLA TOTALES APLICADOS//////////////////////////////////'
+        facturacion_ds_report.Tables("Totales_aplicados").Rows.Clear()
+        Dim row_totales As DataRow = facturacion_ds_report.Tables("Totales_aplicados").NewRow()
+        row_totales("subtotal") = CDec(txt_total.Text)
+        row_totales("total") = CDec(txt_total.Text)
+        row_totales("iva") = CDec(ComboBox_iva.Text)
+        row_totales("descuento_porcentaje") = CDec(txt_desc_porc.Text) 'ds_cliente.Tables(0).Rows(0).Item("Servicio_Desc_porc")
+        row_totales("descuento_pesos") = CDec(txt_desc_pesos.Text) 'ds_cliente.Tables(0).Rows(0).Item("Servicio_Desc_peso")
+        row_totales("iva_pesos") = CDec(txt_impuesto_aplicado.Text) 'ds_cliente.Tables(0).Rows(0).Item("Servicio_IVA")
+        facturacion_ds_report.Tables("Totales_aplicados").Rows.Add(row_totales)
+
+        '///////////////TABLA PRODUCTO AGREGADO//////////////////////////////////'
+        'aqui ciclo en la grilla para ir agrendo los row a la tabla producto agregado
+        facturacion_ds_report.Tables("Producto_agregado").Rows.Clear()
+        Dim i As Integer = 0
+        While i < DataGridView1.Rows.Count
+            If DataGridView1.Rows(i).Cells("Descripcion").Value <> "" Then
+                Dim row_prodADD As DataRow = facturacion_ds_report.Tables("Producto_agregado").NewRow()
+                row_prodADD("PROD_id") = DataGridView1.Rows(i).Cells("prod_id").Value
+                row_prodADD("codinterno") = CInt(DataGridView1.Rows(i).Cells("Cod_prod").Value)
+                row_prodADD("descripcion") = DataGridView1.Rows(i).Cells("Descripcion").Value
+                row_prodADD("detalle") = ""
+                row_prodADD("cantidad") = CDec(DataGridView1.Rows(i).Cells("Cantidad").Value)
+                row_prodADD("precio_unitario") = CDec(DataGridView1.Rows(i).Cells("Costo").Value)
+                row_prodADD("precio_subtotal") = CDec(DataGridView1.Rows(i).Cells("subtotal").Value)
+                row_prodADD("codbarra") = ""
+                row_prodADD("TURNO_id") = ""
+                '/choco modificacion 01-12-2019: agrego columna descuento
+                row_prodADD("descuento") = CDec(0)
+                row_prodADD("grupo_id") = CInt(1)
+                facturacion_ds_report.Tables("Producto_agregado").Rows.Add(row_prodADD)
+            End If
+            i = i + 1
+        End While
+
+        Dim CrReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
+        ' Asigno el reporte
+        CrReport = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+        CrReport.Load(Application.StartupPath & "\..\..\Modulos\Facturacion\Reportes\CR_presupuesto_servicio.rpt")
+        CrReport.Database.Tables("Cliente").SetDataSource(facturacion_ds_report.Tables("Cliente"))
+        CrReport.Database.Tables("Sucursal").SetDataSource(facturacion_ds_report.Tables("Sucursal"))
+        CrReport.Database.Tables("Empresa").SetDataSource(facturacion_ds_report.Tables("Empresa"))
+        CrReport.Database.Tables("venta").SetDataSource(facturacion_ds_report.Tables("venta"))
+        CrReport.Database.Tables("Producto_agregado").SetDataSource(facturacion_ds_report.Tables("Producto_agregado"))
+        CrReport.Database.Tables("Totales_aplicados").SetDataSource(facturacion_ds_report.Tables("Totales_aplicados"))
+        Dim visor As New Facturacion_report_show
+
+        visor.CrystalReportViewer1.ReportSource = CrReport
+        visor.Text = "Presupuesto - Imprimir."
+        visor.Show()
+        'End If
+    End Sub
+
+
+    Private Sub ToolStripButton_presupuesto_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton_presupuesto.Click
+        If estado_de_orden = "ANULADO" Then
+            Exit Sub 'salgo no quiero q haga nada
+        End If
+        If estado_de_orden <> "FINALIZADO" Then
+
+            Dim result As Integer = MessageBox.Show("¿Desea guardar los cambios antes de generar el Presupuesto?", "Sistema de Gestión", MessageBoxButtons.YesNo)
+            If result = DialogResult.Yes Then
+                'si dice que si guardo en bd
+                If txt_equipo.Text <> "" And txt_sucursal.Text <> "" And txt_diag.Text <> "" And TextBox_Nombre.Text <> "" Then
+                    'solo actualizo el estado a reparado
+                    ''Actualizacion Servicio'''''
+                    Dim ds_SevicioActualizar As DataSet = DAservicio.Servicio_Modificar_MDA(Cliente_ID, DateTimePicker1.Value,
+                                                                                    sucursal_id, usuario_id, txt_diag.Text, txt_sucursal.Text,
+                                                                                   txt_equipo.Text, DateTimePicker_Rev.Value, DateTimePicker_REP.Value,
+                                                                                  0,
+                                                                                serv_id, estado_de_orden, txt_desc_pesos.Text, txt_desc_porc.Text, ComboBox_iva.Text) 'pongo el estado en REPARADO ----- el 0 es el txt anticipo
+
+                    'primero elimino el detalle
+                    DAservicio.Servicio_eliminar_Detalle(serv_id)
+                    ''Actualizo Detalle''''
+                    If DataGridView1.Rows.Count <> 0 Then
+                        Dim i As Integer = 0
+                        While i < DataGridView1.Rows.Count
+                            DAservicio.Servicio_Producto_Alta_DetalleServicio(serv_id,
+                                                                             DataGridView1.Rows(i).Cells("ProdxSuc_ID").Value,
+                                                                               DataGridView1.Rows(i).Cells("Costo").Value,
+                                                                              DataGridView1.Rows(i).Cells("Cantidad").Value,
+                                                                              DataGridView1.Rows(i).Cells("subtotal").Value)
+                            i = i + 1
+                        End While
+
+                    End If
+
+                    'aqui genero el presupuesto
+                    Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(usuario_id)
+                    crear_reporte_presupuesto(ds_usuario)
+
+
+
+                Else
+                    MessageBox.Show("Debe Completar los campos Obligatorios", "Sistema de Gestion.")
+                    lbl_errNOM.Visible = True
+                    lb_error_marca.Visible = True
+                    lb_error_modelo.Visible = True
+                    lb_error_nombre.Visible = True
+                End If
+            Else
+                'aqui genero el presupuesto
+                Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(usuario_id)
+                crear_reporte_presupuesto(ds_usuario)
+            End If
+        Else
+            'aqui genero el presupuesto
+            Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(usuario_id)
+            crear_reporte_presupuesto(ds_usuario)
+        End If
+
+
+    End Sub
+
+    Private Sub ToolStripButton_reparar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton_reparar.Click
+        If estado_de_orden = "ASIGNADO" Then
+            Dim result As Integer = MessageBox.Show("¿Está seguro que desea cambiar el estado de la orden a REPARADO?", "Sistema de Gestión", MessageBoxButtons.YesNo)
+            If result = DialogResult.Yes Then
+                If txt_equipo.Text <> "" And txt_sucursal.Text <> "" And txt_diag.Text <> "" And TextBox_Nombre.Text <> "" Then
+                    'solo actualizo el estado a reparado
+                    ''Actualizacion Servicio'''''
+                    Dim ds_SevicioActualizar As DataSet = DAservicio.Servicio_Modificar_MDA(Cliente_ID, DateTimePicker1.Value,
+                                                                                    sucursal_id, usuario_id, txt_diag.Text, txt_sucursal.Text,
+                                                                                   txt_equipo.Text, DateTimePicker_Rev.Value, DateTimePicker_REP.Value,
+                                                                                  0,
+                                                                                serv_id, "REPARADO", txt_desc_pesos.Text, txt_desc_porc.Text, ComboBox_iva.Text) 'pongo el estado en REPARADO ----- el 0 es el txt anticipo
+
+                    'primero elimino el detalle
+                    DAservicio.Servicio_eliminar_Detalle(serv_id)
+                    ''Actualizo Detalle''''
+                    If DataGridView1.Rows.Count <> 0 Then
+                        Dim i As Integer = 0
+                        While i < DataGridView1.Rows.Count
+                            DAservicio.Servicio_Producto_Alta_DetalleServicio(serv_id,
+                                                                             DataGridView1.Rows(i).Cells("ProdxSuc_ID").Value,
+                                                                               DataGridView1.Rows(i).Cells("Costo").Value,
+                                                                              DataGridView1.Rows(i).Cells("Cantidad").Value,
+                                                                              DataGridView1.Rows(i).Cells("subtotal").Value)
+                            i = i + 1
+                        End While
+
+                    End If
+                    'DAservicio.Orden_trabajo_alta(serv_id, Combo_cuadrilla.SelectedValue)
+                    DAservicio.Actividad_Servicio_alta(usuario_id, sucursal_id, Label_Cod.Text, Now, "ORDEN DE TRABAJO, actualización de estado a REPARADO.")
+                    MessageBox.Show("Orden de trabajo actualizada correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    estado_de_orden = "REPARADO"
+
+
+                    Dim result2 As Integer = MessageBox.Show("¿Desea ir al calendario de servicios?", "Sistema de Gestión", MessageBoxButtons.YesNo)
+                    If result2 = DialogResult.Yes Then
+                        Tareas_Consulta.Close()
+                        Tareas_Consulta.Show()
+                    End If
+
+                    Servicio_Consulta.LOAD_FORM()
+
+
+                    Me.Close()
+
+
+                Else
+                    MessageBox.Show("Debe Completar los campos Obligatorios", "Sistema de Gestion.")
+                    lbl_errNOM.Visible = True
+                    lb_error_marca.Visible = True
+                    lb_error_modelo.Visible = True
+                    lb_error_nombre.Visible = True
+                End If
+            End If
+        Else
+            MessageBox.Show("Error, no se puede realizar la operación.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
+
+        If estado_de_orden = "REPARADO" Then
+            Dim result As Integer = MessageBox.Show("¿Desea guardar los datos de la orden?", "Sistema de Gestión", MessageBoxButtons.YesNo)
+            If result = DialogResult.Yes Then
+                If txt_equipo.Text <> "" And txt_sucursal.Text <> "" And txt_diag.Text <> "" And TextBox_Nombre.Text <> "" Then
+                    'solo actualizo el estado a reparado
+                    ''Actualizacion Servicio'''''
+                    Dim ds_SevicioActualizar As DataSet = DAservicio.Servicio_Modificar_MDA(Cliente_ID, DateTimePicker1.Value,
+                                                                                    sucursal_id, usuario_id, txt_diag.Text, txt_sucursal.Text,
+                                                                                   txt_equipo.Text, DateTimePicker_Rev.Value, DateTimePicker_REP.Value,
+                                                                                  0,
+                                                                                serv_id, "REPARADO", txt_desc_pesos.Text, txt_desc_porc.Text, ComboBox_iva.Text) 'pongo el estado en REPARADO ----- el 0 es el txt anticipo
+
+                    'primero elimino el detalle
+                    DAservicio.Servicio_eliminar_Detalle(serv_id)
+                    ''Actualizo Detalle''''
+                    If DataGridView1.Rows.Count <> 0 Then
+                        Dim i As Integer = 0
+                        While i < DataGridView1.Rows.Count
+                            DAservicio.Servicio_Producto_Alta_DetalleServicio(serv_id,
+                                                                             DataGridView1.Rows(i).Cells("ProdxSuc_ID").Value,
+                                                                               DataGridView1.Rows(i).Cells("Costo").Value,
+                                                                              DataGridView1.Rows(i).Cells("Cantidad").Value,
+                                                                              DataGridView1.Rows(i).Cells("subtotal").Value)
+                            i = i + 1
+                        End While
+
+                    End If
+                    'DAservicio.Orden_trabajo_alta(serv_id, Combo_cuadrilla.SelectedValue)
+                    DAservicio.Actividad_Servicio_alta(usuario_id, sucursal_id, Label_Cod.Text, Now, "ORDEN DE TRABAJO, actualización de estado a REPARADO.")
+                    MessageBox.Show("Orden de trabajo actualizada correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    estado_de_orden = "REPARADO"
+
+
+                    Dim result2 As Integer = MessageBox.Show("¿Desea ir al calendario de servicios?", "Sistema de Gestión", MessageBoxButtons.YesNo)
+                    If result2 = DialogResult.Yes Then
+                        Tareas_Consulta.Close()
+                        Tareas_Consulta.Show()
+                    End If
+                    Servicio_Consulta.LOAD_FORM()
+                    Me.Close()
+                Else
+                    MessageBox.Show("Debe Completar los campos Obligatorios", "Sistema de Gestion.")
+                    lbl_errNOM.Visible = True
+                    lb_error_marca.Visible = True
+                    lb_error_modelo.Visible = True
+                    lb_error_nombre.Visible = True
+                End If
+            End If
+        Else
+            MessageBox.Show("Error, no se puede realizar la operación.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+
+
+
+    End Sub
+
+    Private Sub ToolStripButton_finalizar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton_finalizar.Click
+        If estado_de_orden = "PENDIENTE" Then
+            MessageBox.Show("Error, debe generar la orden de trabajo para poder finalizar y cobrar.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+
+            If txt_equipo.Text <> "" And txt_sucursal.Text <> "" And txt_diag.Text <> "" Then
+                Dim result As Integer = MessageBox.Show("¿Está seguro que desea finalizar? No podrá realizar más cambios en el mismo.", "Sistema de Gestión", MessageBoxButtons.YesNo)
+                If result = DialogResult.Yes Then
+                    'AQUI VA LA VALIDACION QUE ESTE ABIERTA LA CAJA.
+
+
+
+
+
+
+                    Dim sin_anticipo As Decimal = CDec((Math.Round(CDec(txt_total.Text), 2).ToString("N2")))
+                    If CDec(txt_total.Text) <> CDec(0) Then
+
+                        'guardo todo los datos del servicio, ya que se puede modificar en todo momento.
+                        '///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        Dim ds_SevicioActualizar As DataSet = DAservicio.Servicio_Modificar_MDA(Cliente_ID, DateTimePicker1.Value,
+                                                                                    sucursal_id, usuario_id, txt_diag.Text, txt_sucursal.Text,
+                                                                                   txt_equipo.Text, DateTimePicker_Rev.Value, DateTimePicker_REP.Value,
+                                                                                  0,
+                                                                                serv_id, "REPARADO", txt_desc_pesos.Text, txt_desc_porc.Text, ComboBox_iva.Text) 'pongo el estado en REPARADO ----- el 0 es el txt anticipo
+
+                        'primero elimino el detalle
+                        DAservicio.Servicio_eliminar_Detalle(serv_id)
+                        ''Actualizo Detalle''''
+                        If DataGridView1.Rows.Count <> 0 Then
+                            Dim i As Integer = 0
+                            While i < DataGridView1.Rows.Count
+                                DAservicio.Servicio_Producto_Alta_DetalleServicio(serv_id,
+                                                                                 DataGridView1.Rows(i).Cells("ProdxSuc_ID").Value,
+                                                                                   DataGridView1.Rows(i).Cells("Costo").Value,
+                                                                                  DataGridView1.Rows(i).Cells("Cantidad").Value,
+                                                                                  DataGridView1.Rows(i).Cells("subtotal").Value)
+                                i = i + 1
+                            End While
+
+                        End If
+                        '///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        Sucursales_Seleccionar.Close()
+                        Sucursales_Seleccionar.cliente_id = Cliente_ID
+                        Sucursales_Seleccionar.procedencia = "servicio_nuevo"
+                        Sucursales_Seleccionar.Show()
+
+
+
+
+                        Mensaje = "finalizar"
+                        'Pago_caja.form_procedencia = "Servicio_nuevo"
+                        'Pago_caja.tx_total.Text = TextBox_TOTAL.Text
+                        'Pago_caja.Ser_id = Label_Cod.Text
+
+                        'Pago_caja.Monto_sin_anticipo = CDec((Math.Round(CDec(TextBox_TOTAL.Text), 2).ToString("N2"))) + CDec((Math.Round(CDec(TextBox_Anticipo.Text), 2).ToString("N2")))
+                        'Pago_caja.Show()
+                    Else
+                        MessageBox.Show("ERROR, el TOTAL está en O", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+                        'Mensaje = "finalizar"
+                        ''GUARDAR EN TABLA "Venta_Producto"///////////////////////////////////////////////////////////////////////////////////
+                        'Dim usuario_id As String
+                        'usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
+                        'Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(usuario_id)
+                        'Dim sucursal_id As Integer = ds_usuario.Tables(0).Rows(0).Item("sucursal_id")
+                        'Dim tipo_vta As String = ""
+                        'Dim cliente_id As Integer
+                        'Dim venta_tipo_descripcion As String = ""
+                        'tipo_vta = "Consumidor Final"
+                        'cliente_id = 0
+                        'venta_tipo_descripcion = "Servicio"
+                        'Dim vendedor_id As Integer = 0 'ojo pongo esto, porque no defino vendedores, se puede poner un combo con los vendedores para elegir, si no hay cargar uno por Defecto en la BD. 
+                        'Dim ds_Venta As DataSet = DAventa.VentaProducto_alta(sin_anticipo, Now, usuario_id, tipo_vta, cliente_id, 0, 0, 0, 0, 0, venta_tipo_descripcion, Label_Cod.Text, vendedor_id, "Cobrado")
+                        ''NO SE ACTUALIZA EN CAJA
+                        ''Me.Close()
+                        'finalizar("boton_guardar_cambios")
+                    End If
+                End If
+            Else
+                MessageBox.Show("Debe Completar los campos Obligatorios", "Sistema de Gestion.")
+
+                lb_error_marca.Visible = True
+                lb_error_modelo.Visible = True
+                lb_error_nombre.Visible = True
+            End If
+
+        End If
+    End Sub
 End Class

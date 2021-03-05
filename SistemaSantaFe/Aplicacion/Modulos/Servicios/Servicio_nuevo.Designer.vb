@@ -46,7 +46,6 @@ Partial Class Servicio_nuevo
         Me.txt_desc_porc = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.DateTimePicker_Rev = New System.Windows.Forms.DateTimePicker()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.txt_total = New System.Windows.Forms.TextBox()
@@ -62,17 +61,12 @@ Partial Class Servicio_nuevo
         Me.EmpleadosxcuadrillaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Servicio_DS = New Aplicacion.Servicio_DS()
         Me.Combo_cuadrilla = New System.Windows.Forms.ComboBox()
-        Me.btn_guardar = New System.Windows.Forms.Button()
-        Me.btn_cancelar = New System.Windows.Forms.Button()
-        Me.Button_finalizar = New System.Windows.Forms.Button()
         Me.Label_Estado = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label_Cod = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Button_imprimir = New System.Windows.Forms.Button()
         Me.lbl_errNOM = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.txt_sucursal = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox_tel = New System.Windows.Forms.TextBox()
@@ -93,8 +87,6 @@ Partial Class Servicio_nuevo
         Me.lb_error_nombre = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.Label_error_grilla = New System.Windows.Forms.Label()
-        Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Cod_prod = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ProdxSuc_ID = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -111,6 +103,19 @@ Partial Class Servicio_nuevo
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TextBox_Repuesto = New System.Windows.Forms.TextBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton_generar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton_reparar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton_finalizar = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton_presupuesto = New System.Windows.Forms.ToolStripButton()
+        Me.btn_eliminar_seleccion = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btn_cancelar = New System.Windows.Forms.Button()
+        Me.Button_imprimir = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox15.SuspendLayout()
@@ -125,23 +130,26 @@ Partial Class Servicio_nuevo
         Me.GroupBox4.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ServicioProdDSBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.ToolStrip1)
         Me.GroupBox1.Controls.Add(Me.Panel1)
+        Me.GroupBox1.Controls.Add(Me.GroupBox4)
         Me.GroupBox1.Controls.Add(Me.GroupBox15)
         Me.GroupBox1.Controls.Add(Me.GroupBox9)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker_Rev)
-        Me.GroupBox1.Controls.Add(Me.Button2)
         Me.GroupBox1.Controls.Add(Me.GroupBox5)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker_REP)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.Label10)
         Me.GroupBox1.Controls.Add(Me.GroupBox7)
-        Me.GroupBox1.Controls.Add(Me.btn_guardar)
         Me.GroupBox1.Controls.Add(Me.btn_cancelar)
-        Me.GroupBox1.Controls.Add(Me.Button_finalizar)
         Me.GroupBox1.Controls.Add(Me.Label_Estado)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
         Me.GroupBox1.Controls.Add(Me.Label_Cod)
@@ -149,15 +157,16 @@ Partial Class Servicio_nuevo
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
         Me.GroupBox1.Controls.Add(Me.GroupBox3)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 3)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1133, 610)
+        Me.GroupBox1.Size = New System.Drawing.Size(1151, 610)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Servicios de Ventas"
         '
         'Panel1
         '
+        Me.Panel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.WhiteSmoke
         Me.Panel1.Controls.Add(Me.txt_impuesto_aplicado)
         Me.Panel1.Controls.Add(Me.Label24)
@@ -166,7 +175,7 @@ Partial Class Servicio_nuevo
         Me.Panel1.Controls.Add(Me.txt_descuento)
         Me.Panel1.Controls.Add(Me.Label23)
         Me.Panel1.ForeColor = System.Drawing.Color.Black
-        Me.Panel1.Location = New System.Drawing.Point(400, 517)
+        Me.Panel1.Location = New System.Drawing.Point(380, 517)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(332, 91)
         Me.Panel1.TabIndex = 261
@@ -242,6 +251,7 @@ Partial Class Servicio_nuevo
         '
         'GroupBox15
         '
+        Me.GroupBox15.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.GroupBox15.BackColor = System.Drawing.Color.WhiteSmoke
         Me.GroupBox15.Controls.Add(Me.ComboBox_iva)
         Me.GroupBox15.Controls.Add(Me.Label19)
@@ -277,6 +287,7 @@ Partial Class Servicio_nuevo
         '
         'GroupBox9
         '
+        Me.GroupBox9.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.GroupBox9.BackColor = System.Drawing.Color.WhiteSmoke
         Me.GroupBox9.Controls.Add(Me.txt_desc_pesos)
         Me.GroupBox9.Controls.Add(Me.Label11)
@@ -338,6 +349,7 @@ Partial Class Servicio_nuevo
         '
         'DateTimePicker_Rev
         '
+        Me.DateTimePicker_Rev.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.DateTimePicker_Rev.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePicker_Rev.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DateTimePicker_Rev.Location = New System.Drawing.Point(178, 484)
@@ -345,25 +357,12 @@ Partial Class Servicio_nuevo
         Me.DateTimePicker_Rev.Size = New System.Drawing.Size(121, 22)
         Me.DateTimePicker_Rev.TabIndex = 21
         '
-        'Button2
-        '
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
-        Me.Button2.Location = New System.Drawing.Point(880, 548)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(116, 43)
-        Me.Button2.TabIndex = 11
-        Me.Button2.Text = "Reparado"
-        Me.Button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button2, "Generar orden de trabajo")
-        Me.Button2.UseVisualStyleBackColor = True
-        '
         'GroupBox5
         '
+        Me.GroupBox5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox5.Controls.Add(Me.Label14)
         Me.GroupBox5.Controls.Add(Me.txt_total)
-        Me.GroupBox5.Location = New System.Drawing.Point(773, 476)
+        Me.GroupBox5.Location = New System.Drawing.Point(779, 478)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(347, 64)
         Me.GroupBox5.TabIndex = 5
@@ -397,6 +396,7 @@ Partial Class Servicio_nuevo
         '
         'DateTimePicker_REP
         '
+        Me.DateTimePicker_REP.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.DateTimePicker_REP.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePicker_REP.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.DateTimePicker_REP.Location = New System.Drawing.Point(545, 484)
@@ -406,6 +406,7 @@ Partial Class Servicio_nuevo
         '
         'Label7
         '
+        Me.Label7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(358, 484)
         Me.Label7.Name = "Label7"
@@ -415,6 +416,7 @@ Partial Class Servicio_nuevo
         '
         'Label10
         '
+        Me.Label10.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label10.AutoSize = True
         Me.Label10.Location = New System.Drawing.Point(15, 484)
         Me.Label10.Name = "Label10"
@@ -424,10 +426,12 @@ Partial Class Servicio_nuevo
         '
         'GroupBox7
         '
+        Me.GroupBox7.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox7.Controls.Add(Me.DG_empleados)
         Me.GroupBox7.Controls.Add(Me.Combo_cuadrilla)
         Me.GroupBox7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox7.Location = New System.Drawing.Point(774, 212)
+        Me.GroupBox7.Location = New System.Drawing.Point(779, 212)
         Me.GroupBox7.Name = "GroupBox7"
         Me.GroupBox7.Size = New System.Drawing.Size(347, 258)
         Me.GroupBox7.TabIndex = 9
@@ -439,6 +443,8 @@ Partial Class Servicio_nuevo
         Me.DG_empleados.AllowUserToAddRows = False
         Me.DG_empleados.AllowUserToDeleteRows = False
         Me.DG_empleados.AllowUserToResizeRows = False
+        Me.DG_empleados.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DG_empleados.AutoGenerateColumns = False
         Me.DG_empleados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DG_empleados.BackgroundColor = System.Drawing.Color.White
@@ -446,7 +452,7 @@ Partial Class Servicio_nuevo
         Me.DG_empleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DG_empleados.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.EmpleadoidDataGridViewTextBoxColumn, Me.CuadrillaidDataGridViewTextBoxColumn, Me.ApellidoynombreDataGridViewTextBoxColumn, Me.EmpleadoxCuadrillaidDataGridViewTextBoxColumn})
         Me.DG_empleados.DataSource = Me.EmpleadosxcuadrillaBindingSource
-        Me.DG_empleados.Location = New System.Drawing.Point(10, 59)
+        Me.DG_empleados.Location = New System.Drawing.Point(10, 54)
         Me.DG_empleados.Margin = New System.Windows.Forms.Padding(4)
         Me.DG_empleados.MultiSelect = False
         Me.DG_empleados.Name = "DG_empleados"
@@ -506,57 +512,15 @@ Partial Class Servicio_nuevo
         '
         'Combo_cuadrilla
         '
+        Me.Combo_cuadrilla.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Combo_cuadrilla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Combo_cuadrilla.FlatStyle = System.Windows.Forms.FlatStyle.Popup
         Me.Combo_cuadrilla.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!)
         Me.Combo_cuadrilla.FormattingEnabled = True
-        Me.Combo_cuadrilla.Location = New System.Drawing.Point(10, 21)
+        Me.Combo_cuadrilla.Location = New System.Drawing.Point(10, 23)
         Me.Combo_cuadrilla.Name = "Combo_cuadrilla"
         Me.Combo_cuadrilla.Size = New System.Drawing.Size(330, 24)
         Me.Combo_cuadrilla.TabIndex = 244
-        '
-        'btn_guardar
-        '
-        Me.btn_guardar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_guardar.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
-        Me.btn_guardar.Location = New System.Drawing.Point(1004, 548)
-        Me.btn_guardar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_guardar.Name = "btn_guardar"
-        Me.btn_guardar.Size = New System.Drawing.Size(116, 43)
-        Me.btn_guardar.TabIndex = 7
-        Me.btn_guardar.Text = "Generar Orden"
-        Me.btn_guardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_guardar, "Generar orden de trabajo")
-        Me.btn_guardar.UseVisualStyleBackColor = True
-        '
-        'btn_cancelar
-        '
-        Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
-        Me.btn_cancelar.Location = New System.Drawing.Point(841, 13)
-        Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_cancelar.Name = "btn_cancelar"
-        Me.btn_cancelar.Size = New System.Drawing.Size(75, 43)
-        Me.btn_cancelar.TabIndex = 8
-        Me.btn_cancelar.Text = "Cancelar"
-        Me.btn_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_cancelar, "Cancelar")
-        Me.btn_cancelar.UseVisualStyleBackColor = True
-        Me.btn_cancelar.Visible = False
-        '
-        'Button_finalizar
-        '
-        Me.Button_finalizar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_finalizar.Image = Global.Aplicacion.My.Resources.Resources.Guardar2
-        Me.Button_finalizar.Location = New System.Drawing.Point(777, 548)
-        Me.Button_finalizar.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button_finalizar.Name = "Button_finalizar"
-        Me.Button_finalizar.Size = New System.Drawing.Size(95, 43)
-        Me.Button_finalizar.TabIndex = 6
-        Me.Button_finalizar.Text = "Finalizar y cobrar"
-        Me.Button_finalizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button_finalizar, "Finalizar Servicio realizado")
-        Me.Button_finalizar.UseVisualStyleBackColor = True
         '
         'Label_Estado
         '
@@ -621,25 +585,10 @@ Partial Class Servicio_nuevo
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(7, 40)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(1113, 86)
+        Me.GroupBox2.Size = New System.Drawing.Size(1119, 86)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos del Cliente "
-        '
-        'Button_imprimir
-        '
-        Me.Button_imprimir.BackColor = System.Drawing.SystemColors.Info
-        Me.Button_imprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button_imprimir.Image = Global.Aplicacion.My.Resources.Resources.Informe
-        Me.Button_imprimir.Location = New System.Drawing.Point(942, 26)
-        Me.Button_imprimir.Margin = New System.Windows.Forms.Padding(4)
-        Me.Button_imprimir.Name = "Button_imprimir"
-        Me.Button_imprimir.Size = New System.Drawing.Size(116, 43)
-        Me.Button_imprimir.TabIndex = 315
-        Me.Button_imprimir.Text = "Imprimir orden"
-        Me.Button_imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button_imprimir.UseVisualStyleBackColor = False
-        Me.Button_imprimir.Visible = False
         '
         'lbl_errNOM
         '
@@ -653,19 +602,6 @@ Partial Class Servicio_nuevo
         Me.lbl_errNOM.TabIndex = 22
         Me.lbl_errNOM.Text = "*"
         Me.lbl_errNOM.Visible = False
-        '
-        'Button1
-        '
-        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.Buscar
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.Location = New System.Drawing.Point(915, 21)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(123, 53)
-        Me.Button1.TabIndex = 9
-        Me.Button1.Text = "Buscar Cliente"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.UseVisualStyleBackColor = True
-        Me.Button1.Visible = False
         '
         'txt_sucursal
         '
@@ -785,7 +721,7 @@ Partial Class Servicio_nuevo
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(7, 132)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(1114, 68)
+        Me.GroupBox3.Size = New System.Drawing.Size(1119, 68)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos del Equipo"
@@ -853,6 +789,9 @@ Partial Class Servicio_nuevo
         '
         'GroupBox4
         '
+        Me.GroupBox4.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox4.Controls.Add(Me.Label_error_grilla)
         Me.GroupBox4.Controls.Add(Me.btn_eliminar_seleccion)
         Me.GroupBox4.Controls.Add(Me.Button3)
@@ -861,7 +800,7 @@ Partial Class Servicio_nuevo
         Me.GroupBox4.Controls.Add(Me.TextBox_codprod)
         Me.GroupBox4.Controls.Add(Me.Label20)
         Me.GroupBox4.Controls.Add(Me.TextBox_Repuesto)
-        Me.GroupBox4.Location = New System.Drawing.Point(19, 215)
+        Me.GroupBox4.Location = New System.Drawing.Point(6, 212)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(760, 258)
         Me.GroupBox4.TabIndex = 4
@@ -873,7 +812,7 @@ Partial Class Servicio_nuevo
         Me.Label_error_grilla.AutoSize = True
         Me.Label_error_grilla.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label_error_grilla.ForeColor = System.Drawing.Color.Red
-        Me.Label_error_grilla.Location = New System.Drawing.Point(162, 25)
+        Me.Label_error_grilla.Location = New System.Drawing.Point(192, 25)
         Me.Label_error_grilla.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label_error_grilla.Name = "Label_error_grilla"
         Me.Label_error_grilla.Size = New System.Drawing.Size(26, 31)
@@ -881,39 +820,14 @@ Partial Class Servicio_nuevo
         Me.Label_error_grilla.Text = "*"
         Me.Label_error_grilla.Visible = False
         '
-        'btn_eliminar_seleccion
-        '
-        Me.btn_eliminar_seleccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_eliminar_seleccion.Image = Global.Aplicacion.My.Resources.Resources.menos
-        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(120, 209)
-        Me.btn_eliminar_seleccion.Margin = New System.Windows.Forms.Padding(4)
-        Me.btn_eliminar_seleccion.Name = "btn_eliminar_seleccion"
-        Me.btn_eliminar_seleccion.Size = New System.Drawing.Size(104, 41)
-        Me.btn_eliminar_seleccion.TabIndex = 271
-        Me.btn_eliminar_seleccion.Text = "Eliminar"
-        Me.btn_eliminar_seleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.btn_eliminar_seleccion, "Eliminar productos seleccionados")
-        Me.btn_eliminar_seleccion.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Image = Global.Aplicacion.My.Resources.Resources.Borrar
-        Me.Button3.Location = New System.Drawing.Point(9, 208)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(104, 41)
-        Me.Button3.TabIndex = 5
-        Me.Button3.TabStop = False
-        Me.Button3.Text = "Limpiar"
-        Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.ToolTip1.SetToolTip(Me.Button3, "Limpiar listado de Repuestos")
-        Me.Button3.UseVisualStyleBackColor = True
-        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AllowUserToResizeRows = False
+        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.AutoGenerateColumns = False
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.White
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -1023,14 +937,14 @@ Partial Class Servicio_nuevo
         Me.Label13.AutoSize = True
         Me.Label13.Location = New System.Drawing.Point(6, 28)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(43, 13)
+        Me.Label13.Size = New System.Drawing.Size(70, 20)
         Me.Label13.TabIndex = 3
         Me.Label13.Text = "Codigo:"
         '
         'TextBox_codprod
         '
         Me.TextBox_codprod.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox_codprod.Location = New System.Drawing.Point(55, 25)
+        Me.TextBox_codprod.Location = New System.Drawing.Point(85, 25)
         Me.TextBox_codprod.Name = "TextBox_codprod"
         Me.TextBox_codprod.Size = New System.Drawing.Size(100, 19)
         Me.TextBox_codprod.TabIndex = 0
@@ -1038,6 +952,7 @@ Partial Class Servicio_nuevo
         '
         'Label20
         '
+        Me.Label20.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label20.Location = New System.Drawing.Point(360, 206)
@@ -1049,6 +964,7 @@ Partial Class Servicio_nuevo
         '
         'TextBox_Repuesto
         '
+        Me.TextBox_Repuesto.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TextBox_Repuesto.BackColor = System.Drawing.SystemColors.Info
         Me.TextBox_Repuesto.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox_Repuesto.Location = New System.Drawing.Point(547, 207)
@@ -1061,13 +977,151 @@ Partial Class Servicio_nuevo
         Me.TextBox_Repuesto.Text = "0"
         Me.TextBox_Repuesto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ToolStrip1.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
+        Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton_generar, Me.ToolStripSeparator1, Me.ToolStripButton_reparar, Me.ToolStripSeparator2, Me.ToolStripButton_finalizar, Me.ToolStripSeparator3, Me.ToolStripButton_presupuesto})
+        Me.ToolStrip1.Location = New System.Drawing.Point(716, 545)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(436, 55)
+        Me.ToolStrip1.TabIndex = 5
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 55)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 55)
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 55)
+        '
+        'ToolStripButton_generar
+        '
+        Me.ToolStripButton_generar.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
+        Me.ToolStripButton_generar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton_generar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton_generar.Name = "ToolStripButton_generar"
+        Me.ToolStripButton_generar.Size = New System.Drawing.Size(116, 52)
+        Me.ToolStripButton_generar.Text = "Generar orden"
+        '
+        'ToolStripButton_reparar
+        '
+        Me.ToolStripButton_reparar.Image = Global.Aplicacion.My.Resources.Resources.floppy_disk30x30
+        Me.ToolStripButton_reparar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton_reparar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton_reparar.Name = "ToolStripButton_reparar"
+        Me.ToolStripButton_reparar.Size = New System.Drawing.Size(91, 52)
+        Me.ToolStripButton_reparar.Text = "Reparado"
+        '
+        'ToolStripButton_finalizar
+        '
+        Me.ToolStripButton_finalizar.Image = Global.Aplicacion.My.Resources.Resources.Guardar2
+        Me.ToolStripButton_finalizar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton_finalizar.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton_finalizar.Name = "ToolStripButton_finalizar"
+        Me.ToolStripButton_finalizar.Size = New System.Drawing.Size(84, 52)
+        Me.ToolStripButton_finalizar.Text = "Finalizar"
+        '
+        'ToolStripButton_presupuesto
+        '
+        Me.ToolStripButton_presupuesto.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.ToolStripButton_presupuesto.Image = Global.Aplicacion.My.Resources.Resources.caja
+        Me.ToolStripButton_presupuesto.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ToolStripButton_presupuesto.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton_presupuesto.Name = "ToolStripButton_presupuesto"
+        Me.ToolStripButton_presupuesto.Size = New System.Drawing.Size(124, 52)
+        Me.ToolStripButton_presupuesto.Text = "Presupuesto"
+        '
+        'btn_eliminar_seleccion
+        '
+        Me.btn_eliminar_seleccion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btn_eliminar_seleccion.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_eliminar_seleccion.Image = Global.Aplicacion.My.Resources.Resources.menos
+        Me.btn_eliminar_seleccion.Location = New System.Drawing.Point(120, 209)
+        Me.btn_eliminar_seleccion.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_eliminar_seleccion.Name = "btn_eliminar_seleccion"
+        Me.btn_eliminar_seleccion.Size = New System.Drawing.Size(104, 41)
+        Me.btn_eliminar_seleccion.TabIndex = 271
+        Me.btn_eliminar_seleccion.Text = "Eliminar"
+        Me.btn_eliminar_seleccion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_eliminar_seleccion, "Eliminar productos seleccionados")
+        Me.btn_eliminar_seleccion.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Image = Global.Aplicacion.My.Resources.Resources.Borrar
+        Me.Button3.Location = New System.Drawing.Point(9, 208)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(104, 41)
+        Me.Button3.TabIndex = 5
+        Me.Button3.TabStop = False
+        Me.Button3.Text = "Limpiar"
+        Me.Button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.Button3, "Limpiar listado de Repuestos")
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'btn_cancelar
+        '
+        Me.btn_cancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_cancelar.Image = Global.Aplicacion.My.Resources.Resources.Limpiar1
+        Me.btn_cancelar.Location = New System.Drawing.Point(841, 13)
+        Me.btn_cancelar.Margin = New System.Windows.Forms.Padding(4)
+        Me.btn_cancelar.Name = "btn_cancelar"
+        Me.btn_cancelar.Size = New System.Drawing.Size(75, 43)
+        Me.btn_cancelar.TabIndex = 8
+        Me.btn_cancelar.Text = "Cancelar"
+        Me.btn_cancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.ToolTip1.SetToolTip(Me.btn_cancelar, "Cancelar")
+        Me.btn_cancelar.UseVisualStyleBackColor = True
+        Me.btn_cancelar.Visible = False
+        '
+        'Button_imprimir
+        '
+        Me.Button_imprimir.BackColor = System.Drawing.SystemColors.Info
+        Me.Button_imprimir.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button_imprimir.Image = Global.Aplicacion.My.Resources.Resources.Informe
+        Me.Button_imprimir.Location = New System.Drawing.Point(942, 26)
+        Me.Button_imprimir.Margin = New System.Windows.Forms.Padding(4)
+        Me.Button_imprimir.Name = "Button_imprimir"
+        Me.Button_imprimir.Size = New System.Drawing.Size(116, 43)
+        Me.Button_imprimir.TabIndex = 315
+        Me.Button_imprimir.Text = "Imprimir orden"
+        Me.Button_imprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button_imprimir.UseVisualStyleBackColor = False
+        Me.Button_imprimir.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.Image = Global.Aplicacion.My.Resources.Resources.Buscar
+        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button1.Location = New System.Drawing.Point(915, 21)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(123, 53)
+        Me.Button1.TabIndex = 9
+        Me.Button1.Text = "Buscar Cliente"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
+        '
         'Servicio_nuevo
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
-        Me.ClientSize = New System.Drawing.Size(1160, 625)
-        Me.Controls.Add(Me.GroupBox4)
+        Me.ClientSize = New System.Drawing.Size(1169, 625)
         Me.Controls.Add(Me.GroupBox1)
         Me.KeyPreview = True
+        Me.MinimumSize = New System.Drawing.Size(1185, 664)
         Me.Name = "Servicio_nuevo"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Nuevo Servicio"
@@ -1093,6 +1147,8 @@ Partial Class Servicio_nuevo
         Me.GroupBox4.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ServicioProdDSBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1131,9 +1187,7 @@ Partial Class Servicio_nuevo
     Friend WithEvents ServicioProdDSBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents Servicio_DS As Aplicacion.Servicio_DS
     Friend WithEvents btn_cancelar As System.Windows.Forms.Button
-    Friend WithEvents btn_guardar As System.Windows.Forms.Button
     Friend WithEvents Label_Estado As System.Windows.Forms.Label
-    Friend WithEvents Button_finalizar As System.Windows.Forms.Button
     Friend WithEvents lb_error_nombre As System.Windows.Forms.Label
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents btn_eliminar_seleccion As System.Windows.Forms.Button
@@ -1150,7 +1204,6 @@ Partial Class Servicio_nuevo
     Friend WithEvents ApellidoynombreDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EmpleadoxCuadrillaidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents EmpleadosxcuadrillaBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Cod_prod As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ProdxSuc_ID As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -1179,4 +1232,12 @@ Partial Class Servicio_nuevo
     Friend WithEvents GroupBox15 As System.Windows.Forms.GroupBox
     Friend WithEvents ComboBox_iva As System.Windows.Forms.ComboBox
     Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
+    Friend WithEvents ToolStripButton_generar As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripButton_reparar As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripButton_finalizar As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripButton_presupuesto As System.Windows.Forms.ToolStripButton
 End Class
