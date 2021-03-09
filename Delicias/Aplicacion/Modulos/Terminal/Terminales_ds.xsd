@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Terminales_ds" targetNamespace="http://tempuri.org/Terminales_ds.xsd" xmlns:mstns="http://tempuri.org/Terminales_ds.xsd" xmlns="http://tempuri.org/Terminales_ds.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Terminales_ds" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Terminales_ds" msprop:Generator_UserDSName="Terminales_ds">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Terminales" msprop:Generator_TableClassName="TerminalesDataTable" msprop:Generator_TableVarName="tableTerminales" msprop:Generator_TablePropName="Terminales" msprop:Generator_RowDeletingName="TerminalesRowDeleting" msprop:Generator_RowChangingName="TerminalesRowChanging" msprop:Generator_RowEvHandlerName="TerminalesRowChangeEventHandler" msprop:Generator_RowDeletedName="TerminalesRowDeleted" msprop:Generator_UserTableName="Terminales" msprop:Generator_RowChangedName="TerminalesRowChanged" msprop:Generator_RowEvArgName="TerminalesRowChangeEvent" msprop:Generator_RowClassName="TerminalesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Terminales_id" msprop:Generator_ColumnVarNameInTable="columnTerminales_id" msprop:Generator_ColumnPropNameInRow="Terminales_id" msprop:Generator_ColumnPropNameInTable="Terminales_idColumn" msprop:Generator_UserColumnName="Terminales_id" type="xs:string" minOccurs="0" />
+              <xs:element name="Terminales_desc" msprop:Generator_ColumnVarNameInTable="columnTerminales_desc" msprop:Generator_ColumnPropNameInRow="Terminales_desc" msprop:Generator_ColumnPropNameInTable="Terminales_descColumn" msprop:Generator_UserColumnName="Terminales_desc" type="xs:string" minOccurs="0" />
+              <xs:element name="Terminales_estado" msprop:Generator_ColumnVarNameInTable="columnTerminales_estado" msprop:Generator_ColumnPropNameInRow="Terminales_estado" msprop:Generator_ColumnPropNameInTable="Terminales_estadoColumn" msprop:Generator_UserColumnName="Terminales_estado" type="xs:string" minOccurs="0" />
+              <xs:element name="sucursal_id" msprop:Generator_ColumnVarNameInTable="columnsucursal_id" msprop:Generator_ColumnPropNameInRow="sucursal_id" msprop:Generator_ColumnPropNameInTable="sucursal_idColumn" msprop:Generator_UserColumnName="sucursal_id" type="xs:string" minOccurs="0" />
+              <xs:element name="sucursal_nombre" msprop:Generator_ColumnVarNameInTable="columnsucursal_nombre" msprop:Generator_ColumnPropNameInRow="sucursal_nombre" msprop:Generator_ColumnPropNameInTable="sucursal_nombreColumn" msprop:Generator_UserColumnName="sucursal_nombre" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

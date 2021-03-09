@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Caja_ds" targetNamespace="http://tempuri.org/Caja_ds.xsd" xmlns:mstns="http://tempuri.org/Caja_ds.xsd" xmlns="http://tempuri.org/Caja_ds.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Caja_ds" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Caja_ds" msprop:Generator_UserDSName="Caja_ds">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Caja_consulta" msprop:Generator_TableClassName="Caja_consultaDataTable" msprop:Generator_TableVarName="tableCaja_consulta" msprop:Generator_TablePropName="Caja_consulta" msprop:Generator_RowDeletingName="Caja_consultaRowDeleting" msprop:Generator_RowChangingName="Caja_consultaRowChanging" msprop:Generator_RowEvHandlerName="Caja_consultaRowChangeEventHandler" msprop:Generator_RowDeletedName="Caja_consultaRowDeleted" msprop:Generator_UserTableName="Caja_consulta" msprop:Generator_RowChangedName="Caja_consultaRowChanged" msprop:Generator_RowEvArgName="Caja_consultaRowChangeEvent" msprop:Generator_RowClassName="Caja_consultaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CAJA_id" msprop:Generator_ColumnVarNameInTable="columnCAJA_id" msprop:Generator_ColumnPropNameInRow="CAJA_id" msprop:Generator_ColumnPropNameInTable="CAJA_idColumn" msprop:Generator_UserColumnName="CAJA_id" type="xs:string" minOccurs="0" />
+              <xs:element name="CAJA_apertura" msprop:Generator_ColumnVarNameInTable="columnCAJA_apertura" msprop:Generator_ColumnPropNameInRow="CAJA_apertura" msprop:Generator_ColumnPropNameInTable="CAJA_aperturaColumn" msprop:Generator_UserColumnName="CAJA_apertura" type="xs:string" minOccurs="0" />
+              <xs:element name="CAJA_cierre" msprop:Generator_ColumnVarNameInTable="columnCAJA_cierre" msprop:Generator_ColumnPropNameInRow="CAJA_cierre" msprop:Generator_ColumnPropNameInTable="CAJA_cierreColumn" msprop:Generator_UserColumnName="CAJA_cierre" type="xs:string" minOccurs="0" />
+              <xs:element name="CAJA_estado" msprop:Generator_ColumnVarNameInTable="columnCAJA_estado" msprop:Generator_ColumnPropNameInRow="CAJA_estado" msprop:Generator_ColumnPropNameInTable="CAJA_estadoColumn" msprop:Generator_UserColumnName="CAJA_estado" type="xs:string" minOccurs="0" />
+              <xs:element name="CAJA_montoinicial" msprop:Generator_ColumnVarNameInTable="columnCAJA_montoinicial" msprop:Generator_ColumnPropNameInRow="CAJA_montoinicial" msprop:Generator_ColumnPropNameInTable="CAJA_montoinicialColumn" msprop:Generator_UserColumnName="CAJA_montoinicial" type="xs:string" minOccurs="0" />
+              <xs:element name="CAJA_montoingresos" msprop:Generator_ColumnVarNameInTable="columnCAJA_montoingresos" msprop:Generator_ColumnPropNameInRow="CAJA_montoingresos" msprop:Generator_ColumnPropNameInTable="CAJA_montoingresosColumn" msprop:Generator_UserColumnName="CAJA_montoingresos" type="xs:string" minOccurs="0" />
+              <xs:element name="CAJA_montoneto" msprop:Generator_ColumnVarNameInTable="columnCAJA_montoneto" msprop:Generator_ColumnPropNameInRow="CAJA_montoneto" msprop:Generator_ColumnPropNameInTable="CAJA_montonetoColumn" msprop:Generator_UserColumnName="CAJA_montoneto" type="xs:string" minOccurs="0" />
+              <xs:element name="USU_id" msprop:Generator_ColumnVarNameInTable="columnUSU_id" msprop:Generator_ColumnPropNameInRow="USU_id" msprop:Generator_ColumnPropNameInTable="USU_idColumn" msprop:Generator_UserColumnName="USU_id" type="xs:string" minOccurs="0" />
+              <xs:element name="USU_ape" msprop:Generator_ColumnVarNameInTable="columnUSU_ape" msprop:Generator_ColumnPropNameInRow="USU_ape" msprop:Generator_ColumnPropNameInTable="USU_apeColumn" msprop:Generator_UserColumnName="USU_ape" type="xs:string" minOccurs="0" />
+              <xs:element name="USU_nom" msprop:Generator_ColumnVarNameInTable="columnUSU_nom" msprop:Generator_ColumnPropNameInRow="USU_nom" msprop:Generator_ColumnPropNameInTable="USU_nomColumn" msprop:Generator_UserColumnName="USU_nom" type="xs:string" minOccurs="0" />
+              <xs:element name="USU_usuario" msprop:Generator_ColumnVarNameInTable="columnUSU_usuario" msprop:Generator_ColumnPropNameInRow="USU_usuario" msprop:Generator_ColumnPropNameInTable="USU_usuarioColumn" msprop:Generator_UserColumnName="USU_usuario" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Cierre_caja_detalle" msprop:Generator_TableClassName="Cierre_caja_detalleDataTable" msprop:Generator_TableVarName="tableCierre_caja_detalle" msprop:Generator_RowChangedName="Cierre_caja_detalleRowChanged" msprop:Generator_TablePropName="Cierre_caja_detalle" msprop:Generator_RowDeletingName="Cierre_caja_detalleRowDeleting" msprop:Generator_RowChangingName="Cierre_caja_detalleRowChanging" msprop:Generator_RowEvHandlerName="Cierre_caja_detalleRowChangeEventHandler" msprop:Generator_RowDeletedName="Cierre_caja_detalleRowDeleted" msprop:Generator_RowClassName="Cierre_caja_detalleRow" msprop:Generator_UserTableName="Cierre_caja_detalle" msprop:Generator_RowEvArgName="Cierre_caja_detalleRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CAJAdetalle_id" msprop:Generator_ColumnVarNameInTable="columnCAJAdetalle_id" msprop:Generator_ColumnPropNameInRow="CAJAdetalle_id" msprop:Generator_ColumnPropNameInTable="CAJAdetalle_idColumn" msprop:Generator_UserColumnName="CAJAdetalle_id" type="xs:long" minOccurs="0" />
+              <xs:element name="CAJA_ID" msprop:Generator_ColumnVarNameInTable="columnCAJA_ID" msprop:Generator_ColumnPropNameInRow="CAJA_ID" msprop:Generator_ColumnPropNameInTable="CAJA_IDColumn" msprop:Generator_UserColumnName="CAJA_ID" type="xs:long" minOccurs="0" />
+              <xs:element name="CAJAdetalle_descripcion" msprop:Generator_ColumnVarNameInTable="columnCAJAdetalle_descripcion" msprop:Generator_ColumnPropNameInRow="CAJAdetalle_descripcion" msprop:Generator_ColumnPropNameInTable="CAJAdetalle_descripcionColumn" msprop:Generator_UserColumnName="CAJAdetalle_descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="CAJAdetalle_ingreso" msprop:Generator_ColumnVarNameInTable="columnCAJAdetalle_ingreso" msprop:Generator_ColumnPropNameInRow="CAJAdetalle_ingreso" msprop:Generator_ColumnPropNameInTable="CAJAdetalle_ingresoColumn" msprop:Generator_UserColumnName="CAJAdetalle_ingreso" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CAJAdetalle_egreso" msprop:Generator_ColumnVarNameInTable="columnCAJAdetalle_egreso" msprop:Generator_ColumnPropNameInRow="CAJAdetalle_egreso" msprop:Generator_ColumnPropNameInTable="CAJAdetalle_egresoColumn" msprop:Generator_UserColumnName="CAJAdetalle_egreso" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CajaTipoMov_int" msprop:Generator_ColumnVarNameInTable="columnCajaTipoMov_int" msprop:Generator_ColumnPropNameInRow="CajaTipoMov_int" msprop:Generator_ColumnPropNameInTable="CajaTipoMov_intColumn" msprop:Generator_UserColumnName="CajaTipoMov_int" type="xs:long" minOccurs="0" />
+              <xs:element name="CajaTipoMov_descripcion" msprop:Generator_ColumnVarNameInTable="columnCajaTipoMov_descripcion" msprop:Generator_ColumnPropNameInRow="CajaTipoMov_descripcion" msprop:Generator_ColumnPropNameInTable="CajaTipoMov_descripcionColumn" msprop:Generator_UserColumnName="CajaTipoMov_descripcion" type="xs:string" minOccurs="0" />
+              <xs:element name="ApeNom" msprop:Generator_ColumnVarNameInTable="columnApeNom" msprop:Generator_ColumnPropNameInRow="ApeNom" msprop:Generator_ColumnPropNameInTable="ApeNomColumn" msprop:Generator_UserColumnName="ApeNom" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

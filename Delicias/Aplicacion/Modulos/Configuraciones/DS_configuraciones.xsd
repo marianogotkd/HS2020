@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_configuraciones" targetNamespace="http://tempuri.org/DS_configuraciones.xsd" xmlns:mstns="http://tempuri.org/DS_configuraciones.xsd" xmlns="http://tempuri.org/DS_configuraciones.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_configuraciones" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_configuraciones" msprop:Generator_UserDSName="DS_configuraciones">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Sucursal" msprop:Generator_TableClassName="SucursalDataTable" msprop:Generator_TableVarName="tableSucursal" msprop:Generator_TablePropName="Sucursal" msprop:Generator_RowDeletingName="SucursalRowDeleting" msprop:Generator_RowChangingName="SucursalRowChanging" msprop:Generator_RowEvHandlerName="SucursalRowChangeEventHandler" msprop:Generator_RowDeletedName="SucursalRowDeleted" msprop:Generator_UserTableName="Sucursal" msprop:Generator_RowChangedName="SucursalRowChanged" msprop:Generator_RowEvArgName="SucursalRowChangeEvent" msprop:Generator_RowClassName="SucursalRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sucursal_id" msprop:Generator_ColumnVarNameInTable="columnsucursal_id" msprop:Generator_ColumnPropNameInRow="sucursal_id" msprop:Generator_ColumnPropNameInTable="sucursal_idColumn" msprop:Generator_UserColumnName="sucursal_id" type="xs:int" minOccurs="0" />
+              <xs:element name="sucursal_nombre" msprop:Generator_ColumnVarNameInTable="columnsucursal_nombre" msprop:Generator_ColumnPropNameInRow="sucursal_nombre" msprop:Generator_ColumnPropNameInTable="sucursal_nombreColumn" msprop:Generator_UserColumnName="sucursal_nombre" type="xs:string" minOccurs="0" />
+              <xs:element name="sucursal_direccion" msprop:Generator_ColumnVarNameInTable="columnsucursal_direccion" msprop:Generator_ColumnPropNameInRow="sucursal_direccion" msprop:Generator_ColumnPropNameInTable="sucursal_direccionColumn" msprop:Generator_UserColumnName="sucursal_direccion" type="xs:string" minOccurs="0" />
+              <xs:element name="sucursal_telefono" msprop:Generator_ColumnVarNameInTable="columnsucursal_telefono" msprop:Generator_ColumnPropNameInRow="sucursal_telefono" msprop:Generator_ColumnPropNameInTable="sucursal_telefonoColumn" msprop:Generator_UserColumnName="sucursal_telefono" type="xs:string" minOccurs="0" />
+              <xs:element name="sucursal_mail" msprop:Generator_ColumnVarNameInTable="columnsucursal_mail" msprop:Generator_ColumnPropNameInRow="sucursal_mail" msprop:Generator_ColumnPropNameInTable="sucursal_mailColumn" msprop:Generator_UserColumnName="sucursal_mail" type="xs:string" minOccurs="0" />
+              <xs:element name="prov_id" msprop:Generator_ColumnVarNameInTable="columnprov_id" msprop:Generator_ColumnPropNameInRow="prov_id" msprop:Generator_ColumnPropNameInTable="prov_idColumn" msprop:Generator_UserColumnName="prov_id" type="xs:string" minOccurs="0" />
+              <xs:element name="provincia" msprop:Generator_ColumnVarNameInTable="columnprovincia" msprop:Generator_ColumnPropNameInRow="provincia" msprop:Generator_ColumnPropNameInTable="provinciaColumn" msprop:Generator_UserColumnName="provincia" type="xs:string" minOccurs="0" />
+              <xs:element name="localidad_id" msprop:Generator_ColumnVarNameInTable="columnlocalidad_id" msprop:Generator_ColumnPropNameInRow="localidad_id" msprop:Generator_ColumnPropNameInTable="localidad_idColumn" msprop:Generator_UserColumnName="localidad_id" type="xs:string" minOccurs="0" />
+              <xs:element name="localidad" msprop:Generator_ColumnVarNameInTable="columnlocalidad" msprop:Generator_ColumnPropNameInRow="localidad" msprop:Generator_ColumnPropNameInTable="localidadColumn" msprop:Generator_UserColumnName="localidad" type="xs:string" minOccurs="0" />
+              <xs:element name="mayorista" msprop:Generator_ColumnVarNameInTable="columnmayorista" msprop:Generator_ColumnPropNameInRow="mayorista" msprop:Generator_ColumnPropNameInTable="mayoristaColumn" msprop:Generator_UserColumnName="mayorista" type="xs:string" minOccurs="0" />
+              <xs:element name="minorista" msprop:Generator_ColumnVarNameInTable="columnminorista" msprop:Generator_ColumnPropNameInRow="minorista" msprop:Generator_ColumnPropNameInTable="minoristaColumn" msprop:Generator_UserColumnName="minorista" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
