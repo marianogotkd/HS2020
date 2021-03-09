@@ -2239,3 +2239,5 @@ C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub
 C:\Users\HamerNoteI7\Documents\Visual Studio 2010\Projects\HamerSoft\Repo_GitHub\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.Orden_trabajo_selec_cliente.resources
 C:\Repositorio HS2020\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.CostosInd_Consulta.resources
 C:\Repositorio HS2020\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.Orden_trabajo_selec_cliente.resources
+C:\Repositorio HS2020\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.Presupuesto_venta.resources
+C:\Repositorio HS2020\HS2020\SistemaSantaFe\Aplicacion\obj\x86\Debug\Aplicacion.Presupuesto_vta.resources

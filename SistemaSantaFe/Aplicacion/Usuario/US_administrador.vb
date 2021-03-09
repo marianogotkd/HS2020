@@ -851,8 +851,8 @@ Public Property EnabledCerrar() As Boolean
     End Sub
 
     Private Sub RemitoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RemitoToolStripMenuItem.Click
-        Remito.Close()
-        Remito.Show()
+        Presupuesto_vta.Close()
+        Presupuesto_vta.Show()
     End Sub
 
     Private Sub TerminalNuevoToolStripMenuItem2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles TerminalNuevoToolStripMenuItem2.Click
@@ -886,5 +886,10 @@ Public Property EnabledCerrar() As Boolean
         Orden_trabajo_selec_cliente.Close()
         Orden_trabajo_selec_cliente.procedencia = "desde el menu"
         Orden_trabajo_selec_cliente.Show()
+    End Sub
+
+    Private Sub PresupuestoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PresupuestoToolStripMenuItem.Click
+        Presupuesto_venta.Close()
+        Presupuesto_venta.Show()
     End Sub
 End Class

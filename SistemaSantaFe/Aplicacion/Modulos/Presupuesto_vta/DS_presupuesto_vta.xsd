@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_presupuesto_vta" targetNamespace="http://tempuri.org/DS_presupuesto_vta.xsd" xmlns:mstns="http://tempuri.org/DS_presupuesto_vta.xsd" xmlns="http://tempuri.org/DS_presupuesto_vta.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_presupuesto_vta" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_presupuesto_vta" msprop:Generator_UserDSName="DS_presupuesto_vta">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Presupuesto" msprop:Generator_TableClassName="PresupuestoDataTable" msprop:Generator_TableVarName="tablePresupuesto" msprop:Generator_TablePropName="Presupuesto" msprop:Generator_RowDeletingName="PresupuestoRowDeleting" msprop:Generator_RowChangingName="PresupuestoRowChanging" msprop:Generator_RowEvHandlerName="PresupuestoRowChangeEventHandler" msprop:Generator_RowDeletedName="PresupuestoRowDeleted" msprop:Generator_UserTableName="Presupuesto" msprop:Generator_RowChangedName="PresupuestoRowChanged" msprop:Generator_RowEvArgName="PresupuestoRowChangeEvent" msprop:Generator_RowClassName="PresupuestoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="presupuesto_id" msdata:Caption="remito_id" msprop:Generator_ColumnVarNameInTable="columnpresupuesto_id" msprop:Generator_ColumnPropNameInRow="presupuesto_id" msprop:Generator_ColumnPropNameInTable="presupuesto_idColumn" msprop:Generator_UserColumnName="presupuesto_id" type="xs:int" minOccurs="0" />
+              <xs:element name="presupuesto_fecha" msdata:Caption="remito_fecha" msprop:Generator_ColumnVarNameInTable="columnpresupuesto_fecha" msprop:Generator_ColumnPropNameInRow="presupuesto_fecha" msprop:Generator_ColumnPropNameInTable="presupuesto_fechaColumn" msprop:Generator_UserColumnName="presupuesto_fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="presupuesto_estado" msdata:Caption="remito_estado" msprop:Generator_ColumnVarNameInTable="columnpresupuesto_estado" msprop:Generator_ColumnPropNameInRow="presupuesto_estado" msprop:Generator_ColumnPropNameInTable="presupuesto_estadoColumn" msprop:Generator_UserColumnName="presupuesto_estado" type="xs:string" minOccurs="0" />
+              <xs:element name="ventaprod_id" msprop:Generator_ColumnVarNameInTable="columnventaprod_id" msprop:Generator_ColumnPropNameInRow="ventaprod_id" msprop:Generator_ColumnPropNameInTable="ventaprod_idColumn" msprop:Generator_UserColumnName="ventaprod_id" type="xs:int" minOccurs="0" />
+              <xs:element name="Fantasia" msprop:Generator_ColumnVarNameInTable="columnFantasia" msprop:Generator_ColumnPropNameInRow="Fantasia" msprop:Generator_ColumnPropNameInTable="FantasiaColumn" msprop:Generator_UserColumnName="Fantasia" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_id" msprop:Generator_ColumnVarNameInTable="columnCLI_id" msprop:Generator_ColumnPropNameInRow="CLI_id" msprop:Generator_ColumnPropNameInTable="CLI_idColumn" msprop:Generator_UserColumnName="CLI_id" type="xs:int" minOccurs="0" />
+              <xs:element name="CtaCte_id" msprop:Generator_ColumnVarNameInTable="columnCtaCte_id" msprop:Generator_ColumnPropNameInRow="CtaCte_id" msprop:Generator_ColumnPropNameInTable="CtaCte_idColumn" msprop:Generator_UserColumnName="CtaCte_id" type="xs:int" minOccurs="0" />
+              <xs:element name="ventaprod_total" msprop:Generator_ColumnVarNameInTable="columnventaprod_total" msprop:Generator_ColumnPropNameInRow="ventaprod_total" msprop:Generator_ColumnPropNameInTable="ventaprod_totalColumn" msprop:Generator_UserColumnName="ventaprod_total" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

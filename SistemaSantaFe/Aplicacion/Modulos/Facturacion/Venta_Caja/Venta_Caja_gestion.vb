@@ -1021,7 +1021,7 @@
     Dim ds_clie As DataSet
     'recupero todos los clientes
     Public Sub Obtener_Clientes()
-        If procedencia = "Venta_Caja_Gestion" Then
+        If (procedencia = "Venta_Caja_Gestion") Or (procedencia = "Presupuesto nuevo") Then
             ds_clie = DAcliente.Cliente_obtenertodo()
             If ds_clie.Tables(0).Rows.Count <> 0 Then
                 Venta_Caja_ds.Tables("Cliente").Rows.Clear() 'borro el contenido del dataset.datatable clientes
@@ -1771,6 +1771,18 @@
                             End If
                         End If
                     End If
+
+                    '/////////////////////////////////PRESUPUESTO///////////////////////////////////////////////////////////
+                    If procedencia = "Presupuesto nuevo" Then
+                        Dim result As DialogResult
+                        result = MessageBox.Show("¿Desea generar el presupuesto?", "Sistema de Gestión", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
+                        If result = DialogResult.OK Then
+                            'aqui llamo a la rutina que guarda, pero no va a caja, y el estado de la tabla ventaproducto es "pendiente"
+                            'de momento voy a hacer que reste stock, despues consultamos eso. puede q se deba sumar stock en caso de devolucion. o edicion del remito.
+                            guardar_presupuesto()
+                        End If
+                    End If
+                    '//////////////////////////////////////////////////////////////////////////////////////////////////////
                 End If
             Else
                 MessageBox.Show("No se registraron productos", "Sistema de Gestión.")
@@ -1779,6 +1791,63 @@
             MessageBox.Show("No se registraron productos", "Sistema de Gestión.")
         End If
     End Sub
+
+    Private Sub guardar_presupuesto()
+        'Dim usuario_id As String
+        'usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
+
+        Dim usuario_id As String
+        usuario_id = Inicio.USU_id  'obtengo del formulario inicio el id del usuario logueado
+        Dim ds_usuario As DataSet = DAventa.Obtener_usuario_y_sucursal(usuario_id)
+        Dim sucursal_id As Integer = ds_usuario.Tables(0).Rows(0).Item("sucursal_id")
+        Dim tipo_vta As String = ""
+        Dim cliente_id As Integer
+        'Dim SucxClie_id As Integer
+        If RB_Consumidor.Checked = True Then
+            tipo_vta = "Consumidor Final"
+            cliente_id = 0
+            SucxClie_id = 0
+        Else
+            tipo_vta = "Cliente"
+            cliente_id = DG_clientes.CurrentRow.Cells(0).Value
+            'SucxClie_id = SucxClie_id
+        End If
+        Dim venta_tipo_descripcion As String = ""
+        If tipo_vta = "Minorista" Then
+            venta_tipo_descripcion = "Venta Minorista-Efectivo"
+        Else
+            venta_tipo_descripcion = "Venta Mayorista-Efectivo"
+        End If
+        '//////CHOCO: 03-12-2019 - se agrega el parametro de "Vendedor", en la tabla ventaproducto_alta////////////
+        Dim vendedor_id As Integer = CInt(ComboBox_vendedor.SelectedValue)
+        Dim ds_Venta As DataSet = DAventa.VentaProducto_alta(CDec(txt_total.Text),
+                                         Now,
+                                         usuario_id,
+                                         tipo_vta,
+                                         cliente_id, CDec(txt_subtotal.Text),
+                                         CDec(txt_descuento.Text),
+                                         CDec(txt_desc_porc.Text),
+                                         CDec(ComboBox_iva.SelectedItem),
+                                          CDec(txt_impuesto_aplicado.Text), venta_tipo_descripcion, 0, vendedor_id, "Pendiente", SucxClie_id)
+        Dim ventaprod_id As Integer = CInt(ds_Venta.Tables(0).Rows(0).Item("ventaprod_id"))
+        Dim ds_factura As DataSet = DAventa.Presupuesto_alta(ventaprod_id, Now, "pendiente entrega")
+        Dim presupuesto_id As Integer = CInt(ds_factura.Tables(0).Rows(0).Item("presupuesto_id"))
+
+        'GUARDAR EN TABLA "Venta_Producto_detalle"
+        For Each row As DataGridViewRow In DataGridView1.Rows
+            If row.Cells("columna_prod_id").Value <> 0 Then
+                DAventa.VentaProductoDetalle_alta(ventaprod_id, row.Cells(1).Value, row.Cells(5).Value, CDec(row.Cells(7).Value), CDec(row.Cells(8).Value), row.Cells(3).Value, row.Cells(2).Value, 0, CDec(row.Cells(6).Value))
+            End If
+        Next
+        crear_reporte_presupuesto(ds_usuario, presupuesto_id)
+        MessageBox.Show("El Presupuesto se generó correctamente.", "Sistema de Gestión.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        'aqui van las rutinas q borran grilla de venta_caja_gestion y dejan todo listo para prox venta.
+        Limpiar()
+    End Sub
+
+
+
+
 
     Private Sub Actualizar_stock_remito() 'lo uso cuando entro a editar un remito.
         'primero actualizo stock + con los valores anteriores del remito.
@@ -2106,6 +2175,142 @@
     End Sub
 
 
+    Private Sub crear_reporte_presupuesto(ByVal ds_usuario As DataSet, ByVal numerofactura As Integer)
+        'pregunto si quiero ver el reporte 
+        'Dim result As DialogResult
+        'result = MessageBox.Show("¿Desea ver el remito generado?.", "Sistema de Gestión.", MessageBoxButtons.OKCancel)
+        'If result = DialogResult.OK Then
+        'primero lleno el dataset y sus respectivas table
+
+        '///////////////TABLA CLIENTE//////////////////////////////////'
+        facturacion_ds_report.Tables("Cliente").Rows.Clear()
+        If lb_dni_clie.Text <> "- - - -" Then
+
+            Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni((lb_dni_clie.Text))
+            Dim ds_clie_recu As DataSet = DAcliente.Cliente_obtener_info(CInt(DG_clientes.CurrentRow.Cells("CLIidDataGridViewTextBoxColumn").Value)) 'me trae los datos del cliente y ademas las sucursales q tiene vinculadas
+
+
+            Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
+
+            row_cliente("dni") = lb_dni_clie.Text
+            'busco la sucursal que seleccioné para la factura.
+            Dim a As Integer = 0
+            While a < ds_clie_recu.Tables(3).Rows.Count
+                If ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_id") = SucxClie_id Then
+                    row_cliente("fantasia") = CStr(lb_fantasia.Text) + ", " + ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_nombre")
+                    row_cliente("telefono") = ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_tel")
+                    row_cliente("mail") = ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_mail")
+                    row_cliente("direccion") = ds_clie_recu.Tables(3).Rows(a).Item("SucxClie_dir")
+                    row_cliente("localidad") = ds_clie_recu.Tables(3).Rows(a).Item("provincia") + ", " + ds_clie_recu.Tables(3).Rows(a).Item("Localidad")
+                    Exit While
+                End If
+                a = a + 1
+            End While
+            row_cliente("iva_condicion") = ds_cliente.Tables(0).Rows(0).Item("IVA_descripcion").ToString
+            facturacion_ds_report.Tables("Cliente").Rows.Add(row_cliente)
+        Else
+            'Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni(CInt(Venta_Caja_gestion.lb_dni_clie.Text))
+            Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
+            row_cliente("fantasia") = "" 'Venta_Caja_gestion.lb_fantasia.Text
+            row_cliente("dni") = "" 'Venta_Caja_gestion.lb_dni_clie.Text
+            row_cliente("telefono") = "" 'Venta_Caja_gestion.lb_telef_clie.Text
+            row_cliente("mail") = lb_mail_clie.Text
+            row_cliente("direccion") = ""
+            row_cliente("localidad") = ""
+            row_cliente("iva_condicion") = "Consumidor Final"
+            facturacion_ds_report.Tables("Cliente").Rows.Add(row_cliente)
+        End If
+
+        'Dim ds_cliente As DataSet = DAcliente.Cliente_ObtenerDni(CInt(Venta_Caja_gestion.lb_dni_clie.Text))
+        'Dim row_cliente As DataRow = facturacion_ds_report.Tables("Cliente").NewRow()
+        'row_cliente("fantasia") = Venta_Caja_gestion.lb_fantasia.Text
+        'row_cliente("dni") = Venta_Caja_gestion.lb_dni_clie.Text
+        'row_cliente("telefono") = Venta_Caja_gestion.lb_telef_clie.Text
+        'row_cliente("mail") = Venta_Caja_gestion.lb_mail_clie.Text
+        'row_cliente("direccion") = ds_cliente.Tables(1).Rows(0).Item("CLI_dir")
+        'row_cliente("localidad") = ds_cliente.Tables(1).Rows(0).Item("provincia") + ", " + ds_cliente.Tables(1).Rows(0).Item("Localidad")
+        'facturacion_ds_report.Tables("Cliente").Rows.Add(row_cliente)
+
+        '///////////////TABLA SUCURSAL//////////////////////////////////'
+        facturacion_ds_report.Tables("Sucursal").Rows.Clear()
+        Dim row_sucursal As DataRow = facturacion_ds_report.Tables("Sucursal").NewRow()
+        row_sucursal("sucursal") = lb_nombre_sucursal.Text
+        row_sucursal("direccion") = lb_direccion_sucursal.Text
+        row_sucursal("telefono") = lb_telefono_sucursal.Text
+        row_sucursal("mail") = lb_mail_sucursal.Text
+        row_sucursal("cuit") = "20 - 00000000 - 4"
+        facturacion_ds_report.Tables("Sucursal").Rows.Add(row_sucursal)
+
+        '///////////////TABLA EMPRESA//////////////////////////////////'
+        If ds_usuario.Tables(1).Rows.Count <> 0 Then
+            facturacion_ds_report.Tables("Empresa").Rows.Clear()
+            facturacion_ds_report.Tables("Empresa").Merge(ds_usuario.Tables(1))
+        End If
+
+        '///////////////TABLA VENTA//////////////////////////////////'
+        facturacion_ds_report.Tables("venta").Rows.Clear()
+        Dim row_venta As DataRow = facturacion_ds_report.Tables("venta").NewRow()
+        'row_venta("nro_factura") = Venta_Caja_gestion.lb_factura_vta.Text
+        'row_venta("nro_factura") = ventaprod_id
+        row_venta("nro_factura") = CInt(numerofactura)
+        row_venta("fecha") = Today 'CDate(Venta_Caja_gestion.lb_fecha_vta.Text)
+        row_venta("vendedor") = lb_vendedor_vta.Text
+        row_venta("tipo_venta") = "Cliente"
+        facturacion_ds_report.Tables("venta").Rows.Add(row_venta)
+
+        '///////////////TABLA TOTALES APLICADOS//////////////////////////////////'
+        facturacion_ds_report.Tables("Totales_aplicados").Rows.Clear()
+        Dim row_totales As DataRow = facturacion_ds_report.Tables("Totales_aplicados").NewRow()
+        row_totales("subtotal") = txt_subtotal.Text
+        row_totales("total") = txt_total.Text
+        row_totales("iva") = CDec(ComboBox_iva.SelectedItem)
+        row_totales("descuento_porcentaje") = CDec(txt_desc_porc.Text)
+        row_totales("descuento_pesos") = CDec(txt_desc_pesos.Text)
+        row_totales("iva_pesos") = CDec(txt_impuesto_aplicado.Text)
+        facturacion_ds_report.Tables("Totales_aplicados").Rows.Add(row_totales)
+
+        '///////////////TABLA PRODUCTO AGREGADO//////////////////////////////////'
+        'aqui ciclo en la grilla para ir agrendo los row a la tabla producto agregado
+        facturacion_ds_report.Tables("Producto_agregado").Rows.Clear()
+        Dim i As Integer = 0
+        While i < DataGridView1.Rows.Count
+            If DataGridView1.Rows(i).Cells("columna_descripcion").Value <> "" Then
+                Dim row_prodADD As DataRow = facturacion_ds_report.Tables("Producto_agregado").NewRow()
+                row_prodADD("PROD_id") = DataGridView1.Rows(i).Cells("columna_prod_id").Value
+                row_prodADD("codinterno") = CInt(DataGridView1.Rows(i).Cells("columna_codinterno").Value)
+                row_prodADD("descripcion") = DataGridView1.Rows(i).Cells("columna_descripcion").Value
+                row_prodADD("detalle") = DataGridView1.Rows(i).Cells("columna_detalle").Value
+                row_prodADD("cantidad") = CDec(DataGridView1.Rows(i).Cells("columna_cantidad").Value)
+                row_prodADD("precio_unitario") = CDec(DataGridView1.Rows(i).Cells("columna_precio_unitario").Value)
+                row_prodADD("precio_subtotal") = CDec(DataGridView1.Rows(i).Cells("columna_precio_subtotal").Value)
+                row_prodADD("codbarra") = ""
+                row_prodADD("TURNO_id") = ""
+                '/choco modificacion 01-12-2019: agrego columna descuento
+                row_prodADD("descuento") = CDec(DataGridView1.Rows(i).Cells("descuento").Value)
+                row_prodADD("grupo_id") = CInt(1)
+                facturacion_ds_report.Tables("Producto_agregado").Rows.Add(row_prodADD)
+            End If
+            i = i + 1
+        End While
+
+
+        Dim CrReport As New CrystalDecisions.CrystalReports.Engine.ReportDocument
+        ' Asigno el reporte
+        CrReport = New CrystalDecisions.CrystalReports.Engine.ReportDocument()
+        CrReport.Load(Application.StartupPath & "\..\..\Modulos\Facturacion\Reportes\CR_presupuesto_venta.rpt")
+        CrReport.Database.Tables("Cliente").SetDataSource(facturacion_ds_report.Tables("Cliente"))
+        CrReport.Database.Tables("Sucursal").SetDataSource(facturacion_ds_report.Tables("Sucursal"))
+        CrReport.Database.Tables("Empresa").SetDataSource(facturacion_ds_report.Tables("Empresa"))
+        CrReport.Database.Tables("venta").SetDataSource(facturacion_ds_report.Tables("venta"))
+        CrReport.Database.Tables("Producto_agregado").SetDataSource(facturacion_ds_report.Tables("Producto_agregado"))
+        CrReport.Database.Tables("Totales_aplicados").SetDataSource(facturacion_ds_report.Tables("Totales_aplicados"))
+        Dim remito_report As New Facturacion_report_show
+        remito_report.CrystalReportViewer1.ReportSource = CrReport
+        remito_report.Text = "Presupuesto Nº: " + CStr(numerofactura) + " - Imprimir."
+        remito_report.Show()
+        'End If
+    End Sub
+
 
 
     Public Sub formas_de_pago(ByVal forma As String)
@@ -2181,7 +2386,7 @@
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         If procedencia = "Remito modificar" Then
-            Remito.Show()
+            Presupuesto_vta.Show()
             Me.Close()
 
         Else
