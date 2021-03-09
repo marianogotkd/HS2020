@@ -20,12 +20,12 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("DS_remito"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("DS_presupuesto_vta"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class DS_remito
+Partial Public Class DS_presupuesto_vta
     Inherits Global.System.Data.DataSet
     
-    Private tableRemito As RemitoDataTable
+    Private tablePresupuesto As PresupuestoDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -56,8 +56,8 @@ Partial Public Class DS_remito
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("Remito")) Is Nothing) Then
-                MyBase.Tables.Add(New RemitoDataTable(ds.Tables("Remito")))
+            If (Not (ds.Tables("Presupuesto")) Is Nothing) Then
+                MyBase.Tables.Add(New PresupuestoDataTable(ds.Tables("Presupuesto")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -80,9 +80,9 @@ Partial Public Class DS_remito
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property Remito() As RemitoDataTable
+    Public ReadOnly Property Presupuesto() As PresupuestoDataTable
         Get
-            Return Me.tableRemito
+            Return Me.tablePresupuesto
         End Get
     End Property
     
@@ -128,7 +128,7 @@ Partial Public Class DS_remito
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As DS_remito = CType(MyBase.Clone,DS_remito)
+        Dim cln As DS_presupuesto_vta = CType(MyBase.Clone,DS_presupuesto_vta)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -153,8 +153,8 @@ Partial Public Class DS_remito
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("Remito")) Is Nothing) Then
-                MyBase.Tables.Add(New RemitoDataTable(ds.Tables("Remito")))
+            If (Not (ds.Tables("Presupuesto")) Is Nothing) Then
+                MyBase.Tables.Add(New PresupuestoDataTable(ds.Tables("Presupuesto")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -188,10 +188,10 @@ Partial Public Class DS_remito
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tableRemito = CType(MyBase.Tables("Remito"),RemitoDataTable)
+        Me.tablePresupuesto = CType(MyBase.Tables("Presupuesto"),PresupuestoDataTable)
         If (initTable = true) Then
-            If (Not (Me.tableRemito) Is Nothing) Then
-                Me.tableRemito.InitVars
+            If (Not (Me.tablePresupuesto) Is Nothing) Then
+                Me.tablePresupuesto.InitVars
             End If
         End If
     End Sub
@@ -199,18 +199,18 @@ Partial Public Class DS_remito
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Sub InitClass()
-        Me.DataSetName = "DS_remito"
+        Me.DataSetName = "DS_presupuesto_vta"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/DS_remito.xsd"
+        Me.Namespace = "http://tempuri.org/DS_presupuesto_vta.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tableRemito = New RemitoDataTable()
-        MyBase.Tables.Add(Me.tableRemito)
+        Me.tablePresupuesto = New PresupuestoDataTable()
+        MyBase.Tables.Add(Me.tablePresupuesto)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Private Function ShouldSerializeRemito() As Boolean
+    Private Function ShouldSerializePresupuesto() As Boolean
         Return false
     End Function
     
@@ -225,7 +225,7 @@ Partial Public Class DS_remito
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As DS_remito = New DS_remito()
+        Dim ds As DS_presupuesto_vta = New DS_presupuesto_vta()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -273,21 +273,21 @@ Partial Public Class DS_remito
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Delegate Sub RemitoRowChangeEventHandler(ByVal sender As Object, ByVal e As RemitoRowChangeEvent)
+    Public Delegate Sub PresupuestoRowChangeEventHandler(ByVal sender As Object, ByVal e As PresupuestoRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class RemitoDataTable
-        Inherits Global.System.Data.TypedTableBase(Of RemitoRow)
+    Partial Public Class PresupuestoDataTable
+        Inherits Global.System.Data.TypedTableBase(Of PresupuestoRow)
         
-        Private columnremito_id As Global.System.Data.DataColumn
+        Private columnpresupuesto_id As Global.System.Data.DataColumn
         
-        Private columnremito_fecha As Global.System.Data.DataColumn
+        Private columnpresupuesto_fecha As Global.System.Data.DataColumn
         
-        Private columnremito_estado As Global.System.Data.DataColumn
+        Private columnpresupuesto_estado As Global.System.Data.DataColumn
         
         Private columnventaprod_id As Global.System.Data.DataColumn
         
@@ -303,7 +303,7 @@ Partial Public Class DS_remito
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "Remito"
+            Me.TableName = "Presupuesto"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -336,25 +336,25 @@ Partial Public Class DS_remito
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property remito_idColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property presupuesto_idColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnremito_id
+                Return Me.columnpresupuesto_id
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property remito_fechaColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property presupuesto_fechaColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnremito_fecha
+                Return Me.columnpresupuesto_fecha
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property remito_estadoColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property presupuesto_estadoColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnremito_estado
+                Return Me.columnpresupuesto_estado
             End Get
         End Property
         
@@ -409,44 +409,44 @@ Partial Public Class DS_remito
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As RemitoRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As PresupuestoRow
             Get
-                Return CType(Me.Rows(index),RemitoRow)
+                Return CType(Me.Rows(index),PresupuestoRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event RemitoRowChanging As RemitoRowChangeEventHandler
+        Public Event PresupuestoRowChanging As PresupuestoRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event RemitoRowChanged As RemitoRowChangeEventHandler
+        Public Event PresupuestoRowChanged As PresupuestoRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event RemitoRowDeleting As RemitoRowChangeEventHandler
+        Public Event PresupuestoRowDeleting As PresupuestoRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Event RemitoRowDeleted As RemitoRowChangeEventHandler
+        Public Event PresupuestoRowDeleted As PresupuestoRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Sub AddRemitoRow(ByVal row As RemitoRow)
+        Public Overloads Sub AddPresupuestoRow(ByVal row As PresupuestoRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddRemitoRow(ByVal remito_id As Integer, ByVal remito_fecha As Date, ByVal remito_estado As String, ByVal ventaprod_id As Integer, ByVal Fantasia As String, ByVal CLI_id As Integer, ByVal CtaCte_id As Integer, ByVal ventaprod_total As Decimal) As RemitoRow
-            Dim rowRemitoRow As RemitoRow = CType(Me.NewRow,RemitoRow)
-            Dim columnValuesArray() As Object = New Object() {remito_id, remito_fecha, remito_estado, ventaprod_id, Fantasia, CLI_id, CtaCte_id, ventaprod_total}
-            rowRemitoRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowRemitoRow)
-            Return rowRemitoRow
+        Public Overloads Function AddPresupuestoRow(ByVal presupuesto_id As Integer, ByVal presupuesto_fecha As Date, ByVal presupuesto_estado As String, ByVal ventaprod_id As Integer, ByVal Fantasia As String, ByVal CLI_id As Integer, ByVal CtaCte_id As Integer, ByVal ventaprod_total As Decimal) As PresupuestoRow
+            Dim rowPresupuestoRow As PresupuestoRow = CType(Me.NewRow,PresupuestoRow)
+            Dim columnValuesArray() As Object = New Object() {presupuesto_id, presupuesto_fecha, presupuesto_estado, ventaprod_id, Fantasia, CLI_id, CtaCte_id, ventaprod_total}
+            rowPresupuestoRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowPresupuestoRow)
+            Return rowPresupuestoRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As RemitoDataTable = CType(MyBase.Clone,RemitoDataTable)
+            Dim cln As PresupuestoDataTable = CType(MyBase.Clone,PresupuestoDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -454,15 +454,15 @@ Partial Public Class DS_remito
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New RemitoDataTable()
+            Return New PresupuestoDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub InitVars()
-            Me.columnremito_id = MyBase.Columns("remito_id")
-            Me.columnremito_fecha = MyBase.Columns("remito_fecha")
-            Me.columnremito_estado = MyBase.Columns("remito_estado")
+            Me.columnpresupuesto_id = MyBase.Columns("presupuesto_id")
+            Me.columnpresupuesto_fecha = MyBase.Columns("presupuesto_fecha")
+            Me.columnpresupuesto_estado = MyBase.Columns("presupuesto_estado")
             Me.columnventaprod_id = MyBase.Columns("ventaprod_id")
             Me.columnFantasia = MyBase.Columns("Fantasia")
             Me.columnCLI_id = MyBase.Columns("CLI_id")
@@ -473,12 +473,12 @@ Partial Public Class DS_remito
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitClass()
-            Me.columnremito_id = New Global.System.Data.DataColumn("remito_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnremito_id)
-            Me.columnremito_fecha = New Global.System.Data.DataColumn("remito_fecha", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnremito_fecha)
-            Me.columnremito_estado = New Global.System.Data.DataColumn("remito_estado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnremito_estado)
+            Me.columnpresupuesto_id = New Global.System.Data.DataColumn("presupuesto_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpresupuesto_id)
+            Me.columnpresupuesto_fecha = New Global.System.Data.DataColumn("presupuesto_fecha", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpresupuesto_fecha)
+            Me.columnpresupuesto_estado = New Global.System.Data.DataColumn("presupuesto_estado", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpresupuesto_estado)
             Me.columnventaprod_id = New Global.System.Data.DataColumn("ventaprod_id", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnventaprod_id)
             Me.columnFantasia = New Global.System.Data.DataColumn("Fantasia", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -489,32 +489,35 @@ Partial Public Class DS_remito
             MyBase.Columns.Add(Me.columnCtaCte_id)
             Me.columnventaprod_total = New Global.System.Data.DataColumn("ventaprod_total", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnventaprod_total)
+            Me.columnpresupuesto_id.Caption = "remito_id"
+            Me.columnpresupuesto_fecha.Caption = "remito_fecha"
+            Me.columnpresupuesto_estado.Caption = "remito_estado"
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function NewRemitoRow() As RemitoRow
-            Return CType(Me.NewRow,RemitoRow)
+        Public Function NewPresupuestoRow() As PresupuestoRow
+            Return CType(Me.NewRow,PresupuestoRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New RemitoRow(builder)
+            Return New PresupuestoRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(RemitoRow)
+            Return GetType(PresupuestoRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.RemitoRowChangedEvent) Is Nothing) Then
-                RaiseEvent RemitoRowChanged(Me, New RemitoRowChangeEvent(CType(e.Row,RemitoRow), e.Action))
+            If (Not (Me.PresupuestoRowChangedEvent) Is Nothing) Then
+                RaiseEvent PresupuestoRowChanged(Me, New PresupuestoRowChangeEvent(CType(e.Row,PresupuestoRow), e.Action))
             End If
         End Sub
         
@@ -522,8 +525,8 @@ Partial Public Class DS_remito
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.RemitoRowChangingEvent) Is Nothing) Then
-                RaiseEvent RemitoRowChanging(Me, New RemitoRowChangeEvent(CType(e.Row,RemitoRow), e.Action))
+            If (Not (Me.PresupuestoRowChangingEvent) Is Nothing) Then
+                RaiseEvent PresupuestoRowChanging(Me, New PresupuestoRowChangeEvent(CType(e.Row,PresupuestoRow), e.Action))
             End If
         End Sub
         
@@ -531,8 +534,8 @@ Partial Public Class DS_remito
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.RemitoRowDeletedEvent) Is Nothing) Then
-                RaiseEvent RemitoRowDeleted(Me, New RemitoRowChangeEvent(CType(e.Row,RemitoRow), e.Action))
+            If (Not (Me.PresupuestoRowDeletedEvent) Is Nothing) Then
+                RaiseEvent PresupuestoRowDeleted(Me, New PresupuestoRowChangeEvent(CType(e.Row,PresupuestoRow), e.Action))
             End If
         End Sub
         
@@ -540,14 +543,14 @@ Partial Public Class DS_remito
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.RemitoRowDeletingEvent) Is Nothing) Then
-                RaiseEvent RemitoRowDeleting(Me, New RemitoRowChangeEvent(CType(e.Row,RemitoRow), e.Action))
+            If (Not (Me.PresupuestoRowDeletingEvent) Is Nothing) Then
+                RaiseEvent PresupuestoRowDeleting(Me, New PresupuestoRowChangeEvent(CType(e.Row,PresupuestoRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub RemoveRemitoRow(ByVal row As RemitoRow)
+        Public Sub RemovePresupuestoRow(ByVal row As PresupuestoRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -556,7 +559,7 @@ Partial Public Class DS_remito
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As DS_remito = New DS_remito()
+            Dim ds As DS_presupuesto_vta = New DS_presupuesto_vta()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -574,7 +577,7 @@ Partial Public Class DS_remito
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "RemitoDataTable"
+            attribute2.FixedValue = "PresupuestoDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -621,60 +624,60 @@ Partial Public Class DS_remito
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class RemitoRow
+    Partial Public Class PresupuestoRow
         Inherits Global.System.Data.DataRow
         
-        Private tableRemito As RemitoDataTable
+        Private tablePresupuesto As PresupuestoDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tableRemito = CType(Me.Table,RemitoDataTable)
+            Me.tablePresupuesto = CType(Me.Table,PresupuestoDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property remito_id() As Integer
+        Public Property presupuesto_id() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableRemito.remito_idColumn),Integer)
+                    Return CType(Me(Me.tablePresupuesto.presupuesto_idColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'remito_id' de la tabla 'Remito' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'presupuesto_id' de la tabla 'Presupuesto' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableRemito.remito_idColumn) = value
+                Me(Me.tablePresupuesto.presupuesto_idColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property remito_fecha() As Date
+        Public Property presupuesto_fecha() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tableRemito.remito_fechaColumn),Date)
+                    Return CType(Me(Me.tablePresupuesto.presupuesto_fechaColumn),Date)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'remito_fecha' de la tabla 'Remito' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'presupuesto_fecha' de la tabla 'Presupuesto' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableRemito.remito_fechaColumn) = value
+                Me(Me.tablePresupuesto.presupuesto_fechaColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property remito_estado() As String
+        Public Property presupuesto_estado() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableRemito.remito_estadoColumn),String)
+                    Return CType(Me(Me.tablePresupuesto.presupuesto_estadoColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'remito_estado' de la tabla 'Remito' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'presupuesto_estado' de la tabla 'Presupuesto' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableRemito.remito_estadoColumn) = value
+                Me(Me.tablePresupuesto.presupuesto_estadoColumn) = value
             End Set
         End Property
         
@@ -683,13 +686,13 @@ Partial Public Class DS_remito
         Public Property ventaprod_id() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableRemito.ventaprod_idColumn),Integer)
+                    Return CType(Me(Me.tablePresupuesto.ventaprod_idColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ventaprod_id' de la tabla 'Remito' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ventaprod_id' de la tabla 'Presupuesto' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableRemito.ventaprod_idColumn) = value
+                Me(Me.tablePresupuesto.ventaprod_idColumn) = value
             End Set
         End Property
         
@@ -698,13 +701,13 @@ Partial Public Class DS_remito
         Public Property Fantasia() As String
             Get
                 Try 
-                    Return CType(Me(Me.tableRemito.FantasiaColumn),String)
+                    Return CType(Me(Me.tablePresupuesto.FantasiaColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Fantasia' de la tabla 'Remito' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'Fantasia' de la tabla 'Presupuesto' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableRemito.FantasiaColumn) = value
+                Me(Me.tablePresupuesto.FantasiaColumn) = value
             End Set
         End Property
         
@@ -713,13 +716,13 @@ Partial Public Class DS_remito
         Public Property CLI_id() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableRemito.CLI_idColumn),Integer)
+                    Return CType(Me(Me.tablePresupuesto.CLI_idColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CLI_id' de la tabla 'Remito' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CLI_id' de la tabla 'Presupuesto' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableRemito.CLI_idColumn) = value
+                Me(Me.tablePresupuesto.CLI_idColumn) = value
             End Set
         End Property
         
@@ -728,13 +731,13 @@ Partial Public Class DS_remito
         Public Property CtaCte_id() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tableRemito.CtaCte_idColumn),Integer)
+                    Return CType(Me(Me.tablePresupuesto.CtaCte_idColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CtaCte_id' de la tabla 'Remito' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CtaCte_id' de la tabla 'Presupuesto' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableRemito.CtaCte_idColumn) = value
+                Me(Me.tablePresupuesto.CtaCte_idColumn) = value
             End Set
         End Property
         
@@ -743,110 +746,110 @@ Partial Public Class DS_remito
         Public Property ventaprod_total() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tableRemito.ventaprod_totalColumn),Decimal)
+                    Return CType(Me(Me.tablePresupuesto.ventaprod_totalColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ventaprod_total' de la tabla 'Remito' es DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ventaprod_total' de la tabla 'Presupuesto' es DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tableRemito.ventaprod_totalColumn) = value
+                Me(Me.tablePresupuesto.ventaprod_totalColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isremito_idNull() As Boolean
-            Return Me.IsNull(Me.tableRemito.remito_idColumn)
+        Public Function Ispresupuesto_idNull() As Boolean
+            Return Me.IsNull(Me.tablePresupuesto.presupuesto_idColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setremito_idNull()
-            Me(Me.tableRemito.remito_idColumn) = Global.System.Convert.DBNull
+        Public Sub Setpresupuesto_idNull()
+            Me(Me.tablePresupuesto.presupuesto_idColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isremito_fechaNull() As Boolean
-            Return Me.IsNull(Me.tableRemito.remito_fechaColumn)
+        Public Function Ispresupuesto_fechaNull() As Boolean
+            Return Me.IsNull(Me.tablePresupuesto.presupuesto_fechaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setremito_fechaNull()
-            Me(Me.tableRemito.remito_fechaColumn) = Global.System.Convert.DBNull
+        Public Sub Setpresupuesto_fechaNull()
+            Me(Me.tablePresupuesto.presupuesto_fechaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function Isremito_estadoNull() As Boolean
-            Return Me.IsNull(Me.tableRemito.remito_estadoColumn)
+        Public Function Ispresupuesto_estadoNull() As Boolean
+            Return Me.IsNull(Me.tablePresupuesto.presupuesto_estadoColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub Setremito_estadoNull()
-            Me(Me.tableRemito.remito_estadoColumn) = Global.System.Convert.DBNull
+        Public Sub Setpresupuesto_estadoNull()
+            Me(Me.tablePresupuesto.presupuesto_estadoColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isventaprod_idNull() As Boolean
-            Return Me.IsNull(Me.tableRemito.ventaprod_idColumn)
+            Return Me.IsNull(Me.tablePresupuesto.ventaprod_idColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Setventaprod_idNull()
-            Me(Me.tableRemito.ventaprod_idColumn) = Global.System.Convert.DBNull
+            Me(Me.tablePresupuesto.ventaprod_idColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsFantasiaNull() As Boolean
-            Return Me.IsNull(Me.tableRemito.FantasiaColumn)
+            Return Me.IsNull(Me.tablePresupuesto.FantasiaColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetFantasiaNull()
-            Me(Me.tableRemito.FantasiaColumn) = Global.System.Convert.DBNull
+            Me(Me.tablePresupuesto.FantasiaColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsCLI_idNull() As Boolean
-            Return Me.IsNull(Me.tableRemito.CLI_idColumn)
+            Return Me.IsNull(Me.tablePresupuesto.CLI_idColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetCLI_idNull()
-            Me(Me.tableRemito.CLI_idColumn) = Global.System.Convert.DBNull
+            Me(Me.tablePresupuesto.CLI_idColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsCtaCte_idNull() As Boolean
-            Return Me.IsNull(Me.tableRemito.CtaCte_idColumn)
+            Return Me.IsNull(Me.tablePresupuesto.CtaCte_idColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetCtaCte_idNull()
-            Me(Me.tableRemito.CtaCte_idColumn) = Global.System.Convert.DBNull
+            Me(Me.tablePresupuesto.CtaCte_idColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Isventaprod_totalNull() As Boolean
-            Return Me.IsNull(Me.tableRemito.ventaprod_totalColumn)
+            Return Me.IsNull(Me.tablePresupuesto.ventaprod_totalColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Setventaprod_totalNull()
-            Me(Me.tableRemito.ventaprod_totalColumn) = Global.System.Convert.DBNull
+            Me(Me.tablePresupuesto.ventaprod_totalColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -854,16 +857,16 @@ Partial Public Class DS_remito
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-    Public Class RemitoRowChangeEvent
+    Public Class PresupuestoRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As RemitoRow
+        Private eventRow As PresupuestoRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub New(ByVal row As RemitoRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As PresupuestoRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -871,7 +874,7 @@ Partial Public Class DS_remito
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property Row() As RemitoRow
+        Public ReadOnly Property Row() As PresupuestoRow
             Get
                 Return Me.eventRow
             End Get

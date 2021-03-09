@@ -1,4 +1,4 @@
-﻿Public Class Remito
+﻿Public Class Presupuesto_vta
     Dim DAventa As New Datos.Venta
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_nuevo.Click
         Venta_Caja_seleccion_tipo_vta.Show()
@@ -38,17 +38,17 @@
     Private Sub DataGridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         Dim celda_actual = e.ColumnIndex
 
-        If celda_actual = 0 Then 'la 0 es la que tiene el check
-            Dim fila As Integer = DataGridView1.CurrentRow.Index
-            Dim i As Integer = 0
-            While i < DataGridView1.Rows.Count
-                If i <> fila Then
-                    DataGridView1.Rows(i).Cells(0).Value = False
-                End If
-                i = i + 1
-            End While
-            DataGridView1.Rows(fila).Cells(0).Value = True
-        End If
+        'If celda_actual = 0 Then 'la 0 es la que tiene el check
+        Dim fila As Integer = DataGridView1.CurrentRow.Index
+        Dim i As Integer = 0
+        While i < DataGridView1.Rows.Count
+            If i <> fila Then
+                DataGridView1.Rows(i).Cells(0).Value = False
+            End If
+            i = i + 1
+        End While
+        DataGridView1.Rows(fila).Cells(0).Value = True
+        'End If
     End Sub
 
     Private Sub Button_imprimir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_imprimir.Click

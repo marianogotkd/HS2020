@@ -44,16 +44,35 @@
             Venta_Caja_gestion.Show()
             Me.Close()
         Else
-            Venta_Caja_gestion.Close()
-            Venta_Caja_gestion.tipo_vta = ComboBox1.Text 'tipo_vta es para q se recuperen los precios minoristas o mayoristas de los productos.
-            Venta_Caja_gestion.procedencia = "Remito nuevo" 'sirve para solo recuperar en grilla los clientes con cuenta corriente.
-            Venta_Caja_gestion.Text = "Nuevo Remito"
-            Venta_Caja_gestion.RB_Consumidor.Enabled = False 'los remitos solo se hacen a clientes.
-            Venta_Caja_gestion.RB_Cliente.Checked = True
-            Venta_Caja_gestion.TabPage1.Text = "Generar remito: Cliente con Cuenta Corriente"
-            Venta_Caja_gestion.TabPage2.Text = "Generar remito: Productos"
-            Venta_Caja_gestion.Show()
-            Me.Close()
+            If procedencia = "Presupuesto nuevo" Then
+
+                Venta_Caja_gestion.Close()
+                Venta_Caja_gestion.tipo_vta = ComboBox1.Text 'tipo_vta es para q se recuperen los precios minoristas o mayoristas de los productos.
+                Venta_Caja_gestion.procedencia = "Presupuesto nuevo" 'sirve para solo recuperar en grilla los clientes con cuenta corriente.
+                Venta_Caja_gestion.Text = "Nuevo Presupuesto"
+                Venta_Caja_gestion.RB_Consumidor.Enabled = True  'los presupuestos se hacen a consumidor final o clientes.
+                Venta_Caja_gestion.RB_Cliente.Checked = True
+                Venta_Caja_gestion.TabPage1.Text = "Generar Presupuesto: Cliente."
+                Venta_Caja_gestion.TabPage2.Text = "Generar Presupuesto: Productos"
+                Venta_Caja_gestion.Show()
+                Me.Close()
+            End If
+
+            If procedencia = "Remito nuevo" Then
+                Venta_Caja_gestion.Close()
+                Venta_Caja_gestion.tipo_vta = ComboBox1.Text 'tipo_vta es para q se recuperen los precios minoristas o mayoristas de los productos.
+                Venta_Caja_gestion.procedencia = "Remito nuevo" 'sirve para solo recuperar en grilla los clientes con cuenta corriente.
+                Venta_Caja_gestion.Text = "Nuevo Remito"
+                Venta_Caja_gestion.RB_Consumidor.Enabled = False 'los remitos solo se hacen a clientes.
+                Venta_Caja_gestion.RB_Cliente.Checked = True
+                Venta_Caja_gestion.TabPage1.Text = "Generar remito: Cliente con Cuenta Corriente"
+                Venta_Caja_gestion.TabPage2.Text = "Generar remito: Productos"
+                Venta_Caja_gestion.Show()
+                Me.Close()
+            End If
+            
+
+
         End If
     End Sub
 End Class

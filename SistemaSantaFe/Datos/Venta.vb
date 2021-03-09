@@ -1111,7 +1111,107 @@ Public Class Venta
 
 #End Region
 
+#Region "Gestión Presupuesto"
+    Public Function Presupuesto_alta(ByVal ventaprod_id As Integer, ByVal presupuesto_fecha As DateTime, ByVal presupuesto_estado As String) As DataSet
 
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Presupuesto_alta", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@ventaprod_id", ventaprod_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@presupuesto_fecha", presupuesto_fecha))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@presupuesto_estado", presupuesto_estado))
+        'el tipo de venta es cliente o consumidor final
+        'el id del cliente es 0 en caso de ser consumidor final
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Presupuesto")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+    Public Function Presupuesto_recuperar_todos() As DataSet
+
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Presupuesto_recuperar_todos", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Remito")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+    Public Function Presupuesto_recuperar(ByVal presupuesto_id As Integer) As DataSet
+
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Presupuesto_recuperar", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@presupuesto_id", presupuesto_id))
+        'el tipo de venta es cliente o consumidor final
+        'el id del cliente es 0 en caso de ser consumidor final
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Presupuesto")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+    Public Function Presupuesto_recuperar_productos(ByVal presupuesto_id As Integer) As DataSet
+
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+
+        Dim comando As New OleDbCommand("Presupuesto_recuperar_productos", dbconn)
+        comando.CommandType = CommandType.StoredProcedure
+
+        comando.Parameters.Add(New OleDb.OleDbParameter("@presupuesto_id", presupuesto_id))
+        'el tipo de venta es cliente o consumidor final
+        'el id del cliente es 0 en caso de ser consumidor final
+
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Presupuesto")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+    Public Function presupuesto_modificar_estado(ByVal presupuesto_id As Integer, ByVal presupuesto_estado As String) As DataSet
+
+        Try
+            dbconn.Open()
+        Catch ex As Exception
+        End Try
+        Dim comando As New OleDbCommand("presupuesto_modificar_estado", dbconn) 'actualiza la tabla 
+        comando.CommandType = CommandType.StoredProcedure
+        comando.Parameters.Add(New OleDb.OleDbParameter("@presupuesto_id", presupuesto_id))
+        comando.Parameters.Add(New OleDb.OleDbParameter("@presupuesto_estado", presupuesto_estado))
+        Dim ds_JE As New DataSet()
+        Dim da_JE As New OleDbDataAdapter(comando)
+        da_JE.Fill(ds_JE, "Venta_Producto")
+        dbconn.Close()
+        Return ds_JE
+    End Function
+
+#End Region
 
 
 

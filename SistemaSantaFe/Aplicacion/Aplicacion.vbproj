@@ -581,6 +581,12 @@
     <Compile Include="Modulos\Facturacion\Mesas\Sector_modificar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modulos\Facturacion\Reportes\CR_presupuesto_venta.vb">
+      <DependentUpon>CR_presupuesto_venta.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Modulos\Facturacion\Reportes\CR_presupuesto_servicio.vb">
       <DependentUpon>CR_presupuesto_servicio.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -824,6 +830,17 @@
       <DependentUpon>Pedido_reporte_show.vb</DependentUpon>
     </Compile>
     <Compile Include="Modulos\Pedidos\Reporte\Pedido_reporte_show.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\Presupuesto_vta\DS_presupuesto_vta.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_presupuesto_vta.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Presupuesto_vta\Presupuesto_venta.Designer.vb">
+      <DependentUpon>Presupuesto_venta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\Presupuesto_vta\Presupuesto_venta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Modulos\Proveedores\Proveedores_DS.Designer.vb">
@@ -1430,6 +1447,10 @@
     <EmbeddedResource Include="Modulos\Facturacion\Mesas\Sector_modificar.resx">
       <DependentUpon>Sector_modificar.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Facturacion\Reportes\CR_presupuesto_venta.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CR_presupuesto_venta.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Facturacion\Reportes\CR_presupuesto_servicio.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CR_presupuesto_servicio.vb</LastGenOutput>
@@ -1536,6 +1557,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Pedidos\Reporte\Pedido_reporte_show.resx">
       <DependentUpon>Pedido_reporte_show.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\Presupuesto_vta\Presupuesto_venta.resx">
+      <DependentUpon>Presupuesto_venta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\Proveedores\Proveedor_alta.resx">
       <DependentUpon>Proveedor_alta.vb</DependentUpon>
@@ -1928,6 +1952,17 @@
     </None>
     <None Include="Modulos\Pedidos\Reporte\Pedidos_reporte_DS.xss">
       <DependentUpon>Pedidos_reporte_DS.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Presupuesto_vta\DS_presupuesto_vta.xsc">
+      <DependentUpon>DS_presupuesto_vta.xsd</DependentUpon>
+    </None>
+    <None Include="Modulos\Presupuesto_vta\DS_presupuesto_vta.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_presupuesto_vta.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Modulos\Presupuesto_vta\DS_presupuesto_vta.xss">
+      <DependentUpon>DS_presupuesto_vta.xsd</DependentUpon>
     </None>
     <None Include="Modulos\Proveedores\Proveedores_DS.xsc">
       <DependentUpon>Proveedores_DS.xsd</DependentUpon>
