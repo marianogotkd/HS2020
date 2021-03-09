@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Cliente_ds" targetNamespace="http://tempuri.org/Cliente_ds.xsd" xmlns:mstns="http://tempuri.org/Cliente_ds.xsd" xmlns="http://tempuri.org/Cliente_ds.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Cliente_ds" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Cliente_ds" msprop:Generator_UserDSName="Cliente_ds">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Cliente" msprop:Generator_TableClassName="ClienteDataTable" msprop:Generator_TableVarName="tableCliente" msprop:Generator_TablePropName="Cliente" msprop:Generator_RowDeletingName="ClienteRowDeleting" msprop:Generator_RowChangingName="ClienteRowChanging" msprop:Generator_RowEvHandlerName="ClienteRowChangeEventHandler" msprop:Generator_RowDeletedName="ClienteRowDeleted" msprop:Generator_UserTableName="Cliente" msprop:Generator_RowChangedName="ClienteRowChanged" msprop:Generator_RowEvArgName="ClienteRowChangeEvent" msprop:Generator_RowClassName="ClienteRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CLI_id" msprop:Generator_ColumnVarNameInTable="columnCLI_id" msprop:Generator_ColumnPropNameInRow="CLI_id" msprop:Generator_ColumnPropNameInTable="CLI_idColumn" msprop:Generator_UserColumnName="CLI_id" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_ape" msprop:Generator_ColumnVarNameInTable="columnCLI_ape" msprop:Generator_ColumnPropNameInRow="CLI_ape" msprop:Generator_ColumnPropNameInTable="CLI_apeColumn" msprop:Generator_UserColumnName="CLI_ape" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_nom" msprop:Generator_ColumnVarNameInTable="columnCLI_nom" msprop:Generator_ColumnPropNameInRow="CLI_nom" msprop:Generator_ColumnPropNameInTable="CLI_nomColumn" msprop:Generator_UserColumnName="CLI_nom" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_dni" msprop:Generator_ColumnVarNameInTable="columnCLI_dni" msprop:Generator_ColumnPropNameInRow="CLI_dni" msprop:Generator_ColumnPropNameInTable="CLI_dniColumn" msprop:Generator_UserColumnName="CLI_dni" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_fnac" msprop:Generator_ColumnVarNameInTable="columnCLI_fnac" msprop:Generator_ColumnPropNameInRow="CLI_fnac" msprop:Generator_ColumnPropNameInTable="CLI_fnacColumn" msprop:Generator_UserColumnName="CLI_fnac" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_tel" msprop:Generator_ColumnVarNameInTable="columnCLI_tel" msprop:Generator_ColumnPropNameInRow="CLI_tel" msprop:Generator_ColumnPropNameInTable="CLI_telColumn" msprop:Generator_UserColumnName="CLI_tel" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_mail" msprop:Generator_ColumnVarNameInTable="columnCLI_mail" msprop:Generator_ColumnPropNameInRow="CLI_mail" msprop:Generator_ColumnPropNameInTable="CLI_mailColumn" msprop:Generator_UserColumnName="CLI_mail" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_observaciones" msprop:Generator_ColumnVarNameInTable="columnCLI_observaciones" msprop:Generator_ColumnPropNameInRow="CLI_observaciones" msprop:Generator_ColumnPropNameInTable="CLI_observacionesColumn" msprop:Generator_UserColumnName="CLI_observaciones" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Pagos" msprop:Generator_TableClassName="PagosDataTable" msprop:Generator_TableVarName="tablePagos" msprop:Generator_TablePropName="Pagos" msprop:Generator_RowDeletingName="PagosRowDeleting" msprop:Generator_RowChangingName="PagosRowChanging" msprop:Generator_RowEvHandlerName="PagosRowChangeEventHandler" msprop:Generator_RowDeletedName="PagosRowDeleted" msprop:Generator_UserTableName="Pagos" msprop:Generator_RowChangedName="PagosRowChanged" msprop:Generator_RowEvArgName="PagosRowChangeEvent" msprop:Generator_RowClassName="PagosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CliPa_id" msdata:Caption="CLI_id" msprop:Generator_ColumnVarNameInTable="columnCliPa_id" msprop:Generator_ColumnPropNameInRow="CliPa_id" msprop:Generator_ColumnPropNameInTable="CliPa_idColumn" msprop:Generator_UserColumnName="CliPa_id" type="xs:string" minOccurs="0" />
+              <xs:element name="CliPa_CLI_ID" msdata:Caption="CLI_ape" msprop:Generator_ColumnVarNameInTable="columnCliPa_CLI_ID" msprop:Generator_ColumnPropNameInRow="CliPa_CLI_ID" msprop:Generator_ColumnPropNameInTable="CliPa_CLI_IDColumn" msprop:Generator_UserColumnName="CliPa_CLI_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="CliPa_Fecha" msdata:Caption="CLI_nom" msprop:Generator_ColumnVarNameInTable="columnCliPa_Fecha" msprop:Generator_ColumnPropNameInRow="CliPa_Fecha" msprop:Generator_ColumnPropNameInTable="CliPa_FechaColumn" msprop:Generator_UserColumnName="CliPa_Fecha" type="xs:string" minOccurs="0" />
+              <xs:element name="CliPa_Monto" msdata:Caption="CLI_dni" msprop:Generator_ColumnVarNameInTable="columnCliPa_Monto" msprop:Generator_ColumnPropNameInRow="CliPa_Monto" msprop:Generator_ColumnPropNameInTable="CliPa_MontoColumn" msprop:Generator_UserColumnName="CliPa_Monto" type="xs:string" minOccurs="0" />
+              <xs:element name="CliPa_observacion" msprop:Generator_ColumnVarNameInTable="columnCliPa_observacion" msprop:Generator_ColumnPropNameInRow="CliPa_observacion" msprop:Generator_ColumnPropNameInTable="CliPa_observacionColumn" msprop:Generator_UserColumnName="CliPa_observacion" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Cliente1" msprop:Generator_TableClassName="Cliente1DataTable" msprop:Generator_TableVarName="tableCliente1" msprop:Generator_RowChangedName="Cliente1RowChanged" msprop:Generator_TablePropName="Cliente1" msprop:Generator_RowDeletingName="Cliente1RowDeleting" msprop:Generator_RowChangingName="Cliente1RowChanging" msprop:Generator_RowEvHandlerName="Cliente1RowChangeEventHandler" msprop:Generator_RowDeletedName="Cliente1RowDeleted" msprop:Generator_RowClassName="Cliente1Row" msprop:Generator_UserTableName="Cliente1" msprop:Generator_RowEvArgName="Cliente1RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CLI_id" msprop:Generator_ColumnVarNameInTable="columnCLI_id" msprop:Generator_ColumnPropNameInRow="CLI_id" msprop:Generator_ColumnPropNameInTable="CLI_idColumn" msprop:Generator_UserColumnName="CLI_id" type="xs:int" minOccurs="0" />
+              <xs:element name="CLI_ape" msprop:Generator_ColumnVarNameInTable="columnCLI_ape" msprop:Generator_ColumnPropNameInRow="CLI_ape" msprop:Generator_ColumnPropNameInTable="CLI_apeColumn" msprop:Generator_UserColumnName="CLI_ape" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_nom" msprop:Generator_ColumnVarNameInTable="columnCLI_nom" msprop:Generator_ColumnPropNameInRow="CLI_nom" msprop:Generator_ColumnPropNameInTable="CLI_nomColumn" msprop:Generator_UserColumnName="CLI_nom" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_dni" msprop:Generator_ColumnVarNameInTable="columnCLI_dni" msprop:Generator_ColumnPropNameInRow="CLI_dni" msprop:Generator_ColumnPropNameInTable="CLI_dniColumn" msprop:Generator_UserColumnName="CLI_dni" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_fnac" msprop:Generator_ColumnVarNameInTable="columnCLI_fnac" msprop:Generator_ColumnPropNameInRow="CLI_fnac" msprop:Generator_ColumnPropNameInTable="CLI_fnacColumn" msprop:Generator_UserColumnName="CLI_fnac" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CLI_tel" msprop:Generator_ColumnVarNameInTable="columnCLI_tel" msprop:Generator_ColumnPropNameInRow="CLI_tel" msprop:Generator_ColumnPropNameInTable="CLI_telColumn" msprop:Generator_UserColumnName="CLI_tel" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_mail" msprop:Generator_ColumnVarNameInTable="columnCLI_mail" msprop:Generator_ColumnPropNameInRow="CLI_mail" msprop:Generator_ColumnPropNameInTable="CLI_mailColumn" msprop:Generator_UserColumnName="CLI_mail" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_Fan" msprop:Generator_ColumnVarNameInTable="columnCLI_Fan" msprop:Generator_ColumnPropNameInRow="CLI_Fan" msprop:Generator_ColumnPropNameInTable="CLI_FanColumn" msprop:Generator_UserColumnName="CLI_Fan" type="xs:string" minOccurs="0" />
+              <xs:element name="CLI_observaciones" msprop:Generator_ColumnVarNameInTable="columnCLI_observaciones" msprop:Generator_ColumnPropNameInRow="CLI_observaciones" msprop:Generator_ColumnPropNameInTable="CLI_observacionesColumn" msprop:Generator_UserColumnName="CLI_observaciones" type="xs:string" minOccurs="0" />
+              <xs:element name="direccion" msprop:Generator_ColumnVarNameInTable="columndireccion" msprop:Generator_ColumnPropNameInRow="direccion" msprop:Generator_ColumnPropNameInTable="direccionColumn" msprop:Generator_UserColumnName="direccion" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
